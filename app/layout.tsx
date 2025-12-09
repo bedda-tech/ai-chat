@@ -63,9 +63,18 @@ const THEME_COLOR_SCRIPT = `\
     meta.setAttribute('name', 'theme-color');
     document.head.appendChild(meta);
   }
+  function getThemeColor() {
+    var hasDark = html.classList.contains('dark');
+    if (hasDark) {
+      return '${DARK_THEME_COLOR}';
+    }
+    if (html.classList.contains('light')) {
+      return '${LIGHT_THEME_COLOR}';
+    }
+    return '${DARK_THEME_COLOR}';
+  }
   function updateThemeColor() {
-    var isDark = html.classList.contains('dark');
-    meta.setAttribute('content', isDark ? '${DARK_THEME_COLOR}' : '${LIGHT_THEME_COLOR}');
+    meta.setAttribute('content', getThemeColor());
   }
   var observer = new MutationObserver(updateThemeColor);
   observer.observe(html, { attributes: true, attributeFilter: ['class'] });
@@ -98,7 +107,7 @@ export default function RootLayout({
       <body className="antialiased">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           disableTransitionOnChange
           enableSystem
         >

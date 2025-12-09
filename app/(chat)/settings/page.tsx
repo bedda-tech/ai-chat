@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/app/(auth)/auth";
-import { UsageDisplay } from "@/components/usage-display";
 import { SubscriptionManagement } from "@/components/subscription-management";
+import { UsageDisplay } from "@/components/usage-display";
 import { getUserTier } from "@/lib/usage/tracking";
 
 export default async function SettingsPage() {
@@ -11,13 +11,19 @@ export default async function SettingsPage() {
     redirect("/login");
   }
 
-  const tier = await getUserTier(session.user.id);
+  let tier: "free" | "pro" | "premium" | "enterprise" = "free";
+  try {
+    tier = await getUserTier(session.user.id);
+  } catch (error) {
+    console.error("Error getting user tier:", error);
+    // Default to free tier on error
+  }
 
   return (
     <div className="mx-auto max-w-4xl p-4 md:p-8">
       <div className="mb-8">
         <h1 className="font-bold text-3xl tracking-tight">Settings</h1>
-        <p className="text-muted-foreground mt-2">
+        <p className="mt-2 text-muted-foreground">
           Manage your subscription and view your usage
         </p>
       </div>

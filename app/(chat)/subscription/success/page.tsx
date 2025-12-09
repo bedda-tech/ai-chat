@@ -9,8 +9,94 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { redirect } from "next/navigation";
+import { auth } from "@/app/(auth)/auth";
+import { stripe } from "@/lib/stripe";
+import { drizzle } from "drizzle-orm/postgres-js";
+import { eq } from "drizzle-orm";
+import postgres from "postgres";
+import { userTier } from "@/lib/db/schema";
+import { getSubscriptionTier } from "@/lib/stripe";
 
-export default function SubscriptionSuccessPage() {
+const connectionString = process.env.POSTGRES_URL!;
+const client = postgres(connectionString);
+const db = drizzle(client);
+
+export default async function SubscriptionSuccessPage({
+  searchParams,
+}: {
+  searchParams: { session_id?: string };
+}) {
+  const session = await auth();
+
+  if (!session?.user) {
+    redirect("/login");
+  }
+
+  // Process checkout session if provided
+  if (searchParams.session_id) {
+    try {
+      const checkoutSession = await stripe.checkout.sessions.retrieve(
+        searchParams.session_id
+      );
+
+      if (checkoutSession.subscription) {
+        const subscription = await stripe.subscriptions.retrieve(
+          checkoutSession.subscription as string
+        );
+
+        const tier = await getSubscriptionTier(subscription);
+        const userId = session.user.id;
+
+        // Update user tier immediately
+        const existing = await db
+          .select()
+          .from(userTier)
+          .where(eq(userTier.userId, userId))
+          .limit(1);
+
+        if (existing.length > 0) {
+          await db
+            .update(userTier)
+            .set({
+              tier,
+              subscriptionId: subscription.id,
+              subscriptionStatus: subscription.status,
+              stripeCustomerId: subscription.customer as string,
+              currentPeriodStart: new Date(
+                subscription.current_period_start * 1000
+              ),
+              currentPeriodEnd: new Date(
+                subscription.current_period_end * 1000
+              ),
+              cancelAtPeriodEnd: subscription.cancel_at_period_end,
+              updatedAt: new Date(),
+            })
+            .where(eq(userTier.userId, userId));
+        } else {
+          await db.insert(userTier).values({
+            userId,
+            tier,
+            subscriptionId: subscription.id,
+            subscriptionStatus: subscription.status,
+            stripeCustomerId: subscription.customer as string,
+            currentPeriodStart: new Date(
+              subscription.current_period_start * 1000
+            ),
+            currentPeriodEnd: new Date(
+              subscription.current_period_end * 1000
+            ),
+            cancelAtPeriodEnd: subscription.cancel_at_period_end,
+          });
+        }
+      }
+    } catch (error) {
+      console.error("Error processing checkout session:", error);
+      // Continue to show success page even if processing fails
+      // Webhook will handle it eventually
+    }
+  }
+
   return (
     <div className="container flex min-h-[calc(100vh-4rem)] items-center justify-center p-4">
       <Card className="w-full max-w-md">
