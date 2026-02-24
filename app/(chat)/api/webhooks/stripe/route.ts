@@ -160,6 +160,11 @@ async function handleSubscriptionChange(
 
   console.log(`Updating user ${userId} to tier: ${tier}`);
 
+  // Get period from the first subscription item (Stripe v19+ moved period to items)
+  const firstItem = subscription.items.data[0];
+  const periodStart = firstItem ? new Date(firstItem.current_period_start * 1000) : new Date();
+  const periodEnd = firstItem ? new Date(firstItem.current_period_end * 1000) : new Date();
+
   // Update or create user tier
   const existing = await db
     .select()
@@ -175,8 +180,8 @@ async function handleSubscriptionChange(
         subscriptionId: subscription.id,
         subscriptionStatus: subscription.status,
         stripeCustomerId: subscription.customer as string,
-        currentPeriodStart: new Date(subscription.current_period_start * 1000),
-        currentPeriodEnd: new Date(subscription.current_period_end * 1000),
+        currentPeriodStart: periodStart,
+        currentPeriodEnd: periodEnd,
         cancelAtPeriodEnd: subscription.cancel_at_period_end,
         updatedAt: new Date(),
       })
@@ -188,8 +193,8 @@ async function handleSubscriptionChange(
       subscriptionId: subscription.id,
       subscriptionStatus: subscription.status,
       stripeCustomerId: subscription.customer as string,
-      currentPeriodStart: new Date(subscription.current_period_start * 1000),
-      currentPeriodEnd: new Date(subscription.current_period_end * 1000),
+      currentPeriodStart: periodStart,
+      currentPeriodEnd: periodEnd,
       cancelAtPeriodEnd: subscription.cancel_at_period_end,
     });
   }

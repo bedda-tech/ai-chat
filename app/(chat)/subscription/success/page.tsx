@@ -50,6 +50,11 @@ export default async function SubscriptionSuccessPage({
         const tier = await getSubscriptionTier(subscription);
         const userId = session.user.id;
 
+        // Get period from the first subscription item (Stripe v19+)
+        const firstItem = subscription.items.data[0];
+        const periodStart = firstItem ? new Date(firstItem.current_period_start * 1000) : new Date();
+        const periodEnd = firstItem ? new Date(firstItem.current_period_end * 1000) : new Date();
+
         // Update user tier immediately
         const existing = await db
           .select()
@@ -65,12 +70,8 @@ export default async function SubscriptionSuccessPage({
               subscriptionId: subscription.id,
               subscriptionStatus: subscription.status,
               stripeCustomerId: subscription.customer as string,
-              currentPeriodStart: new Date(
-                subscription.current_period_start * 1000
-              ),
-              currentPeriodEnd: new Date(
-                subscription.current_period_end * 1000
-              ),
+              currentPeriodStart: periodStart,
+              currentPeriodEnd: periodEnd,
               cancelAtPeriodEnd: subscription.cancel_at_period_end,
               updatedAt: new Date(),
             })
@@ -82,12 +83,8 @@ export default async function SubscriptionSuccessPage({
             subscriptionId: subscription.id,
             subscriptionStatus: subscription.status,
             stripeCustomerId: subscription.customer as string,
-            currentPeriodStart: new Date(
-              subscription.current_period_start * 1000
-            ),
-            currentPeriodEnd: new Date(
-              subscription.current_period_end * 1000
-            ),
+            currentPeriodStart: periodStart,
+            currentPeriodEnd: periodEnd,
             cancelAtPeriodEnd: subscription.cancel_at_period_end,
           });
         }
