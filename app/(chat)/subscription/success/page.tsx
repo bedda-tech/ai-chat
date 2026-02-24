@@ -25,7 +25,7 @@ const db = drizzle(client);
 export default async function SubscriptionSuccessPage({
   searchParams,
 }: {
-  searchParams: { session_id?: string };
+  searchParams: Promise<{ session_id?: string }>;
 }) {
   const session = await auth();
 
@@ -33,11 +33,13 @@ export default async function SubscriptionSuccessPage({
     redirect("/login");
   }
 
+  const { session_id } = await searchParams;
+
   // Process checkout session if provided
-  if (searchParams.session_id) {
+  if (session_id) {
     try {
       const checkoutSession = await stripe.checkout.sessions.retrieve(
-        searchParams.session_id
+        session_id
       );
 
       if (checkoutSession.subscription) {
