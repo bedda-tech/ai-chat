@@ -9,7 +9,7 @@ import modelsData from "./models-data.json";
 interface AvailableModel {
   id: string;
   name: string;
-  description?: string;
+  description?: string | null;
   pricing?: {
     input: number;
     output: number;
@@ -179,7 +179,7 @@ export async function getAvailableModels(
 
     // Update cache
     cache = {
-      models: availableModels.models,
+      models: availableModels.models as unknown as AvailableModel[],
       timestamp: now,
     };
 
