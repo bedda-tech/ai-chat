@@ -21,7 +21,7 @@ import type { VisibilityType } from "@/components/visibility-selector";
 import { buildGatewayConfig, getThinkingBudget } from "@/lib/ai/gateway-config";
 import { getModelConfig } from "@/lib/ai/model-config";
 import type { ChatModel } from "@/lib/ai/models";
-import { type RequestHints, getCacheableSystemPrompt } from "@/lib/ai/prompts";
+import { type RequestHints, systemPrompt } from "@/lib/ai/prompts";
 import { myProvider } from "@/lib/ai/providers";
 import { analyzeDataTool } from "@/lib/ai/tools/analyze-data";
 import { createDocument } from "@/lib/ai/tools/create-document";
@@ -256,7 +256,7 @@ export async function POST(request: Request) {
 
         const result = streamText({
           model: myProvider.languageModel(selectedChatModel),
-          system: getCacheableSystemPrompt({
+          system: systemPrompt({
             selectedChatModel,
             requestHints,
           }),
