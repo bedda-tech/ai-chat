@@ -177,34 +177,40 @@ function ImpactSection() {
     <div className="grid gap-4 md:grid-cols-2">
       <Card>
         <CardHeader>
-          <CardTitle>Cost Savings</CardTitle>
+          <CardTitle>Competitive Advantages</CardTitle>
           <CardDescription>
-            Expected reductions in operational costs
+            Key differentiators vs. competitors
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-2 text-sm">
             <div className="flex justify-between">
-              <span className="text-muted-foreground">Prompt Caching:</span>
+              <span className="text-muted-foreground">Multi-Model:</span>
               <span className="font-medium">
-                {expectedImpact.costSavings.promptCaching}
+                {expectedImpact.competitiveAdvantages.multiModel}
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-muted-foreground">RAG Implementation:</span>
+              <span className="text-muted-foreground">Pricing:</span>
               <span className="font-medium">
-                {expectedImpact.costSavings.rag}
+                {expectedImpact.competitiveAdvantages.pricing}
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-muted-foreground">Intelligent Routing:</span>
+              <span className="text-muted-foreground">Image Studio:</span>
               <span className="font-medium">
-                {expectedImpact.costSavings.intelligentRouting}
+                {expectedImpact.competitiveAdvantages.imageStudio}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">Video Studio:</span>
+              <span className="font-medium">
+                {expectedImpact.competitiveAdvantages.videoStudio}
               </span>
             </div>
             <div className="border-t pt-2 flex justify-between font-semibold">
-              <span>Total Potential:</span>
-              <span>{expectedImpact.costSavings.totalPotential}</span>
+              <span>Model Comparison:</span>
+              <span>{expectedImpact.competitiveAdvantages.modelComparison}</span>
             </div>
           </div>
         </CardContent>
@@ -212,7 +218,7 @@ function ImpactSection() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Revenue Generation</CardTitle>
+          <CardTitle>Revenue Projections</CardTitle>
           <CardDescription>
             Projected monthly revenue at different scales
           </CardDescription>
@@ -222,31 +228,19 @@ function ImpactSection() {
             <div className="flex justify-between">
               <span className="text-muted-foreground">10k users:</span>
               <span className="font-medium">
-                {expectedImpact.revenueGeneration["10k users"]}
+                {expectedImpact.revenueProjections["10k users"]}
               </span>
             </div>
             <div className="flex justify-between">
               <span className="text-muted-foreground">50k users:</span>
               <span className="font-medium">
-                {expectedImpact.revenueGeneration["50k users"]}
+                {expectedImpact.revenueProjections["50k users"]}
               </span>
             </div>
             <div className="flex justify-between">
               <span className="text-muted-foreground">100k users:</span>
               <span className="font-medium">
-                {expectedImpact.revenueGeneration["100k users"]}
-              </span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-muted-foreground">Enterprise:</span>
-              <span className="font-medium">
-                {expectedImpact.revenueGeneration.enterprise}
-              </span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-muted-foreground">API Ecosystem:</span>
-              <span className="font-medium">
-                {expectedImpact.revenueGeneration.api}
+                {expectedImpact.revenueProjections["100k users"]}
               </span>
             </div>
           </div>
