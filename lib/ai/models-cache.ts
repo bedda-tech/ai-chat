@@ -176,17 +176,18 @@ export async function getAvailableModels(
   try {
     console.log("🔄 Fetching models from AI Gateway...");
     const availableModels = await gateway.getAvailableModels();
+    const models = availableModels.models as unknown as AvailableModel[];
 
     // Update cache
     cache = {
-      models: availableModels.models as unknown as AvailableModel[],
+      models,
       timestamp: now,
     };
 
     console.log(
-      `✅ Fetched ${availableModels.models.length} models from AI Gateway`
+      `✅ Fetched ${models.length} models from AI Gateway`
     );
-    return transformToEnrichedModels(availableModels.models);
+    return transformToEnrichedModels(models);
   } catch (error) {
     console.error("❌ Failed to fetch dynamic models:", error);
 
