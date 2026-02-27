@@ -75,6 +75,20 @@ export default function MarketingLayout({
             </Link>
             .
           </p>
+          <nav className="flex items-center gap-4 text-sm text-muted-foreground">
+            <Link
+              className="transition-colors hover:text-foreground/80"
+              href="/privacy"
+            >
+              Privacy
+            </Link>
+            <Link
+              className="transition-colors hover:text-foreground/80"
+              href="/terms"
+            >
+              Terms
+            </Link>
+          </nav>
         </div>
       </footer>
     </div>
