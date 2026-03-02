@@ -64,6 +64,20 @@
       "when": 1761617620000,
       "tag": "0008_usage_tracking",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1761700000000,
+      "tag": "0009_add_stripe_customer_id",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1761786400000,
+      "tag": "0010_add_message_model_id",
+      "breakpoints": true
     }
   ]
 }

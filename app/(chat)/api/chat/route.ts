@@ -174,6 +174,7 @@ export async function POST(request: Request) {
           parts: message.parts,
           attachments: [],
           createdAt: new Date(),
+          modelId: null,
         },
       ],
     });
@@ -421,6 +422,7 @@ export async function POST(request: Request) {
             createdAt: new Date(),
             attachments: [],
             chatId: id,
+            modelId: currentMessage.role === "assistant" ? selectedChatModel : null,
           })),
         });
 

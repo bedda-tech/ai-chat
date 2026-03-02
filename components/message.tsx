@@ -18,6 +18,7 @@ import {
   ToolInput,
   ToolOutput,
 } from "./elements/tool";
+import { chatModels } from "@/lib/ai/models";
 import { SparklesIcon } from "./icons";
 import { MessageActions } from "./message-actions";
 import { MessageEditor } from "./message-editor";
@@ -69,8 +70,19 @@ const PurePreviewMessage = ({
         })}
       >
         {message.role === "assistant" && (
-          <div className="-mt-1 flex size-8 shrink-0 items-center justify-center rounded-full bg-background ring-1 ring-border">
-            <SparklesIcon size={14} />
+          <div className="-mt-1 flex shrink-0 flex-col items-center gap-1">
+            <div className="flex size-8 items-center justify-center rounded-full bg-background ring-1 ring-border">
+              <SparklesIcon size={14} />
+            </div>
+            {message.metadata?.modelId && (() => {
+              const model = chatModels.find(m => m.id === message.metadata?.modelId);
+              const displayName = model?.name ?? message.metadata.modelId;
+              return (
+                <span className="max-w-[4.5rem] text-center font-medium text-muted-foreground text-[10px] leading-tight">
+                  {displayName}
+                </span>
+              );
+            })()}
           </div>
         )}
 
