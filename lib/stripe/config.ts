@@ -1,21 +1,23 @@
 import Stripe from "stripe";
 
-if (!process.env.STRIPE_SECRET_KEY) {
-  throw new Error("STRIPE_SECRET_KEY is not set in environment variables");
-}
-
 /**
- * Stripe client instance
- * Configured with API version and TypeScript support
+ * Stripe client instance.
+ * STRIPE_SECRET_KEY must be set in production — requests will fail without it.
+ * We defer the check to runtime so Next.js can build without the key locally.
  */
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: "2025-10-29.clover",
-  typescript: true,
-  appInfo: {
-    name: "Bedda Chat",
-    version: "1.0.0",
-  },
-});
+// Fallback to a non-empty placeholder so the Stripe SDK initialises without
+// throwing during `next build` (the key is required in production on Vercel).
+export const stripe = new Stripe(
+  process.env.STRIPE_SECRET_KEY ?? "sk_placeholder_build_only",
+  {
+    apiVersion: "2025-10-29.clover",
+    typescript: true,
+    appInfo: {
+      name: "Bedda Chat",
+      version: "1.0.0",
+    },
+  }
+);
 
 /**
  * Stripe pricing plan configuration.
