@@ -40,7 +40,7 @@ export const STRIPE_PLANS = {
     dbTier: "free" as const,
     price: 0,
     messagesPerDay: 50,
-    messagesPerMonth: 200,
+    messagesPerMonth: 500,
   },
   PLUS: {
     id: process.env.STRIPE_PLUS_PRICE_ID,

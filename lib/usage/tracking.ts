@@ -48,7 +48,7 @@ export const TIER_LIMITS: Record<UserTierType, RateLimitConfig> = {
   free: {
     messagesPerMinute: 5,
     messagesPerDay: 50,
-    messagesPerMonth: 200,
+    messagesPerMonth: 500,
   },
   pro: {
     // Plus plan: 300 msg/day, unlimited monthly
