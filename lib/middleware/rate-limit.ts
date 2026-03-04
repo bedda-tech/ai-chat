@@ -18,7 +18,7 @@ export type RateLimitResult = {
 
 /**
  * Rate limiting middleware for chat requests
- * Checks both per-minute and monthly limits
+ * Checks per-minute, daily, and monthly limits
  */
 export async function rateLimitMiddleware(
   userId: string
@@ -44,6 +44,27 @@ export async function rateLimitMiddleware(
       };
     }
 
+    // Check daily limit
+    const dailyLimit = await checkRateLimit(
+      userId,
+      "messages_per_day",
+      tier
+    );
+
+    if (!dailyLimit.allowed) {
+      const retryAfterHours = dailyLimit.retryAfter
+        ? Math.ceil(dailyLimit.retryAfter / 3600)
+        : 24;
+      return {
+        allowed: false,
+        error: "Daily limit exceeded",
+        message: `You've reached your daily limit of ${limits.messagesPerDay} messages. Resets in ~${retryAfterHours} hour${retryAfterHours === 1 ? "" : "s"}.`,
+        retryAfter: dailyLimit.retryAfter,
+        upgrade: tier === "free",
+        upgradeUrl: tier === "free" ? "/upgrade?plan=plus" : undefined,
+      };
+    }
+
     // Check monthly limit
     const monthlyAllowed = await checkTierLimit(userId, tier);
 
@@ -53,7 +74,7 @@ export async function rateLimitMiddleware(
         error: "Monthly limit exceeded",
         message: `You've reached your monthly limit of ${limits.messagesPerMonth} messages.${
           tier === "free"
-            ? " Upgrade to Pro for 10x more messages!"
+            ? " Upgrade to Plus for unlimited monthly messages!"
             : " Please upgrade to a higher tier for more capacity."
         }`,
         upgrade: true,
@@ -61,8 +82,11 @@ export async function rateLimitMiddleware(
       };
     }
 
-    // Increment rate limit counter
-    await incrementRateLimit(userId, "messages_per_minute");
+    // Increment rate limit counters
+    await Promise.all([
+      incrementRateLimit(userId, "messages_per_minute"),
+      incrementRateLimit(userId, "messages_per_day"),
+    ]);
 
     return {
       allowed: true,
