@@ -1,5 +1,5 @@
 import type Stripe from "stripe";
-import { stripe, mapStripePriceToTier } from "./config";
+import { stripe, mapStripePriceToTier, type DbTier } from "./config";
 
 /**
  * Create a Stripe Checkout session for subscription
@@ -124,7 +124,7 @@ export async function cancelSubscription(
  */
 export async function getSubscriptionTier(
   subscription: Stripe.Subscription
-): Promise<"free" | "pro" | "premium"> {
+): Promise<DbTier> {
   if (!subscription.items.data[0]) {
     return "free";
   }

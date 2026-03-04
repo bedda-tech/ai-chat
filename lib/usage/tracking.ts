@@ -39,6 +39,11 @@ export type RateLimitConfig = {
   messagesPerMonth: number;
 };
 
+// DB tier → plan limits mapping:
+//   free       = Free plan    ($0)
+//   pro        = Plus plan    ($12/mo) — 300 msg/day
+//   premium    = Pro plan     ($25/mo) — 1,500 msg/day
+//   enterprise = Max plan     ($50/mo) — 5,000 msg/day
 export const TIER_LIMITS: Record<UserTierType, RateLimitConfig> = {
   free: {
     messagesPerMinute: 5,
@@ -46,22 +51,22 @@ export const TIER_LIMITS: Record<UserTierType, RateLimitConfig> = {
     messagesPerMonth: 200,
   },
   pro: {
-    // Better than ChatGPT Plus (~1,280/day), Claude Pro (~216/day), Gemini (100/day), Grok (~600/day)
-    // Unlimited monthly - only daily cap applies
-    messagesPerMinute: 20,
-    messagesPerDay: 1_500,
-    messagesPerMonth: 999_999_999, // Effectively unlimited
+    // Plus plan: 300 msg/day, unlimited monthly
+    messagesPerMinute: 10,
+    messagesPerDay: 300,
+    messagesPerMonth: 999_999_999,
   },
   premium: {
-    // Unlimited monthly - only daily cap applies
-    messagesPerMinute: 40,
-    messagesPerDay: 5_000,
-    messagesPerMonth: 999_999_999, // Effectively unlimited
+    // Pro plan: 1,500 msg/day, unlimited monthly
+    messagesPerMinute: 20,
+    messagesPerDay: 1_500,
+    messagesPerMonth: 999_999_999,
   },
   enterprise: {
-    messagesPerMinute: 100,
-    messagesPerDay: 50_000,
-    messagesPerMonth: 999_999_999, // Effectively unlimited
+    // Max plan: 5,000 msg/day, unlimited monthly
+    messagesPerMinute: 40,
+    messagesPerDay: 5_000,
+    messagesPerMonth: 999_999_999,
   },
 };
 

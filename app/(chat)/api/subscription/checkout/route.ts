@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/app/(auth)/auth";
-import { createCheckoutSession, STRIPE_PLANS } from "@/lib/stripe";
+import { createCheckoutSession } from "@/lib/stripe";
+import { mapPlanToStripePrice, type PlanName } from "@/lib/stripe/config";
+
+const VALID_PLANS: PlanName[] = ["plus", "pro", "max"];
 
 export async function POST(req: Request) {
   try {
@@ -14,22 +17,20 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json();
-    const { tier } = body;
+    const { plan } = body as { plan?: string };
 
-    if (!tier || (tier !== "pro" && tier !== "premium")) {
+    if (!plan || !VALID_PLANS.includes(plan as PlanName)) {
       return NextResponse.json(
-        { error: "Invalid tier" },
+        { error: "Invalid plan. Must be one of: plus, pro, max" },
         { status: 400 }
       );
     }
 
-    const priceId = tier === "pro"
-      ? STRIPE_PLANS.PRO.id
-      : STRIPE_PLANS.PREMIUM.id;
+    const priceId = mapPlanToStripePrice(plan as PlanName);
 
     if (!priceId) {
       return NextResponse.json(
-        { error: "Price ID not configured" },
+        { error: `Price ID not configured for plan: ${plan}. Set STRIPE_${plan.toUpperCase()}_PRICE_ID.` },
         { status: 500 }
       );
     }
