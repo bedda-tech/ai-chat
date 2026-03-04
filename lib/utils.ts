@@ -34,8 +34,8 @@ export async function fetchWithErrorHandlers(
     const response = await fetch(input, init);
 
     if (!response.ok) {
-      const { code, cause } = await response.json();
-      throw new ChatSDKError(code as ErrorCode, cause);
+      const { code, cause, upgrade, upgradeUrl } = await response.json();
+      throw new ChatSDKError(code as ErrorCode, cause, upgrade, upgradeUrl);
     }
 
     return response;

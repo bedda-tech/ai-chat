@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import useSWR, { useSWRConfig } from "swr";
 import { unstable_serialize } from "swr/infinite";
 import { ChatHeader } from "@/components/chat-header";
+import Link from "next/link";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -61,6 +62,7 @@ export function Chat({
   const [input, setInput] = useState<string>("");
   const [usage, setUsage] = useState<AppUsage | undefined>(initialLastContext);
   const [showCreditCardAlert, setShowCreditCardAlert] = useState(false);
+  const [showUpgradeDialog, setShowUpgradeDialog] = useState(false);
   const [currentModelId, setCurrentModelId] = useState(initialChatModel);
   const currentModelIdRef = useRef(currentModelId);
 
@@ -107,11 +109,12 @@ export function Chat({
     },
     onError: (error) => {
       if (error instanceof ChatSDKError) {
-        // Check if it's a credit card error
         if (
           error.message?.includes("AI Gateway requires a valid credit card")
         ) {
           setShowCreditCardAlert(true);
+        } else if (error.type === "rate_limit") {
+          setShowUpgradeDialog(true);
         } else {
           toast({
             type: "error",
@@ -251,6 +254,28 @@ export function Chat({
               }}
             >
               Activate
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      <AlertDialog
+        onOpenChange={setShowUpgradeDialog}
+        open={showUpgradeDialog}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Daily limit reached</AlertDialogTitle>
+            <AlertDialogDescription>
+              You&apos;ve used all your free messages for today. Upgrade to Plus
+              for 300 messages/day, or Pro for 1,500/day — all 135+ AI models
+              included.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Maybe later</AlertDialogCancel>
+            <AlertDialogAction asChild>
+              <Link href="/upgrade?plan=plus">Upgrade to Plus — $12/mo</Link>
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

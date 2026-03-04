@@ -77,7 +77,9 @@ export async function rateLimitMiddleware(
 }
 
 /**
- * Create a NextResponse for rate limit errors
+ * Create a NextResponse for rate limit errors.
+ * Uses ChatSDKError format (code + cause) so fetchWithErrorHandlers parses it correctly.
+ * Also includes upgrade metadata for the chat UI to show an upgrade prompt.
  */
 export function createRateLimitResponse(result: RateLimitResult): NextResponse {
   const status = 429; // Too Many Requests
@@ -90,10 +92,10 @@ export function createRateLimitResponse(result: RateLimitResult): NextResponse {
 
   return NextResponse.json(
     {
-      error: result.error,
-      message: result.message,
+      code: "rate_limit:chat",
+      cause: result.message,
       upgrade: result.upgrade || false,
-      upgradeUrl: result.upgradeUrl,
+      upgradeUrl: result.upgradeUrl || "/upgrade?plan=plus",
     },
     {
       status,
