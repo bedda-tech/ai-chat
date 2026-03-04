@@ -46,7 +46,7 @@ const tiers = [
       "5 active projects",
     ],
     cta: "Start Plus",
-    href: "/register",
+    href: "/upgrade?plan=plus",
     highlighted: true,
   },
   {
@@ -68,7 +68,7 @@ const tiers = [
       "Priority model access",
     ],
     cta: "Start Pro",
-    href: "/register",
+    href: "/upgrade?plan=pro",
     highlighted: false,
   },
   {
@@ -89,7 +89,7 @@ const tiers = [
       "Beta model access",
     ],
     cta: "Start Max",
-    href: "/register",
+    href: "/upgrade?plan=max",
     highlighted: false,
   },
 ];
