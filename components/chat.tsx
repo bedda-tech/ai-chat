@@ -63,6 +63,14 @@ export function Chat({
   const [usage, setUsage] = useState<AppUsage | undefined>(initialLastContext);
   const [showCreditCardAlert, setShowCreditCardAlert] = useState(false);
   const [showUpgradeDialog, setShowUpgradeDialog] = useState(false);
+  const [upgradeDialogContent, setUpgradeDialogContent] = useState<{
+    title: string;
+    description: string;
+  }>({
+    title: "Daily limit reached",
+    description:
+      "You've used all your free messages for today. Upgrade to Plus for 300 messages/day, or Pro for 1,500/day — all 135+ AI models included.",
+  });
   const [currentModelId, setCurrentModelId] = useState(initialChatModel);
   const currentModelIdRef = useRef(currentModelId);
 
@@ -113,16 +121,30 @@ export function Chat({
           error.message?.includes("AI Gateway requires a valid credit card")
         ) {
           setShowCreditCardAlert(true);
-        } else if (error.type === "rate_limit") {
-          if (error.upgrade) {
-            setShowUpgradeDialog(true);
+        } else if (error.upgrade) {
+          // Any error with upgrade=true → show upgrade dialog with context-appropriate messaging
+          if (error.type === "forbidden") {
+            setUpgradeDialogContent({
+              title: "Premium model",
+              description:
+                (error.cause as string) ||
+                "This model requires a Plus plan or higher. Upgrade to access all 135+ AI models.",
+            });
           } else {
-            // Paid user hitting daily/minute limit — no upgrade needed, just wait
-            toast({
-              type: "error",
-              description: (error.cause as string) || error.message,
+            // rate_limit or other upgrade-required errors
+            setUpgradeDialogContent({
+              title: "Daily limit reached",
+              description:
+                "You've used all your free messages for today. Upgrade to Plus for 300 messages/day, or Pro for 1,500/day — all 135+ AI models included.",
             });
           }
+          setShowUpgradeDialog(true);
+        } else if (error.type === "rate_limit") {
+          // Paid user hitting daily/minute limit — no upgrade needed, just wait
+          toast({
+            type: "error",
+            description: (error.cause as string) || error.message,
+          });
         } else {
           toast({
             type: "error",
@@ -273,11 +295,9 @@ export function Chat({
       >
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Daily limit reached</AlertDialogTitle>
+            <AlertDialogTitle>{upgradeDialogContent.title}</AlertDialogTitle>
             <AlertDialogDescription>
-              You&apos;ve used all your free messages for today. Upgrade to Plus
-              for 300 messages/day, or Pro for 1,500/day — all 135+ AI models
-              included.
+              {upgradeDialogContent.description}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
