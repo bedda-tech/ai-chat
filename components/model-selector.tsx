@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
-import { entitlementsByUserType } from "@/lib/ai/entitlements";
+import { entitlementsByUserType, FREE_TIER_MODEL_IDS } from "@/lib/ai/entitlements";
 import { chatModels } from "@/lib/ai/models";
 import {
   type ModelTool,
@@ -43,7 +43,7 @@ export function ModelSelector({
   const { models: dynamicModels, isLoading, isFallback } = useAvailableModels();
 
   const userType = session.user.type;
-  const { availableChatModelIds } = entitlementsByUserType[userType];
+  const isGuest = userType === "guest";
 
   // Use dynamic models if available, fallback to static models
   const availableChatModels = useMemo(() => {
@@ -57,11 +57,21 @@ export function ModelSelector({
       ...chatModels // Keep legacy models
     ] : chatModels;
 
-    // Filter by entitlements
-    return allModels.filter((chatModel) =>
-      availableChatModelIds.includes(chatModel.id)
-    );
-  }, [dynamicModels, availableChatModelIds]);
+    // Guests see a restricted model list; regular users see everything
+    if (isGuest) {
+      const { availableChatModelIds } = entitlementsByUserType["guest"];
+      return allModels.filter((chatModel) =>
+        availableChatModelIds.includes(chatModel.id)
+      );
+    }
+    // Remove duplicates (dynamic + legacy may overlap)
+    const seen = new Set<string>();
+    return allModels.filter((m) => {
+      if (seen.has(m.id)) return false;
+      seen.add(m.id);
+      return true;
+    });
+  }, [dynamicModels, isGuest]);
 
   const allAvailableTools = useMemo(() => {
     const toolsSet = new Set<ModelTool>();
@@ -220,6 +230,7 @@ export function ModelSelector({
             const { id } = chatModel;
             const modelTools = getModelTools(id);
             const idealUse = getModelIdealUse(id);
+            const isPremiumModel = !FREE_TIER_MODEL_IDS.includes(id);
 
             return (
               <DropdownMenuItem
@@ -243,7 +254,14 @@ export function ModelSelector({
                   type="button"
                 >
                   <div className="flex min-w-0 flex-1 flex-col items-start gap-1.5">
-                    <div className="text-sm sm:text-base">{chatModel.name}</div>
+                    <div className="flex items-center gap-1.5 text-sm sm:text-base">
+                      {chatModel.name}
+                      {isPremiumModel && (
+                        <Badge variant="secondary" className="h-4 px-1 text-[9px] font-semibold uppercase tracking-wide">
+                          Plus
+                        </Badge>
+                      )}
+                    </div>
                     <div className="line-clamp-2 text-muted-foreground text-xs">
                       {chatModel.description}
                     </div>
