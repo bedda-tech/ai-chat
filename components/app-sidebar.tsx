@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { User } from "next-auth";
 import { RocketIcon } from "@/components/icons";
 import { SidebarHistory } from "@/components/sidebar-history";
+import { SidebarUpgradeCTA } from "@/components/sidebar-upgrade-cta";
 import { SidebarUserNav } from "@/components/sidebar-user-nav";
 import {
   Sidebar,
@@ -74,7 +75,10 @@ export function AppSidebar({ user }: { user: User | undefined }) {
           </SidebarGroup>
         </div>
       </SidebarContent>
-      <SidebarFooter>{user && <SidebarUserNav user={user} />}</SidebarFooter>
+      <SidebarFooter>
+        <SidebarUpgradeCTA />
+        {user && <SidebarUserNav user={user} />}
+      </SidebarFooter>
     </Sidebar>
   );
 }
