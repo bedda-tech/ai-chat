@@ -1,4 +1,5 @@
 import type { UserType } from "@/app/(auth)/auth";
+import type { UserTierType } from "@/lib/usage/tracking";
 import type { ChatModel } from "./models";
 
 type Entitlements = {
@@ -92,9 +93,79 @@ export const entitlementsByUserType: Record<UserType, Entitlements> = {
       "chat-model-reasoning",
     ],
   },
-
-  /*
-   * TODO: For users with an account and a paid membership
-   * Premium users would have unlimited access to all models
-   */
 };
+
+/**
+ * Models available to free registered users (DB tier: "free").
+ * Matches the pricing page "Standard AI models" description:
+ * Haiku, Flash, GPT-5 Nano, DeepSeek + fast inference providers.
+ *
+ * DB tier "pro" / "premium" / "enterprise" (Plus/Pro/Max plans) unlock ALL models.
+ */
+export const FREE_TIER_MODEL_IDS: readonly string[] = [
+  // Legacy/Default Models
+  "chat-model",
+  "chat-model-reasoning",
+  // xAI Grok Mini (cheap/fast)
+  "xai-grok-3-mini",
+  "xai-grok-3-mini-fast",
+  "xai-grok-beta",
+  "xai-grok-vision-beta",
+  // Anthropic Haiku (cheapest Anthropic tier)
+  "anthropic-claude-3-haiku",
+  "anthropic-claude-3.5-haiku",
+  "anthropic-claude-haiku-4.5",
+  "anthropic-claude-3-5-haiku-latest",
+  // OpenAI mini / nano models
+  "openai-gpt-5-nano",
+  "openai-gpt-4o-mini",
+  "openai-gpt-4.1-mini",
+  // Google Flash / Flash Lite
+  "google-gemini-2.0-flash",
+  "google-gemini-2.0-flash-lite",
+  "google-gemini-2.0-flash-exp",
+  "google-gemini-2.5-flash",
+  "google-gemini-2.5-flash-lite",
+  "google-gemini-1.5-flash",
+  "google-vertex-gemini-2.0-flash-exp",
+  "google-vertex-gemini-1.5-flash",
+  // DeepSeek (cheap)
+  "deepseek-chat",
+  "deepseek-reasoner",
+  "deepseek-deepseek-v3",
+  "deepseek-deepseek-v3.1",
+  // Groq (fast inference, very cheap)
+  "groq-llama-4-scout-17b-16e-instruct",
+  "groq-llama-3.3-70b-versatile",
+  "groq-llama-3.1-8b-instant",
+  "groq-mixtral-8x7b-32768",
+  "groq-gemma2-9b-it",
+  // Cerebras (fast inference, very cheap)
+  "cerebras-llama3.1-8b",
+  "cerebras-llama3.1-70b",
+  "cerebras-llama3.3-70b",
+  // Mistral Small (affordable)
+  "mistral-small-latest",
+  "mistral-pixtral-12b-2409",
+  // Moonshot / ZAI
+  "zai-glm-4.6",
+];
+
+/**
+ * Returns true if the given model is accessible for the user's DB tier.
+ * - Paid tiers (pro/premium/enterprise = Plus/Pro/Max) get all models.
+ * - Free tier users are limited to FREE_TIER_MODEL_IDS.
+ * - Guest users are checked via entitlementsByUserType separately (in the UI),
+ *   but this function uses the same free-tier list as a safe fallback.
+ */
+export function isModelAllowedForTier(
+  modelId: string,
+  tier: UserTierType
+): boolean {
+  // Paid subscribers (Plus / Pro / Max) get all models
+  if (tier === "pro" || tier === "premium" || tier === "enterprise") {
+    return true;
+  }
+  // Free tier: only standard models
+  return FREE_TIER_MODEL_IDS.includes(modelId);
+}

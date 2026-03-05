@@ -45,6 +45,7 @@ import {
   saveMessages,
   updateChatLastContextById,
 } from "@/lib/db/queries";
+import { isModelAllowedForTier } from "@/lib/ai/entitlements";
 import { ChatSDKError } from "@/lib/errors";
 import {
   createRateLimitResponse,
@@ -130,6 +131,22 @@ export async function POST(request: Request) {
     const rateLimitResult = await rateLimitMiddleware(session.user.id);
     if (!rateLimitResult.allowed) {
       return createRateLimitResponse(rateLimitResult);
+    }
+
+    // Enforce model access by subscription tier.
+    // rateLimitResult.tier comes from the same DB call — no extra round-trip.
+    const userDbTier = rateLimitResult.tier ?? "free";
+    if (!isModelAllowedForTier(selectedChatModel, userDbTier)) {
+      return Response.json(
+        {
+          code: "forbidden:model",
+          cause:
+            "This model requires a Plus plan or higher. Upgrade to access all 135+ AI models.",
+          upgrade: true,
+          upgradeUrl: "/upgrade?plan=plus",
+        },
+        { status: 403 }
+      );
     }
 
     const _userType: UserType = session.user.type;

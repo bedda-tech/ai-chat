@@ -5,10 +5,13 @@ import {
   getUserTier,
   incrementRateLimit,
   TIER_LIMITS,
+  type UserTierType,
 } from "@/lib/usage/tracking";
 
 export type RateLimitResult = {
   allowed: boolean;
+  /** The user's DB tier — always set so callers avoid a second DB lookup. */
+  tier?: UserTierType;
   error?: string;
   message?: string;
   retryAfter?: number;
@@ -38,6 +41,7 @@ export async function rateLimitMiddleware(
     if (!minuteLimit.allowed) {
       return {
         allowed: false,
+        tier,
         error: "Rate limit exceeded",
         message: `You can only send ${limits.messagesPerMinute} messages per minute. Please wait ${minuteLimit.retryAfter} seconds.`,
         retryAfter: minuteLimit.retryAfter,
@@ -57,6 +61,7 @@ export async function rateLimitMiddleware(
         : 24;
       return {
         allowed: false,
+        tier,
         error: "Daily limit exceeded",
         message: `You've reached your daily limit of ${limits.messagesPerDay} messages. Resets in ~${retryAfterHours} hour${retryAfterHours === 1 ? "" : "s"}.`,
         retryAfter: dailyLimit.retryAfter,
@@ -71,6 +76,7 @@ export async function rateLimitMiddleware(
     if (!monthlyAllowed) {
       return {
         allowed: false,
+        tier,
         error: "Monthly limit exceeded",
         message: `You've reached your monthly limit of ${limits.messagesPerMonth} messages.${
           tier === "free"
@@ -90,6 +96,7 @@ export async function rateLimitMiddleware(
 
     return {
       allowed: true,
+      tier,
     };
   } catch (error) {
     console.error("Rate limiting error:", error);
