@@ -77,6 +77,13 @@ export function UsageDisplay() {
     );
   }
 
+  const TIER_DISPLAY: Record<string, string> = {
+    free: "Free",
+    pro: "Plus",
+    premium: "Pro",
+    enterprise: "Max",
+  };
+
   const getTierColor = (tier: string) => {
     switch (tier) {
       case "pro":
@@ -113,7 +120,7 @@ export function UsageDisplay() {
               <CardDescription>Your subscription tier and usage</CardDescription>
             </div>
             <Badge className={getTierColor(status.tier)}>
-              {status.tier.toUpperCase()}
+              {TIER_DISPLAY[status.tier] ?? status.tier.toUpperCase()}
             </Badge>
           </div>
         </CardHeader>

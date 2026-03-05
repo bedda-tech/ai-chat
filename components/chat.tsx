@@ -114,7 +114,15 @@ export function Chat({
         ) {
           setShowCreditCardAlert(true);
         } else if (error.type === "rate_limit") {
-          setShowUpgradeDialog(true);
+          if (error.upgrade) {
+            setShowUpgradeDialog(true);
+          } else {
+            // Paid user hitting daily/minute limit — no upgrade needed, just wait
+            toast({
+              type: "error",
+              description: (error.cause as string) || error.message,
+            });
+          }
         } else {
           toast({
             type: "error",
