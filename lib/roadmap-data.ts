@@ -31,7 +31,7 @@ export const roadmapData: RoadmapPhase[] = [
     features: [
       {
         id: "multi-model-access",
-        title: "135+ AI Models from 7 Providers",
+        title: "30+ AI Models from 7 Providers",
         description:
           "Access Claude, GPT, Gemini, Grok, DeepSeek, and more from a single interface with automatic model discovery",
         status: "completed",
@@ -442,7 +442,7 @@ export const roadmapStats = {
 
 export const expectedImpact = {
   competitiveAdvantages: {
-    multiModel: "135+ models from 7 providers under one subscription",
+    multiModel: "30+ models from 7 providers under one subscription",
     pricing: "40-60% cheaper than subscribing to individual providers",
     imageStudio: "Multi-model image gen (beats Claude which has none)",
     videoStudio: "Video gen at $12/mo (competitors charge $20-250/mo)",

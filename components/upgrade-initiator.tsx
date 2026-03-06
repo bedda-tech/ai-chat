@@ -6,14 +6,21 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 type PlanName = "plus" | "pro" | "max";
+type BillingPeriod = "monthly" | "annual";
 
-const PLAN_LABELS: Record<PlanName, string> = {
-  plus: "Plus ($12/mo)",
-  pro: "Pro ($25/mo)",
-  max: "Max ($50/mo)",
+const PLAN_LABELS: Record<PlanName, Record<BillingPeriod, string>> = {
+  plus: { monthly: "Plus ($12/mo)", annual: "Plus Annual ($9.60/mo)" },
+  pro: { monthly: "Pro ($25/mo)", annual: "Pro Annual ($20/mo)" },
+  max: { monthly: "Max ($50/mo)", annual: "Max Annual ($40/mo)" },
 };
 
-export function UpgradeInitiator({ plan }: { plan: PlanName }) {
+export function UpgradeInitiator({
+  plan,
+  billingPeriod = "monthly",
+}: {
+  plan: PlanName;
+  billingPeriod?: BillingPeriod;
+}) {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -22,7 +29,7 @@ export function UpgradeInitiator({ plan }: { plan: PlanName }) {
         const res = await fetch("/api/subscription/checkout", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ plan }),
+          body: JSON.stringify({ plan, billingPeriod }),
         });
 
         const data = await res.json();
@@ -41,7 +48,7 @@ export function UpgradeInitiator({ plan }: { plan: PlanName }) {
     }
 
     startCheckout();
-  }, [plan]);
+  }, [plan, billingPeriod]);
 
   if (error) {
     return (
@@ -63,7 +70,7 @@ export function UpgradeInitiator({ plan }: { plan: PlanName }) {
     <div className="text-center space-y-4">
       <Loader2 className="h-8 w-8 animate-spin mx-auto text-muted-foreground" />
       <p className="text-muted-foreground text-sm">
-        Setting up {PLAN_LABELS[plan]} checkout&hellip;
+        Setting up {PLAN_LABELS[plan][billingPeriod]} checkout&hellip;
       </p>
     </div>
   );

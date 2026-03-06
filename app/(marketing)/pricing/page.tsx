@@ -1,98 +1,6 @@
 import Link from "next/link";
-import { Check, X, Zap, Crown, Rocket } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-
-const tiers = [
-  {
-    name: "Free",
-    price: "$0",
-    period: "",
-    description: "Try all the AI models for free",
-    icon: null,
-    features: [
-      "50 messages per day",
-      "500 messages per month",
-      "Standard AI models (Haiku, Flash, GPT-5 Nano, DeepSeek)",
-      "5 image generations per day",
-      "Basic text artifacts",
-      "File uploads (10MB)",
-    ],
-    cta: "Get Started Free",
-    href: "/register",
-    highlighted: false,
-  },
-  {
-    name: "Plus",
-    price: "$12",
-    period: "/month",
-    description: "All frontier models. One subscription.",
-    icon: Zap,
-    features: [
-      "300 messages per day",
-      "Unlimited monthly messages",
-      "ALL 30+ AI models (Claude Opus, GPT-5, Gemini Pro, Grok 4, etc.)",
-      "100 image generations per day",
-      "All artifact types (text, code, image, spreadsheet)",
-      "Web search with citations",
-      "File uploads (25MB)",
-      "5 active projects",
-    ],
-    cta: "Start Plus",
-    href: "/upgrade?plan=plus",
-    highlighted: true,
-  },
-  {
-    name: "Pro",
-    price: "$25",
-    period: "/month",
-    description: "For power users and professionals",
-    icon: Crown,
-    features: [
-      "1,500 messages per day",
-      "Unlimited monthly messages",
-      "ALL models + early access to new releases",
-      "Image Studio (unlimited generation, editing, variations)",
-      "Video Studio (20 videos/day)",
-      "Code execution sandbox",
-      "Voice input & audio transcription",
-      "25 projects with knowledge bases",
-      "Cross-conversation memory",
-      "Priority model access",
-    ],
-    cta: "Start Pro",
-    href: "/upgrade?plan=pro",
-    highlighted: false,
-  },
-  {
-    name: "Max",
-    price: "$50",
-    period: "/month",
-    description: "Unlimited everything for teams",
-    icon: Rocket,
-    features: [
-      "5,000 messages per day (effectively unlimited)",
-      "Everything in Pro",
-      "Team workspace (up to 5 members)",
-      "API access (50,000 credits/mo)",
-      "Video Studio (50 videos/day + longer clips)",
-      "Batch image generation",
-      "Custom system instructions",
-      "Priority support",
-      "Beta model access",
-    ],
-    cta: "Start Max",
-    href: "/upgrade?plan=max",
-    highlighted: false,
-  },
-];
+import { Check, X } from "lucide-react";
+import { PricingSection } from "@/components/pricing-section";
 
 const comparisonData = [
   {
@@ -201,59 +109,8 @@ export default function PricingPage() {
         </p>
       </div>
 
-      {/* Pricing Cards */}
-      <div className="mx-auto mt-16 grid max-w-7xl gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {tiers.map((tier) => (
-          <Card
-            key={tier.name}
-            className={
-              tier.highlighted
-                ? "border-primary relative shadow-lg scale-[1.02]"
-                : "relative"
-            }
-          >
-            {tier.highlighted && (
-              <div className="bg-primary text-primary-foreground absolute top-0 right-0 rounded-bl-lg rounded-tr-lg px-3 py-1 text-sm font-medium">
-                Best Value
-              </div>
-            )}
-            <CardHeader>
-              <div className="flex items-center gap-2">
-                {tier.icon && <tier.icon className="h-5 w-5" />}
-                <CardTitle className="text-xl">{tier.name}</CardTitle>
-              </div>
-              <CardDescription>{tier.description}</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex items-baseline space-x-1">
-                <span className="text-4xl font-bold">{tier.price}</span>
-                {tier.period && (
-                  <span className="text-muted-foreground text-sm">
-                    {tier.period}
-                  </span>
-                )}
-              </div>
-              <ul className="space-y-2.5">
-                {tier.features.map((feature) => (
-                  <li key={feature} className="flex items-start space-x-3">
-                    <Check className="h-4 w-4 mt-0.5 flex-shrink-0 text-green-500" />
-                    <span className="text-sm">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-            <CardFooter>
-              <Button
-                asChild
-                className="w-full"
-                variant={tier.highlighted ? "default" : "outline"}
-              >
-                <Link href={tier.href}>{tier.cta}</Link>
-              </Button>
-            </CardFooter>
-          </Card>
-        ))}
-      </div>
+      {/* Pricing toggle + cards */}
+      <PricingSection />
 
       {/* Value Proposition */}
       <div className="mx-auto mt-20 max-w-3xl text-center">
@@ -364,6 +221,16 @@ export default function PricingPage() {
               you&apos;re not satisfied, contact support for a full refund.
             </p>
           </div>
+          <div>
+            <h3 className="mb-2 font-semibold text-lg">
+              Is annual billing available?
+            </h3>
+            <p className="text-muted-foreground">
+              Yes! Choose annual billing on the pricing toggle above and save 20%
+              compared to month-to-month. Annual plans are billed once per year
+              and include all the same features.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -374,9 +241,12 @@ export default function PricingPage() {
           SSO, audit logging, custom model routing, SLA guarantees, and
           dedicated support for your organization.
         </p>
-        <Button asChild variant="outline">
-          <Link href="mailto:matt@bedda.tech">Contact Sales</Link>
-        </Button>
+        <Link
+          href="mailto:matt@bedda.tech"
+          className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground"
+        >
+          Contact Sales
+        </Link>
       </div>
     </div>
   );

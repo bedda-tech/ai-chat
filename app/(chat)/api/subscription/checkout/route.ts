@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/app/(auth)/auth";
 import { createCheckoutSession } from "@/lib/stripe";
-import { mapPlanToStripePrice, type PlanName } from "@/lib/stripe/config";
+import { mapPlanToStripePrice, type BillingPeriod, type PlanName } from "@/lib/stripe/config";
 
 const VALID_PLANS: PlanName[] = ["plus", "pro", "max"];
+const VALID_PERIODS: BillingPeriod[] = ["monthly", "annual"];
 
 export async function POST(req: Request) {
   try {
@@ -17,7 +18,7 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json();
-    const { plan } = body as { plan?: string };
+    const { plan, billingPeriod } = body as { plan?: string; billingPeriod?: string };
 
     if (!plan || !VALID_PLANS.includes(plan as PlanName)) {
       return NextResponse.json(
@@ -26,7 +27,12 @@ export async function POST(req: Request) {
       );
     }
 
-    const priceId = mapPlanToStripePrice(plan as PlanName);
+    const period: BillingPeriod =
+      billingPeriod && VALID_PERIODS.includes(billingPeriod as BillingPeriod)
+        ? (billingPeriod as BillingPeriod)
+        : "monthly";
+
+    const priceId = mapPlanToStripePrice(plan as PlanName, period);
 
     if (!priceId) {
       return NextResponse.json(
