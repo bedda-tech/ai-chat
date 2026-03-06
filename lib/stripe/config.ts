@@ -99,11 +99,12 @@ export const TIER_DISPLAY_NAMES: Record<DbTier, string> = {
 
 /**
  * Map a Stripe price ID to the internal DB tier.
+ * Handles both monthly and annual price IDs.
  */
 export function mapStripePriceToTier(priceId: string): DbTier {
-  if (priceId === STRIPE_PLANS.PLUS.id) return "pro";
-  if (priceId === STRIPE_PLANS.PRO.id) return "premium";
-  if (priceId === STRIPE_PLANS.MAX.id) return "enterprise";
+  if (priceId === STRIPE_PLANS.PLUS.id || priceId === STRIPE_PLANS.PLUS.annualId) return "pro";
+  if (priceId === STRIPE_PLANS.PRO.id || priceId === STRIPE_PLANS.PRO.annualId) return "premium";
+  if (priceId === STRIPE_PLANS.MAX.id || priceId === STRIPE_PLANS.MAX.annualId) return "enterprise";
   return "free";
 }
 
