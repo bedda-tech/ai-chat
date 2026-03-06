@@ -61,7 +61,7 @@ const comparisonData = [
   },
   {
     feature: "Code execution",
-    bedda: true,
+    bedda: false,
     claude: true,
     chatgpt: true,
     gemini: true,
