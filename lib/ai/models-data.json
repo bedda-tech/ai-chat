@@ -1,6 +1,31 @@
 {
   "models": [
     {
+      "id": "anthropic-claude-opus-4.5",
+      "gatewayId": "anthropic/claude-opus-4.5",
+      "provider": "anthropic",
+      "name": "Claude Opus 4.5",
+      "description": "Anthropic's most capable model — exceptional at complex tasks, coding, and deep research",
+      "contextWindow": 200000,
+      "pricing": {
+        "input": 15.0,
+        "output": 75.0,
+        "cachedInput": 1.5,
+        "cachedOutput": 18.75
+      },
+      "capabilities": {
+        "vision": true,
+        "toolCalling": true,
+        "reasoning": true,
+        "imageGeneration": false
+      },
+      "config": {
+        "maxSteps": 10,
+        "temperature": 0.7,
+        "idealFor": ["complex research", "advanced coding", "nuanced analysis", "long-form writing"]
+      }
+    },
+    {
       "id": "anthropic-claude-sonnet-4.5",
       "gatewayId": "anthropic/claude-sonnet-4.5",
       "provider": "anthropic",

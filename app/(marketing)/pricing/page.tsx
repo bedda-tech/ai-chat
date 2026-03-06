@@ -38,7 +38,7 @@ const tiers = [
     features: [
       "300 messages per day",
       "Unlimited monthly messages",
-      "ALL 135+ AI models (Claude Opus, GPT-5, Gemini Pro, Grok 4, etc.)",
+      "ALL 30+ AI models (Claude Opus, GPT-5, Gemini Pro, Grok 4, etc.)",
       "100 image generations per day",
       "All artifact types (text, code, image, spreadsheet)",
       "Web search with citations",
@@ -167,7 +167,7 @@ const comparisonData = [
   },
   {
     feature: "Total models",
-    bedda: "135+",
+    bedda: "30+",
     claude: "4",
     chatgpt: "5",
     gemini: "6",
@@ -196,7 +196,7 @@ export default function PricingPage() {
           One simple subscription.
         </h1>
         <p className="max-w-[85%] text-muted-foreground leading-normal sm:text-lg sm:leading-7">
-          Access Claude, ChatGPT, Gemini, Grok, DeepSeek, and 135+ more models.
+          Access Claude, ChatGPT, Gemini, Grok, DeepSeek, and 30+ more models.
           Why pay for three subscriptions when one does it all?
         </p>
       </div>

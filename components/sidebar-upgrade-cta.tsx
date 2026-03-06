@@ -33,7 +33,7 @@ export function SidebarUpgradeCTA() {
         <span className="font-semibold text-xs">Upgrade to Plus</span>
       </div>
       <p className="mb-3 text-muted-foreground text-xs leading-relaxed">
-        Unlock all 135+ AI models including Claude Opus, GPT-5, and Gemini Pro.
+        Unlock all 30+ AI models including Claude Opus, GPT-5, and Gemini Pro.
       </p>
       <Button asChild size="sm" className="h-7 w-full text-xs">
         <Link href="/upgrade?plan=plus">Upgrade — $12/mo</Link>

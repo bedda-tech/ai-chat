@@ -69,7 +69,7 @@ export function Chat({
   }>({
     title: "Daily limit reached",
     description:
-      "You've used all your free messages for today. Upgrade to Plus for 300 messages/day, or Pro for 1,500/day — all 135+ AI models included.",
+      "You've used all your free messages for today. Upgrade to Plus for 300 messages/day, or Pro for 1,500/day — all 30+ AI models included.",
   });
   const [currentModelId, setCurrentModelId] = useState(initialChatModel);
   const currentModelIdRef = useRef(currentModelId);
@@ -128,14 +128,14 @@ export function Chat({
               title: "Premium model",
               description:
                 (error.cause as string) ||
-                "This model requires a Plus plan or higher. Upgrade to access all 135+ AI models.",
+                "This model requires a Plus plan or higher. Upgrade to access all 30+ AI models.",
             });
           } else {
             // rate_limit or other upgrade-required errors
             setUpgradeDialogContent({
               title: "Daily limit reached",
               description:
-                "You've used all your free messages for today. Upgrade to Plus for 300 messages/day, or Pro for 1,500/day — all 135+ AI models included.",
+                "You've used all your free messages for today. Upgrade to Plus for 300 messages/day, or Pro for 1,500/day — all 30+ AI models included.",
             });
           }
           setShowUpgradeDialog(true);
