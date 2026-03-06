@@ -53,21 +53,14 @@ const comparisonData = [
     gemini: true,
   },
   {
-    feature: "Video generation",
+    feature: "Audio transcription",
     bedda: true,
     claude: false,
     chatgpt: true,
-    gemini: true,
+    gemini: false,
   },
   {
     feature: "Code execution",
-    bedda: true,
-    claude: true,
-    chatgpt: true,
-    gemini: true,
-  },
-  {
-    feature: "Web search",
     bedda: true,
     claude: true,
     chatgpt: true,
