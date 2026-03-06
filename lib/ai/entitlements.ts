@@ -149,6 +149,14 @@ export const FREE_TIER_MODEL_IDS: readonly string[] = [
   "mistral-pixtral-12b-2409",
   // Moonshot / ZAI
   "zai-glm-4.6",
+  // Mistral Small (affordable)
+  "mistral-mistral-small-latest",
+  // DeepSeek R1 (cheap reasoning model)
+  "deepseek-deepseek-r1",
+  // Groq (fast inference, very cheap)
+  "groq-llama-3.3-70b-versatile",
+  // Cerebras (ultra-fast inference)
+  "cerebras-llama3.3-70b",
 ];
 
 /**

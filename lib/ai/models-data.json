@@ -724,6 +724,131 @@
         "temperature": 0.7,
         "idealFor": ["general purpose", "Chinese language", "multimodal"]
       }
+    },
+    {
+      "id": "mistral-mistral-large-latest",
+      "gatewayId": "mistral/mistral-large-latest",
+      "provider": "mistral",
+      "name": "Mistral Large",
+      "description": "Mistral's flagship model — excellent at coding, reasoning, and instruction following",
+      "contextWindow": 128000,
+      "pricing": {
+        "input": 2.0,
+        "output": 6.0,
+        "cachedInput": null,
+        "cachedOutput": null
+      },
+      "capabilities": {
+        "vision": true,
+        "toolCalling": true,
+        "reasoning": false,
+        "imageGeneration": false
+      },
+      "config": {
+        "maxSteps": 8,
+        "temperature": 0.7,
+        "idealFor": ["coding", "instruction following", "multilingual tasks"]
+      }
+    },
+    {
+      "id": "mistral-mistral-small-latest",
+      "gatewayId": "mistral/mistral-small-latest",
+      "provider": "mistral",
+      "name": "Mistral Small",
+      "description": "Fast and affordable Mistral model — great for everyday tasks and high-volume use",
+      "contextWindow": 32000,
+      "pricing": {
+        "input": 0.1,
+        "output": 0.3,
+        "cachedInput": null,
+        "cachedOutput": null
+      },
+      "capabilities": {
+        "vision": false,
+        "toolCalling": true,
+        "reasoning": false,
+        "imageGeneration": false
+      },
+      "config": {
+        "maxSteps": 6,
+        "temperature": 0.7,
+        "idealFor": ["quick tasks", "summarization", "classification"]
+      }
+    },
+    {
+      "id": "deepseek-deepseek-r1",
+      "gatewayId": "deepseek/deepseek-r1",
+      "provider": "deepseek",
+      "name": "DeepSeek R1",
+      "description": "DeepSeek's reasoning model — step-by-step thinking for math, science, and complex problems",
+      "contextWindow": 128000,
+      "pricing": {
+        "input": 0.55,
+        "output": 2.19,
+        "cachedInput": 0.14,
+        "cachedOutput": null
+      },
+      "capabilities": {
+        "vision": false,
+        "toolCalling": false,
+        "reasoning": true,
+        "imageGeneration": false
+      },
+      "config": {
+        "maxSteps": 1,
+        "temperature": 0.6,
+        "idealFor": ["math", "science", "logical reasoning", "complex analysis"]
+      }
+    },
+    {
+      "id": "groq-llama-3.3-70b-versatile",
+      "gatewayId": "groq/llama-3.3-70b-versatile",
+      "provider": "groq",
+      "name": "Llama 3.3 70B (Groq)",
+      "description": "Meta's Llama 3.3 70B served on Groq — ultra-fast inference at near-zero latency",
+      "contextWindow": 128000,
+      "pricing": {
+        "input": 0.59,
+        "output": 0.79,
+        "cachedInput": null,
+        "cachedOutput": null
+      },
+      "capabilities": {
+        "vision": false,
+        "toolCalling": true,
+        "reasoning": false,
+        "imageGeneration": false
+      },
+      "config": {
+        "maxSteps": 6,
+        "temperature": 0.7,
+        "idealFor": ["fast responses", "general chat", "coding assistance"]
+      }
+    },
+    {
+      "id": "cerebras-llama3.3-70b",
+      "gatewayId": "cerebras/llama3.3-70b",
+      "provider": "cerebras",
+      "name": "Llama 3.3 70B (Cerebras)",
+      "description": "Meta's Llama 3.3 70B on Cerebras wafer-scale chips — world's fastest AI inference",
+      "contextWindow": 8192,
+      "pricing": {
+        "input": 0.6,
+        "output": 0.6,
+        "cachedInput": null,
+        "cachedOutput": null
+      },
+      "capabilities": {
+        "vision": false,
+        "toolCalling": false,
+        "reasoning": false,
+        "imageGeneration": false
+      },
+      "config": {
+        "maxSteps": 6,
+        "temperature": 0.7,
+        "idealFor": ["ultra-fast responses", "real-time applications", "quick Q&A"]
+      }
     }
   ]
 }

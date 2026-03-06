@@ -8,9 +8,10 @@ import "./globals.css";
 import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://chat.vercel.ai"),
-  title: "bedda-ai",
-  description: "AI-powered chat application by bedda",
+  metadataBase: new URL("https://bedda.ai"),
+  title: "bedda.ai — All AI Models, One Subscription",
+  description:
+    "Access Claude, GPT-5, Gemini, Grok, DeepSeek, and 30+ more AI models for $12/month. Why pay for multiple AI subscriptions when one does it all?",
   icons: {
     icon: [
       {
