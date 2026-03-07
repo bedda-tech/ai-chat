@@ -55,22 +55,39 @@ export function SubscriptionManagement({
     setError(null);
 
     try {
-      const response = await fetch("/api/subscription/checkout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ plan: planKey }),
-      });
+      if (currentTier !== "free") {
+        // Existing subscriber: update the subscription in-place (with proration)
+        // to avoid creating a second Stripe subscription.
+        const response = await fetch("/api/subscription/upgrade", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ plan: planKey }),
+        });
 
-      if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.error || "Failed to create checkout session");
-      }
+        if (!response.ok) {
+          const data = await response.json();
+          throw new Error(data.error || "Failed to upgrade subscription");
+        }
 
-      const { url } = await response.json();
-      if (url) {
-        window.location.href = url;
+        // Reload to reflect updated tier
+        window.location.reload();
+      } else {
+        // Free user: redirect to Stripe Checkout to create a new subscription
+        const response = await fetch("/api/subscription/checkout", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ plan: planKey }),
+        });
+
+        if (!response.ok) {
+          const data = await response.json();
+          throw new Error(data.error || "Failed to create checkout session");
+        }
+
+        const { url } = await response.json();
+        if (url) {
+          window.location.href = url;
+        }
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unknown error");
