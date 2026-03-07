@@ -57,23 +57,7 @@ export default function MarketingLayout({
       <footer className="border-t py-6 md:py-0">
         <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
           <p className="text-muted-foreground text-center text-sm leading-loose md:text-left">
-            Built with{" "}
-            <Link
-              className="font-medium underline underline-offset-4"
-              href="https://vercel.com/ai"
-              target="_blank"
-            >
-              Vercel AI SDK
-            </Link>
-            . Open source on{" "}
-            <Link
-              className="font-medium underline underline-offset-4"
-              href="https://github.com/bedda-tech/chat"
-              target="_blank"
-            >
-              GitHub
-            </Link>
-            .
+            &copy; {new Date().getFullYear()} bedda.ai &mdash; All AI models, one subscription.
           </p>
           <nav className="flex items-center gap-4 text-sm text-muted-foreground">
             <Link
