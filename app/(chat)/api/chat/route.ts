@@ -218,10 +218,15 @@ export async function POST(request: Request) {
       "compareTextSimilarity",
     ];
 
-    // Gemini 2.5 Flash Image does NOT support function calling at all
-    // It generates images via responseModalities in the model response itself
+    // Check model capabilities from static config (handles internal model IDs)
+    const selectedModelCapabilities = getModelConfig(selectedChatModel);
+
+    // Disable tools for models that don't support function calling
+    // (e.g. deepseek-deepseek-r1, cerebras-llama3.3-70b) and image-only models
     const activeTools =
-      selectedChatModel === "chat-model-reasoning" || isGemini25FlashImage
+      selectedChatModel === "chat-model-reasoning" ||
+      isGemini25FlashImage ||
+      !selectedModelCapabilities.supportsToolCalling
         ? []
         : [...allTools, "generateImage"];
 
