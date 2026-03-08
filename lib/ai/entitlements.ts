@@ -17,16 +17,21 @@ export const entitlementsByUserType: Record<UserType, Entitlements> = {
       // Legacy/Default Models
       "chat-model",
       "chat-model-reasoning",
-      // Basic xAI Models
-      "xai-grok-3-mini",
-      "xai-grok-3-mini-fast",
-      // Fast Groq Models
-      "groq-llama-3.1-8b-instant",
-      "groq-gemma2-9b-it",
-      // Basic Cerebras Models
-      "cerebras-llama3.1-8b",
-      // DeepSeek Chat
-      "deepseek-chat",
+      // Fast Google Models (cheap, good for demos)
+      "google-gemini-2.5-flash-lite",
+      "google-gemini-2.0-flash-lite",
+      // OpenAI Nano (cheapest OpenAI model)
+      "openai-gpt-5-nano",
+      // Anthropic Haiku (fast, affordable Anthropic)
+      "anthropic-claude-haiku-4.5",
+      "anthropic-claude-3.5-haiku",
+      // Mistral Small (affordable)
+      "mistral-mistral-small-latest",
+      // DeepSeek R1 (reasoning demo)
+      "deepseek-deepseek-r1",
+      // Fast inference providers (Groq + Cerebras)
+      "groq-llama-3.3-70b-versatile",
+      "cerebras-llama3.3-70b",
     ],
   },
 
