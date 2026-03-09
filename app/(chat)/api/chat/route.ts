@@ -35,6 +35,7 @@ import {
 } from "@/lib/ai/tools/text-embeddings";
 import { transcribeAudioTool } from "@/lib/ai/tools/transcribe-audio";
 import { updateDocument } from "@/lib/ai/tools/update-document";
+import { webSearchTool } from "@/lib/ai/tools/web-search";
 import { isProductionEnvironment } from "@/lib/constants";
 import {
   createStreamId,
@@ -208,6 +209,7 @@ export async function POST(request: Request) {
 
     const allTools = [
       "getWeather",
+      "webSearch",
       "createDocument",
       "updateDocument",
       "requestSuggestions",
@@ -235,6 +237,7 @@ export async function POST(request: Request) {
         // Build tools object - all tools use Vercel AI Gateway
         const tools: Record<string, any> = {
           getWeather,
+          webSearch: webSearchTool,
           createDocument: createDocument({ session, dataStream }),
           updateDocument: updateDocument({ session, dataStream }),
           requestSuggestions: requestSuggestions({

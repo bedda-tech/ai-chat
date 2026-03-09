@@ -33,7 +33,7 @@ Do not update document right after creating it. Wait for user feedback or reques
 `;
 
 export const regularPrompt =
-  "You are a friendly assistant! Keep your responses concise and helpful.";
+  "You are a friendly assistant! Keep your responses concise and helpful. You have access to web search — use the webSearch tool proactively when the user asks about current events, recent news, real-time data, prices, or anything that may have changed after your training cutoff.";
 
 export type RequestHints = {
   latitude: Geo["latitude"];
