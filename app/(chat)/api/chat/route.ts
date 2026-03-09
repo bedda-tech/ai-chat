@@ -233,7 +233,7 @@ export async function POST(request: Request) {
         : [...allTools, "generateImage"];
 
     const stream = createUIMessageStream({
-      execute: ({ writer: dataStream }) => {
+      execute: async ({ writer: dataStream }) => {
         // Build tools object - all tools use Vercel AI Gateway
         const tools: Record<string, any> = {
           getWeather,
@@ -286,7 +286,7 @@ export async function POST(request: Request) {
             selectedChatModel,
             requestHints,
           }),
-          messages: convertToModelMessages(uiMessages),
+          messages: await convertToModelMessages(uiMessages),
           // Use model-specific maxSteps configuration
           stopWhen: stepCountIs(modelConfig.maxSteps),
           // Use model-specific temperature if available
