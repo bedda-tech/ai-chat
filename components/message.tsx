@@ -464,6 +464,102 @@ const PurePreviewMessage = ({
               );
             }
 
+            if (type === "tool-webSearch") {
+              const { toolCallId, state } = part;
+
+              return (
+                <Tool defaultOpen={true} key={toolCallId}>
+                  <ToolHeader state={state} type="tool-webSearch" />
+                  <ToolContent>
+                    {state === "input-available" && (
+                      <ToolInput input={part.input} />
+                    )}
+                    {state === "output-available" && (() => {
+                      const output = part.output as any;
+
+                      if (output?.status === "error") {
+                        return (
+                          <ToolOutput
+                            errorText={output.error || output.message || "Search failed"}
+                            output={null}
+                          />
+                        );
+                      }
+
+                      if (output?.status === "loading") {
+                        return (
+                          <div className="flex items-center gap-2 p-4 text-muted-foreground text-sm">
+                            <div className="size-3 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                            {output.message}
+                          </div>
+                        );
+                      }
+
+                      if (output?.status === "success" && output?.data) {
+                        const { query, results, source } = output.data as {
+                          query: string;
+                          results: Array<{ title: string; url: string; snippet: string }>;
+                          source: string;
+                        };
+
+                        return (
+                          <div className="space-y-3 p-4">
+                            <div className="flex items-center justify-between">
+                              <h4 className="font-medium text-muted-foreground text-xs uppercase tracking-wide">
+                                Search Results
+                              </h4>
+                              <span className="text-muted-foreground text-xs">
+                                via {source} · {results.length} results for &ldquo;{query}&rdquo;
+                              </span>
+                            </div>
+                            <div className="space-y-2">
+                              {results.map((result, i) => (
+                                <div
+                                  key={`${result.url}-${i}`}
+                                  className="rounded-lg border border-border bg-muted/30 p-3"
+                                >
+                                  <div className="mb-1 flex items-start justify-between gap-2">
+                                    {result.url ? (
+                                      <a
+                                        className="font-medium text-primary text-sm hover:underline"
+                                        href={result.url}
+                                        rel="noopener noreferrer"
+                                        target="_blank"
+                                      >
+                                        {result.title}
+                                      </a>
+                                    ) : (
+                                      <span className="font-medium text-sm">{result.title}</span>
+                                    )}
+                                    {result.url && (
+                                      <span className="shrink-0 text-muted-foreground text-xs">
+                                        {(() => {
+                                          try {
+                                            return new URL(result.url).hostname.replace("www.", "");
+                                          } catch {
+                                            return "";
+                                          }
+                                        })()}
+                                      </span>
+                                    )}
+                                  </div>
+                                  <p className="text-foreground/70 text-xs leading-relaxed">
+                                    {result.snippet}
+                                  </p>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        );
+                      }
+
+                      return null;
+                    })()}
+                  </ToolContent>
+                </Tool>
+              );
+            }
+
             return null;
           })}
 
