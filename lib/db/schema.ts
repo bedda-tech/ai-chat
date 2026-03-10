@@ -2,6 +2,7 @@ import type { InferSelectModel } from "drizzle-orm";
 import {
   boolean,
   foreignKey,
+  integer,
   json,
   jsonb,
   pgTable,
@@ -10,6 +11,7 @@ import {
   timestamp,
   uuid,
   varchar,
+  vector,
 } from "drizzle-orm/pg-core";
 import type { AppUsage } from "../usage";
 
@@ -148,6 +150,19 @@ export const suggestion = pgTable(
 );
 
 export type Suggestion = InferSelectModel<typeof suggestion>;
+
+export const passwordResetToken = pgTable("PasswordResetToken", {
+  id: uuid("id").primaryKey().notNull().defaultRandom(),
+  userId: uuid("userId")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  tokenHash: varchar("tokenHash", { length: 128 }).notNull(),
+  expiresAt: timestamp("expiresAt").notNull(),
+  usedAt: timestamp("usedAt"),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+});
+
+export type PasswordResetToken = InferSelectModel<typeof passwordResetToken>;
 
 export const stream = pgTable(
   "Stream",
@@ -304,3 +319,38 @@ export const rateLimit = pgTable(
 );
 
 export type RateLimit = InferSelectModel<typeof rateLimit>;
+
+// Knowledge Base: uploaded documents for RAG
+export const knowledgeBaseDocument = pgTable("KnowledgeBaseDocument", {
+  id: uuid("id").primaryKey().notNull().defaultRandom(),
+  userId: uuid("userId")
+    .notNull()
+    .references(() => user.id),
+  title: text("title").notNull(),
+  fileName: varchar("fileName", { length: 255 }).notNull(),
+  fileType: varchar("fileType", { length: 100 }).notNull(),
+  fileSize: integer("fileSize").notNull(),
+  chunkCount: integer("chunkCount").notNull().default(0),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+});
+
+export type KnowledgeBaseDocument = InferSelectModel<
+  typeof knowledgeBaseDocument
+>;
+
+// Knowledge Base: vector chunks for RAG retrieval
+export const knowledgeBaseChunk = pgTable("KnowledgeBaseChunk", {
+  id: uuid("id").primaryKey().notNull().defaultRandom(),
+  documentId: uuid("documentId")
+    .notNull()
+    .references(() => knowledgeBaseDocument.id, { onDelete: "cascade" }),
+  userId: uuid("userId")
+    .notNull()
+    .references(() => user.id),
+  content: text("content").notNull(),
+  chunkIndex: integer("chunkIndex").notNull(),
+  embedding: vector("embedding", { dimensions: 1536 }).notNull(),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+});
+
+export type KnowledgeBaseChunk = InferSelectModel<typeof knowledgeBaseChunk>;

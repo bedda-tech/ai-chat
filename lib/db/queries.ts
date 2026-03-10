@@ -10,6 +10,7 @@ import {
   gte,
   inArray,
   lt,
+  sql,
   type SQL,
 } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
@@ -24,7 +25,11 @@ import {
   chat,
   type DBMessage,
   document,
+  type KnowledgeBaseDocument,
+  knowledgeBaseChunk,
+  knowledgeBaseDocument,
   message,
+  passwordResetToken,
   type Suggestion,
   stream,
   suggestion,
@@ -60,6 +65,67 @@ export async function createUser(email: string, password: string) {
     return await db.insert(user).values({ email, password: hashedPassword });
   } catch (_error) {
     throw new ChatSDKError("bad_request:database", "Failed to create user");
+  }
+}
+
+export async function createPasswordResetToken(
+  userId: string,
+  tokenHash: string,
+  expiresAt: Date
+) {
+  try {
+    return await db
+      .insert(passwordResetToken)
+      .values({ userId, tokenHash, expiresAt })
+      .returning({ id: passwordResetToken.id });
+  } catch (_error) {
+    throw new ChatSDKError(
+      "bad_request:database",
+      "Failed to create password reset token"
+    );
+  }
+}
+
+export async function getPasswordResetToken(tokenHash: string) {
+  try {
+    return await db
+      .select()
+      .from(passwordResetToken)
+      .where(eq(passwordResetToken.tokenHash, tokenHash));
+  } catch (_error) {
+    throw new ChatSDKError(
+      "bad_request:database",
+      "Failed to get password reset token"
+    );
+  }
+}
+
+export async function markPasswordResetTokenUsed(id: string) {
+  try {
+    return await db
+      .update(passwordResetToken)
+      .set({ usedAt: new Date() })
+      .where(eq(passwordResetToken.id, id));
+  } catch (_error) {
+    throw new ChatSDKError(
+      "bad_request:database",
+      "Failed to mark password reset token as used"
+    );
+  }
+}
+
+export async function updateUserPassword(userId: string, newPassword: string) {
+  const hashedPassword = generateHashedPassword(newPassword);
+  try {
+    return await db
+      .update(user)
+      .set({ password: hashedPassword })
+      .where(eq(user.id, userId));
+  } catch (_error) {
+    throw new ChatSDKError(
+      "bad_request:database",
+      "Failed to update user password"
+    );
   }
 }
 
@@ -572,6 +638,116 @@ export async function createStreamId({
       "Failed to create stream id"
     );
   }
+}
+
+// ─── Knowledge Base ───────────────────────────────────────────────────────────
+
+export async function createKBDocument({
+  userId,
+  title,
+  fileName,
+  fileType,
+  fileSize,
+}: {
+  userId: string;
+  title: string;
+  fileName: string;
+  fileType: string;
+  fileSize: number;
+}): Promise<KnowledgeBaseDocument> {
+  const [doc] = await db
+    .insert(knowledgeBaseDocument)
+    .values({ userId, title, fileName, fileType, fileSize })
+    .returning();
+  return doc;
+}
+
+export async function saveKBChunks({
+  documentId,
+  userId,
+  chunks,
+}: {
+  documentId: string;
+  userId: string;
+  chunks: Array<{ content: string; chunkIndex: number; embedding: number[] }>;
+}) {
+  if (chunks.length === 0) return;
+  await db.insert(knowledgeBaseChunk).values(
+    chunks.map((c) => ({
+      documentId,
+      userId,
+      content: c.content,
+      chunkIndex: c.chunkIndex,
+      embedding: c.embedding,
+    }))
+  );
+  await db
+    .update(knowledgeBaseDocument)
+    .set({ chunkCount: chunks.length })
+    .where(eq(knowledgeBaseDocument.id, documentId));
+}
+
+export async function listKBDocuments(
+  userId: string
+): Promise<KnowledgeBaseDocument[]> {
+  return db
+    .select()
+    .from(knowledgeBaseDocument)
+    .where(eq(knowledgeBaseDocument.userId, userId))
+    .orderBy(desc(knowledgeBaseDocument.createdAt));
+}
+
+export async function deleteKBDocument({
+  id,
+  userId,
+}: {
+  id: string;
+  userId: string;
+}) {
+  return db
+    .delete(knowledgeBaseDocument)
+    .where(
+      and(
+        eq(knowledgeBaseDocument.id, id),
+        eq(knowledgeBaseDocument.userId, userId)
+      )
+    );
+}
+
+export async function searchKBChunks({
+  userId,
+  queryEmbedding,
+  limit = 5,
+  similarityThreshold = 0.3,
+}: {
+  userId: string;
+  queryEmbedding: number[];
+  limit?: number;
+  similarityThreshold?: number;
+}): Promise<
+  Array<{ content: string; documentTitle: string; similarity: number }>
+> {
+  const vectorStr = `[${queryEmbedding.join(",")}]`;
+  const results = await db.execute<{
+    content: string;
+    title: string;
+    similarity: number;
+  }>(
+    sql`
+      SELECT c.content, d.title, 1 - (c.embedding <=> ${vectorStr}::vector) AS similarity
+      FROM "KnowledgeBaseChunk" c
+      JOIN "KnowledgeBaseDocument" d ON d.id = c."documentId"
+      WHERE c."userId" = ${userId}::uuid
+        AND 1 - (c.embedding <=> ${vectorStr}::vector) >= ${similarityThreshold}
+      ORDER BY c.embedding <=> ${vectorStr}::vector
+      LIMIT ${limit}
+    `
+  );
+  return results.map((r) => ({
+    content: r.content,
+    documentTitle: r.title,
+    similarity: Number(r.similarity),
+  }));
 }
 
 export async function getStreamIdsByChatId({ chatId }: { chatId: string }) {
