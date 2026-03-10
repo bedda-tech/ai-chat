@@ -37,6 +37,7 @@ import {
 import { transcribeAudioTool } from "@/lib/ai/tools/transcribe-audio";
 import { updateDocument } from "@/lib/ai/tools/update-document";
 import { webSearchTool } from "@/lib/ai/tools/web-search";
+import { queryKnowledgeBaseTool } from "@/lib/ai/tools/knowledge-base";
 import { isProductionEnvironment } from "@/lib/constants";
 import {
   createStreamId,
@@ -220,6 +221,7 @@ export async function POST(request: Request) {
       "generateTextEmbeddings",
       "compareTextSimilarity",
       "executeCode",
+      "queryKnowledgeBase",
     ];
 
     // Check model capabilities from static config (handles internal model IDs)
@@ -253,6 +255,7 @@ export async function POST(request: Request) {
           generateTextEmbeddings: generateTextEmbeddingsTool(),
           compareTextSimilarity: compareTextSimilarityTool(),
           executeCode: executeCodeTool(),
+          queryKnowledgeBase: queryKnowledgeBaseTool(session.user.id),
         };
 
         // Get the actual gateway model ID

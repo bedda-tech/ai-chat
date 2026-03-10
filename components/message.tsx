@@ -563,6 +563,80 @@ const PurePreviewMessage = ({
               );
             }
 
+            if (type === "tool-queryKnowledgeBase") {
+              const { toolCallId, state } = part;
+
+              return (
+                <Tool defaultOpen={true} key={toolCallId}>
+                  <ToolHeader state={state} type="tool-queryKnowledgeBase" />
+                  <ToolContent>
+                    {state === "input-available" && (
+                      <ToolInput input={part.input} />
+                    )}
+                    {state === "output-available" && (() => {
+                      const output = part.output as any;
+
+                      if (!output?.success) {
+                        return (
+                          <ToolOutput
+                            errorText={output?.error || "Knowledge base search failed"}
+                            output={null}
+                          />
+                        );
+                      }
+
+                      if (!output?.found) {
+                        return (
+                          <div className="p-4 text-muted-foreground text-sm">
+                            {output.message || "No relevant documents found."}
+                          </div>
+                        );
+                      }
+
+                      const results = output.results as Array<{
+                        content: string;
+                        source: string;
+                        similarity: number;
+                      }>;
+
+                      return (
+                        <div className="space-y-3 p-4">
+                          <div className="flex items-center justify-between">
+                            <h4 className="font-medium text-muted-foreground text-xs uppercase tracking-wide">
+                              Knowledge Base Results
+                            </h4>
+                            <span className="text-muted-foreground text-xs">
+                              {results.length} passage{results.length !== 1 ? "s" : ""} for &ldquo;{output.query}&rdquo;
+                            </span>
+                          </div>
+                          <div className="space-y-2">
+                            {results.map((result, i) => (
+                              <div
+                                key={i}
+                                className="rounded-lg border border-border bg-muted/30 p-3"
+                              >
+                                <div className="mb-1 flex items-center justify-between gap-2">
+                                  <span className="font-medium text-primary text-sm">
+                                    {result.source}
+                                  </span>
+                                  <span className="shrink-0 text-muted-foreground text-xs">
+                                    {Math.round(result.similarity * 100)}% match
+                                  </span>
+                                </div>
+                                <p className="text-foreground/70 text-xs leading-relaxed line-clamp-3">
+                                  {result.content}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      );
+                    })()}
+                  </ToolContent>
+                </Tool>
+              );
+            }
+
             if (type === "tool-webSearch") {
               const { toolCallId, state } = part;
 
