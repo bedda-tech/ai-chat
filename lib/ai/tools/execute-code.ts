@@ -1,74 +1,105 @@
 import { tool } from "ai";
 import { z } from "zod";
 
-/**
- * Tool for safely executing Python code snippets
- * Demonstrates AI SDK tool execution capabilities
- */
+const E2B_API_KEY = process.env.E2B_API_KEY;
+
+export type CodeExecutionResult = {
+  success: boolean;
+  language: string;
+  code: string;
+  stdout: string;
+  stderr: string;
+  error?: string;
+  executionTime?: string;
+  results?: Array<{
+    type: string;
+    text?: string;
+    html?: string;
+    png?: string; // base64
+    svg?: string;
+    json?: unknown;
+  }>;
+};
+
 export const executeCodeTool = () =>
   tool({
     description:
-      "Execute Python code safely in a sandboxed environment. Use this when users want to run, test, or execute Python code snippets. Do NOT use for complex scripts or those requiring external dependencies.",
+      "Execute Python or JavaScript code in a secure sandboxed environment. Use this when users want to run, test, calculate, visualize, or analyze data with code. Supports matplotlib charts, pandas DataFrames, and standard libraries.",
     inputSchema: z.object({
       code: z
         .string()
-        .describe(
-          "The Python code to execute. Must be safe, self-contained, and use only standard library."
-        ),
-      description: z
-        .string()
-        .optional()
-        .describe("Optional description of what the code does"),
+        .describe("The code to execute."),
+      language: z
+        .enum(["python", "javascript"])
+        .default("python")
+        .describe("The programming language to use (python or javascript)."),
     }),
-    execute: async ({ code, description }) => {
-      try {
-        // In a real implementation, this would execute in a secure sandbox
-        // For now, we'll simulate execution and return expected output
-        
-        // Basic validation
-        const dangerousPatterns = [
-          "import os",
-          "import sys",
-          "import subprocess",
-          "open(",
-          "exec(",
-          "eval(",
-          "__import__",
-          "compile(",
-        ];
-
-        const hasDangerousCode = dangerousPatterns.some((pattern) =>
-          code.toLowerCase().includes(pattern.toLowerCase())
-        );
-
-        if (hasDangerousCode) {
-          return {
-            success: false,
-            error:
-              "Code contains potentially dangerous operations. Please use only safe, standard library functions.",
-          };
-        }
-
-        // Simulate execution (in production, use a proper sandbox like Pyodide or serverless function)
-        return {
-          success: true,
-          code,
-          description,
-          output: "Code execution simulation: This feature requires a secure code execution environment to be fully functional.",
-          executionTime: "0ms",
-          language: "python",
-          note: "To enable real code execution, integrate with a sandboxed Python runtime like Pyodide or use serverless functions.",
-        };
-      } catch (error) {
-        console.error("Code execution error:", error);
+    execute: async ({ code, language }): Promise<CodeExecutionResult> => {
+      if (!E2B_API_KEY) {
         return {
           success: false,
-          error:
-            error instanceof Error
-              ? error.message
-              : "Failed to execute code. Please try again.",
+          language,
+          code,
+          stdout: "",
+          stderr: "",
+          error: "Code execution is not configured. Please add E2B_API_KEY to enable sandboxed execution.",
+        };
+      }
+
+      const start = Date.now();
+
+      try {
+        // Dynamic import to avoid bundling issues
+        const { Sandbox } = await import("@e2b/code-interpreter");
+
+        const sbx = await Sandbox.create({
+          apiKey: E2B_API_KEY,
+        });
+
+        try {
+          const execution = await sbx.runCode(code, {
+            language: language === "javascript" ? "js" : "python",
+          });
+
+          const elapsedMs = Date.now() - start;
+
+          const results: NonNullable<CodeExecutionResult["results"]> = (execution.results ?? []).map((r) => {
+            const type = r.png ? "image/png" : r.svg ? "image/svg+xml" : r.html ? "text/html" : r.json ? "application/json" : "text/plain";
+            return {
+              type,
+              ...(r.text !== undefined && { text: r.text }),
+              ...(r.html !== undefined && { html: r.html }),
+              ...(r.png !== undefined && { png: r.png }),
+              ...(r.svg !== undefined && { svg: r.svg }),
+              ...(r.json !== undefined && { json: r.json }),
+            };
+          });
+
+          return {
+            success: !execution.error,
+            language,
+            code,
+            stdout: execution.logs.stdout.join("\n"),
+            stderr: execution.logs.stderr.join("\n"),
+            error: execution.error
+              ? `${execution.error.name}: ${execution.error.value}`
+              : undefined,
+            executionTime: `${elapsedMs}ms`,
+            results,
+          };
+        } finally {
+          await sbx.kill();
+        }
+      } catch (error) {
+        return {
+          success: false,
+          language,
+          code,
+          stdout: "",
+          stderr: "",
+          error: error instanceof Error ? error.message : "Failed to execute code.",
+          executionTime: `${Date.now() - start}ms`,
         };
       }
     },
   });
-

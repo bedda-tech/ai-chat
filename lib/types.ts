@@ -5,6 +5,7 @@ import type { createDocument } from "./ai/tools/create-document";
 import type { getWeather } from "./ai/tools/get-weather";
 import type { requestSuggestions } from "./ai/tools/request-suggestions";
 import type { updateDocument } from "./ai/tools/update-document";
+import type { executeCodeTool } from "./ai/tools/execute-code";
 import type { webSearchTool } from "./ai/tools/web-search";
 import type { Suggestion } from "./db/schema";
 import type { AppUsage } from "./usage";
@@ -20,6 +21,7 @@ export type MessageMetadata = z.infer<typeof messageMetadataSchema>;
 
 type weatherTool = InferUITool<typeof getWeather>;
 type webSearchToolType = InferUITool<typeof webSearchTool>;
+type executeCodeToolType = InferUITool<ReturnType<typeof executeCodeTool>>;
 type createDocumentTool = InferUITool<ReturnType<typeof createDocument>>;
 type updateDocumentTool = InferUITool<ReturnType<typeof updateDocument>>;
 type requestSuggestionsTool = InferUITool<
@@ -29,6 +31,7 @@ type requestSuggestionsTool = InferUITool<
 export type ChatTools = {
   getWeather: weatherTool;
   webSearch: webSearchToolType;
+  executeCode: executeCodeToolType;
   createDocument: createDocumentTool;
   updateDocument: updateDocumentTool;
   requestSuggestions: requestSuggestionsTool;

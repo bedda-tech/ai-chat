@@ -24,6 +24,7 @@ import type { ChatModel } from "@/lib/ai/models";
 import { type RequestHints, systemPrompt } from "@/lib/ai/prompts";
 import { myProvider } from "@/lib/ai/providers";
 import { analyzeDataTool } from "@/lib/ai/tools/analyze-data";
+import { executeCodeTool } from "@/lib/ai/tools/execute-code";
 import { createDocument } from "@/lib/ai/tools/create-document";
 import { generateImageTool } from "@/lib/ai/tools/generate-image";
 import { generateStructuredDataTool } from "@/lib/ai/tools/generate-structured-data";
@@ -218,6 +219,7 @@ export async function POST(request: Request) {
       "transcribeAudio",
       "generateTextEmbeddings",
       "compareTextSimilarity",
+      "executeCode",
     ];
 
     // Check model capabilities from static config (handles internal model IDs)
@@ -250,6 +252,7 @@ export async function POST(request: Request) {
           transcribeAudio: transcribeAudioTool(),
           generateTextEmbeddings: generateTextEmbeddingsTool(),
           compareTextSimilarity: compareTextSimilarityTool(),
+          executeCode: executeCodeTool(),
         };
 
         // Get the actual gateway model ID

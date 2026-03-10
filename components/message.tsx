@@ -464,6 +464,105 @@ const PurePreviewMessage = ({
               );
             }
 
+            if (type === "tool-executeCode") {
+              const { toolCallId, state } = part;
+
+              return (
+                <Tool defaultOpen={true} key={toolCallId}>
+                  <ToolHeader state={state} type="tool-executeCode" />
+                  <ToolContent>
+                    {state === "input-available" && (
+                      <ToolInput input={part.input} />
+                    )}
+                    {state === "output-available" && (() => {
+                      const output = part.output as any;
+
+                      if (!output) return null;
+
+                      const { success, language, stdout, stderr, error, executionTime, results } = output;
+
+                      return (
+                        <div className="space-y-3 p-4">
+                          {/* Stdout */}
+                          {stdout && (
+                            <div>
+                              <div className="mb-1 flex items-center justify-between">
+                                <span className="font-mono text-muted-foreground text-xs uppercase tracking-wide">Output</span>
+                                {executionTime && (
+                                  <span className="text-muted-foreground text-xs">{executionTime}</span>
+                                )}
+                              </div>
+                              <pre className="overflow-x-auto rounded-md bg-muted/50 p-3 font-mono text-xs leading-relaxed whitespace-pre-wrap">
+                                {stdout}
+                              </pre>
+                            </div>
+                          )}
+
+                          {/* Stderr (non-error warnings) */}
+                          {stderr && !error && (
+                            <div>
+                              <span className="font-mono text-muted-foreground text-xs uppercase tracking-wide">Warnings</span>
+                              <pre className="mt-1 overflow-x-auto rounded-md bg-yellow-500/10 p-3 font-mono text-xs text-yellow-700 dark:text-yellow-400 whitespace-pre-wrap">
+                                {stderr}
+                              </pre>
+                            </div>
+                          )}
+
+                          {/* Rich results (charts, tables, etc.) */}
+                          {results && results.length > 0 && results.map((r: any, i: number) => (
+                            <div key={i}>
+                              {r.png && (
+                                <img
+                                  alt="Code output"
+                                  className="max-w-full rounded-md border border-border"
+                                  src={`data:image/png;base64,${r.png}`}
+                                />
+                              )}
+                              {r.svg && (
+                                <div
+                                  className="rounded-md border border-border p-2"
+                                  dangerouslySetInnerHTML={{ __html: r.svg }}
+                                />
+                              )}
+                              {r.html && (
+                                <div
+                                  className="overflow-x-auto rounded-md border border-border p-2 text-sm"
+                                  dangerouslySetInnerHTML={{ __html: r.html }}
+                                />
+                              )}
+                              {r.json !== undefined && !r.html && !r.png && !r.svg && (
+                                <pre className="overflow-x-auto rounded-md bg-muted/50 p-3 font-mono text-xs">
+                                  {JSON.stringify(r.json, null, 2)}
+                                </pre>
+                              )}
+                              {r.text && !r.html && !r.png && !r.svg && r.json === undefined && (
+                                <pre className="overflow-x-auto rounded-md bg-muted/50 p-3 font-mono text-xs whitespace-pre-wrap">
+                                  {r.text}
+                                </pre>
+                              )}
+                            </div>
+                          ))}
+
+                          {/* Error */}
+                          {error && (
+                            <div className="rounded-md bg-destructive/10 p-3">
+                              <span className="mb-1 block font-mono text-destructive text-xs font-semibold uppercase">Error</span>
+                              <pre className="font-mono text-destructive text-xs whitespace-pre-wrap">{error}</pre>
+                            </div>
+                          )}
+
+                          {/* Empty success */}
+                          {success && !stdout && !stderr && !error && (!results || results.length === 0) && (
+                            <div className="text-muted-foreground text-xs">(no output)</div>
+                          )}
+                        </div>
+                      );
+                    })()}
+                  </ToolContent>
+                </Tool>
+              );
+            }
+
             if (type === "tool-webSearch") {
               const { toolCallId, state } = part;
 
