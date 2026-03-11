@@ -2,8 +2,14 @@ import { compare } from "bcrypt-ts";
 import NextAuth, { type DefaultSession } from "next-auth";
 import type { DefaultJWT } from "next-auth/jwt";
 import Credentials from "next-auth/providers/credentials";
+import GitHub from "next-auth/providers/github";
+import Google from "next-auth/providers/google";
 import { DUMMY_PASSWORD } from "@/lib/constants";
-import { createGuestUser, getUser } from "@/lib/db/queries";
+import {
+  createGuestUser,
+  getUser,
+  getOrCreateOAuthUser,
+} from "@/lib/db/queries";
 import { authConfig } from "./auth.config";
 
 export type UserType = "guest" | "regular";
@@ -39,6 +45,16 @@ export const {
 } = NextAuth({
   ...authConfig,
   providers: [
+    Google({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      allowDangerousEmailAccountLinking: true,
+    }),
+    GitHub({
+      clientId: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      allowDangerousEmailAccountLinking: true,
+    }),
     Credentials({
       credentials: {},
       async authorize({ email, password }: any) {
@@ -75,6 +91,42 @@ export const {
     }),
   ],
   callbacks: {
+    async signIn({ user: authUser, account: oauthAccount, profile }) {
+      // For OAuth providers, look up or create the user in our DB
+      if (
+        oauthAccount &&
+        (oauthAccount.provider === "google" ||
+          oauthAccount.provider === "github")
+      ) {
+        const email = authUser.email ?? profile?.email;
+        if (!email) return false;
+
+        const providerAccountId =
+          oauthAccount.providerAccountId ?? String(profile?.sub ?? profile?.id);
+
+        try {
+          const dbUser = await getOrCreateOAuthUser(
+            email as string,
+            oauthAccount.provider,
+            providerAccountId,
+            {
+              accessToken: oauthAccount.access_token ?? undefined,
+              refreshToken: oauthAccount.refresh_token ?? undefined,
+              expiresAt: oauthAccount.expires_at ?? undefined,
+              tokenType: oauthAccount.token_type ?? undefined,
+              scope: oauthAccount.scope ?? undefined,
+              idToken: oauthAccount.id_token ?? undefined,
+            }
+          );
+          // Attach our DB user id and type to the authUser object for the jwt callback
+          authUser.id = dbUser.id;
+          authUser.type = "regular";
+        } catch {
+          return false;
+        }
+      }
+      return true;
+    },
     jwt({ token, user }) {
       if (user) {
         token.id = user.id as string;

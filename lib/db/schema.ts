@@ -320,6 +320,30 @@ export const rateLimit = pgTable(
 
 export type RateLimit = InferSelectModel<typeof rateLimit>;
 
+// OAuth account linking (for social login providers)
+export const account = pgTable(
+  "Account",
+  {
+    userId: uuid("userId")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    provider: varchar("provider", { length: 50 }).notNull(),
+    providerAccountId: varchar("providerAccountId", { length: 255 }).notNull(),
+    accessToken: text("accessToken"),
+    refreshToken: text("refreshToken"),
+    expiresAt: integer("expiresAt"),
+    tokenType: varchar("tokenType", { length: 50 }),
+    scope: text("scope"),
+    idToken: text("idToken"),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+  },
+  (table) => ({
+    pk: primaryKey({ columns: [table.provider, table.providerAccountId] }),
+  })
+);
+
+export type Account = InferSelectModel<typeof account>;
+
 // Knowledge Base: uploaded documents for RAG
 export const knowledgeBaseDocument = pgTable("KnowledgeBaseDocument", {
   id: uuid("id").primaryKey().notNull().defaultRandom(),

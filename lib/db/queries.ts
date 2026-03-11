@@ -21,6 +21,7 @@ import { ChatSDKError } from "../errors";
 import type { AppUsage } from "../usage";
 import { generateUUID } from "../utils";
 import {
+  account,
   type Chat,
   chat,
   type DBMessage,
@@ -766,4 +767,104 @@ export async function getStreamIdsByChatId({ chatId }: { chatId: string }) {
       "Failed to get stream ids by chat id"
     );
   }
+}
+
+// OAuth / Social Login
+
+export async function getOAuthAccount(
+  provider: string,
+  providerAccountId: string
+): Promise<{ userId: string } | null> {
+  try {
+    const [row] = await db
+      .select({ userId: account.userId })
+      .from(account)
+      .where(
+        and(
+          eq(account.provider, provider),
+          eq(account.providerAccountId, providerAccountId)
+        )
+      );
+    return row ?? null;
+  } catch (_error) {
+    throw new ChatSDKError("bad_request:database", "Failed to get OAuth account");
+  }
+}
+
+export async function createOAuthAccount(
+  userId: string,
+  provider: string,
+  providerAccountId: string,
+  tokens?: {
+    accessToken?: string;
+    refreshToken?: string;
+    expiresAt?: number;
+    tokenType?: string;
+    scope?: string;
+    idToken?: string;
+  }
+) {
+  try {
+    await db.insert(account).values({
+      userId,
+      provider,
+      providerAccountId,
+      accessToken: tokens?.accessToken,
+      refreshToken: tokens?.refreshToken,
+      expiresAt: tokens?.expiresAt,
+      tokenType: tokens?.tokenType,
+      scope: tokens?.scope,
+      idToken: tokens?.idToken,
+    });
+  } catch (_error) {
+    // Ignore duplicate key errors (already linked)
+  }
+}
+
+export async function getOrCreateOAuthUser(
+  email: string,
+  provider: string,
+  providerAccountId: string,
+  tokens?: {
+    accessToken?: string;
+    refreshToken?: string;
+    expiresAt?: number;
+    tokenType?: string;
+    scope?: string;
+    idToken?: string;
+  }
+): Promise<User> {
+  // Check if this OAuth account is already linked
+  const existingAccount = await getOAuthAccount(provider, providerAccountId);
+  if (existingAccount) {
+    const [existingUser] = await db
+      .select()
+      .from(user)
+      .where(eq(user.id, existingAccount.userId));
+    if (existingUser) return existingUser;
+  }
+
+  // Look up user by email (link existing email account)
+  const existingUsers = await getUser(email);
+  let userId: string;
+
+  if (existingUsers.length > 0) {
+    userId = existingUsers[0].id;
+  } else {
+    // Create a new user (no password — OAuth only)
+    const [newUser] = await db
+      .insert(user)
+      .values({ email, password: null })
+      .returning();
+    userId = newUser.id;
+  }
+
+  // Link the OAuth account
+  await createOAuthAccount(userId, provider, providerAccountId, tokens);
+
+  const [linkedUser] = await db
+    .select()
+    .from(user)
+    .where(eq(user.id, userId));
+  return linkedUser;
 }
