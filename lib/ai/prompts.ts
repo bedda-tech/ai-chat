@@ -53,11 +53,18 @@ About the origin of user's request:
 export const systemPrompt = ({
   selectedChatModel,
   requestHints,
+  customInstructions,
 }: {
   selectedChatModel: string;
   requestHints: RequestHints;
+  customInstructions?: string;
 }) => {
   const requestPrompt = getRequestPromptFromHints(requestHints);
+
+  const customInstructionsBlock =
+    customInstructions?.trim()
+      ? `\n\n<custom_instructions>\n${customInstructions.trim()}\n</custom_instructions>`
+      : "";
 
   const isGemini25FlashImage = selectedChatModel === "google-gemini-2.5-flash-image-preview";
 
@@ -66,10 +73,10 @@ export const systemPrompt = ({
     : "\n\nImage Generation: You can generate images using the generateImage tool with detailed, descriptive prompts when users request images.";
 
   if (selectedChatModel === "chat-model-reasoning") {
-    return `${regularPrompt}\n\n${requestPrompt}`;
+    return `${regularPrompt}${customInstructionsBlock}\n\n${requestPrompt}`;
   }
 
-  return `${regularPrompt}\n\n${requestPrompt}\n\n${artifactsPrompt}${imageGenerationPrompt}`;
+  return `${regularPrompt}${customInstructionsBlock}\n\n${requestPrompt}\n\n${artifactsPrompt}${imageGenerationPrompt}`;
 };
 
 /**
@@ -80,11 +87,13 @@ export const systemPrompt = ({
 export const getCacheableSystemPrompt = ({
   selectedChatModel,
   requestHints,
+  customInstructions,
 }: {
   selectedChatModel: string;
   requestHints: RequestHints;
+  customInstructions?: string;
 }) => {
-  const content = systemPrompt({ selectedChatModel, requestHints });
+  const content = systemPrompt({ selectedChatModel, requestHints, customInstructions });
 
   // Determine if this model supports caching
   const isAnthropicModel = selectedChatModel.includes('anthropic') || selectedChatModel.includes('claude');

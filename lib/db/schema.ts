@@ -344,6 +344,18 @@ export const account = pgTable(
 
 export type Account = InferSelectModel<typeof account>;
 
+// User preferences (custom instructions)
+export const userPreferences = pgTable("UserPreferences", {
+  userId: uuid("userId")
+    .primaryKey()
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  customInstructions: text("customInstructions"),
+  updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+});
+
+export type UserPreferences = InferSelectModel<typeof userPreferences>;
+
 // Knowledge Base: uploaded documents for RAG
 export const knowledgeBaseDocument = pgTable("KnowledgeBaseDocument", {
   id: uuid("id").primaryKey().notNull().defaultRandom(),

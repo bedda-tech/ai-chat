@@ -44,6 +44,7 @@ import {
   deleteChatById,
   getChatById,
   getMessagesByChatId,
+  getUserPreferences,
   saveChat,
   saveMessages,
   updateChatLastContextById,
@@ -136,6 +137,9 @@ export async function POST(request: Request) {
       return createRateLimitResponse(rateLimitResult);
     }
 
+    // Fetch user preferences (custom instructions) in parallel with model access check
+    const userPrefsPromise = getUserPreferences(session.user.id);
+
     // Enforce model access by subscription tier.
     // rateLimitResult.tier comes from the same DB call — no extra round-trip.
     const userDbTier = rateLimitResult.tier ?? "free";
@@ -154,7 +158,10 @@ export async function POST(request: Request) {
 
     const _userType: UserType = session.user.type;
 
-    const chat = await getChatById({ id });
+    const [chat, userPrefs] = await Promise.all([
+      getChatById({ id }),
+      userPrefsPromise,
+    ]);
 
     if (chat) {
       if (chat.userId !== session.user.id) {
@@ -291,6 +298,7 @@ export async function POST(request: Request) {
           system: systemPrompt({
             selectedChatModel,
             requestHints,
+            customInstructions: userPrefs?.customInstructions ?? undefined,
           }),
           messages: await convertToModelMessages(uiMessages),
           // Use model-specific maxSteps configuration

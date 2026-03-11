@@ -1,7 +1,9 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/app/(auth)/auth";
+import { CustomInstructionsForm } from "@/components/custom-instructions-form";
 import { SubscriptionManagement } from "@/components/subscription-management";
 import { UsageDisplay } from "@/components/usage-display";
+import { getUserPreferences } from "@/lib/db/queries";
 import { getUserTier } from "@/lib/usage/tracking";
 
 export default async function SettingsPage() {
@@ -19,12 +21,14 @@ export default async function SettingsPage() {
     // Default to free tier on error
   }
 
+  const prefs = await getUserPreferences(session.user.id);
+
   return (
     <div className="mx-auto max-w-4xl p-4 md:p-8">
       <div className="mb-8">
         <h1 className="font-bold text-3xl tracking-tight">Settings</h1>
         <p className="mt-2 text-muted-foreground">
-          Manage your subscription and view your usage
+          Manage your account, subscription, and preferences
         </p>
       </div>
 
@@ -35,6 +39,13 @@ export default async function SettingsPage() {
         <div>
           <UsageDisplay />
         </div>
+      </div>
+
+      <div className="mt-6 rounded-lg border p-6">
+        <h2 className="mb-4 font-semibold text-lg">Personalization</h2>
+        <CustomInstructionsForm
+          initialValue={prefs?.customInstructions ?? ""}
+        />
       </div>
     </div>
   );

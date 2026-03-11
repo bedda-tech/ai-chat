@@ -36,6 +36,8 @@ import {
   suggestion,
   type User,
   user,
+  userPreferences,
+  type UserPreferences,
   vote,
 } from "./schema";
 import { generateHashedPassword } from "./utils";
@@ -867,4 +869,35 @@ export async function getOrCreateOAuthUser(
     .from(user)
     .where(eq(user.id, userId));
   return linkedUser;
+}
+
+// User preferences
+export async function getUserPreferences(userId: string): Promise<UserPreferences | null> {
+  const [prefs] = await db
+    .select()
+    .from(userPreferences)
+    .where(eq(userPreferences.userId, userId));
+  return prefs ?? null;
+}
+
+export async function upsertUserPreferences(
+  userId: string,
+  data: { customInstructions?: string }
+): Promise<UserPreferences> {
+  const [prefs] = await db
+    .insert(userPreferences)
+    .values({
+      userId,
+      customInstructions: data.customInstructions ?? null,
+      updatedAt: new Date(),
+    })
+    .onConflictDoUpdate({
+      target: userPreferences.userId,
+      set: {
+        customInstructions: data.customInstructions ?? null,
+        updatedAt: new Date(),
+      },
+    })
+    .returning();
+  return prefs;
 }
