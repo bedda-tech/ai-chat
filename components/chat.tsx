@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import useSWR, { useSWRConfig } from "swr";
 import { unstable_serialize } from "swr/infinite";
 import { ChatHeader } from "@/components/chat-header";
+import { SharedChatBanner } from "@/components/shared-chat-banner";
 import Link from "next/link";
 import {
   AlertDialog,
@@ -203,6 +204,8 @@ export function Chat({
           isReadonly={isReadonly}
           selectedVisibilityType={initialVisibilityType}
         />
+
+        {isReadonly && <SharedChatBanner chatId={id} />}
 
         <Messages
           chatId={id}

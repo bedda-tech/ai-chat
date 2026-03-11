@@ -11,6 +11,7 @@ import {
 import { useChatVisibility } from "@/hooks/use-chat-visibility";
 import { cn } from "@/lib/utils";
 import { CheckCircleFillIcon, GlobeIcon, LockIcon } from "./icons";
+import { toast } from "./toast";
 
 export type VisibilityType = "private" | "public";
 
@@ -82,6 +83,11 @@ export function VisibilitySelector({
             key={visibility.id}
             onSelect={() => {
               setVisibilityType(visibility.id);
+              if (visibility.id === "public") {
+                const shareUrl = `${window.location.origin}/chat/${chatId}`;
+                navigator.clipboard.writeText(shareUrl).catch(() => {});
+                toast({ type: "success", description: "Share link copied to clipboard!" });
+              }
               setOpen(false);
             }}
           >
