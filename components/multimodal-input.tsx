@@ -39,8 +39,10 @@ import {
 } from "./elements/prompt-input";
 import {
   ArrowUpIcon,
+  BotIcon,
   CpuIcon,
   PaperclipIcon,
+  SparklesIcon,
   StopIcon,
 } from "./icons";
 import { PreviewAttachment } from "./preview-attachment";
@@ -54,6 +56,11 @@ import {
   DialogTitle,
 } from "./ui/dialog";
 import { Input } from "./ui/input";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "./ui/tooltip";
 import { VisibilitySelector, type VisibilityType } from "./visibility-selector";
 
 function PureMultimodalInput({
@@ -91,6 +98,7 @@ function PureMultimodalInput({
 }) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { width } = useWindowSize();
+  const [agentMode, setAgentMode] = useLocalStorage("agent-mode", false);
 
   const adjustHeight = useCallback(() => {
     if (textareaRef.current) {
@@ -141,21 +149,24 @@ function PureMultimodalInput({
   const submitForm = useCallback(() => {
     window.history.replaceState({}, "", `/chat/${chatId}`);
 
-    sendMessage({
-      role: "user",
-      parts: [
-        ...attachments.map((attachment) => ({
-          type: "file" as const,
-          url: attachment.url,
-          name: attachment.name,
-          mediaType: attachment.contentType,
-        })),
-        {
-          type: "text",
-          text: input,
-        },
-      ],
-    });
+    sendMessage(
+      {
+        role: "user",
+        parts: [
+          ...attachments.map((attachment) => ({
+            type: "file" as const,
+            url: attachment.url,
+            name: attachment.name,
+            mediaType: attachment.contentType,
+          })),
+          {
+            type: "text",
+            text: input,
+          },
+        ],
+      },
+      { body: { agentMode: agentMode || undefined } },
+    );
 
     setAttachments([]);
     setLocalStorageInput("");
@@ -175,6 +186,7 @@ function PureMultimodalInput({
     width,
     chatId,
     resetHeight,
+    agentMode,
   ]);
 
   const uploadFile = useCallback(async (file: File) => {
@@ -327,6 +339,11 @@ function PureMultimodalInput({
               chatId={chatId}
               selectedVisibilityType={_selectedVisibilityType}
             />
+            <AgentModeButton
+              agentMode={agentMode}
+              setAgentMode={setAgentMode}
+              status={status}
+            />
           </PromptInputTools>
 
           {status === "submitted" ? (
@@ -368,6 +385,43 @@ export const MultimodalInput = memo(
     return true;
   }
 );
+
+function PureAgentModeButton({
+  agentMode,
+  setAgentMode,
+  status,
+}: {
+  agentMode: boolean;
+  setAgentMode: (value: boolean) => void;
+  status: UseChatHelpers<ChatMessage>["status"];
+}) {
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button
+          className={cn(
+            "aspect-square h-8 rounded-lg p-1 transition-colors",
+            agentMode
+              ? "bg-primary/10 text-primary hover:bg-primary/20"
+              : "hover:bg-accent"
+          )}
+          data-testid="agent-mode-button"
+          disabled={status !== "ready"}
+          onClick={() => setAgentMode(!agentMode)}
+          variant="ghost"
+          type="button"
+        >
+          <BotIcon />
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent side="top">
+        {agentMode ? "Deep Research: ON" : "Deep Research: OFF"} — AI chains multiple tools to research and write comprehensive answers
+      </TooltipContent>
+    </Tooltip>
+  );
+}
+
+const AgentModeButton = memo(PureAgentModeButton);
 
 function PureAttachmentsButton({
   fileInputRef,
