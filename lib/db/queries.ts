@@ -29,6 +29,8 @@ import {
   type KnowledgeBaseDocument,
   knowledgeBaseChunk,
   knowledgeBaseDocument,
+  mcpServer,
+  type McpServer,
   message,
   passwordResetToken,
   type Suggestion,
@@ -900,4 +902,48 @@ export async function upsertUserPreferences(
     })
     .returning();
   return prefs;
+}
+
+// MCP servers
+export async function getMcpServers(userId: string): Promise<McpServer[]> {
+  return db.select().from(mcpServer).where(eq(mcpServer.userId, userId)).orderBy(asc(mcpServer.createdAt));
+}
+
+export async function getEnabledMcpServers(userId: string): Promise<McpServer[]> {
+  return db.select().from(mcpServer).where(and(eq(mcpServer.userId, userId), eq(mcpServer.enabled, true)));
+}
+
+export async function createMcpServer(data: {
+  userId: string;
+  name: string;
+  url: string;
+  headers?: Record<string, string>;
+}): Promise<McpServer> {
+  const [server] = await db
+    .insert(mcpServer)
+    .values({
+      userId: data.userId,
+      name: data.name,
+      url: data.url,
+      headers: data.headers ?? {},
+    })
+    .returning();
+  return server;
+}
+
+export async function updateMcpServer(
+  id: string,
+  userId: string,
+  data: { name?: string; url?: string; enabled?: boolean; headers?: Record<string, string> }
+): Promise<McpServer | null> {
+  const [server] = await db
+    .update(mcpServer)
+    .set({ ...data, updatedAt: new Date() })
+    .where(and(eq(mcpServer.id, id), eq(mcpServer.userId, userId)))
+    .returning();
+  return server ?? null;
+}
+
+export async function deleteMcpServer(id: string, userId: string): Promise<void> {
+  await db.delete(mcpServer).where(and(eq(mcpServer.id, id), eq(mcpServer.userId, userId)));
 }

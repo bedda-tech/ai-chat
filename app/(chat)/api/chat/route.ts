@@ -7,6 +7,7 @@ import {
   stepCountIs,
   streamText,
 } from "ai";
+import { createMCPClient } from "@ai-sdk/mcp";
 import { unstable_cache as cache } from "next/cache";
 import { after } from "next/server";
 import {
@@ -43,6 +44,7 @@ import {
   createStreamId,
   deleteChatById,
   getChatById,
+  getEnabledMcpServers,
   getMessagesByChatId,
   getUserPreferences,
   saveChat,
@@ -238,12 +240,49 @@ export async function POST(request: Request) {
 
     // Disable tools for models that don't support function calling
     // (e.g. deepseek-deepseek-r1, cerebras-llama3.3-70b) and image-only models
-    const activeTools =
+    const baseActiveTools =
       selectedChatModel === "chat-model-reasoning" ||
       isGemini25FlashImage ||
       !selectedModelCapabilities.supportsToolCalling
         ? []
         : [...allTools, "generateImage"];
+
+    // Load MCP tools for authenticated users with tool-capable models
+    const mcpClients: Array<{ close: () => Promise<void> }> = [];
+    const mcpToolMap: Record<string, any> = {};
+
+    if (baseActiveTools.length > 0 && session.user.type !== "guest") {
+      const enabledServers = await getEnabledMcpServers(session.user.id);
+      await Promise.all(
+        enabledServers.map(async (server) => {
+          try {
+            const client = await createMCPClient({
+              transport: {
+                type: "sse",
+                url: server.url,
+                headers: (server.headers as Record<string, string>) ?? {},
+              },
+            });
+            const serverTools = await client.tools();
+            Object.assign(mcpToolMap, serverTools);
+            mcpClients.push(client);
+          } catch (err) {
+            console.warn(`MCP server "${server.name}" unavailable:`, err);
+          }
+        })
+      );
+      if (mcpClients.length > 0) {
+        after(async () => {
+          await Promise.all(mcpClients.map((c) => c.close().catch(() => {})));
+        });
+      }
+    }
+
+    const mcpToolNames = Object.keys(mcpToolMap);
+    const activeTools =
+      mcpToolNames.length > 0
+        ? [...baseActiveTools, ...mcpToolNames]
+        : baseActiveTools;
 
     const stream = createUIMessageStream({
       execute: async ({ writer: dataStream }) => {
@@ -265,6 +304,7 @@ export async function POST(request: Request) {
           compareTextSimilarity: compareTextSimilarityTool(),
           executeCode: executeCodeTool(),
           queryKnowledgeBase: queryKnowledgeBaseTool(session.user.id),
+          ...mcpToolMap,
         };
 
         // Get the actual gateway model ID

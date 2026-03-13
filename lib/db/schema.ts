@@ -390,3 +390,19 @@ export const knowledgeBaseChunk = pgTable("KnowledgeBaseChunk", {
 });
 
 export type KnowledgeBaseChunk = InferSelectModel<typeof knowledgeBaseChunk>;
+
+// MCP (Model Context Protocol) server configurations per user
+export const mcpServer = pgTable("McpServer", {
+  id: uuid("id").primaryKey().notNull().defaultRandom(),
+  userId: uuid("userId")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  name: varchar("name", { length: 255 }).notNull(),
+  url: text("url").notNull(),
+  enabled: boolean("enabled").notNull().default(true),
+  headers: json("headers").$type<Record<string, string>>().default({}),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+  updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+});
+
+export type McpServer = InferSelectModel<typeof mcpServer>;

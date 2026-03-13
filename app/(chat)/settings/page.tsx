@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/app/(auth)/auth";
 import { CustomInstructionsForm } from "@/components/custom-instructions-form";
+import { McpServersForm } from "@/components/mcp-servers-form";
 import { SubscriptionManagement } from "@/components/subscription-management";
 import { UsageDisplay } from "@/components/usage-display";
 import { getUserPreferences } from "@/lib/db/queries";
@@ -46,6 +47,11 @@ export default async function SettingsPage() {
         <CustomInstructionsForm
           initialValue={prefs?.customInstructions ?? ""}
         />
+      </div>
+
+      <div className="mt-6 rounded-lg border p-6">
+        <h2 className="mb-4 font-semibold text-lg">Integrations</h2>
+        <McpServersForm />
       </div>
     </div>
   );
