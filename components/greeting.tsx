@@ -1,7 +1,9 @@
 import type { UseChatHelpers } from "@ai-sdk/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import type { Dispatch, SetStateAction } from "react";
 import type { ChatMessage } from "@/lib/types";
+import { PromptLibraryModal } from "./prompt-library-modal";
 import { SuggestedActions } from "./suggested-actions";
 import type { VisibilityType } from "./visibility-selector";
 
@@ -10,6 +12,7 @@ type GreetingProps = {
   sendMessage: UseChatHelpers<ChatMessage>["sendMessage"];
   selectedVisibilityType: VisibilityType;
   onModelChange?: (modelId: string) => void;
+  setInput: Dispatch<SetStateAction<string>>;
 };
 
 export const Greeting = ({
@@ -17,6 +20,7 @@ export const Greeting = ({
   sendMessage,
   selectedVisibilityType,
   onModelChange,
+  setInput,
 }: GreetingProps) => {
   return (
     <div
@@ -70,6 +74,24 @@ export const Greeting = ({
           onModelChange={onModelChange}
           selectedVisibilityType={selectedVisibilityType}
           sendMessage={sendMessage}
+        />
+      </motion.div>
+
+      {/* Prompt library link */}
+      <motion.div
+        animate={{ opacity: 1, y: 0 }}
+        className="shrink-0"
+        exit={{ opacity: 0, y: 10 }}
+        initial={{ opacity: 0, y: 10 }}
+        transition={{ delay: 0.9 }}
+      >
+        <PromptLibraryModal
+          onSelect={(prompt, modelId) => {
+            if (modelId && onModelChange) {
+              onModelChange(modelId);
+            }
+            setInput(prompt);
+          }}
         />
       </motion.div>
     </div>

@@ -2,7 +2,7 @@ import type { UseChatHelpers } from "@ai-sdk/react";
 import equal from "fast-deep-equal";
 import { AnimatePresence } from "framer-motion";
 import { ArrowDownIcon } from "lucide-react";
-import { memo, useEffect } from "react";
+import { memo, useEffect, type Dispatch, type SetStateAction } from "react";
 import { useMessages } from "@/hooks/use-messages";
 import type { Vote } from "@/lib/db/schema";
 import type { ChatMessage } from "@/lib/types";
@@ -25,6 +25,7 @@ type MessagesProps = {
   sendMessage: UseChatHelpers<ChatMessage>["sendMessage"];
   selectedVisibilityType: VisibilityType;
   onModelChange?: (modelId: string) => void;
+  setInput: Dispatch<SetStateAction<string>>;
 };
 
 function PureMessages({
@@ -39,6 +40,7 @@ function PureMessages({
   sendMessage,
   selectedVisibilityType,
   onModelChange,
+  setInput,
 }: MessagesProps) {
   const {
     containerRef: messagesContainerRef,
@@ -80,6 +82,7 @@ function PureMessages({
               onModelChange={onModelChange}
               selectedVisibilityType={selectedVisibilityType}
               sendMessage={sendMessage}
+              setInput={setInput}
             />
           )}
 

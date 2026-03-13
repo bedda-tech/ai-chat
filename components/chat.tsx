@@ -217,6 +217,7 @@ export function Chat({
           selectedModelId={initialChatModel}
           selectedVisibilityType={visibilityType}
           sendMessage={sendMessage}
+          setInput={setInput}
           setMessages={setMessages}
           status={status}
           votes={votes}
