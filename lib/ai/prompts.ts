@@ -50,14 +50,28 @@ About the origin of user's request:
 - country: ${requestHints.country}
 `;
 
+export const agentPrompt = `
+You are running in Deep Research mode. Your goal is to thoroughly investigate the user's question by autonomously chaining multiple tool calls.
+
+Research workflow:
+1. Use webSearch to gather information from 2-3 relevant searches
+2. Analyze and synthesize what you find — look for patterns, contradictions, and key insights
+3. If the topic benefits from a structured document, use createDocument to write a comprehensive report
+4. Cite your sources by including URLs in your final response
+
+Be proactive: don't ask clarifying questions upfront — start researching immediately and share what you find. Think step by step. If your first search reveals you need more specific information, do additional searches before writing your conclusion.
+`;
+
 export const systemPrompt = ({
   selectedChatModel,
   requestHints,
   customInstructions,
+  agentMode,
 }: {
   selectedChatModel: string;
   requestHints: RequestHints;
   customInstructions?: string;
+  agentMode?: boolean;
 }) => {
   const requestPrompt = getRequestPromptFromHints(requestHints);
 
@@ -66,6 +80,8 @@ export const systemPrompt = ({
       ? `\n\n<custom_instructions>\n${customInstructions.trim()}\n</custom_instructions>`
       : "";
 
+  const agentModeBlock = agentMode ? `\n\n${agentPrompt}` : "";
+
   const isGemini25FlashImage = selectedChatModel === "google-gemini-2.5-flash-image-preview";
 
   const imageGenerationPrompt = isGemini25FlashImage
@@ -73,10 +89,10 @@ export const systemPrompt = ({
     : "\n\nImage Generation: You can generate images using the generateImage tool with detailed, descriptive prompts when users request images.";
 
   if (selectedChatModel === "chat-model-reasoning") {
-    return `${regularPrompt}${customInstructionsBlock}\n\n${requestPrompt}`;
+    return `${regularPrompt}${customInstructionsBlock}${agentModeBlock}\n\n${requestPrompt}`;
   }
 
-  return `${regularPrompt}${customInstructionsBlock}\n\n${requestPrompt}\n\n${artifactsPrompt}${imageGenerationPrompt}`;
+  return `${regularPrompt}${customInstructionsBlock}${agentModeBlock}\n\n${requestPrompt}\n\n${artifactsPrompt}${imageGenerationPrompt}`;
 };
 
 /**
@@ -88,12 +104,14 @@ export const getCacheableSystemPrompt = ({
   selectedChatModel,
   requestHints,
   customInstructions,
+  agentMode,
 }: {
   selectedChatModel: string;
   requestHints: RequestHints;
   customInstructions?: string;
+  agentMode?: boolean;
 }) => {
-  const content = systemPrompt({ selectedChatModel, requestHints, customInstructions });
+  const content = systemPrompt({ selectedChatModel, requestHints, customInstructions, agentMode });
 
   // Determine if this model supports caching
   const isAnthropicModel = selectedChatModel.includes('anthropic') || selectedChatModel.includes('claude');

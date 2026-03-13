@@ -118,11 +118,13 @@ export async function POST(request: Request) {
       message,
       selectedChatModel,
       selectedVisibilityType,
+      agentMode,
     }: {
       id: string;
       message: ChatMessage;
       selectedChatModel: ChatModel["id"];
       selectedVisibilityType: VisibilityType;
+      agentMode?: boolean;
     } = requestBody;
 
     const session = await auth();
@@ -293,16 +295,22 @@ export async function POST(request: Request) {
           };
         }
 
+        // Agent mode: boost maxSteps for multi-step reasoning chains
+        const effectiveMaxSteps = agentMode
+          ? Math.max(modelConfig.maxSteps, 20)
+          : modelConfig.maxSteps;
+
         const result = streamText({
           model: myProvider.languageModel(selectedChatModel),
           system: systemPrompt({
             selectedChatModel,
             requestHints,
             customInstructions: userPrefs?.customInstructions ?? undefined,
+            agentMode,
           }),
           messages: await convertToModelMessages(uiMessages),
-          // Use model-specific maxSteps configuration
-          stopWhen: stepCountIs(modelConfig.maxSteps),
+          // Use model-specific maxSteps configuration (boosted in agent mode)
+          stopWhen: stepCountIs(effectiveMaxSteps),
           // Use model-specific temperature if available
           ...(modelConfig.temperature && {
             temperature: modelConfig.temperature,
