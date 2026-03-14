@@ -66,11 +66,13 @@ export const systemPrompt = ({
   selectedChatModel,
   requestHints,
   customInstructions,
+  projectInstructions,
   agentMode,
 }: {
   selectedChatModel: string;
   requestHints: RequestHints;
   customInstructions?: string;
+  projectInstructions?: string;
   agentMode?: boolean;
 }) => {
   const requestPrompt = getRequestPromptFromHints(requestHints);
@@ -78,6 +80,11 @@ export const systemPrompt = ({
   const customInstructionsBlock =
     customInstructions?.trim()
       ? `\n\n<custom_instructions>\n${customInstructions.trim()}\n</custom_instructions>`
+      : "";
+
+  const projectInstructionsBlock =
+    projectInstructions?.trim()
+      ? `\n\n<project_instructions>\n${projectInstructions.trim()}\n</project_instructions>`
       : "";
 
   const agentModeBlock = agentMode ? `\n\n${agentPrompt}` : "";
@@ -89,10 +96,10 @@ export const systemPrompt = ({
     : "\n\nImage Generation: You can generate images using the generateImage tool with detailed, descriptive prompts when users request images.";
 
   if (selectedChatModel === "chat-model-reasoning") {
-    return `${regularPrompt}${customInstructionsBlock}${agentModeBlock}\n\n${requestPrompt}`;
+    return `${regularPrompt}${projectInstructionsBlock}${customInstructionsBlock}${agentModeBlock}\n\n${requestPrompt}`;
   }
 
-  return `${regularPrompt}${customInstructionsBlock}${agentModeBlock}\n\n${requestPrompt}\n\n${artifactsPrompt}${imageGenerationPrompt}`;
+  return `${regularPrompt}${projectInstructionsBlock}${customInstructionsBlock}${agentModeBlock}\n\n${requestPrompt}\n\n${artifactsPrompt}${imageGenerationPrompt}`;
 };
 
 /**

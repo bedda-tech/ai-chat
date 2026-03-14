@@ -33,6 +33,8 @@ import {
   type McpServer,
   message,
   passwordResetToken,
+  type Project,
+  project,
   type Suggestion,
   stream,
   suggestion,
@@ -946,4 +948,56 @@ export async function updateMcpServer(
 
 export async function deleteMcpServer(id: string, userId: string): Promise<void> {
   await db.delete(mcpServer).where(and(eq(mcpServer.id, id), eq(mcpServer.userId, userId)));
+}
+
+// Projects
+export async function getProjectsByUserId(userId: string): Promise<Project[]> {
+  return db.select().from(project).where(eq(project.userId, userId)).orderBy(asc(project.createdAt));
+}
+
+export async function getProjectById(id: string, userId: string): Promise<Project | null> {
+  const [p] = await db.select().from(project).where(and(eq(project.id, id), eq(project.userId, userId)));
+  return p ?? null;
+}
+
+export async function createProject(data: {
+  userId: string;
+  name: string;
+  description?: string;
+  instructions?: string;
+}): Promise<Project> {
+  const [p] = await db
+    .insert(project)
+    .values({
+      userId: data.userId,
+      name: data.name,
+      description: data.description ?? null,
+      instructions: data.instructions ?? null,
+    })
+    .returning();
+  return p;
+}
+
+export async function updateProject(
+  id: string,
+  userId: string,
+  data: { name?: string; description?: string; instructions?: string }
+): Promise<Project | null> {
+  const [p] = await db
+    .update(project)
+    .set({ ...data, updatedAt: new Date() })
+    .where(and(eq(project.id, id), eq(project.userId, userId)))
+    .returning();
+  return p ?? null;
+}
+
+export async function deleteProject(id: string, userId: string): Promise<void> {
+  await db.delete(project).where(and(eq(project.id, id), eq(project.userId, userId)));
+}
+
+export async function assignChatToProject(chatId: string, projectId: string | null, userId: string): Promise<void> {
+  await db
+    .update(chat)
+    .set({ projectId })
+    .where(and(eq(chat.id, chatId), eq(chat.userId, userId)));
 }
