@@ -32,6 +32,12 @@ export default function Page() {
         type: "error",
         description: "Invalid credentials!",
       });
+    } else if (state.status === "oauth_account") {
+      toast({
+        type: "error",
+        description:
+          "This account uses Google or GitHub sign-in. Please use the buttons below.",
+      });
     } else if (state.status === "invalid_data") {
       toast({
         type: "error",

@@ -7,7 +7,7 @@ export async function sendPasswordResetEmail(
   resetUrl: string
 ): Promise<void> {
   await resend.emails.send({
-    from: "Bedda <noreply@bedda.ai>",
+    from: "Bedda <onboarding@resend.dev>",
     to: email,
     subject: "Reset your Bedda password",
     html: `

@@ -21,7 +21,13 @@ const authFormSchema = z.object({
 });
 
 export type LoginActionState = {
-  status: "idle" | "in_progress" | "success" | "failed" | "invalid_data";
+  status:
+    | "idle"
+    | "in_progress"
+    | "success"
+    | "failed"
+    | "invalid_data"
+    | "oauth_account";
 };
 
 export const login = async (
@@ -33,6 +39,11 @@ export const login = async (
       email: formData.get("email"),
       password: formData.get("password"),
     });
+
+    const [existingUser] = await getUser(validatedData.email);
+    if (existingUser && !existingUser.password) {
+      return { status: "oauth_account" };
+    }
 
     await signIn("credentials", {
       email: validatedData.email,
@@ -133,6 +144,7 @@ export const forgotPassword = async (
     if (error instanceof z.ZodError) {
       return { status: "invalid_data" };
     }
+    console.error("[forgot-password]", error);
     return { status: "failed" };
   }
 };
