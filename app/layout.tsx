@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Noto_Sans, Noto_Sans_Mono } from "next/font/google";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/theme-provider";
+import { PwaRegistration } from "@/components/pwa-registration";
 
 import "./globals.css";
 import { SessionProvider } from "next-auth/react";
@@ -34,7 +35,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-  manifest: "/images/favicons/site.webmanifest",
 };
 
 export const viewport = {
@@ -113,6 +113,7 @@ export default function RootLayout({
           enableSystem
         >
           <Toaster position="top-center" />
+          <PwaRegistration />
           <SessionProvider>
             {children}
             <Analytics />
