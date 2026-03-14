@@ -1,12 +1,54 @@
 import equal from "fast-deep-equal";
-import { memo } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { useSWRConfig } from "swr";
 import { useCopyToClipboard } from "usehooks-ts";
 import type { Vote } from "@/lib/db/schema";
 import type { ChatMessage } from "@/lib/types";
 import { Action, Actions } from "./elements/actions";
-import { CopyIcon, PencilEditIcon, ThumbDownIcon, ThumbUpIcon } from "./icons";
+import { CopyIcon, PencilEditIcon, SpeakerIcon, SpeakerStopIcon, ThumbDownIcon, ThumbUpIcon } from "./icons";
+
+function useTTS(text: string | undefined) {
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+
+  const speak = useCallback(() => {
+    if (!text) return;
+
+    if (typeof window === "undefined" || !window.speechSynthesis) {
+      toast.error("Text-to-speech is not supported in your browser.");
+      return;
+    }
+
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utteranceRef.current = utterance;
+
+    utterance.onstart = () => setIsSpeaking(true);
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
+
+    window.speechSynthesis.speak(utterance);
+  }, [text]);
+
+  const stop = useCallback(() => {
+    if (typeof window !== "undefined" && window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+    }
+    setIsSpeaking(false);
+  }, []);
+
+  // Cancel on unmount
+  useEffect(() => {
+    return () => {
+      if (typeof window !== "undefined" && window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
+
+  return { isSpeaking, speak, stop };
+}
 
 export function PureMessageActions({
   chatId,
@@ -24,15 +66,17 @@ export function PureMessageActions({
   const { mutate } = useSWRConfig();
   const [_, copyToClipboard] = useCopyToClipboard();
 
-  if (isLoading) {
-    return null;
-  }
-
   const textFromParts = message.parts
     ?.filter((part) => part.type === "text")
     .map((part) => part.text)
     .join("\n")
     .trim();
+
+  const { isSpeaking, speak, stop } = useTTS(textFromParts);
+
+  if (isLoading) {
+    return null;
+  }
 
   const handleCopy = async () => {
     if (!textFromParts) {
@@ -70,6 +114,13 @@ export function PureMessageActions({
     <Actions className="-ml-0.5">
       <Action onClick={handleCopy} tooltip="Copy">
         <CopyIcon />
+      </Action>
+
+      <Action
+        onClick={isSpeaking ? stop : speak}
+        tooltip={isSpeaking ? "Stop speaking" : "Read aloud"}
+      >
+        {isSpeaking ? <SpeakerStopIcon /> : <SpeakerIcon />}
       </Action>
 
       <Action

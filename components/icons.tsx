@@ -1250,6 +1250,65 @@ export const MicOffIcon = ({ size = 16 }: { size?: number }) => {
   );
 };
 
+export const SpeakerIcon = ({ size = 16 }: { size?: number }) => {
+  return (
+    <svg
+      height={size}
+      strokeLinejoin="round"
+      style={{ color: "currentcolor" }}
+      viewBox="0 0 16 16"
+      width={size}
+    >
+      <path
+        clipRule="evenodd"
+        d="M9 2L5.5 5H2.5C1.94772 5 1.5 5.44772 1.5 6V10C1.5 10.5523 1.94772 11 2.5 11H5.5L9 14V2ZM7.5 4.37014V11.6299L5.83333 10.1667L5.5 10H2.5V6H5.5L5.83333 5.83333L7.5 4.37014Z"
+        fill="currentColor"
+        fillRule="evenodd"
+      />
+      <path
+        d="M11 6C11.7956 6.79558 12.25 7.875 12.25 9C12.25 10.125 11.7956 11.2044 11 12"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="1.5"
+        fill="none"
+      />
+      <path
+        d="M13 4C14.3962 5.39622 15.25 7.10051 15.25 9C15.25 10.8995 14.3962 12.6038 13 14"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="1.5"
+        fill="none"
+      />
+    </svg>
+  );
+};
+
+export const SpeakerStopIcon = ({ size = 16 }: { size?: number }) => {
+  return (
+    <svg
+      height={size}
+      strokeLinejoin="round"
+      style={{ color: "currentcolor" }}
+      viewBox="0 0 16 16"
+      width={size}
+    >
+      <path
+        clipRule="evenodd"
+        d="M9 2L5.5 5H2.5C1.94772 5 1.5 5.44772 1.5 6V10C1.5 10.5523 1.94772 11 2.5 11H5.5L9 14V2ZM7.5 4.37014V11.6299L5.83333 10.1667L5.5 10H2.5V6H5.5L5.83333 5.83333L7.5 4.37014Z"
+        fill="currentColor"
+        fillRule="evenodd"
+      />
+      <path
+        d="M11.5 6.5L14.5 9.5M14.5 6.5L11.5 9.5"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="1.5"
+        fill="none"
+      />
+    </svg>
+  );
+};
+
 export const RocketIcon = ({ size = 16 }: { size?: number }) => {
   return (
     <svg
