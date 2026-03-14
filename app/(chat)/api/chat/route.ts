@@ -46,6 +46,7 @@ import {
   getChatById,
   getEnabledMcpServers,
   getMessagesByChatId,
+  getProjectById,
   getUserPreferences,
   saveChat,
   saveMessages,
@@ -166,6 +167,13 @@ export async function POST(request: Request) {
       getChatById({ id }),
       userPrefsPromise,
     ]);
+
+    // Fetch project instructions if chat belongs to a project
+    let projectInstructions: string | undefined;
+    if (chat?.projectId) {
+      const proj = await getProjectById(chat.projectId, session.user.id);
+      projectInstructions = proj?.instructions ?? undefined;
+    }
 
     if (chat) {
       if (chat.userId !== session.user.id) {
@@ -345,6 +353,7 @@ export async function POST(request: Request) {
           system: systemPrompt({
             selectedChatModel,
             requestHints,
+            projectInstructions,
             customInstructions: userPrefs?.customInstructions ?? undefined,
             agentMode,
           }),
