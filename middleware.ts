@@ -62,6 +62,6 @@ export const config = {
      * - favicon.ico, sitemap.xml, robots.txt (metadata files)
      * - images (static image assets and favicons)
      */
-    "/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|images).*)",
+    "/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|images|a/script\\.js|a/api/send).*)",
   ],
 };
