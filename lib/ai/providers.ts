@@ -3,9 +3,32 @@ import {
   customProvider,
   extractReasoningMiddleware,
   wrapLanguageModel,
+  wrapProvider,
 } from "ai";
 import { isTestEnvironment } from "../constants";
+import { loggingMiddleware, performanceMiddleware } from "./middleware";
 import modelsData from "./models-data.json";
+
+const productionProvider = customProvider({
+  languageModels: {
+    // Dynamically register all models from JSON data
+    ...Object.fromEntries(
+      modelsData.models.map((model) => [
+        model.id,
+        gateway.languageModel(model.gatewayId),
+      ])
+    ),
+
+    // Legacy/Default Models (keeping for backward compatibility)
+    "chat-model": gateway.languageModel("xai/grok-2-vision-1212"),
+    "chat-model-reasoning": wrapLanguageModel({
+      model: gateway.languageModel("xai/grok-3-mini"),
+      middleware: extractReasoningMiddleware({ tagName: "think" }),
+    }),
+    "title-model": gateway.languageModel("xai/grok-2-1212"),
+    "artifact-model": gateway.languageModel("xai/grok-2-1212"),
+  },
+});
 
 export const myProvider = isTestEnvironment
   ? (() => {
@@ -24,23 +47,7 @@ export const myProvider = isTestEnvironment
         },
       });
     })()
-  : customProvider({
-      languageModels: {
-        // Dynamically register all models from JSON data
-        ...Object.fromEntries(
-          modelsData.models.map((model) => [
-            model.id,
-            gateway.languageModel(model.gatewayId),
-          ])
-        ),
-
-        // Legacy/Default Models (keeping for backward compatibility)
-        "chat-model": gateway.languageModel("xai/grok-2-vision-1212"),
-        "chat-model-reasoning": wrapLanguageModel({
-          model: gateway.languageModel("xai/grok-3-mini"),
-          middleware: extractReasoningMiddleware({ tagName: "think" }),
-        }),
-        "title-model": gateway.languageModel("xai/grok-2-1212"),
-        "artifact-model": gateway.languageModel("xai/grok-2-1212"),
-      },
+  : wrapProvider({
+      provider: productionProvider,
+      languageModelMiddleware: [loggingMiddleware, performanceMiddleware],
     });
