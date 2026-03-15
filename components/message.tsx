@@ -11,6 +11,7 @@ import { DocumentToolResult } from "./document";
 import { DocumentPreview } from "./document-preview";
 import { MessageContent } from "./elements/message";
 import { Response } from "./elements/response";
+import { CodeBlock } from "./elements/code-block";
 import {
   Tool,
   ToolContent,
@@ -728,6 +729,199 @@ const PurePreviewMessage = ({
 
                       return null;
                     })()}
+                  </ToolContent>
+                </Tool>
+              );
+            }
+
+            if (type === "tool-transcribeAudio") {
+              const toolPart = part as any;
+              const { toolCallId, state } = toolPart;
+
+              return (
+                <Tool defaultOpen={true} key={toolCallId}>
+                  <ToolHeader state={state} type="tool-transcribeAudio" />
+                  <ToolContent>
+                    {state === "input-available" && toolPart.input && (
+                      <ToolInput input={toolPart.input} />
+                    )}
+                    {state === "output-available" && toolPart.output && (
+                      <div className="space-y-3 p-4">
+                        {toolPart.output.success ? (
+                          <>
+                            <div className="flex items-center gap-4 text-muted-foreground text-xs">
+                              <span>{toolPart.output.wordCount} words</span>
+                              {toolPart.output.language && toolPart.output.language !== "auto-detected" && (
+                                <span>Language: {toolPart.output.language}</span>
+                              )}
+                            </div>
+                            <div className="rounded-md bg-muted/50 p-3">
+                              <p className="text-sm leading-relaxed whitespace-pre-wrap">
+                                {toolPart.output.transcript}
+                              </p>
+                            </div>
+                          </>
+                        ) : (
+                          <div className="rounded-md bg-destructive/10 p-3 text-destructive text-sm">
+                            {toolPart.output.error || "Failed to transcribe audio"}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </ToolContent>
+                </Tool>
+              );
+            }
+
+            if (type === "tool-generateStructuredData") {
+              const toolPart = part as any;
+              const { toolCallId, state } = toolPart;
+
+              return (
+                <Tool defaultOpen={true} key={toolCallId}>
+                  <ToolHeader state={state} type="tool-generateStructuredData" />
+                  <ToolContent>
+                    {state === "input-available" && toolPart.input && (
+                      <ToolInput input={toolPart.input} />
+                    )}
+                    {state === "output-available" && toolPart.output && (
+                      <div className="space-y-3 p-4">
+                        {toolPart.output.success ? (
+                          <>
+                            <div className="flex items-center gap-3 text-muted-foreground text-xs">
+                              <span className="rounded-full bg-primary/10 px-2 py-0.5 font-medium text-primary">
+                                {toolPart.output.dataType}
+                              </span>
+                              {toolPart.output.count > 1 && (
+                                <span>{toolPart.output.count} items</span>
+                              )}
+                            </div>
+                            <div className="rounded-md bg-muted/50">
+                              <CodeBlock
+                                code={JSON.stringify(toolPart.output.data, null, 2)}
+                                language="json"
+                              />
+                            </div>
+                          </>
+                        ) : (
+                          <div className="rounded-md bg-destructive/10 p-3 text-destructive text-sm">
+                            {toolPart.output.error || "Failed to generate structured data"}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </ToolContent>
+                </Tool>
+              );
+            }
+
+            if (type === "tool-generateTextEmbeddings") {
+              const toolPart = part as any;
+              const { toolCallId, state } = toolPart;
+
+              return (
+                <Tool defaultOpen={false} key={toolCallId}>
+                  <ToolHeader state={state} type="tool-generateTextEmbeddings" />
+                  <ToolContent>
+                    {state === "input-available" && toolPart.input && (
+                      <ToolInput input={{ texts: toolPart.input.texts }} />
+                    )}
+                    {state === "output-available" && toolPart.output && (
+                      <div className="space-y-2 p-4">
+                        {toolPart.output.success ? (
+                          <div className="flex flex-wrap gap-4 text-sm">
+                            <div className="rounded-lg border border-border bg-muted/30 px-3 py-2">
+                              <div className="text-muted-foreground text-xs">Texts embedded</div>
+                              <div className="font-medium">{toolPart.output.count}</div>
+                            </div>
+                            <div className="rounded-lg border border-border bg-muted/30 px-3 py-2">
+                              <div className="text-muted-foreground text-xs">Dimensions</div>
+                              <div className="font-medium">{toolPart.output.dimensions}</div>
+                            </div>
+                            {toolPart.output.usage?.tokens && (
+                              <div className="rounded-lg border border-border bg-muted/30 px-3 py-2">
+                                <div className="text-muted-foreground text-xs">Tokens used</div>
+                                <div className="font-medium">{toolPart.output.usage.tokens}</div>
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          <div className="rounded-md bg-destructive/10 p-3 text-destructive text-sm">
+                            {toolPart.output.error || "Failed to generate embeddings"}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </ToolContent>
+                </Tool>
+              );
+            }
+
+            if (type === "tool-compareTextSimilarity") {
+              const toolPart = part as any;
+              const { toolCallId, state } = toolPart;
+
+              return (
+                <Tool defaultOpen={true} key={toolCallId}>
+                  <ToolHeader state={state} type="tool-compareTextSimilarity" />
+                  <ToolContent>
+                    {state === "input-available" && toolPart.input && (
+                      <ToolInput input={toolPart.input} />
+                    )}
+                    {state === "output-available" && toolPart.output && (
+                      <div className="space-y-4 p-4">
+                        {toolPart.output.success ? (
+                          <>
+                            {toolPart.output.summary && (
+                              <div className="flex flex-wrap gap-3 text-sm">
+                                <div className="rounded-lg border border-border bg-muted/30 px-3 py-2">
+                                  <div className="text-muted-foreground text-xs">Avg similarity</div>
+                                  <div className="font-medium">
+                                    {Math.round(toolPart.output.summary.averageSimilarity * 100)}%
+                                  </div>
+                                </div>
+                                <div className="rounded-lg border border-border bg-muted/30 px-3 py-2">
+                                  <div className="text-muted-foreground text-xs">Threshold</div>
+                                  <div className="font-medium">{toolPart.output.threshold}</div>
+                                </div>
+                              </div>
+                            )}
+                            <div className="space-y-2">
+                              {toolPart.output.comparisons?.map((c: any, i: number) => (
+                                <div
+                                  key={i}
+                                  className="rounded-lg border border-border bg-muted/30 p-3"
+                                >
+                                  <div className="mb-1 flex items-center justify-between gap-2">
+                                    <div
+                                      className={`rounded-full px-2 py-0.5 text-xs font-medium ${
+                                        c.isSimilar
+                                          ? "bg-green-500/10 text-green-600 dark:text-green-400"
+                                          : "bg-muted text-muted-foreground"
+                                      }`}
+                                    >
+                                      {Math.round(c.similarity * 100)}% {c.isSimilar ? "similar" : "different"}
+                                    </div>
+                                  </div>
+                                  <div className="grid grid-cols-2 gap-2 text-xs text-foreground/70">
+                                    <div className="truncate rounded bg-background/50 px-2 py-1">
+                                      {c.text1}
+                                    </div>
+                                    <div className="truncate rounded bg-background/50 px-2 py-1">
+                                      {c.text2}
+                                    </div>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </>
+                        ) : (
+                          <div className="rounded-md bg-destructive/10 p-3 text-destructive text-sm">
+                            {toolPart.output.error || "Failed to compare text similarity"}
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </ToolContent>
                 </Tool>
               );
