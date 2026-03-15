@@ -111,25 +111,27 @@ export const getCacheableSystemPrompt = ({
   selectedChatModel,
   requestHints,
   customInstructions,
+  projectInstructions,
   agentMode,
 }: {
   selectedChatModel: string;
   requestHints: RequestHints;
   customInstructions?: string;
+  projectInstructions?: string;
   agentMode?: boolean;
 }) => {
-  const content = systemPrompt({ selectedChatModel, requestHints, customInstructions, agentMode });
+  const content = systemPrompt({ selectedChatModel, requestHints, customInstructions, projectInstructions, agentMode });
 
   // Determine if this model supports caching
   const isAnthropicModel = selectedChatModel.includes('anthropic') || selectedChatModel.includes('claude');
   const isOpenAIModel = selectedChatModel.includes('openai') || selectedChatModel.includes('gpt');
 
-  // For Anthropic models, add cache control
+  // For Anthropic models, add cache control via providerOptions
   if (isAnthropicModel) {
     return {
       role: 'system' as const,
       content,
-      experimental_providerMetadata: {
+      providerOptions: {
         anthropic: {
           cacheControl: { type: 'ephemeral' }
         }
