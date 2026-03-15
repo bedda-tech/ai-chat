@@ -1,6 +1,7 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Noto_Sans, Noto_Sans_Mono } from "next/font/google";
+import Script from "next/script";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 import { PwaRegistration } from "@/components/pwa-registration";
@@ -106,6 +107,13 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
+        <Script
+          async
+          defer
+          data-website-id="78383df2-9b6e-4622-8f60-af512e108991"
+          src="/a/script.js"
+          strategy="afterInteractive"
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
