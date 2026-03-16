@@ -8,6 +8,14 @@ import type { updateDocument } from "./ai/tools/update-document";
 import type { executeCodeTool } from "./ai/tools/execute-code";
 import type { webSearchTool } from "./ai/tools/web-search";
 import type { queryKnowledgeBaseTool } from "./ai/tools/knowledge-base";
+import type { analyzeDataTool } from "./ai/tools/analyze-data";
+import type { generateStructuredDataTool } from "./ai/tools/generate-structured-data";
+import type { transcribeAudioTool } from "./ai/tools/transcribe-audio";
+import type { generateImageTool } from "./ai/tools/generate-image";
+import type {
+  generateTextEmbeddingsTool,
+  compareTextSimilarityTool,
+} from "./ai/tools/text-embeddings";
 import type { Suggestion } from "./db/schema";
 import type { AppUsage } from "./usage";
 
@@ -26,9 +34,13 @@ type executeCodeToolType = InferUITool<ReturnType<typeof executeCodeTool>>;
 type queryKnowledgeBaseToolType = InferUITool<ReturnType<typeof queryKnowledgeBaseTool>>;
 type createDocumentTool = InferUITool<ReturnType<typeof createDocument>>;
 type updateDocumentTool = InferUITool<ReturnType<typeof updateDocument>>;
-type requestSuggestionsTool = InferUITool<
-  ReturnType<typeof requestSuggestions>
->;
+type requestSuggestionsTool = InferUITool<ReturnType<typeof requestSuggestions>>;
+type analyzeDataToolType = InferUITool<ReturnType<typeof analyzeDataTool>>;
+type generateStructuredDataToolType = InferUITool<ReturnType<typeof generateStructuredDataTool>>;
+type transcribeAudioToolType = InferUITool<ReturnType<typeof transcribeAudioTool>>;
+type generateImageToolType = InferUITool<ReturnType<typeof generateImageTool>>;
+type generateTextEmbeddingsToolType = InferUITool<ReturnType<typeof generateTextEmbeddingsTool>>;
+type compareTextSimilarityToolType = InferUITool<ReturnType<typeof compareTextSimilarityTool>>;
 
 export type ChatTools = {
   getWeather: weatherTool;
@@ -38,6 +50,12 @@ export type ChatTools = {
   createDocument: createDocumentTool;
   updateDocument: updateDocumentTool;
   requestSuggestions: requestSuggestionsTool;
+  analyzeData: analyzeDataToolType;
+  generateStructuredData: generateStructuredDataToolType;
+  transcribeAudio: transcribeAudioToolType;
+  generateImage: generateImageToolType;
+  generateTextEmbeddings: generateTextEmbeddingsToolType;
+  compareTextSimilarity: compareTextSimilarityToolType;
 };
 
 export type CustomUIDataTypes = {

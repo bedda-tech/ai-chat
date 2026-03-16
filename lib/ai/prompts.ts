@@ -67,12 +67,14 @@ export const systemPrompt = ({
   requestHints,
   customInstructions,
   projectInstructions,
+  kbContext,
   agentMode,
 }: {
   selectedChatModel: string;
   requestHints: RequestHints;
   customInstructions?: string;
   projectInstructions?: string;
+  kbContext?: string;
   agentMode?: boolean;
 }) => {
   const requestPrompt = getRequestPromptFromHints(requestHints);
@@ -87,6 +89,11 @@ export const systemPrompt = ({
       ? `\n\n<project_instructions>\n${projectInstructions.trim()}\n</project_instructions>`
       : "";
 
+  const kbContextBlock =
+    kbContext?.trim()
+      ? `\n\n<knowledge_base_context>\nThe following passages from the user's uploaded documents are relevant to their message. Use them to inform your response:\n\n${kbContext.trim()}\n</knowledge_base_context>`
+      : "";
+
   const agentModeBlock = agentMode ? `\n\n${agentPrompt}` : "";
 
   const isGemini25FlashImage = selectedChatModel === "google-gemini-2.5-flash-image-preview";
@@ -96,10 +103,10 @@ export const systemPrompt = ({
     : "\n\nImage Generation: You can generate images using the generateImage tool with detailed, descriptive prompts when users request images.";
 
   if (selectedChatModel === "chat-model-reasoning") {
-    return `${regularPrompt}${projectInstructionsBlock}${customInstructionsBlock}${agentModeBlock}\n\n${requestPrompt}`;
+    return `${regularPrompt}${projectInstructionsBlock}${customInstructionsBlock}${kbContextBlock}${agentModeBlock}\n\n${requestPrompt}`;
   }
 
-  return `${regularPrompt}${projectInstructionsBlock}${customInstructionsBlock}${agentModeBlock}\n\n${requestPrompt}\n\n${artifactsPrompt}${imageGenerationPrompt}`;
+  return `${regularPrompt}${projectInstructionsBlock}${customInstructionsBlock}${kbContextBlock}${agentModeBlock}\n\n${requestPrompt}\n\n${artifactsPrompt}${imageGenerationPrompt}`;
 };
 
 /**
@@ -112,15 +119,17 @@ export const getCacheableSystemPrompt = ({
   requestHints,
   customInstructions,
   projectInstructions,
+  kbContext,
   agentMode,
 }: {
   selectedChatModel: string;
   requestHints: RequestHints;
   customInstructions?: string;
   projectInstructions?: string;
+  kbContext?: string;
   agentMode?: boolean;
 }) => {
-  const content = systemPrompt({ selectedChatModel, requestHints, customInstructions, projectInstructions, agentMode });
+  const content = systemPrompt({ selectedChatModel, requestHints, customInstructions, projectInstructions, kbContext, agentMode });
 
   // Determine if this model supports caching
   const isAnthropicModel = selectedChatModel.includes('anthropic') || selectedChatModel.includes('claude');

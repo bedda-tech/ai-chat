@@ -26,6 +26,8 @@ import {
   chat,
   type DBMessage,
   document,
+  driveConnection,
+  type DriveConnection,
   type KnowledgeBaseDocument,
   knowledgeBaseChunk,
   knowledgeBaseDocument,
@@ -704,6 +706,15 @@ export async function listKBDocuments(
     .orderBy(desc(knowledgeBaseDocument.createdAt));
 }
 
+export async function hasKBDocuments(userId: string): Promise<boolean> {
+  const result = await db
+    .select({ id: knowledgeBaseDocument.id })
+    .from(knowledgeBaseDocument)
+    .where(eq(knowledgeBaseDocument.userId, userId))
+    .limit(1);
+  return result.length > 0;
+}
+
 export async function deleteKBDocument({
   id,
   userId,
@@ -1000,4 +1011,41 @@ export async function assignChatToProject(chatId: string, projectId: string | nu
     .update(chat)
     .set({ projectId })
     .where(and(eq(chat.id, chatId), eq(chat.userId, userId)));
+}
+
+// Google Drive connection queries
+export async function getDriveConnection(userId: string): Promise<DriveConnection | null> {
+  const [conn] = await db.select().from(driveConnection).where(eq(driveConnection.userId, userId));
+  return conn ?? null;
+}
+
+export async function saveDriveConnection(
+  userId: string,
+  data: { accessToken: string; refreshToken?: string | null; expiresAt?: number | null; scope?: string | null }
+): Promise<DriveConnection> {
+  const [conn] = await db
+    .insert(driveConnection)
+    .values({
+      userId,
+      accessToken: data.accessToken,
+      refreshToken: data.refreshToken ?? null,
+      expiresAt: data.expiresAt ?? null,
+      scope: data.scope ?? null,
+    })
+    .onConflictDoUpdate({
+      target: driveConnection.userId,
+      set: {
+        accessToken: data.accessToken,
+        refreshToken: data.refreshToken ?? null,
+        expiresAt: data.expiresAt ?? null,
+        scope: data.scope ?? null,
+        updatedAt: new Date(),
+      },
+    })
+    .returning();
+  return conn;
+}
+
+export async function deleteDriveConnection(userId: string): Promise<void> {
+  await db.delete(driveConnection).where(eq(driveConnection.userId, userId));
 }

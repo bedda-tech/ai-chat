@@ -2,11 +2,13 @@ import { geolocation } from "@vercel/functions";
 import {
   convertToModelMessages,
   createUIMessageStream,
+  embed,
   JsonToSseTransformStream,
   smoothStream,
   stepCountIs,
   streamText,
 } from "ai";
+import { openai } from "@ai-sdk/openai";
 import { createMCPClient } from "@ai-sdk/mcp";
 import { unstable_cache as cache } from "next/cache";
 import { after } from "next/server";
@@ -48,8 +50,10 @@ import {
   getMessagesByChatId,
   getProjectById,
   getUserPreferences,
+  hasKBDocuments,
   saveChat,
   saveMessages,
+  searchKBChunks,
   updateChatLastContextById,
 } from "@/lib/db/queries";
 import { isModelAllowedForTier } from "@/lib/ai/entitlements";
@@ -173,6 +177,38 @@ export async function POST(request: Request) {
     if (chat?.projectId) {
       const proj = await getProjectById(chat.projectId, session.user.id);
       projectInstructions = proj?.instructions ?? undefined;
+    }
+
+    // Auto-inject relevant KB context into every prompt (issue #26)
+    let kbContext: string | undefined;
+    const userHasKB = await hasKBDocuments(session.user.id);
+    if (userHasKB) {
+      try {
+        const lastUserText = message.parts
+          .filter((p: { type: string }) => p.type === "text")
+          .map((p: { type: string; text?: string }) => (p as { type: string; text: string }).text)
+          .join(" ")
+          .trim();
+        if (lastUserText) {
+          const { embedding } = await embed({
+            model: openai.textEmbeddingModel("text-embedding-3-small"),
+            value: lastUserText,
+          });
+          const chunks = await searchKBChunks({
+            userId: session.user.id,
+            queryEmbedding: embedding,
+            limit: 3,
+            similarityThreshold: 0.4,
+          });
+          if (chunks.length > 0) {
+            kbContext = chunks
+              .map((c) => `[${c.documentTitle}]: ${c.content}`)
+              .join("\n---\n");
+          }
+        }
+      } catch (err) {
+        console.error("[chat] KB auto-injection failed:", err);
+      }
     }
 
     if (chat) {
@@ -364,6 +400,7 @@ export async function POST(request: Request) {
             requestHints,
             projectInstructions,
             customInstructions: userPrefs?.customInstructions ?? undefined,
+            kbContext,
             agentMode,
           }),
           messages: await convertToModelMessages(uiMessages),

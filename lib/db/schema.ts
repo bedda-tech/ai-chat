@@ -423,3 +423,19 @@ export const mcpServer = pgTable("McpServer", {
 });
 
 export type McpServer = InferSelectModel<typeof mcpServer>;
+
+// Google Drive OAuth connection per user
+export const driveConnection = pgTable("DriveConnection", {
+  userId: uuid("userId")
+    .primaryKey()
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  accessToken: text("accessToken").notNull(),
+  refreshToken: text("refreshToken"),
+  expiresAt: integer("expiresAt"),
+  scope: text("scope"),
+  connectedAt: timestamp("connectedAt").notNull().defaultNow(),
+  updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+});
+
+export type DriveConnection = InferSelectModel<typeof driveConnection>;

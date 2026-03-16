@@ -112,6 +112,32 @@ export function AppSidebar({ user }: { user: User | undefined }) {
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild>
                     <Link
+                      href="/drive"
+                      onClick={() => {
+                        setOpenMobile(false);
+                      }}
+                    >
+                      <svg
+                        fill="none"
+                        height="16"
+                        stroke="currentColor"
+                        strokeWidth={1.75}
+                        viewBox="0 0 24 24"
+                        width="16"
+                      >
+                        <path
+                          d="M3 7a2 2 0 0 1 2-2h9.586a1 1 0 0 1 .707.293l3.414 3.414A1 1 0 0 1 19 9.414V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                      <span>Google Drive</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild>
+                    <Link
                       href="/roadmap"
                       onClick={() => {
                         setOpenMobile(false);
