@@ -6,7 +6,7 @@ import {
   wrapProvider,
 } from "ai";
 import { isTestEnvironment } from "../constants";
-import { loggingMiddleware, performanceMiddleware } from "./middleware";
+import { guardrailsMiddleware, loggingMiddleware, performanceMiddleware } from "./middleware";
 import modelsData from "./models-data.json";
 
 const productionProvider = customProvider({
@@ -49,5 +49,5 @@ export const myProvider = isTestEnvironment
     })()
   : wrapProvider({
       provider: productionProvider,
-      languageModelMiddleware: [loggingMiddleware, performanceMiddleware],
+      languageModelMiddleware: [loggingMiddleware, performanceMiddleware, guardrailsMiddleware],
     });

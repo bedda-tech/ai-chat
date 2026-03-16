@@ -134,3 +134,74 @@ export function clearCache(): void {}
 export function getCacheStats(): { size: number; entries: Array<{ key: string; age: number }> } {
   return { size: 0, entries: [] };
 }
+
+// ─── Guardrails ──────────────────────────────────────────────────────────────
+
+const REDACTED_RESPONSE =
+  "I can't share my internal instructions or configuration. Is there something else I can help you with?";
+
+/**
+ * Fragments that, if present in a model response, indicate system prompt leakage.
+ * These are stable strings from prompts.ts that the model should never repeat verbatim.
+ */
+const SYSTEM_PROMPT_FRAGMENTS = [
+  // regularPrompt
+  "You are a friendly assistant! Keep your responses concise",
+  // artifactsPrompt
+  "Artifacts is a special user interface mode",
+  "DO NOT UPDATE DOCUMENTS IMMEDIATELY AFTER CREATING THEM",
+  // agentPrompt
+  "You are running in Deep Research mode",
+  // systemPrompt XML wrappers
+  "<custom_instructions>",
+  "<knowledge_base_context>",
+  "<project_instructions>",
+  // internal tool names that should never be narrated
+  "webSearch tool",
+  "artifactsPrompt",
+];
+
+function containsSystemPromptLeak(text: string): boolean {
+  const lower = text.toLowerCase();
+  return SYSTEM_PROMPT_FRAGMENTS.some((fragment) =>
+    lower.includes(fragment.toLowerCase())
+  );
+}
+
+/**
+ * Guardrails middleware — Phase 1.
+ * Detects system prompt leakage in non-streaming (generate) responses and replaces
+ * the output with a safe fallback message. Streaming responses pass through — buffering
+ * full streams to intercept is a Phase 2 concern.
+ */
+export const guardrailsMiddleware: LanguageModelMiddleware = {
+  specificationVersion: "v3",
+
+  wrapGenerate: async ({ doGenerate, model }) => {
+    const result = await doGenerate();
+
+    // In AI SDK v6, text content lives in result.content (array of parts)
+    const textContent = result.content
+      .filter((p): p is Extract<typeof p, { type: "text" }> => p.type === "text")
+      .map((p) => p.text)
+      .join("");
+
+    if (containsSystemPromptLeak(textContent)) {
+      console.warn(
+        `[guardrails] System prompt leakage detected in generate response (model: ${model.modelId})`
+      );
+      const sanitizedContent = result.content.map((p) =>
+        p.type === "text" ? { ...p, text: REDACTED_RESPONSE } : p
+      );
+      return { ...result, content: sanitizedContent };
+    }
+
+    return result;
+  },
+
+  // Phase 2: accumulate stream chunks and intercept mid-stream.
+  // For now, pass through — buffering degrades perceived latency.
+  wrapStream: async ({ doStream }) => {
+    return doStream();
+  },
+};
