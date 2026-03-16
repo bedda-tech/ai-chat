@@ -20,7 +20,7 @@ import { getUsage } from "tokenlens/helpers";
 import { auth, type UserType } from "@/app/(auth)/auth";
 import type { VisibilityType } from "@/components/visibility-selector";
 import { buildGatewayConfig, getThinkingBudget } from "@/lib/ai/gateway-config";
-import { getModelConfig } from "@/lib/ai/model-config";
+import { getModelConfig, getModelContextWindow } from "@/lib/ai/model-config";
 import type { ChatModel } from "@/lib/ai/models";
 import { type RequestHints, getCacheableSystemPrompt } from "@/lib/ai/prompts";
 import { myProvider } from "@/lib/ai/providers";
@@ -61,7 +61,7 @@ import {
 import type { ChatMessage } from "@/lib/types";
 import type { AppUsage } from "@/lib/usage";
 import { recordUsage } from "@/lib/usage/tracking";
-import { convertToUIMessages, generateUUID } from "@/lib/utils";
+import { convertToUIMessages, generateUUID, pruneUIMessages } from "@/lib/utils";
 import { generateTitleFromUserMessage } from "../../actions";
 import { type PostRequestBody, postRequestBodySchema } from "./schema";
 
@@ -193,7 +193,16 @@ export async function POST(request: Request) {
     }
 
     const messagesFromDb = await getMessagesByChatId({ id });
-    const uiMessages = [...convertToUIMessages(messagesFromDb), message];
+    const allUiMessages = [...convertToUIMessages(messagesFromDb), message];
+
+    // Prune history to 80% of model context window to prevent overflow on long conversations
+    const contextWindow = getModelContextWindow(selectedChatModel);
+    const uiMessages = pruneUIMessages(allUiMessages, Math.floor(contextWindow * 0.8));
+    if (uiMessages.length < allUiMessages.length) {
+      console.log(
+        `[chat] pruned ${allUiMessages.length - uiMessages.length} messages for model ${selectedChatModel} (context: ${contextWindow})`
+      );
+    }
 
     const { longitude, latitude, city, country } = geolocation(request);
 

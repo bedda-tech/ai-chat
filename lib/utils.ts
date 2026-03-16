@@ -112,3 +112,40 @@ export function getTextFromMessage(message: ChatMessage): string {
     .map((part) => part.text)
     .join('');
 }
+
+/**
+ * Rough token estimate for a message: 4 characters ≈ 1 token.
+ */
+function estimateMessageTokens(message: ChatMessage): number {
+  return Math.ceil(getTextFromMessage(message).length / 4);
+}
+
+/**
+ * Trim conversation history to fit within a token budget.
+ * Always keeps the last message (the current user turn).
+ * Walks backwards through older messages, dropping the oldest first.
+ *
+ * @param messages - Full UI message history (newest last)
+ * @param maxTokens - Token budget (e.g. 80% of model context window)
+ */
+export function pruneUIMessages(
+  messages: ChatMessage[],
+  maxTokens: number,
+): ChatMessage[] {
+  if (messages.length <= 1) return messages;
+
+  const lastMessage = messages[messages.length - 1];
+  const history = messages.slice(0, -1);
+
+  let budget = maxTokens - estimateMessageTokens(lastMessage);
+  const kept: ChatMessage[] = [];
+
+  for (let i = history.length - 1; i >= 0; i--) {
+    const tokens = estimateMessageTokens(history[i]);
+    if (budget - tokens < 0) break;
+    budget -= tokens;
+    kept.unshift(history[i]);
+  }
+
+  return [...kept, lastMessage];
+}

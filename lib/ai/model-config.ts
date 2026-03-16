@@ -385,3 +385,14 @@ export function modelSupportsFeature(
   const config = getModelConfig(modelId);
   return config[feature];
 }
+
+/**
+ * Get the context window size for a model (in tokens).
+ * Returns 128,000 for unknown models as a safe default.
+ */
+export function getModelContextWindow(modelId: string): number {
+  const modelData = modelsData.models.find(
+    (m) => m.id === modelId || m.gatewayId === modelId
+  );
+  return modelData?.contextWindow ?? 128_000;
+}
