@@ -41,6 +41,7 @@ import { transcribeAudioTool } from "@/lib/ai/tools/transcribe-audio";
 import { updateDocument } from "@/lib/ai/tools/update-document";
 import { webSearchTool } from "@/lib/ai/tools/web-search";
 import { queryKnowledgeBaseTool } from "@/lib/ai/tools/knowledge-base";
+import { googleDriveTool } from "@/lib/ai/tools/google-drive";
 import { isProductionEnvironment } from "@/lib/constants";
 import {
   createStreamId,
@@ -286,6 +287,7 @@ export async function POST(request: Request) {
       "compareTextSimilarity",
       "executeCode",
       "queryKnowledgeBase",
+      "googleDrive",
     ];
 
     // Check model capabilities from static config (handles internal model IDs)
@@ -357,6 +359,7 @@ export async function POST(request: Request) {
           compareTextSimilarity: compareTextSimilarityTool(),
           executeCode: executeCodeTool(),
           queryKnowledgeBase: queryKnowledgeBaseTool(session.user.id),
+          googleDrive: googleDriveTool(session.user.id),
           ...mcpToolMap,
         };
 

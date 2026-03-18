@@ -64,6 +64,7 @@ import {
   TooltipTrigger,
 } from "./ui/tooltip";
 import { VisibilitySelector, type VisibilityType } from "./visibility-selector";
+import { PromptLibraryModal } from "./prompt-library-modal";
 
 function PureMultimodalInput({
   chatId,
@@ -346,6 +347,15 @@ function PureMultimodalInput({
               agentMode={agentMode}
               setAgentMode={setAgentMode}
               status={status}
+            />
+            <PromptLibraryModal
+              onSelect={(prompt, modelId) => {
+                setInput(prompt);
+                if (modelId) {
+                  onModelChange?.(modelId);
+                  saveChatModelAsCookie(modelId);
+                }
+              }}
             />
           </PromptInputTools>
 

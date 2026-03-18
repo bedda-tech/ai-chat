@@ -16,6 +16,7 @@ import type {
   generateTextEmbeddingsTool,
   compareTextSimilarityTool,
 } from "./ai/tools/text-embeddings";
+import type { googleDriveTool } from "./ai/tools/google-drive";
 import type { Suggestion } from "./db/schema";
 import type { AppUsage } from "./usage";
 
@@ -41,6 +42,7 @@ type transcribeAudioToolType = InferUITool<ReturnType<typeof transcribeAudioTool
 type generateImageToolType = InferUITool<ReturnType<typeof generateImageTool>>;
 type generateTextEmbeddingsToolType = InferUITool<ReturnType<typeof generateTextEmbeddingsTool>>;
 type compareTextSimilarityToolType = InferUITool<ReturnType<typeof compareTextSimilarityTool>>;
+type googleDriveToolType = InferUITool<ReturnType<typeof googleDriveTool>>;
 
 export type ChatTools = {
   getWeather: weatherTool;
@@ -56,6 +58,7 @@ export type ChatTools = {
   generateImage: generateImageToolType;
   generateTextEmbeddings: generateTextEmbeddingsToolType;
   compareTextSimilarity: compareTextSimilarityToolType;
+  googleDrive: googleDriveToolType;
 };
 
 export type CustomUIDataTypes = {
