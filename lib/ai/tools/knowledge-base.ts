@@ -36,6 +36,7 @@ export const queryKnowledgeBaseTool = (userId: string) =>
         const chunks = await searchKBChunks({
           userId,
           queryEmbedding: embedding,
+          queryText: query,
           limit,
           similarityThreshold: 0.25,
         });

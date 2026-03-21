@@ -735,17 +735,68 @@ export async function deleteKBDocument({
 export async function searchKBChunks({
   userId,
   queryEmbedding,
+  queryText,
   limit = 5,
-  similarityThreshold = 0.3,
+  similarityThreshold = 0.25,
 }: {
   userId: string;
   queryEmbedding: number[];
+  queryText?: string;
   limit?: number;
   similarityThreshold?: number;
 }): Promise<
   Array<{ content: string; documentTitle: string; similarity: number }>
 > {
   const vectorStr = `[${queryEmbedding.join(",")}]`;
+
+  // Hybrid search: Reciprocal Rank Fusion (RRF) combining vector similarity + BM25 text search.
+  // Over-fetches 20 candidates from each strategy, then merges with RRF (k=60) for better recall.
+  if (queryText && queryText.trim().length >= 3) {
+    const results = await db.execute<{
+      content: string;
+      title: string;
+      rrf_score: number;
+    }>(
+      sql`
+        WITH vector_results AS (
+          SELECT c.id, c.content, d.title,
+                 ROW_NUMBER() OVER (ORDER BY c.embedding <=> ${vectorStr}::vector) AS v_rank
+          FROM "KnowledgeBaseChunk" c
+          JOIN "KnowledgeBaseDocument" d ON d.id = c."documentId"
+          WHERE c."userId" = ${userId}::uuid
+            AND 1 - (c.embedding <=> ${vectorStr}::vector) >= ${similarityThreshold}
+          ORDER BY c.embedding <=> ${vectorStr}::vector
+          LIMIT 20
+        ),
+        text_results AS (
+          SELECT c.id, c.content, d.title,
+                 ROW_NUMBER() OVER (
+                   ORDER BY ts_rank(to_tsvector('english', c.content), plainto_tsquery('english', ${queryText})) DESC
+                 ) AS t_rank
+          FROM "KnowledgeBaseChunk" c
+          JOIN "KnowledgeBaseDocument" d ON d.id = c."documentId"
+          WHERE c."userId" = ${userId}::uuid
+            AND to_tsvector('english', c.content) @@ plainto_tsquery('english', ${queryText})
+          LIMIT 20
+        )
+        SELECT
+          COALESCE(v.content, t.content) AS content,
+          COALESCE(v.title, t.title) AS title,
+          (1.0 / (60 + COALESCE(v.v_rank, 1000)) + 1.0 / (60 + COALESCE(t.t_rank, 1000))) AS rrf_score
+        FROM vector_results v
+        FULL OUTER JOIN text_results t ON v.id = t.id
+        ORDER BY rrf_score DESC
+        LIMIT ${limit}
+      `
+    );
+    return results.map((r) => ({
+      content: r.content,
+      documentTitle: r.title,
+      similarity: Number(r.rrf_score),
+    }));
+  }
+
+  // Fallback: pure vector search (used when queryText is absent or too short)
   const results = await db.execute<{
     content: string;
     title: string;

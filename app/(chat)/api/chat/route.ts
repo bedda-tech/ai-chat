@@ -199,6 +199,7 @@ export async function POST(request: Request) {
           const chunks = await searchKBChunks({
             userId: session.user.id,
             queryEmbedding: embedding,
+            queryText: lastUserText,
             limit: 3,
             similarityThreshold: 0.4,
           });
