@@ -1001,6 +1001,43 @@ const PurePreviewMessage = ({
               );
             }
 
+            if (type === "tool-generateSpeech") {
+              const toolPart = part as any;
+              const { toolCallId, state } = toolPart;
+
+              return (
+                <Tool defaultOpen={true} key={toolCallId}>
+                  <ToolHeader state={state} type="tool-generateSpeech" />
+                  <ToolContent>
+                    {state === "input-available" && toolPart.input && (
+                      <ToolInput input={toolPart.input} />
+                    )}
+                    {state === "output-available" && toolPart.output && (
+                      <div className="p-4">
+                        {toolPart.output.success ? (
+                          <div className="space-y-2">
+                            <div className="flex items-center gap-3 text-muted-foreground text-xs">
+                              <span className="capitalize">{toolPart.output.voice} voice</span>
+                              <span>{toolPart.output.characterCount} characters</span>
+                            </div>
+                            <audio
+                              controls
+                              className="w-full h-10 rounded-md"
+                              src={`data:audio/mp3;base64,${toolPart.output.audio?.base64}`}
+                            />
+                          </div>
+                        ) : (
+                          <div className="rounded-md bg-destructive/10 p-3 text-destructive text-sm">
+                            {toolPart.output.error || "Failed to generate speech"}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </ToolContent>
+                </Tool>
+              );
+            }
+
             return null;
           })}
 

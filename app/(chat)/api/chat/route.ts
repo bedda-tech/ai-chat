@@ -42,6 +42,7 @@ import { updateDocument } from "@/lib/ai/tools/update-document";
 import { webSearchTool } from "@/lib/ai/tools/web-search";
 import { queryKnowledgeBaseTool } from "@/lib/ai/tools/knowledge-base";
 import { googleDriveTool } from "@/lib/ai/tools/google-drive";
+import { generateSpeechTool } from "@/lib/ai/tools/generate-speech";
 import { isProductionEnvironment } from "@/lib/constants";
 import {
   createStreamId,
@@ -288,6 +289,7 @@ export async function POST(request: Request) {
       "executeCode",
       "queryKnowledgeBase",
       "googleDrive",
+      "generateSpeech",
     ];
 
     // Check model capabilities from static config (handles internal model IDs)
@@ -360,6 +362,7 @@ export async function POST(request: Request) {
           executeCode: executeCodeTool(),
           queryKnowledgeBase: queryKnowledgeBaseTool(session.user.id),
           googleDrive: googleDriveTool(session.user.id),
+          generateSpeech: generateSpeechTool(),
           ...mcpToolMap,
         };
 
