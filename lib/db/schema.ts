@@ -439,3 +439,18 @@ export const driveConnection = pgTable("DriveConnection", {
 });
 
 export type DriveConnection = InferSelectModel<typeof driveConnection>;
+
+export const notionConnection = pgTable("NotionConnection", {
+  userId: uuid("userId")
+    .primaryKey()
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  accessToken: text("accessToken").notNull(),
+  workspaceId: text("workspaceId"),
+  workspaceName: text("workspaceName"),
+  botId: text("botId"),
+  connectedAt: timestamp("connectedAt").notNull().defaultNow(),
+  updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+});
+
+export type NotionConnection = InferSelectModel<typeof notionConnection>;

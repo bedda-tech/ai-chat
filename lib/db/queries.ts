@@ -34,6 +34,8 @@ import {
   mcpServer,
   type McpServer,
   message,
+  notionConnection,
+  type NotionConnection,
   passwordResetToken,
   type Project,
   project,
@@ -1099,4 +1101,40 @@ export async function saveDriveConnection(
 
 export async function deleteDriveConnection(userId: string): Promise<void> {
   await db.delete(driveConnection).where(eq(driveConnection.userId, userId));
+}
+
+export async function getNotionConnection(userId: string): Promise<NotionConnection | null> {
+  const [conn] = await db.select().from(notionConnection).where(eq(notionConnection.userId, userId));
+  return conn ?? null;
+}
+
+export async function saveNotionConnection(
+  userId: string,
+  data: { accessToken: string; workspaceId?: string | null; workspaceName?: string | null; botId?: string | null }
+): Promise<NotionConnection> {
+  const [conn] = await db
+    .insert(notionConnection)
+    .values({
+      userId,
+      accessToken: data.accessToken,
+      workspaceId: data.workspaceId ?? null,
+      workspaceName: data.workspaceName ?? null,
+      botId: data.botId ?? null,
+    })
+    .onConflictDoUpdate({
+      target: notionConnection.userId,
+      set: {
+        accessToken: data.accessToken,
+        workspaceId: data.workspaceId ?? null,
+        workspaceName: data.workspaceName ?? null,
+        botId: data.botId ?? null,
+        updatedAt: new Date(),
+      },
+    })
+    .returning();
+  return conn;
+}
+
+export async function deleteNotionConnection(userId: string): Promise<void> {
+  await db.delete(notionConnection).where(eq(notionConnection.userId, userId));
 }

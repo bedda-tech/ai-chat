@@ -42,6 +42,7 @@ import { updateDocument } from "@/lib/ai/tools/update-document";
 import { webSearchTool } from "@/lib/ai/tools/web-search";
 import { queryKnowledgeBaseTool } from "@/lib/ai/tools/knowledge-base";
 import { googleDriveTool } from "@/lib/ai/tools/google-drive";
+import { notionTool } from "@/lib/ai/tools/notion";
 import { generateSpeechTool } from "@/lib/ai/tools/generate-speech";
 import { isProductionEnvironment } from "@/lib/constants";
 import {
@@ -290,6 +291,7 @@ export async function POST(request: Request) {
       "executeCode",
       "queryKnowledgeBase",
       "googleDrive",
+      "notion",
       "generateSpeech",
     ];
 
@@ -363,6 +365,7 @@ export async function POST(request: Request) {
           executeCode: executeCodeTool(),
           queryKnowledgeBase: queryKnowledgeBaseTool(session.user.id),
           googleDrive: googleDriveTool(session.user.id),
+          notion: notionTool(session.user.id),
           generateSpeech: generateSpeechTool(),
           ...mcpToolMap,
         };

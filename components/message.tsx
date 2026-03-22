@@ -1001,6 +1001,93 @@ const PurePreviewMessage = ({
               );
             }
 
+            if (type === "tool-notion") {
+              const toolPart = part as any;
+              const { toolCallId, state } = toolPart;
+
+              return (
+                <Tool defaultOpen={true} key={toolCallId}>
+                  <ToolHeader state={state} type="tool-notion" />
+                  <ToolContent>
+                    {state === "input-available" && toolPart.input && (
+                      <ToolInput input={toolPart.input} />
+                    )}
+                    {state === "output-available" && toolPart.output && (() => {
+                      const output = toolPart.output as any;
+
+                      if (!output?.success) {
+                        return (
+                          <ToolOutput
+                            errorText={output?.error || "Notion request failed"}
+                            output={null}
+                          />
+                        );
+                      }
+
+                      // search action
+                      if (output.pages) {
+                        const pages = output.pages as Array<{
+                          id: string;
+                          title: string;
+                          lastEdited: string;
+                          url: string;
+                        }>;
+                        return (
+                          <div className="space-y-2 p-4">
+                            <div className="text-muted-foreground text-xs uppercase tracking-wide font-medium mb-3">
+                              {pages.length} page{pages.length !== 1 ? "s" : ""} found
+                            </div>
+                            {pages.map((p) => (
+                              <div
+                                key={p.id}
+                                className="flex items-center justify-between rounded-lg border border-border bg-muted/30 px-3 py-2"
+                              >
+                                <div className="flex flex-col gap-0.5 min-w-0">
+                                  <a
+                                    className="text-sm font-medium truncate hover:underline"
+                                    href={p.url}
+                                    rel="noreferrer"
+                                    target="_blank"
+                                  >
+                                    {p.title}
+                                  </a>
+                                </div>
+                                <span className="shrink-0 text-xs text-muted-foreground ml-4">
+                                  {new Date(p.lastEdited).toLocaleDateString()}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        );
+                      }
+
+                      // read action
+                      return (
+                        <div className="space-y-3 p-4">
+                          <div className="flex items-center justify-between">
+                            <a
+                              className="text-sm font-medium hover:underline"
+                              href={output.url}
+                              rel="noreferrer"
+                              target="_blank"
+                            >
+                              {output.title}
+                            </a>
+                            {output.truncated && (
+                              <span className="text-xs text-muted-foreground">Truncated to 20,000 chars</span>
+                            )}
+                          </div>
+                          <pre className="rounded-lg bg-muted/50 p-3 text-xs text-foreground/80 overflow-auto max-h-60 whitespace-pre-wrap">
+                            {output.content}
+                          </pre>
+                        </div>
+                      );
+                    })()}
+                  </ToolContent>
+                </Tool>
+              );
+            }
+
             if (type === "tool-generateSpeech") {
               const toolPart = part as any;
               const { toolCallId, state } = toolPart;

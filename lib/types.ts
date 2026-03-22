@@ -17,6 +17,7 @@ import type {
   compareTextSimilarityTool,
 } from "./ai/tools/text-embeddings";
 import type { googleDriveTool } from "./ai/tools/google-drive";
+import type { notionTool } from "./ai/tools/notion";
 import type { generateSpeechTool } from "./ai/tools/generate-speech";
 import type { Suggestion } from "./db/schema";
 import type { AppUsage } from "./usage";
@@ -44,6 +45,7 @@ type generateImageToolType = InferUITool<ReturnType<typeof generateImageTool>>;
 type generateTextEmbeddingsToolType = InferUITool<ReturnType<typeof generateTextEmbeddingsTool>>;
 type compareTextSimilarityToolType = InferUITool<ReturnType<typeof compareTextSimilarityTool>>;
 type googleDriveToolType = InferUITool<ReturnType<typeof googleDriveTool>>;
+type notionToolType = InferUITool<ReturnType<typeof notionTool>>;
 type generateSpeechToolType = InferUITool<ReturnType<typeof generateSpeechTool>>;
 
 export type ChatTools = {
@@ -61,6 +63,7 @@ export type ChatTools = {
   generateTextEmbeddings: generateTextEmbeddingsToolType;
   compareTextSimilarity: compareTextSimilarityToolType;
   googleDrive: googleDriveToolType;
+  notion: notionToolType;
   generateSpeech: generateSpeechToolType;
 };
 
