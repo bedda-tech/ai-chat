@@ -65,6 +65,15 @@ import {
 } from "./ui/tooltip";
 import { VisibilitySelector, type VisibilityType } from "./visibility-selector";
 import { PromptLibraryModal } from "./prompt-library-modal";
+import type { ArtifactKind } from "./artifact";
+import { useArtifact } from "@/hooks/use-artifact";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import { nanoid } from "nanoid";
 
 function PureMultimodalInput({
   chatId,
@@ -348,6 +357,7 @@ function PureMultimodalInput({
               setAgentMode={setAgentMode}
               status={status}
             />
+            <CanvasModeButton chatId={chatId} status={status} />
             <PromptLibraryModal
               onSelect={(prompt, modelId) => {
                 setInput(prompt);
@@ -435,6 +445,76 @@ function PureAgentModeButton({
 }
 
 const AgentModeButton = memo(PureAgentModeButton);
+
+function PureCanvasModeButton({
+  chatId,
+  status,
+}: {
+  chatId: string;
+  status: UseChatHelpers<ChatMessage>["status"];
+}) {
+  const { setArtifact } = useArtifact();
+
+  const openCanvas = async (kind: ArtifactKind) => {
+    const id = nanoid();
+    try {
+      await fetch(`/api/document?id=${id}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          content: kind === "code" ? "// Start coding here\n" : kind === "sheet" ? "" : "",
+          title: kind === "code" ? "Untitled Code" : kind === "sheet" ? "Untitled Sheet" : "Untitled Document",
+          kind,
+        }),
+      });
+      setArtifact({
+        documentId: id,
+        kind,
+        title: kind === "code" ? "Untitled Code" : kind === "sheet" ? "Untitled Sheet" : "Untitled Document",
+        content: kind === "code" ? "// Start coding here\n" : "",
+        status: "idle",
+        isVisible: true,
+        boundingBox: { top: 0, left: 0, width: 0, height: 0 },
+      });
+    } catch {
+      toast.error("Failed to open canvas");
+    }
+  };
+
+  return (
+    <Tooltip>
+      <DropdownMenu>
+        <TooltipTrigger asChild>
+          <DropdownMenuTrigger asChild>
+            <Button
+              className="aspect-square h-8 rounded-lg p-1 transition-colors hover:bg-accent"
+              disabled={status !== "ready"}
+              variant="ghost"
+              type="button"
+              data-testid="canvas-mode-button"
+            >
+              <CpuIcon size={16} />
+            </Button>
+          </DropdownMenuTrigger>
+        </TooltipTrigger>
+        <DropdownMenuContent side="top">
+          <DropdownMenuItem onClick={() => openCanvas("text")}>
+            Text Document
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => openCanvas("code")}>
+            Code Editor
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => openCanvas("sheet")}>
+            Spreadsheet
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+      <TooltipContent side="top">Open Canvas</TooltipContent>
+    </Tooltip>
+  );
+}
+
+const CanvasModeButton = memo(PureCanvasModeButton);
 
 function PureAttachmentsButton({
   fileInputRef,
