@@ -555,13 +555,16 @@ function PureVoiceInputButton({
   status: UseChatHelpers<ChatMessage>["status"];
 }) {
   const [isListening, setIsListening] = useState(false);
+  const [isSupported, setIsSupported] = useState(false);
   const recognitionRef = useRef<any>(null);
   // Track what was in the input box when recording started
   const baseTextRef = useRef("");
 
-  const isSupported =
-    typeof window !== "undefined" &&
-    ("SpeechRecognition" in window || "webkitSpeechRecognition" in window);
+  useEffect(() => {
+    setIsSupported(
+      "SpeechRecognition" in window || "webkitSpeechRecognition" in window
+    );
+  }, []);
 
   const startListening = useCallback(() => {
     if (!isSupported) {
