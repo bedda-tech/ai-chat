@@ -19,6 +19,7 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith("/api/auth") ||
     pathname.startsWith("/api/webhooks") ||
     pathname.startsWith("/api/models") || // Allow dynamic model discovery
+    pathname.startsWith("/api/health") || // Health check endpoint for monitoring
     publicRoutes.includes(pathname)
   ) {
     return NextResponse.next();

@@ -43,7 +43,7 @@ export const roadmapData: RoadmapPhase[] = [
           "OpenAI (GPT-5, GPT-5 Codex)",
           "Google (Gemini 2.5 Pro, Flash)",
           "xAI (Grok 4, Grok 3)",
-          "DeepSeek, Mistral, Groq, and more",
+          "DeepSeek, Mistral, Groq, Cerebras, and more",
         ],
       },
       {
@@ -74,6 +74,7 @@ export const roadmapData: RoadmapPhase[] = [
           "Self-service billing portal",
           "Webhook-driven tier management",
           "Subscription upgrade/downgrade/cancel",
+          "Annual billing with savings",
         ],
       },
       {
@@ -103,6 +104,7 @@ export const roadmapData: RoadmapPhase[] = [
           "Code editor with syntax highlighting (CodeMirror)",
           "Image generation and display",
           "Spreadsheet editing (react-data-grid)",
+          "Canvas mode for collaborative editing",
         ],
       },
       {
@@ -127,22 +129,130 @@ export const roadmapData: RoadmapPhase[] = [
     title: "Phase 2: Competitive Parity",
     description:
       "Critical features to match and exceed ChatGPT, Claude, and Gemini",
-    timeline: "Q1 2026 (In Progress)",
+    timeline: "Completed (Q1 2026)",
     features: [
       {
         id: "web-search",
         title: "Web Search with Citations",
         description:
           "Real-time web search integrated into chat responses with source attribution",
-        status: "in-progress",
+        status: "completed",
         priority: "critical",
-        effort: "1-2 weeks",
-        impact: "Every major competitor has this -- critical gap",
+        effort: "Completed",
+        impact: "Every major competitor has this -- critical gap closed",
         keyFeatures: [
-          "Real-time web search via Tavily/Serper API",
-          "Source citations with links",
+          "Real-time web search via Tavily API",
+          "Source citations with clickable links",
           "Search result summarization",
-          "User-togglable search mode",
+          "Toggleable search mode per message",
+        ],
+      },
+      {
+        id: "code-execution",
+        title: "Code Execution Sandbox",
+        description:
+          "Server-side code execution for Python and JavaScript in a secure E2B sandbox",
+        status: "completed",
+        priority: "critical",
+        effort: "Completed",
+        impact: "Matches ChatGPT Code Interpreter and Claude Analysis Tool",
+        keyFeatures: [
+          "Python execution with data analysis libraries (pandas, numpy, matplotlib)",
+          "JavaScript/TypeScript execution",
+          "Chart and visualization output (inline images)",
+          "Rich execution results with stdout, stderr, and rich media",
+        ],
+      },
+      {
+        id: "oauth-social-login",
+        title: "OAuth & Social Login",
+        description:
+          "Sign in with Google or GitHub for frictionless onboarding alongside email/password",
+        status: "completed",
+        priority: "critical",
+        effort: "Completed",
+        impact: "Major onboarding friction reducer",
+        keyFeatures: [
+          "Google OAuth",
+          "GitHub OAuth",
+          "Account linking for existing email users",
+          "Password reset via email",
+        ],
+      },
+      {
+        id: "voice-input",
+        title: "Voice Input & Text-to-Speech",
+        description:
+          "Microphone input with real-time transcription and text-to-speech responses",
+        status: "completed",
+        priority: "high",
+        effort: "Completed",
+        keyFeatures: [
+          "Push-to-talk microphone button",
+          "Real-time Web Speech API transcription",
+          "Text-to-speech for AI responses",
+          "Audio message playback",
+        ],
+      },
+      {
+        id: "knowledge-base",
+        title: "Knowledge Base & RAG Search",
+        description:
+          "Upload documents and files to a personal knowledge base; AI automatically retrieves relevant context",
+        status: "completed",
+        priority: "critical",
+        effort: "Completed",
+        impact: "Matches Claude Projects knowledge base, ChatGPT file uploads",
+        keyFeatures: [
+          "PDF, text, and code file uploads",
+          "Vector search with pgvector (1536-dim embeddings)",
+          "Hybrid semantic + full-text search (Reciprocal Rank Fusion)",
+          "Auto-injected context from knowledge base",
+          "Knowledge base management page",
+        ],
+      },
+      {
+        id: "interactive-charts",
+        title: "Interactive Data Visualization",
+        description:
+          "AI-generated interactive charts and graphs directly in chat responses",
+        status: "completed",
+        priority: "high",
+        effort: "Completed",
+        keyFeatures: [
+          "Line, bar, area, and pie charts via Recharts",
+          "AI autonomously generates charts from data",
+          "Responsive and interactive (hover, zoom)",
+          "Works alongside code execution for data analysis",
+        ],
+      },
+      {
+        id: "prompt-library",
+        title: "Prompt Library",
+        description:
+          "Curated and custom prompt templates for common tasks to jumpstart any conversation",
+        status: "completed",
+        priority: "medium",
+        effort: "Completed",
+        keyFeatures: [
+          "Built-in templates for writing, coding, research, and more",
+          "Quick-access modal from the chat toolbar",
+          "One-click prompt insertion",
+        ],
+      },
+      {
+        id: "chat-sharing",
+        title: "Chat Sharing",
+        description:
+          "Share any conversation via a public link — anyone can view without an account",
+        status: "completed",
+        priority: "medium",
+        effort: "Completed",
+        keyFeatures: [
+          "Per-chat visibility toggle (private/public)",
+          "Shareable public URLs",
+          "Read-only view for non-owners",
+          "One-click copy share link",
         ],
       },
       {
@@ -181,55 +291,6 @@ export const roadmapData: RoadmapPhase[] = [
           "Video gallery and downloads",
         ],
       },
-      {
-        id: "code-execution",
-        title: "Code Execution Sandbox",
-        description:
-          "Server-side code execution for Python, JavaScript, and more with secure sandboxing",
-        status: "planned",
-        priority: "critical",
-        effort: "2-3 weeks",
-        impact: "Matches ChatGPT Code Interpreter and Claude Analysis Tool",
-        keyFeatures: [
-          "Python execution with data analysis libraries",
-          "JavaScript/TypeScript execution",
-          "File I/O within sandbox",
-          "Chart and visualization output",
-          "Package installation",
-          "Execution timeout and resource limits",
-        ],
-      },
-      {
-        id: "oauth-social-login",
-        title: "OAuth & Social Login",
-        description:
-          "Sign in with Google, GitHub, Apple, and other providers for frictionless onboarding",
-        status: "planned",
-        priority: "critical",
-        effort: "1 week",
-        impact: "Major onboarding friction reducer",
-        keyFeatures: [
-          "Google OAuth",
-          "GitHub OAuth",
-          "Apple Sign In",
-          "Account linking for existing users",
-        ],
-      },
-      {
-        id: "voice-input",
-        title: "Voice Input & Audio",
-        description:
-          "Microphone input with real-time transcription and text-to-speech responses",
-        status: "planned",
-        priority: "high",
-        effort: "1-2 weeks",
-        keyFeatures: [
-          "Push-to-talk microphone button",
-          "Real-time Whisper transcription",
-          "Text-to-speech for AI responses",
-          "Audio message playback",
-        ],
-      },
     ],
   },
   {
@@ -237,24 +298,99 @@ export const roadmapData: RoadmapPhase[] = [
     title: "Phase 3: Competitive Advantage",
     description:
       "Features that make Bedda the clear choice over any single AI provider",
-    timeline: "Q2 2026",
+    timeline: "In Progress (Q2 2026)",
     features: [
       {
         id: "projects",
-        title: "Projects & Knowledge Bases",
+        title: "Projects & Workspaces",
         description:
-          "Persistent project workspaces with document uploads, RAG search, and custom instructions",
-        status: "planned",
+          "Persistent project workspaces with custom instructions, RAG search, and organized conversations",
+        status: "completed",
         priority: "critical",
-        effort: "3-4 weeks",
+        effort: "Completed",
         impact: "Matches Claude Projects, ChatGPT Custom GPTs, Gemini Gems",
         keyFeatures: [
           "Project-scoped conversations",
-          "Document upload and indexing (PDF, DOCX, CSV, code)",
-          "Vector search with pgvector",
           "Custom system instructions per project",
-          "Project sharing and collaboration",
-          "Knowledge base management",
+          "Knowledge base per project",
+          "Project management page",
+        ],
+      },
+      {
+        id: "custom-instructions",
+        title: "Custom System Instructions",
+        description:
+          "Persistent custom instructions that shape AI behavior across all conversations",
+        status: "completed",
+        priority: "medium",
+        effort: "Completed",
+        keyFeatures: [
+          "Global custom instructions saved in settings",
+          "Per-project instructions",
+          "Applied automatically to every conversation",
+        ],
+      },
+      {
+        id: "integrations",
+        title: "Google Drive & Notion Integration",
+        description:
+          "Connect your Google Drive and Notion workspace — AI can search and read files directly in chat",
+        status: "completed",
+        priority: "high",
+        effort: "Completed",
+        keyFeatures: [
+          "Google Drive OAuth connect/disconnect",
+          "Search and read Drive files in chat",
+          "Notion workspace OAuth connect",
+          "Search and read Notion pages in chat",
+          "Auto token refresh",
+        ],
+      },
+      {
+        id: "model-comparison",
+        title: "Model Comparison & Arena",
+        description:
+          "Send the same prompt to multiple models and compare responses side-by-side",
+        status: "completed",
+        priority: "high",
+        effort: "Completed",
+        impact: "Unique feature -- no competitor has this natively",
+        keyFeatures: [
+          "Side-by-side model comparison (up to 4 models)",
+          "Independent conversation threads per model",
+          "Add/remove models dynamically",
+          "Shared prompt submission across all columns",
+        ],
+      },
+      {
+        id: "deep-research",
+        title: "Deep Research Agent",
+        description:
+          "Autonomous multi-step research that browses the web, synthesizes sources, and produces reports",
+        status: "completed",
+        priority: "high",
+        effort: "Completed",
+        impact: "Matches ChatGPT Deep Research, Perplexity Deep Research",
+        keyFeatures: [
+          "Agent mode with up to 20 reasoning steps",
+          "Web search + synthesis in a single run",
+          "Cites sources inline",
+          "Toggle Deep Research mode in the chat toolbar",
+        ],
+      },
+      {
+        id: "mcp-integration",
+        title: "MCP Server Integration",
+        description:
+          "Connect any Model Context Protocol (MCP) server to extend AI capabilities with custom tools",
+        status: "completed",
+        priority: "medium",
+        effort: "Completed",
+        keyFeatures: [
+          "SSE and HTTP transport support",
+          "Per-user MCP server management",
+          "Dynamic tool discovery",
+          "Custom auth headers per server",
         ],
       },
       {
@@ -262,7 +398,7 @@ export const roadmapData: RoadmapPhase[] = [
         title: "Cross-Conversation Memory",
         description:
           "AI remembers user preferences, context, and facts across conversations",
-        status: "planned",
+        status: "in-progress",
         priority: "high",
         effort: "2 weeks",
         impact: "Matches ChatGPT Memory, Claude Memory",
@@ -274,69 +410,19 @@ export const roadmapData: RoadmapPhase[] = [
         ],
       },
       {
-        id: "model-comparison",
-        title: "Model Comparison & Arena",
-        description:
-          "Send the same prompt to multiple models and compare responses side-by-side",
-        status: "planned",
-        priority: "high",
-        effort: "2 weeks",
-        impact: "Unique feature -- no competitor has this natively",
-        keyFeatures: [
-          "Side-by-side model comparison",
-          "Blind comparison mode (arena)",
-          "Response quality voting",
-          "Cost/speed/quality analysis",
-          "Model recommendation engine",
-        ],
-      },
-      {
-        id: "deep-research",
-        title: "Deep Research Agent",
-        description:
-          "Autonomous multi-step research that browses the web, synthesizes sources, and produces reports",
-        status: "planned",
-        priority: "high",
-        effort: "3-4 weeks",
-        impact: "Matches ChatGPT Deep Research, Perplexity Deep Research, Gemini Deep Research",
-        keyFeatures: [
-          "Multi-site web browsing",
-          "Source synthesis and citation",
-          "Long-form report generation",
-          "Research progress tracking",
-          "Export to PDF/Markdown",
-        ],
-      },
-      {
-        id: "custom-instructions",
-        title: "Custom System Instructions",
-        description:
-          "Persistent custom instructions that shape AI behavior across all conversations",
-        status: "planned",
-        priority: "medium",
-        effort: "1 week",
-        keyFeatures: [
-          "Global custom instructions",
-          "Per-project instructions",
-          "Instruction templates and sharing",
-          "Model-specific instructions",
-        ],
-      },
-      {
         id: "advanced-artifacts",
         title: "Advanced Artifacts",
         description:
           "New artifact types: diagrams, presentations, charts, interactive HTML, and notebooks",
-        status: "planned",
+        status: "in-progress",
         priority: "medium",
         effort: "4-6 weeks",
         keyFeatures: [
           "Mermaid diagrams",
-          "Interactive charts (D3/Chart.js)",
+          "Interactive charts (Recharts) -- shipped",
           "HTML/CSS/JS preview",
           "Slide presentations",
           "Jupyter-style notebooks",
-          "3D model viewer",
         ],
       },
     ],
@@ -347,6 +433,21 @@ export const roadmapData: RoadmapPhase[] = [
     description: "Team features, API access, and enterprise capabilities",
     timeline: "Q3-Q4 2026",
     features: [
+      {
+        id: "mobile-pwa",
+        title: "Mobile App (PWA)",
+        description:
+          "Progressive Web App with offline support, push notifications, and native-like experience",
+        status: "completed",
+        priority: "high",
+        effort: "Completed",
+        keyFeatures: [
+          "Service worker for offline support",
+          "Add to home screen on iOS and Android",
+          "Camera/microphone integration",
+          "Responsive mobile-first UI",
+        ],
+      },
       {
         id: "team-workspaces",
         title: "Team Workspaces & Collaboration",
@@ -379,22 +480,6 @@ export const roadmapData: RoadmapPhase[] = [
         ],
       },
       {
-        id: "mobile-pwa",
-        title: "Mobile App (PWA)",
-        description:
-          "Progressive Web App with offline support, push notifications, and native-like experience",
-        status: "planned",
-        priority: "high",
-        effort: "3-4 weeks",
-        keyFeatures: [
-          "Service worker for offline support",
-          "Push notifications",
-          "Add to home screen",
-          "Camera/microphone integration",
-          "Responsive mobile-first UI",
-        ],
-      },
-      {
         id: "enterprise",
         title: "Enterprise Features",
         description:
@@ -422,7 +507,7 @@ export const roadmapData: RoadmapPhase[] = [
         keyFeatures: [
           "Custom tool definitions",
           "Plugin marketplace",
-          "Third-party integrations (Slack, Notion, Google Workspace)",
+          "Third-party integrations (Slack, Teams, Linear)",
           "Webhook-based actions",
           "Community-built extensions",
         ],
@@ -432,10 +517,10 @@ export const roadmapData: RoadmapPhase[] = [
 ];
 
 export const roadmapStats = {
-  totalFeatures: 23,
-  completedFeatures: 6,
-  inProgressFeatures: 1,
-  plannedFeatures: 16,
+  totalFeatures: 31,
+  completedFeatures: 22,
+  inProgressFeatures: 2,
+  plannedFeatures: 7,
   estimatedValue: "$500k+/month (at 100k users)",
   targetMargins: "50-55% gross profit",
 };
