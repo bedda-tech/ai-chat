@@ -19,6 +19,7 @@ import type {
 import type { googleDriveTool } from "./ai/tools/google-drive";
 import type { notionTool } from "./ai/tools/notion";
 import type { generateSpeechTool } from "./ai/tools/generate-speech";
+import type { generateChartTool } from "./ai/tools/generate-chart";
 import type { Suggestion } from "./db/schema";
 import type { AppUsage } from "./usage";
 
@@ -47,6 +48,7 @@ type compareTextSimilarityToolType = InferUITool<ReturnType<typeof compareTextSi
 type googleDriveToolType = InferUITool<ReturnType<typeof googleDriveTool>>;
 type notionToolType = InferUITool<ReturnType<typeof notionTool>>;
 type generateSpeechToolType = InferUITool<ReturnType<typeof generateSpeechTool>>;
+type generateChartToolType = InferUITool<ReturnType<typeof generateChartTool>>;
 
 export type ChatTools = {
   getWeather: weatherTool;
@@ -65,6 +67,7 @@ export type ChatTools = {
   googleDrive: googleDriveToolType;
   notion: notionToolType;
   generateSpeech: generateSpeechToolType;
+  generateChart: generateChartToolType;
 };
 
 export type CustomUIDataTypes = {

@@ -44,6 +44,7 @@ import { queryKnowledgeBaseTool } from "@/lib/ai/tools/knowledge-base";
 import { googleDriveTool } from "@/lib/ai/tools/google-drive";
 import { notionTool } from "@/lib/ai/tools/notion";
 import { generateSpeechTool } from "@/lib/ai/tools/generate-speech";
+import { generateChartTool } from "@/lib/ai/tools/generate-chart";
 import { isProductionEnvironment } from "@/lib/constants";
 import {
   createStreamId,
@@ -293,6 +294,7 @@ export async function POST(request: Request) {
       "googleDrive",
       "notion",
       "generateSpeech",
+      "generateChart",
     ];
 
     // Check model capabilities from static config (handles internal model IDs)
@@ -367,6 +369,7 @@ export async function POST(request: Request) {
           googleDrive: googleDriveTool(session.user.id),
           notion: notionTool(session.user.id),
           generateSpeech: generateSpeechTool(),
+          generateChart: generateChartTool(),
           ...mcpToolMap,
         };
 

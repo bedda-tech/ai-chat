@@ -26,6 +26,7 @@ import { MessageEditor } from "./message-editor";
 import { MessageReasoning } from "./message-reasoning";
 import { PreviewAttachment } from "./preview-attachment";
 import { Weather } from "./weather";
+import { Chart } from "./chart";
 
 const PurePreviewMessage = ({
   chatId,
@@ -1083,6 +1084,33 @@ const PurePreviewMessage = ({
                         </div>
                       );
                     })()}
+                  </ToolContent>
+                </Tool>
+              );
+            }
+
+            if (type === "tool-generateChart") {
+              const toolPart = part as any;
+              const { toolCallId, state } = toolPart;
+
+              return (
+                <Tool defaultOpen={true} key={toolCallId}>
+                  <ToolHeader state={state} type="tool-generateChart" />
+                  <ToolContent>
+                    {state === "input-available" && toolPart.input && (
+                      <ToolInput input={toolPart.input} />
+                    )}
+                    {state === "output-available" && toolPart.output && (
+                      <div className="p-4">
+                        {toolPart.output.success ? (
+                          <Chart config={toolPart.output.chart} />
+                        ) : (
+                          <div className="rounded-md bg-destructive/10 p-3 text-destructive text-sm">
+                            {toolPart.output.error || "Failed to generate chart"}
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </ToolContent>
                 </Tool>
               );
