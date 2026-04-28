@@ -37,6 +37,8 @@ import {
   notionConnection,
   type NotionConnection,
   passwordResetToken,
+  userMemory,
+  type UserMemory,
   type Project,
   project,
   type Suggestion,
@@ -1137,4 +1139,39 @@ export async function saveNotionConnection(
 
 export async function deleteNotionConnection(userId: string): Promise<void> {
   await db.delete(notionConnection).where(eq(notionConnection.userId, userId));
+}
+
+// User memory (cross-conversation facts the AI remembers about the user)
+export async function getUserMemories(userId: string): Promise<UserMemory[]> {
+  return db
+    .select()
+    .from(userMemory)
+    .where(eq(userMemory.userId, userId))
+    .orderBy(desc(userMemory.createdAt));
+}
+
+export async function createUserMemory(
+  userId: string,
+  data: { content: string; category?: string; sourceChat?: string }
+): Promise<UserMemory> {
+  const [mem] = await db
+    .insert(userMemory)
+    .values({
+      userId,
+      content: data.content,
+      category: data.category ?? "general",
+      sourceChat: data.sourceChat ?? null,
+    })
+    .returning();
+  return mem;
+}
+
+export async function deleteUserMemory(id: string, userId: string): Promise<void> {
+  await db
+    .delete(userMemory)
+    .where(and(eq(userMemory.id, id), eq(userMemory.userId, userId)));
+}
+
+export async function deleteAllUserMemories(userId: string): Promise<void> {
+  await db.delete(userMemory).where(eq(userMemory.userId, userId));
 }

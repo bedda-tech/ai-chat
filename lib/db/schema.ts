@@ -454,3 +454,18 @@ export const notionConnection = pgTable("NotionConnection", {
 });
 
 export type NotionConnection = InferSelectModel<typeof notionConnection>;
+
+// Cross-conversation memory: facts the AI extracts and remembers about the user
+export const userMemory = pgTable("UserMemory", {
+  id: uuid("id").primaryKey().notNull().defaultRandom(),
+  userId: uuid("userId")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  content: text("content").notNull(),
+  category: varchar("category", { length: 64 }).notNull().default("general"),
+  sourceChat: uuid("sourceChat"),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+  updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+});
+
+export type UserMemory = InferSelectModel<typeof userMemory>;

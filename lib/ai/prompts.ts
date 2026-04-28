@@ -69,6 +69,7 @@ export const systemPrompt = ({
   projectInstructions,
   kbContext,
   agentMode,
+  userMemories,
 }: {
   selectedChatModel: string;
   requestHints: RequestHints;
@@ -76,6 +77,7 @@ export const systemPrompt = ({
   projectInstructions?: string;
   kbContext?: string;
   agentMode?: boolean;
+  userMemories?: Array<{ content: string; category: string }>;
 }) => {
   const requestPrompt = getRequestPromptFromHints(requestHints);
 
@@ -96,6 +98,11 @@ export const systemPrompt = ({
 
   const agentModeBlock = agentMode ? `\n\n${agentPrompt}` : "";
 
+  const userMemoriesBlock =
+    userMemories && userMemories.length > 0
+      ? `\n\n<user_memory>\nThe following facts have been remembered about the user across previous conversations. Use them to personalize your responses:\n${userMemories.map((m) => `- [${m.category}] ${m.content}`).join("\n")}\n</user_memory>`
+      : "";
+
   const isGemini25FlashImage = selectedChatModel === "google-gemini-2.5-flash-image-preview";
 
   const imageGenerationPrompt = isGemini25FlashImage
@@ -103,10 +110,10 @@ export const systemPrompt = ({
     : "\n\nImage Generation: You can generate images using the generateImage tool with detailed, descriptive prompts when users request images.";
 
   if (selectedChatModel === "chat-model-reasoning") {
-    return `${regularPrompt}${projectInstructionsBlock}${customInstructionsBlock}${kbContextBlock}${agentModeBlock}\n\n${requestPrompt}`;
+    return `${regularPrompt}${projectInstructionsBlock}${customInstructionsBlock}${userMemoriesBlock}${kbContextBlock}${agentModeBlock}\n\n${requestPrompt}`;
   }
 
-  return `${regularPrompt}${projectInstructionsBlock}${customInstructionsBlock}${kbContextBlock}${agentModeBlock}\n\n${requestPrompt}\n\n${artifactsPrompt}${imageGenerationPrompt}`;
+  return `${regularPrompt}${projectInstructionsBlock}${customInstructionsBlock}${userMemoriesBlock}${kbContextBlock}${agentModeBlock}\n\n${requestPrompt}\n\n${artifactsPrompt}${imageGenerationPrompt}`;
 };
 
 /**
@@ -121,6 +128,7 @@ export const getCacheableSystemPrompt = ({
   projectInstructions,
   kbContext,
   agentMode,
+  userMemories,
 }: {
   selectedChatModel: string;
   requestHints: RequestHints;
@@ -128,8 +136,9 @@ export const getCacheableSystemPrompt = ({
   projectInstructions?: string;
   kbContext?: string;
   agentMode?: boolean;
+  userMemories?: Array<{ content: string; category: string }>;
 }) => {
-  const content = systemPrompt({ selectedChatModel, requestHints, customInstructions, projectInstructions, kbContext, agentMode });
+  const content = systemPrompt({ selectedChatModel, requestHints, customInstructions, projectInstructions, kbContext, agentMode, userMemories });
 
   // Determine if this model supports caching
   const isAnthropicModel = selectedChatModel.includes('anthropic') || selectedChatModel.includes('claude');

@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/app/(auth)/auth";
 import { CustomInstructionsForm } from "@/components/custom-instructions-form";
+import { MemoryManagement } from "@/components/memory-management";
 import { McpServersForm } from "@/components/mcp-servers-form";
 import { SubscriptionManagement } from "@/components/subscription-management";
 import { UsageDisplay } from "@/components/usage-display";
@@ -22,7 +23,12 @@ export default async function SettingsPage() {
     // Default to free tier on error
   }
 
-  const prefs = await getUserPreferences(session.user.id);
+  let prefs = null;
+  try {
+    prefs = await getUserPreferences(session.user.id);
+  } catch (error) {
+    console.error("Error getting user preferences:", error);
+  }
 
   return (
     <div className="mx-auto max-w-4xl p-4 md:p-8">
@@ -47,6 +53,11 @@ export default async function SettingsPage() {
         <CustomInstructionsForm
           initialValue={prefs?.customInstructions ?? ""}
         />
+      </div>
+
+      <div className="mt-6 rounded-lg border p-6">
+        <h2 className="mb-4 font-semibold text-lg">Memory</h2>
+        <MemoryManagement />
       </div>
 
       <div className="mt-6 rounded-lg border p-6">

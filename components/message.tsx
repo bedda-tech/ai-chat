@@ -1153,6 +1153,32 @@ const PurePreviewMessage = ({
               );
             }
 
+            if (type === "tool-saveMemory") {
+              const toolPart = part as any;
+              const { toolCallId, state } = toolPart;
+
+              return (
+                <Tool key={toolCallId}>
+                  <ToolHeader state={state} type="tool-saveMemory" />
+                  <ToolContent>
+                    {state === "output-available" && toolPart.output && (
+                      <div className="p-3 text-sm">
+                        {toolPart.output.success ? (
+                          <span className="text-muted-foreground">
+                            Remembered: {toolPart.output.saved}
+                          </span>
+                        ) : (
+                          <span className="text-destructive">
+                            {toolPart.output.error || "Failed to save memory"}
+                          </span>
+                        )}
+                      </div>
+                    )}
+                  </ToolContent>
+                </Tool>
+              );
+            }
+
             return null;
           })}
 

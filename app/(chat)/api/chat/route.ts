@@ -45,6 +45,7 @@ import { googleDriveTool } from "@/lib/ai/tools/google-drive";
 import { notionTool } from "@/lib/ai/tools/notion";
 import { generateSpeechTool } from "@/lib/ai/tools/generate-speech";
 import { generateChartTool } from "@/lib/ai/tools/generate-chart";
+import { saveMemoryTool } from "@/lib/ai/tools/save-memory";
 import { isProductionEnvironment } from "@/lib/constants";
 import {
   createStreamId,
@@ -53,6 +54,7 @@ import {
   getEnabledMcpServers,
   getMessagesByChatId,
   getProjectById,
+  getUserMemories,
   getUserPreferences,
   hasKBDocuments,
   saveChat,
@@ -150,8 +152,9 @@ export async function POST(request: Request) {
       return createRateLimitResponse(rateLimitResult);
     }
 
-    // Fetch user preferences (custom instructions) in parallel with model access check
+    // Fetch user preferences and memories in parallel with model access check
     const userPrefsPromise = getUserPreferences(session.user.id);
+    const userMemoriesPromise = getUserMemories(session.user.id);
 
     // Enforce model access by subscription tier.
     // rateLimitResult.tier comes from the same DB call — no extra round-trip.
@@ -171,10 +174,12 @@ export async function POST(request: Request) {
 
     const _userType: UserType = session.user.type;
 
-    const [chat, userPrefs] = await Promise.all([
+    const [chat, userPrefs, userMemoriesRaw] = await Promise.all([
       getChatById({ id }),
       userPrefsPromise,
+      userMemoriesPromise,
     ]);
+    const userMemories = userMemoriesRaw.map((m) => ({ content: m.content, category: m.category }));
 
     // Fetch project instructions if chat belongs to a project
     let projectInstructions: string | undefined;
@@ -295,6 +300,7 @@ export async function POST(request: Request) {
       "notion",
       "generateSpeech",
       "generateChart",
+      "saveMemory",
     ];
 
     // Check model capabilities from static config (handles internal model IDs)
@@ -370,6 +376,7 @@ export async function POST(request: Request) {
           notion: notionTool(session.user.id),
           generateSpeech: generateSpeechTool(),
           generateChart: generateChartTool(),
+          saveMemory: saveMemoryTool(session.user.id, id),
           ...mcpToolMap,
         };
 
@@ -415,6 +422,7 @@ export async function POST(request: Request) {
             customInstructions: userPrefs?.customInstructions ?? undefined,
             kbContext,
             agentMode,
+            userMemories: userMemories.length > 0 ? userMemories : undefined,
           }),
           messages: await convertToModelMessages(uiMessages),
           // Use model-specific maxSteps configuration (boosted in agent mode)
