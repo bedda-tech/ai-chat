@@ -61,6 +61,7 @@
     "framer-motion": "^12.23.24",
     "geist": "^1.5.1",
     "lucide-react": "^0.546.0",
+    "mermaid": "^11.14.0",
     "nanoid": "^5.1.6",
     "next": "15.5.9",
     "next-auth": "5.0.0-beta.25",

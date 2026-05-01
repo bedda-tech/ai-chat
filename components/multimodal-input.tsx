@@ -462,16 +462,16 @@ function PureCanvasModeButton({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          content: kind === "code" ? "// Start coding here\n" : kind === "sheet" ? "" : "",
-          title: kind === "code" ? "Untitled Code" : kind === "sheet" ? "Untitled Sheet" : "Untitled Document",
+          content: kind === "code" ? "// Start coding here\n" : kind === "mermaid" ? "graph TD\n    A[Start] --> B[End]" : kind === "sheet" ? "" : "",
+          title: kind === "code" ? "Untitled Code" : kind === "sheet" ? "Untitled Sheet" : kind === "mermaid" ? "Untitled Diagram" : "Untitled Document",
           kind,
         }),
       });
       setArtifact({
         documentId: id,
         kind,
-        title: kind === "code" ? "Untitled Code" : kind === "sheet" ? "Untitled Sheet" : "Untitled Document",
-        content: kind === "code" ? "// Start coding here\n" : "",
+        title: kind === "code" ? "Untitled Code" : kind === "sheet" ? "Untitled Sheet" : kind === "mermaid" ? "Untitled Diagram" : "Untitled Document",
+        content: kind === "code" ? "// Start coding here\n" : kind === "mermaid" ? "graph TD\n    A[Start] --> B[End]" : "",
         status: "idle",
         isVisible: true,
         boundingBox: { top: 0, left: 0, width: 0, height: 0 },
@@ -506,6 +506,9 @@ function PureCanvasModeButton({
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => openCanvas("sheet")}>
             Spreadsheet
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => openCanvas("mermaid")}>
+            Diagram
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

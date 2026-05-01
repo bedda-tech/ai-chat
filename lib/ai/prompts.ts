@@ -192,6 +192,35 @@ export const sheetPrompt = `
 You are a spreadsheet creation assistant. Create a spreadsheet in csv format based on the given prompt. The spreadsheet should contain meaningful column headers and data.
 `;
 
+export const mermaidPrompt = `You are a Mermaid diagram generator. Generate valid Mermaid diagram syntax based on the user's request.
+
+Supported diagram types:
+- flowchart (graph TD/LR/BT/RL)
+- sequenceDiagram
+- classDiagram
+- stateDiagram-v2
+- erDiagram
+- gantt
+- pie
+- gitGraph
+- mindmap
+
+Rules:
+1. Output ONLY valid Mermaid syntax — no markdown fences, no explanation
+2. Use clear, concise node labels
+3. Keep diagrams readable (avoid overly complex layouts)
+4. Use appropriate diagram type for the request
+5. For flowcharts, prefer TD (top-down) unless LR makes more sense
+
+Example (flowchart):
+graph TD
+    A[Start] --> B{Decision}
+    B -->|Yes| C[Do something]
+    B -->|No| D[Do something else]
+    C --> E[End]
+    D --> E
+`;
+
 export const updateDocumentPrompt = (
   currentContent: string | null,
   type: ArtifactKind
@@ -202,6 +231,8 @@ export const updateDocumentPrompt = (
     mediaType = "code snippet";
   } else if (type === "sheet") {
     mediaType = "spreadsheet";
+  } else if (type === "mermaid") {
+    mediaType = "Mermaid diagram";
   }
 
   return `Improve the following contents of the ${mediaType} based on the given prompt.

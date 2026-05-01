@@ -398,15 +398,15 @@ export const roadmapData: RoadmapPhase[] = [
         title: "Cross-Conversation Memory",
         description:
           "AI remembers user preferences, context, and facts across conversations",
-        status: "in-progress",
+        status: "completed",
         priority: "high",
-        effort: "2 weeks",
+        effort: "Completed",
         impact: "Matches ChatGPT Memory, Claude Memory",
         keyFeatures: [
           "Automatic memory extraction from conversations",
-          "User-editable memory bank",
-          "Memory toggle per conversation",
-          "Privacy controls for stored memories",
+          "User-editable memory bank in settings",
+          "Delete individual memories or clear all",
+          "Memory injected into every conversation",
         ],
       },
       {
@@ -418,7 +418,7 @@ export const roadmapData: RoadmapPhase[] = [
         priority: "medium",
         effort: "4-6 weeks",
         keyFeatures: [
-          "Mermaid diagrams",
+          "Mermaid diagrams (flowcharts, sequence, ER, class, state) -- shipped",
           "Interactive charts (Recharts) -- shipped",
           "HTML/CSS/JS preview",
           "Slide presentations",
@@ -518,8 +518,8 @@ export const roadmapData: RoadmapPhase[] = [
 
 export const roadmapStats = {
   totalFeatures: 31,
-  completedFeatures: 22,
-  inProgressFeatures: 2,
+  completedFeatures: 23,
+  inProgressFeatures: 1,
   plannedFeatures: 7,
   estimatedValue: "$500k+/month (at 100k users)",
   targetMargins: "50-55% gross profit",
