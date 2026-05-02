@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS "Project" (
   "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-  "userId" varchar(255) NOT NULL,
+  "userId" uuid NOT NULL,
   "name" varchar(255) NOT NULL,
   "description" text,
   "instructions" text,
