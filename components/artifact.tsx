@@ -13,6 +13,7 @@ import {
 import useSWR, { useSWRConfig } from "swr";
 import { useDebounceCallback, useWindowSize } from "usehooks-ts";
 import { codeArtifact } from "@/artifacts/code/client";
+import { htmlArtifact } from "@/artifacts/html/client";
 import { imageArtifact } from "@/artifacts/image/client";
 import { mermaidArtifact } from "@/artifacts/mermaid/client";
 import { sheetArtifact } from "@/artifacts/sheet/client";
@@ -36,6 +37,7 @@ export const artifactDefinitions = [
   imageArtifact,
   sheetArtifact,
   mermaidArtifact,
+  htmlArtifact,
 ];
 export type ArtifactKind = (typeof artifactDefinitions)[number]["kind"];
 

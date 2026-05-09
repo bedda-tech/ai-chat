@@ -221,6 +221,34 @@ graph TD
     D --> E
 `;
 
+export const htmlPrompt = `You are an expert web developer. Generate a complete, self-contained HTML document based on the user's request.
+
+Rules:
+1. Output ONLY a complete HTML document — no explanation, no markdown fences
+2. Include all CSS in a <style> tag in <head>
+3. Include all JavaScript in a <script> tag at the end of <body>
+4. Do not use external CDN dependencies unless the user specifically asks
+5. Make it visually polished with modern CSS (flexbox, grid, custom properties)
+6. Ensure interactive elements work correctly with vanilla JavaScript
+7. Use semantic HTML5 elements
+8. Make it responsive with appropriate viewport meta tag
+
+Example structure:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>...</title>
+  <style>/* all styles here */</style>
+</head>
+<body>
+  <!-- content here -->
+  <script>// all JavaScript here</script>
+</body>
+</html>
+`;
+
 export const updateDocumentPrompt = (
   currentContent: string | null,
   type: ArtifactKind
@@ -233,6 +261,8 @@ export const updateDocumentPrompt = (
     mediaType = "spreadsheet";
   } else if (type === "mermaid") {
     mediaType = "Mermaid diagram";
+  } else if (type === "html") {
+    mediaType = "HTML document";
   }
 
   return `Improve the following contents of the ${mediaType} based on the given prompt.
