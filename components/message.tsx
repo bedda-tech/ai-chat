@@ -352,11 +352,27 @@ const PurePreviewMessage = ({
                                 <span className="font-medium">Prompt:</span> {toolPart.input.prompt}
                               </div>
                             )}
-                            {toolPart.output.size && (
-                              <div className="text-muted-foreground text-xs">
-                                <span className="font-medium">Size:</span> {toolPart.output.size}
+                            <div className="flex items-center justify-between gap-2 flex-wrap">
+                              <div className="flex items-center gap-3 text-muted-foreground text-xs">
+                                {toolPart.output.model && (
+                                  <span>
+                                    <span className="font-medium">Model:</span> {toolPart.output.model}
+                                  </span>
+                                )}
+                                {toolPart.output.size && (
+                                  <span>
+                                    <span className="font-medium">Size:</span> {toolPart.output.size}
+                                  </span>
+                                )}
                               </div>
-                            )}
+                              <a
+                                href={`data:${toolPart.output.image.mediaType};base64,${toolPart.output.image.base64}`}
+                                download={`bedda-image-${Date.now()}.png`}
+                                className="inline-flex items-center gap-1 rounded-md bg-primary px-2.5 py-1 text-primary-foreground text-xs font-medium hover:bg-primary/90 transition-colors"
+                              >
+                                Download
+                              </a>
+                            </div>
                           </div>
                         ) : (
                           <div className="rounded-md bg-destructive/10 p-3 text-destructive text-sm">
