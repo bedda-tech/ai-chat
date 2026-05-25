@@ -469,3 +469,19 @@ export const userMemory = pgTable("UserMemory", {
 });
 
 export type UserMemory = InferSelectModel<typeof userMemory>;
+
+// API keys for programmatic access (OpenAI-compatible API)
+export const apiKey = pgTable("ApiKey", {
+  id: uuid("id").primaryKey().notNull().defaultRandom(),
+  userId: uuid("userId")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  name: varchar("name", { length: 255 }).notNull(),
+  keyHash: varchar("keyHash", { length: 128 }).notNull().unique(),
+  keyPrefix: varchar("keyPrefix", { length: 12 }).notNull(), // e.g. "bai_abc1..."
+  lastUsedAt: timestamp("lastUsedAt"),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+  revokedAt: timestamp("revokedAt"),
+});
+
+export type ApiKey = InferSelectModel<typeof apiKey>;

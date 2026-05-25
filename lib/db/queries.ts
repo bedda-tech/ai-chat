@@ -22,6 +22,8 @@ import type { AppUsage } from "../usage";
 import { generateUUID } from "../utils";
 import {
   account,
+  apiKey,
+  type ApiKey,
   type Chat,
   chat,
   type DBMessage,
@@ -1174,4 +1176,51 @@ export async function deleteUserMemory(id: string, userId: string): Promise<void
 
 export async function deleteAllUserMemories(userId: string): Promise<void> {
   await db.delete(userMemory).where(eq(userMemory.userId, userId));
+}
+
+// ── API Keys ──────────────────────────────────────────────────────────────────
+
+export async function createApiKey(data: {
+  userId: string;
+  name: string;
+  keyHash: string;
+  keyPrefix: string;
+}): Promise<ApiKey> {
+  const [key] = await db.insert(apiKey).values(data).returning();
+  return key;
+}
+
+export async function listApiKeys(userId: string): Promise<ApiKey[]> {
+  return db
+    .select()
+    .from(apiKey)
+    .where(and(eq(apiKey.userId, userId), sql`${apiKey.revokedAt} IS NULL`))
+    .orderBy(desc(apiKey.createdAt));
+}
+
+export async function revokeApiKey(id: string, userId: string): Promise<void> {
+  await db
+    .update(apiKey)
+    .set({ revokedAt: new Date() })
+    .where(and(eq(apiKey.id, id), eq(apiKey.userId, userId)));
+}
+
+export async function validateApiKey(
+  keyHash: string
+): Promise<{ userId: string; keyId: string } | null> {
+  const [row] = await db
+    .select({ userId: apiKey.userId, id: apiKey.id })
+    .from(apiKey)
+    .where(and(eq(apiKey.keyHash, keyHash), sql`${apiKey.revokedAt} IS NULL`))
+    .limit(1);
+
+  if (!row) return null;
+
+  // Update lastUsedAt in background (best-effort)
+  db.update(apiKey)
+    .set({ lastUsedAt: new Date() })
+    .where(eq(apiKey.id, row.id))
+    .catch(() => {});
+
+  return { userId: row.userId, keyId: row.id };
 }
