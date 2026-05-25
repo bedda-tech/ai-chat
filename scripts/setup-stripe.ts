@@ -116,7 +116,7 @@ async function main() {
       "  (Configure webhook at https://dashboard.stripe.com/webhooks)"
     );
     console.log(
-      "  Webhook URL: https://bedda.ai/api/webhooks/stripe"
+      "  Webhook URL: https://www.bedda.tech/api/webhooks/stripe"
     );
     console.log("  Webhook events to enable:");
     console.log("    - checkout.session.completed");
