@@ -27,8 +27,11 @@ function getMetrics(modelId: string): ModelMetrics {
   return metricsStore.get(modelId)!;
 }
 
+const logEnabled = () => process.env.LOG_AI_CALLS !== "false";
+
 /**
- * Logging middleware — logs model, latency, and token usage for every call.
+ * Logging middleware — logs model, latency, finish reason, and token usage per call.
+ * Disable by setting LOG_AI_CALLS=false in env.
  */
 export const loggingMiddleware: LanguageModelMiddleware = {
   specificationVersion: "v3",
@@ -38,16 +41,20 @@ export const loggingMiddleware: LanguageModelMiddleware = {
     const modelId = model.modelId;
     try {
       const result = await doGenerate();
-      const latency = Date.now() - start;
-      const totalTokens =
-        (result.usage?.inputTokens?.total ?? 0) +
-        (result.usage?.outputTokens?.total ?? 0);
-      console.log(
-        `[AI] generate ${modelId} — ${latency}ms, ${totalTokens} tokens`
-      );
+      if (logEnabled()) {
+        const latency = Date.now() - start;
+        const inputTokens = result.usage?.inputTokens?.total ?? 0;
+        const outputTokens = result.usage?.outputTokens?.total ?? 0;
+        const finishReason = result.finishReason ?? "unknown";
+        console.log(
+          `[AI] model=${modelId} latency=${latency}ms finishReason=${finishReason} inputTokens=${inputTokens} outputTokens=${outputTokens}`
+        );
+      }
       return result;
     } catch (err) {
-      console.error(`[AI] generate ${modelId} — error after ${Date.now() - start}ms`, err);
+      if (logEnabled()) {
+        console.error(`[AI] model=${modelId} error after ${Date.now() - start}ms`, err);
+      }
       throw err;
     }
   },
@@ -55,13 +62,17 @@ export const loggingMiddleware: LanguageModelMiddleware = {
   wrapStream: async ({ doStream, model }) => {
     const start = Date.now();
     const modelId = model.modelId;
-    console.log(`[AI] stream ${modelId} — start`);
+    if (logEnabled()) console.log(`[AI] model=${modelId} stream=start`);
     try {
       const result = await doStream();
-      console.log(`[AI] stream ${modelId} — first chunk after ${Date.now() - start}ms`);
+      if (logEnabled()) {
+        console.log(`[AI] model=${modelId} stream=ready latency=${Date.now() - start}ms`);
+      }
       return result;
     } catch (err) {
-      console.error(`[AI] stream ${modelId} — error after ${Date.now() - start}ms`, err);
+      if (logEnabled()) {
+        console.error(`[AI] model=${modelId} stream=error after ${Date.now() - start}ms`, err);
+      }
       throw err;
     }
   },
