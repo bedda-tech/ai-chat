@@ -1,0 +1,24 @@
+CREATE TABLE IF NOT EXISTS "Team" (
+  "id" UUID PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+  "name" VARCHAR(255) NOT NULL,
+  "ownerId" UUID NOT NULL REFERENCES "User"("id") ON DELETE CASCADE,
+  "stripeCustomerId" VARCHAR(255),
+  "createdAt" TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS "TeamMember" (
+  "teamId" UUID NOT NULL REFERENCES "Team"("id") ON DELETE CASCADE,
+  "userId" UUID NOT NULL REFERENCES "User"("id") ON DELETE CASCADE,
+  "role" VARCHAR(10) NOT NULL DEFAULT 'member',
+  "joinedAt" TIMESTAMP NOT NULL DEFAULT NOW(),
+  PRIMARY KEY ("teamId", "userId")
+);
+
+CREATE TABLE IF NOT EXISTS "TeamInvite" (
+  "id" UUID PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+  "teamId" UUID NOT NULL REFERENCES "Team"("id") ON DELETE CASCADE,
+  "email" VARCHAR(255) NOT NULL,
+  "token" VARCHAR(128) NOT NULL UNIQUE,
+  "expiresAt" TIMESTAMP NOT NULL,
+  "acceptedAt" TIMESTAMP
+);

@@ -485,3 +485,50 @@ export const apiKey = pgTable("ApiKey", {
 });
 
 export type ApiKey = InferSelectModel<typeof apiKey>;
+
+// Teams
+export const team = pgTable("Team", {
+  id: uuid("id").primaryKey().notNull().defaultRandom(),
+  name: varchar("name", { length: 255 }).notNull(),
+  ownerId: uuid("ownerId")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  stripeCustomerId: varchar("stripeCustomerId", { length: 255 }),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+});
+
+export type Team = InferSelectModel<typeof team>;
+
+export const teamMember = pgTable(
+  "TeamMember",
+  {
+    teamId: uuid("teamId")
+      .notNull()
+      .references(() => team.id, { onDelete: "cascade" }),
+    userId: uuid("userId")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    role: varchar("role", { enum: ["admin", "member"] })
+      .notNull()
+      .default("member"),
+    joinedAt: timestamp("joinedAt").notNull().defaultNow(),
+  },
+  (table) => ({
+    pk: primaryKey({ columns: [table.teamId, table.userId] }),
+  })
+);
+
+export type TeamMember = InferSelectModel<typeof teamMember>;
+
+export const teamInvite = pgTable("TeamInvite", {
+  id: uuid("id").primaryKey().notNull().defaultRandom(),
+  teamId: uuid("teamId")
+    .notNull()
+    .references(() => team.id, { onDelete: "cascade" }),
+  email: varchar("email", { length: 255 }).notNull(),
+  token: varchar("token", { length: 128 }).notNull().unique(),
+  expiresAt: timestamp("expiresAt").notNull(),
+  acceptedAt: timestamp("acceptedAt"),
+});
+
+export type TeamInvite = InferSelectModel<typeof teamInvite>;
