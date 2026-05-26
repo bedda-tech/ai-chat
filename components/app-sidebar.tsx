@@ -164,6 +164,42 @@ export function AppSidebar({ user }: { user: User | undefined }) {
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild>
                     <Link
+                      href="/studio"
+                      onClick={() => {
+                        setOpenMobile(false);
+                      }}
+                    >
+                      <svg
+                        fill="none"
+                        height="16"
+                        stroke="currentColor"
+                        strokeWidth={1.75}
+                        viewBox="0 0 24 24"
+                        width="16"
+                      >
+                        <path
+                          d="M4 16l4-4 4 4 4-8 4 4"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <rect
+                          height="18"
+                          rx="2"
+                          ry="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          width="20"
+                          x="2"
+                          y="3"
+                        />
+                      </svg>
+                      <span>Image Studio</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild>
+                    <Link
                       href="/compare"
                       onClick={() => {
                         setOpenMobile(false);
