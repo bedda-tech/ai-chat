@@ -41,8 +41,6 @@ import {
   ArrowUpIcon,
   BotIcon,
   CpuIcon,
-  MicIcon,
-  MicOffIcon,
   PaperclipIcon,
   SparklesIcon,
   StopIcon,
@@ -65,6 +63,7 @@ import {
 } from "./ui/tooltip";
 import { VisibilitySelector, type VisibilityType } from "./visibility-selector";
 import { PromptLibraryModal } from "./prompt-library-modal";
+import { VoiceRecorderButton } from "./voice-recorder-button";
 import type { ArtifactKind } from "./artifact";
 import { useArtifact } from "@/hooks/use-artifact";
 import {
@@ -343,7 +342,7 @@ function PureMultimodalInput({
               selectedModelId={selectedModelId}
               status={status}
             />
-            <VoiceInputButton input={input} setInput={setInput} status={status} />
+            <VoiceRecorderButton setInput={setInput} disabled={status !== "ready"} />
             <ModelSelectorCompact
               onModelChange={onModelChange}
               selectedModelId={selectedModelId}
@@ -550,130 +549,6 @@ function PureAttachmentsButton({
 }
 
 const AttachmentsButton = memo(PureAttachmentsButton);
-
-function PureVoiceInputButton({
-  input,
-  setInput,
-  status,
-}: {
-  input: string;
-  setInput: Dispatch<SetStateAction<string>>;
-  status: UseChatHelpers<ChatMessage>["status"];
-}) {
-  const [isListening, setIsListening] = useState(false);
-  const [isSupported, setIsSupported] = useState(false);
-  const recognitionRef = useRef<any>(null);
-  // Track what was in the input box when recording started
-  const baseTextRef = useRef("");
-
-  useEffect(() => {
-    setIsSupported(
-      "SpeechRecognition" in window || "webkitSpeechRecognition" in window
-    );
-  }, []);
-
-  const startListening = useCallback(() => {
-    if (!isSupported) {
-      toast.error("Voice input is not supported in this browser. Try Chrome or Edge.");
-      return;
-    }
-
-    const SpeechRecognition =
-      (window as any).SpeechRecognition ||
-      (window as any).webkitSpeechRecognition;
-
-    const recognition = new SpeechRecognition();
-    recognition.continuous = false;
-    recognition.interimResults = true;
-    recognition.lang = "en-US";
-
-    recognition.onstart = () => {
-      // Capture the text already in the box before we start appending
-      baseTextRef.current = input;
-      setIsListening(true);
-    };
-
-    recognition.onresult = (event: any) => {
-      let interim = "";
-      let final = "";
-      for (let i = event.resultIndex; i < event.results.length; i++) {
-        const t = event.results[i][0].transcript;
-        if (event.results[i].isFinal) {
-          final += t;
-        } else {
-          interim = t;
-        }
-      }
-      const base = baseTextRef.current;
-      const spoken = final || interim;
-      setInput(`${base}${base ? " " : ""}${spoken}`);
-      if (final) {
-        // Advance base for continuous sentences
-        baseTextRef.current = `${base}${base ? " " : ""}${final}`.trimStart();
-      }
-    };
-
-    recognition.onend = () => {
-      setIsListening(false);
-      recognitionRef.current = null;
-    };
-
-    recognition.onerror = (event: any) => {
-      setIsListening(false);
-      recognitionRef.current = null;
-      // Restore original input on error
-      setInput(baseTextRef.current);
-      if (event.error === "not-allowed") {
-        toast.error("Microphone access denied. Please allow microphone permissions.");
-      } else if (event.error !== "aborted" && event.error !== "no-speech") {
-        toast.error("Voice recognition error. Please try again.");
-      }
-    };
-
-    recognitionRef.current = recognition;
-    recognition.start();
-  }, [isSupported, input, setInput]);
-
-  const stopListening = useCallback(() => {
-    recognitionRef.current?.stop();
-  }, []);
-
-  // Clean up on unmount
-  useEffect(() => {
-    return () => {
-      recognitionRef.current?.abort();
-    };
-  }, []);
-
-  if (!isSupported) return null;
-
-  return (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <Button
-          className={cn(
-            "aspect-square h-8 rounded-lg p-1 transition-colors",
-            isListening
-              ? "bg-red-500/10 text-red-500 hover:bg-red-500/20 animate-pulse"
-              : "hover:bg-accent"
-          )}
-          data-testid="voice-input-button"
-          disabled={status !== "ready"}
-          onClick={isListening ? stopListening : startListening}
-          variant="ghost"
-          type="button"
-        >
-          {isListening ? <MicOffIcon size={14} /> : <MicIcon size={14} />}
-        </Button>
-      </TooltipTrigger>
-      <TooltipContent side="top">
-        {isListening ? "Stop recording" : "Voice input — speak to type"}
-      </TooltipContent>
-    </Tooltip>
-  );
-}
-
-const VoiceInputButton = memo(PureVoiceInputButton);
 
 function PureModelSelectorCompact({
   selectedModelId,
