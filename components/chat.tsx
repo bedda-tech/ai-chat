@@ -112,6 +112,10 @@ export function Chat({
       if (dataPart.type === "data-usage") {
         setUsage(dataPart.data);
       }
+      if ((dataPart.type as string) === "data-context-warnings") {
+        const warnings = dataPart.data as unknown as string[];
+        warnings.forEach((w) => toast({ type: "error", description: w }));
+      }
     },
     onFinish: () => {
       mutate(unstable_serialize(getChatHistoryPaginationKey));

@@ -23,6 +23,7 @@ import { auth, type UserType } from "@/app/(auth)/auth";
 import type { VisibilityType } from "@/components/visibility-selector";
 import { buildGatewayConfig, getThinkingBudget } from "@/lib/ai/gateway-config";
 import { getModelConfig, getModelContextWindow } from "@/lib/ai/model-config";
+import { sanitizeMessagesForProvider } from "@/lib/ai/cross-provider-context";
 import type { ChatModel } from "@/lib/ai/models";
 import { type RequestHints, getCacheableSystemPrompt } from "@/lib/ai/prompts";
 import { myProvider } from "@/lib/ai/providers";
@@ -413,6 +414,22 @@ export async function POST(request: Request) {
           ? Math.max(modelConfig.maxSteps, 20)
           : modelConfig.maxSteps;
 
+        // Convert UI messages to model format, then sanitize for cross-provider compatibility.
+        // This strips Anthropic reasoning blocks for non-Anthropic models and images for
+        // vision-impaired models, preventing silent provider rejections on mid-thread model switches.
+        const rawModelMessages = await convertToModelMessages(uiMessages);
+        const { messages: sanitizedModelMessages, warnings: contextWarnings } =
+          sanitizeMessagesForProvider(rawModelMessages, gatewayModelId);
+        if (contextWarnings.length > 0) {
+          contextWarnings.forEach((w) =>
+            console.warn("[chat] cross-provider context:", w)
+          );
+          dataStream.write({
+            type: "data-context-warnings" as any,
+            data: contextWarnings,
+          });
+        }
+
         const result = streamText({
           model: myProvider.languageModel(selectedChatModel),
           system: getCacheableSystemPrompt({
@@ -424,7 +441,7 @@ export async function POST(request: Request) {
             agentMode,
             userMemories: userMemories.length > 0 ? userMemories : undefined,
           }),
-          messages: await convertToModelMessages(uiMessages),
+          messages: sanitizedModelMessages,
           // Use model-specific maxSteps configuration (boosted in agent mode)
           stopWhen: stepCountIs(effectiveMaxSteps),
           // Use model-specific temperature if available
