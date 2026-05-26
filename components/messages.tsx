@@ -2,7 +2,7 @@ import type { UseChatHelpers } from "@ai-sdk/react";
 import equal from "fast-deep-equal";
 import { AnimatePresence } from "framer-motion";
 import { ArrowDownIcon } from "lucide-react";
-import { memo, useEffect, type Dispatch, type SetStateAction } from "react";
+import { memo, useEffect, useMemo, type Dispatch, type SetStateAction } from "react";
 import { useMessages } from "@/hooks/use-messages";
 import type { Vote } from "@/lib/db/schema";
 import type { ChatMessage } from "@/lib/types";
@@ -52,6 +52,15 @@ function PureMessages({
     status,
   });
 
+  const hasMixedModels = useMemo(() => {
+    const assistantModelIds = new Set(
+      messages
+        .filter((m) => m.role === "assistant" && m.metadata?.modelId)
+        .map((m) => m.metadata?.modelId as string)
+    );
+    return assistantModelIds.size > 1;
+  }, [messages]);
+
   useDataStream();
 
   useEffect(() => {
@@ -100,6 +109,7 @@ function PureMessages({
                 hasSentMessage && index === messages.length - 1
               }
               setMessages={setMessages}
+              showModelBadge={hasMixedModels}
               vote={
                 votes
                   ? votes.find((vote) => vote.messageId === message.id)

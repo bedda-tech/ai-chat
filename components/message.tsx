@@ -28,6 +28,24 @@ import { PreviewAttachment } from "./preview-attachment";
 import { Weather } from "./weather";
 import { Chart } from "./chart";
 
+const PROVIDER_COLORS: Record<string, string> = {
+  anthropic: "bg-orange-500",
+  openai: "bg-green-500",
+  google: "bg-blue-500",
+  xai: "bg-zinc-400",
+  mistral: "bg-orange-400",
+  deepseek: "bg-indigo-500",
+  groq: "bg-red-400",
+  cerebras: "bg-amber-500",
+  moonshotai: "bg-cyan-500",
+  zai: "bg-purple-400",
+};
+
+function getProviderColor(modelId: string): string {
+  const provider = modelId.split("-")[0];
+  return PROVIDER_COLORS[provider] ?? "bg-zinc-400";
+}
+
 const PurePreviewMessage = ({
   chatId,
   message,
@@ -37,6 +55,7 @@ const PurePreviewMessage = ({
   regenerate,
   isReadonly,
   requiresScrollPadding,
+  showModelBadge,
 }: {
   chatId: string;
   message: ChatMessage;
@@ -46,6 +65,7 @@ const PurePreviewMessage = ({
   regenerate: UseChatHelpers<ChatMessage>["regenerate"];
   isReadonly: boolean;
   requiresScrollPadding: boolean;
+  showModelBadge?: boolean;
 }) => {
   const [mode, setMode] = useState<"view" | "edit">("view");
 
@@ -76,12 +96,17 @@ const PurePreviewMessage = ({
             <div className="flex size-8 items-center justify-center rounded-full bg-background ring-1 ring-border">
               <SparklesIcon size={14} />
             </div>
-            {message.metadata?.modelId && (() => {
-              const model = chatModels.find(m => m.id === message.metadata?.modelId);
-              const displayName = model?.name ?? message.metadata.modelId;
+            {showModelBadge && message.metadata?.modelId && (() => {
+              const modelId = message.metadata.modelId as string;
+              const model = chatModels.find(m => m.id === modelId);
+              const displayName = model?.name ?? modelId.split("-").slice(1).join("-");
+              const colorClass = getProviderColor(modelId);
               return (
-                <span className="max-w-[4.5rem] text-center font-medium text-muted-foreground text-[10px] leading-tight">
-                  {displayName}
+                <span className="flex max-w-[5rem] flex-col items-center gap-0.5 opacity-100 transition-opacity md:opacity-0 md:group-hover/message:opacity-100">
+                  <span className={cn("size-1.5 rounded-full", colorClass)} />
+                  <span className="max-w-[4.5rem] text-center font-medium text-muted-foreground text-[10px] leading-tight">
+                    {displayName}
+                  </span>
                 </span>
               );
             })()}
