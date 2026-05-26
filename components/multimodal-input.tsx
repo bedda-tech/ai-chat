@@ -25,7 +25,9 @@ import {
   getToolDisplayName,
   getToolIcon,
 } from "@/lib/ai/model-tools";
+import { FREE_TIER_MODEL_IDS } from "@/lib/ai/entitlements";
 import { myProvider } from "@/lib/ai/providers";
+import { useAvailableModels } from "@/hooks/use-available-models";
 import type { Attachment, ChatMessage } from "@/lib/types";
 import type { AppUsage } from "@/lib/usage";
 import { cn } from "@/lib/utils";
@@ -561,10 +563,10 @@ function PureModelSelectorCompact({
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedToolFilters, setSelectedToolFilters] = useState<Set<ModelTool>>(new Set());
-  
+  const { models: dynamicModels } = useAvailableModels();
+
   const selectedModelRef = useCallback((node: HTMLButtonElement | null) => {
     if (node && isOpen && !searchQuery) {
-      // Use requestAnimationFrame to ensure the dialog is fully rendered
       requestAnimationFrame(() => {
         setTimeout(() => {
           node.scrollIntoView({
@@ -581,46 +583,54 @@ function PureModelSelectorCompact({
     setOptimisticModelId(selectedModelId);
   }, [selectedModelId]);
 
+  const allModels = useMemo(() => {
+    if (dynamicModels.length === 0) return chatModels;
+    const merged = [
+      ...dynamicModels.map(m => ({ id: m.id, name: m.name, description: m.description })),
+      ...chatModels,
+    ];
+    const seen = new Set<string>();
+    return merged.filter(m => {
+      if (seen.has(m.id)) return false;
+      seen.add(m.id);
+      return true;
+    });
+  }, [dynamicModels]);
+
   const allAvailableTools = useMemo(() => {
     const toolsSet = new Set<ModelTool>();
-    for (const model of chatModels) {
+    for (const model of allModels) {
       const tools = getModelTools(model.id);
       for (const tool of tools) {
         toolsSet.add(tool);
       }
     }
     return Array.from(toolsSet);
-  }, []);
+  }, [allModels]);
 
   const filteredModels = useMemo(() => {
-    let models = chatModels;
+    let models = allModels;
 
-    // Apply text search filter
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
       const queryWords = query.split(/\s+/).filter(word => word.length > 0);
-
       models = models.filter((model) => {
         const searchText = `${model.name} ${model.description}`.toLowerCase();
-
-        // Match if all query words are found in the combined text
         return queryWords.every(word => searchText.includes(word));
       });
     }
-    
-    // Apply tool filters
+
     if (selectedToolFilters.size > 0) {
       models = models.filter((model) => {
         const modelTools = getModelTools(model.id);
-        // Model must have ALL selected tools
         return Array.from(selectedToolFilters).every((tool) =>
           modelTools.includes(tool)
         );
       });
     }
-    
+
     return models;
-  }, [searchQuery, selectedToolFilters]);
+  }, [allModels, searchQuery, selectedToolFilters]);
 
   const handleModelSelect = (modelId: string) => {
     setOptimisticModelId(modelId);
@@ -646,20 +656,20 @@ function PureModelSelectorCompact({
   };
 
   const selectedModel = useMemo(
-    () => chatModels.find((m) => m.id === optimisticModelId),
-    [optimisticModelId]
+    () => allModels.find((m) => m.id === optimisticModelId),
+    [optimisticModelId, allModels]
   );
 
   return (
     <>
       <Button
-        className="h-8 rounded-lg px-2 transition-colors hover:bg-accent flex items-center gap-1.5"
+        className="h-8 rounded-lg px-2 transition-colors hover:bg-accent flex items-center gap-1.5 max-w-[140px] sm:max-w-[200px]"
         onClick={() => setIsOpen(true)}
         variant="ghost"
         type="button"
       >
-        <CpuIcon size={16} />
-        <span className="text-xs font-medium text-muted-foreground hidden sm:inline">
+        <SparklesIcon size={14} />
+        <span className="text-xs font-medium text-muted-foreground truncate">
           {selectedModel?.name || "Select Model"}
         </span>
       </Button>
@@ -721,7 +731,8 @@ function PureModelSelectorCompact({
               <div className="flex flex-col gap-1">
                 {filteredModels.map((model) => {
                   const modelTools = getModelTools(model.id);
-                  
+                  const isPremium = !FREE_TIER_MODEL_IDS.includes(model.id);
+
                   return (
                     <button
                       key={model.id}
@@ -734,11 +745,16 @@ function PureModelSelectorCompact({
                       type="button"
                     >
                       <div className="flex items-center justify-between gap-2">
-                        <div className="truncate font-medium text-sm">
-                          {model.name}
+                        <div className="flex items-center gap-1.5 min-w-0">
+                          <span className="truncate font-medium text-sm">{model.name}</span>
+                          {isPremium && (
+                            <Badge variant="secondary" className="h-4 shrink-0 px-1 text-[9px] font-semibold uppercase tracking-wide">
+                              Plus
+                            </Badge>
+                          )}
                         </div>
                         {model.id === optimisticModelId && (
-                          <div className="size-2 rounded-full bg-accent-foreground" />
+                          <div className="size-2 shrink-0 rounded-full bg-accent-foreground" />
                         )}
                       </div>
                       <div className={cn(
