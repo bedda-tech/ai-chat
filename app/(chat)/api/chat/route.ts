@@ -7,6 +7,7 @@ import {
   smoothStream,
   stepCountIs,
   streamText,
+  wrapLanguageModel,
 } from "ai";
 import { openai } from "@ai-sdk/openai";
 import { createMCPClient } from "@ai-sdk/mcp";
@@ -27,6 +28,7 @@ import { sanitizeMessagesForProvider } from "@/lib/ai/cross-provider-context";
 import type { ChatModel } from "@/lib/ai/models";
 import { type RequestHints, getCacheableSystemPrompt } from "@/lib/ai/prompts";
 import { myProvider } from "@/lib/ai/providers";
+import { ragMiddleware } from "@/lib/ai/rag-middleware";
 import { analyzeDataTool } from "@/lib/ai/tools/analyze-data";
 import { executeCodeTool } from "@/lib/ai/tools/execute-code";
 import { createDocument } from "@/lib/ai/tools/create-document";
@@ -392,6 +394,7 @@ export async function POST(request: Request) {
         const gatewayConfig = buildGatewayConfig(gatewayModelId);
         const providerOptions: Record<string, any> = {
           gateway: gatewayConfig,
+          bedda: { userId: session.user.id },
         };
 
         // Add image generation for Gemini 2.5 Flash Image
@@ -431,7 +434,10 @@ export async function POST(request: Request) {
         }
 
         const result = streamText({
-          model: myProvider.languageModel(selectedChatModel),
+          model: wrapLanguageModel({
+            model: myProvider.languageModel(selectedChatModel),
+            middleware: ragMiddleware,
+          }),
           system: getCacheableSystemPrompt({
             selectedChatModel,
             requestHints,

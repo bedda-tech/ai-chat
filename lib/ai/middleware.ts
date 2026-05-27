@@ -3,6 +3,8 @@
  * Uses LanguageModelMiddleware (v3) from AI SDK
  */
 
+import crypto from "crypto";
+import { createClient } from "redis";
 import type { LanguageModelMiddleware } from "ai";
 
 // In-memory performance metrics per model
@@ -138,12 +140,157 @@ export function resetMetrics(): void {
   metricsStore.clear();
 }
 
-/** @deprecated no-op kept for backward compat */
-export function clearCache(): void {}
+// ─── Redis-backed AI Response Cache ──────────────────────────────────────────
 
-/** @deprecated no-op kept for backward compat */
-export function getCacheStats(): { size: number; entries: Array<{ key: string; age: number }> } {
-  return { size: 0, entries: [] };
+type RedisClient = ReturnType<typeof createClient>;
+let _redis: RedisClient | null = null;
+let _redisConnecting = false;
+
+async function getRedis(): Promise<RedisClient | null> {
+  if (typeof window !== "undefined") return null; // server-only
+  if (!process.env.REDIS_URL) return null;
+  if (_redis?.isReady) return _redis;
+  if (_redisConnecting) return null;
+  try {
+    _redisConnecting = true;
+    const client = createClient({ url: process.env.REDIS_URL });
+    client.on("error", (err) => console.error("[cache] Redis error:", err));
+    await client.connect();
+    _redis = client;
+    return _redis;
+  } catch (err) {
+    console.error("[cache] Redis connection failed:", err);
+    return null;
+  } finally {
+    _redisConnecting = false;
+  }
+}
+
+const CACHE_PREFIX = "ai:cache:";
+const cacheEnabled = () => process.env.CACHE_AI_RESPONSES !== "false";
+const cacheTTLSeconds = () => parseInt(process.env.CACHE_AI_TTL_SECONDS ?? "3600", 10);
+
+function buildCacheKey(modelId: string, prompt: unknown): string {
+  const hash = crypto
+    .createHash("sha256")
+    .update(JSON.stringify({ modelId, prompt }))
+    .digest("hex");
+  return CACHE_PREFIX + hash;
+}
+
+function syntheticStream(cachedResult: {
+  content?: Array<{ type: string; text?: string }>;
+  finishReason?: string;
+  usage?: unknown;
+  warnings?: unknown[];
+}) {
+  const textParts = (cachedResult.content ?? []).filter(
+    (p): p is { type: "text"; text: string } => p.type === "text" && typeof p.text === "string"
+  );
+
+  return new ReadableStream({
+    start(controller) {
+      controller.enqueue({ type: "stream-start", warnings: cachedResult.warnings ?? [] });
+      for (let i = 0; i < textParts.length; i++) {
+        const id = `cached-${i}`;
+        controller.enqueue({ type: "text-start", id });
+        controller.enqueue({ type: "text-delta", id, delta: textParts[i].text });
+        controller.enqueue({ type: "text-end", id });
+      }
+      controller.enqueue({
+        type: "finish",
+        finishReason: cachedResult.finishReason ?? "stop",
+        usage: cachedResult.usage ?? { inputTokens: { total: 0 }, outputTokens: { total: 0 } },
+      });
+      controller.close();
+    },
+  });
+}
+
+/**
+ * Response caching middleware — caches generate results in Redis by prompt hash.
+ * On stream cache hit, returns a synthetic stream from the cached generate result.
+ * Disable by setting CACHE_AI_RESPONSES=false; TTL via CACHE_AI_TTL_SECONDS (default 3600).
+ */
+export const cachingMiddleware: LanguageModelMiddleware = {
+  specificationVersion: "v3",
+
+  wrapGenerate: async ({ doGenerate, params, model }) => {
+    if (!cacheEnabled()) return doGenerate();
+    const redis = await getRedis().catch(() => null);
+    if (!redis) return doGenerate();
+
+    const cacheKey = buildCacheKey(model.modelId, params.prompt);
+    try {
+      const cached = await redis.get(cacheKey);
+      if (cached) {
+        console.log(`[cache] HIT generate model=${model.modelId}`);
+        return JSON.parse(cached);
+      }
+    } catch (err) {
+      console.error("[cache] Redis get error:", err);
+    }
+
+    const result = await doGenerate();
+    try {
+      await redis.set(cacheKey, JSON.stringify(result), { EX: cacheTTLSeconds() });
+    } catch (err) {
+      console.error("[cache] Redis set error:", err);
+    }
+    return result;
+  },
+
+  wrapStream: async ({ doStream, params, model }) => {
+    if (!cacheEnabled()) return doStream();
+    const redis = await getRedis().catch(() => null);
+    if (!redis) return doStream();
+
+    const cacheKey = buildCacheKey(model.modelId, params.prompt);
+    try {
+      const cached = await redis.get(cacheKey);
+      if (cached) {
+        console.log(`[cache] HIT stream model=${model.modelId}`);
+        return { stream: syntheticStream(JSON.parse(cached)) } as Awaited<ReturnType<typeof doStream>>;
+      }
+    } catch (err) {
+      console.error("[cache] Redis get error:", err);
+    }
+
+    return doStream();
+  },
+};
+
+export async function getCacheStats(): Promise<{
+  size: number;
+  entries: Array<{ key: string; age: number }>;
+}> {
+  const redis = await getRedis().catch(() => null);
+  if (!redis) return { size: 0, entries: [] };
+  try {
+    const keys = await redis.keys(CACHE_PREFIX + "*");
+    const ttl = cacheTTLSeconds();
+    const entries = await Promise.all(
+      keys.slice(0, 20).map(async (key) => {
+        const remaining = await redis.ttl(key).catch(() => ttl);
+        return { key: key.replace(CACHE_PREFIX, ""), age: Math.max(0, ttl - remaining) };
+      })
+    );
+    return { size: keys.length, entries };
+  } catch {
+    return { size: 0, entries: [] };
+  }
+}
+
+export async function clearCache(): Promise<void> {
+  const redis = await getRedis().catch(() => null);
+  if (!redis) return;
+  try {
+    const keys = await redis.keys(CACHE_PREFIX + "*");
+    if (keys.length > 0) await redis.del(keys);
+    console.log(`[cache] Cleared ${keys.length} cache entries`);
+  } catch (err) {
+    console.error("[cache] clearCache error:", err);
+  }
 }
 
 // ─── Guardrails ──────────────────────────────────────────────────────────────
