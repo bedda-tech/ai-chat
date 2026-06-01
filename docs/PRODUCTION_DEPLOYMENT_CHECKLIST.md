@@ -24,6 +24,12 @@
 - [ ] `STRIPE_PREMIUM_PRICE_ID` - Production Premium plan price ID
 - [ ] `STRIPE_WEBHOOK_SECRET` - Production webhook signing secret
 
+#### Social Login (OAuth)
+- [ ] `GOOGLE_CLIENT_ID` - Google OAuth client ID
+- [ ] `GOOGLE_CLIENT_SECRET` - Google OAuth client secret
+- [ ] `GITHUB_CLIENT_ID` - GitHub OAuth App client ID
+- [ ] `GITHUB_CLIENT_SECRET` - GitHub OAuth App client secret
+
 #### Optional But Recommended
 - [ ] `SENTRY_DSN` - Error tracking (if using Sentry)
 - [ ] `ANALYTICS_ID` - Analytics tracking ID (if applicable)
@@ -62,6 +68,30 @@
 - [ ] Set up email receipts
 - [ ] Configure invoice settings
 - [ ] Test payment flow with real card (then refund)
+
+### Google OAuth Setup
+
+#### 1. Google Cloud Console
+- [ ] Go to https://console.cloud.google.com/apis/credentials
+- [ ] Create a new project (or select existing)
+- [ ] Enable "Google+ API" or "Google Identity" in the API Library
+- [ ] Create OAuth 2.0 Client ID (type: Web application)
+- [ ] Add authorized redirect URI: `https://www.bedda.tech/api/auth/callback/google`
+- [ ] Add localhost for dev: `http://localhost:3000/api/auth/callback/google`
+- [ ] Copy Client ID to `GOOGLE_CLIENT_ID`
+- [ ] Copy Client Secret to `GOOGLE_CLIENT_SECRET`
+
+#### 2. GitHub OAuth App
+- [ ] Go to https://github.com/settings/developers → OAuth Apps → New OAuth App
+- [ ] Set Homepage URL: `https://www.bedda.tech`
+- [ ] Set Authorization callback URL: `https://www.bedda.tech/api/auth/callback/github`
+- [ ] Copy Client ID to `GITHUB_CLIENT_ID`
+- [ ] Generate and copy Client Secret to `GITHUB_CLIENT_SECRET`
+
+#### 3. Verify OAuth Flow
+- [ ] Test "Continue with Google" button on `/login` redirects to Google consent screen
+- [ ] Confirm account creation/linking works for new and existing users
+- [ ] Test "Continue with GitHub" button on `/login` works end-to-end
 
 ### Database Setup
 
