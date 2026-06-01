@@ -1,5 +1,6 @@
-import { embed, tool } from "ai";
+import { embed, rerank, tool } from "ai";
 import { openai } from "@ai-sdk/openai";
+import { createCohere } from "@ai-sdk/cohere";
 import { z } from "zod";
 import { searchKBChunks } from "@/lib/db/queries";
 
@@ -33,13 +34,37 @@ export const queryKnowledgeBaseTool = (userId: string) =>
           value: query,
         });
 
-        const chunks = await searchKBChunks({
+        // Fetch wider candidate set when reranking is available
+        const cohereApiKey = process.env.COHERE_API_KEY;
+        const candidateLimit = cohereApiKey ? 20 : limit;
+        const candidates = await searchKBChunks({
           userId,
           queryEmbedding: embedding,
           queryText: query,
-          limit,
+          limit: candidateLimit,
           similarityThreshold: 0.25,
         });
+
+        let chunks = candidates;
+        if (cohereApiKey && candidates.length > 0) {
+          try {
+            const cohereClient = createCohere({ apiKey: cohereApiKey });
+            const startMs = Date.now();
+            const { ranking } = await rerank({
+              model: cohereClient.reranking("rerank-v3.5"),
+              query,
+              documents: candidates.map((c) => c.content),
+              topN: limit,
+            });
+            console.log(
+              `[kb] rerank: ${candidates.length} → ${ranking.length} results in ${Date.now() - startMs}ms`
+            );
+            chunks = ranking.map((item) => candidates[item.originalIndex]);
+          } catch (rerankError) {
+            console.warn("[kb] rerank failed, falling back to vector search:", rerankError);
+            chunks = candidates.slice(0, limit);
+          }
+        }
 
         if (chunks.length === 0) {
           return {
