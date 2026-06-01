@@ -208,6 +208,7 @@ WHERE table_name = 'UserTier';
 
 ### Pre-Deployment
 - [ ] Set all environment variables in production environment
+- [ ] Analytics (Umami): set `NEXT_PUBLIC_UMAMI_HOST` to a publicly-accessible Umami URL, or leave unset to disable (the Tailscale host is unreachable from Vercel)
 - [ ] Configure Stripe Billing Portal
 - [ ] Set up webhook endpoint (production URL)
 - [ ] Switch to Stripe live mode API keys

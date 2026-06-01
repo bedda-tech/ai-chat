@@ -1,6 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  serverExternalPackages: ["redis"],
+  webpack(config, { isServer }) {
+    if (!isServer) {
+      // redis uses Node.js builtins; replace with empty module in client bundle
+      config.resolve.alias = { ...(config.resolve.alias as object), redis: false };
+    }
+    return config;
+  },
   images: {
     remotePatterns: [
       {
@@ -13,9 +21,11 @@ const nextConfig: NextConfig = {
     ],
   },
   async rewrites() {
+    const umamiHost = process.env.NEXT_PUBLIC_UMAMI_HOST;
+    if (!umamiHost) return [];
     return [
-      { source: "/a/script.js", destination: "https://media-server.tail0af452.ts.net:10000/script.js" },
-      { source: "/a/api/send", destination: "https://media-server.tail0af452.ts.net:10000/api/send" },
+      { source: "/a/script.js", destination: `${umamiHost}/script.js` },
+      { source: "/a/api/send", destination: `${umamiHost}/api/send` },
     ];
   },
 };
