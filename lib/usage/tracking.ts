@@ -2,6 +2,26 @@ import { and, eq, gte } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import { rateLimit, usageEvent, userTier, userUsage } from "@/lib/db/schema";
+import modelsData from "@/lib/ai/models-data.json";
+
+type ModelPricing = {
+  input: number;
+  output: number;
+  cachedInput: number;
+};
+
+const modelPricingMap = new Map<string, ModelPricing>(
+  modelsData.models
+    .filter((m) => m.pricing)
+    .map((m) => [
+      m.id,
+      {
+        input: m.pricing.input ?? 3.0,
+        output: m.pricing.output ?? 15.0,
+        cachedInput: m.pricing.cachedInput ?? 0.3,
+      },
+    ])
+);
 
 const connectionString = process.env.POSTGRES_URL!;
 const client = postgres(connectionString);
@@ -74,16 +94,15 @@ export const TIER_LIMITS: Record<UserTierType, RateLimitConfig> = {
  * Calculate cost for a request based on model pricing
  */
 function calculateCost(
-  _modelId: string,
+  modelId: string,
   inputTokens: number,
   outputTokens: number,
   cachedTokens: number
 ): { cost: number; cachedSavings: number } {
-  // TODO: Load model pricing from models-data.json
-  // For now, use placeholder values
-  const inputCostPer1M = 3.0; // $3 per 1M input tokens
-  const outputCostPer1M = 15.0; // $15 per 1M output tokens
-  const cachedInputCostPer1M = 0.3; // $0.30 per 1M cached tokens (90% discount)
+  const pricing = modelPricingMap.get(modelId);
+  const inputCostPer1M = pricing?.input ?? 3.0;
+  const outputCostPer1M = pricing?.output ?? 15.0;
+  const cachedInputCostPer1M = pricing?.cachedInput ?? 0.3;
 
   const normalInputTokens = inputTokens - cachedTokens;
   const inputCost = (normalInputTokens / 1_000_000) * inputCostPer1M;
