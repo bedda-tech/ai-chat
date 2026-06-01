@@ -70,6 +70,15 @@ export const TEST_PROMPTS: Record<string, ModelMessage> = {
       },
     ],
   },
+  USER_KB_QUERY: {
+    role: "user",
+    content: [
+      {
+        type: "text",
+        text: "What information do you have about France in my knowledge base?",
+      },
+    ],
+  },
   GET_WEATHER_CALL: {
     role: "user",
     content: [

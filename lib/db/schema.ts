@@ -532,3 +532,24 @@ export const teamInvite = pgTable("TeamInvite", {
 });
 
 export type TeamInvite = InferSelectModel<typeof teamInvite>;
+
+export const teamChat = pgTable(
+  "TeamChat",
+  {
+    teamId: uuid("teamId")
+      .notNull()
+      .references(() => team.id, { onDelete: "cascade" }),
+    chatId: uuid("chatId")
+      .notNull()
+      .references(() => chat.id, { onDelete: "cascade" }),
+    sharedBy: uuid("sharedBy")
+      .notNull()
+      .references(() => user.id),
+    sharedAt: timestamp("sharedAt").notNull().defaultNow(),
+  },
+  (table) => ({
+    pk: primaryKey({ columns: [table.teamId, table.chatId] }),
+  })
+);
+
+export type TeamChat = InferSelectModel<typeof teamChat>;

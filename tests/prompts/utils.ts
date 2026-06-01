@@ -251,6 +251,19 @@ As we move forward, Silicon Valley continues to reinvent itself. While some pred
     ];
   }
 
+  if (compareMessages(recentMessage, TEST_PROMPTS.USER_KB_QUERY)) {
+    return [
+      ...textToDeltas(
+        "According to your knowledge base, Paris is the capital of France."
+      ),
+      {
+        type: "finish",
+        finishReason: "stop",
+        usage: { inputTokens: 3, outputTokens: 10, totalTokens: 13 },
+      },
+    ];
+  }
+
   if (compareMessages(recentMessage, TEST_PROMPTS.GET_WEATHER_CALL)) {
     return [
       {

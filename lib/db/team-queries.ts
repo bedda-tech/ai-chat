@@ -1,9 +1,9 @@
 import "server-only";
 
-import { and, eq, isNull } from "drizzle-orm";
+import { and, desc, eq, isNull } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
-import { team, teamInvite, teamMember, user } from "./schema";
+import { chat, team, teamChat, teamInvite, teamMember, user } from "./schema";
 
 // biome-ignore lint: Forbidden non-null assertion.
 const client = postgres(process.env.POSTGRES_URL!);
@@ -126,4 +126,45 @@ export async function getPendingInvitesByTeam(teamId: string) {
     .where(
       and(eq(teamInvite.teamId, teamId), isNull(teamInvite.acceptedAt))
     );
+}
+
+export async function shareChat(
+  teamId: string,
+  chatId: string,
+  sharedBy: string
+) {
+  await db
+    .insert(teamChat)
+    .values({ teamId, chatId, sharedBy })
+    .onConflictDoNothing();
+}
+
+export async function unshareChat(teamId: string, chatId: string) {
+  await db
+    .delete(teamChat)
+    .where(and(eq(teamChat.teamId, teamId), eq(teamChat.chatId, chatId)));
+}
+
+export async function getTeamSharedChats(teamId: string) {
+  return db
+    .select({
+      chatId: teamChat.chatId,
+      sharedAt: teamChat.sharedAt,
+      sharedBy: teamChat.sharedBy,
+      title: chat.title,
+      createdAt: chat.createdAt,
+      ownerEmail: user.email,
+    })
+    .from(teamChat)
+    .innerJoin(chat, eq(teamChat.chatId, chat.id))
+    .innerJoin(user, eq(teamChat.sharedBy, user.id))
+    .where(eq(teamChat.teamId, teamId))
+    .orderBy(desc(teamChat.sharedAt));
+}
+
+export async function getTeamsForChat(chatId: string) {
+  return db
+    .select({ teamId: teamChat.teamId })
+    .from(teamChat)
+    .where(eq(teamChat.chatId, chatId));
 }

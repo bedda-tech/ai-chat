@@ -1,6 +1,7 @@
 "use client";
 
 import { memo } from "react";
+import { ShareToTeamButton } from "@/components/share-to-team-button";
 import { SidebarToggle } from "@/components/sidebar-toggle";
 import type { VisibilityType } from "./visibility-selector";
 
@@ -14,8 +15,9 @@ function PureChatHeader({
   isReadonly: boolean;
 }) {
   return (
-    <div className="absolute left-2 top-2 z-50 md:left-2 md:top-2">
+    <div className="absolute left-2 top-2 z-50 flex items-center gap-2 md:left-2 md:top-2">
       <SidebarToggle />
+      {!isReadonly && <ShareToTeamButton chatId={chatId} />}
     </div>
   );
 }
