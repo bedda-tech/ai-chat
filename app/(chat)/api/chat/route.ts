@@ -433,6 +433,7 @@ export async function POST(request: Request) {
           });
         }
 
+        const requestStart = Date.now();
         const result = streamText({
           model: wrapLanguageModel({
             model: myProvider.languageModel(selectedChatModel),
@@ -474,6 +475,7 @@ export async function POST(request: Request) {
             },
           },
           onFinish: async ({ usage, response }) => {
+            const latency = Date.now() - requestStart;
             try {
               const providers = await getTokenlensCatalog();
               const modelId =
@@ -556,7 +558,7 @@ export async function POST(request: Request) {
                   inputTokens: usage.inputTokens || 0,
                   outputTokens: usage.outputTokens || 0,
                   cachedTokens,
-                  latency: undefined, // TODO: Track latency
+                  latency,
                   cacheHit,
                   toolsUsed: [],
                   success: true,
