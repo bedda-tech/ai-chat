@@ -1,3 +1,4 @@
+import * as Sentry from "@sentry/nextjs";
 import { geolocation } from "@vercel/functions";
 import {
   convertToModelMessages,
@@ -658,6 +659,9 @@ export async function POST(request: Request) {
       return new ChatSDKError("bad_request:activate_gateway").toResponse();
     }
 
+    if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
+      Sentry.captureException(error, { extra: { vercelId } });
+    }
     console.error("Unhandled error in chat API:", error, { vercelId });
     return new ChatSDKError("offline:chat").toResponse();
   }

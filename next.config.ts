@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { withSentryConfig } from "@sentry/nextjs";
 
 const nextConfig: NextConfig = {
   serverExternalPackages: ["redis"],
@@ -30,4 +31,24 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withSentryConfig(nextConfig, {
+  silent: true,
+  // Only upload source maps when auth token is present
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+  // Disable Sentry build-time features when DSN is not configured
+  sourcemaps: {
+    disable: !process.env.NEXT_PUBLIC_SENTRY_DSN,
+  },
+  // Don't inject Sentry release info when DSN is absent
+  release: {
+    create: !!process.env.NEXT_PUBLIC_SENTRY_DSN,
+    finalize: !!process.env.NEXT_PUBLIC_SENTRY_DSN,
+  },
+  webpack: {
+    treeshake: {
+      removeDebugLogging: true,
+    },
+  },
+});
