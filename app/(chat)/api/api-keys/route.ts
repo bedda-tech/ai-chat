@@ -5,11 +5,21 @@ import {
   listApiKeys,
   revokeApiKey,
 } from "@/lib/db/queries";
+import { getUserTier } from "@/lib/usage/tracking";
+
+const UPGRADE_ERROR = {
+  error: "API access requires a paid subscription. Upgrade at /upgrade.",
+};
 
 export async function GET() {
   const session = await auth();
   if (!session?.user) {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const tier = await getUserTier(session.user.id);
+  if (tier === "free") {
+    return Response.json(UPGRADE_ERROR, { status: 403 });
   }
 
   const keys = await listApiKeys(session.user.id);
@@ -28,6 +38,11 @@ export async function POST(request: Request) {
   const session = await auth();
   if (!session?.user) {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const tier = await getUserTier(session.user.id);
+  if (tier === "free") {
+    return Response.json(UPGRADE_ERROR, { status: 403 });
   }
 
   const body = await request.json().catch(() => ({}));

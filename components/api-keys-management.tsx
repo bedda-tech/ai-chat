@@ -65,6 +65,7 @@ function CopyableKey({ value }: { value: string }) {
 export function ApiKeysManagement() {
   const [keys, setKeys] = useState<ApiKeyRecord[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isPaidUser, setIsPaidUser] = useState(true);
   const [creating, setCreating] = useState(false);
   const [newName, setNewName] = useState("");
   const [showForm, setShowForm] = useState(false);
@@ -73,8 +74,14 @@ export function ApiKeysManagement() {
 
   useEffect(() => {
     fetch("/api/api-keys")
-      .then((r) => r.json())
-      .then((data) => setKeys(Array.isArray(data) ? data : []))
+      .then(async (r) => {
+        if (r.status === 403) {
+          setIsPaidUser(false);
+          return;
+        }
+        const data = await r.json();
+        setKeys(Array.isArray(data) ? data : []);
+      })
       .catch(() => toast.error("Failed to load API keys"))
       .finally(() => setLoading(false));
   }, []);
@@ -118,6 +125,33 @@ export function ApiKeysManagement() {
     } finally {
       setRevoking(null);
     }
+  }
+
+  if (!loading && !isPaidUser) {
+    return (
+      <div className="space-y-4">
+        <div>
+          <p className="text-sm font-medium">API Keys</p>
+          <p className="mt-1 text-muted-foreground text-xs">
+            Use these keys to access Bedda via the OpenAI-compatible API.
+          </p>
+        </div>
+        <div className="rounded-md border border-amber-500/40 bg-amber-50 p-4 dark:bg-amber-950/20">
+          <p className="text-sm font-medium text-amber-800 dark:text-amber-300">
+            API access requires a paid subscription
+          </p>
+          <p className="mt-1 text-xs text-amber-700 dark:text-amber-400">
+            Upgrade to Plus, Pro, or Max to create and use API keys.
+          </p>
+          <a
+            href="/upgrade"
+            className="mt-3 inline-flex items-center rounded-md bg-amber-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-amber-700"
+          >
+            Upgrade now
+          </a>
+        </div>
+      </div>
+    );
   }
 
   return (
