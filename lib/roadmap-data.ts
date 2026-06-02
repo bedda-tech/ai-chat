@@ -259,18 +259,17 @@ export const roadmapData: RoadmapPhase[] = [
         id: "image-studio",
         title: "Image Studio",
         description:
-          "Dedicated image generation workspace with editing, variations, upscaling, and style transfer",
-        status: "planned",
+          "Dedicated image generation workspace with multi-model support, aspect ratio controls, and negative prompts",
+        status: "completed",
         priority: "critical",
-        effort: "2-3 weeks",
-        impact: "Matches DALL-E (ChatGPT) and Imagen (Gemini), beats Claude (no image gen)",
+        effort: "Completed",
+        impact: "Multi-model image gen (DALL-E 3, Imagen 3, Flux 1.1) — beats Claude (no image gen)",
         keyFeatures: [
-          "Multi-model image generation (Gemini, DALL-E, Flux)",
-          "Image editing and inpainting",
-          "Style transfer and variations",
-          "Upscaling and enhancement",
-          "Image gallery and history",
-          "Batch generation",
+          "Multi-model image generation (DALL-E 3, Imagen 3 Fast, Flux 1.1 Pro)",
+          "Aspect ratio controls (1:1, 16:9, 9:16, 3:4, 4:3)",
+          "Negative prompt support",
+          "Side-by-side multi-model comparison",
+          "Dedicated /studio workspace",
         ],
       },
       {
@@ -468,15 +467,15 @@ export const roadmapData: RoadmapPhase[] = [
         id: "api-access",
         title: "API Access for Subscribers",
         description:
-          "REST API for programmatic access to all models, included with Max tier",
-        status: "planned",
+          "OpenAI-compatible REST API for programmatic access to all models, gated to paid subscribers",
+        status: "completed",
         priority: "high",
-        effort: "3-4 weeks",
+        effort: "Completed",
         keyFeatures: [
-          "REST API with OpenAI-compatible format",
-          "API key management",
+          "OpenAI-compatible REST API (/v1/chat/completions)",
+          "API key management in settings",
           "Usage tracking and rate limiting",
-          "Included credits with Max tier",
+          "Gated to Plus/Pro/Max subscribers",
         ],
       },
       {
@@ -517,10 +516,10 @@ export const roadmapData: RoadmapPhase[] = [
 ];
 
 export const roadmapStats = {
-  totalFeatures: 31,
-  completedFeatures: 23,
-  inProgressFeatures: 1,
-  plannedFeatures: 7,
+  totalFeatures: 29,
+  completedFeatures: 24,
+  inProgressFeatures: 2,
+  plannedFeatures: 3,
   estimatedValue: "$500k+/month (at 100k users)",
   targetMargins: "50-55% gross profit",
 };
