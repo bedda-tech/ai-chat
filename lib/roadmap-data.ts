@@ -278,7 +278,7 @@ export const roadmapData: RoadmapPhase[] = [
         title: "Video Studio",
         description:
           "AI video generation and editing powered by Kling, Runway, and Veo APIs",
-        status: "planned",
+        status: "in-progress",
         priority: "high",
         effort: "3-4 weeks",
         impact: "Matches Sora (ChatGPT $20+) and Veo (Gemini $19.99+), beats Claude (none)",

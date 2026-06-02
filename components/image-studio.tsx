@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import Link from "next/link";
 
 const IMAGE_MODELS = [
   { key: "dalle3", label: "DALL-E 3", description: "OpenAI — photorealistic" },
@@ -83,10 +84,20 @@ export function ImageStudio() {
   return (
     <div className="flex h-dvh flex-col overflow-hidden bg-background">
       <div className="shrink-0 border-b border-border px-4 py-3">
-        <h1 className="text-sm font-semibold">Image Studio</h1>
-        <p className="text-xs text-muted-foreground">
-          Generate images with DALL-E 3, Imagen 3, and Flux 1.1 Pro side-by-side
-        </p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-sm font-semibold">Image Studio</h1>
+            <p className="text-xs text-muted-foreground">
+              Generate images with DALL-E 3, Imagen 3, and Flux 1.1 Pro side-by-side
+            </p>
+          </div>
+          <Link
+            href="/studio/video"
+            className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Video Studio →
+          </Link>
+        </div>
       </div>
 
       <div className="flex min-h-0 flex-1 overflow-auto">
