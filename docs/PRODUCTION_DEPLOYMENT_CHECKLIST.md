@@ -30,6 +30,10 @@
 - [ ] `GITHUB_CLIENT_ID` - GitHub OAuth App client ID
 - [ ] `GITHUB_CLIENT_SECRET` - GitHub OAuth App client secret
 
+#### Email (Resend)
+- [ ] `RESEND_API_KEY` - Resend API key for transactional email (password reset)
+- [ ] `RESEND_FROM_EMAIL` - Verified sender address (e.g. `noreply@bedda.tech`); must be verified in Resend dashboard
+
 #### Optional But Recommended
 - [ ] `SENTRY_DSN` - Error tracking (if using Sentry)
 - [ ] `ANALYTICS_ID` - Analytics tracking ID (if applicable)
