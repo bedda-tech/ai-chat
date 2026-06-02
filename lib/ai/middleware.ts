@@ -13,6 +13,7 @@ type ModelMetrics = {
   totalLatencyMs: number;
   totalTokens: number;
   errors: number;
+  latencySamples: number[]; // bounded ring buffer, last 200 calls
 };
 
 const metricsStore = new Map<string, ModelMetrics>();
@@ -24,6 +25,7 @@ function getMetrics(modelId: string): ModelMetrics {
       totalLatencyMs: 0,
       totalTokens: 0,
       errors: 0,
+      latencySamples: [],
     });
   }
   return metricsStore.get(modelId)!;
@@ -93,10 +95,13 @@ export const performanceMiddleware: LanguageModelMiddleware = {
     metrics.calls++;
     try {
       const result = await doGenerate();
-      metrics.totalLatencyMs += Date.now() - start;
+      const latency = Date.now() - start;
+      metrics.totalLatencyMs += latency;
       metrics.totalTokens +=
         (result.usage?.inputTokens?.total ?? 0) +
         (result.usage?.outputTokens?.total ?? 0);
+      if (metrics.latencySamples.length >= 200) metrics.latencySamples.shift();
+      metrics.latencySamples.push(latency);
       return result;
     } catch (err) {
       metrics.errors++;
@@ -110,7 +115,10 @@ export const performanceMiddleware: LanguageModelMiddleware = {
     metrics.calls++;
     try {
       const result = await doStream();
-      metrics.totalLatencyMs += Date.now() - start;
+      const latency = Date.now() - start;
+      metrics.totalLatencyMs += latency;
+      if (metrics.latencySamples.length >= 200) metrics.latencySamples.shift();
+      metrics.latencySamples.push(latency);
       return result;
     } catch (err) {
       metrics.errors++;
@@ -122,12 +130,15 @@ export const performanceMiddleware: LanguageModelMiddleware = {
 /**
  * Returns per-model performance metrics snapshot.
  */
-export function getModelMetrics(): Record<string, ModelMetrics & { avgLatencyMs: number }> {
-  const out: Record<string, ModelMetrics & { avgLatencyMs: number }> = {};
+export function getModelMetrics(): Record<string, ModelMetrics & { avgLatencyMs: number; p95LatencyMs: number | null }> {
+  const out: Record<string, ModelMetrics & { avgLatencyMs: number; p95LatencyMs: number | null }> = {};
   for (const [modelId, m] of metricsStore.entries()) {
+    const sorted = [...m.latencySamples].sort((a, b) => a - b);
+    const p95 = sorted.length > 0 ? sorted[Math.floor(sorted.length * 0.95)] ?? null : null;
     out[modelId] = {
       ...m,
       avgLatencyMs: m.calls > 0 ? Math.round(m.totalLatencyMs / m.calls) : 0,
+      p95LatencyMs: p95,
     };
   }
   return out;

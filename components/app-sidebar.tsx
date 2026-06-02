@@ -21,7 +21,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 
-export function AppSidebar({ user }: { user: User | undefined }) {
+export function AppSidebar({ user, isAdmin }: { user: User | undefined; isAdmin?: boolean }) {
   const { setOpenMobile } = useSidebar();
 
   return (
@@ -236,6 +236,34 @@ export function AppSidebar({ user }: { user: User | undefined }) {
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
+                {isAdmin && (
+                  <SidebarMenuItem>
+                    <SidebarMenuButton asChild>
+                      <Link
+                        href="/admin"
+                        onClick={() => {
+                          setOpenMobile(false);
+                        }}
+                      >
+                        <svg
+                          fill="none"
+                          height="16"
+                          stroke="currentColor"
+                          strokeWidth={1.75}
+                          viewBox="0 0 24 24"
+                          width="16"
+                        >
+                          <path
+                            d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                        <span>Admin</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                )}
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>

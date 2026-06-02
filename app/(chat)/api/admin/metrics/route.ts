@@ -8,6 +8,15 @@ import { NextResponse } from "next/server";
 import { auth } from "@/app/(auth)/auth";
 import { getModelMetrics, resetMetrics } from "@/lib/ai/middleware";
 
+function isAdmin(email: string | null | undefined): boolean {
+  if (!email) return false;
+  const adminEmails = (process.env.ADMIN_EMAILS ?? "")
+    .split(",")
+    .map((e) => e.trim().toLowerCase())
+    .filter(Boolean);
+  return adminEmails.includes(email.toLowerCase());
+}
+
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
@@ -20,6 +29,9 @@ export async function GET() {
   const session = await auth();
   if (!session?.user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+  if (!isAdmin(session.user.email)) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 
   const metrics = getModelMetrics();
@@ -40,6 +52,9 @@ export async function DELETE() {
   const session = await auth();
   if (!session?.user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+  if (!isAdmin(session.user.email)) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 
   resetMetrics();
