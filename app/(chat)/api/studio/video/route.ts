@@ -3,15 +3,16 @@ import { auth } from "@/app/(auth)/auth";
 import { getUserTier } from "@/lib/usage/tracking";
 
 const FAL_API_KEY = process.env.FAL_API_KEY;
-const APP_ID = "fal-ai/kling-video/v1.6/standard/text-to-video";
-const FAL_BASE = `https://queue.fal.run/${APP_ID}`;
+const TEXT_TO_VIDEO_APP_ID = "fal-ai/kling-video/v1.6/standard/text-to-video";
+const IMAGE_TO_VIDEO_APP_ID = "fal-ai/kling-video/v1.6/standard/image-to-video";
+const FAL_QUEUE_BASE = "https://queue.fal.run";
 
 const UPGRADE_RESPONSE = NextResponse.json(
   { error: "Video generation requires a paid subscription.", upgrade: true },
   { status: 403 }
 );
 
-// Submit a video generation job, return { requestId }
+// Submit a video generation job, return { requestId, appId }
 export async function POST(request: Request) {
   const session = await auth();
   if (!session?.user?.id) {
@@ -30,14 +31,14 @@ export async function POST(request: Request) {
     );
   }
 
-  let body: { prompt: string; duration?: number; aspectRatio?: string };
+  let body: { prompt: string; duration?: number; aspectRatio?: string; imageUrl?: string };
   try {
     body = await request.json();
   } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  const { prompt, duration = 5, aspectRatio = "16:9" } = body;
+  const { prompt, duration = 5, aspectRatio = "16:9", imageUrl } = body;
 
   if (!prompt?.trim()) {
     return NextResponse.json({ error: "Prompt is required" }, { status: 400 });
@@ -46,17 +47,20 @@ export async function POST(request: Request) {
   const validDuration = duration === 10 ? "10" : "5";
   const validAspect = ["16:9", "9:16", "1:1"].includes(aspectRatio) ? aspectRatio : "16:9";
 
-  const submitRes = await fetch(FAL_BASE, {
+  const appId = imageUrl ? IMAGE_TO_VIDEO_APP_ID : TEXT_TO_VIDEO_APP_ID;
+  const falBase = `${FAL_QUEUE_BASE}/${appId}`;
+
+  const requestBody = imageUrl
+    ? { image_url: imageUrl, prompt: prompt.trim(), duration: validDuration, aspect_ratio: validAspect }
+    : { prompt: prompt.trim(), duration: validDuration, aspect_ratio: validAspect };
+
+  const submitRes = await fetch(falBase, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Key ${FAL_API_KEY}`,
     },
-    body: JSON.stringify({
-      prompt: prompt.trim(),
-      duration: validDuration,
-      aspect_ratio: validAspect,
-    }),
+    body: JSON.stringify(requestBody),
   });
 
   if (!submitRes.ok) {
@@ -65,7 +69,7 @@ export async function POST(request: Request) {
   }
 
   const { request_id } = await submitRes.json();
-  return NextResponse.json({ requestId: request_id });
+  return NextResponse.json({ requestId: request_id, appId });
 }
 
 // Poll for job status/result
@@ -84,11 +88,14 @@ export async function GET(request: Request) {
 
   const { searchParams } = new URL(request.url);
   const requestId = searchParams.get("id");
+  const appId = searchParams.get("appId") ?? TEXT_TO_VIDEO_APP_ID;
   if (!requestId) {
     return NextResponse.json({ error: "Missing id parameter" }, { status: 400 });
   }
 
-  const statusRes = await fetch(`${FAL_BASE}/requests/${requestId}/status`, {
+  const falBase = `${FAL_QUEUE_BASE}/${appId}`;
+
+  const statusRes = await fetch(`${falBase}/requests/${requestId}/status`, {
     headers: { Authorization: `Key ${FAL_API_KEY}` },
   });
 
@@ -100,7 +107,7 @@ export async function GET(request: Request) {
   const status = statusData.status as string;
 
   if (status === "COMPLETED") {
-    const resultRes = await fetch(`${FAL_BASE}/requests/${requestId}`, {
+    const resultRes = await fetch(`${falBase}/requests/${requestId}`, {
       headers: { Authorization: `Key ${FAL_API_KEY}` },
     });
     if (!resultRes.ok) {
