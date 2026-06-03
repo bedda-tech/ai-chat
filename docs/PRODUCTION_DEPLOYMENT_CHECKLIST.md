@@ -23,6 +23,7 @@
 - [ ] `STRIPE_PRO_PRICE_ID` - Production Pro plan price ID
 - [ ] `STRIPE_PREMIUM_PRICE_ID` - Production Premium plan price ID
 - [ ] `STRIPE_WEBHOOK_SECRET` - Production webhook signing secret
+- [ ] `STRIPE_TEAM_SEAT_PRICE_ID` - Per-seat price ID for team subscriptions (recurring, per-seat billing)
 
 #### Social Login (OAuth)
 - [ ] `GOOGLE_CLIENT_ID` - Google OAuth client ID

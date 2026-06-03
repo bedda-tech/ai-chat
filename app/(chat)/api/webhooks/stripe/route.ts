@@ -6,6 +6,7 @@ import { eq } from "drizzle-orm";
 import postgres from "postgres";
 import { stripe, getSubscriptionTier } from "@/lib/stripe";
 import { userTier } from "@/lib/db/schema";
+import { updateTeamBilling } from "@/lib/db/team-queries";
 
 const connectionString = process.env.POSTGRES_URL!;
 const client = postgres(connectionString);
@@ -61,7 +62,11 @@ export async function POST(req: Request) {
       case "customer.subscription.created":
       case "customer.subscription.updated": {
         const subscription = event.data.object as Stripe.Subscription;
-        await handleSubscriptionChange(subscription);
+        if (subscription.metadata.teamId) {
+          await handleTeamSubscriptionChange(subscription);
+        } else {
+          await handleSubscriptionChange(subscription);
+        }
         break;
       }
 
@@ -95,6 +100,29 @@ export async function POST(req: Request) {
       { status: 500 }
     );
   }
+}
+
+/**
+ * Handle team seat subscription creation or update
+ */
+async function handleTeamSubscriptionChange(
+  subscription: Stripe.Subscription
+): Promise<void> {
+  const teamId = subscription.metadata.teamId;
+  if (!teamId) return;
+
+  const firstItem = subscription.items.data[0];
+  const seatLimit = firstItem?.quantity ?? 5;
+
+  console.log(
+    `Updating team ${teamId} subscription ${subscription.id}, seatLimit: ${seatLimit}`
+  );
+
+  await updateTeamBilling(teamId, {
+    stripeCustomerId: subscription.customer as string,
+    stripeSubscriptionId: subscription.id,
+    seatLimit,
+  });
 }
 
 /**

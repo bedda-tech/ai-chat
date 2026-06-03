@@ -4,6 +4,8 @@ import { auth } from "@/app/(auth)/auth";
 import { sendTeamInviteEmail } from "@/lib/email/send-team-invite";
 import {
   createTeamInvite,
+  getTeamById,
+  getTeamMemberCount,
   getTeamMembersWithEmail,
   getPendingInvitesByTeam,
   isTeamAdmin,
@@ -61,6 +63,18 @@ export async function POST(
   const { email } = body;
   if (!email?.trim()) {
     return NextResponse.json({ error: "email is required" }, { status: 400 });
+  }
+
+  // Enforce seat limit when a paid subscription is active
+  const [teamRecord, memberCount] = await Promise.all([
+    getTeamById(teamId),
+    getTeamMemberCount(teamId),
+  ]);
+  if (teamRecord?.stripeSubscriptionId && memberCount >= (teamRecord.seatLimit ?? 5)) {
+    return NextResponse.json(
+      { error: "seat_limit_reached", message: "Seat limit reached. Upgrade your team plan to invite more members." },
+      { status: 403 }
+    );
   }
 
   const token = crypto.randomBytes(32).toString("hex");

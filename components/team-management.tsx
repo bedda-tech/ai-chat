@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Trash2, UserMinus, Plus, Loader2, Users } from "lucide-react";
+import { UserMinus, Plus, Loader2, Users, CreditCard } from "lucide-react";
 import { toast } from "sonner";
 
 interface Team {
@@ -13,6 +13,13 @@ interface Team {
   ownerId: string;
   role: string;
   createdAt: string;
+}
+
+interface BillingInfo {
+  seatLimit: number;
+  memberCount: number;
+  hasSubscription: boolean;
+  billingPortalUrl: string | null;
 }
 
 interface TeamMember {
@@ -39,6 +46,9 @@ export function TeamManagement({ userId }: { userId: string }) {
   const [inviteEmail, setInviteEmail] = useState("");
   const [inviting, setInviting] = useState(false);
   const [loadingMembers, setLoadingMembers] = useState(false);
+  const [billing, setBilling] = useState<BillingInfo | null>(null);
+  const [loadingBilling, setLoadingBilling] = useState(false);
+  const [upgradingBilling, setUpgradingBilling] = useState(false);
 
   useEffect(() => {
     fetch("/api/teams")
@@ -50,6 +60,7 @@ export function TeamManagement({ userId }: { userId: string }) {
 
   async function loadTeamMembers(team: Team) {
     setSelectedTeam(team);
+    setBilling(null);
     setLoadingMembers(true);
     try {
       const r = await fetch(`/api/teams/${team.id}/members`);
@@ -60,6 +71,37 @@ export function TeamManagement({ userId }: { userId: string }) {
       toast.error("Failed to load members");
     } finally {
       setLoadingMembers(false);
+    }
+
+    if (team.role === "admin") {
+      setLoadingBilling(true);
+      try {
+        const r = await fetch(`/api/teams/${team.id}/billing`);
+        if (r.ok) setBilling(await r.json());
+      } catch {
+        // Billing info is optional
+      } finally {
+        setLoadingBilling(false);
+      }
+    }
+  }
+
+  async function upgradeBilling() {
+    if (!selectedTeam) return;
+    setUpgradingBilling(true);
+    try {
+      const r = await fetch(`/api/teams/${selectedTeam.id}/billing`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ quantity: members.length || 1 }),
+      });
+      const data = await r.json();
+      if (!r.ok) throw new Error(data.error ?? "Failed to start billing");
+      if (data.checkoutUrl) window.location.href = data.checkoutUrl;
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Failed to start billing");
+    } finally {
+      setUpgradingBilling(false);
     }
   }
 
@@ -94,7 +136,14 @@ export function TeamManagement({ userId }: { userId: string }) {
         body: JSON.stringify({ email: inviteEmail.trim() }),
       });
       const data = await r.json();
-      if (!r.ok) throw new Error(data.error ?? "Failed to send invite");
+      if (!r.ok) {
+        if (data.error === "seat_limit_reached") {
+          toast.error(data.message ?? "Seat limit reached. Upgrade your plan to invite more members.");
+        } else {
+          throw new Error(data.error ?? "Failed to send invite");
+        }
+        return;
+      }
       setPending((prev) => [...prev, data.invite]);
       setInviteEmail("");
       toast.success("Invitation sent");
@@ -182,7 +231,60 @@ export function TeamManagement({ userId }: { userId: string }) {
       {/* Team members panel */}
       {selectedTeam && (
         <div className="rounded-lg border p-4 space-y-4">
-          <h3 className="font-medium text-sm">{selectedTeam.name} — Members</h3>
+          <div className="flex items-center justify-between">
+            <h3 className="font-medium text-sm">{selectedTeam.name} — Members</h3>
+            {selectedTeam.role === "admin" && (
+              <div className="flex items-center gap-2">
+                {loadingBilling ? (
+                  <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
+                ) : billing ? (
+                  <>
+                    <span className="text-xs text-muted-foreground">
+                      {billing.memberCount}/{billing.seatLimit} seats
+                    </span>
+                    {billing.billingPortalUrl ? (
+                      <a href={billing.billingPortalUrl} target="_blank" rel="noreferrer">
+                        <Button variant="outline" size="sm" className="h-7 text-xs gap-1">
+                          <CreditCard className="h-3 w-3" />
+                          Manage billing
+                        </Button>
+                      </a>
+                    ) : (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="h-7 text-xs gap-1"
+                        onClick={upgradeBilling}
+                        disabled={upgradingBilling}
+                      >
+                        {upgradingBilling ? (
+                          <Loader2 className="h-3 w-3 animate-spin" />
+                        ) : (
+                          <CreditCard className="h-3 w-3" />
+                        )}
+                        Upgrade seats
+                      </Button>
+                    )}
+                  </>
+                ) : (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="h-7 text-xs gap-1"
+                    onClick={upgradeBilling}
+                    disabled={upgradingBilling}
+                  >
+                    {upgradingBilling ? (
+                      <Loader2 className="h-3 w-3 animate-spin" />
+                    ) : (
+                      <CreditCard className="h-3 w-3" />
+                    )}
+                    Upgrade seats
+                  </Button>
+                )}
+              </div>
+            )}
+          </div>
 
           {loadingMembers ? (
             <div className="flex items-center gap-2 text-muted-foreground text-sm">

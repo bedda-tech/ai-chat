@@ -461,7 +461,7 @@ export const roadmapData: RoadmapPhase[] = [
           "Role-based permissions (owner, admin, member) -- shipped",
           "Shared chat threads -- shipped",
           "Real-time collaborative editing (planned)",
-          "Team billing and seat management (planned)",
+          "Seat-based billing and subscription management -- shipped",
         ],
       },
       {

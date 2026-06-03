@@ -1,6 +1,6 @@
 import "server-only";
 
-import { and, desc, eq, isNull } from "drizzle-orm";
+import { and, count, desc, eq, isNull } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import { chat, team, teamChat, teamInvite, teamMember, user } from "./schema";
@@ -167,4 +167,41 @@ export async function getTeamsForChat(chatId: string) {
     .select({ teamId: teamChat.teamId })
     .from(teamChat)
     .where(eq(teamChat.chatId, chatId));
+}
+
+export async function getTeamById(teamId: string) {
+  const rows = await db
+    .select()
+    .from(team)
+    .where(eq(team.id, teamId))
+    .limit(1);
+  return rows[0] ?? null;
+}
+
+export async function getTeamMemberCount(teamId: string): Promise<number> {
+  const rows = await db
+    .select({ cnt: count() })
+    .from(teamMember)
+    .where(eq(teamMember.teamId, teamId));
+  return rows[0]?.cnt ?? 0;
+}
+
+export async function updateTeamBilling(
+  teamId: string,
+  fields: {
+    stripeCustomerId?: string;
+    stripeSubscriptionId?: string;
+    seatLimit?: number;
+  }
+) {
+  await db.update(team).set(fields).where(eq(team.id, teamId));
+}
+
+export async function getTeamByStripeSubscriptionId(subscriptionId: string) {
+  const rows = await db
+    .select()
+    .from(team)
+    .where(eq(team.stripeSubscriptionId, subscriptionId))
+    .limit(1);
+  return rows[0] ?? null;
 }
