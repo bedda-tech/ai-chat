@@ -451,16 +451,17 @@ export const roadmapData: RoadmapPhase[] = [
         id: "team-workspaces",
         title: "Team Workspaces & Collaboration",
         description:
-          "Shared workspaces with real-time collaboration, role-based access, and team billing",
-        status: "planned",
+          "Shared workspaces with role-based access, team invites, and shared chat threads",
+        status: "in-progress",
         priority: "high",
-        effort: "6-8 weeks",
+        effort: "Partially shipped",
         keyFeatures: [
-          "Team billing and seat management",
-          "Shared conversations and projects",
-          "Role-based permissions (admin, member, viewer)",
-          "Team usage analytics",
-          "Real-time collaborative editing",
+          "Team creation and management -- shipped",
+          "Email invite system -- shipped",
+          "Role-based permissions (owner, admin, member) -- shipped",
+          "Shared chat threads -- shipped",
+          "Real-time collaborative editing (planned)",
+          "Team billing and seat management (planned)",
         ],
       },
       {
@@ -518,8 +519,8 @@ export const roadmapData: RoadmapPhase[] = [
 export const roadmapStats = {
   totalFeatures: 29,
   completedFeatures: 24,
-  inProgressFeatures: 2,
-  plannedFeatures: 3,
+  inProgressFeatures: 3,
+  plannedFeatures: 2,
   estimatedValue: "$500k+/month (at 100k users)",
   targetMargins: "50-55% gross profit",
 };
