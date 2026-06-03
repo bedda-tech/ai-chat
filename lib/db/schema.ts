@@ -494,6 +494,8 @@ export const team = pgTable("Team", {
     .notNull()
     .references(() => user.id, { onDelete: "cascade" }),
   stripeCustomerId: varchar("stripeCustomerId", { length: 255 }),
+  stripeSubscriptionId: varchar("stripeSubscriptionId", { length: 255 }),
+  seatLimit: integer("seatLimit").notNull().default(5),
   createdAt: timestamp("createdAt").notNull().defaultNow(),
 });
 

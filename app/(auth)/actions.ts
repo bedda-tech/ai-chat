@@ -12,6 +12,7 @@ import {
   updateUserPassword,
 } from "@/lib/db/queries";
 import { sendPasswordResetEmail } from "@/lib/email/send-password-reset";
+import { sendWelcomeEmail } from "@/lib/email/send-welcome-email";
 
 import { signIn } from "./auth";
 
@@ -87,6 +88,8 @@ export const register = async (
       return { status: "user_exists" } as RegisterActionState;
     }
     await createUser(validatedData.email, validatedData.password);
+    // Fire welcome email (don't block sign-in on failure)
+    sendWelcomeEmail(validatedData.email).catch(() => {});
     await signIn("credentials", {
       email: validatedData.email,
       password: validatedData.password,

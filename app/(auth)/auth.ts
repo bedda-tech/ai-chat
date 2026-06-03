@@ -10,6 +10,7 @@ import {
   getUser,
   getOrCreateOAuthUser,
 } from "@/lib/db/queries";
+import { sendWelcomeEmail } from "@/lib/email/send-welcome-email";
 import { authConfig } from "./auth.config";
 
 export type UserType = "guest" | "regular";
@@ -105,7 +106,7 @@ export const {
           oauthAccount.providerAccountId ?? String(profile?.sub ?? profile?.id);
 
         try {
-          const dbUser = await getOrCreateOAuthUser(
+          const { user: dbUser, isNew } = await getOrCreateOAuthUser(
             email as string,
             oauthAccount.provider,
             providerAccountId,
@@ -121,6 +122,10 @@ export const {
           // Attach our DB user id and type to the authUser object for the jwt callback
           authUser.id = dbUser.id;
           authUser.type = "regular";
+          // Fire welcome email for truly new users (don't block sign-in on failure)
+          if (isNew && email) {
+            sendWelcomeEmail(email as string).catch(() => {});
+          }
         } catch {
           return false;
         }

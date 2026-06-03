@@ -907,7 +907,7 @@ export async function getOrCreateOAuthUser(
     scope?: string;
     idToken?: string;
   }
-): Promise<User> {
+): Promise<{ user: User; isNew: boolean }> {
   // Check if this OAuth account is already linked
   const existingAccount = await getOAuthAccount(provider, providerAccountId);
   if (existingAccount) {
@@ -915,12 +915,13 @@ export async function getOrCreateOAuthUser(
       .select()
       .from(user)
       .where(eq(user.id, existingAccount.userId));
-    if (existingUser) return existingUser;
+    if (existingUser) return { user: existingUser, isNew: false };
   }
 
   // Look up user by email (link existing email account)
   const existingUsers = await getUser(email);
   let userId: string;
+  let isNew = false;
 
   if (existingUsers.length > 0) {
     userId = existingUsers[0].id;
@@ -931,6 +932,7 @@ export async function getOrCreateOAuthUser(
       .values({ email, password: null })
       .returning();
     userId = newUser.id;
+    isNew = true;
   }
 
   // Link the OAuth account
@@ -940,7 +942,7 @@ export async function getOrCreateOAuthUser(
     .select()
     .from(user)
     .where(eq(user.id, userId));
-  return linkedUser;
+  return { user: linkedUser, isNew };
 }
 
 // User preferences
