@@ -20,6 +20,15 @@ const DURATIONS = [
 type JobStatus = "idle" | "submitting" | "processing" | "completed" | "failed";
 type Mode = "text" | "image";
 
+interface HistoryJob {
+  id: string;
+  prompt: string;
+  videoUrl: string | null;
+  status: string;
+  createdAt: string;
+  mode: string;
+}
+
 export function VideoStudio() {
   const [mode, setMode] = useState<Mode>("text");
   const [prompt, setPrompt] = useState("");
@@ -32,9 +41,11 @@ export function VideoStudio() {
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [upgradeRequired, setUpgradeRequired] = useState(false);
+  const [history, setHistory] = useState<HistoryJob[]>([]);
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const requestIdRef = useRef<string | null>(null);
   const appIdRef = useRef<string | null>(null);
+  const jobIdRef = useRef<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const stopPolling = useCallback(() => {
@@ -46,26 +57,42 @@ export function VideoStudio() {
 
   useEffect(() => () => stopPolling(), [stopPolling]);
 
+  const fetchHistory = useCallback(async () => {
+    try {
+      const res = await fetch("/api/studio/video/history");
+      if (!res.ok) return;
+      const data = await res.json();
+      setHistory(data.jobs ?? []);
+    } catch {
+      // Non-critical; ignore errors
+    }
+  }, []);
+
+  useEffect(() => { fetchHistory(); }, [fetchHistory]);
+
   const pollStatus = useCallback(async (requestId: string, appId: string) => {
     try {
-      const res = await fetch(
-        `/api/studio/video?id=${encodeURIComponent(requestId)}&appId=${encodeURIComponent(appId)}`
-      );
+      const jobId = jobIdRef.current;
+      const params = new URLSearchParams({ id: requestId, appId });
+      if (jobId) params.set("jobId", jobId);
+      const res = await fetch(`/api/studio/video?${params.toString()}`);
       const data = await res.json();
 
       if (data.status === "completed") {
         stopPolling();
         setVideoUrl(data.videoUrl);
         setJobStatus("completed");
+        fetchHistory();
       } else if (data.status === "failed") {
         stopPolling();
         setError(data.error ?? "Generation failed");
         setJobStatus("failed");
+        fetchHistory();
       }
     } catch {
       // Transient network error — keep polling
     }
-  }, [stopPolling]);
+  }, [stopPolling, fetchHistory]);
 
   const handleImageUpload = useCallback(async (file: File) => {
     setImageError(null);
@@ -133,9 +160,10 @@ export function VideoStudio() {
         return;
       }
 
-      const { requestId, appId } = await res.json();
+      const { requestId, appId, jobId } = await res.json();
       requestIdRef.current = requestId;
       appIdRef.current = appId;
+      jobIdRef.current = jobId ?? null;
       setJobStatus("processing");
 
       pollRef.current = setInterval(() => {
@@ -383,8 +411,8 @@ export function VideoStudio() {
             )}
           </div>
 
-          {/* Result area */}
-          <div className="min-w-0 flex-1">
+          {/* Result area + gallery */}
+          <div className="min-w-0 flex-1 space-y-6">
             {jobStatus === "idle" && !videoUrl && (
               <div className="flex h-full min-h-[200px] items-center justify-center text-sm text-muted-foreground">
                 {mode === "image" && !imageUrl
@@ -480,6 +508,60 @@ export function VideoStudio() {
                   >
                     Try Again
                   </Button>
+                </div>
+              </div>
+            )}
+
+            {/* Video gallery */}
+            {history.length > 0 && (
+              <div>
+                <h2 className="mb-3 text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                  Recent Videos
+                </h2>
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {history.map((job) => (
+                    <div
+                      key={job.id}
+                      className="overflow-hidden rounded-lg border border-border bg-card"
+                    >
+                      {job.videoUrl ? (
+                        <video
+                          src={job.videoUrl}
+                          className="aspect-video w-full object-cover"
+                          playsInline
+                          muted
+                          loop
+                          onMouseEnter={(e) => (e.currentTarget as HTMLVideoElement).play()}
+                          onMouseLeave={(e) => (e.currentTarget as HTMLVideoElement).pause()}
+                        />
+                      ) : (
+                        <div className="flex aspect-video w-full items-center justify-center bg-muted text-xs text-muted-foreground">
+                          {job.status === "processing" ? "Processing…" : "Failed"}
+                        </div>
+                      )}
+                      <div className="p-2">
+                        <p className="line-clamp-2 text-[11px] text-foreground leading-snug">
+                          {job.prompt}
+                        </p>
+                        <div className="mt-1.5 flex items-center justify-between gap-2">
+                          <span className="text-[10px] text-muted-foreground">
+                            {new Date(job.createdAt).toLocaleDateString()}
+                          </span>
+                          {job.videoUrl && (
+                            <a
+                              href={job.videoUrl}
+                              download
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-[10px] font-medium text-primary underline-offset-2 hover:underline"
+                            >
+                              Download
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             )}
