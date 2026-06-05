@@ -80,6 +80,7 @@ export type CustomUIDataTypes = {
   codeDelta: string;
   mermaidDelta: string;
   htmlDelta: string;
+  slidesDelta: string;
   suggestion: Suggestion;
   appendMessage: string;
   id: string;

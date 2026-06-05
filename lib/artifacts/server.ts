@@ -4,6 +4,7 @@ import { codeDocumentHandler } from "@/artifacts/code/server";
 import { htmlDocumentHandler } from "@/artifacts/html/server";
 import { mermaidDocumentHandler } from "@/artifacts/mermaid/server";
 import { sheetDocumentHandler } from "@/artifacts/sheet/server";
+import { slidesDocumentHandler } from "@/artifacts/slides/server";
 import { textDocumentHandler } from "@/artifacts/text/server";
 import type { ArtifactKind } from "@/components/artifact";
 import { saveDocument } from "../db/queries";
@@ -97,6 +98,7 @@ export const documentHandlersByArtifactKind: DocumentHandler[] = [
   sheetDocumentHandler,
   mermaidDocumentHandler,
   htmlDocumentHandler,
+  slidesDocumentHandler,
 ];
 
-export const artifactKinds = ["text", "code", "sheet", "mermaid", "html"] as const;
+export const artifactKinds = ["text", "code", "sheet", "mermaid", "html", "slides"] as const;

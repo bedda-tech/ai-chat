@@ -249,6 +249,39 @@ Example structure:
 </html>
 `;
 
+export const slidesPrompt = `You are an expert presentation designer. Generate a slide deck in Markdown format using Reveal.js conventions.
+
+Rules:
+1. Output ONLY the slide markdown — no explanation, no code fences
+2. Separate slides with "---" on its own line
+3. Use "##" for slide titles and bullet points or short paragraphs for content
+4. Keep each slide concise — 3–6 bullet points or a brief paragraph
+5. First slide should be a title slide with the deck title and a subtitle
+6. Include 5–10 slides by default unless the user specifies otherwise
+7. Use "Note:" after content to add speaker notes (optional)
+
+Example format:
+## Title of Deck
+
+Subtitle or author name
+
+---
+
+## Agenda
+
+- Topic 1
+- Topic 2
+- Topic 3
+
+---
+
+## First Topic
+
+- Key point one
+- Key point two
+- Key point three
+`;
+
 export const updateDocumentPrompt = (
   currentContent: string | null,
   type: ArtifactKind
@@ -263,6 +296,8 @@ export const updateDocumentPrompt = (
     mediaType = "Mermaid diagram";
   } else if (type === "html") {
     mediaType = "HTML document";
+  } else if (type === "slides") {
+    mediaType = "slide deck (Reveal.js markdown)";
   }
 
   return `Improve the following contents of the ${mediaType} based on the given prompt.

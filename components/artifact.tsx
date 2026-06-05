@@ -17,6 +17,7 @@ import { htmlArtifact } from "@/artifacts/html/client";
 import { imageArtifact } from "@/artifacts/image/client";
 import { mermaidArtifact } from "@/artifacts/mermaid/client";
 import { sheetArtifact } from "@/artifacts/sheet/client";
+import { slidesArtifact } from "@/artifacts/slides/client";
 import { textArtifact } from "@/artifacts/text/client";
 import { useArtifact } from "@/hooks/use-artifact";
 import type { Document, Vote } from "@/lib/db/schema";
@@ -38,6 +39,7 @@ export const artifactDefinitions = [
   sheetArtifact,
   mermaidArtifact,
   htmlArtifact,
+  slidesArtifact,
 ];
 export type ArtifactKind = (typeof artifactDefinitions)[number]["kind"];
 
