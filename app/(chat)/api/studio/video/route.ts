@@ -4,9 +4,11 @@ import { getUserTier } from "@/lib/usage/tracking";
 import { createVideoJob, updateVideoJob } from "@/lib/db/queries";
 
 const FAL_API_KEY = process.env.FAL_API_KEY;
-const TEXT_TO_VIDEO_APP_ID = "fal-ai/kling-video/v1.6/standard/text-to-video";
-const IMAGE_TO_VIDEO_APP_ID = "fal-ai/kling-video/v1.6/standard/image-to-video";
 const FAL_QUEUE_BASE = "https://queue.fal.run";
+
+function getAppId(mode: "text-to-video" | "image-to-video", quality: "standard" | "pro") {
+  return `fal-ai/kling-video/v1.6/${quality}/${mode}`;
+}
 
 const UPGRADE_RESPONSE = NextResponse.json(
   { error: "Video generation requires a paid subscription.", upgrade: true },
@@ -32,14 +34,14 @@ export async function POST(request: Request) {
     );
   }
 
-  let body: { prompt: string; duration?: number; aspectRatio?: string; imageUrl?: string };
+  let body: { prompt: string; duration?: number; aspectRatio?: string; imageUrl?: string; quality?: string };
   try {
     body = await request.json();
   } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  const { prompt, duration = 5, aspectRatio = "16:9", imageUrl } = body;
+  const { prompt, duration = 5, aspectRatio = "16:9", imageUrl, quality } = body;
 
   if (!prompt?.trim()) {
     return NextResponse.json({ error: "Prompt is required" }, { status: 400 });
@@ -47,8 +49,10 @@ export async function POST(request: Request) {
 
   const validDuration = duration === 10 ? "10" : "5";
   const validAspect = ["16:9", "9:16", "1:1"].includes(aspectRatio) ? aspectRatio : "16:9";
+  const validQuality: "standard" | "pro" = quality === "pro" ? "pro" : "standard";
 
-  const appId = imageUrl ? IMAGE_TO_VIDEO_APP_ID : TEXT_TO_VIDEO_APP_ID;
+  const videoMode = imageUrl ? "image-to-video" : "text-to-video";
+  const appId = getAppId(videoMode, validQuality);
   const falBase = `${FAL_QUEUE_BASE}/${appId}`;
 
   const requestBody = imageUrl
@@ -71,11 +75,10 @@ export async function POST(request: Request) {
 
   const { request_id } = await submitRes.json();
 
-  const mode = imageUrl ? "image-to-video" : "text-to-video";
   const job = await createVideoJob({
     userId: session.user.id,
-    mode,
-    quality: "standard",
+    mode: videoMode,
+    quality: validQuality,
     prompt: prompt.trim(),
     sourceImageUrl: imageUrl ?? null,
     status: "processing",
@@ -101,7 +104,7 @@ export async function GET(request: Request) {
 
   const { searchParams } = new URL(request.url);
   const requestId = searchParams.get("id");
-  const appId = searchParams.get("appId") ?? TEXT_TO_VIDEO_APP_ID;
+  const appId = searchParams.get("appId") ?? getAppId("text-to-video", "standard");
   const jobId = searchParams.get("jobId");
   if (!requestId) {
     return NextResponse.json({ error: "Missing id parameter" }, { status: 400 });

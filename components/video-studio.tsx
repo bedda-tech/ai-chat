@@ -6,6 +6,11 @@ import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
 import Image from "next/image";
 
+const QUALITY_OPTIONS = [
+  { value: "standard", label: "Standard", detail: "720p" },
+  { value: "pro", label: "Pro", detail: "1080p" },
+] as const;
+
 const ASPECT_RATIOS = [
   { value: "16:9", label: "Landscape (16:9)" },
   { value: "9:16", label: "Portrait (9:16)" },
@@ -19,6 +24,7 @@ const DURATIONS = [
 
 type JobStatus = "idle" | "submitting" | "processing" | "completed" | "failed";
 type Mode = "text" | "image";
+type Quality = "standard" | "pro";
 
 interface HistoryJob {
   id: string;
@@ -31,6 +37,7 @@ interface HistoryJob {
 
 export function VideoStudio() {
   const [mode, setMode] = useState<Mode>("text");
+  const [quality, setQuality] = useState<Quality>("standard");
   const [prompt, setPrompt] = useState("");
   const [aspectRatio, setAspectRatio] = useState("16:9");
   const [duration, setDuration] = useState(5);
@@ -143,6 +150,7 @@ export function VideoStudio() {
           prompt: prompt.trim(),
           duration,
           aspectRatio,
+          quality,
           ...(mode === "image" && imageUrl ? { imageUrl } : {}),
         }),
       });
@@ -173,7 +181,7 @@ export function VideoStudio() {
       setError("Network error. Please try again.");
       setJobStatus("failed");
     }
-  }, [prompt, duration, aspectRatio, mode, imageUrl, jobStatus, pollStatus]);
+  }, [prompt, duration, aspectRatio, quality, mode, imageUrl, jobStatus, pollStatus]);
 
   const handleDownload = useCallback(() => {
     if (!videoUrl) return;
@@ -237,6 +245,34 @@ export function VideoStudio() {
                   </button>
                 ))}
               </div>
+            </div>
+
+            {/* Quality toggle */}
+            <div>
+              <p className="mb-2 text-xs font-medium text-foreground">Quality</p>
+              <div className="flex gap-1 rounded-md border border-border p-0.5">
+                {QUALITY_OPTIONS.map((q) => (
+                  <button
+                    key={q.value}
+                    type="button"
+                    disabled={isGenerating}
+                    onClick={() => setQuality(q.value)}
+                    className={`flex-1 rounded px-2 py-1 text-xs font-medium transition-colors ${
+                      quality === q.value
+                        ? "bg-primary text-primary-foreground"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {q.label}{" "}
+                    <span className="opacity-70">{q.detail}</span>
+                  </button>
+                ))}
+              </div>
+              {quality === "pro" && (
+                <p className="mt-1 text-[10px] text-muted-foreground">
+                  Pro renders at 1080p and takes longer to generate.
+                </p>
+              )}
             </div>
 
             {/* Image upload (image mode only) */}
