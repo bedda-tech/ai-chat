@@ -1,9 +1,16 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { CompareColumn } from "@/components/compare-column";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { PlusIcon } from "@/components/icons";
 import modelsData from "@/lib/ai/models-data.json";
 
@@ -25,6 +32,51 @@ interface PendingSubmit {
   version: number;
 }
 
+interface SavedSession {
+  id: string;
+  title: string | null;
+  modelIds: string[];
+  prompts: string[];
+  createdAt: string;
+}
+
+function BookmarkIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+    </svg>
+  );
+}
+
+function TrashIcon({ size = 14 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <polyline points="3 6 5 6 21 6" />
+      <path d="M19 6l-1 14H6L5 6" />
+      <path d="M10 11v6M14 11v6" />
+      <path d="M9 6V4h6v2" />
+    </svg>
+  );
+}
+
 export default function ComparePage() {
   const [columnModels, setColumnModels] = useState<string[]>(DEFAULT_COLUMNS);
   const [input, setInput] = useState("");
@@ -32,10 +84,23 @@ export default function ComparePage() {
     text: "",
     version: 0,
   });
+  const [savedSessions, setSavedSessions] = useState<SavedSession[]>([]);
+  const [saving, setSaving] = useState(false);
+  const promptHistory = useRef<string[]>([]);
+
+  useEffect(() => {
+    fetch("/api/compare")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (data?.sessions) setSavedSessions(data.sessions);
+      })
+      .catch(() => {});
+  }, []);
 
   const handleSubmit = useCallback(() => {
     const text = input.trim();
     if (!text) return;
+    promptHistory.current = [...promptHistory.current, text];
     setPendingSubmit((prev) => ({ text, version: prev.version + 1 }));
     setInput("");
   }, [input]);
@@ -62,6 +127,41 @@ export default function ComparePage() {
     setColumnModels((prev) => prev.filter((_, i) => i !== index));
   }, []);
 
+  const saveSession = useCallback(async () => {
+    if (promptHistory.current.length === 0) return;
+    setSaving(true);
+    try {
+      const res = await fetch("/api/compare", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          modelIds: columnModels,
+          prompts: promptHistory.current,
+        }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setSavedSessions((prev) => [data.session, ...prev]);
+      }
+    } finally {
+      setSaving(false);
+    }
+  }, [columnModels]);
+
+  const loadSession = useCallback((s: SavedSession) => {
+    promptHistory.current = [];
+    setColumnModels(s.modelIds);
+    setPendingSubmit({ text: "", version: 0 });
+  }, []);
+
+  const deleteSession = useCallback(async (id: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    await fetch(`/api/compare/${id}`, { method: "DELETE" });
+    setSavedSessions((prev) => prev.filter((s) => s.id !== id));
+  }, []);
+
+  const hasPrompts = pendingSubmit.version > 0;
+
   return (
     <div className="flex h-dvh flex-col overflow-hidden bg-background">
       {/* Header */}
@@ -72,17 +172,63 @@ export default function ComparePage() {
             Send the same prompt to multiple models simultaneously
           </p>
         </div>
-        {columnModels.length < MAX_COLUMNS && (
+        <div className="flex items-center gap-2">
+          {/* Save session */}
           <Button
-            onClick={addColumn}
+            onClick={saveSession}
+            disabled={!hasPrompts || saving}
             size="sm"
             variant="outline"
             className="gap-1.5 text-xs"
+            title="Save this comparison session"
           >
-            <PlusIcon size={12} />
-            Add model
+            <BookmarkIcon size={12} />
+            {saving ? "Saving…" : "Save"}
           </Button>
-        )}
+
+          {/* History dropdown */}
+          {savedSessions.length > 0 && (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button size="sm" variant="outline" className="text-xs">
+                  History
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-72">
+                {savedSessions.map((s, i) => (
+                  <div key={s.id}>
+                    {i > 0 && <DropdownMenuSeparator />}
+                    <DropdownMenuItem
+                      className="flex items-center justify-between gap-2 cursor-pointer"
+                      onSelect={() => loadSession(s)}
+                    >
+                      <span className="truncate text-xs">{s.title || "Untitled"}</span>
+                      <button
+                        className="shrink-0 text-muted-foreground hover:text-destructive"
+                        onClick={(e) => deleteSession(s.id, e)}
+                        title="Delete session"
+                      >
+                        <TrashIcon />
+                      </button>
+                    </DropdownMenuItem>
+                  </div>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          )}
+
+          {columnModels.length < MAX_COLUMNS && (
+            <Button
+              onClick={addColumn}
+              size="sm"
+              variant="outline"
+              className="gap-1.5 text-xs"
+            >
+              <PlusIcon size={12} />
+              Add model
+            </Button>
+          )}
+        </div>
       </div>
 
       {/* Columns */}

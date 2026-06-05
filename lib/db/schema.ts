@@ -577,3 +577,17 @@ export const videoJob = pgTable("VideoJob", {
 });
 
 export type VideoJob = InferSelectModel<typeof videoJob>;
+
+export const compareSession = pgTable("CompareSession", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  userId: uuid("userId")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  title: varchar("title", { length: 255 }),
+  modelIds: json("modelIds").notNull(),
+  prompts: json("prompts").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().notNull(),
+});
+
+export type CompareSession = InferSelectModel<typeof compareSession>;
