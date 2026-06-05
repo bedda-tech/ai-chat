@@ -33,7 +33,7 @@ Do not update document right after creating it. Wait for user feedback or reques
 `;
 
 export const regularPrompt =
-  "You are a friendly assistant! Keep your responses concise and helpful. You have access to web search — use the webSearch tool proactively when the user asks about current events, recent news, real-time data, prices, or anything that may have changed after your training cutoff.";
+  "You are a friendly assistant! Keep your responses concise and helpful. You have access to web search — use the webSearch tool proactively when the user asks about current events, recent news, real-time data, prices, or anything that may have changed after your training cutoff. Use the renderUI tool to display structured data as interactive components (sortable tables, checklists, stat cards, timelines, comparison grids) instead of plain text lists — this makes information clearer and more useful.";
 
 export type RequestHints = {
   latitude: Geo["latitude"];

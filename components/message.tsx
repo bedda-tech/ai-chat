@@ -27,6 +27,7 @@ import { MessageReasoning } from "./message-reasoning";
 import { PreviewAttachment } from "./preview-attachment";
 import { Weather } from "./weather";
 import { Chart } from "./chart";
+import { GenerativeUIRenderer } from "./generative-ui-renderer";
 
 const PROVIDER_COLORS: Record<string, string> = {
   anthropic: "bg-orange-500",
@@ -1213,6 +1214,24 @@ const PurePreviewMessage = ({
                             {toolPart.output.error || "Failed to save memory"}
                           </span>
                         )}
+                      </div>
+                    )}
+                  </ToolContent>
+                </Tool>
+              );
+            }
+
+            if (type === "tool-renderUI") {
+              const toolPart = part as any;
+              const { toolCallId, state } = toolPart;
+
+              return (
+                <Tool defaultOpen={true} key={toolCallId}>
+                  <ToolHeader state={state} type="tool-renderUI" />
+                  <ToolContent>
+                    {state === "output-available" && toolPart.output?.component && (
+                      <div className="p-3">
+                        <GenerativeUIRenderer component={toolPart.output.component} />
                       </div>
                     )}
                   </ToolContent>

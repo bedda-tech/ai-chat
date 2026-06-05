@@ -21,6 +21,7 @@ import type { notionTool } from "./ai/tools/notion";
 import type { generateSpeechTool } from "./ai/tools/generate-speech";
 import type { generateChartTool } from "./ai/tools/generate-chart";
 import type { saveMemoryTool } from "./ai/tools/save-memory";
+import type { renderUITool } from "./ai/tools/render-ui";
 import type { Suggestion } from "./db/schema";
 import type { AppUsage } from "./usage";
 
@@ -51,6 +52,7 @@ type notionToolType = InferUITool<ReturnType<typeof notionTool>>;
 type generateSpeechToolType = InferUITool<ReturnType<typeof generateSpeechTool>>;
 type generateChartToolType = InferUITool<ReturnType<typeof generateChartTool>>;
 type saveMemoryToolType = InferUITool<ReturnType<typeof saveMemoryTool>>;
+type renderUIToolType = InferUITool<typeof renderUITool>;
 
 export type ChatTools = {
   getWeather: weatherTool;
@@ -71,6 +73,7 @@ export type ChatTools = {
   generateSpeech: generateSpeechToolType;
   generateChart: generateChartToolType;
   saveMemory: saveMemoryToolType;
+  renderUI: renderUIToolType;
 };
 
 export type CustomUIDataTypes = {

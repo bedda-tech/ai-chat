@@ -50,6 +50,7 @@ import { notionTool } from "@/lib/ai/tools/notion";
 import { generateSpeechTool } from "@/lib/ai/tools/generate-speech";
 import { generateChartTool } from "@/lib/ai/tools/generate-chart";
 import { saveMemoryTool } from "@/lib/ai/tools/save-memory";
+import { renderUITool } from "@/lib/ai/tools/render-ui";
 import { isProductionEnvironment } from "@/lib/constants";
 import {
   createStreamId,
@@ -305,6 +306,7 @@ export async function POST(request: Request) {
       "generateSpeech",
       "generateChart",
       "saveMemory",
+      "renderUI",
     ];
 
     // Check model capabilities from static config (handles internal model IDs)
@@ -381,6 +383,7 @@ export async function POST(request: Request) {
           generateSpeech: generateSpeechTool(),
           generateChart: generateChartTool(),
           saveMemory: saveMemoryTool(session.user.id, id),
+          renderUI: renderUITool,
           ...mcpToolMap,
         };
 
