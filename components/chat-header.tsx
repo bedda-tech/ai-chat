@@ -1,9 +1,28 @@
 "use client";
 
 import { memo } from "react";
+import { Download } from "lucide-react";
 import { ShareToTeamButton } from "@/components/share-to-team-button";
 import { SidebarToggle } from "@/components/sidebar-toggle";
+import { Button } from "@/components/ui/button";
 import type { VisibilityType } from "./visibility-selector";
+
+function handleExport(chatId: string) {
+  fetch(`/api/history/${chatId}/export?format=markdown`)
+    .then((res) => {
+      if (!res.ok) throw new Error("Export failed");
+      return res.blob();
+    })
+    .then((blob) => {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `chat-${chatId}.md`;
+      a.click();
+      URL.revokeObjectURL(url);
+    })
+    .catch(() => {});
+}
 
 function PureChatHeader({
   chatId,
@@ -18,6 +37,17 @@ function PureChatHeader({
     <div className="absolute left-2 top-2 z-50 flex items-center gap-2 md:left-2 md:top-2">
       <SidebarToggle />
       {!isReadonly && <ShareToTeamButton chatId={chatId} />}
+      {!isReadonly && (
+        <Button
+          variant="ghost"
+          size="icon"
+          className="size-8"
+          title="Export chat as Markdown"
+          onClick={() => handleExport(chatId)}
+        >
+          <Download className="size-4" />
+        </Button>
+      )}
     </div>
   );
 }
