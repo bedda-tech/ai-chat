@@ -555,3 +555,25 @@ export const teamChat = pgTable(
 );
 
 export type TeamChat = InferSelectModel<typeof teamChat>;
+
+export const videoJob = pgTable("VideoJob", {
+  id: uuid("id").primaryKey().notNull().defaultRandom(),
+  userId: uuid("userId")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  mode: varchar("mode", { enum: ["text-to-video", "image-to-video"] }).notNull(),
+  quality: varchar("quality", { enum: ["standard", "pro"] }).notNull(),
+  prompt: text("prompt").notNull(),
+  sourceImageUrl: text("sourceImageUrl"),
+  videoUrl: text("videoUrl"),
+  thumbnailUrl: text("thumbnailUrl"),
+  status: varchar("status", { enum: ["pending", "processing", "completed", "failed"] })
+    .notNull()
+    .default("pending"),
+  errorMessage: text("errorMessage"),
+  durationSeconds: integer("durationSeconds"),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+  completedAt: timestamp("completedAt"),
+});
+
+export type VideoJob = InferSelectModel<typeof videoJob>;

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/app/(auth)/auth";
 import { getUserTier } from "@/lib/usage/tracking";
+import { createVideoJob, updateVideoJob } from "@/lib/db/queries";
 
 const FAL_API_KEY = process.env.FAL_API_KEY;
 const TEXT_TO_VIDEO_APP_ID = "fal-ai/kling-video/v1.6/standard/text-to-video";
@@ -69,7 +70,19 @@ export async function POST(request: Request) {
   }
 
   const { request_id } = await submitRes.json();
-  return NextResponse.json({ requestId: request_id, appId });
+
+  const mode = imageUrl ? "image-to-video" : "text-to-video";
+  const job = await createVideoJob({
+    userId: session.user.id,
+    mode,
+    quality: "standard",
+    prompt: prompt.trim(),
+    sourceImageUrl: imageUrl ?? null,
+    status: "processing",
+    durationSeconds: Number(validDuration),
+  });
+
+  return NextResponse.json({ requestId: request_id, appId, jobId: job.id });
 }
 
 // Poll for job status/result
@@ -89,6 +102,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const requestId = searchParams.get("id");
   const appId = searchParams.get("appId") ?? TEXT_TO_VIDEO_APP_ID;
+  const jobId = searchParams.get("jobId");
   if (!requestId) {
     return NextResponse.json({ error: "Missing id parameter" }, { status: 400 });
   }
@@ -114,17 +128,31 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: "Failed to fetch result" }, { status: 502 });
     }
     const result = await resultRes.json();
-    return NextResponse.json({
-      status: "completed",
-      videoUrl: result.video?.url ?? null,
-    });
+    const videoUrl = result.video?.url ?? null;
+
+    if (jobId) {
+      updateVideoJob(jobId, {
+        status: "completed",
+        videoUrl,
+        completedAt: new Date(),
+      }).catch(() => {});
+    }
+
+    return NextResponse.json({ status: "completed", videoUrl });
   }
 
   if (status === "FAILED") {
-    return NextResponse.json({
-      status: "failed",
-      error: statusData.error ?? "Generation failed",
-    });
+    const errorMessage = statusData.error ?? "Generation failed";
+
+    if (jobId) {
+      updateVideoJob(jobId, {
+        status: "failed",
+        errorMessage,
+        completedAt: new Date(),
+      }).catch(() => {});
+    }
+
+    return NextResponse.json({ status: "failed", error: errorMessage });
   }
 
   return NextResponse.json({ status: "processing" });

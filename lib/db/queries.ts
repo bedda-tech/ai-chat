@@ -48,6 +48,8 @@ import {
   suggestion,
   type User,
   user,
+  videoJob,
+  type VideoJob,
   userPreferences,
   type UserPreferences,
   vote,
@@ -1225,4 +1227,41 @@ export async function validateApiKey(
     .catch(() => {});
 
   return { userId: row.userId, keyId: row.id };
+}
+
+// VideoJob queries
+
+export async function createVideoJob(
+  data: Omit<typeof videoJob.$inferInsert, "id" | "createdAt">
+): Promise<VideoJob> {
+  const [row] = await db.insert(videoJob).values(data).returning();
+  return row;
+}
+
+export async function updateVideoJob(
+  id: string,
+  patch: Partial<Omit<typeof videoJob.$inferInsert, "id" | "userId" | "createdAt">>
+): Promise<void> {
+  await db.update(videoJob).set(patch).where(eq(videoJob.id, id));
+}
+
+export async function listVideoJobsByUser(userId: string): Promise<VideoJob[]> {
+  return db
+    .select()
+    .from(videoJob)
+    .where(eq(videoJob.userId, userId))
+    .orderBy(desc(videoJob.createdAt))
+    .limit(50);
+}
+
+export async function getVideoJob(
+  id: string,
+  userId: string
+): Promise<VideoJob | null> {
+  const [row] = await db
+    .select()
+    .from(videoJob)
+    .where(and(eq(videoJob.id, id), eq(videoJob.userId, userId)))
+    .limit(1);
+  return row ?? null;
 }
