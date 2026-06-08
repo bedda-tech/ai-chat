@@ -21,6 +21,7 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith("/api/models") || // Allow dynamic model discovery
     pathname.startsWith("/api/health") || // Health check endpoint for monitoring
     pathname.startsWith("/api/v1") || // OpenAI-compatible API (uses Bearer token auth)
+    pathname.startsWith("/api/slack") || // Slack bot events, install, and OAuth callback
     publicRoutes.includes(pathname)
   ) {
     return NextResponse.next();

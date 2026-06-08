@@ -50,6 +50,8 @@ import {
   user,
   videoJob,
   type VideoJob,
+  slackWorkspace,
+  type SlackWorkspace,
   userPreferences,
   type UserPreferences,
   vote,
@@ -1262,6 +1264,40 @@ export async function getVideoJob(
     .select()
     .from(videoJob)
     .where(and(eq(videoJob.id, id), eq(videoJob.userId, userId)))
+    .limit(1);
+  return row ?? null;
+}
+
+export async function upsertSlackWorkspace(data: {
+  teamId: string;
+  teamName: string;
+  botToken: string;
+  botUserId: string;
+  installedByUserId?: string | null;
+}): Promise<SlackWorkspace> {
+  const [row] = await db
+    .insert(slackWorkspace)
+    .values({ ...data, updatedAt: new Date() })
+    .onConflictDoUpdate({
+      target: slackWorkspace.teamId,
+      set: {
+        teamName: data.teamName,
+        botToken: data.botToken,
+        botUserId: data.botUserId,
+        updatedAt: new Date(),
+      },
+    })
+    .returning();
+  return row;
+}
+
+export async function getSlackWorkspaceByTeamId(
+  teamId: string
+): Promise<SlackWorkspace | null> {
+  const [row] = await db
+    .select()
+    .from(slackWorkspace)
+    .where(eq(slackWorkspace.teamId, teamId))
     .limit(1);
   return row ?? null;
 }

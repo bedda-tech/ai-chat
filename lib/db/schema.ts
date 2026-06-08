@@ -591,3 +591,18 @@ export const compareSession = pgTable("CompareSession", {
 });
 
 export type CompareSession = InferSelectModel<typeof compareSession>;
+
+export const slackWorkspace = pgTable("SlackWorkspace", {
+  id: uuid("id").primaryKey().notNull().defaultRandom(),
+  teamId: varchar("teamId", { length: 32 }).notNull().unique(),
+  teamName: varchar("teamName", { length: 255 }).notNull(),
+  botToken: text("botToken").notNull(),
+  botUserId: varchar("botUserId", { length: 32 }).notNull(),
+  installedByUserId: uuid("installedByUserId").references(() => user.id, {
+    onDelete: "set null",
+  }),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+  updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+});
+
+export type SlackWorkspace = InferSelectModel<typeof slackWorkspace>;
