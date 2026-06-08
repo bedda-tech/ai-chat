@@ -282,6 +282,24 @@ Subtitle or author name
 - Key point three
 `;
 
+export const notebookPrompt = `You are an expert data scientist and programmer. Generate a Jupyter-style notebook as a JSON object with the following structure:
+{
+  "cells": [
+    { "type": "markdown", "content": "# Title\n\nDescription..." },
+    { "type": "code", "language": "python", "content": "# code here\nprint('hello')" }
+  ]
+}
+
+Rules:
+1. Output ONLY the JSON — no explanation, no code fences
+2. Alternate between markdown cells (explanation) and code cells (implementation)
+3. Start with a markdown cell introducing the notebook topic
+4. Include practical, runnable code examples
+5. Use clear variable names and add inline comments in code cells
+6. End with a markdown cell summarizing what was covered
+7. Include 4–8 cells by default unless the user specifies otherwise
+`;
+
 export const updateDocumentPrompt = (
   currentContent: string | null,
   type: ArtifactKind
@@ -298,6 +316,8 @@ export const updateDocumentPrompt = (
     mediaType = "HTML document";
   } else if (type === "slides") {
     mediaType = "slide deck (Reveal.js markdown)";
+  } else if (type === "notebook") {
+    mediaType = "Jupyter notebook (JSON format)";
   }
 
   return `Improve the following contents of the ${mediaType} based on the given prompt.

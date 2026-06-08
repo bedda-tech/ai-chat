@@ -463,16 +463,16 @@ function PureCanvasModeButton({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          content: kind === "code" ? "// Start coding here\n" : kind === "mermaid" ? "graph TD\n    A[Start] --> B[End]" : kind === "html" ? "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Untitled</title>\n  <style></style>\n</head>\n<body>\n  <script></script>\n</body>\n</html>" : kind === "slides" ? "## New Presentation\n\nSubtitle here" : "",
-          title: kind === "code" ? "Untitled Code" : kind === "sheet" ? "Untitled Sheet" : kind === "mermaid" ? "Untitled Diagram" : kind === "html" ? "Untitled HTML" : kind === "slides" ? "Untitled Presentation" : "Untitled Document",
+          content: kind === "code" ? "// Start coding here\n" : kind === "mermaid" ? "graph TD\n    A[Start] --> B[End]" : kind === "html" ? "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Untitled</title>\n  <style></style>\n</head>\n<body>\n  <script></script>\n</body>\n</html>" : kind === "slides" ? "## New Presentation\n\nSubtitle here" : kind === "notebook" ? JSON.stringify({ cells: [{ type: "markdown", content: "# Notebook\n\nStart adding cells..." }] }) : "",
+          title: kind === "code" ? "Untitled Code" : kind === "sheet" ? "Untitled Sheet" : kind === "mermaid" ? "Untitled Diagram" : kind === "html" ? "Untitled HTML" : kind === "slides" ? "Untitled Presentation" : kind === "notebook" ? "Untitled Notebook" : "Untitled Document",
           kind,
         }),
       });
       setArtifact({
         documentId: id,
         kind,
-        title: kind === "code" ? "Untitled Code" : kind === "sheet" ? "Untitled Sheet" : kind === "mermaid" ? "Untitled Diagram" : kind === "html" ? "Untitled HTML" : kind === "slides" ? "Untitled Presentation" : "Untitled Document",
-        content: kind === "code" ? "// Start coding here\n" : kind === "mermaid" ? "graph TD\n    A[Start] --> B[End]" : kind === "html" ? "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Untitled</title>\n</head>\n<body>\n</body>\n</html>" : kind === "slides" ? "## New Presentation\n\nSubtitle here" : "",
+        title: kind === "code" ? "Untitled Code" : kind === "sheet" ? "Untitled Sheet" : kind === "mermaid" ? "Untitled Diagram" : kind === "html" ? "Untitled HTML" : kind === "slides" ? "Untitled Presentation" : kind === "notebook" ? "Untitled Notebook" : "Untitled Document",
+        content: kind === "code" ? "// Start coding here\n" : kind === "mermaid" ? "graph TD\n    A[Start] --> B[End]" : kind === "html" ? "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Untitled</title>\n</head>\n<body>\n</body>\n</html>" : kind === "slides" ? "## New Presentation\n\nSubtitle here" : kind === "notebook" ? JSON.stringify({ cells: [{ type: "markdown", content: "# Notebook\n\nStart adding cells..." }] }) : "",
         status: "idle",
         isVisible: true,
         boundingBox: { top: 0, left: 0, width: 0, height: 0 },
@@ -516,6 +516,9 @@ function PureCanvasModeButton({
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => openCanvas("slides")}>
             Presentation
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => openCanvas("notebook")}>
+            Notebook
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

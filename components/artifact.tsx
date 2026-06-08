@@ -16,6 +16,7 @@ import { codeArtifact } from "@/artifacts/code/client";
 import { htmlArtifact } from "@/artifacts/html/client";
 import { imageArtifact } from "@/artifacts/image/client";
 import { mermaidArtifact } from "@/artifacts/mermaid/client";
+import { notebookArtifact } from "@/artifacts/notebook/client";
 import { sheetArtifact } from "@/artifacts/sheet/client";
 import { slidesArtifact } from "@/artifacts/slides/client";
 import { textArtifact } from "@/artifacts/text/client";
@@ -40,6 +41,7 @@ export const artifactDefinitions = [
   mermaidArtifact,
   htmlArtifact,
   slidesArtifact,
+  notebookArtifact,
 ];
 export type ArtifactKind = (typeof artifactDefinitions)[number]["kind"];
 
