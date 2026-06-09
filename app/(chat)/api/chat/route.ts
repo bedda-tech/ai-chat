@@ -77,6 +77,7 @@ import type { ChatMessage } from "@/lib/types";
 import type { AppUsage } from "@/lib/usage";
 import { recordUsage } from "@/lib/usage/tracking";
 import { convertToUIMessages, generateUUID, pruneUIMessages } from "@/lib/utils";
+import { logAuditEvent } from "@/lib/audit";
 import { publishChatEvent } from "@/lib/realtime";
 import { generateTitleFromUserMessage } from "../../actions";
 import { type PostRequestBody, postRequestBodySchema } from "./schema";
@@ -242,6 +243,7 @@ export async function POST(request: Request) {
         title,
         visibility: selectedVisibilityType,
       });
+      void logAuditEvent(session.user.id, "chat.created", { chatId: id, modelId: selectedChatModel });
     }
 
     const messagesFromDb = await getMessagesByChatId({ id });

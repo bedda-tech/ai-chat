@@ -2,6 +2,7 @@ import crypto from "node:crypto";
 import { NextResponse } from "next/server";
 import { auth } from "@/app/(auth)/auth";
 import { sendTeamInviteEmail } from "@/lib/email/send-team-invite";
+import { logAuditEvent } from "@/lib/audit";
 import {
   createTeamInvite,
   getTeamById,
@@ -96,6 +97,8 @@ export async function POST(
     console.error("Failed to send invite email:", err);
   }
 
+  void logAuditEvent(session.user.id, "team.member_invited", { teamId, inviteeEmail: email.trim() });
+
   return NextResponse.json({ invite }, { status: 201 });
 }
 
@@ -122,5 +125,6 @@ export async function DELETE(
   }
 
   await removeMemberFromTeam(teamId, userId);
+  void logAuditEvent(session.user.id, "team.member_removed", { teamId, removedUserId: userId });
   return NextResponse.json({ success: true });
 }

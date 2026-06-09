@@ -11,6 +11,7 @@ import {
   getOrCreateOAuthUser,
 } from "@/lib/db/queries";
 import { sendWelcomeEmail } from "@/lib/email/send-welcome-email";
+import { logAuditEvent } from "@/lib/audit";
 import { authConfig } from "./auth.config";
 
 export type UserType = "guest" | "regular";
@@ -126,9 +127,13 @@ export const {
           if (isNew && email) {
             sendWelcomeEmail(email as string).catch(() => {});
           }
+          void logAuditEvent(dbUser.id, "user.login", { provider: oauthAccount.provider });
         } catch {
           return false;
         }
+      } else if (oauthAccount?.provider === "credentials" && authUser.id) {
+        // Email/password login
+        void logAuditEvent(authUser.id as string, "user.login", { provider: "credentials" });
       }
       return true;
     },

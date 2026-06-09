@@ -7,6 +7,7 @@ import postgres from "postgres";
 import { stripe, getSubscriptionTier } from "@/lib/stripe";
 import { userTier } from "@/lib/db/schema";
 import { updateTeamBilling } from "@/lib/db/team-queries";
+import { logAuditEvent } from "@/lib/audit";
 
 const connectionString = process.env.POSTGRES_URL!;
 const client = postgres(connectionString);
@@ -199,6 +200,7 @@ async function handleSubscriptionChange(
     .from(userTier)
     .where(eq(userTier.userId, userId))
     .limit(1);
+  const fromTier = existing[0]?.tier ?? "free";
 
   if (existing.length > 0) {
     await db
@@ -226,6 +228,8 @@ async function handleSubscriptionChange(
       cancelAtPeriodEnd: subscription.cancel_at_period_end,
     });
   }
+
+  void logAuditEvent(userId, "subscription.changed", { from_tier: fromTier, to_tier: tier, subscriptionId: subscription.id });
 }
 
 /**

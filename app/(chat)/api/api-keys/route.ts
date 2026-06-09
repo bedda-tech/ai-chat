@@ -6,6 +6,7 @@ import {
   revokeApiKey,
 } from "@/lib/db/queries";
 import { getUserTier } from "@/lib/usage/tracking";
+import { logAuditEvent } from "@/lib/audit";
 
 const UPGRADE_ERROR = {
   error: "API access requires a paid subscription. Upgrade at /upgrade.",
@@ -63,6 +64,8 @@ export async function POST(request: Request) {
     keyPrefix,
   });
 
+  void logAuditEvent(session.user.id, "api_key.created", { keyId: key.id, name });
+
   return Response.json({
     id: key.id,
     name: key.name,
@@ -84,5 +87,6 @@ export async function DELETE(request: Request) {
   }
 
   await revokeApiKey(body.id, session.user.id);
+  void logAuditEvent(session.user.id, "api_key.deleted", { keyId: body.id });
   return Response.json({ success: true });
 }

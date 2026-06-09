@@ -607,3 +607,14 @@ export const slackWorkspace = pgTable("SlackWorkspace", {
 });
 
 export type SlackWorkspace = InferSelectModel<typeof slackWorkspace>;
+
+export const auditLog = pgTable("AuditLog", {
+  id: uuid("id").primaryKey().notNull().defaultRandom(),
+  userId: uuid("userId").references(() => user.id, { onDelete: "set null" }),
+  action: varchar("action", { length: 64 }).notNull(),
+  metadata: jsonb("metadata"),
+  ipAddress: varchar("ipAddress", { length: 64 }),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+});
+
+export type AuditLog = InferSelectModel<typeof auditLog>;
