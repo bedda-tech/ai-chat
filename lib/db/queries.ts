@@ -1301,3 +1301,21 @@ export async function getSlackWorkspaceByTeamId(
     .limit(1);
   return row ?? null;
 }
+
+export async function getUserOnboardingStatus(
+  userId: string
+): Promise<boolean> {
+  const [row] = await db
+    .select({ onboardingCompleted: user.onboardingCompleted })
+    .from(user)
+    .where(eq(user.id, userId))
+    .limit(1);
+  return row?.onboardingCompleted ?? false;
+}
+
+export async function markOnboardingComplete(userId: string) {
+  return await db
+    .update(user)
+    .set({ onboardingCompleted: true })
+    .where(eq(user.id, userId));
+}

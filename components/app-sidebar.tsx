@@ -164,6 +164,7 @@ export function AppSidebar({ user, isAdmin }: { user: User | undefined; isAdmin?
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild>
                     <Link
+                      data-tour="image-studio-link"
                       href="/studio"
                       onClick={() => {
                         setOpenMobile(false);
@@ -200,6 +201,7 @@ export function AppSidebar({ user, isAdmin }: { user: User | undefined; isAdmin?
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild>
                     <Link
+                      data-tour="compare-link"
                       href="/compare"
                       onClick={() => {
                         setOpenMobile(false);
@@ -220,6 +222,33 @@ export function AppSidebar({ user, isAdmin }: { user: User | undefined; isAdmin?
                         />
                       </svg>
                       <span>Compare Models</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild>
+                    <Link
+                      data-tour="video-studio-link"
+                      href="/studio/video"
+                      onClick={() => {
+                        setOpenMobile(false);
+                      }}
+                    >
+                      <svg
+                        fill="none"
+                        height="16"
+                        stroke="currentColor"
+                        strokeWidth={1.75}
+                        viewBox="0 0 24 24"
+                        width="16"
+                      >
+                        <path
+                          d="M15 10l4.553-2.069A1 1 0 0 1 21 8.88v6.24a1 1 0 0 1-1.447.95L15 14M3 8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                      <span>Video Studio</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -271,7 +300,11 @@ export function AppSidebar({ user, isAdmin }: { user: User | undefined; isAdmin?
       </SidebarContent>
       <SidebarFooter>
         <SidebarUpgradeCTA />
-        {user && <SidebarUserNav user={user} />}
+        {user && (
+          <div data-tour="sidebar-user">
+            <SidebarUserNav user={user} />
+          </div>
+        )}
       </SidebarFooter>
     </Sidebar>
   );

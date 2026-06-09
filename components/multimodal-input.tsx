@@ -433,6 +433,7 @@ function PureAgentModeButton({
               : "hover:bg-accent"
           )}
           data-testid="agent-mode-button"
+          data-tour="deep-research"
           disabled={status !== "ready"}
           onClick={() => setAgentMode(!agentMode)}
           variant="ghost"
@@ -676,6 +677,7 @@ function PureModelSelectorCompact({
         onClick={() => setIsOpen(true)}
         variant="ghost"
         type="button"
+        data-tour="model-selector"
       >
         <SparklesIcon size={14} />
         <span className="text-xs font-medium text-muted-foreground truncate">

@@ -1,7 +1,9 @@
 import { cookies } from "next/headers";
 import { AppSidebar } from "@/components/app-sidebar";
 import { DataStreamProvider } from "@/components/data-stream-provider";
+import { OnboardingTour } from "@/components/onboarding/OnboardingTour";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { getUserOnboardingStatus } from "@/lib/db/queries";
 import { auth } from "../(auth)/auth";
 
 function isAdmin(email: string | null | undefined): boolean {
@@ -24,6 +26,11 @@ export default async function Layout({
   const isCollapsed = cookieStore.get("sidebar_state")?.value !== "true";
   const adminUser = isAdmin(session?.user?.email);
 
+  const isRealUser = !!session?.user?.id && session.user.type !== "guest";
+  const showTour = isRealUser
+    ? !(await getUserOnboardingStatus(session.user.id))
+    : false;
+
   return (
     <>
       <DataStreamProvider>
@@ -31,6 +38,7 @@ export default async function Layout({
           <AppSidebar user={session?.user} isAdmin={adminUser} />
           <SidebarInset>{children}</SidebarInset>
         </SidebarProvider>
+        {showTour && <OnboardingTour />}
       </DataStreamProvider>
     </>
   );
