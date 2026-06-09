@@ -34,6 +34,8 @@ import { MultimodalInput } from "./multimodal-input";
 import { getChatHistoryPaginationKey } from "./sidebar-history";
 import { toast } from "./toast";
 import type { VisibilityType } from "./visibility-selector";
+import { useTeamRealtime } from "@/hooks/use-team-realtime";
+import { TeamTypingIndicator } from "./team-typing-indicator";
 
 export function Chat({
   id,
@@ -43,6 +45,7 @@ export function Chat({
   isReadonly,
   autoResume,
   initialLastContext,
+  isTeamShared = false,
 }: {
   id: string;
   initialMessages: ChatMessage[];
@@ -51,6 +54,7 @@ export function Chat({
   isReadonly: boolean;
   autoResume: boolean;
   initialLastContext?: AppUsage;
+  isTeamShared?: boolean;
 }) {
   const { visibilityType } = useChatVisibility({
     chatId: id,
@@ -74,6 +78,8 @@ export function Chat({
   });
   const [currentModelId, setCurrentModelId] = useState(initialChatModel);
   const currentModelIdRef = useRef(currentModelId);
+
+  const { typingUsers, sendTyping } = useTeamRealtime(id, isTeamShared);
 
   useEffect(() => {
     currentModelIdRef.current = currentModelId;
@@ -227,6 +233,13 @@ export function Chat({
           votes={votes}
         />
 
+        {isTeamShared && (
+          <TeamTypingIndicator
+            currentUserId={undefined}
+            typingUsers={typingUsers}
+          />
+        )}
+
         <div className="sticky bottom-0 z-1 mx-auto flex w-full max-w-4xl gap-2 border-t-0 bg-background px-2 pb-3 md:px-4 md:pb-4">
           {!isReadonly && (
             <MultimodalInput
@@ -235,6 +248,7 @@ export function Chat({
               input={input}
               messages={messages}
               onModelChange={setCurrentModelId}
+              onTyping={isTeamShared ? sendTyping : undefined}
               selectedModelId={currentModelId}
               selectedVisibilityType={visibilityType}
               sendMessage={sendMessage}

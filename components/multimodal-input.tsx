@@ -92,6 +92,7 @@ function PureMultimodalInput({
   selectedModelId,
   onModelChange,
   usage,
+  onTyping,
 }: {
   chatId: string;
   input: string;
@@ -108,6 +109,7 @@ function PureMultimodalInput({
   selectedModelId: string;
   onModelChange?: (modelId: string) => void;
   usage?: AppUsage;
+  onTyping?: () => void;
 }) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { width } = useWindowSize();
@@ -154,6 +156,7 @@ function PureMultimodalInput({
 
   const handleInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInput(event.target.value);
+    onTyping?.();
   };
 
   const fileInputRef = useRef<HTMLInputElement>(null);

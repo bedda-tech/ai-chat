@@ -6,12 +6,16 @@ import { Chat } from "@/components/chat";
 import { DataStreamHandler } from "@/components/data-stream-handler";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { getChatById, getMessagesByChatId } from "@/lib/db/queries";
+import { getTeamsForChat } from "@/lib/db/team-queries";
 import { convertToUIMessages } from "@/lib/utils";
 
 export default async function Page(props: { params: Promise<{ id: string }> }) {
   const params = await props.params;
   const { id } = params;
-  const chat = await getChatById({ id });
+  const [chat, teamRows] = await Promise.all([
+    getChatById({ id }),
+    getTeamsForChat(id),
+  ]);
 
   if (!chat) {
     notFound();
@@ -41,6 +45,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
 
   const cookieStore = await cookies();
   const chatModelFromCookie = cookieStore.get("chat-model");
+  const isTeamShared = teamRows.length > 0;
 
   if (!chatModelFromCookie) {
     return (
@@ -53,6 +58,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
           initialMessages={uiMessages}
           initialVisibilityType={chat.visibility}
           isReadonly={session?.user?.id !== chat.userId}
+          isTeamShared={isTeamShared}
         />
         <DataStreamHandler />
       </>
@@ -69,6 +75,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
         initialMessages={uiMessages}
         initialVisibilityType={chat.visibility}
         isReadonly={session?.user?.id !== chat.userId}
+        isTeamShared={isTeamShared}
       />
       <DataStreamHandler />
     </>
