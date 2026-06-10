@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import Link from "next/link";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -36,7 +37,13 @@ function ProjectCard({
             </p>
           )}
         </div>
-        <div className="flex gap-2 shrink-0">
+        <div className="flex gap-2 shrink-0 flex-wrap justify-end">
+          <Button size="sm" variant="default" asChild>
+            <Link href={`/?projectId=${project.id}`}>New Chat</Link>
+          </Button>
+          <Button size="sm" variant="outline" asChild>
+            <Link href={`/knowledge-base?projectId=${project.id}`}>Knowledge Base</Link>
+          </Button>
           <Button size="sm" variant="outline" onClick={() => onEdit(project)}>
             Edit
           </Button>

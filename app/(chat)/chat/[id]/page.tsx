@@ -59,6 +59,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
           initialVisibilityType={chat.visibility}
           isReadonly={session?.user?.id !== chat.userId}
           isTeamShared={isTeamShared}
+          projectId={chat.projectId}
         />
         <DataStreamHandler />
       </>
@@ -76,6 +77,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
         initialVisibilityType={chat.visibility}
         isReadonly={session?.user?.id !== chat.userId}
         isTeamShared={isTeamShared}
+        projectId={chat.projectId}
       />
       <DataStreamHandler />
     </>

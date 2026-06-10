@@ -46,6 +46,7 @@ export function Chat({
   autoResume,
   initialLastContext,
   isTeamShared = false,
+  projectId,
 }: {
   id: string;
   initialMessages: ChatMessage[];
@@ -55,6 +56,7 @@ export function Chat({
   autoResume: boolean;
   initialLastContext?: AppUsage;
   isTeamShared?: boolean;
+  projectId?: string | null;
 }) {
   const { visibilityType } = useChatVisibility({
     chatId: id,
@@ -108,6 +110,7 @@ export function Chat({
             message: request.messages.at(-1),
             selectedChatModel: currentModelIdRef.current,
             selectedVisibilityType: visibilityType,
+            ...(projectId ? { projectId } : {}),
             ...request.body,
           },
         };

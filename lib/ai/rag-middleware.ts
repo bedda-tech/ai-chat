@@ -19,12 +19,15 @@ export const ragMiddleware: LanguageModelMiddleware = {
   transformParams: async ({ params, type }) => {
     if (!ragEnabled()) return params;
 
-    const userId = (params.providerOptions as Record<string, any>)?.bedda
-      ?.userId as string | undefined;
+    const beddaOpts = (params.providerOptions as Record<string, any>)?.bedda as
+      | { userId?: string; projectId?: string | null }
+      | undefined;
+    const userId = beddaOpts?.userId;
     if (!userId) return params;
+    const projectId = beddaOpts?.projectId ?? null;
 
-    // Zero overhead for users with no KB documents
-    const hasKB = await hasKBDocuments(userId).catch(() => false);
+    // Zero overhead when no KB documents exist for this scope
+    const hasKB = await hasKBDocuments(userId, projectId).catch(() => false);
     if (!hasKB) return params;
 
     // Find the last user message and extract its text
@@ -61,6 +64,7 @@ export const ragMiddleware: LanguageModelMiddleware = {
       });
       chunks = await searchKBChunks({
         userId,
+        projectId,
         queryEmbedding: embedding,
         queryText: textContent,
         limit: 5,

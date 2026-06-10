@@ -6,7 +6,9 @@ import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { generateUUID } from "@/lib/utils";
 import { auth } from "../(auth)/auth";
 
-export default async function Page() {
+export default async function Page(props: {
+  searchParams?: Promise<{ projectId?: string }>;
+}) {
   const session = await auth();
 
   if (!session) {
@@ -14,6 +16,8 @@ export default async function Page() {
   }
 
   const id = generateUUID();
+  const searchParams = await props.searchParams;
+  const projectId = searchParams?.projectId ?? undefined;
 
   const cookieStore = await cookies();
   const modelIdFromCookie = cookieStore.get("chat-model");
@@ -29,6 +33,7 @@ export default async function Page() {
           initialVisibilityType="private"
           isReadonly={false}
           key={id}
+          projectId={projectId}
         />
         <DataStreamHandler />
       </>
@@ -45,6 +50,7 @@ export default async function Page() {
         initialVisibilityType="private"
         isReadonly={false}
         key={id}
+        projectId={projectId}
       />
       <DataStreamHandler />
     </>

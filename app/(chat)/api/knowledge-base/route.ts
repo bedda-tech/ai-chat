@@ -19,14 +19,17 @@ const SUPPORTED_TYPES = [
 ];
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 
-/** GET /api/knowledge-base — list user's documents */
-export async function GET() {
+/** GET /api/knowledge-base?projectId=X — list documents (project-scoped or account-wide) */
+export async function GET(request: Request) {
   const session = await auth();
   if (!session?.user?.id) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const docs = await listKBDocuments(session.user.id);
+  const { searchParams } = new URL(request.url);
+  const projectId = searchParams.get("projectId") ?? undefined;
+
+  const docs = await listKBDocuments(session.user.id, projectId);
   return NextResponse.json({ documents: docs });
 }
 
@@ -68,6 +71,9 @@ export async function POST(request: Request) {
     );
   }
 
+  // Optional project scope — associate this doc with a project if provided
+  const projectId = (formData.get("projectId") as string | null) ?? null;
+
   try {
     // 1. Extract text from the file
     const buffer = await file.arrayBuffer();
@@ -84,6 +90,7 @@ export async function POST(request: Request) {
     const title = file.name.replace(/\.[^.]+$/, ""); // strip extension
     const doc = await createKBDocument({
       userId: session.user.id,
+      projectId,
       title,
       fileName: file.name,
       fileType: file.type,
@@ -98,6 +105,11 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
+
+    console.log(
+      `[kb] chunking "${file.name}": ${text.length} chars → ${textChunks.length} chunks` +
+        (projectId ? ` (project: ${projectId})` : " (account-wide)")
+    );
 
     // 4. Generate embeddings in batches of 100
     const BATCH_SIZE = 100;
@@ -115,6 +127,7 @@ export async function POST(request: Request) {
     await saveKBChunks({
       documentId: doc.id,
       userId: session.user.id,
+      projectId,
       chunks: textChunks.map((content, idx) => ({
         content,
         chunkIndex: idx,
@@ -129,6 +142,7 @@ export async function POST(request: Request) {
         title: doc.title,
         fileName: doc.fileName,
         chunkCount: textChunks.length,
+        projectId,
       },
     });
   } catch (error) {

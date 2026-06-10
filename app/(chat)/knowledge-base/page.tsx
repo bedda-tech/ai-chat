@@ -1,6 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 import { formatDistanceToNow } from "date-fns";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -47,6 +49,10 @@ function formatBytes(bytes: number) {
 type CloudPanel = "drive" | "notion" | null;
 
 export default function KnowledgeBasePage() {
+  const searchParams = useSearchParams();
+  const projectId = searchParams.get("projectId") ?? null;
+  const [projectName, setProjectName] = useState<string | null>(null);
+
   const [documents, setDocuments] = useState<KBDocument[]>([]);
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
@@ -65,9 +71,27 @@ export default function KnowledgeBasePage() {
   const [notionLoading, setNotionLoading] = useState(false);
   const [importingId, setImportingId] = useState<string | null>(null);
 
+  // Fetch project name when scoped to a project
+  useEffect(() => {
+    if (!projectId) return;
+    fetch("/api/projects")
+      .then((r) => r.ok ? r.json() : null)
+      .then((data) => {
+        if (!data) return;
+        const p = (data.projects ?? []).find(
+          (proj: { id: string; name: string }) => proj.id === projectId
+        );
+        if (p) setProjectName(p.name);
+      })
+      .catch(() => {});
+  }, [projectId]);
+
   const fetchDocuments = useCallback(async () => {
     try {
-      const res = await fetch("/api/knowledge-base");
+      const url = projectId
+        ? `/api/knowledge-base?projectId=${encodeURIComponent(projectId)}`
+        : "/api/knowledge-base";
+      const res = await fetch(url);
       if (res.ok) {
         const data = await res.json();
         setDocuments(data.documents ?? []);
@@ -77,7 +101,7 @@ export default function KnowledgeBasePage() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [projectId]);
 
   useEffect(() => {
     fetchDocuments();
@@ -99,6 +123,7 @@ export default function KnowledgeBasePage() {
       setUploading(true);
       const formData = new FormData();
       formData.append("file", file);
+      if (projectId) formData.append("projectId", projectId);
 
       try {
         const res = await fetch("/api/knowledge-base", {
@@ -120,7 +145,7 @@ export default function KnowledgeBasePage() {
         setUploading(false);
       }
     },
-    [fetchDocuments]
+    [fetchDocuments, projectId]
   );
 
   const handleFileChange = useCallback(
@@ -185,7 +210,7 @@ export default function KnowledgeBasePage() {
         const res = await fetch("/api/knowledge-base/import/drive", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ fileId: file.id, title: file.name }),
+          body: JSON.stringify({ fileId: file.id, title: file.name, projectId }),
         });
         const data = await res.json();
         if (!res.ok) {
@@ -202,7 +227,7 @@ export default function KnowledgeBasePage() {
         setImportingId(null);
       }
     },
-    [fetchDocuments]
+    [fetchDocuments, projectId]
   );
 
   // ── Notion helpers ────────────────────────────────────────────────────────
@@ -231,7 +256,7 @@ export default function KnowledgeBasePage() {
         const res = await fetch("/api/knowledge-base/import/notion", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ pageId: page.id, title: page.title }),
+          body: JSON.stringify({ pageId: page.id, title: page.title, projectId }),
         });
         const data = await res.json();
         if (!res.ok) {
@@ -248,7 +273,7 @@ export default function KnowledgeBasePage() {
         setImportingId(null);
       }
     },
-    [fetchDocuments]
+    [fetchDocuments, projectId]
   );
 
   const togglePanel = useCallback(
@@ -271,10 +296,26 @@ export default function KnowledgeBasePage() {
   return (
     <div className="mx-auto max-w-2xl px-4 py-10">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold tracking-tight">Knowledge Base</h1>
+        {projectId && (
+          <div className="mb-3 flex items-center gap-2 text-sm text-muted-foreground">
+            <Link className="hover:text-foreground" href="/projects">
+              Projects
+            </Link>
+            <span>/</span>
+            <span className="font-medium text-foreground">
+              {projectName ?? "Project"}
+            </span>
+            <span>/</span>
+            <span>Knowledge Base</span>
+          </div>
+        )}
+        <h1 className="text-2xl font-bold tracking-tight">
+          {projectId ? "Project Knowledge Base" : "Knowledge Base"}
+        </h1>
         <p className="mt-1 text-muted-foreground text-sm">
-          Upload documents and chat with them. The AI will search your files
-          when answering questions.
+          {projectId
+            ? "Documents here are only used in chats belonging to this project."
+            : "Upload documents and chat with them. The AI will search your files when answering questions."}
         </p>
         <p className="mt-1 text-muted-foreground text-xs">
           Supported: .txt, .md, .csv, .json &nbsp;&middot;&nbsp; Max{" "}
@@ -539,7 +580,7 @@ export default function KnowledgeBasePage() {
       {/* Documents list */}
       <div>
         <h2 className="mb-3 font-semibold text-sm text-muted-foreground uppercase tracking-wide">
-          Your Documents
+          {projectId ? "Project Documents" : "Your Documents"}
         </h2>
 
         {loading ? (
@@ -549,7 +590,9 @@ export default function KnowledgeBasePage() {
           </div>
         ) : documents.length === 0 ? (
           <div className="py-8 text-center text-muted-foreground text-sm">
-            No documents yet. Upload your first file above.
+            {projectId
+              ? "No documents in this project yet. Upload a file or import from Drive/Notion above."
+              : "No documents yet. Upload your first file above."}
           </div>
         ) : (
           <ul className="space-y-2">

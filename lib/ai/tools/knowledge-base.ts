@@ -8,10 +8,10 @@ import { searchKBChunks } from "@/lib/db/queries";
  * RAG tool: searches the user's uploaded knowledge base documents
  * using vector similarity search (pgvector on Neon).
  */
-export const queryKnowledgeBaseTool = (userId: string) =>
+export const queryKnowledgeBaseTool = (userId: string, projectId?: string | null) =>
   tool({
     description:
-      "Search your personal knowledge base of uploaded documents. Use this when the user asks about content from files they have uploaded, or when you need to retrieve specific information from their documents. Returns the most relevant text passages.",
+      "Search your knowledge base of uploaded documents. Use this when the user asks about content from files they have uploaded, or when you need to retrieve specific information from their documents. Returns the most relevant text passages.",
     inputSchema: z.object({
       query: z
         .string()
@@ -39,6 +39,7 @@ export const queryKnowledgeBaseTool = (userId: string) =>
         const candidateLimit = cohereApiKey ? 20 : limit;
         const candidates = await searchKBChunks({
           userId,
+          projectId: projectId ?? undefined,
           queryEmbedding: embedding,
           queryText: query,
           limit: candidateLimit,

@@ -380,6 +380,9 @@ export const knowledgeBaseDocument = pgTable("KnowledgeBaseDocument", {
   userId: uuid("userId")
     .notNull()
     .references(() => user.id),
+  projectId: uuid("projectId").references(() => project.id, {
+    onDelete: "cascade",
+  }),
   title: text("title").notNull(),
   fileName: varchar("fileName", { length: 255 }).notNull(),
   fileType: varchar("fileType", { length: 100 }).notNull(),
@@ -401,6 +404,9 @@ export const knowledgeBaseChunk = pgTable("KnowledgeBaseChunk", {
   userId: uuid("userId")
     .notNull()
     .references(() => user.id),
+  projectId: uuid("projectId").references(() => project.id, {
+    onDelete: "cascade",
+  }),
   content: text("content").notNull(),
   chunkIndex: integer("chunkIndex").notNull(),
   embedding: vector("embedding", { dimensions: 1536 }).notNull(),

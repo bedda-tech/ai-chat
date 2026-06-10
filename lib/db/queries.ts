@@ -9,6 +9,7 @@ import {
   gt,
   gte,
   inArray,
+  isNull,
   lt,
   sql,
   type SQL,
@@ -172,11 +173,13 @@ export async function saveChat({
   userId,
   title,
   visibility,
+  projectId,
 }: {
   id: string;
   userId: string;
   title: string;
   visibility: VisibilityType;
+  projectId?: string | null;
 }) {
   try {
     return await db.insert(chat).values({
@@ -185,6 +188,7 @@ export async function saveChat({
       userId,
       title,
       visibility,
+      projectId: projectId ?? null,
     });
   } catch (_error) {
     throw new ChatSDKError("bad_request:database", "Failed to save chat");
@@ -665,12 +669,14 @@ export async function createStreamId({
 
 export async function createKBDocument({
   userId,
+  projectId,
   title,
   fileName,
   fileType,
   fileSize,
 }: {
   userId: string;
+  projectId?: string | null;
   title: string;
   fileName: string;
   fileType: string;
@@ -678,7 +684,7 @@ export async function createKBDocument({
 }): Promise<KnowledgeBaseDocument> {
   const [doc] = await db
     .insert(knowledgeBaseDocument)
-    .values({ userId, title, fileName, fileType, fileSize })
+    .values({ userId, projectId: projectId ?? null, title, fileName, fileType, fileSize })
     .returning();
   return doc;
 }
@@ -686,10 +692,12 @@ export async function createKBDocument({
 export async function saveKBChunks({
   documentId,
   userId,
+  projectId,
   chunks,
 }: {
   documentId: string;
   userId: string;
+  projectId?: string | null;
   chunks: Array<{ content: string; chunkIndex: number; embedding: number[] }>;
 }) {
   if (chunks.length === 0) return;
@@ -697,6 +705,7 @@ export async function saveKBChunks({
     chunks.map((c) => ({
       documentId,
       userId,
+      projectId: projectId ?? null,
       content: c.content,
       chunkIndex: c.chunkIndex,
       embedding: c.embedding,
@@ -709,20 +718,42 @@ export async function saveKBChunks({
 }
 
 export async function listKBDocuments(
-  userId: string
+  userId: string,
+  projectId?: string | null
 ): Promise<KnowledgeBaseDocument[]> {
+  const condition =
+    projectId !== undefined
+      ? and(
+          eq(knowledgeBaseDocument.userId, userId),
+          projectId
+            ? eq(knowledgeBaseDocument.projectId, projectId)
+            : isNull(knowledgeBaseDocument.projectId)
+        )
+      : eq(knowledgeBaseDocument.userId, userId);
   return db
     .select()
     .from(knowledgeBaseDocument)
-    .where(eq(knowledgeBaseDocument.userId, userId))
+    .where(condition)
     .orderBy(desc(knowledgeBaseDocument.createdAt));
 }
 
-export async function hasKBDocuments(userId: string): Promise<boolean> {
+export async function hasKBDocuments(
+  userId: string,
+  projectId?: string | null
+): Promise<boolean> {
+  const condition =
+    projectId !== undefined
+      ? and(
+          eq(knowledgeBaseDocument.userId, userId),
+          projectId
+            ? eq(knowledgeBaseDocument.projectId, projectId)
+            : isNull(knowledgeBaseDocument.projectId)
+        )
+      : eq(knowledgeBaseDocument.userId, userId);
   const result = await db
     .select({ id: knowledgeBaseDocument.id })
     .from(knowledgeBaseDocument)
-    .where(eq(knowledgeBaseDocument.userId, userId))
+    .where(condition)
     .limit(1);
   return result.length > 0;
 }
@@ -746,12 +777,14 @@ export async function deleteKBDocument({
 
 export async function searchKBChunks({
   userId,
+  projectId,
   queryEmbedding,
   queryText,
   limit = 5,
   similarityThreshold = 0.25,
 }: {
   userId: string;
+  projectId?: string | null;
   queryEmbedding: number[];
   queryText?: string;
   limit?: number;
@@ -760,6 +793,13 @@ export async function searchKBChunks({
   Array<{ content: string; documentTitle: string; similarity: number }>
 > {
   const vectorStr = `[${queryEmbedding.join(",")}]`;
+
+  // Project-scope filter: if projectId provided, restrict to that project's docs;
+  // otherwise restrict to account-wide docs (projectId IS NULL).
+  const projectFilter =
+    projectId
+      ? sql`AND c."projectId" = ${projectId}::uuid`
+      : sql`AND c."projectId" IS NULL`;
 
   // Hybrid search: Reciprocal Rank Fusion (RRF) combining vector similarity + BM25 text search.
   // Over-fetches 20 candidates from each strategy, then merges with RRF (k=60) for better recall.
@@ -776,6 +816,7 @@ export async function searchKBChunks({
           FROM "KnowledgeBaseChunk" c
           JOIN "KnowledgeBaseDocument" d ON d.id = c."documentId"
           WHERE c."userId" = ${userId}::uuid
+            ${projectFilter}
             AND 1 - (c.embedding <=> ${vectorStr}::vector) >= ${similarityThreshold}
           ORDER BY c.embedding <=> ${vectorStr}::vector
           LIMIT 20
@@ -788,6 +829,7 @@ export async function searchKBChunks({
           FROM "KnowledgeBaseChunk" c
           JOIN "KnowledgeBaseDocument" d ON d.id = c."documentId"
           WHERE c."userId" = ${userId}::uuid
+            ${projectFilter}
             AND to_tsvector('english', c.content) @@ plainto_tsquery('english', ${queryText})
           LIMIT 20
         )
@@ -819,6 +861,7 @@ export async function searchKBChunks({
       FROM "KnowledgeBaseChunk" c
       JOIN "KnowledgeBaseDocument" d ON d.id = c."documentId"
       WHERE c."userId" = ${userId}::uuid
+        ${projectFilter}
         AND 1 - (c.embedding <=> ${vectorStr}::vector) >= ${similarityThreshold}
       ORDER BY c.embedding <=> ${vectorStr}::vector
       LIMIT ${limit}

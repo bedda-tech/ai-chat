@@ -143,12 +143,14 @@ export async function POST(request: Request) {
       selectedChatModel,
       selectedVisibilityType,
       agentMode,
+      projectId: requestProjectId,
     }: {
       id: string;
       message: ChatMessage;
       selectedChatModel: ChatModel["id"];
       selectedVisibilityType: VisibilityType;
       agentMode?: boolean;
+      projectId?: string | null;
     } = requestBody;
 
     const session = await auth();
@@ -200,8 +202,11 @@ export async function POST(request: Request) {
     }
 
     // Auto-inject relevant KB context into every prompt (issue #26)
+    // KB is scoped to the active project when chat.projectId is set; otherwise account-wide docs (projectId IS NULL)
+    // For new chats, use requestProjectId (passed from client on first message)
+    const chatProjectId = chat?.projectId ?? requestProjectId ?? null;
     let kbContext: string | undefined;
-    const userHasKB = await hasKBDocuments(session.user.id);
+    const userHasKB = await hasKBDocuments(session.user.id, chatProjectId);
     if (userHasKB) {
       try {
         const lastUserText = message.parts
@@ -216,6 +221,7 @@ export async function POST(request: Request) {
           });
           const chunks = await searchKBChunks({
             userId: session.user.id,
+            projectId: chatProjectId,
             queryEmbedding: embedding,
             queryText: lastUserText,
             limit: 3,
@@ -246,6 +252,7 @@ export async function POST(request: Request) {
         userId: session.user.id,
         title,
         visibility: selectedVisibilityType,
+        projectId: requestProjectId,
       });
       void logAuditEvent(session.user.id, "chat.created", { chatId: id, modelId: selectedChatModel });
     }
@@ -398,7 +405,7 @@ export async function POST(request: Request) {
           generateTextEmbeddings: generateTextEmbeddingsTool(),
           compareTextSimilarity: compareTextSimilarityTool(),
           executeCode: executeCodeTool(),
-          queryKnowledgeBase: queryKnowledgeBaseTool(session.user.id),
+          queryKnowledgeBase: queryKnowledgeBaseTool(session.user.id, chatProjectId),
           googleDrive: googleDriveTool(session.user.id),
           notion: notionTool(session.user.id),
           generateSpeech: generateSpeechTool(),
@@ -420,7 +427,7 @@ export async function POST(request: Request) {
         const gatewayConfig = buildGatewayConfig(gatewayModelId);
         const providerOptions: Record<string, any> = {
           gateway: gatewayConfig,
-          bedda: { userId: session.user.id },
+          bedda: { userId: session.user.id, projectId: chatProjectId },
         };
 
         // Add image generation for Gemini 2.5 Flash Image
