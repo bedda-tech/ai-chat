@@ -4,10 +4,12 @@ import {
   convertToModelMessages,
   createUIMessageStream,
   embed,
+  jsonSchema,
   JsonToSseTransformStream,
   smoothStream,
   stepCountIs,
   streamText,
+  tool,
   wrapLanguageModel,
 } from "ai";
 import { openai } from "@ai-sdk/openai";
@@ -51,6 +53,8 @@ import { generateSpeechTool } from "@/lib/ai/tools/generate-speech";
 import { generateChartTool } from "@/lib/ai/tools/generate-chart";
 import { saveMemoryTool } from "@/lib/ai/tools/save-memory";
 import { renderUITool } from "@/lib/ai/tools/render-ui";
+import { dispatchPluginTool } from "@/lib/ai/plugin-tool-dispatcher";
+import { getEnabledPluginTools } from "@/lib/db/queries";
 import { isProductionEnvironment } from "@/lib/constants";
 import {
   createStreamId,
@@ -324,6 +328,19 @@ export async function POST(request: Request) {
         ? []
         : [...allTools, "generateImage"];
 
+    // Load plugin tools for authenticated users with tool-capable models
+    const pluginToolMap: Record<string, any> = {};
+    if (baseActiveTools.length > 0 && session.user.type !== "guest") {
+      const enabledPluginTools = await getEnabledPluginTools(session.user.id);
+      for (const pt of enabledPluginTools) {
+        pluginToolMap[pt.name] = tool({
+          description: pt.description,
+          inputSchema: jsonSchema(pt.parametersSchema as any),
+          execute: async (args) => dispatchPluginTool(pt, args as Record<string, unknown>),
+        });
+      }
+    }
+
     // Load MCP tools for authenticated users with tool-capable models
     const mcpClients: Array<{ close: () => Promise<void> }> = [];
     const mcpToolMap: Record<string, any> = {};
@@ -356,9 +373,10 @@ export async function POST(request: Request) {
     }
 
     const mcpToolNames = Object.keys(mcpToolMap);
+    const pluginToolNames = Object.keys(pluginToolMap);
     const activeTools =
-      mcpToolNames.length > 0
-        ? [...baseActiveTools, ...mcpToolNames]
+      mcpToolNames.length > 0 || pluginToolNames.length > 0
+        ? [...baseActiveTools, ...mcpToolNames, ...pluginToolNames]
         : baseActiveTools;
 
     const stream = createUIMessageStream({
@@ -388,6 +406,7 @@ export async function POST(request: Request) {
           saveMemory: saveMemoryTool(session.user.id, id),
           renderUI: renderUITool,
           ...mcpToolMap,
+          ...pluginToolMap,
         };
 
         // Get the actual gateway model ID

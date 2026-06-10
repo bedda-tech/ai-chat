@@ -618,3 +618,21 @@ export const auditLog = pgTable("AuditLog", {
 });
 
 export type AuditLog = InferSelectModel<typeof auditLog>;
+
+// User-defined webhook plugin tools
+export const pluginTool = pgTable("PluginTool", {
+  id: uuid("id").primaryKey().notNull().defaultRandom(),
+  userId: uuid("userId")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  name: varchar("name", { length: 128 }).notNull(),
+  description: text("description").notNull(),
+  parametersSchema: jsonb("parametersSchema").notNull().$type<Record<string, any>>(),
+  webhookUrl: text("webhookUrl").notNull(),
+  authHeaderName: varchar("authHeaderName", { length: 255 }),
+  authHeaderValueEncrypted: text("authHeaderValueEncrypted"),
+  enabled: boolean("enabled").notNull().default(true),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+});
+
+export type PluginTool = InferSelectModel<typeof pluginTool>;

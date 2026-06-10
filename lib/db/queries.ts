@@ -55,6 +55,8 @@ import {
   userPreferences,
   type UserPreferences,
   vote,
+  pluginTool,
+  type PluginTool,
 } from "./schema";
 import { generateHashedPassword } from "./utils";
 
@@ -1318,4 +1320,46 @@ export async function markOnboardingComplete(userId: string) {
     .update(user)
     .set({ onboardingCompleted: true })
     .where(eq(user.id, userId));
+}
+
+// Plugin tools
+export async function getPluginTools(userId: string): Promise<PluginTool[]> {
+  return db.select().from(pluginTool).where(eq(pluginTool.userId, userId)).orderBy(asc(pluginTool.createdAt));
+}
+
+export async function getEnabledPluginTools(userId: string): Promise<PluginTool[]> {
+  return db.select().from(pluginTool).where(and(eq(pluginTool.userId, userId), eq(pluginTool.enabled, true)));
+}
+
+export async function createPluginTool(data: {
+  userId: string;
+  name: string;
+  description: string;
+  parametersSchema: Record<string, any>;
+  webhookUrl: string;
+  authHeaderName?: string;
+  authHeaderValueEncrypted?: string;
+}): Promise<PluginTool> {
+  const [tool] = await db
+    .insert(pluginTool)
+    .values(data)
+    .returning();
+  return tool;
+}
+
+export async function updatePluginTool(
+  id: string,
+  userId: string,
+  data: { enabled?: boolean; name?: string; description?: string }
+): Promise<PluginTool | null> {
+  const [updated] = await db
+    .update(pluginTool)
+    .set(data)
+    .where(and(eq(pluginTool.id, id), eq(pluginTool.userId, userId)))
+    .returning();
+  return updated ?? null;
+}
+
+export async function deletePluginTool(id: string, userId: string): Promise<void> {
+  await db.delete(pluginTool).where(and(eq(pluginTool.id, id), eq(pluginTool.userId, userId)));
 }
