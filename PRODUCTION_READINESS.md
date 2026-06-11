@@ -25,19 +25,30 @@
 
 ---
 
-## ⚠️ STRIPE INTEGRATION - REQUIRES PRODUCTION SETUP
+## ⚠️ STRIPE INTEGRATION — PRODUCTION SETUP STATUS
 
-### Current Status
-The Stripe integration code is **complete and functional**, but requires production configuration:
+### Current Status (June 2026)
+The Stripe integration code is **complete and functional**. A one-shot setup script (`scripts/deploy-production.sh`) exists that creates Stripe products, registers the webhook endpoint, and sets Vercel env vars.
+
+Run it with live credentials:
+```bash
+STRIPE_SECRET_KEY=sk_live_... STRIPE_PUBLISHABLE_KEY=pk_live_... VERCEL_TOKEN=... bash scripts/deploy-production.sh
+```
 
 #### ✅ Code Complete
 - Checkout session creation
-- Billing portal integration  
-- Webhook handling
-- Subscription management
+- Billing portal integration
+- Webhook handling (team + individual subscriptions)
+- Subscription management (monthly + annual, 3 tiers)
 - User tier updates
+- Team seat billing
 
-#### ⚠️ Needs Production Setup
+#### ✅ Products Configured (test mode)
+- **Plus Plan**: $12/month, $115.20/year
+- **Pro Plan**: $25/month, $240/year
+- **Max Plan**: $50/month, $480/year
+
+#### ⚠️ Needs Production Setup (run deploy-production.sh)
 
 ### 1. Stripe Billing Portal Configuration
 **Priority: HIGH**  
@@ -317,9 +328,8 @@ vercel --prod
 
 ---
 
-**Last Updated:** 2025-11-13 01:10 UTC
-**Tested By:** AI Agent (Automated Code Review)
-**Status:** Ready for production deployment after Stripe configuration
+**Last Updated:** 2026-06-11
+**Status:** Code 100% complete. Stripe live mode requires running scripts/deploy-production.sh with live credentials, then activating billing portal at dashboard.stripe.com/settings/billing/portal.
 
 ---
 
