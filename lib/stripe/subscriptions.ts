@@ -10,12 +10,14 @@ export async function createCheckoutSession({
   priceId,
   successUrl,
   cancelUrl,
+  trialDays,
 }: {
   userId: string;
   userEmail: string;
   priceId: string;
   successUrl: string;
   cancelUrl: string;
+  trialDays?: number;
 }): Promise<Stripe.Checkout.Session> {
   // Find or create customer
   const customers = await stripe.customers.list({
@@ -54,6 +56,7 @@ export async function createCheckoutSession({
       metadata: {
         userId,
       },
+      ...(trialDays ? { trial_period_days: trialDays } : {}),
     },
     metadata: {
       userId,
@@ -87,13 +90,13 @@ export async function createBillingPortalSession({
 export async function getCustomerSubscription(
   customerId: string
 ): Promise<Stripe.Subscription | null> {
-  const subscriptions = await stripe.subscriptions.list({
-    customer: customerId,
-    status: "active",
-    limit: 1,
-  });
+  // Include trialing subscriptions so trial users are recognized
+  const [active, trialing] = await Promise.all([
+    stripe.subscriptions.list({ customer: customerId, status: "active", limit: 1 }),
+    stripe.subscriptions.list({ customer: customerId, status: "trialing", limit: 1 }),
+  ]);
 
-  return subscriptions.data[0] || null;
+  return active.data[0] || trialing.data[0] || null;
 }
 
 /**

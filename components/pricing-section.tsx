@@ -53,7 +53,8 @@ const tiers = [
       "Audio transcription",
       "File uploads (25MB)",
     ],
-    cta: "Start Plus",
+    cta: "Start free trial",
+    trialNote: "7 days free, then $12/mo",
     href: "/upgrade?plan=plus",
     highlighted: true,
     planKey: "plus",
@@ -186,7 +187,7 @@ export function PricingSection() {
                   ))}
                 </ul>
               </CardContent>
-              <CardFooter>
+              <CardFooter className="flex flex-col gap-2">
                 <Button
                   asChild
                   className="w-full"
@@ -194,6 +195,11 @@ export function PricingSection() {
                 >
                   <Link href={href}>{tier.cta}</Link>
                 </Button>
+                {"trialNote" in tier && tier.trialNote && billing === "monthly" && (
+                  <p className="text-center text-xs text-muted-foreground">
+                    {tier.trialNote}
+                  </p>
+                )}
               </CardFooter>
             </Card>
           );

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/app/(auth)/auth";
 import { createCheckoutSession } from "@/lib/stripe";
 import { mapPlanToStripePrice, type BillingPeriod, type PlanName } from "@/lib/stripe/config";
+import { getUserTier } from "@/lib/usage/tracking";
 
 const VALID_PLANS: PlanName[] = ["plus", "pro", "max"];
 const VALID_PERIODS: BillingPeriod[] = ["monthly", "annual"];
@@ -43,12 +44,17 @@ export async function POST(req: Request) {
 
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
+    // Offer a 7-day free trial for free-tier users upgrading to Plus monthly for the first time
+    const currentTier = await getUserTier(session.user.id);
+    const trialDays = plan === "plus" && period === "monthly" && currentTier === "free" ? 7 : undefined;
+
     const checkoutSession = await createCheckoutSession({
       userId: session.user.id,
       userEmail: session.user.email,
       priceId,
       successUrl: `${baseUrl}/subscription/success?session_id={CHECKOUT_SESSION_ID}`,
       cancelUrl: `${baseUrl}/subscription/canceled`,
+      trialDays,
     });
 
     return NextResponse.json({ url: checkoutSession.url });
