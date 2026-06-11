@@ -26,6 +26,7 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith("/api/github") || // GitHub App webhooks
     pathname.startsWith("/api/telegram") || // Telegram bot webhook
     pathname.startsWith("/api/ms-teams") || // Microsoft Teams Outgoing Webhook
+    pathname.startsWith("/api/whatsapp") || // WhatsApp Cloud API webhook
     publicRoutes.includes(pathname)
   ) {
     return NextResponse.next();
