@@ -3,7 +3,7 @@ import "server-only";
 import { and, count, desc, eq, isNull } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
-import { chat, team, teamChat, teamInvite, teamMember, user } from "./schema";
+import { chat, organizationModelPolicy, team, teamChat, teamInvite, teamMember, user } from "./schema";
 
 // biome-ignore lint: Forbidden non-null assertion.
 const client = postgres(process.env.POSTGRES_URL!);
@@ -204,4 +204,52 @@ export async function getTeamByStripeSubscriptionId(subscriptionId: string) {
     .where(eq(team.stripeSubscriptionId, subscriptionId))
     .limit(1);
   return rows[0] ?? null;
+}
+
+export async function getOrgModelPolicy(teamId: string) {
+  const rows = await db
+    .select()
+    .from(organizationModelPolicy)
+    .where(eq(organizationModelPolicy.teamId, teamId))
+    .limit(1);
+  return rows[0] ?? null;
+}
+
+export async function upsertOrgModelPolicy(
+  teamId: string,
+  data: {
+    allowedModelIds?: string[] | null;
+    deniedModelIds?: string[] | null;
+    monthlyCostCapUsdCents?: number;
+  }
+) {
+  const [policy] = await db
+    .insert(organizationModelPolicy)
+    .values({ teamId, ...data, updatedAt: new Date() })
+    .onConflictDoUpdate({
+      target: organizationModelPolicy.teamId,
+      set: { ...data, updatedAt: new Date() },
+    })
+    .returning();
+  return policy;
+}
+
+export async function getOrgModelPolicyForUser(userId: string) {
+  const memberships = await db
+    .select({ teamId: teamMember.teamId })
+    .from(teamMember)
+    .where(eq(teamMember.userId, userId))
+    .limit(1);
+
+  if (memberships.length === 0) return null;
+  return getOrgModelPolicy(memberships[0].teamId);
+}
+
+export async function getUserTeamAdminRole(userId: string, teamId: string) {
+  const rows = await db
+    .select({ role: teamMember.role })
+    .from(teamMember)
+    .where(and(eq(teamMember.userId, userId), eq(teamMember.teamId, teamId)))
+    .limit(1);
+  return rows[0]?.role ?? null;
 }

@@ -658,3 +658,17 @@ export const organizationSsoConfig = pgTable("OrganizationSsoConfig", {
 });
 
 export type OrganizationSsoConfig = InferSelectModel<typeof organizationSsoConfig>;
+
+export const organizationModelPolicy = pgTable("OrganizationModelPolicy", {
+  id: uuid("id").primaryKey().notNull().defaultRandom(),
+  teamId: uuid("teamId")
+    .notNull()
+    .unique()
+    .references(() => team.id, { onDelete: "cascade" }),
+  allowedModelIds: jsonb("allowedModelIds").$type<string[]>(),
+  deniedModelIds: jsonb("deniedModelIds").$type<string[]>(),
+  monthlyCostCapUsdCents: integer("monthlyCostCapUsdCents").notNull().default(0),
+  updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+});
+
+export type OrganizationModelPolicy = InferSelectModel<typeof organizationModelPolicy>;

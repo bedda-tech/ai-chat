@@ -79,7 +79,8 @@ import {
 } from "@/lib/middleware/rate-limit";
 import type { ChatMessage } from "@/lib/types";
 import type { AppUsage } from "@/lib/usage";
-import { recordUsage } from "@/lib/usage/tracking";
+import { getCurrentMonthUsage, recordUsage } from "@/lib/usage/tracking";
+import { getOrgModelPolicyForUser } from "@/lib/db/team-queries";
 import { convertToUIMessages, generateUUID, pruneUIMessages } from "@/lib/utils";
 import { logAuditEvent } from "@/lib/audit";
 import { publishChatEvent } from "@/lib/realtime";
@@ -183,6 +184,22 @@ export async function POST(request: Request) {
         },
         { status: 403 }
       );
+    }
+
+    // Enforce org-level monthly cost cap if set
+    const orgPolicy = await getOrgModelPolicyForUser(session.user.id);
+    if (orgPolicy?.monthlyCostCapUsdCents && orgPolicy.monthlyCostCapUsdCents > 0) {
+      const monthUsage = await getCurrentMonthUsage(session.user.id);
+      if (Math.round(monthUsage.totalCost * 100) >= orgPolicy.monthlyCostCapUsdCents) {
+        const capDollars = (orgPolicy.monthlyCostCapUsdCents / 100).toFixed(2);
+        return Response.json(
+          {
+            code: "forbidden:cost_cap",
+            cause: `Your organization's monthly spending limit of $${capDollars} has been reached. Contact your admin to increase the cap.`,
+          },
+          { status: 402 }
+        );
+      }
     }
 
     const _userType: UserType = session.user.type;

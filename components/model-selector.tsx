@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
+import useSWR from "swr";
 import { entitlementsByUserType, FREE_TIER_MODEL_IDS } from "@/lib/ai/entitlements";
 import { chatModels } from "@/lib/ai/models";
 import {
@@ -20,8 +21,22 @@ import {
   getToolDisplayName,
   getToolIcon,
 } from "@/lib/ai/model-tools";
-import { getModelIdealUse } from "@/lib/ai/model-config";
+import { applyOrgModelPolicy, getModelIdealUse } from "@/lib/ai/model-config";
 import { useAvailableModels } from "@/hooks/use-available-models";
+
+interface OrgPolicy {
+  allowedModelIds?: string[] | null;
+  deniedModelIds?: string[] | null;
+}
+
+function useOrgModelPolicy() {
+  const { data } = useSWR<{ policy: OrgPolicy | null }>(
+    "/api/org/model-policy",
+    (url: string) => fetch(url).then((r) => r.json()),
+    { revalidateOnFocus: false, dedupingInterval: 60000 }
+  );
+  return data?.policy ?? null;
+}
 import { cn } from "@/lib/utils";
 import { CheckCircleFillIcon, ChevronDownIcon } from "./icons";
 
@@ -41,6 +56,7 @@ export function ModelSelector({
 
   // Fetch dynamic models from AI Gateway
   const { models: dynamicModels, isLoading, isFallback } = useAvailableModels();
+  const orgPolicy = useOrgModelPolicy();
 
   const userType = session.user.type;
   const isGuest = userType === "guest";
@@ -66,12 +82,21 @@ export function ModelSelector({
     }
     // Remove duplicates (dynamic + legacy may overlap)
     const seen = new Set<string>();
-    return allModels.filter((m) => {
+    let deduped = allModels.filter((m) => {
       if (seen.has(m.id)) return false;
       seen.add(m.id);
       return true;
     });
-  }, [dynamicModels, isGuest]);
+
+    // Apply org model policy (allowlist / denylist) for enterprise teams
+    if (orgPolicy) {
+      const allowedIds = applyOrgModelPolicy(deduped.map((m) => m.id), orgPolicy);
+      const allowedSet = new Set(allowedIds);
+      deduped = deduped.filter((m) => allowedSet.has(m.id));
+    }
+
+    return deduped;
+  }, [dynamicModels, isGuest, orgPolicy]);
 
   const allAvailableTools = useMemo(() => {
     const toolsSet = new Set<ModelTool>();

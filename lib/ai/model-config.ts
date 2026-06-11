@@ -396,3 +396,28 @@ export function getModelContextWindow(modelId: string): number {
   );
   return modelData?.contextWindow ?? 128_000;
 }
+
+/**
+ * Filter a model list by the org policy for a given user.
+ * allowedModelIds=null means "all allowed"; deniedModelIds=null means "none denied".
+ */
+export function applyOrgModelPolicy(
+  modelIds: string[],
+  policy: { allowedModelIds?: string[] | null; deniedModelIds?: string[] | null } | null
+): string[] {
+  if (!policy) return modelIds;
+
+  let filtered = modelIds;
+
+  if (policy.allowedModelIds && policy.allowedModelIds.length > 0) {
+    const allowed = new Set(policy.allowedModelIds);
+    filtered = filtered.filter((id) => allowed.has(id));
+  }
+
+  if (policy.deniedModelIds && policy.deniedModelIds.length > 0) {
+    const denied = new Set(policy.deniedModelIds);
+    filtered = filtered.filter((id) => !denied.has(id));
+  }
+
+  return filtered;
+}
