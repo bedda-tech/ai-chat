@@ -7,6 +7,7 @@ import { useActionState, useEffect, useState } from "react";
 
 import { AuthForm } from "@/components/auth-form";
 import { SocialLoginButtons } from "@/components/social-login-buttons";
+import { SsoLoginButton } from "@/components/sso-login-button";
 import { SubmitButton } from "@/components/submit-button";
 import { toast } from "@/components/toast";
 import { type LoginActionState, login } from "../actions";
@@ -87,6 +88,9 @@ export default function Page() {
           </p>
         </AuthForm>
         <SocialLoginButtons />
+        <div className="px-4 pb-4 sm:px-16">
+          <SsoLoginButton />
+        </div>
       </div>
     </div>
   );

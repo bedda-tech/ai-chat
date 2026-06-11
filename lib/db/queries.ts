@@ -58,6 +58,8 @@ import {
   vote,
   pluginTool,
   type PluginTool,
+  organizationSsoConfig,
+  type OrganizationSsoConfig,
 } from "./schema";
 import { generateHashedPassword } from "./utils";
 
@@ -1405,4 +1407,49 @@ export async function updatePluginTool(
 
 export async function deletePluginTool(id: string, userId: string): Promise<void> {
   await db.delete(pluginTool).where(and(eq(pluginTool.id, id), eq(pluginTool.userId, userId)));
+}
+
+// SSO config queries
+export async function getSsoConfigByDomain(domain: string): Promise<OrganizationSsoConfig | null> {
+  const [config] = await db
+    .select()
+    .from(organizationSsoConfig)
+    .where(eq(organizationSsoConfig.emailDomain, domain.toLowerCase()));
+  return config ?? null;
+}
+
+export async function getAllSsoConfigs(): Promise<OrganizationSsoConfig[]> {
+  return db.select().from(organizationSsoConfig).orderBy(asc(organizationSsoConfig.createdAt));
+}
+
+export async function upsertSsoConfig(data: {
+  organizationName: string;
+  emailDomain: string;
+  workosOrganizationId?: string;
+  workosConnectionId?: string;
+  idpMetadataUrl?: string;
+  configuredByUserId: string;
+}): Promise<OrganizationSsoConfig> {
+  const [config] = await db
+    .insert(organizationSsoConfig)
+    .values({
+      ...data,
+      emailDomain: data.emailDomain.toLowerCase(),
+    })
+    .onConflictDoUpdate({
+      target: organizationSsoConfig.emailDomain,
+      set: {
+        organizationName: data.organizationName,
+        workosOrganizationId: data.workosOrganizationId,
+        workosConnectionId: data.workosConnectionId,
+        idpMetadataUrl: data.idpMetadataUrl,
+        updatedAt: new Date(),
+      },
+    })
+    .returning();
+  return config;
+}
+
+export async function deleteSsoConfig(id: string): Promise<void> {
+  await db.delete(organizationSsoConfig).where(eq(organizationSsoConfig.id, id));
 }

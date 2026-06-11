@@ -642,3 +642,19 @@ export const pluginTool = pgTable("PluginTool", {
 });
 
 export type PluginTool = InferSelectModel<typeof pluginTool>;
+
+export const organizationSsoConfig = pgTable("OrganizationSsoConfig", {
+  id: uuid("id").primaryKey().notNull().defaultRandom(),
+  organizationName: varchar("organizationName", { length: 255 }).notNull(),
+  emailDomain: varchar("emailDomain", { length: 255 }).notNull().unique(),
+  workosOrganizationId: varchar("workosOrganizationId", { length: 255 }),
+  workosConnectionId: varchar("workosConnectionId", { length: 255 }),
+  idpMetadataUrl: text("idpMetadataUrl"),
+  configuredByUserId: uuid("configuredByUserId").references(() => user.id, {
+    onDelete: "set null",
+  }),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+  updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+});
+
+export type OrganizationSsoConfig = InferSelectModel<typeof organizationSsoConfig>;
