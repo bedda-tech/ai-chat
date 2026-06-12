@@ -103,6 +103,7 @@ else
     -d "enabled_events[]=customer.subscription.deleted" \
     -d "enabled_events[]=invoice.payment_succeeded" \
     -d "enabled_events[]=invoice.payment_failed" \
+    -d "enabled_events[]=customer.subscription.trial_will_end" \
     -d "description=Bedda Chat production webhook")
 
   STRIPE_WEBHOOK_SECRET=$(echo "$WEBHOOK_RESPONSE" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('secret',''))" 2>/dev/null)

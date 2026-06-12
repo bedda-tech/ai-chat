@@ -11,6 +11,7 @@ import { logAuditEvent } from "@/lib/audit";
 import { TIER_DISPLAY_NAMES, type DbTier } from "@/lib/stripe/config";
 import {
   sendSubscriptionActivatedEmail,
+  sendTrialEndingEmail,
   sendPaymentFailedEmail,
 } from "@/lib/email/send-subscription-email";
 
@@ -91,6 +92,12 @@ export async function POST(req: Request) {
       case "invoice.payment_failed": {
         const invoice = event.data.object as Stripe.Invoice;
         await handlePaymentFailed(invoice);
+        break;
+      }
+
+      case "customer.subscription.trial_will_end": {
+        const subscription = event.data.object as Stripe.Subscription;
+        await handleTrialWillEnd(subscription);
         break;
       }
 
@@ -287,6 +294,34 @@ async function handleSubscriptionDeleted(
 async function handlePaymentSucceeded(invoice: Stripe.Invoice): Promise<void> {
   console.log(`Payment succeeded for invoice: ${invoice.id}`);
   // Can be used to send payment confirmation emails, update payment history, etc.
+}
+
+/**
+ * Handle trial ending reminder (Stripe fires 3 days before trial_end)
+ */
+async function handleTrialWillEnd(
+  subscription: Stripe.Subscription,
+): Promise<void> {
+  const userId = subscription.metadata.userId;
+  if (!userId) return;
+
+  const trialEnd = subscription.trial_end;
+  if (!trialEnd) return;
+
+  const trialEndDate = new Date(trialEnd * 1000);
+  const msLeft = trialEndDate.getTime() - Date.now();
+  const daysLeft = Math.max(1, Math.round(msLeft / (1000 * 60 * 60 * 24)));
+
+  const users = await db.select().from(user).where(eq(user.id, userId)).limit(1);
+  const email = users[0]?.email;
+  if (!email || email.startsWith("guest-")) return;
+
+  const tier = await getSubscriptionTier(subscription);
+  const planName = TIER_DISPLAY_NAMES[tier as DbTier] ?? tier;
+
+  void sendTrialEndingEmail(email, planName, trialEndDate, daysLeft).catch(
+    (err) => console.error("Failed to send trial ending email:", err),
+  );
 }
 
 /**
