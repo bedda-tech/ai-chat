@@ -377,6 +377,27 @@ export async function checkRateLimit(
 }
 
 /**
+ * Get current day message count from active rate limit window
+ */
+export async function getDailyUsage(userId: string): Promise<number> {
+  const now = new Date();
+  const result = await db
+    .select()
+    .from(rateLimit)
+    .where(
+      and(
+        eq(rateLimit.userId, userId),
+        eq(rateLimit.limitType, "messages_per_day"),
+        gte(rateLimit.windowEnd, now)
+      )
+    )
+    .limit(1);
+
+  if (result.length === 0) return 0;
+  return Number.parseInt(result[0].currentCount, 10);
+}
+
+/**
  * Increment rate limit counter
  */
 export async function incrementRateLimit(

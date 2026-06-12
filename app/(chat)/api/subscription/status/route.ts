@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/app/(auth)/auth";
-import { getUserTier, getCurrentMonthUsage, TIER_LIMITS } from "@/lib/usage/tracking";
+import { getUserTier, getCurrentMonthUsage, getDailyUsage, TIER_LIMITS } from "@/lib/usage/tracking";
 
 export async function GET(_req: Request) {
   try {
@@ -14,8 +14,14 @@ export async function GET(_req: Request) {
     }
 
     const tier = await getUserTier(session.user.id);
-    const usage = await getCurrentMonthUsage(session.user.id);
+    const [usage, dailyCount] = await Promise.all([
+      getCurrentMonthUsage(session.user.id),
+      getDailyUsage(session.user.id),
+    ]);
     const limits = TIER_LIMITS[tier];
+
+    const monthlyLimit = limits.messagesPerMonth;
+    const dailyLimit = limits.messagesPerDay;
 
     return NextResponse.json({
       tier,
@@ -26,13 +32,19 @@ export async function GET(_req: Request) {
         cachedTokens: usage.cachedTokens,
         totalCost: usage.totalCost,
         cachedSavings: usage.cachedSavings,
+        dailyCount,
       },
       limits: {
-        messagesPerMonth: limits.messagesPerMonth,
-        messagesPerDay: limits.messagesPerDay,
+        messagesPerMonth: monthlyLimit,
+        messagesPerDay: dailyLimit,
         messagesPerMinute: limits.messagesPerMinute,
       },
-      percentUsed: (usage.messageCount / limits.messagesPerMonth) * 100,
+      percentUsed: monthlyLimit > 0 && monthlyLimit < 999_999_999
+        ? (usage.messageCount / monthlyLimit) * 100
+        : 0,
+      dailyPercentUsed: dailyLimit > 0 && dailyLimit < 999_999_999
+        ? (dailyCount / dailyLimit) * 100
+        : 0,
     });
   } catch (error) {
     console.error("Error getting subscription status:", error);
