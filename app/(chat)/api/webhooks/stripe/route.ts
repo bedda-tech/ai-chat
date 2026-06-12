@@ -5,9 +5,14 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import { eq } from "drizzle-orm";
 import postgres from "postgres";
 import { stripe, getSubscriptionTier } from "@/lib/stripe";
-import { userTier } from "@/lib/db/schema";
+import { user, userTier } from "@/lib/db/schema";
 import { updateTeamBilling } from "@/lib/db/team-queries";
 import { logAuditEvent } from "@/lib/audit";
+import { TIER_DISPLAY_NAMES, type DbTier } from "@/lib/stripe/config";
+import {
+  sendSubscriptionActivatedEmail,
+  sendPaymentFailedEmail,
+} from "@/lib/email/send-subscription-email";
 
 const connectionString = process.env.POSTGRES_URL!;
 const client = postgres(connectionString);
@@ -230,6 +235,22 @@ async function handleSubscriptionChange(
   }
 
   void logAuditEvent(userId, "subscription.changed", { from_tier: fromTier, to_tier: tier, subscriptionId: subscription.id });
+
+  // Send activation email when a user first subscribes (free → paid)
+  if (fromTier === "free" && tier !== "free") {
+    const users = await db.select().from(user).where(eq(user.id, userId)).limit(1);
+    const email = users[0]?.email;
+    if (email && !email.startsWith("guest-")) {
+      const planName = TIER_DISPLAY_NAMES[tier as DbTier] ?? tier;
+      const trialEnd =
+        subscription.status === "trialing" && subscription.trial_end
+          ? new Date(subscription.trial_end * 1000)
+          : undefined;
+      void sendSubscriptionActivatedEmail(email, planName, trialEnd).catch(
+        (err) => console.error("Failed to send subscription activation email:", err),
+      );
+    }
+  }
 }
 
 /**
@@ -273,5 +294,27 @@ async function handlePaymentSucceeded(invoice: Stripe.Invoice): Promise<void> {
  */
 async function handlePaymentFailed(invoice: Stripe.Invoice): Promise<void> {
   console.error(`Payment failed for invoice: ${invoice.id}`);
-  // Can be used to send payment failure notifications, retry logic, etc.
+
+  // Look up user via Stripe customer ID stored in userTier
+  const customerId = invoice.customer as string | null;
+  if (!customerId) return;
+
+  const tierRecords = await db
+    .select()
+    .from(userTier)
+    .where(eq(userTier.stripeCustomerId, customerId))
+    .limit(1);
+  const userId = tierRecords[0]?.userId;
+  const tier = tierRecords[0]?.tier;
+  if (!userId || !tier || tier === "free") return;
+
+  const users = await db.select().from(user).where(eq(user.id, userId)).limit(1);
+  const email = users[0]?.email;
+  if (!email || email.startsWith("guest-")) return;
+
+  const planName = TIER_DISPLAY_NAMES[tier as DbTier] ?? tier;
+  const invoiceUrl = typeof invoice.hosted_invoice_url === "string" ? invoice.hosted_invoice_url : undefined;
+  void sendPaymentFailedEmail(email, planName, invoiceUrl).catch(
+    (err) => console.error("Failed to send payment failure email:", err),
+  );
 }

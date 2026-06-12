@@ -17,6 +17,7 @@ import { eq } from "drizzle-orm";
 import postgres from "postgres";
 import { userTier } from "@/lib/db/schema";
 import { getSubscriptionTier } from "@/lib/stripe";
+import { TIER_DISPLAY_NAMES, type DbTier } from "@/lib/stripe/config";
 
 const connectionString = process.env.POSTGRES_URL!;
 const client = postgres(connectionString);
@@ -35,6 +36,10 @@ export default async function SubscriptionSuccessPage({
 
   const { session_id } = await searchParams;
 
+  let planName = "your plan";
+  let isTrial = false;
+  let trialEndDate: Date | null = null;
+
   // Process checkout session if provided
   if (session_id) {
     try {
@@ -48,6 +53,12 @@ export default async function SubscriptionSuccessPage({
         );
 
         const tier = await getSubscriptionTier(subscription);
+        planName = TIER_DISPLAY_NAMES[tier as DbTier] ?? tier;
+        isTrial = subscription.status === "trialing";
+        if (isTrial && subscription.trial_end) {
+          trialEndDate = new Date(subscription.trial_end * 1000);
+        }
+
         const userId = session.user.id;
 
         // Get period from the first subscription item (Stripe v19+)
@@ -96,6 +107,10 @@ export default async function SubscriptionSuccessPage({
     }
   }
 
+  const trialEndFormatted = trialEndDate
+    ? trialEndDate.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })
+    : null;
+
   return (
     <div className="container flex min-h-[calc(100vh-4rem)] items-center justify-center p-4">
       <Card className="w-full max-w-md">
@@ -103,19 +118,28 @@ export default async function SubscriptionSuccessPage({
           <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
             <CheckCircle2 className="h-6 w-6 text-green-600" />
           </div>
-          <CardTitle className="text-2xl">Subscription Successful!</CardTitle>
+          <CardTitle className="text-2xl">
+            {isTrial ? `${planName} trial started!` : `Welcome to ${planName}!`}
+          </CardTitle>
           <CardDescription>
-            Your subscription has been activated
+            {isTrial
+              ? `Your 7-day free trial is active`
+              : `Your ${planName} subscription is active`}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4 text-center">
+          {isTrial && trialEndFormatted ? (
+            <div className="rounded-lg bg-amber-50 border border-amber-200 px-4 py-3 text-sm text-amber-800">
+              Your trial runs until <strong>{trialEndFormatted}</strong>.
+              No charge until then — cancel anytime.
+            </div>
+          ) : null}
           <p className="text-sm">
-            Thank you for subscribing! Your account has been upgraded and you
-            now have access to all the features of your plan.
+            Your account is now upgraded. You have access to all 30+ AI models
+            and everything included in {planName}.
           </p>
           <p className="text-muted-foreground text-sm">
-            You can view your usage and manage your subscription in your
-            settings.
+            Check your email for a confirmation with everything that&apos;s now unlocked.
           </p>
         </CardContent>
         <CardFooter className="flex flex-col gap-2 sm:flex-row">
