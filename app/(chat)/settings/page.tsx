@@ -5,6 +5,7 @@ import { CustomInstructionsForm } from "@/components/custom-instructions-form";
 import { MemoryManagement } from "@/components/memory-management";
 import { McpServersForm } from "@/components/mcp-servers-form";
 import { PluginToolsForm } from "@/components/plugin-tools-form";
+import { ReferralCard } from "@/components/referral-card";
 import { SubscriptionManagement } from "@/components/subscription-management";
 import { TeamManagement } from "@/components/team-management";
 import { UsageDisplay } from "@/components/usage-display";
@@ -81,6 +82,11 @@ export default async function SettingsPage() {
       <div className="mt-6 rounded-lg border p-6">
         <h2 className="mb-4 font-semibold text-lg">Plugin Tools</h2>
         <PluginToolsForm />
+      </div>
+
+      <div className="mt-6 rounded-lg border p-6">
+        <h2 className="mb-4 font-semibold text-lg">Refer a Friend</h2>
+        <ReferralCard />
       </div>
     </div>
   );

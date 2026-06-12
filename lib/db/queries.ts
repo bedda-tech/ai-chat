@@ -82,14 +82,55 @@ export async function getUser(email: string): Promise<User[]> {
   }
 }
 
-export async function createUser(email: string, password: string) {
+export async function createUser(
+  email: string,
+  password: string,
+  referredByCode?: string
+) {
   const hashedPassword = generateHashedPassword(password);
+  const referralCode = generateUUID().replace(/-/g, "").slice(0, 8);
+
+  let referredBy: string | undefined;
+  if (referredByCode) {
+    const [referrer] = await db
+      .select({ referralCode: user.referralCode })
+      .from(user)
+      .where(eq(user.referralCode, referredByCode));
+    if (referrer) {
+      referredBy = referredByCode;
+    }
+  }
 
   try {
-    return await db.insert(user).values({ email, password: hashedPassword });
+    return await db
+      .insert(user)
+      .values({ email, password: hashedPassword, referralCode, referredBy });
   } catch (_error) {
     throw new ChatSDKError("bad_request:database", "Failed to create user");
   }
+}
+
+export async function getUserReferralInfo(
+  userId: string
+): Promise<{ referralCode: string | null; referralCount: number }> {
+  const [found] = await db
+    .select({ referralCode: user.referralCode })
+    .from(user)
+    .where(eq(user.id, userId));
+
+  if (!found?.referralCode) {
+    return { referralCode: null, referralCount: 0 };
+  }
+
+  const [countResult] = await db
+    .select({ count: count() })
+    .from(user)
+    .where(eq(user.referredBy, found.referralCode));
+
+  return {
+    referralCode: found.referralCode,
+    referralCount: Number(countResult?.count ?? 0),
+  };
 }
 
 export async function createPasswordResetToken(

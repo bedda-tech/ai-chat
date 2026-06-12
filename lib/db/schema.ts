@@ -20,6 +20,8 @@ export const user = pgTable("User", {
   email: varchar("email", { length: 64 }).notNull(),
   password: varchar("password", { length: 64 }),
   onboardingCompleted: boolean("onboardingCompleted").default(false),
+  referralCode: varchar("referralCode", { length: 16 }).unique(),
+  referredBy: varchar("referredBy", { length: 16 }),
 });
 
 export type User = InferSelectModel<typeof user>;

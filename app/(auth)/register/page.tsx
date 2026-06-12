@@ -14,6 +14,7 @@ function RegisterForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const plan = searchParams.get("plan");
+  const ref = searchParams.get("ref");
 
   const [email, setEmail] = useState("");
   const [isSuccessful, setIsSuccessful] = useState(false);
@@ -53,6 +54,7 @@ function RegisterForm() {
 
   const handleSubmit = (formData: FormData) => {
     setEmail(formData.get("email") as string);
+    if (ref) formData.set("ref", ref);
     formAction(formData);
   };
 
