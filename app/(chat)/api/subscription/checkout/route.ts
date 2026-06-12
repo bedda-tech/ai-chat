@@ -3,6 +3,7 @@ import { auth } from "@/app/(auth)/auth";
 import { createCheckoutSession } from "@/lib/stripe";
 import { mapPlanToStripePrice, type BillingPeriod, type PlanName } from "@/lib/stripe/config";
 import { getUserTier } from "@/lib/usage/tracking";
+import { getUser } from "@/lib/db/queries";
 
 const VALID_PLANS: PlanName[] = ["plus", "pro", "max"];
 const VALID_PERIODS: BillingPeriod[] = ["monthly", "annual"];
@@ -44,9 +45,17 @@ export async function POST(req: Request) {
 
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
-    // Offer a 7-day free trial for free-tier users upgrading to Plus monthly for the first time
-    const currentTier = await getUserTier(session.user.id);
-    const trialDays = plan === "plus" && period === "monthly" && currentTier === "free" ? 7 : undefined;
+    // Offer a free trial for free-tier users upgrading to Plus monthly for the first time.
+    // Referred users get 14 days; everyone else gets 7 days.
+    const [currentTier, users] = await Promise.all([
+      getUserTier(session.user.id),
+      getUser(session.user.email),
+    ]);
+    let trialDays: number | undefined;
+    if (plan === "plus" && period === "monthly" && currentTier === "free") {
+      const wasReferred = !!users[0]?.referredBy;
+      trialDays = wasReferred ? 14 : 7;
+    }
 
     const checkoutSession = await createCheckoutSession({
       userId: session.user.id,

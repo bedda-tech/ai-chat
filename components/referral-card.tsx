@@ -42,9 +42,10 @@ export function ReferralCard() {
   return (
     <div className="space-y-4">
       <p className="text-sm text-muted-foreground">
-        Share your link and earn rewards when friends sign up. Every referral
-        helps us grow — we&apos;ll reach out with a thank-you bonus for active
-        referrers.
+        Share your link with friends. Anyone who signs up gets a{" "}
+        <strong>14-day free trial</strong> of Plus (double the standard 7 days).
+        Every referral helps us grow — we&apos;ll reach out with a thank-you
+        bonus for active referrers.
       </p>
 
       <div className="flex items-center gap-2">
