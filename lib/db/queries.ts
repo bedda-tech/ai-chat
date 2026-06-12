@@ -1494,3 +1494,12 @@ export async function upsertSsoConfig(data: {
 export async function deleteSsoConfig(id: string): Promise<void> {
   await db.delete(organizationSsoConfig).where(eq(organizationSsoConfig.id, id));
 }
+
+export async function isValidReferralCode(code: string): Promise<boolean> {
+  const [found] = await db
+    .select({ id: user.id })
+    .from(user)
+    .where(eq(user.referralCode, code))
+    .limit(1);
+  return !!found;
+}
