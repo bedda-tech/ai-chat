@@ -61,10 +61,24 @@ const comparisonData = [
   },
   {
     feature: "Code execution",
-    bedda: false,
+    bedda: true,
     claude: true,
     chatgpt: true,
     gemini: true,
+  },
+  {
+    feature: "Video generation",
+    bedda: true,
+    claude: false,
+    chatgpt: true,
+    gemini: true,
+  },
+  {
+    feature: "Model comparison arena",
+    bedda: true,
+    claude: false,
+    chatgpt: false,
+    gemini: false,
   },
   {
     feature: "Total models",
@@ -203,6 +217,16 @@ export default function PricingPage() {
               Yes, you can cancel anytime from your account settings. Your
               subscription will remain active until the end of your billing
               period, and you won&apos;t be charged again.
+            </p>
+          </div>
+          <div>
+            <h3 className="mb-2 font-semibold text-lg">
+              Is there a free trial?
+            </h3>
+            <p className="text-muted-foreground">
+              Yes! Bedda Plus includes a 7-day free trial (no credit card
+              required to start). Referred users get a 14-day trial. You can
+              cancel before the trial ends and you won&apos;t be charged.
             </p>
           </div>
           <div>
