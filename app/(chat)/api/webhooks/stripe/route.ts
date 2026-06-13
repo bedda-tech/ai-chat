@@ -12,6 +12,7 @@ import { TIER_DISPLAY_NAMES, type DbTier } from "@/lib/stripe/config";
 import {
   sendSubscriptionActivatedEmail,
   sendTrialEndingEmail,
+  sendTrialExpiredEmail,
   sendPaymentFailedEmail,
 } from "@/lib/email/send-subscription-email";
 
@@ -286,6 +287,20 @@ async function handleSubscriptionDeleted(
       updatedAt: new Date(),
     })
     .where(eq(userTier.userId, userId));
+
+  // If this subscription had a trial, the user let it expire without converting.
+  // Send a win-back email pointing them to upgrade.
+  if (subscription.trial_end) {
+    const tier = await getSubscriptionTier(subscription);
+    const planName = TIER_DISPLAY_NAMES[tier as DbTier] ?? "Plus";
+    const users = await db.select().from(user).where(eq(user.id, userId)).limit(1);
+    const email = users[0]?.email;
+    if (email && !email.startsWith("guest-")) {
+      void sendTrialExpiredEmail(email, planName).catch(
+        (err) => console.error("Failed to send trial expired email:", err),
+      );
+    }
+  }
 }
 
 /**

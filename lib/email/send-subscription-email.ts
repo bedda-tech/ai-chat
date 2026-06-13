@@ -157,6 +157,67 @@ export async function sendTrialEndingEmail(
   });
 }
 
+export async function sendTrialExpiredEmail(
+  email: string,
+  planName: string,
+): Promise<void> {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://www.bedda.tech";
+  const features = PLAN_FEATURES[planName] ?? PLAN_FEATURES["Plus"] ?? [];
+  const monthlyPrice = planName === "Pro" ? "25" : planName === "Max" ? "50" : "12";
+
+  const featureList = features
+    .slice(0, 4)
+    .map(
+      (f) =>
+        `<li style="margin-bottom: 8px; font-size: 14px; color: #555;">${f}</li>`,
+    )
+    .join("");
+
+  await resend.emails.send({
+    from: process.env.RESEND_FROM_EMAIL ?? "Bedda <onboarding@resend.dev>",
+    to: email,
+    subject: `Your Bedda ${planName} trial has ended — keep your access for $${monthlyPrice}/mo`,
+    html: `
+      <div style="font-family: sans-serif; max-width: 520px; margin: 0 auto; padding: 32px 24px; color: #111;">
+        <h1 style="font-size: 24px; font-weight: 700; margin-bottom: 8px;">
+          Your ${planName} trial has ended
+        </h1>
+        <p style="color: #555; font-size: 15px; line-height: 1.6; margin-bottom: 24px;">
+          Thanks for trying Bedda ${planName}. Your account is now on the Free plan
+          (50 messages/day, fewer models). Here's what you had access to during your trial:
+        </p>
+
+        <div style="background: #f5f5f5; border-radius: 10px; padding: 20px; margin-bottom: 24px;">
+          <p style="margin: 0 0 12px; font-weight: 600; font-size: 14px; color: #333;">What you're losing:</p>
+          <ul style="margin: 0; padding-left: 20px;">
+            ${featureList}
+          </ul>
+        </div>
+
+        <div style="background: #000; border-radius: 10px; padding: 20px; margin-bottom: 24px; text-align: center;">
+          <p style="margin: 0 0 4px; font-size: 13px; color: #aaa;">Get it all back</p>
+          <p style="margin: 0 0 16px; font-size: 28px; font-weight: 700; color: #fff;">
+            $${monthlyPrice}<span style="font-size: 14px; font-weight: 400; color: #aaa;">/month</span>
+          </p>
+          <a href="${appUrl}/upgrade?plan=${planName.toLowerCase()}&source=trial_expired_email"
+             style="display: inline-block; background: #fff; color: #000; padding: 12px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px;">
+            Upgrade to ${planName} →
+          </a>
+        </div>
+
+        <p style="color: #888; font-size: 13px; line-height: 1.6; border-top: 1px solid #eee; padding-top: 20px;">
+          Questions or feedback about your trial? Reply to this email — we read everything.
+        </p>
+
+        <p style="color: #bbb; font-size: 12px; margin-top: 16px;">
+          You're receiving this because your Bedda ${planName} trial has ended.
+        </p>
+      </div>
+    `,
+  });
+}
+
 export async function sendPaymentFailedEmail(
   email: string,
   planName: string,
