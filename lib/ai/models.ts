@@ -1,6 +1,6 @@
 import modelsData from "./models-data.json";
 
-export const DEFAULT_CHAT_MODEL: string = "chat-model";
+export const DEFAULT_CHAT_MODEL: string = "google-gemini-2.5-flash";
 
 export type ChatModel = {
   id: string;

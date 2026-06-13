@@ -18,6 +18,7 @@ export const entitlementsByUserType: Record<UserType, Entitlements> = {
       "chat-model",
       "chat-model-reasoning",
       // Fast Google Models (cheap, good for demos)
+      "google-gemini-2.5-flash",
       "google-gemini-2.5-flash-lite",
       "google-gemini-2.0-flash-lite",
       // OpenAI Nano (cheapest OpenAI model)
@@ -25,9 +26,12 @@ export const entitlementsByUserType: Record<UserType, Entitlements> = {
       // Anthropic Haiku (fast, affordable Anthropic)
       "anthropic-claude-haiku-4.5",
       "anthropic-claude-3.5-haiku",
+      // xAI Grok 4 Fast (affordable Grok)
+      "xai-grok-4-fast-non-reasoning",
       // Mistral Small (affordable)
       "mistral-mistral-small-latest",
-      // DeepSeek R1 (reasoning demo)
+      // DeepSeek (cheap, capable)
+      "deepseek-deepseek-v3",
       "deepseek-deepseek-r1",
       // Fast inference providers (Groq + Cerebras)
       "groq-llama-3.3-70b-versatile",
@@ -111,11 +115,8 @@ export const FREE_TIER_MODEL_IDS: readonly string[] = [
   // Legacy/Default Models
   "chat-model",
   "chat-model-reasoning",
-  // xAI Grok Mini (cheap/fast)
-  "xai-grok-3-mini",
-  "xai-grok-3-mini-fast",
-  "xai-grok-beta",
-  "xai-grok-vision-beta",
+  // xAI Grok (fast non-reasoning variant, affordable)
+  "xai-grok-4-fast-non-reasoning",
   // Anthropic Haiku (cheapest Anthropic tier)
   "anthropic-claude-3-haiku",
   "anthropic-claude-3.5-haiku",
@@ -128,40 +129,21 @@ export const FREE_TIER_MODEL_IDS: readonly string[] = [
   // Google Flash / Flash Lite
   "google-gemini-2.0-flash",
   "google-gemini-2.0-flash-lite",
-  "google-gemini-2.0-flash-exp",
   "google-gemini-2.5-flash",
   "google-gemini-2.5-flash-lite",
-  "google-gemini-1.5-flash",
-  "google-vertex-gemini-2.0-flash-exp",
-  "google-vertex-gemini-1.5-flash",
   // DeepSeek (cheap)
-  "deepseek-chat",
-  "deepseek-reasoner",
   "deepseek-deepseek-v3",
   "deepseek-deepseek-v3.1",
-  // Groq (fast inference, very cheap)
-  "groq-llama-4-scout-17b-16e-instruct",
-  "groq-llama-3.3-70b-versatile",
-  "groq-llama-3.1-8b-instant",
-  "groq-mixtral-8x7b-32768",
-  "groq-gemma2-9b-it",
-  // Cerebras (fast inference, very cheap)
-  "cerebras-llama3.1-8b",
-  "cerebras-llama3.1-70b",
-  "cerebras-llama3.3-70b",
-  // Mistral Small (affordable)
-  "mistral-small-latest",
-  "mistral-pixtral-12b-2409",
-  // Moonshot / ZAI
-  "zai-glm-4.6",
-  // Mistral Small (affordable)
-  "mistral-mistral-small-latest",
-  // DeepSeek R1 (cheap reasoning model)
   "deepseek-deepseek-r1",
   // Groq (fast inference, very cheap)
   "groq-llama-3.3-70b-versatile",
-  // Cerebras (ultra-fast inference)
+  // Cerebras (fast inference, very cheap)
   "cerebras-llama3.3-70b",
+  // Mistral Small (affordable)
+  "mistral-mistral-small-latest",
+  // Moonshot / ZAI
+  "zai-glm-4.6",
+  "moonshotai-kimi-k2-turbo",
 ];
 
 /**
