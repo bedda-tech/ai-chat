@@ -105,6 +105,28 @@ export default function RootLayout({
             __html: THEME_COLOR_SCRIPT,
           }}
         />
+        <script
+          type="application/ld+json"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              name: "bedda.ai",
+              applicationCategory: "UtilitiesApplication",
+              operatingSystem: "Web",
+              url: "https://bedda.ai",
+              description:
+                "Access Claude, GPT-5, Gemini, Grok, DeepSeek and 30+ AI models with one subscription.",
+              offers: [
+                { "@type": "Offer", name: "Free", price: "0", priceCurrency: "USD" },
+                { "@type": "Offer", name: "Plus", price: "12", priceCurrency: "USD" },
+                { "@type": "Offer", name: "Pro", price: "25", priceCurrency: "USD" },
+                { "@type": "Offer", name: "Max", price: "50", priceCurrency: "USD" },
+              ],
+            }),
+          }}
+        />
       </head>
       <body className="antialiased">
         <Script
