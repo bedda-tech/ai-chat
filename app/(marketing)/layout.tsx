@@ -35,6 +35,12 @@ export default function MarketingLayout({
               </Link>
               <Link
                 className="transition-colors hover:text-foreground/80 text-foreground/60"
+                href="/compare/bedda-vs-chatgpt"
+              >
+                Compare
+              </Link>
+              <Link
+                className="transition-colors hover:text-foreground/80 text-foreground/60"
                 href="/roadmap"
               >
                 Roadmap
