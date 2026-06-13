@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { guestRegex } from "@/lib/constants";
 import { fetcher } from "@/lib/utils";
+import { useAnalytics } from "@/hooks/use-analytics";
 
 type StatusResponse = {
   tier: string;
@@ -25,6 +26,7 @@ type StatusResponse = {
 
 export function SidebarUpgradeCTA() {
   const { data: session, status: sessionStatus } = useSession();
+  const { track } = useAnalytics();
 
   const isGuest = guestRegex.test(session?.user?.email ?? "");
   const isLoggedIn = sessionStatus === "authenticated" && !isGuest;
@@ -97,7 +99,14 @@ export function SidebarUpgradeCTA() {
           </div>
         )}
         <Button asChild size="sm" className="h-7 w-full text-xs bg-orange-500 hover:bg-orange-600">
-          <Link href="/upgrade?plan=plus">Upgrade now — $12/mo</Link>
+          <Link
+            href="/upgrade?plan=plus"
+            onClick={() =>
+              track("upgrade_cta_clicked", { source: "sidebar_urgent", plan: "plus" })
+            }
+          >
+            Upgrade now — $12/mo
+          </Link>
         </Button>
       </div>
     );
@@ -125,7 +134,14 @@ export function SidebarUpgradeCTA() {
           Unlock unlimited messages and all 30+ AI models.
         </p>
         <Button asChild size="sm" className="h-7 w-full text-xs">
-          <Link href="/upgrade?plan=plus">Upgrade — $12/mo</Link>
+          <Link
+            href="/upgrade?plan=plus"
+            onClick={() =>
+              track("upgrade_cta_clicked", { source: "sidebar_warning", plan: "plus" })
+            }
+          >
+            Upgrade — $12/mo
+          </Link>
         </Button>
       </div>
     );
@@ -141,7 +157,14 @@ export function SidebarUpgradeCTA() {
         Unlock all 30+ AI models including Claude Opus, GPT-5, and Gemini Pro.
       </p>
       <Button asChild size="sm" className="h-7 w-full text-xs">
-        <Link href="/upgrade?plan=plus">Upgrade — $12/mo</Link>
+        <Link
+          href="/upgrade?plan=plus"
+          onClick={() =>
+            track("upgrade_cta_clicked", { source: "sidebar_default", plan: "plus" })
+          }
+        >
+          Upgrade — $12/mo
+        </Link>
       </Button>
     </div>
   );

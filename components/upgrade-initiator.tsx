@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useAnalytics } from "@/hooks/use-analytics";
 
 type PlanName = "plus" | "pro" | "max";
 type BillingPeriod = "monthly" | "annual";
@@ -22,9 +23,11 @@ export function UpgradeInitiator({
   billingPeriod?: BillingPeriod;
 }) {
   const [error, setError] = useState<string | null>(null);
+  const { track } = useAnalytics();
 
   useEffect(() => {
     async function startCheckout() {
+      track("checkout_started", { plan, billingPeriod });
       try {
         const res = await fetch("/api/subscription/checkout", {
           method: "POST",
@@ -48,7 +51,7 @@ export function UpgradeInitiator({
     }
 
     startCheckout();
-  }, [plan, billingPeriod]);
+  }, [plan, billingPeriod, track]);
 
   if (error) {
     return (

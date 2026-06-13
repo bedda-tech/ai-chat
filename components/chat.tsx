@@ -36,6 +36,7 @@ import { toast } from "./toast";
 import type { VisibilityType } from "./visibility-selector";
 import { useTeamRealtime } from "@/hooks/use-team-realtime";
 import { TeamTypingIndicator } from "./team-typing-indicator";
+import { useAnalytics } from "@/hooks/use-analytics";
 
 export function Chat({
   id,
@@ -82,6 +83,7 @@ export function Chat({
   const currentModelIdRef = useRef(currentModelId);
 
   const { typingUsers, sendTyping } = useTeamRealtime(id, isTeamShared);
+  const { track } = useAnalytics();
 
   useEffect(() => {
     currentModelIdRef.current = currentModelId;
@@ -152,6 +154,10 @@ export function Chat({
                 "You've used all your free messages for today. Upgrade to Plus for 300 messages/day, or Pro for 1,500/day — all 30+ AI models included.",
             });
           }
+          track("upgrade_modal_shown", {
+            reason: error.type,
+            model: currentModelIdRef.current,
+          });
           setShowUpgradeDialog(true);
         } else if (error.type === "rate_limit") {
           // Paid user hitting daily/minute limit — no upgrade needed, just wait
@@ -328,7 +334,17 @@ export function Chat({
           <AlertDialogFooter>
             <AlertDialogCancel>Maybe later</AlertDialogCancel>
             <AlertDialogAction asChild>
-              <Link href="/upgrade?plan=plus">Upgrade to Plus — $12/mo</Link>
+              <Link
+                href="/upgrade?plan=plus"
+                onClick={() =>
+                  track("upgrade_cta_clicked", {
+                    source: "upgrade_dialog",
+                    plan: "plus",
+                  })
+                }
+              >
+                Upgrade to Plus — $12/mo
+              </Link>
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
