@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/app/(auth)/auth";
-import { getUserTier, getCurrentMonthUsage, getDailyUsage, TIER_LIMITS } from "@/lib/usage/tracking";
+import { getUserTier, getUserTierRecord, getCurrentMonthUsage, getDailyUsage, TIER_LIMITS } from "@/lib/usage/tracking";
 
 export async function GET(_req: Request) {
   try {
@@ -13,11 +13,20 @@ export async function GET(_req: Request) {
       );
     }
 
-    const tier = await getUserTier(session.user.id);
-    const [usage, dailyCount] = await Promise.all([
-      getCurrentMonthUsage(session.user.id),
-      getDailyUsage(session.user.id),
+    const [tier, record, [usage, dailyCount]] = await Promise.all([
+      getUserTier(session.user.id),
+      getUserTierRecord(session.user.id),
+      Promise.all([
+        getCurrentMonthUsage(session.user.id),
+        getDailyUsage(session.user.id),
+      ]),
     ]);
+
+    const isTrial = record?.subscriptionStatus === "trialing";
+    const trialEndDate = isTrial && record?.currentPeriodEnd ? record.currentPeriodEnd : null;
+    const trialDaysLeft = trialEndDate
+      ? Math.max(0, Math.ceil((trialEndDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24)))
+      : null;
     const limits = TIER_LIMITS[tier];
 
     const monthlyLimit = limits.messagesPerMonth;
@@ -25,6 +34,9 @@ export async function GET(_req: Request) {
 
     return NextResponse.json({
       tier,
+      isTrial,
+      trialEndDate: trialEndDate?.toISOString() ?? null,
+      trialDaysLeft,
       usage: {
         messageCount: usage.messageCount,
         inputTokens: usage.inputTokens,

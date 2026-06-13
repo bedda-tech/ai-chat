@@ -285,6 +285,18 @@ export async function getCurrentMonthUsage(
 }
 
 /**
+ * Get full user tier record (includes subscription status, trial info)
+ */
+export async function getUserTierRecord(userId: string) {
+  const result = await db
+    .select()
+    .from(userTier)
+    .where(eq(userTier.userId, userId))
+    .limit(1);
+  return result[0] ?? null;
+}
+
+/**
  * Get user's tier
  */
 export async function getUserTier(userId: string): Promise<UserTierType> {

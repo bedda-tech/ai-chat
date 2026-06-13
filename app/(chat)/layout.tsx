@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { AppSidebar } from "@/components/app-sidebar";
 import { DataStreamProvider } from "@/components/data-stream-provider";
 import { OnboardingTour } from "@/components/onboarding/OnboardingTour";
+import { TrialBanner } from "@/components/trial-banner";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { getUserOnboardingStatus } from "@/lib/db/queries";
 import { auth } from "../(auth)/auth";
@@ -36,7 +37,10 @@ export default async function Layout({
       <DataStreamProvider>
         <SidebarProvider defaultOpen={!isCollapsed}>
           <AppSidebar user={session?.user} isAdmin={adminUser} />
-          <SidebarInset>{children}</SidebarInset>
+          <SidebarInset>
+            <TrialBanner />
+            {children}
+          </SidebarInset>
         </SidebarProvider>
         {showTour && <OnboardingTour />}
       </DataStreamProvider>
