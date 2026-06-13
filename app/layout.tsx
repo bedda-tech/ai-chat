@@ -8,6 +8,7 @@ import { PwaRegistration } from "@/components/pwa-registration";
 
 import "./globals.css";
 import { SessionProvider } from "next-auth/react";
+import { PostHogProvider } from "@/components/posthog-provider";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://bedda.ai"),
@@ -169,8 +170,10 @@ export default function RootLayout({
           <Toaster position="top-center" />
           <PwaRegistration />
           <SessionProvider>
-            {children}
-            <Analytics />
+            <PostHogProvider>
+              {children}
+              <Analytics />
+            </PostHogProvider>
           </SessionProvider>
         </ThemeProvider>
       </body>

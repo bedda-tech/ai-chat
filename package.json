@@ -74,6 +74,7 @@
     "orderedmap": "^2.1.1",
     "papaparse": "^5.5.3",
     "postgres": "^3.4.7",
+    "posthog-js": "^1.386.6",
     "prosemirror-example-setup": "^1.2.3",
     "prosemirror-inputrules": "^1.5.1",
     "prosemirror-markdown": "^1.13.2",
