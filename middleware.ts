@@ -13,21 +13,22 @@ export async function middleware(request: NextRequest) {
     return new Response("pong", { status: 200 });
   }
 
-  // Public routes that don't require authentication
-  const publicRoutes = ["/pricing", "/roadmap"];
+  // Routes that bypass auth entirely (webhooks, API keys, public marketing/legal content)
   if (
     pathname.startsWith("/api/auth") ||
     pathname.startsWith("/api/webhooks") ||
-    pathname.startsWith("/api/models") || // Allow dynamic model discovery
-    pathname.startsWith("/api/health") || // Health check endpoint for monitoring
-    pathname.startsWith("/api/v1") || // OpenAI-compatible API (uses Bearer token auth)
-    pathname.startsWith("/api/slack") || // Slack bot events, install, and OAuth callback
-    pathname.startsWith("/api/discord") || // Discord bot interactions
-    pathname.startsWith("/api/github") || // GitHub App webhooks
-    pathname.startsWith("/api/telegram") || // Telegram bot webhook
-    pathname.startsWith("/api/ms-teams") || // Microsoft Teams Outgoing Webhook
-    pathname.startsWith("/api/whatsapp") || // WhatsApp Cloud API webhook
-    publicRoutes.includes(pathname)
+    pathname.startsWith("/api/models") ||
+    pathname.startsWith("/api/health") ||
+    pathname.startsWith("/api/v1") ||
+    pathname.startsWith("/api/slack") ||
+    pathname.startsWith("/api/discord") ||
+    pathname.startsWith("/api/github") ||
+    pathname.startsWith("/api/telegram") ||
+    pathname.startsWith("/api/ms-teams") ||
+    pathname.startsWith("/api/whatsapp") ||
+    pathname.startsWith("/compare/") || // SEO comparison pages — must be crawlable
+    pathname.startsWith("/join/") || // Referral landing pages
+    ["/pricing", "/roadmap", "/privacy", "/terms"].includes(pathname)
   ) {
     return NextResponse.next();
   }
@@ -38,18 +39,28 @@ export async function middleware(request: NextRequest) {
     secureCookie: !isDevelopmentEnvironment,
   });
 
-  if (!token) {
-    const redirectUrl = encodeURIComponent(request.url);
+  const isGuest = guestRegex.test(token?.email ?? "");
 
+  // Auth pages: redirect authenticated (non-guest) users to the app; otherwise pass through
+  if (["/login", "/register", "/forgot-password", "/reset-password"].includes(pathname)) {
+    if (token && !isGuest) {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
+    return NextResponse.next();
+  }
+
+  if (!token) {
+    // For the root homepage, send unauthenticated visitors to the pricing page.
+    // This prevents an infinite guest-auth redirect loop that breaks SEO crawlers,
+    // since crawlers have no cookies and can't complete the guest session flow.
+    if (pathname === "/") {
+      return NextResponse.redirect(new URL("/pricing", request.url));
+    }
+
+    const redirectUrl = encodeURIComponent(request.url);
     return NextResponse.redirect(
       new URL(`/api/auth/guest?redirectUrl=${redirectUrl}`, request.url)
     );
-  }
-
-  const isGuest = guestRegex.test(token?.email ?? "");
-
-  if (token && !isGuest && ["/login", "/register"].includes(pathname)) {
-    return NextResponse.redirect(new URL("/", request.url));
   }
 
   return NextResponse.next();
