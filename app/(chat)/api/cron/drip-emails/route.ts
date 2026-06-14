@@ -3,7 +3,7 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import { and, eq, gte, lt } from "drizzle-orm";
 import * as schema from "@/lib/db/schema";
-import { sendDripEmailDay3, sendDripEmailDay7, sendDripEmailDay14 } from "@/lib/email/send-drip-email";
+import { sendDripEmailDay3, sendDripEmailDay7, sendDripEmailDay14, sendDripEmailDay21, sendDripEmailDay30 } from "@/lib/email/send-drip-email";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -35,9 +35,11 @@ export async function GET(req: NextRequest) {
   const day3Window = dayWindowAgo(3);
   const day7Window = dayWindowAgo(7);
   const day14Window = dayWindowAgo(14);
+  const day21Window = dayWindowAgo(21);
+  const day30Window = dayWindowAgo(30);
 
   // Fetch free, non-guest users who signed up in each window
-  const [day3Users, day7Users, day14Users] = await Promise.all([
+  const [day3Users, day7Users, day14Users, day21Users, day30Users] = await Promise.all([
     db
       .select({ email: schema.user.email })
       .from(schema.userTier)
@@ -71,6 +73,28 @@ export async function GET(req: NextRequest) {
           lt(schema.userTier.createdAt, day14Window.end)
         )
       ),
+    db
+      .select({ email: schema.user.email })
+      .from(schema.userTier)
+      .innerJoin(schema.user, eq(schema.userTier.userId, schema.user.id))
+      .where(
+        and(
+          eq(schema.userTier.tier, "free"),
+          gte(schema.userTier.createdAt, day21Window.start),
+          lt(schema.userTier.createdAt, day21Window.end)
+        )
+      ),
+    db
+      .select({ email: schema.user.email })
+      .from(schema.userTier)
+      .innerJoin(schema.user, eq(schema.userTier.userId, schema.user.id))
+      .where(
+        and(
+          eq(schema.userTier.tier, "free"),
+          gte(schema.userTier.createdAt, day30Window.start),
+          lt(schema.userTier.createdAt, day30Window.end)
+        )
+      ),
   ]);
 
   // Filter out guest accounts (they have no real email)
@@ -78,8 +102,10 @@ export async function GET(req: NextRequest) {
   const realDay3 = day3Users.filter((u) => !guestPattern.test(u.email));
   const realDay7 = day7Users.filter((u) => !guestPattern.test(u.email));
   const realDay14 = day14Users.filter((u) => !guestPattern.test(u.email));
+  const realDay21 = day21Users.filter((u) => !guestPattern.test(u.email));
+  const realDay30 = day30Users.filter((u) => !guestPattern.test(u.email));
 
-  const results = { day3: 0, day7: 0, day14: 0, errors: 0 };
+  const results = { day3: 0, day7: 0, day14: 0, day21: 0, day30: 0, errors: 0 };
 
   await Promise.all([
     ...realDay3.map(async (u) => {
@@ -106,6 +132,22 @@ export async function GET(req: NextRequest) {
         results.errors++;
       }
     }),
+    ...realDay21.map(async (u) => {
+      try {
+        await sendDripEmailDay21(u.email);
+        results.day21++;
+      } catch {
+        results.errors++;
+      }
+    }),
+    ...realDay30.map(async (u) => {
+      try {
+        await sendDripEmailDay30(u.email);
+        results.day30++;
+      } catch {
+        results.errors++;
+      }
+    }),
   ]);
 
   await client.end();
@@ -116,6 +158,8 @@ export async function GET(req: NextRequest) {
       day3: { start: day3Window.start, end: day3Window.end },
       day7: { start: day7Window.start, end: day7Window.end },
       day14: { start: day14Window.start, end: day14Window.end },
+      day21: { start: day21Window.start, end: day21Window.end },
+      day30: { start: day30Window.start, end: day30Window.end },
     },
   });
 }

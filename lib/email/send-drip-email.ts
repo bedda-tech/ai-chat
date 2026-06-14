@@ -3,6 +3,118 @@ import { Resend } from "resend";
 const FROM = process.env.RESEND_FROM_EMAIL ?? "Bedda <onboarding@resend.dev>";
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "https://www.bedda.tech";
 
+export async function sendDripEmailDay21(email: string): Promise<void> {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  await resend.emails.send({
+    from: FROM,
+    to: email,
+    subject: "The math behind switching to Plus",
+    html: `
+      <div style="font-family: sans-serif; max-width: 520px; margin: 0 auto; padding: 32px 24px; color: #111;">
+        <h1 style="font-size: 22px; font-weight: 700; margin-bottom: 8px;">Three weeks on Bedda 🔢</h1>
+        <p style="color: #555; font-size: 15px; line-height: 1.6; margin-bottom: 24px;">
+          You've been using Bedda for three weeks. Here's a comparison most people find surprisingly convincing:
+        </p>
+
+        <div style="background: #f9f9f9; border-radius: 10px; padding: 20px; margin-bottom: 24px;">
+          <p style="margin: 0 0 16px; font-weight: 700; font-size: 15px; color: #111;">Without Bedda Plus — paying per product:</p>
+          <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 8px 0; color: #555;">ChatGPT Plus (GPT-5)</td>
+              <td style="padding: 8px 0; text-align: right; color: #555;">$20/mo</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 8px 0; color: #555;">Claude Pro (Claude Opus)</td>
+              <td style="padding: 8px 0; text-align: right; color: #555;">$20/mo</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 8px 0; color: #555;">Gemini Advanced</td>
+              <td style="padding: 8px 0; text-align: right; color: #555;">$20/mo</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; font-weight: 700; color: #111;">Total</td>
+              <td style="padding: 10px 0; text-align: right; font-weight: 700; color: #c00;">$60/mo</td>
+            </tr>
+          </table>
+        </div>
+
+        <div style="background: #000; color: #fff; border-radius: 10px; padding: 20px; margin-bottom: 24px; text-align: center;">
+          <p style="margin: 0 0 4px; font-size: 13px; color: #aaa;">Bedda Plus — every model, one subscription</p>
+          <p style="margin: 0 0 4px; font-size: 36px; font-weight: 700;">$12<span style="font-size: 16px; font-weight: 400; color: #aaa;">/mo</span></p>
+          <p style="margin: 0 0 4px; font-size: 13px; color: #aaa;">GPT-5 · Claude Opus · Gemini · Grok · 30+ models</p>
+          <p style="margin: 0 0 20px; font-size: 13px; color: #aaa;">7-day free trial · cancel anytime</p>
+          <a href="${APP_URL}/upgrade?plan=plus&source=drip_day21"
+             style="display: inline-block; background: #fff; color: #000; padding: 12px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px;">
+            Start free trial — save $48/mo →
+          </a>
+        </div>
+
+        <p style="color: #888; font-size: 13px; line-height: 1.6; border-top: 1px solid #eee; padding-top: 20px;">
+          Bedda Plus is $12/month or $115.20/year (save $29). One account, every major AI model. No switching tabs.
+        </p>
+        <p style="color: #bbb; font-size: 12px; margin-top: 12px;">
+          You're receiving this because you created a Bedda account. Questions? Reply here.
+        </p>
+      </div>
+    `,
+  });
+}
+
+export async function sendDripEmailDay30(email: string): Promise<void> {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  await resend.emails.send({
+    from: FROM,
+    to: email,
+    subject: "One month on Bedda — a few things worth knowing",
+    html: `
+      <div style="font-family: sans-serif; max-width: 520px; margin: 0 auto; padding: 32px 24px; color: #111;">
+        <h1 style="font-size: 22px; font-weight: 700; margin-bottom: 8px;">One month 🗓️</h1>
+        <p style="color: #555; font-size: 15px; line-height: 1.6; margin-bottom: 24px;">
+          You've been using Bedda for a month. You clearly like it — and we want to address
+          a few things we hear from people who are on the fence about upgrading:
+        </p>
+
+        <div style="margin-bottom: 20px; padding: 16px; border-radius: 8px; background: #f9f9f9;">
+          <p style="margin: 0 0 6px; font-weight: 600; font-size: 15px;">"I don't use it enough to justify paying"</p>
+          <p style="margin: 0; color: #555; font-size: 14px; line-height: 1.6;">
+            You've been coming back for 30 days. That's not "not using it" — that's a habit.
+            Upgrading removes the 50/day limit so the habit doesn't hit a wall.
+          </p>
+        </div>
+
+        <div style="margin-bottom: 20px; padding: 16px; border-radius: 8px; background: #f9f9f9;">
+          <p style="margin: 0 0 6px; font-weight: 600; font-size: 15px;">"I'm not sure I'll use the premium models"</p>
+          <p style="margin: 0; color: #555; font-size: 14px; line-height: 1.6;">
+            The 7-day free trial lets you try Claude Opus, GPT-5, and image generation with zero risk.
+            If it's not worth $12 after 7 days, cancel before you're charged.
+          </p>
+        </div>
+
+        <div style="margin-bottom: 24px; padding: 16px; border-radius: 8px; background: #f9f9f9;">
+          <p style="margin: 0 0 6px; font-weight: 600; font-size: 15px;">"I'll upgrade when I need it more"</p>
+          <p style="margin: 0; color: #555; font-size: 14px; line-height: 1.6;">
+            Hitting your daily limit in the middle of a project is the worst time to decide.
+            The trial means you can upgrade now and the clock starts on your terms, not when you're blocked.
+          </p>
+        </div>
+
+        <a href="${APP_URL}/upgrade?plan=plus&source=drip_day30"
+           style="display: inline-block; background: #000; color: #fff; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 16px; margin-bottom: 24px;">
+          Start your 7-day free trial →
+        </a>
+
+        <p style="color: #888; font-size: 13px; line-height: 1.6; border-top: 1px solid #eee; padding-top: 20px;">
+          Bedda Plus is $12/month. No charge for 7 days. Includes GPT-5, Claude Opus, Gemini Pro,
+          Grok, web search, image generation, video generation, and 300 messages/day.
+        </p>
+        <p style="color: #bbb; font-size: 12px; margin-top: 12px;">
+          You're receiving this because you created a Bedda account. Questions? Reply here.
+        </p>
+      </div>
+    `,
+  });
+}
+
 export async function sendDripEmailDay3(email: string): Promise<void> {
   const resend = new Resend(process.env.RESEND_API_KEY);
   await resend.emails.send({
