@@ -218,6 +218,55 @@ export async function sendTrialExpiredEmail(
   });
 }
 
+export async function sendCheckoutAbandonedEmail(
+  email: string,
+): Promise<void> {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://www.bedda.tech";
+
+  await resend.emails.send({
+    from: process.env.RESEND_FROM_EMAIL ?? "Bedda <onboarding@resend.dev>",
+    to: email,
+    subject: "You were so close — your 7-day free trial is still waiting",
+    html: `
+      <div style="font-family: sans-serif; max-width: 520px; margin: 0 auto; padding: 32px 24px; color: #111;">
+        <h1 style="font-size: 24px; font-weight: 700; margin-bottom: 8px;">
+          Left without finishing?
+        </h1>
+        <p style="color: #555; font-size: 15px; line-height: 1.6; margin-bottom: 24px;">
+          You started upgrading to Bedda Plus but didn't complete it.
+          Your <strong>7-day free trial</strong> is still available — no charge until day 8, cancel anytime.
+        </p>
+
+        <div style="background: #f9f9f9; border-radius: 10px; padding: 20px; margin-bottom: 24px;">
+          <p style="margin: 0 0 12px; font-weight: 600; font-size: 14px; color: #333;">What you get with Plus:</p>
+          <ul style="margin: 0; padding-left: 20px;">
+            <li style="margin-bottom: 8px; font-size: 14px; color: #555;">300 messages/day (vs 50 on Free)</li>
+            <li style="margin-bottom: 8px; font-size: 14px; color: #555;">ALL 30+ models — Claude Opus, GPT-5, Gemini Pro, Grok 4</li>
+            <li style="margin-bottom: 8px; font-size: 14px; color: #555;">Image &amp; video generation</li>
+            <li style="margin-bottom: 8px; font-size: 14px; color: #555;">Web search, knowledge base, code execution</li>
+          </ul>
+        </div>
+
+        <a href="${appUrl}/upgrade?plan=plus&source=checkout_abandoned_email"
+           style="display: inline-block; background: #000; color: #fff; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 16px; margin-bottom: 24px;">
+          Start my 7-day free trial →
+        </a>
+
+        <p style="color: #888; font-size: 13px; line-height: 1.6; border-top: 1px solid #eee; padding-top: 20px; margin-top: 8px;">
+          Only <strong>$12/month</strong> after the trial — less than a single ChatGPT Plus subscription,
+          but includes every major AI model in one place.
+          Questions? Reply to this email.
+        </p>
+
+        <p style="color: #bbb; font-size: 12px; margin-top: 16px;">
+          You're receiving this because you started a checkout session on Bedda.
+        </p>
+      </div>
+    `,
+  });
+}
+
 export async function sendPaymentFailedEmail(
   email: string,
   planName: string,

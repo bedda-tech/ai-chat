@@ -98,6 +98,7 @@ else
     -u "${STRIPE_SECRET_KEY}:" \
     -d "url=${WEBHOOK_URL}" \
     -d "enabled_events[]=checkout.session.completed" \
+    -d "enabled_events[]=checkout.session.expired" \
     -d "enabled_events[]=customer.subscription.created" \
     -d "enabled_events[]=customer.subscription.updated" \
     -d "enabled_events[]=customer.subscription.deleted" \
@@ -215,7 +216,7 @@ echo "   - Cancellation: 'Cancel at period end' (recommended)"
 echo ""
 echo "2. Verify the webhook is wired up after deploy:"
 echo "   a. In Stripe Dashboard → Webhooks → $WEBHOOK_ID → Send test event"
-echo "      Event: checkout.session.completed"
+echo "      Event: checkout.session.completed + checkout.session.expired"
 echo "   b. Check DB was updated:"
 echo "      psql \$POSTGRES_URL -c 'SELECT \"userId\", tier, \"updatedAt\" FROM \"UserTier\" ORDER BY \"updatedAt\" DESC LIMIT 5;'"
 echo ""

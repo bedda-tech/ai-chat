@@ -58,6 +58,67 @@ export async function sendDripEmailDay3(email: string): Promise<void> {
   });
 }
 
+export async function sendDripEmailDay14(email: string): Promise<void> {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  await resend.emails.send({
+    from: FROM,
+    to: email,
+    subject: "Two weeks on Bedda — still on the free plan?",
+    html: `
+      <div style="font-family: sans-serif; max-width: 520px; margin: 0 auto; padding: 32px 24px; color: #111;">
+        <h1 style="font-size: 22px; font-weight: 700; margin-bottom: 8px;">Two weeks in 🗓️</h1>
+        <p style="color: #555; font-size: 15px; line-height: 1.6; margin-bottom: 24px;">
+          You've been using Bedda for two weeks now. A lot of our users are surprised
+          how much more they get done after upgrading — so we wanted to share a few real reasons people switch.
+        </p>
+
+        <div style="background: #f9f9f9; border-radius: 10px; padding: 20px; margin-bottom: 24px;">
+          <p style="margin: 0 0 14px; font-weight: 600; font-size: 14px; color: #333;">"Why I upgraded after two weeks..."</p>
+
+          <div style="margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid #eee;">
+            <p style="margin: 0; font-size: 14px; color: #444; line-height: 1.6;">
+              <strong>Hit the 50/day limit</strong> — once I started relying on Bedda for real work,
+              50 messages wasn't enough. Plus gives me 300/day.
+            </p>
+          </div>
+
+          <div style="margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid #eee;">
+            <p style="margin: 0; font-size: 14px; color: #444; line-height: 1.6;">
+              <strong>Needed Claude Opus for writing</strong> — free tier is limited to smaller models.
+              The best reasoning models are Plus-only.
+            </p>
+          </div>
+
+          <div>
+            <p style="margin: 0; font-size: 14px; color: #444; line-height: 1.6;">
+              <strong>Image generation &amp; web search</strong> — both locked on free.
+              Plus gets DALL·E 3, Imagen, live web search, and video generation.
+            </p>
+          </div>
+        </div>
+
+        <div style="background: #000; color: #fff; border-radius: 10px; padding: 20px; margin-bottom: 24px; text-align: center;">
+          <p style="margin: 0 0 4px; font-size: 13px; color: #aaa;">Bedda Plus</p>
+          <p style="margin: 0 0 4px; font-size: 32px; font-weight: 700;">$12<span style="font-size: 15px; font-weight: 400; color: #aaa;">/mo</span></p>
+          <p style="margin: 0 0 16px; font-size: 13px; color: #aaa;">7-day free trial · cancel anytime</p>
+          <a href="${APP_URL}/upgrade?plan=plus&source=drip_day14"
+             style="display: inline-block; background: #fff; color: #000; padding: 12px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px;">
+            Start free trial →
+          </a>
+        </div>
+
+        <p style="color: #888; font-size: 13px; line-height: 1.6; border-top: 1px solid #eee; padding-top: 20px;">
+          No charge for 7 days. Bedda Plus is less than a single ChatGPT Plus subscription
+          but gives you access to every major AI model in one place.
+        </p>
+        <p style="color: #bbb; font-size: 12px; margin-top: 12px;">
+          You're receiving this because you created a Bedda account. Questions? Reply here.
+        </p>
+      </div>
+    `,
+  });
+}
+
 export async function sendDripEmailDay7(email: string): Promise<void> {
   const resend = new Resend(process.env.RESEND_API_KEY);
   await resend.emails.send({

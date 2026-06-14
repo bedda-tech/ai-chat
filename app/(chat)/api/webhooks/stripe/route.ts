@@ -14,6 +14,7 @@ import {
   sendTrialEndingEmail,
   sendTrialExpiredEmail,
   sendPaymentFailedEmail,
+  sendCheckoutAbandonedEmail,
 } from "@/lib/email/send-subscription-email";
 
 const connectionString = process.env.POSTGRES_URL!;
@@ -64,6 +65,12 @@ export async function POST(req: Request) {
       case "checkout.session.completed": {
         const session = event.data.object as Stripe.Checkout.Session;
         await handleCheckoutCompleted(session);
+        break;
+      }
+
+      case "checkout.session.expired": {
+        const session = event.data.object as Stripe.Checkout.Session;
+        await handleCheckoutExpired(session);
         break;
       }
 
@@ -336,6 +343,25 @@ async function handleTrialWillEnd(
 
   void sendTrialEndingEmail(email, planName, trialEndDate, daysLeft).catch(
     (err) => console.error("Failed to send trial ending email:", err),
+  );
+}
+
+/**
+ * Handle abandoned checkout (session expired without payment)
+ * Send a recovery email to bring the user back to complete their upgrade.
+ */
+async function handleCheckoutExpired(
+  session: Stripe.Checkout.Session,
+): Promise<void> {
+  const userId = session.metadata?.userId;
+  if (!userId) return;
+
+  const users = await db.select().from(user).where(eq(user.id, userId)).limit(1);
+  const email = users[0]?.email;
+  if (!email || email.startsWith("guest-")) return;
+
+  void sendCheckoutAbandonedEmail(email).catch(
+    (err) => console.error("Failed to send checkout abandoned email:", err),
   );
 }
 
