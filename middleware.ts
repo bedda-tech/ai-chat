@@ -26,6 +26,7 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith("/api/telegram") ||
     pathname.startsWith("/api/ms-teams") ||
     pathname.startsWith("/api/whatsapp") ||
+    pathname.startsWith("/api/cron/") ||
     pathname.startsWith("/compare/") || // SEO comparison pages — must be crawlable
     pathname.startsWith("/join/") || // Referral landing pages
     ["/pricing", "/roadmap", "/privacy", "/terms"].includes(pathname)
