@@ -29,7 +29,7 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith("/api/cron/") ||
     pathname.startsWith("/compare/") || // SEO comparison pages — must be crawlable
     pathname.startsWith("/join/") || // Referral landing pages
-    ["/pricing", "/roadmap", "/privacy", "/terms"].includes(pathname)
+    ["/home", "/pricing", "/roadmap", "/privacy", "/terms"].includes(pathname)
   ) {
     return NextResponse.next();
   }
@@ -51,11 +51,11 @@ export async function middleware(request: NextRequest) {
   }
 
   if (!token) {
-    // For the root homepage, send unauthenticated visitors to the pricing page.
+    // For the root homepage, send unauthenticated visitors to the marketing homepage.
     // This prevents an infinite guest-auth redirect loop that breaks SEO crawlers,
     // since crawlers have no cookies and can't complete the guest session flow.
     if (pathname === "/") {
-      return NextResponse.redirect(new URL("/pricing", request.url));
+      return NextResponse.redirect(new URL("/home", request.url));
     }
 
     const redirectUrl = encodeURIComponent(request.url);
