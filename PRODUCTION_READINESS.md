@@ -153,11 +153,16 @@ ngrok http 3000
 **Time Required: Complete**
 
 **Current Status:** ✅ Products and prices created
-- **Pro Plan**: $20/month (price_1SPUpMGUAVWeO6RUZJ315Ulu)
-- **Premium Plan**: $50/month (price_1SPUqOGUAVWeO6RUnMq80lnc)
+- **Plus Plan**: $12/month — all 30+ AI models, web search, code execution, image/video gen
+- **Pro Plan**: $25/month — 5× daily capacity, priority model access
+- **Max Plan**: $50/month — team workspace, enterprise features
+- Annual pricing (20% off): $115.20/yr Plus, $240/yr Pro, $480/yr Max
 
 **Verification Steps:**
 ```bash
+# If products exist in test mode but not live, use the automated script:
+STRIPE_SECRET_KEY=sk_live_... npx tsx scripts/setup-stripe.ts
+
 # Verify products exist
 stripe products list
 
@@ -167,22 +172,13 @@ stripe prices list
 
 **If products are missing in live mode:**
 ```bash
-# Create products in live mode
-stripe products create --name "Pro Plan" --description "750 messages per month"
-stripe products create --name "Premium Plan" --description "3000 messages per month"
+# Use the automated setup script (creates all 3 plans + annual prices):
+STRIPE_SECRET_KEY=sk_live_... npx tsx scripts/setup-stripe.ts
 
-# Create recurring prices
-stripe prices create \
-  --product prod_xxxxx \
-  --unit-amount 2000 \
-  --currency usd \
-  --recurring[interval]=month
-
-stripe prices create \
-  --product prod_yyyyy \
-  --unit-amount 5000 \
-  --currency usd \
-  --recurring[interval]=month
+# Or create manually:
+stripe products create --name "Bedda Plus" --description "All 30+ AI models. 300 messages/day."
+stripe products create --name "Bedda Pro" --description "Power user plan. 1,500 messages/day."
+stripe products create --name "Bedda Max" --description "Unlimited everything. 5,000 messages/day."
 ```
 
 ---
@@ -374,10 +370,10 @@ vercel --prod
 
 #### Stripe Configuration
 - ✅ Client initialization: `lib/stripe/config.ts`
-  - Stripe SDK configured with API version 2024-12-18.acacia
+  - Stripe SDK configured with API version 2025-10-29.clover
   - Environment variable validation
-  - Plan definitions (Free, Pro $20, Premium $50)
-  - Price ID mappings
+  - Plan definitions (Free, Plus $12, Pro $25, Max $50, with annual variants)
+  - Price ID mappings (STRIPE_PLUS_PRICE_ID, STRIPE_PRO_PRICE_ID, STRIPE_MAX_PRICE_ID and annual equivalents)
 
 - ✅ Subscription management: `lib/stripe/subscriptions.ts`
   - createCheckoutSession
@@ -392,8 +388,9 @@ vercel --prod
 - ✅ All Stripe variables configured in .env.local:
   - STRIPE_SECRET_KEY
   - STRIPE_PUBLISHABLE_KEY
-  - STRIPE_PRO_PRICE_ID
-  - STRIPE_PREMIUM_PRICE_ID
+  - STRIPE_PLUS_PRICE_ID / STRIPE_PLUS_ANNUAL_PRICE_ID
+  - STRIPE_PRO_PRICE_ID / STRIPE_PRO_ANNUAL_PRICE_ID
+  - STRIPE_MAX_PRICE_ID / STRIPE_MAX_ANNUAL_PRICE_ID
   - STRIPE_WEBHOOK_SECRET
 
 #### Dev Server

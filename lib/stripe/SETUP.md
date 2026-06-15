@@ -17,8 +17,12 @@ STRIPE_SECRET_KEY=sk_test_... # Use sk_live_... for production
 STRIPE_PUBLISHABLE_KEY=pk_test_... # Use pk_live_... for production
 
 # These will be filled in after creating products in Step 2
+STRIPE_PLUS_PRICE_ID=
 STRIPE_PRO_PRICE_ID=
-STRIPE_PREMIUM_PRICE_ID=
+STRIPE_MAX_PRICE_ID=
+STRIPE_PLUS_ANNUAL_PRICE_ID=
+STRIPE_PRO_ANNUAL_PRICE_ID=
+STRIPE_MAX_ANNUAL_PRICE_ID=
 
 # Webhook secret (filled in Step 3)
 STRIPE_WEBHOOK_SECRET=
@@ -26,61 +30,59 @@ STRIPE_WEBHOOK_SECRET=
 
 ## Step 2: Create Products and Prices
 
-### Option A: Using Stripe Dashboard (Recommended for First Time)
+### Option A: Automated Script (Recommended)
+
+Run the setup script to create all products and prices in one step:
+
+```bash
+STRIPE_SECRET_KEY=sk_live_... npx tsx scripts/setup-stripe.ts
+```
+
+This creates three products (Plus, Pro, Max) with both monthly and annual pricing.
+
+### Option B: Using Stripe Dashboard (Manual)
 
 1. Go to https://dashboard.stripe.com/products
 2. Click "Add product" for each tier:
 
-#### Pro Plan ($20/month)
-- **Name**: Bedda Chat Pro
-- **Description**: 750 messages per month with advanced AI models
-- **Pricing**: $20.00 USD
-- **Billing period**: Monthly
+#### Plus Plan ($12/month)
+- **Name**: Bedda Plus
+- **Description**: All 30+ AI models. 300 messages/day. One subscription.
+- **Pricing**: $12.00 USD/month
 - **Recurring**: Yes
+- Copy the Price ID → `STRIPE_PLUS_PRICE_ID`
 
-After creating, copy the **Price ID** (starts with `price_`) and add to `STRIPE_PRO_PRICE_ID`
-
-#### Premium Plan ($50/month)
-- **Name**: Bedda Chat Premium
-- **Description**: 3,000 messages per month with all AI models
-- **Pricing**: $50.00 USD
-- **Billing period**: Monthly
+#### Plus Annual ($115.20/year)
+- **Name**: Bedda Plus Annual
+- **Pricing**: $115.20 USD/year
 - **Recurring**: Yes
+- Copy the Price ID → `STRIPE_PLUS_ANNUAL_PRICE_ID`
 
-After creating, copy the **Price ID** (starts with `price_`) and add to `STRIPE_PREMIUM_PRICE_ID`
+#### Pro Plan ($25/month)
+- **Name**: Bedda Pro
+- **Description**: Power user plan. 1,500 messages/day. Priority model access.
+- **Pricing**: $25.00 USD/month
+- **Recurring**: Yes
+- Copy the Price ID → `STRIPE_PRO_PRICE_ID`
 
-### Option B: Using Stripe CLI (Automated)
+#### Pro Annual ($240/year)
+- **Name**: Bedda Pro Annual
+- **Pricing**: $240.00 USD/year
+- **Recurring**: Yes
+- Copy the Price ID → `STRIPE_PRO_ANNUAL_PRICE_ID`
 
-```bash
-# Install Stripe CLI: https://stripe.com/docs/stripe-cli
+#### Max Plan ($50/month)
+- **Name**: Bedda Max
+- **Description**: Unlimited everything. 5,000 messages/day. Team workspace.
+- **Pricing**: $50.00 USD/month
+- **Recurring**: Yes
+- Copy the Price ID → `STRIPE_MAX_PRICE_ID`
 
-# Login to Stripe
-stripe login
-
-# Create Pro product and price
-stripe products create \
-  --name="Bedda Chat Pro" \
-  --description="750 messages per month with advanced AI models"
-
-# Note the product ID (prod_xxx), then create price:
-stripe prices create \
-  --product=prod_xxx \
-  --unit-amount=2000 \
-  --currency=usd \
-  --recurring[interval]=month
-
-# Create Premium product and price
-stripe products create \
-  --name="Bedda Chat Premium" \
-  --description="3,000 messages per month with all AI models"
-
-# Note the product ID (prod_yyy), then create price:
-stripe prices create \
-  --product=prod_yyy \
-  --unit-amount=5000 \
-  --currency=usd \
-  --recurring[interval]=month
-```
+#### Max Annual ($480/year)
+- **Name**: Bedda Max Annual
+- **Pricing**: $480.00 USD/year
+- **Recurring**: Yes
+- Copy the Price ID → `STRIPE_MAX_ANNUAL_PRICE_ID`
 
 ## Step 3: Set Up Webhooks
 
@@ -101,12 +103,14 @@ stripe listen --forward-to localhost:3000/api/webhooks/stripe
 
 1. Go to https://dashboard.stripe.com/webhooks
 2. Click "Add endpoint"
-3. Enter your endpoint URL: `https://yourdomain.com/api/webhooks/stripe`
+3. Enter your endpoint URL: `https://www.bedda.tech/api/webhooks/stripe`
 4. Select events to listen for:
    - `checkout.session.completed` (Primary event - payment successful)
+   - `checkout.session.expired` (Checkout abandonment recovery)
    - `customer.subscription.created`
    - `customer.subscription.updated`
    - `customer.subscription.deleted`
+   - `customer.subscription.trial_will_end` (Trial ending reminders)
    - `invoice.payment_succeeded`
    - `invoice.payment_failed`
 5. Copy the webhook signing secret to `STRIPE_WEBHOOK_SECRET`
@@ -121,11 +125,12 @@ stripe listen --forward-to localhost:3000/api/webhooks/stripe
 
 ## Pricing Tiers Summary
 
-| Tier | Price | Messages/Month | Features |
-|------|-------|----------------|----------|
-| Free | $0 | 75 | Basic AI models, rate limits |
-| Pro | $20 | 750 | Advanced models, higher limits |
-| Premium | $50 | 3,000 | All models, priority support |
+| Tier | Price | Annual (20% off) | Messages/Day | Messages/Month | Features |
+|------|-------|-------------------|--------------|----------------|----------|
+| Free | $0 | — | 50 | 500 | Standard models, rate limits |
+| Plus | $12/mo | $115.20/yr ($9.60/mo) | 300 | Unlimited | ALL 30+ models, web search, code execution, image/video gen, KB RAG |
+| Pro | $25/mo | $240/yr ($20/mo) | 1,500 | Unlimited | Everything in Plus + 5× daily capacity + priority model access |
+| Max | $50/mo | $480/yr ($40/mo) | 5,000 | Unlimited | Everything in Pro + team workspace + enterprise features |
 
 ## Stripe Configuration in Code
 
@@ -134,35 +139,25 @@ The Stripe configuration is located in:
 - `lib/stripe/subscriptions.ts` - Subscription management functions
 - `lib/stripe/index.ts` - Public exports
 
-## Usage Limits
+## Internal DB Tier Mapping
 
-Rate limits are defined in `lib/usage/tracking.ts`:
+Site-facing names map to internal DB tier values:
 
-```typescript
-free: {
-  messagesPerMinute: 3,
-  messagesPerDay: 30,
-  messagesPerMonth: 75,
-}
-pro: {
-  messagesPerMinute: 10,
-  messagesPerDay: 300,
-  messagesPerMonth: 750,
-}
-premium: {
-  messagesPerMinute: 20,
-  messagesPerDay: 1000,
-  messagesPerMonth: 3000,
-}
+| Site Name | DB Tier | Monthly | Annual |
+|-----------|---------|---------|--------|
+| Plus | `pro` | $12/mo | $115.20/yr |
+| Pro | `premium` | $25/mo | $240/yr |
+| Max | `enterprise` | $50/mo | $480/yr |
+
+## Deployment Script
+
+For production setup, use the one-shot deployment script:
+
+```bash
+STRIPE_SECRET_KEY=sk_live_... STRIPE_PUBLISHABLE_KEY=pk_live_... VERCEL_TOKEN=... bash scripts/deploy-production.sh
 ```
 
-## Next Steps
-
-After completing this setup:
-1. Build the webhook handler (`/api/webhooks/stripe`)
-2. Create subscription management UI
-3. Add user tier synchronization with Stripe subscriptions
-4. Test end-to-end subscription flow
+This creates Stripe products, registers the webhook, sets Vercel env vars, and redeploys.
 
 ## Resources
 

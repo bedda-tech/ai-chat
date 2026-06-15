@@ -86,10 +86,10 @@ if (!result.allowed) {
 
 | Tier | Per Minute | Per Day | Per Month | Price |
 |------|------------|---------|-----------|-------|
-| **Free** | 3 | 30 | 75 | $0 |
-| **Pro** | 10 | 300 | 750 | $20/mo |
-| **Premium** | 20 | 1,000 | 3,000 | $50/mo |
-| **Enterprise** | 100 | 10,000 | 100,000 | Custom |
+| **Free** | 5 | 50 | 500 | $0 |
+| **Plus** | 10 | 300 | Unlimited | $12/mo |
+| **Pro** | 20 | 1,500 | Unlimited | $25/mo |
+| **Max** | 40 | 5,000 | Unlimited | $50/mo |
 
 ## Integration
 
