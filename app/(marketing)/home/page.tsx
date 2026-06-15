@@ -127,7 +127,10 @@ export default function HomePage() {
             </Button>
           </div>
           <p className="mt-4 text-sm text-muted-foreground">
-            7 days free. Then $12/mo. Cancel anytime.
+            7 days free. Then $12/mo. Cancel anytime.{" "}
+            <Link href="/api/auth/guest?redirectUrl=/" className="underline underline-offset-4 hover:text-foreground transition-colors">
+              Or try without an account →
+            </Link>
           </p>
         </div>
       </section>
@@ -315,7 +318,10 @@ export default function HomePage() {
             </Button>
           </div>
           <p className="mt-4 text-sm text-primary-foreground/60">
-            7 days free. No credit card required to start.
+            7 days free. No credit card required.{" "}
+            <Link href="/api/auth/guest?redirectUrl=/" className="underline underline-offset-4 hover:text-primary-foreground/80 transition-colors">
+              Or try without an account →
+            </Link>
           </p>
         </div>
       </section>

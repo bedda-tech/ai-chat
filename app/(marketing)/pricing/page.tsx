@@ -134,6 +134,14 @@ export default function PricingPage() {
       {/* Pricing toggle + cards */}
       <PricingSection />
 
+      {/* Zero-friction try link */}
+      <p className="mt-6 text-center text-sm text-muted-foreground">
+        Not ready to commit?{" "}
+        <Link href="/api/auth/guest?redirectUrl=/" className="underline underline-offset-4 hover:text-foreground transition-colors">
+          Try bedda without an account →
+        </Link>
+      </p>
+
       {/* Value Proposition */}
       <div className="mx-auto mt-20 max-w-3xl text-center">
         <h2 className="mb-4 font-bold text-2xl">
