@@ -1,21 +1,22 @@
+import { eq } from "drizzle-orm";
+import { drizzle } from "drizzle-orm/postgres-js";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
-import type Stripe from "stripe";
-import { drizzle } from "drizzle-orm/postgres-js";
-import { eq } from "drizzle-orm";
 import postgres from "postgres";
-import { stripe, getSubscriptionTier } from "@/lib/stripe";
+import type Stripe from "stripe";
+import { logAuditEvent } from "@/lib/audit";
 import { user, userTier } from "@/lib/db/schema";
 import { updateTeamBilling } from "@/lib/db/team-queries";
-import { logAuditEvent } from "@/lib/audit";
-import { TIER_DISPLAY_NAMES, type DbTier } from "@/lib/stripe/config";
 import {
+  sendCancellationEmail,
+  sendCheckoutAbandonedEmail,
+  sendPaymentFailedEmail,
   sendSubscriptionActivatedEmail,
   sendTrialEndingEmail,
   sendTrialExpiredEmail,
-  sendPaymentFailedEmail,
-  sendCheckoutAbandonedEmail,
 } from "@/lib/email/send-subscription-email";
+import { getSubscriptionTier, stripe } from "@/lib/stripe";
+import { type DbTier, TIER_DISPLAY_NAMES } from "@/lib/stripe/config";
 
 const connectionString = process.env.POSTGRES_URL!;
 const client = postgres(connectionString);
@@ -54,10 +55,7 @@ export async function POST(req: Request) {
     );
   } catch (err) {
     console.error("Webhook signature verification failed:", err);
-    return NextResponse.json(
-      { error: "Invalid signature" },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
   }
 
   try {
@@ -211,8 +209,12 @@ async function handleSubscriptionChange(
 
   // Get period from the first subscription item (Stripe v19+ moved period to items)
   const firstItem = subscription.items.data[0];
-  const periodStart = firstItem ? new Date(firstItem.current_period_start * 1000) : new Date();
-  const periodEnd = firstItem ? new Date(firstItem.current_period_end * 1000) : new Date();
+  const periodStart = firstItem
+    ? new Date(firstItem.current_period_start * 1000)
+    : new Date();
+  const periodEnd = firstItem
+    ? new Date(firstItem.current_period_end * 1000)
+    : new Date();
 
   // Update or create user tier
   const existing = await db
@@ -249,11 +251,19 @@ async function handleSubscriptionChange(
     });
   }
 
-  void logAuditEvent(userId, "subscription.changed", { from_tier: fromTier, to_tier: tier, subscriptionId: subscription.id });
+  void logAuditEvent(userId, "subscription.changed", {
+    from_tier: fromTier,
+    to_tier: tier,
+    subscriptionId: subscription.id,
+  });
 
   // Send activation email when a user first subscribes (free → paid)
   if (fromTier === "free" && tier !== "free") {
-    const users = await db.select().from(user).where(eq(user.id, userId)).limit(1);
+    const users = await db
+      .select()
+      .from(user)
+      .where(eq(user.id, userId))
+      .limit(1);
     const email = users[0]?.email;
     if (email && !email.startsWith("guest-")) {
       const planName = TIER_DISPLAY_NAMES[tier as DbTier] ?? tier;
@@ -262,7 +272,8 @@ async function handleSubscriptionChange(
           ? new Date(subscription.trial_end * 1000)
           : undefined;
       void sendSubscriptionActivatedEmail(email, planName, trialEnd).catch(
-        (err) => console.error("Failed to send subscription activation email:", err),
+        (err) =>
+          console.error("Failed to send subscription activation email:", err)
       );
     }
   }
@@ -295,16 +306,29 @@ async function handleSubscriptionDeleted(
     })
     .where(eq(userTier.userId, userId));
 
-  // If this subscription had a trial, the user let it expire without converting.
-  // Send a win-back email pointing them to upgrade.
-  if (subscription.trial_end) {
-    const tier = await getSubscriptionTier(subscription);
-    const planName = TIER_DISPLAY_NAMES[tier as DbTier] ?? "Plus";
-    const users = await db.select().from(user).where(eq(user.id, userId)).limit(1);
-    const email = users[0]?.email;
-    if (email && !email.startsWith("guest-")) {
-      void sendTrialExpiredEmail(email, planName).catch(
-        (err) => console.error("Failed to send trial expired email:", err),
+  const tier = await getSubscriptionTier(subscription);
+  const planName = TIER_DISPLAY_NAMES[tier as DbTier] ?? "Plus";
+  const users = await db
+    .select()
+    .from(user)
+    .where(eq(user.id, userId))
+    .limit(1);
+  const email = users[0]?.email;
+
+  if (email && !email.startsWith("guest-")) {
+    if (subscription.trial_end) {
+      // Trial expired without converting — send trial win-back email
+      void sendTrialExpiredEmail(email, planName).catch((err) =>
+        console.error("Failed to send trial expired email:", err)
+      );
+    } else {
+      // Regular paying subscriber canceled — send cancellation confirmation
+      const firstItem = subscription.items.data[0];
+      const periodEnd = firstItem
+        ? new Date(firstItem.current_period_end * 1000)
+        : new Date();
+      void sendCancellationEmail(email, planName, periodEnd).catch((err) =>
+        console.error("Failed to send cancellation email:", err)
       );
     }
   }
@@ -322,7 +346,7 @@ async function handlePaymentSucceeded(invoice: Stripe.Invoice): Promise<void> {
  * Handle trial ending reminder (Stripe fires 3 days before trial_end)
  */
 async function handleTrialWillEnd(
-  subscription: Stripe.Subscription,
+  subscription: Stripe.Subscription
 ): Promise<void> {
   const userId = subscription.metadata.userId;
   if (!userId) return;
@@ -334,7 +358,11 @@ async function handleTrialWillEnd(
   const msLeft = trialEndDate.getTime() - Date.now();
   const daysLeft = Math.max(1, Math.round(msLeft / (1000 * 60 * 60 * 24)));
 
-  const users = await db.select().from(user).where(eq(user.id, userId)).limit(1);
+  const users = await db
+    .select()
+    .from(user)
+    .where(eq(user.id, userId))
+    .limit(1);
   const email = users[0]?.email;
   if (!email || email.startsWith("guest-")) return;
 
@@ -342,7 +370,7 @@ async function handleTrialWillEnd(
   const planName = TIER_DISPLAY_NAMES[tier as DbTier] ?? tier;
 
   void sendTrialEndingEmail(email, planName, trialEndDate, daysLeft).catch(
-    (err) => console.error("Failed to send trial ending email:", err),
+    (err) => console.error("Failed to send trial ending email:", err)
   );
 }
 
@@ -351,17 +379,21 @@ async function handleTrialWillEnd(
  * Send a recovery email to bring the user back to complete their upgrade.
  */
 async function handleCheckoutExpired(
-  session: Stripe.Checkout.Session,
+  session: Stripe.Checkout.Session
 ): Promise<void> {
   const userId = session.metadata?.userId;
   if (!userId) return;
 
-  const users = await db.select().from(user).where(eq(user.id, userId)).limit(1);
+  const users = await db
+    .select()
+    .from(user)
+    .where(eq(user.id, userId))
+    .limit(1);
   const email = users[0]?.email;
   if (!email || email.startsWith("guest-")) return;
 
-  void sendCheckoutAbandonedEmail(email).catch(
-    (err) => console.error("Failed to send checkout abandoned email:", err),
+  void sendCheckoutAbandonedEmail(email).catch((err) =>
+    console.error("Failed to send checkout abandoned email:", err)
   );
 }
 
@@ -384,13 +416,20 @@ async function handlePaymentFailed(invoice: Stripe.Invoice): Promise<void> {
   const tier = tierRecords[0]?.tier;
   if (!userId || !tier || tier === "free") return;
 
-  const users = await db.select().from(user).where(eq(user.id, userId)).limit(1);
+  const users = await db
+    .select()
+    .from(user)
+    .where(eq(user.id, userId))
+    .limit(1);
   const email = users[0]?.email;
   if (!email || email.startsWith("guest-")) return;
 
   const planName = TIER_DISPLAY_NAMES[tier as DbTier] ?? tier;
-  const invoiceUrl = typeof invoice.hosted_invoice_url === "string" ? invoice.hosted_invoice_url : undefined;
-  void sendPaymentFailedEmail(email, planName, invoiceUrl).catch(
-    (err) => console.error("Failed to send payment failure email:", err),
+  const invoiceUrl =
+    typeof invoice.hosted_invoice_url === "string"
+      ? invoice.hosted_invoice_url
+      : undefined;
+  void sendPaymentFailedEmail(email, planName, invoiceUrl).catch((err) =>
+    console.error("Failed to send payment failure email:", err)
   );
 }

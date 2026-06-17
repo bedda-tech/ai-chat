@@ -36,7 +36,7 @@ function formatDate(date: Date): string {
 export async function sendSubscriptionActivatedEmail(
   email: string,
   planName: string,
-  trialEndDate?: Date,
+  trialEndDate?: Date
 ): Promise<void> {
   const resend = new Resend(process.env.RESEND_API_KEY);
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://www.bedda.tech";
@@ -59,7 +59,7 @@ export async function sendSubscriptionActivatedEmail(
   const featureList = features
     .map(
       (f) =>
-        `<li style="margin-bottom: 8px; font-size: 14px; color: #555;">${f}</li>`,
+        `<li style="margin-bottom: 8px; font-size: 14px; color: #555;">${f}</li>`
     )
     .join("");
 
@@ -73,9 +73,10 @@ export async function sendSubscriptionActivatedEmail(
           ${isTrial ? `Welcome to your ${planName} trial` : `You're on ${planName}!`}
         </h1>
         <p style="color: #555; font-size: 15px; line-height: 1.6; margin-bottom: 24px;">
-          ${isTrial
-            ? `Your free trial has started. Explore everything ${planName} has to offer — no payment collected until your trial ends.`
-            : `Your ${planName} subscription is active. Here's what you now have access to:`
+          ${
+            isTrial
+              ? `Your free trial has started. Explore everything ${planName} has to offer — no payment collected until your trial ends.`
+              : `Your ${planName} subscription is active. Here's what you now have access to:`
           }
         </p>
 
@@ -110,7 +111,7 @@ export async function sendTrialEndingEmail(
   email: string,
   planName: string,
   trialEndDate: Date,
-  daysLeft: number,
+  daysLeft: number
 ): Promise<void> {
   const resend = new Resend(process.env.RESEND_API_KEY);
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://www.bedda.tech";
@@ -126,7 +127,8 @@ export async function sendTrialEndingEmail(
         </h1>
         <p style="color: #555; font-size: 15px; line-height: 1.6; margin-bottom: 24px;">
           Your ${planName} free trial expires on <strong>${formatDate(trialEndDate)}</strong>.
-          After that, you'll be billed automatically and can continue using all ${planName} features.
+          To keep your access after the trial, make sure a payment method is set up —
+          otherwise your account will revert to the free tier automatically.
         </p>
 
         <div style="background: #f5f5f5; border-radius: 10px; padding: 20px; margin-bottom: 24px;">
@@ -134,20 +136,22 @@ export async function sendTrialEndingEmail(
           <ul style="margin: 0; padding-left: 20px;">
             ${(PLAN_FEATURES[planName] ?? [])
               .slice(0, 4)
-              .map((f) => `<li style="margin-bottom: 6px; font-size: 14px; color: #555;">${f}</li>`)
+              .map(
+                (f) =>
+                  `<li style="margin-bottom: 6px; font-size: 14px; color: #555;">${f}</li>`
+              )
               .join("")}
           </ul>
         </div>
 
-        <p style="color: #555; font-size: 14px; margin-bottom: 20px;">
-          To cancel before being charged, go to
-          <a href="${appUrl}/settings" style="color: #000; font-weight: 600;">Settings → Subscription</a>
-          and cancel anytime.
-        </p>
-
-        <a href="${appUrl}" style="display: inline-block; background: #000; color: #fff; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 15px; margin-bottom: 24px;">
-          Continue chatting →
+        <a href="${appUrl}/settings" style="display: inline-block; background: #000; color: #fff; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 15px; margin-bottom: 20px;">
+          Add payment method →
         </a>
+
+        <p style="color: #555; font-size: 14px; margin-bottom: 20px;">
+          Or <a href="${appUrl}/settings" style="color: #000; font-weight: 600;">go to Settings → Subscription</a>
+          to cancel before the trial ends — you won't be charged.
+        </p>
 
         <p style="color: #bbb; font-size: 12px; margin-top: 16px; border-top: 1px solid #eee; padding-top: 16px;">
           You're receiving this because you're on a Bedda ${planName} trial.
@@ -159,18 +163,19 @@ export async function sendTrialEndingEmail(
 
 export async function sendTrialExpiredEmail(
   email: string,
-  planName: string,
+  planName: string
 ): Promise<void> {
   const resend = new Resend(process.env.RESEND_API_KEY);
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://www.bedda.tech";
   const features = PLAN_FEATURES[planName] ?? PLAN_FEATURES["Plus"] ?? [];
-  const monthlyPrice = planName === "Pro" ? "25" : planName === "Max" ? "50" : "12";
+  const monthlyPrice =
+    planName === "Pro" ? "25" : planName === "Max" ? "50" : "12";
 
   const featureList = features
     .slice(0, 4)
     .map(
       (f) =>
-        `<li style="margin-bottom: 8px; font-size: 14px; color: #555;">${f}</li>`,
+        `<li style="margin-bottom: 8px; font-size: 14px; color: #555;">${f}</li>`
     )
     .join("");
 
@@ -218,9 +223,7 @@ export async function sendTrialExpiredEmail(
   });
 }
 
-export async function sendCheckoutAbandonedEmail(
-  email: string,
-): Promise<void> {
+export async function sendCheckoutAbandonedEmail(email: string): Promise<void> {
   const resend = new Resend(process.env.RESEND_API_KEY);
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://www.bedda.tech";
 
@@ -267,10 +270,73 @@ export async function sendCheckoutAbandonedEmail(
   });
 }
 
+export async function sendCancellationEmail(
+  email: string,
+  planName: string,
+  periodEnd: Date
+): Promise<void> {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://www.bedda.tech";
+  const features = PLAN_FEATURES[planName] ?? PLAN_FEATURES["Plus"] ?? [];
+  const monthlyPrice =
+    planName === "Pro" ? "25" : planName === "Max" ? "50" : "12";
+
+  const featureList = features
+    .slice(0, 4)
+    .map(
+      (f) =>
+        `<li style="margin-bottom: 8px; font-size: 14px; color: #555;">${f}</li>`
+    )
+    .join("");
+
+  await resend.emails.send({
+    from: process.env.RESEND_FROM_EMAIL ?? "Bedda <onboarding@resend.dev>",
+    to: email,
+    subject: `Your Bedda ${planName} subscription has been canceled`,
+    html: `
+      <div style="font-family: sans-serif; max-width: 520px; margin: 0 auto; padding: 32px 24px; color: #111;">
+        <h1 style="font-size: 24px; font-weight: 700; margin-bottom: 8px;">
+          Subscription canceled
+        </h1>
+        <p style="color: #555; font-size: 15px; line-height: 1.6; margin-bottom: 24px;">
+          Your Bedda ${planName} subscription has been canceled. Your access will continue
+          until <strong>${formatDate(periodEnd)}</strong>, after which your account will
+          revert to the Free plan (50 messages/day, limited models).
+        </p>
+
+        <div style="background: #f5f5f5; border-radius: 10px; padding: 20px; margin-bottom: 24px;">
+          <p style="margin: 0 0 12px; font-weight: 600; font-size: 14px; color: #333;">What you'll lose on ${formatDate(periodEnd)}:</p>
+          <ul style="margin: 0; padding-left: 20px;">
+            ${featureList}
+          </ul>
+        </div>
+
+        <p style="color: #555; font-size: 15px; line-height: 1.6; margin-bottom: 20px;">
+          Changed your mind? You can reactivate anytime — no new trial required.
+        </p>
+
+        <a href="${appUrl}/upgrade?plan=${planName.toLowerCase()}&source=cancellation_email"
+           style="display: inline-block; background: #000; color: #fff; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 15px; margin-bottom: 24px;">
+          Reactivate ${planName} — $${monthlyPrice}/mo →
+        </a>
+
+        <p style="color: #888; font-size: 13px; line-height: 1.6; border-top: 1px solid #eee; padding-top: 20px; margin-top: 8px;">
+          If you canceled by mistake or have any questions, just reply to this email —
+          we're happy to help sort it out.
+        </p>
+
+        <p style="color: #bbb; font-size: 12px; margin-top: 16px;">
+          You're receiving this because you canceled your Bedda ${planName} subscription.
+        </p>
+      </div>
+    `,
+  });
+}
+
 export async function sendPaymentFailedEmail(
   email: string,
   planName: string,
-  invoiceUrl?: string,
+  invoiceUrl?: string
 ): Promise<void> {
   const resend = new Resend(process.env.RESEND_API_KEY);
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://www.bedda.tech";
