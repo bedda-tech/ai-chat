@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import { unsubscribeUrl } from "./unsub-token";
 
 const PLAN_FEATURES: Record<string, string[]> = {
   Plus: [
@@ -327,6 +328,76 @@ export async function sendCancellationEmail(
 
         <p style="color: #bbb; font-size: 12px; margin-top: 16px;">
           You're receiving this because you canceled your Bedda ${planName} subscription.
+        </p>
+      </div>
+    `,
+  });
+}
+
+export async function sendAnnualUpgradeEmail(
+  email: string,
+  userId: string,
+  planName: string,
+  monthlyCents: number,
+  annualCents: number
+): Promise<void> {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://www.bedda.tech";
+
+  const monthlyFmt = (monthlyCents / 100).toFixed(0);
+  const annualMonthlyFmt = (annualCents / 100 / 12).toFixed(2);
+  const annualFmt = (annualCents / 100).toFixed(0);
+  const savedPerYear = ((monthlyCents * 12 - annualCents) / 100).toFixed(0);
+  const planLower = planName.toLowerCase();
+
+  await resend.emails.send({
+    from: process.env.RESEND_FROM_EMAIL ?? "Bedda <onboarding@resend.dev>",
+    to: email,
+    subject: `Save $${savedPerYear}/year on Bedda ${planName} — switch to annual`,
+    html: `
+      <div style="font-family: sans-serif; max-width: 520px; margin: 0 auto; padding: 32px 24px; color: #111;">
+        <h1 style="font-size: 24px; font-weight: 700; margin-bottom: 8px;">
+          Save $${savedPerYear} this year
+        </h1>
+        <p style="color: #555; font-size: 15px; line-height: 1.6; margin-bottom: 24px;">
+          You're on Bedda ${planName} — that's great taste. One quick change could save you
+          <strong>$${savedPerYear}/year</strong>: switch to the annual plan and pay 20% less.
+        </p>
+
+        <div style="border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; margin-bottom: 24px;">
+          <div style="display: flex; background: #f9fafb; padding: 12px 20px; font-size: 12px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em;">
+            <div style="flex: 1;">Plan</div>
+            <div style="width: 120px; text-align: right;">Price</div>
+          </div>
+          <div style="display: flex; align-items: center; padding: 16px 20px; border-top: 1px solid #e5e7eb;">
+            <div style="flex: 1;">
+              <div style="font-weight: 600; font-size: 14px; color: #111;">${planName} Monthly</div>
+              <div style="font-size: 12px; color: #9ca3af; margin-top: 2px;">Current plan</div>
+            </div>
+            <div style="width: 120px; text-align: right; font-size: 15px; font-weight: 600; color: #6b7280;">$${monthlyFmt}/mo</div>
+          </div>
+          <div style="display: flex; align-items: center; padding: 16px 20px; border-top: 1px solid #e5e7eb; background: #fafff4;">
+            <div style="flex: 1;">
+              <div style="font-weight: 700; font-size: 14px; color: #111;">${planName} Annual</div>
+              <div style="font-size: 12px; color: #16a34a; margin-top: 2px; font-weight: 600;">20% off · $${annualFmt} billed once per year</div>
+            </div>
+            <div style="width: 120px; text-align: right; font-size: 15px; font-weight: 700; color: #16a34a;">$${annualMonthlyFmt}/mo</div>
+          </div>
+        </div>
+
+        <a href="${appUrl}/settings?tab=subscription&source=annual_offer_email"
+           style="display: inline-block; background: #000; color: #fff; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px; margin-bottom: 20px;">
+          Switch to annual — save $${savedPerYear} →
+        </a>
+
+        <p style="color: #6b7280; font-size: 13px; line-height: 1.6; margin-bottom: 0;">
+          Go to <a href="${appUrl}/settings" style="color: #111; font-weight: 600;">Settings → Subscription</a>
+          and click "Change plan" to switch. The unused portion of your current month is prorated.
+        </p>
+
+        <p style="color: #9ca3af; font-size: 12px; margin-top: 24px; border-top: 1px solid #f3f4f6; padding-top: 16px;">
+          You're receiving this because you're an active Bedda ${planName} subscriber.
+          <a href="${unsubscribeUrl(userId)}" style="color: #9ca3af;">Unsubscribe</a>
         </p>
       </div>
     `,

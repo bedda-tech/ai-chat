@@ -11,6 +11,10 @@
     {
       "path": "/api/cron/near-limit-notifications",
       "schedule": "0 11 * * *"
+    },
+    {
+      "path": "/api/cron/annual-upgrade-offers",
+      "schedule": "0 10 15 * *"
     }
   ]
 }

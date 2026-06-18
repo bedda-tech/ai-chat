@@ -22,31 +22,35 @@ export default function MarketingLayout({
                 unoptimized
                 width={24}
               />
-              <span className="hidden font-bold sm:inline-block">
-                bedda.ai
-              </span>
+              <span className="hidden font-bold sm:inline-block">bedda.ai</span>
             </Link>
-            <nav className="flex items-center space-x-6 text-sm font-medium">
+            <nav className="flex items-center space-x-6 font-medium text-sm">
               <Link
-                className="transition-colors hover:text-foreground/80 text-foreground/60"
+                className="text-foreground/60 transition-colors hover:text-foreground/80"
                 href="/home"
               >
                 Home
               </Link>
               <Link
-                className="transition-colors hover:text-foreground/80 text-foreground/60"
+                className="text-foreground/60 transition-colors hover:text-foreground/80"
                 href="/pricing"
               >
                 Pricing
               </Link>
               <Link
-                className="transition-colors hover:text-foreground/80 text-foreground/60"
+                className="text-foreground/60 transition-colors hover:text-foreground/80"
+                href="/models"
+              >
+                Models
+              </Link>
+              <Link
+                className="text-foreground/60 transition-colors hover:text-foreground/80"
                 href="/compare/bedda-vs-chatgpt"
               >
                 Compare
               </Link>
               <Link
-                className="transition-colors hover:text-foreground/80 text-foreground/60"
+                className="text-foreground/60 transition-colors hover:text-foreground/80"
                 href="/roadmap"
               >
                 Roadmap
@@ -68,10 +72,11 @@ export default function MarketingLayout({
       <main className="flex-1">{children}</main>
       <footer className="border-t py-6 md:py-0">
         <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
-          <p className="text-muted-foreground text-center text-sm leading-loose md:text-left">
-            &copy; {new Date().getFullYear()} bedda.ai &mdash; All AI models, one subscription.
+          <p className="text-center text-muted-foreground text-sm leading-loose md:text-left">
+            &copy; {new Date().getFullYear()} bedda.ai &mdash; All AI models,
+            one subscription.
           </p>
-          <nav className="flex items-center gap-4 text-sm text-muted-foreground">
+          <nav className="flex items-center gap-4 text-muted-foreground text-sm">
             <Link
               className="transition-colors hover:text-foreground/80"
               href="/privacy"
