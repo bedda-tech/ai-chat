@@ -1,9 +1,16 @@
-import { NextRequest, NextResponse } from "next/server";
-import { drizzle } from "drizzle-orm/postgres-js";
-import postgres from "postgres";
 import { and, eq, gte, lt } from "drizzle-orm";
+import { drizzle } from "drizzle-orm/postgres-js";
+import { type NextRequest, NextResponse } from "next/server";
+import postgres from "postgres";
 import * as schema from "@/lib/db/schema";
-import { sendDripEmailDay3, sendDripEmailDay7, sendDripEmailDay14, sendDripEmailDay21, sendDripEmailDay30 } from "@/lib/email/send-drip-email";
+import {
+  sendDripEmailDay1,
+  sendDripEmailDay3,
+  sendDripEmailDay7,
+  sendDripEmailDay14,
+  sendDripEmailDay21,
+  sendDripEmailDay30,
+} from "@/lib/email/send-drip-email";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -32,6 +39,7 @@ export async function GET(req: NextRequest) {
   const client = postgres(process.env.POSTGRES_URL);
   const db = drizzle(client, { schema });
 
+  const day1Window = dayWindowAgo(1);
   const day3Window = dayWindowAgo(3);
   const day7Window = dayWindowAgo(7);
   const day14Window = dayWindowAgo(14);
@@ -39,75 +47,96 @@ export async function GET(req: NextRequest) {
   const day30Window = dayWindowAgo(30);
 
   // Fetch free, non-guest users who signed up in each window
-  const [day3Users, day7Users, day14Users, day21Users, day30Users] = await Promise.all([
-    db
-      .select({ email: schema.user.email })
-      .from(schema.userTier)
-      .innerJoin(schema.user, eq(schema.userTier.userId, schema.user.id))
-      .where(
-        and(
-          eq(schema.userTier.tier, "free"),
-          gte(schema.userTier.createdAt, day3Window.start),
-          lt(schema.userTier.createdAt, day3Window.end)
-        )
-      ),
-    db
-      .select({ email: schema.user.email })
-      .from(schema.userTier)
-      .innerJoin(schema.user, eq(schema.userTier.userId, schema.user.id))
-      .where(
-        and(
-          eq(schema.userTier.tier, "free"),
-          gte(schema.userTier.createdAt, day7Window.start),
-          lt(schema.userTier.createdAt, day7Window.end)
-        )
-      ),
-    db
-      .select({ email: schema.user.email })
-      .from(schema.userTier)
-      .innerJoin(schema.user, eq(schema.userTier.userId, schema.user.id))
-      .where(
-        and(
-          eq(schema.userTier.tier, "free"),
-          gte(schema.userTier.createdAt, day14Window.start),
-          lt(schema.userTier.createdAt, day14Window.end)
-        )
-      ),
-    db
-      .select({ email: schema.user.email })
-      .from(schema.userTier)
-      .innerJoin(schema.user, eq(schema.userTier.userId, schema.user.id))
-      .where(
-        and(
-          eq(schema.userTier.tier, "free"),
-          gte(schema.userTier.createdAt, day21Window.start),
-          lt(schema.userTier.createdAt, day21Window.end)
-        )
-      ),
-    db
-      .select({ email: schema.user.email })
-      .from(schema.userTier)
-      .innerJoin(schema.user, eq(schema.userTier.userId, schema.user.id))
-      .where(
-        and(
-          eq(schema.userTier.tier, "free"),
-          gte(schema.userTier.createdAt, day30Window.start),
-          lt(schema.userTier.createdAt, day30Window.end)
-        )
-      ),
-  ]);
+  const [day1Users, day3Users, day7Users, day14Users, day21Users, day30Users] =
+    await Promise.all([
+      db
+        .select({ email: schema.user.email })
+        .from(schema.userTier)
+        .innerJoin(schema.user, eq(schema.userTier.userId, schema.user.id))
+        .where(
+          and(
+            eq(schema.userTier.tier, "free"),
+            gte(schema.userTier.createdAt, day1Window.start),
+            lt(schema.userTier.createdAt, day1Window.end)
+          )
+        ),
+      db
+        .select({ email: schema.user.email })
+        .from(schema.userTier)
+        .innerJoin(schema.user, eq(schema.userTier.userId, schema.user.id))
+        .where(
+          and(
+            eq(schema.userTier.tier, "free"),
+            gte(schema.userTier.createdAt, day3Window.start),
+            lt(schema.userTier.createdAt, day3Window.end)
+          )
+        ),
+      db
+        .select({ email: schema.user.email })
+        .from(schema.userTier)
+        .innerJoin(schema.user, eq(schema.userTier.userId, schema.user.id))
+        .where(
+          and(
+            eq(schema.userTier.tier, "free"),
+            gte(schema.userTier.createdAt, day7Window.start),
+            lt(schema.userTier.createdAt, day7Window.end)
+          )
+        ),
+      db
+        .select({ email: schema.user.email })
+        .from(schema.userTier)
+        .innerJoin(schema.user, eq(schema.userTier.userId, schema.user.id))
+        .where(
+          and(
+            eq(schema.userTier.tier, "free"),
+            gte(schema.userTier.createdAt, day14Window.start),
+            lt(schema.userTier.createdAt, day14Window.end)
+          )
+        ),
+      db
+        .select({ email: schema.user.email })
+        .from(schema.userTier)
+        .innerJoin(schema.user, eq(schema.userTier.userId, schema.user.id))
+        .where(
+          and(
+            eq(schema.userTier.tier, "free"),
+            gte(schema.userTier.createdAt, day21Window.start),
+            lt(schema.userTier.createdAt, day21Window.end)
+          )
+        ),
+      db
+        .select({ email: schema.user.email })
+        .from(schema.userTier)
+        .innerJoin(schema.user, eq(schema.userTier.userId, schema.user.id))
+        .where(
+          and(
+            eq(schema.userTier.tier, "free"),
+            gte(schema.userTier.createdAt, day30Window.start),
+            lt(schema.userTier.createdAt, day30Window.end)
+          )
+        ),
+    ]);
 
   // Filter out guest accounts (they have no real email)
   const guestPattern = /^guest-/i;
+  const realDay1 = day1Users.filter((u) => !guestPattern.test(u.email));
   const realDay3 = day3Users.filter((u) => !guestPattern.test(u.email));
   const realDay7 = day7Users.filter((u) => !guestPattern.test(u.email));
   const realDay14 = day14Users.filter((u) => !guestPattern.test(u.email));
   const realDay21 = day21Users.filter((u) => !guestPattern.test(u.email));
   const realDay30 = day30Users.filter((u) => !guestPattern.test(u.email));
 
-  const results = { day3: 0, day7: 0, day14: 0, day21: 0, day30: 0, errors: 0 };
+  const results = { day1: 0, day3: 0, day7: 0, day14: 0, day21: 0, day30: 0, errors: 0 };
 
   await Promise.all([
+    ...realDay1.map(async (u) => {
+      try {
+        await sendDripEmailDay1(u.email);
+        results.day1++;
+      } catch {
+        results.errors++;
+      }
+    }),
     ...realDay3.map(async (u) => {
       try {
         await sendDripEmailDay3(u.email);
@@ -155,6 +184,7 @@ export async function GET(req: NextRequest) {
   return NextResponse.json({
     sent: results,
     windows: {
+      day1: { start: day1Window.start, end: day1Window.end },
       day3: { start: day3Window.start, end: day3Window.end },
       day7: { start: day7Window.start, end: day7Window.end },
       day14: { start: day14Window.start, end: day14Window.end },
