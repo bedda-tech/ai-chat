@@ -22,6 +22,7 @@ export const user = pgTable("User", {
   onboardingCompleted: boolean("onboardingCompleted").default(false),
   referralCode: varchar("referralCode", { length: 16 }).unique(),
   referredBy: varchar("referredBy", { length: 16 }),
+  emailUnsubscribed: boolean("emailUnsubscribed").default(false).notNull(),
 });
 
 export type User = InferSelectModel<typeof user>;
@@ -131,7 +132,18 @@ export const document = pgTable(
     createdAt: timestamp("createdAt").notNull(),
     title: text("title").notNull(),
     content: text("content"),
-    kind: varchar("text", { enum: ["text", "code", "image", "sheet", "mermaid", "html", "slides", "notebook"] })
+    kind: varchar("text", {
+      enum: [
+        "text",
+        "code",
+        "image",
+        "sheet",
+        "mermaid",
+        "html",
+        "slides",
+        "notebook",
+      ],
+    })
       .notNull()
       .default("text"),
     userId: uuid("userId")
@@ -570,13 +582,17 @@ export const videoJob = pgTable("VideoJob", {
   userId: uuid("userId")
     .notNull()
     .references(() => user.id, { onDelete: "cascade" }),
-  mode: varchar("mode", { enum: ["text-to-video", "image-to-video"] }).notNull(),
+  mode: varchar("mode", {
+    enum: ["text-to-video", "image-to-video"],
+  }).notNull(),
   quality: varchar("quality", { enum: ["standard", "pro"] }).notNull(),
   prompt: text("prompt").notNull(),
   sourceImageUrl: text("sourceImageUrl"),
   videoUrl: text("videoUrl"),
   thumbnailUrl: text("thumbnailUrl"),
-  status: varchar("status", { enum: ["pending", "processing", "completed", "failed"] })
+  status: varchar("status", {
+    enum: ["pending", "processing", "completed", "failed"],
+  })
     .notNull()
     .default("pending"),
   errorMessage: text("errorMessage"),
@@ -635,7 +651,9 @@ export const pluginTool = pgTable("PluginTool", {
     .references(() => user.id, { onDelete: "cascade" }),
   name: varchar("name", { length: 128 }).notNull(),
   description: text("description").notNull(),
-  parametersSchema: jsonb("parametersSchema").notNull().$type<Record<string, any>>(),
+  parametersSchema: jsonb("parametersSchema")
+    .notNull()
+    .$type<Record<string, any>>(),
   webhookUrl: text("webhookUrl").notNull(),
   authHeaderName: varchar("authHeaderName", { length: 255 }),
   authHeaderValueEncrypted: text("authHeaderValueEncrypted"),
@@ -659,7 +677,9 @@ export const organizationSsoConfig = pgTable("OrganizationSsoConfig", {
   updatedAt: timestamp("updatedAt").notNull().defaultNow(),
 });
 
-export type OrganizationSsoConfig = InferSelectModel<typeof organizationSsoConfig>;
+export type OrganizationSsoConfig = InferSelectModel<
+  typeof organizationSsoConfig
+>;
 
 export const organizationModelPolicy = pgTable("OrganizationModelPolicy", {
   id: uuid("id").primaryKey().notNull().defaultRandom(),
@@ -669,8 +689,12 @@ export const organizationModelPolicy = pgTable("OrganizationModelPolicy", {
     .references(() => team.id, { onDelete: "cascade" }),
   allowedModelIds: jsonb("allowedModelIds").$type<string[]>(),
   deniedModelIds: jsonb("deniedModelIds").$type<string[]>(),
-  monthlyCostCapUsdCents: integer("monthlyCostCapUsdCents").notNull().default(0),
+  monthlyCostCapUsdCents: integer("monthlyCostCapUsdCents")
+    .notNull()
+    .default(0),
   updatedAt: timestamp("updatedAt").notNull().defaultNow(),
 });
 
-export type OrganizationModelPolicy = InferSelectModel<typeof organizationModelPolicy>;
+export type OrganizationModelPolicy = InferSelectModel<
+  typeof organizationModelPolicy
+>;

@@ -27,9 +27,10 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith("/api/ms-teams") ||
     pathname.startsWith("/api/whatsapp") ||
     pathname.startsWith("/api/cron/") ||
+    pathname.startsWith("/api/unsubscribe") ||
     pathname.startsWith("/compare/") || // SEO comparison pages — must be crawlable
     pathname.startsWith("/join/") || // Referral landing pages
-    ["/home", "/pricing", "/roadmap", "/privacy", "/terms"].includes(pathname)
+    ["/home", "/pricing", "/roadmap", "/privacy", "/terms", "/unsubscribed"].includes(pathname)
   ) {
     return NextResponse.next();
   }
@@ -43,7 +44,11 @@ export async function middleware(request: NextRequest) {
   const isGuest = guestRegex.test(token?.email ?? "");
 
   // Auth pages: redirect authenticated (non-guest) users to the app; otherwise pass through
-  if (["/login", "/register", "/forgot-password", "/reset-password"].includes(pathname)) {
+  if (
+    ["/login", "/register", "/forgot-password", "/reset-password"].includes(
+      pathname
+    )
+  ) {
     if (token && !isGuest) {
       return NextResponse.redirect(new URL("/", request.url));
     }

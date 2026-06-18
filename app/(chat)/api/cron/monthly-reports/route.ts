@@ -45,7 +45,7 @@ export async function GET(req: NextRequest) {
   const client = postgres(process.env.POSTGRES_URL);
   const db = drizzle(client, { schema });
 
-  // All users with at least 1 message in the previous month
+  // All users with at least 1 message in the previous month, excluding unsubscribed
   const usageRows = await db
     .select({
       userId: schema.userUsage.userId,
@@ -62,7 +62,9 @@ export async function GET(req: NextRequest) {
       schema.userTier,
       eq(schema.userUsage.userId, schema.userTier.userId)
     )
-    .where(eq(schema.userUsage.month, start));
+    .where(
+      and(eq(schema.userUsage.month, start), eq(schema.user.emailUnsubscribed, false))
+    );
 
   let sent = 0;
   const errors: string[] = [];

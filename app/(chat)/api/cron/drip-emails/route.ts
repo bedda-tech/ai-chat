@@ -46,71 +46,77 @@ export async function GET(req: NextRequest) {
   const day21Window = dayWindowAgo(21);
   const day30Window = dayWindowAgo(30);
 
-  // Fetch free, non-guest users who signed up in each window
+  // Fetch free, non-unsubscribed users who signed up in each window
   const [day1Users, day3Users, day7Users, day14Users, day21Users, day30Users] =
     await Promise.all([
       db
-        .select({ email: schema.user.email })
+        .select({ email: schema.user.email, userId: schema.user.id })
         .from(schema.userTier)
         .innerJoin(schema.user, eq(schema.userTier.userId, schema.user.id))
         .where(
           and(
             eq(schema.userTier.tier, "free"),
+            eq(schema.user.emailUnsubscribed, false),
             gte(schema.userTier.createdAt, day1Window.start),
             lt(schema.userTier.createdAt, day1Window.end)
           )
         ),
       db
-        .select({ email: schema.user.email })
+        .select({ email: schema.user.email, userId: schema.user.id })
         .from(schema.userTier)
         .innerJoin(schema.user, eq(schema.userTier.userId, schema.user.id))
         .where(
           and(
             eq(schema.userTier.tier, "free"),
+            eq(schema.user.emailUnsubscribed, false),
             gte(schema.userTier.createdAt, day3Window.start),
             lt(schema.userTier.createdAt, day3Window.end)
           )
         ),
       db
-        .select({ email: schema.user.email })
+        .select({ email: schema.user.email, userId: schema.user.id })
         .from(schema.userTier)
         .innerJoin(schema.user, eq(schema.userTier.userId, schema.user.id))
         .where(
           and(
             eq(schema.userTier.tier, "free"),
+            eq(schema.user.emailUnsubscribed, false),
             gte(schema.userTier.createdAt, day7Window.start),
             lt(schema.userTier.createdAt, day7Window.end)
           )
         ),
       db
-        .select({ email: schema.user.email })
+        .select({ email: schema.user.email, userId: schema.user.id })
         .from(schema.userTier)
         .innerJoin(schema.user, eq(schema.userTier.userId, schema.user.id))
         .where(
           and(
             eq(schema.userTier.tier, "free"),
+            eq(schema.user.emailUnsubscribed, false),
             gte(schema.userTier.createdAt, day14Window.start),
             lt(schema.userTier.createdAt, day14Window.end)
           )
         ),
       db
-        .select({ email: schema.user.email })
+        .select({ email: schema.user.email, userId: schema.user.id })
         .from(schema.userTier)
         .innerJoin(schema.user, eq(schema.userTier.userId, schema.user.id))
         .where(
           and(
             eq(schema.userTier.tier, "free"),
+            eq(schema.user.emailUnsubscribed, false),
             gte(schema.userTier.createdAt, day21Window.start),
             lt(schema.userTier.createdAt, day21Window.end)
           )
         ),
       db
-        .select({ email: schema.user.email })
+        .select({ email: schema.user.email, userId: schema.user.id })
         .from(schema.userTier)
         .innerJoin(schema.user, eq(schema.userTier.userId, schema.user.id))
         .where(
           and(
             eq(schema.userTier.tier, "free"),
+            eq(schema.user.emailUnsubscribed, false),
             gte(schema.userTier.createdAt, day30Window.start),
             lt(schema.userTier.createdAt, day30Window.end)
           )
@@ -131,7 +137,7 @@ export async function GET(req: NextRequest) {
   await Promise.all([
     ...realDay1.map(async (u) => {
       try {
-        await sendDripEmailDay1(u.email);
+        await sendDripEmailDay1(u.email, u.userId);
         results.day1++;
       } catch {
         results.errors++;
@@ -139,7 +145,7 @@ export async function GET(req: NextRequest) {
     }),
     ...realDay3.map(async (u) => {
       try {
-        await sendDripEmailDay3(u.email);
+        await sendDripEmailDay3(u.email, u.userId);
         results.day3++;
       } catch {
         results.errors++;
@@ -147,7 +153,7 @@ export async function GET(req: NextRequest) {
     }),
     ...realDay7.map(async (u) => {
       try {
-        await sendDripEmailDay7(u.email);
+        await sendDripEmailDay7(u.email, u.userId);
         results.day7++;
       } catch {
         results.errors++;
@@ -155,7 +161,7 @@ export async function GET(req: NextRequest) {
     }),
     ...realDay14.map(async (u) => {
       try {
-        await sendDripEmailDay14(u.email);
+        await sendDripEmailDay14(u.email, u.userId);
         results.day14++;
       } catch {
         results.errors++;
@@ -163,7 +169,7 @@ export async function GET(req: NextRequest) {
     }),
     ...realDay21.map(async (u) => {
       try {
-        await sendDripEmailDay21(u.email);
+        await sendDripEmailDay21(u.email, u.userId);
         results.day21++;
       } catch {
         results.errors++;
@@ -171,7 +177,7 @@ export async function GET(req: NextRequest) {
     }),
     ...realDay30.map(async (u) => {
       try {
-        await sendDripEmailDay30(u.email);
+        await sendDripEmailDay30(u.email, u.userId);
         results.day30++;
       } catch {
         results.errors++;

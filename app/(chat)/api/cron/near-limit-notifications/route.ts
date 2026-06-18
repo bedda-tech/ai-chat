@@ -62,6 +62,7 @@ export async function GET(req: NextRequest) {
       and(
         eq(schema.userUsage.month, monthStart),
         eq(schema.userTier.tier, "free"),
+        eq(schema.user.emailUnsubscribed, false),
         sql`CAST(${schema.userUsage.messageCount} AS INTEGER) >= ${NOTIFY_THRESHOLD}`
       )
     );
@@ -90,7 +91,7 @@ export async function GET(req: NextRequest) {
 
     try {
       const used = parseInt(u.messageCount, 10);
-      await sendNearLimitEmail(u.email, used, FREE_TIER_LIMIT);
+      await sendNearLimitEmail(u.email, u.userId, used, FREE_TIER_LIMIT);
       await redis.set(redisKey, "1", { EX: 35 * 24 * 60 * 60 }).catch(() => {});
       sent++;
     } catch {
