@@ -6,11 +6,11 @@ import { PricingSection } from "@/components/pricing-section";
 export const metadata: Metadata = {
   title: "Pricing — bedda.ai | All AI Models, One Subscription",
   description:
-    "One subscription unlocks Claude 4, GPT-5, Gemini, Grok, DeepSeek and 30+ AI models. Plus plan starts at $12/mo — cheaper than a single ChatGPT Plus subscription. 7-day free trial.",
+    "One subscription unlocks Claude 4, GPT-5, Gemini, Grok, DeepSeek and 36+ AI models. Plus plan starts at $12/mo — cheaper than a single ChatGPT Plus subscription. 7-day free trial.",
   openGraph: {
     title: "bedda.ai Pricing — Less Than ChatGPT Plus, More AI Models",
     description:
-      "Why pay $20+ for each AI separately? bedda.ai gives you Claude, GPT-5, Gemini, Grok and 30+ models for $12/month. Start free today.",
+      "Why pay $20+ for each AI separately? bedda.ai gives you Claude, GPT-5, Gemini, Grok and 36+ models for $12/month. Start free today.",
   },
   alternates: {
     canonical: "https://bedda.ai/pricing",
@@ -97,7 +97,7 @@ const comparisonData = [
   },
   {
     feature: "Total models",
-    bedda: "30+",
+    bedda: "36+",
     claude: "4",
     chatgpt: "5",
     gemini: "6",
@@ -126,7 +126,7 @@ export default function PricingPage() {
           One simple subscription.
         </h1>
         <p className="max-w-[85%] text-muted-foreground leading-normal sm:text-lg sm:leading-7">
-          Access Claude, ChatGPT, Gemini, Grok, DeepSeek, and 30+ more models.
+          Access Claude, ChatGPT, Gemini, Grok, DeepSeek, and 36+ more models.
           Why pay for three subscriptions when one does it all?
         </p>
       </div>

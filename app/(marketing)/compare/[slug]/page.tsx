@@ -39,13 +39,13 @@ const COMPARISONS: Record<string, ComparisonData> = {
     title: "bedda.ai vs ChatGPT Plus",
     metaTitle: "bedda.ai vs ChatGPT Plus (2026) — More Models, Less Money",
     metaDescription:
-      "Compare bedda.ai and ChatGPT Plus. bedda gives you GPT-5, Claude 4, Gemini, Grok and 30+ models for $12/mo — 40% cheaper than ChatGPT Plus alone. 7-day free trial.",
-    ogTitle: "bedda.ai vs ChatGPT Plus — Save $8/mo, Get 30+ AI Models",
+      "Compare bedda.ai and ChatGPT Plus. bedda gives you GPT-5, Claude 4, Gemini, Grok and 36+ models for $12/mo — 40% cheaper than ChatGPT Plus alone. 7-day free trial.",
+    ogTitle: "bedda.ai vs ChatGPT Plus — Save $8/mo, Get 36+ AI Models",
     ogDescription:
-      "ChatGPT Plus locks you into GPT models at $20/mo. bedda.ai gives you GPT-5 PLUS Claude, Gemini, Grok, DeepSeek and 30+ models for $12/mo.",
+      "ChatGPT Plus locks you into GPT models at $20/mo. bedda.ai gives you GPT-5 PLUS Claude, Gemini, Grok, DeepSeek and 36+ models for $12/mo.",
     heroHeadline: "Everything ChatGPT Plus offers — plus 25 more AI models",
     heroSubtext:
-      "ChatGPT Plus gives you one company's models. bedda.ai gives you every major AI — Claude, GPT-5, Gemini, Grok, DeepSeek and 30+ more — for $8 less per month.",
+      "ChatGPT Plus gives you one company's models. bedda.ai gives you every major AI — Claude, GPT-5, Gemini, Grok, DeepSeek and 36+ more — for $8 less per month.",
     verdict:
       "bedda.ai includes GPT-5 access alongside every other frontier model. If you're paying $20/mo for ChatGPT Plus, you're paying 67% more for fewer models.",
     switchReasons: [
@@ -73,7 +73,7 @@ const COMPARISONS: Record<string, ComparisonData> = {
       { feature: "Model comparison arena", bedda: true, competitor: false },
       { feature: "Team workspaces", bedda: true, competitor: false },
       { feature: "OpenAI-compatible API", bedda: true, competitor: false },
-      { feature: "Total AI models", bedda: "30+", competitor: "5" },
+      { feature: "Total AI models", bedda: "36+", competitor: "5" },
     ],
     faq: [
       {
@@ -104,10 +104,10 @@ const COMPARISONS: Record<string, ComparisonData> = {
     title: "bedda.ai vs Claude Pro",
     metaTitle: "bedda.ai vs Claude Pro (2026) — All Claude Models + 25 More",
     metaDescription:
-      "Compare bedda.ai and Claude Pro. Get Claude Opus, Sonnet, and Haiku PLUS GPT-5, Gemini, Grok and 30+ more models — all for $12/mo. 7-day free trial.",
+      "Compare bedda.ai and Claude Pro. Get Claude Opus, Sonnet, and Haiku PLUS GPT-5, Gemini, Grok and 36+ more models — all for $12/mo. 7-day free trial.",
     ogTitle: "bedda.ai vs Claude Pro — Same Claude, More Models, Lower Price",
     ogDescription:
-      "Claude Pro costs $20/mo for Anthropic models only. bedda.ai gives you Claude 4 Opus + Sonnet + Haiku PLUS GPT-5, Gemini, Grok and 30+ models for $12/mo.",
+      "Claude Pro costs $20/mo for Anthropic models only. bedda.ai gives you Claude 4 Opus + Sonnet + Haiku PLUS GPT-5, Gemini, Grok and 36+ models for $12/mo.",
     heroHeadline: "All of Claude Pro's models — plus GPT-5, Gemini and 25 more",
     heroSubtext:
       "Claude Pro gives you Anthropic's models for $20/mo. bedda.ai gives you Claude 4 Opus, Sonnet and Haiku alongside every other frontier model — for $8 less per month.",
@@ -139,7 +139,7 @@ const COMPARISONS: Record<string, ComparisonData> = {
       { feature: "Model comparison arena", bedda: true, competitor: false },
       { feature: "Team workspaces", bedda: true, competitor: false },
       { feature: "OpenAI-compatible API", bedda: true, competitor: false },
-      { feature: "Total AI models", bedda: "30+", competitor: "4" },
+      { feature: "Total AI models", bedda: "36+", competitor: "4" },
     ],
     faq: [
       {
@@ -171,11 +171,11 @@ const COMPARISONS: Record<string, ComparisonData> = {
     metaTitle:
       "bedda.ai vs Gemini Advanced (2026) — All Gemini Models + 25 More",
     metaDescription:
-      "Compare bedda.ai and Gemini Advanced. Get Gemini 2.5 Pro, Flash and Ultra PLUS Claude, GPT-5, Grok and 30+ more models for $12/mo. 7-day free trial.",
+      "Compare bedda.ai and Gemini Advanced. Get Gemini 2.5 Pro, Flash and Ultra PLUS Claude, GPT-5, Grok and 36+ more models for $12/mo. 7-day free trial.",
     ogTitle:
       "bedda.ai vs Gemini Advanced — Same Gemini, More Models, Lower Cost",
     ogDescription:
-      "Gemini Advanced costs $20/mo for Google models only. bedda.ai gives you Gemini 2.5 Pro + Flash PLUS Claude 4, GPT-5, Grok and 30+ models for $12/mo.",
+      "Gemini Advanced costs $20/mo for Google models only. bedda.ai gives you Gemini 2.5 Pro + Flash PLUS Claude 4, GPT-5, Grok and 36+ models for $12/mo.",
     heroHeadline: "All Gemini models — plus Claude 4, GPT-5, Grok and 25 more",
     heroSubtext:
       "Gemini Advanced locks you into Google's AI for $20/mo. bedda.ai gives you Gemini 2.5 Pro and Flash alongside every other frontier model — for $8 less per month.",
@@ -206,7 +206,7 @@ const COMPARISONS: Record<string, ComparisonData> = {
       { feature: "Model comparison arena", bedda: true, competitor: false },
       { feature: "Team workspaces", bedda: true, competitor: false },
       { feature: "OpenAI-compatible API", bedda: true, competitor: false },
-      { feature: "Total AI models", bedda: "30+", competitor: "6" },
+      { feature: "Total AI models", bedda: "36+", competitor: "6" },
     ],
     faq: [
       {
@@ -237,16 +237,16 @@ const COMPARISONS: Record<string, ComparisonData> = {
     title: "bedda.ai vs Grok (SuperGrok)",
     metaTitle: "bedda.ai vs Grok SuperGrok (2026) — More Models, 60% Cheaper",
     metaDescription:
-      "Compare bedda.ai and Grok SuperGrok. Get Grok 3 PLUS Claude 4, GPT-5, Gemini and 30+ more models for $12/mo — 60% cheaper than SuperGrok. 7-day free trial.",
+      "Compare bedda.ai and Grok SuperGrok. Get Grok 3 PLUS Claude 4, GPT-5, Gemini and 36+ more models for $12/mo — 60% cheaper than SuperGrok. 7-day free trial.",
     ogTitle: "bedda.ai vs Grok SuperGrok — Same Grok, 60% Lower Price",
     ogDescription:
-      "Grok SuperGrok costs $30/mo. bedda.ai gives you Grok 3 PLUS Claude 4, GPT-5, Gemini and 30+ more models for just $12/mo.",
+      "Grok SuperGrok costs $30/mo. bedda.ai gives you Grok 3 PLUS Claude 4, GPT-5, Gemini and 36+ more models for just $12/mo.",
     heroHeadline:
       "Grok 3 access — plus Claude, GPT-5, Gemini and 25 more models",
     heroSubtext:
       "SuperGrok charges $30/mo for xAI models only. bedda.ai gives you Grok 3 alongside every other frontier model — for $18 less per month.",
     verdict:
-      "bedda.ai costs 60% less than SuperGrok while giving you Grok 3 plus 30+ additional models. There's no scenario where SuperGrok alone makes sense.",
+      "bedda.ai costs 60% less than SuperGrok while giving you Grok 3 plus 36+ additional models. There's no scenario where SuperGrok alone makes sense.",
     switchReasons: [
       "Keep Grok 3 access — same model, same capability",
       "Add Claude 4, GPT-5, Gemini 2.5 and DeepSeek to your workflow",
@@ -271,7 +271,7 @@ const COMPARISONS: Record<string, ComparisonData> = {
       { feature: "Cross-conversation memory", bedda: true, competitor: false },
       { feature: "Model comparison arena", bedda: true, competitor: false },
       { feature: "X/Twitter account required", bedda: false, competitor: true },
-      { feature: "Total AI models", bedda: "30+", competitor: "3" },
+      { feature: "Total AI models", bedda: "36+", competitor: "3" },
     ],
     faq: [
       {
@@ -373,7 +373,7 @@ export default async function ComparePage({
           <div className="rounded-lg border bg-primary/5 p-6 text-center">
             <p className="mb-1 text-muted-foreground text-sm">bedda.ai Plus</p>
             <p className="font-bold text-4xl">{data.beddaPrice}</p>
-            <p className="mt-1 text-muted-foreground text-sm">30+ AI models</p>
+            <p className="mt-1 text-muted-foreground text-sm">36+ AI models</p>
           </div>
           <div className="rounded-lg border p-6 text-center">
             <p className="mb-1 text-muted-foreground text-sm">

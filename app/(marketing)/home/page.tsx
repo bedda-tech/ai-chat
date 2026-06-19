@@ -17,11 +17,11 @@ import { Button } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "bedda.ai — All AI Models, One Subscription",
   description:
-    "Access Claude, GPT-5, Gemini, Grok, Mistral, DeepSeek and 30+ AI models with one subscription starting at $12/month. 7-day free trial, no credit card required.",
+    "Access Claude, GPT-5, Gemini, Grok, Mistral, DeepSeek and 36+ AI models with one subscription starting at $12/month. 7-day free trial, no credit card required.",
   openGraph: {
     title: "bedda.ai — One Subscription. Every AI Model.",
     description:
-      "Stop paying $20+ for each AI separately. bedda.ai gives you Claude, GPT-5, Gemini, Grok and 30+ models for $12/month. Start free today.",
+      "Stop paying $20+ for each AI separately. bedda.ai gives you Claude, GPT-5, Gemini, Grok and 36+ models for $12/month. Start free today.",
     url: "https://bedda.ai",
     images: [
       {
@@ -88,7 +88,7 @@ const features = [
 ];
 
 const stats = [
-  { value: "30+", label: "AI models" },
+  { value: "36+", label: "AI models" },
   { value: "$12", label: "per month" },
   { value: "7-day", label: "free trial" },
   { value: "No card", label: "required to start" },
@@ -123,7 +123,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-4xl">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border bg-muted/50 px-4 py-1.5 text-muted-foreground text-sm">
             <Zap className="h-3.5 w-3.5 text-yellow-500" />
-            <span>30+ AI models. One subscription.</span>
+            <span>36+ AI models. One subscription.</span>
           </div>
           <h1 className="mb-6 font-bold text-4xl tracking-tight sm:text-5xl md:text-7xl">
             Stop paying $20
