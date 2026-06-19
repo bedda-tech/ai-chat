@@ -31,7 +31,7 @@ export const roadmapData: RoadmapPhase[] = [
     features: [
       {
         id: "multi-model-access",
-        title: "30+ AI Models from 7 Providers",
+        title: "36+ AI Models from 7 Providers",
         description:
           "Access Claude, GPT, Gemini, Grok, DeepSeek, and more from a single interface with automatic model discovery",
         status: "completed",

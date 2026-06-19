@@ -12,7 +12,7 @@ export async function sendWelcomeEmail(email: string): Promise<void> {
       <div style="font-family: sans-serif; max-width: 520px; margin: 0 auto; padding: 32px 24px; color: #111;">
         <h1 style="font-size: 24px; font-weight: 700; margin-bottom: 8px;">Welcome to Bedda 👋</h1>
         <p style="color: #555; font-size: 15px; line-height: 1.6; margin-bottom: 24px;">
-          You now have access to 30+ leading AI models — Claude, GPT, Gemini, Grok, Mistral,
+          You now have access to 36+ leading AI models — Claude, GPT, Gemini, Grok, Mistral,
           DeepSeek, and more — all in one place, for a fraction of the cost of separate subscriptions.
         </p>
 

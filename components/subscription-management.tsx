@@ -151,7 +151,7 @@ export function SubscriptionManagement({
         {currentTier === "free" && (
           <div className="space-y-3">
             <p className="text-muted-foreground text-sm">
-              Upgrade to unlock all 30+ AI models, more messages, and advanced
+              Upgrade to unlock all 36+ AI models, more messages, and advanced
               features.
             </p>
             <div className="flex flex-col gap-2">

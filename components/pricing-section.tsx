@@ -47,7 +47,7 @@ const tiers = [
     features: [
       "300 messages per day",
       "Unlimited monthly messages",
-      "ALL 30+ AI models (Claude Opus, GPT-5, Gemini Pro, Grok 4, etc.)",
+      "ALL 36+ AI models (Claude Opus, GPT-5, Gemini Pro, Grok 4, etc.)",
       "Web search with citations",
       "Code execution (Python & JavaScript sandbox)",
       "Image & video generation",

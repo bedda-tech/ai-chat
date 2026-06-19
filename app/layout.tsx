@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://bedda.ai"),
   title: "bedda.ai — All AI Models, One Subscription",
   description:
-    "Access Claude, GPT-5, Gemini, Grok, DeepSeek, and 30+ more AI models for $12/month. Why pay for multiple AI subscriptions when one does it all?",
+    "Access Claude, GPT-5, Gemini, Grok, DeepSeek, and 36+ more AI models for $12/month. Why pay for multiple AI subscriptions when one does it all?",
   icons: {
     icon: [
       {
@@ -116,7 +116,7 @@ export default function RootLayout({
               operatingSystem: "Web",
               url: "https://bedda.ai",
               description:
-                "Access Claude, GPT-5, Gemini, Grok, DeepSeek and 30+ AI models with one subscription.",
+                "Access Claude, GPT-5, Gemini, Grok, DeepSeek and 36+ AI models with one subscription.",
               offers: [
                 {
                   "@type": "Offer",

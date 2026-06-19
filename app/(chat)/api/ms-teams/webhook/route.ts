@@ -110,7 +110,7 @@ export async function POST(req: Request) {
   if (!cleanText) {
     return Response.json({
       type: "message",
-      text: "Hi! I'm **Bedda** — an AI assistant with access to Claude, GPT-4o, Gemini, Grok, and 30+ models. Just send me a message!\n\nPrefix with `[model]` to pick a model: `[claude-opus]`, `[gpt-4o]`, `[gemini-pro]`, `[grok-3]`, etc.",
+      text: "Hi! I'm **Bedda** — an AI assistant with access to Claude, GPT-4o, Gemini, Grok, and 36+ models. Just send me a message!\n\nPrefix with `[model]` to pick a model: `[claude-opus]`, `[gpt-4o]`, `[gemini-pro]`, `[grok-3]`, etc.",
     });
   }
 
@@ -120,7 +120,7 @@ export async function POST(req: Request) {
     const { text: aiResponse } = await generateText({
       model: gateway.languageModel(model),
       system:
-        "You are Bedda, a multi-model AI assistant inside Microsoft Teams with access to Claude, GPT, Gemini, Grok, and 30+ AI models. Be helpful and concise. Teams supports basic Markdown. Users can prefix messages with [model-alias] to choose a model, e.g. [claude-opus], [gpt-4o], [gemini-pro]. Visit bedda.ai for the full web experience.",
+        "You are Bedda, a multi-model AI assistant inside Microsoft Teams with access to Claude, GPT, Gemini, Grok, and 36+ AI models. Be helpful and concise. Teams supports basic Markdown. Users can prefix messages with [model-alias] to choose a model, e.g. [claude-opus], [gpt-4o], [gemini-pro]. Visit bedda.ai for the full web experience.",
       messages: [{ role: "user", content: userText }],
       maxOutputTokens: 1200,
     });

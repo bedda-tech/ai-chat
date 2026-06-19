@@ -14,11 +14,11 @@ export async function generateMetadata({
   return {
     title: "You've been invited to bedda.ai",
     description:
-      "Get a 14-day free trial of bedda.ai Plus — access Claude, GPT-5, Gemini, Grok, and 30+ AI models for one low price.",
+      "Get a 14-day free trial of bedda.ai Plus — access Claude, GPT-5, Gemini, Grok, and 36+ AI models for one low price.",
     openGraph: {
       title: "You've been invited to bedda.ai",
       description:
-        "Access 30+ AI models (Claude, GPT-5, Gemini, Grok, DeepSeek) in one place — from $12/mo. Your friend shared a 14-day free trial with you.",
+        "Access 36+ AI models (Claude, GPT-5, Gemini, Grok, DeepSeek) in one place — from $12/mo. Your friend shared a 14-day free trial with you.",
       url: `https://www.bedda.tech/join/${code}`,
     },
   };
@@ -48,7 +48,7 @@ const MODELS = [
 const FEATURES = [
   {
     icon: "🤖",
-    title: "30+ AI models",
+    title: "36+ AI models",
     desc: "Claude, GPT-5, Gemini, Grok, DeepSeek & more",
   },
   {
@@ -223,7 +223,7 @@ export default async function JoinPage({
                 </p>
                 <p className="mt-2 font-bold text-3xl">$12/mo</p>
                 <p className="mt-1 text-muted-foreground text-xs">
-                  All 30+ models included
+                  All 36+ models included
                 </p>
                 <div className="mt-2 rounded-full bg-primary/10 px-2 py-0.5 font-medium text-primary text-xs">
                   Your invite: first 14 days free

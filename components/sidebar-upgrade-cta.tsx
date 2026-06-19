@@ -149,7 +149,7 @@ export function SidebarUpgradeCTA() {
           <Progress className="h-1.5" value={Math.max(dailyPct, monthlyPct)} />
         </div>
         <p className="mb-2 text-muted-foreground text-xs leading-relaxed">
-          Unlock unlimited messages and all 30+ AI models. First 7 days free.
+          Unlock unlimited messages and all 36+ AI models. First 7 days free.
         </p>
         <Button asChild className="h-7 w-full text-xs" size="sm">
           <Link
@@ -175,7 +175,7 @@ export function SidebarUpgradeCTA() {
         <span className="font-semibold text-xs">7 days free</span>
       </div>
       <p className="mb-3 text-muted-foreground text-xs leading-relaxed">
-        Try Claude Opus, GPT-5, Gemini Pro, and 30+ models free for 7 days. Then just $12/mo.
+        Try Claude Opus, GPT-5, Gemini Pro, and 36+ models free for 7 days. Then just $12/mo.
       </p>
       <Button asChild className="h-7 w-full text-xs" size="sm">
         <Link

@@ -141,7 +141,7 @@ export default async function SubscriptionSuccessPage({
             </div>
           ) : null}
           <p className="text-sm">
-            Your account is now upgraded. You have access to all 30+ AI models
+            Your account is now upgraded. You have access to all 36+ AI models
             and everything included in {planName}.
           </p>
           <p className="text-muted-foreground text-sm">

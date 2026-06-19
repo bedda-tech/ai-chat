@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "bedda.ai — All AI Models, One Subscription",
     short_name: "bedda.ai",
     description:
-      "Access Claude, GPT-5, Gemini, Grok, DeepSeek, and 30+ AI models in one app. One subscription does it all.",
+      "Access Claude, GPT-5, Gemini, Grok, DeepSeek, and 36+ AI models in one app. One subscription does it all.",
     id: "/",
     start_url: "/",
     scope: "/",

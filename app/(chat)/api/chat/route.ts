@@ -182,7 +182,7 @@ export async function POST(request: Request) {
         {
           code: "forbidden:model",
           cause:
-            "This model requires a Plus plan or higher. Upgrade to access all 30+ AI models.",
+            "This model requires a Plus plan or higher. Upgrade to access all 36+ AI models.",
           upgrade: true,
           upgradeUrl: "/upgrade?plan=plus",
         },

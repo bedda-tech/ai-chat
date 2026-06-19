@@ -150,7 +150,7 @@ export async function POST(req: Request) {
         const { text: aiResponse } = await generateText({
           model: gateway.languageModel(model),
           system:
-            "You are Bedda, a multi-model AI assistant inside Discord with access to Claude, GPT, Gemini, Grok, and 30+ AI models. Be helpful and concise. Use Discord markdown (** for bold, ``` for code blocks). Keep responses under 1900 characters when possible.",
+            "You are Bedda, a multi-model AI assistant inside Discord with access to Claude, GPT, Gemini, Grok, and 36+ AI models. Be helpful and concise. Use Discord markdown (** for bold, ``` for code blocks). Keep responses under 1900 characters when possible.",
           messages: [{ role: "user", content: userText }],
           maxOutputTokens: 1500,
         });

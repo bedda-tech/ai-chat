@@ -27,9 +27,9 @@ export function OnboardingTour() {
           {
             element: '[data-tour="model-selector"]',
             popover: {
-              title: "30+ AI Models",
+              title: "36+ AI Models",
               description:
-                "Choose from GPT-5, Claude, Gemini, Grok, and 30+ more — all in one subscription.",
+                "Choose from GPT-5, Claude, Gemini, Grok, and 36+ more — all in one subscription.",
               side: "bottom",
               align: "start",
             },

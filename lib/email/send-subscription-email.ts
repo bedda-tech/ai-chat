@@ -4,7 +4,7 @@ import { unsubscribeUrl } from "./unsub-token";
 const PLAN_FEATURES: Record<string, string[]> = {
   Plus: [
     "300 messages per day",
-    "ALL 30+ AI models (Claude Opus, GPT-5, Gemini Pro, Grok 4, Mistral Large, and more)",
+    "ALL 36+ AI models (Claude Opus, GPT-5, Gemini Pro, Grok 4, Mistral Large, and more)",
     "Image generation (DALL·E 3, Imagen, Flux)",
     "Full artifact creation: code, documents, spreadsheets, slides, Mermaid diagrams",
     "Audio transcription (Whisper)",
@@ -246,7 +246,7 @@ export async function sendCheckoutAbandonedEmail(email: string): Promise<void> {
           <p style="margin: 0 0 12px; font-weight: 600; font-size: 14px; color: #333;">What you get with Plus:</p>
           <ul style="margin: 0; padding-left: 20px;">
             <li style="margin-bottom: 8px; font-size: 14px; color: #555;">300 messages/day (vs 50 on Free)</li>
-            <li style="margin-bottom: 8px; font-size: 14px; color: #555;">ALL 30+ models — Claude Opus, GPT-5, Gemini Pro, Grok 4</li>
+            <li style="margin-bottom: 8px; font-size: 14px; color: #555;">ALL 36+ models — Claude Opus, GPT-5, Gemini Pro, Grok 4</li>
             <li style="margin-bottom: 8px; font-size: 14px; color: #555;">Image &amp; video generation</li>
             <li style="margin-bottom: 8px; font-size: 14px; color: #555;">Web search, knowledge base, code execution</li>
           </ul>

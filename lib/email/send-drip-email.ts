@@ -177,7 +177,7 @@ export async function sendDripEmailDay7(email: string, userId: string): Promise<
 
         <p style="font-size: 15px; line-height: 1.6; margin-bottom: 20px; color: #333;">
           <strong>Plus is $12/month</strong> — less than a single ChatGPT Plus subscription,
-          but includes Claude, GPT, Gemini, Grok, and 30+ more models. Start with a 7-day free trial,
+          but includes Claude, GPT, Gemini, Grok, and 36+ more models. Start with a 7-day free trial,
           cancel anytime.
         </p>
 
@@ -291,7 +291,7 @@ export async function sendDripEmailDay21(email: string, userId: string): Promise
         <div style="background: #000; color: #fff; border-radius: 10px; padding: 20px; margin-bottom: 24px; text-align: center;">
           <p style="margin: 0 0 4px; font-size: 13px; color: #aaa;">Bedda Plus — every model, one subscription</p>
           <p style="margin: 0 0 4px; font-size: 36px; font-weight: 700;">$12<span style="font-size: 16px; font-weight: 400; color: #aaa;">/mo</span></p>
-          <p style="margin: 0 0 4px; font-size: 13px; color: #aaa;">GPT-5 · Claude Opus · Gemini · Grok · 30+ models</p>
+          <p style="margin: 0 0 4px; font-size: 13px; color: #aaa;">GPT-5 · Claude Opus · Gemini · Grok · 36+ models</p>
           <p style="margin: 0 0 20px; font-size: 13px; color: #aaa;">7-day free trial · cancel anytime</p>
           <a href="${APP_URL}/upgrade?plan=plus&source=drip_day21"
              style="display: inline-block; background: #fff; color: #000; padding: 12px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px;">

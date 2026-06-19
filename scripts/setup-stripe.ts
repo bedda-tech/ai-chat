@@ -76,7 +76,7 @@ async function main() {
   try {
     const plus = await createPlan(
       "Plus",
-      "All 30+ AI models. 300 messages/day. One subscription.",
+      "All 36+ AI models. 300 messages/day. One subscription.",
       1200, // $12/mo
       11_520, // $115.20/yr (20% off)
       "STRIPE_PLUS_PRICE_ID",

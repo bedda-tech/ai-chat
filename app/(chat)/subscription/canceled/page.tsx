@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card";
 
 const PLUS_FEATURES = [
-  "300 messages/day across all 30+ AI models",
+  "300 messages/day across all 36+ AI models",
   "Claude Opus, GPT-5, Gemini Pro, Grok 4, Mistral Large",
   "Image generation — DALL·E 3, Imagen, Flux",
   "Web search, file uploads, knowledge base RAG",

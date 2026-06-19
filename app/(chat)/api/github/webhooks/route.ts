@@ -178,7 +178,7 @@ export async function POST(req: Request) {
         const { text } = await generateText({
           model: gateway.languageModel(GITHUB_DEFAULT_MODEL),
           system:
-            "You are Bedda, an AI code reviewer with access to Claude, GPT, Gemini, Grok, and 30+ models. Review pull requests concisely. Focus on bugs, security, and code quality. Use GitHub Markdown. Keep reviews under 600 words.",
+            "You are Bedda, an AI code reviewer with access to Claude, GPT, Gemini, Grok, and 36+ models. Review pull requests concisely. Focus on bugs, security, and code quality. Use GitHub Markdown. Keep reviews under 600 words.",
           messages: [
             {
               role: "user",

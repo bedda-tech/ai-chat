@@ -208,7 +208,7 @@ export async function POST(req: Request) {
       const { text: aiResponse } = await generateText({
         model: gateway.languageModel(model),
         system:
-          "You are Bedda, an AI assistant inside Slack with access to Claude, GPT, Gemini, Grok, and 30+ AI models. Be helpful and concise — Slack is not a document editor. Use plain text; avoid markdown headers. Users can prefix messages with [model-alias] to choose a model, e.g. [gpt-4o], [claude-opus], [gemini-pro].",
+          "You are Bedda, an AI assistant inside Slack with access to Claude, GPT, Gemini, Grok, and 36+ AI models. Be helpful and concise — Slack is not a document editor. Use plain text; avoid markdown headers. Users can prefix messages with [model-alias] to choose a model, e.g. [gpt-4o], [claude-opus], [gemini-pro].",
         messages,
         maxOutputTokens: 1500,
       });

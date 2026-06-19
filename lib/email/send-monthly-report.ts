@@ -52,7 +52,7 @@ export async function sendMonthlyUsageReportEmail(
 
   const upgradeSection = !isPaid
     ? `<div style="background: #000; border-radius: 12px; padding: 24px; margin-bottom: 24px; text-align: center;">
-        <p style="margin: 0 0 4px; font-size: 13px; color: #aaa;">Unlock all 30+ models, 300 msg/day</p>
+        <p style="margin: 0 0 4px; font-size: 13px; color: #aaa;">Unlock all 36+ models, 300 msg/day</p>
         <p style="margin: 0 0 16px; font-size: 26px; font-weight: 700; color: #fff;">
           $12<span style="font-size: 14px; font-weight: 400; color: #aaa;">/month</span>
         </p>
