@@ -1,6 +1,6 @@
 import type { NextRequest } from "next/server";
 import { auth } from "@/app/(auth)/auth";
-import { getChatsByUserId, deleteAllChatsByUserId } from "@/lib/db/queries";
+import { deleteAllChatsByUserId, getChatsByUserId } from "@/lib/db/queries";
 import { ChatSDKError } from "@/lib/errors";
 
 export async function GET(request: NextRequest) {
@@ -9,6 +9,7 @@ export async function GET(request: NextRequest) {
   const limit = Number.parseInt(searchParams.get("limit") || "10", 10);
   const startingAfter = searchParams.get("starting_after");
   const endingBefore = searchParams.get("ending_before");
+  const q = searchParams.get("q");
 
   if (startingAfter && endingBefore) {
     return new ChatSDKError(
@@ -28,6 +29,7 @@ export async function GET(request: NextRequest) {
     limit,
     startingAfter,
     endingBefore,
+    searchQuery: q,
   });
 
   return Response.json(chats);

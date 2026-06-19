@@ -8,11 +8,12 @@ import {
   eq,
   gt,
   gte,
+  ilike,
   inArray,
   isNull,
   lt,
-  sql,
   type SQL,
+  sql,
 } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
@@ -22,44 +23,44 @@ import { ChatSDKError } from "../errors";
 import type { AppUsage } from "../usage";
 import { generateUUID } from "../utils";
 import {
+  type ApiKey,
   account,
   apiKey,
-  type ApiKey,
   type Chat,
   chat,
   type DBMessage,
+  type DriveConnection,
   document,
   driveConnection,
-  type DriveConnection,
   type KnowledgeBaseDocument,
   knowledgeBaseChunk,
   knowledgeBaseDocument,
-  mcpServer,
   type McpServer,
+  mcpServer,
   message,
-  notionConnection,
   type NotionConnection,
-  passwordResetToken,
-  userMemory,
-  type UserMemory,
+  notionConnection,
+  type OrganizationSsoConfig,
+  organizationSsoConfig,
+  type PluginTool,
   type Project,
+  passwordResetToken,
+  pluginTool,
   project,
+  type SlackWorkspace,
   type Suggestion,
+  slackWorkspace,
   stream,
   suggestion,
   type User,
-  user,
-  videoJob,
-  type VideoJob,
-  slackWorkspace,
-  type SlackWorkspace,
-  userPreferences,
+  type UserMemory,
   type UserPreferences,
+  user,
+  userMemory,
+  userPreferences,
+  type VideoJob,
+  videoJob,
   vote,
-  pluginTool,
-  type PluginTool,
-  organizationSsoConfig,
-  type OrganizationSsoConfig,
 } from "./schema";
 import { generateHashedPassword } from "./utils";
 
@@ -268,7 +269,7 @@ export async function deleteAllChatsByUserId({ userId }: { userId: string }) {
       return { deletedCount: 0 };
     }
 
-    const chatIds = userChats.map(c => c.id);
+    const chatIds = userChats.map((c) => c.id);
 
     await db.delete(vote).where(inArray(vote.chatId, chatIds));
     await db.delete(message).where(inArray(message.chatId, chatIds));
@@ -293,30 +294,41 @@ export async function getChatsByUserId({
   limit,
   startingAfter,
   endingBefore,
+  searchQuery,
 }: {
   id: string;
   limit: number;
   startingAfter: string | null;
   endingBefore: string | null;
+  searchQuery?: string | null;
 }) {
   try {
     const extendedLimit = limit + 1;
+    const titleFilter = searchQuery
+      ? ilike(chat.title, `%${searchQuery}%`)
+      : undefined;
 
-    const query = (whereCondition?: SQL<any>) =>
+    const buildWhere = (cursorCondition?: SQL<any>) => {
+      const conditions = [eq(chat.userId, id)];
+      if (titleFilter) conditions.push(titleFilter);
+      if (cursorCondition) conditions.push(cursorCondition);
+      return conditions.length === 1 ? conditions[0] : and(...conditions);
+    };
+
+    const queryFn = (cursorCondition?: SQL<any>) =>
       db
         .select()
         .from(chat)
-        .where(
-          whereCondition
-            ? and(whereCondition, eq(chat.userId, id))
-            : eq(chat.userId, id)
-        )
+        .where(buildWhere(cursorCondition))
         .orderBy(desc(chat.createdAt))
         .limit(extendedLimit);
 
     let filteredChats: Chat[] = [];
 
-    if (startingAfter) {
+    // When searching, skip cursor-based pagination and return top results
+    if (searchQuery) {
+      filteredChats = await queryFn();
+    } else if (startingAfter) {
       const [selectedChat] = await db
         .select()
         .from(chat)
@@ -330,7 +342,7 @@ export async function getChatsByUserId({
         );
       }
 
-      filteredChats = await query(gt(chat.createdAt, selectedChat.createdAt));
+      filteredChats = await queryFn(gt(chat.createdAt, selectedChat.createdAt));
     } else if (endingBefore) {
       const [selectedChat] = await db
         .select()
@@ -345,9 +357,9 @@ export async function getChatsByUserId({
         );
       }
 
-      filteredChats = await query(lt(chat.createdAt, selectedChat.createdAt));
+      filteredChats = await queryFn(lt(chat.createdAt, selectedChat.createdAt));
     } else {
-      filteredChats = await query();
+      filteredChats = await queryFn();
     }
 
     const hasMore = filteredChats.length > limit;
@@ -727,7 +739,14 @@ export async function createKBDocument({
 }): Promise<KnowledgeBaseDocument> {
   const [doc] = await db
     .insert(knowledgeBaseDocument)
-    .values({ userId, projectId: projectId ?? null, title, fileName, fileType, fileSize })
+    .values({
+      userId,
+      projectId: projectId ?? null,
+      title,
+      fileName,
+      fileType,
+      fileSize,
+    })
     .returning();
   return doc;
 }
@@ -839,10 +858,9 @@ export async function searchKBChunks({
 
   // Project-scope filter: if projectId provided, restrict to that project's docs;
   // otherwise restrict to account-wide docs (projectId IS NULL).
-  const projectFilter =
-    projectId
-      ? sql`AND c."projectId" = ${projectId}::uuid`
-      : sql`AND c."projectId" IS NULL`;
+  const projectFilter = projectId
+    ? sql`AND c."projectId" = ${projectId}::uuid`
+    : sql`AND c."projectId" IS NULL`;
 
   // Hybrid search: Reciprocal Rank Fusion (RRF) combining vector similarity + BM25 text search.
   // Over-fetches 20 candidates from each strategy, then merges with RRF (k=60) for better recall.
@@ -953,7 +971,10 @@ export async function getOAuthAccount(
       );
     return row ?? null;
   } catch (_error) {
-    throw new ChatSDKError("bad_request:database", "Failed to get OAuth account");
+    throw new ChatSDKError(
+      "bad_request:database",
+      "Failed to get OAuth account"
+    );
   }
 }
 
@@ -1030,15 +1051,14 @@ export async function getOrCreateOAuthUser(
   // Link the OAuth account
   await createOAuthAccount(userId, provider, providerAccountId, tokens);
 
-  const [linkedUser] = await db
-    .select()
-    .from(user)
-    .where(eq(user.id, userId));
+  const [linkedUser] = await db.select().from(user).where(eq(user.id, userId));
   return { user: linkedUser, isNew };
 }
 
 // User preferences
-export async function getUserPreferences(userId: string): Promise<UserPreferences | null> {
+export async function getUserPreferences(
+  userId: string
+): Promise<UserPreferences | null> {
   const [prefs] = await db
     .select()
     .from(userPreferences)
@@ -1070,11 +1090,20 @@ export async function upsertUserPreferences(
 
 // MCP servers
 export async function getMcpServers(userId: string): Promise<McpServer[]> {
-  return db.select().from(mcpServer).where(eq(mcpServer.userId, userId)).orderBy(asc(mcpServer.createdAt));
+  return db
+    .select()
+    .from(mcpServer)
+    .where(eq(mcpServer.userId, userId))
+    .orderBy(asc(mcpServer.createdAt));
 }
 
-export async function getEnabledMcpServers(userId: string): Promise<McpServer[]> {
-  return db.select().from(mcpServer).where(and(eq(mcpServer.userId, userId), eq(mcpServer.enabled, true)));
+export async function getEnabledMcpServers(
+  userId: string
+): Promise<McpServer[]> {
+  return db
+    .select()
+    .from(mcpServer)
+    .where(and(eq(mcpServer.userId, userId), eq(mcpServer.enabled, true)));
 }
 
 export async function createMcpServer(data: {
@@ -1098,7 +1127,12 @@ export async function createMcpServer(data: {
 export async function updateMcpServer(
   id: string,
   userId: string,
-  data: { name?: string; url?: string; enabled?: boolean; headers?: Record<string, string> }
+  data: {
+    name?: string;
+    url?: string;
+    enabled?: boolean;
+    headers?: Record<string, string>;
+  }
 ): Promise<McpServer | null> {
   const [server] = await db
     .update(mcpServer)
@@ -1108,17 +1142,32 @@ export async function updateMcpServer(
   return server ?? null;
 }
 
-export async function deleteMcpServer(id: string, userId: string): Promise<void> {
-  await db.delete(mcpServer).where(and(eq(mcpServer.id, id), eq(mcpServer.userId, userId)));
+export async function deleteMcpServer(
+  id: string,
+  userId: string
+): Promise<void> {
+  await db
+    .delete(mcpServer)
+    .where(and(eq(mcpServer.id, id), eq(mcpServer.userId, userId)));
 }
 
 // Projects
 export async function getProjectsByUserId(userId: string): Promise<Project[]> {
-  return db.select().from(project).where(eq(project.userId, userId)).orderBy(asc(project.createdAt));
+  return db
+    .select()
+    .from(project)
+    .where(eq(project.userId, userId))
+    .orderBy(asc(project.createdAt));
 }
 
-export async function getProjectById(id: string, userId: string): Promise<Project | null> {
-  const [p] = await db.select().from(project).where(and(eq(project.id, id), eq(project.userId, userId)));
+export async function getProjectById(
+  id: string,
+  userId: string
+): Promise<Project | null> {
+  const [p] = await db
+    .select()
+    .from(project)
+    .where(and(eq(project.id, id), eq(project.userId, userId)));
   return p ?? null;
 }
 
@@ -1154,10 +1203,16 @@ export async function updateProject(
 }
 
 export async function deleteProject(id: string, userId: string): Promise<void> {
-  await db.delete(project).where(and(eq(project.id, id), eq(project.userId, userId)));
+  await db
+    .delete(project)
+    .where(and(eq(project.id, id), eq(project.userId, userId)));
 }
 
-export async function assignChatToProject(chatId: string, projectId: string | null, userId: string): Promise<void> {
+export async function assignChatToProject(
+  chatId: string,
+  projectId: string | null,
+  userId: string
+): Promise<void> {
   await db
     .update(chat)
     .set({ projectId })
@@ -1165,14 +1220,24 @@ export async function assignChatToProject(chatId: string, projectId: string | nu
 }
 
 // Google Drive connection queries
-export async function getDriveConnection(userId: string): Promise<DriveConnection | null> {
-  const [conn] = await db.select().from(driveConnection).where(eq(driveConnection.userId, userId));
+export async function getDriveConnection(
+  userId: string
+): Promise<DriveConnection | null> {
+  const [conn] = await db
+    .select()
+    .from(driveConnection)
+    .where(eq(driveConnection.userId, userId));
   return conn ?? null;
 }
 
 export async function saveDriveConnection(
   userId: string,
-  data: { accessToken: string; refreshToken?: string | null; expiresAt?: number | null; scope?: string | null }
+  data: {
+    accessToken: string;
+    refreshToken?: string | null;
+    expiresAt?: number | null;
+    scope?: string | null;
+  }
 ): Promise<DriveConnection> {
   const [conn] = await db
     .insert(driveConnection)
@@ -1201,14 +1266,24 @@ export async function deleteDriveConnection(userId: string): Promise<void> {
   await db.delete(driveConnection).where(eq(driveConnection.userId, userId));
 }
 
-export async function getNotionConnection(userId: string): Promise<NotionConnection | null> {
-  const [conn] = await db.select().from(notionConnection).where(eq(notionConnection.userId, userId));
+export async function getNotionConnection(
+  userId: string
+): Promise<NotionConnection | null> {
+  const [conn] = await db
+    .select()
+    .from(notionConnection)
+    .where(eq(notionConnection.userId, userId));
   return conn ?? null;
 }
 
 export async function saveNotionConnection(
   userId: string,
-  data: { accessToken: string; workspaceId?: string | null; workspaceName?: string | null; botId?: string | null }
+  data: {
+    accessToken: string;
+    workspaceId?: string | null;
+    workspaceName?: string | null;
+    botId?: string | null;
+  }
 ): Promise<NotionConnection> {
   const [conn] = await db
     .insert(notionConnection)
@@ -1262,7 +1337,10 @@ export async function createUserMemory(
   return mem;
 }
 
-export async function deleteUserMemory(id: string, userId: string): Promise<void> {
+export async function deleteUserMemory(
+  id: string,
+  userId: string
+): Promise<void> {
   await db
     .delete(userMemory)
     .where(and(eq(userMemory.id, id), eq(userMemory.userId, userId)));
@@ -1330,7 +1408,9 @@ export async function createVideoJob(
 
 export async function updateVideoJob(
   id: string,
-  patch: Partial<Omit<typeof videoJob.$inferInsert, "id" | "userId" | "createdAt">>
+  patch: Partial<
+    Omit<typeof videoJob.$inferInsert, "id" | "userId" | "createdAt">
+  >
 ): Promise<void> {
   await db.update(videoJob).set(patch).where(eq(videoJob.id, id));
 }
@@ -1410,11 +1490,20 @@ export async function markOnboardingComplete(userId: string) {
 
 // Plugin tools
 export async function getPluginTools(userId: string): Promise<PluginTool[]> {
-  return db.select().from(pluginTool).where(eq(pluginTool.userId, userId)).orderBy(asc(pluginTool.createdAt));
+  return db
+    .select()
+    .from(pluginTool)
+    .where(eq(pluginTool.userId, userId))
+    .orderBy(asc(pluginTool.createdAt));
 }
 
-export async function getEnabledPluginTools(userId: string): Promise<PluginTool[]> {
-  return db.select().from(pluginTool).where(and(eq(pluginTool.userId, userId), eq(pluginTool.enabled, true)));
+export async function getEnabledPluginTools(
+  userId: string
+): Promise<PluginTool[]> {
+  return db
+    .select()
+    .from(pluginTool)
+    .where(and(eq(pluginTool.userId, userId), eq(pluginTool.enabled, true)));
 }
 
 export async function createPluginTool(data: {
@@ -1426,10 +1515,7 @@ export async function createPluginTool(data: {
   authHeaderName?: string;
   authHeaderValueEncrypted?: string;
 }): Promise<PluginTool> {
-  const [tool] = await db
-    .insert(pluginTool)
-    .values(data)
-    .returning();
+  const [tool] = await db.insert(pluginTool).values(data).returning();
   return tool;
 }
 
@@ -1446,12 +1532,19 @@ export async function updatePluginTool(
   return updated ?? null;
 }
 
-export async function deletePluginTool(id: string, userId: string): Promise<void> {
-  await db.delete(pluginTool).where(and(eq(pluginTool.id, id), eq(pluginTool.userId, userId)));
+export async function deletePluginTool(
+  id: string,
+  userId: string
+): Promise<void> {
+  await db
+    .delete(pluginTool)
+    .where(and(eq(pluginTool.id, id), eq(pluginTool.userId, userId)));
 }
 
 // SSO config queries
-export async function getSsoConfigByDomain(domain: string): Promise<OrganizationSsoConfig | null> {
+export async function getSsoConfigByDomain(
+  domain: string
+): Promise<OrganizationSsoConfig | null> {
   const [config] = await db
     .select()
     .from(organizationSsoConfig)
@@ -1460,7 +1553,10 @@ export async function getSsoConfigByDomain(domain: string): Promise<Organization
 }
 
 export async function getAllSsoConfigs(): Promise<OrganizationSsoConfig[]> {
-  return db.select().from(organizationSsoConfig).orderBy(asc(organizationSsoConfig.createdAt));
+  return db
+    .select()
+    .from(organizationSsoConfig)
+    .orderBy(asc(organizationSsoConfig.createdAt));
 }
 
 export async function upsertSsoConfig(data: {
@@ -1492,7 +1588,9 @@ export async function upsertSsoConfig(data: {
 }
 
 export async function deleteSsoConfig(id: string): Promise<void> {
-  await db.delete(organizationSsoConfig).where(eq(organizationSsoConfig.id, id));
+  await db
+    .delete(organizationSsoConfig)
+    .where(eq(organizationSsoConfig.id, id));
 }
 
 export async function isValidReferralCode(code: string): Promise<boolean> {

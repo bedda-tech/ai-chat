@@ -2,10 +2,12 @@
 
 import { isToday, isYesterday, subMonths, subWeeks } from "date-fns";
 import { motion } from "framer-motion";
+import { Search, X } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import type { User } from "next-auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import useSWR from "swr";
 import useSWRInfinite from "swr/infinite";
 import {
   AlertDialog,
@@ -104,6 +106,14 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
   const { setOpenMobile } = useSidebar();
   const { id } = useParams();
 
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    const t = setTimeout(() => setSearchQuery(searchTerm.trim()), 300);
+    return () => clearTimeout(t);
+  }, [searchTerm]);
+
   const {
     data: paginatedChatHistories,
     setSize,
@@ -113,6 +123,14 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
   } = useSWRInfinite<ChatHistory>(getChatHistoryPaginationKey, fetcher, {
     fallbackData: [],
   });
+
+  const { data: searchResults, isLoading: isSearchLoading } =
+    useSWR<ChatHistory>(
+      searchQuery
+        ? `/api/history?q=${encodeURIComponent(searchQuery)}&limit=50`
+        : null,
+      fetcher
+    );
 
   const router = useRouter();
   const [deleteId, setDeleteId] = useState<string | null>(null);
@@ -235,6 +253,29 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
       <SidebarGroup>
         <SidebarGroupLabel>Chats</SidebarGroupLabel>
         <SidebarGroupContent>
+          {/* Search input */}
+          <div className="px-2 pb-1">
+            <div className="relative">
+              <Search className="absolute top-2.5 left-2.5 h-3.5 w-3.5 text-muted-foreground" />
+              <input
+                className="w-full rounded-md border bg-muted py-2 pr-7 pl-8 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search chats..."
+                type="text"
+                value={searchTerm}
+              />
+              {searchTerm && (
+                <button
+                  className="absolute top-2.5 right-2 text-muted-foreground hover:text-foreground"
+                  onClick={() => setSearchTerm("")}
+                  type="button"
+                >
+                  <X className="h-3.5 w-3.5" />
+                </button>
+              )}
+            </div>
+          </div>
+
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton
@@ -248,7 +289,40 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
                 <span>New Chat</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
-            {paginatedChatHistories &&
+
+            {searchQuery ? (
+              // Search results
+              isSearchLoading ? (
+                <div className="px-2 py-4 text-center text-muted-foreground text-xs">
+                  Searching...
+                </div>
+              ) : searchResults && searchResults.chats.length > 0 ? (
+                <div className="flex flex-col">
+                  <p className="px-2 py-1 text-muted-foreground text-xs">
+                    {searchResults.chats.length} result
+                    {searchResults.chats.length !== 1 ? "s" : ""}
+                  </p>
+                  {searchResults.chats.map((chat) => (
+                    <ChatItem
+                      chat={chat}
+                      isActive={chat.id === id}
+                      key={chat.id}
+                      onDelete={(chatId) => {
+                        setDeleteId(chatId);
+                        setShowDeleteDialog(true);
+                      }}
+                      setOpenMobile={setOpenMobile}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <div className="px-2 py-4 text-center text-muted-foreground text-xs">
+                  No chats found for &ldquo;{searchQuery}&rdquo;
+                </div>
+              )
+            ) : (
+              // Normal paginated history
+              paginatedChatHistories &&
               (() => {
                 const chatsFromHistory = paginatedChatHistories.flatMap(
                   (paginatedChatHistory) => paginatedChatHistory.chats
@@ -324,16 +398,19 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
                     ))}
                   </div>
                 );
-              })()}
+              })()
+            )}
           </SidebarMenu>
 
-          <motion.div
-            onViewportEnter={() => {
-              if (!isValidating && !hasReachedEnd) {
-                setSize((size) => size + 1);
-              }
-            }}
-          />
+          {!searchQuery && (
+            <motion.div
+              onViewportEnter={() => {
+                if (!isValidating && !hasReachedEnd) {
+                  setSize((size) => size + 1);
+                }
+              }}
+            />
+          )}
         </SidebarGroupContent>
       </SidebarGroup>
 
