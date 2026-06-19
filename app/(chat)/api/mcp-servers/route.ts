@@ -34,7 +34,10 @@ export async function POST(request: Request) {
 
   const { name, url, headers } = body;
   if (!name?.trim() || !url?.trim()) {
-    return NextResponse.json({ error: "name and url are required" }, { status: 400 });
+    return NextResponse.json(
+      { error: "name and url are required" },
+      { status: 400 }
+    );
   }
 
   try {
@@ -66,7 +69,12 @@ export async function PUT(request: Request) {
     return NextResponse.json({ error: "Missing id" }, { status: 400 });
   }
 
-  let body: { name?: string; url?: string; enabled?: boolean; headers?: Record<string, string> };
+  let body: {
+    name?: string;
+    url?: string;
+    enabled?: boolean;
+    headers?: Record<string, string>;
+  };
   try {
     body = await request.json();
   } catch {

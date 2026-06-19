@@ -1,5 +1,5 @@
-import { auth } from "@/app/(auth)/auth";
 import { NextResponse } from "next/server";
+import { auth } from "@/app/(auth)/auth";
 
 const GOOGLE_OAUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth";
 const DRIVE_SCOPE = "https://www.googleapis.com/auth/drive.readonly";
@@ -12,7 +12,10 @@ export async function GET() {
 
   const clientId = process.env.GOOGLE_CLIENT_ID;
   if (!clientId) {
-    return NextResponse.json({ error: "Google OAuth not configured" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Google OAuth not configured" },
+      { status: 500 }
+    );
   }
 
   const redirectUri = `${process.env.NEXTAUTH_URL}/api/drive/callback`;

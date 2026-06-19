@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import { Noto_Sans, Noto_Sans_Mono } from "next/font/google";
 import Script from "next/script";
 import { Toaster } from "sonner";
-import { ThemeProvider } from "@/components/theme-provider";
 import { PwaRegistration } from "@/components/pwa-registration";
+import { ThemeProvider } from "@/components/theme-provider";
 
 import "./globals.css";
 import { SessionProvider } from "next-auth/react";
@@ -107,8 +107,6 @@ export default function RootLayout({
           }}
         />
         <script
-          type="application/ld+json"
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -120,20 +118,42 @@ export default function RootLayout({
               description:
                 "Access Claude, GPT-5, Gemini, Grok, DeepSeek and 30+ AI models with one subscription.",
               offers: [
-                { "@type": "Offer", name: "Free", price: "0", priceCurrency: "USD" },
-                { "@type": "Offer", name: "Plus", price: "12", priceCurrency: "USD" },
-                { "@type": "Offer", name: "Pro", price: "25", priceCurrency: "USD" },
-                { "@type": "Offer", name: "Max", price: "50", priceCurrency: "USD" },
+                {
+                  "@type": "Offer",
+                  name: "Free",
+                  price: "0",
+                  priceCurrency: "USD",
+                },
+                {
+                  "@type": "Offer",
+                  name: "Plus",
+                  price: "12",
+                  priceCurrency: "USD",
+                },
+                {
+                  "@type": "Offer",
+                  name: "Pro",
+                  price: "25",
+                  priceCurrency: "USD",
+                },
+                {
+                  "@type": "Offer",
+                  name: "Max",
+                  price: "50",
+                  priceCurrency: "USD",
+                },
               ],
             }),
           }}
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
+          type="application/ld+json"
         />
       </head>
       <body className="antialiased">
         <Script
           async
-          defer
           data-website-id="78383df2-9b6e-4622-8f60-af512e108991"
+          defer
           src="/a/script.js"
           strategy="afterInteractive"
         />
@@ -145,9 +165,6 @@ export default function RootLayout({
               strategy="afterInteractive"
             />
             <Script
-              id="ga-init"
-              strategy="afterInteractive"
-              // biome-ignore lint/security/noDangerouslySetInnerHtml: GA4 init requires inline script
               dangerouslySetInnerHTML={{
                 __html: `
                   window.dataLayer = window.dataLayer || [];
@@ -158,6 +175,9 @@ export default function RootLayout({
                   });
                 `,
               }}
+              id="ga-init"
+              // biome-ignore lint/security/noDangerouslySetInnerHtml: GA4 init requires inline script
+              strategy="afterInteractive"
             />
           </>
         )}

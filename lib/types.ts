@@ -1,27 +1,27 @@
 import type { InferUITool, UIMessage } from "ai";
 import { z } from "zod";
 import type { ArtifactKind } from "@/components/artifact";
-import type { createDocument } from "./ai/tools/create-document";
-import type { getWeather } from "./ai/tools/get-weather";
-import type { requestSuggestions } from "./ai/tools/request-suggestions";
-import type { updateDocument } from "./ai/tools/update-document";
-import type { executeCodeTool } from "./ai/tools/execute-code";
-import type { webSearchTool } from "./ai/tools/web-search";
-import type { queryKnowledgeBaseTool } from "./ai/tools/knowledge-base";
 import type { analyzeDataTool } from "./ai/tools/analyze-data";
-import type { generateStructuredDataTool } from "./ai/tools/generate-structured-data";
-import type { transcribeAudioTool } from "./ai/tools/transcribe-audio";
-import type { generateImageTool } from "./ai/tools/generate-image";
-import type {
-  generateTextEmbeddingsTool,
-  compareTextSimilarityTool,
-} from "./ai/tools/text-embeddings";
-import type { googleDriveTool } from "./ai/tools/google-drive";
-import type { notionTool } from "./ai/tools/notion";
-import type { generateSpeechTool } from "./ai/tools/generate-speech";
+import type { createDocument } from "./ai/tools/create-document";
+import type { executeCodeTool } from "./ai/tools/execute-code";
 import type { generateChartTool } from "./ai/tools/generate-chart";
-import type { saveMemoryTool } from "./ai/tools/save-memory";
+import type { generateImageTool } from "./ai/tools/generate-image";
+import type { generateSpeechTool } from "./ai/tools/generate-speech";
+import type { generateStructuredDataTool } from "./ai/tools/generate-structured-data";
+import type { getWeather } from "./ai/tools/get-weather";
+import type { googleDriveTool } from "./ai/tools/google-drive";
+import type { queryKnowledgeBaseTool } from "./ai/tools/knowledge-base";
+import type { notionTool } from "./ai/tools/notion";
 import type { renderUITool } from "./ai/tools/render-ui";
+import type { requestSuggestions } from "./ai/tools/request-suggestions";
+import type { saveMemoryTool } from "./ai/tools/save-memory";
+import type {
+  compareTextSimilarityTool,
+  generateTextEmbeddingsTool,
+} from "./ai/tools/text-embeddings";
+import type { transcribeAudioTool } from "./ai/tools/transcribe-audio";
+import type { updateDocument } from "./ai/tools/update-document";
+import type { webSearchTool } from "./ai/tools/web-search";
 import type { Suggestion } from "./db/schema";
 import type { AppUsage } from "./usage";
 
@@ -37,19 +37,33 @@ export type MessageMetadata = z.infer<typeof messageMetadataSchema>;
 type weatherTool = InferUITool<typeof getWeather>;
 type webSearchToolType = InferUITool<typeof webSearchTool>;
 type executeCodeToolType = InferUITool<ReturnType<typeof executeCodeTool>>;
-type queryKnowledgeBaseToolType = InferUITool<ReturnType<typeof queryKnowledgeBaseTool>>;
+type queryKnowledgeBaseToolType = InferUITool<
+  ReturnType<typeof queryKnowledgeBaseTool>
+>;
 type createDocumentTool = InferUITool<ReturnType<typeof createDocument>>;
 type updateDocumentTool = InferUITool<ReturnType<typeof updateDocument>>;
-type requestSuggestionsTool = InferUITool<ReturnType<typeof requestSuggestions>>;
+type requestSuggestionsTool = InferUITool<
+  ReturnType<typeof requestSuggestions>
+>;
 type analyzeDataToolType = InferUITool<ReturnType<typeof analyzeDataTool>>;
-type generateStructuredDataToolType = InferUITool<ReturnType<typeof generateStructuredDataTool>>;
-type transcribeAudioToolType = InferUITool<ReturnType<typeof transcribeAudioTool>>;
+type generateStructuredDataToolType = InferUITool<
+  ReturnType<typeof generateStructuredDataTool>
+>;
+type transcribeAudioToolType = InferUITool<
+  ReturnType<typeof transcribeAudioTool>
+>;
 type generateImageToolType = InferUITool<ReturnType<typeof generateImageTool>>;
-type generateTextEmbeddingsToolType = InferUITool<ReturnType<typeof generateTextEmbeddingsTool>>;
-type compareTextSimilarityToolType = InferUITool<ReturnType<typeof compareTextSimilarityTool>>;
+type generateTextEmbeddingsToolType = InferUITool<
+  ReturnType<typeof generateTextEmbeddingsTool>
+>;
+type compareTextSimilarityToolType = InferUITool<
+  ReturnType<typeof compareTextSimilarityTool>
+>;
 type googleDriveToolType = InferUITool<ReturnType<typeof googleDriveTool>>;
 type notionToolType = InferUITool<ReturnType<typeof notionTool>>;
-type generateSpeechToolType = InferUITool<ReturnType<typeof generateSpeechTool>>;
+type generateSpeechToolType = InferUITool<
+  ReturnType<typeof generateSpeechTool>
+>;
 type generateChartToolType = InferUITool<ReturnType<typeof generateChartTool>>;
 type saveMemoryToolType = InferUITool<ReturnType<typeof saveMemoryTool>>;
 type renderUIToolType = InferUITool<typeof renderUITool>;

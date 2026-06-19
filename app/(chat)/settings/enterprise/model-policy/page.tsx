@@ -1,146 +1,182 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import Link from "next/link"
-import modelsData from "@/lib/ai/models-data.json"
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import modelsData from "@/lib/ai/models-data.json" with { type: "json" };
 
 interface ModelInfo {
-  id: string
-  name: string
-  provider: string
+  id: string;
+  name: string;
+  provider: string;
 }
 
-const ALL_MODELS: ModelInfo[] = (modelsData as { models: ModelInfo[] }).models.map((m) => ({
+const ALL_MODELS: ModelInfo[] = (
+  modelsData as { models: ModelInfo[] }
+).models.map((m) => ({
   id: m.id,
   name: m.name,
   provider: m.provider,
-}))
+}));
 
 interface OrgPolicy {
-  allowedModelIds: string[] | null
-  deniedModelIds: string[] | null
-  monthlyCostCapUsdCents: number
+  allowedModelIds: string[] | null;
+  deniedModelIds: string[] | null;
+  monthlyCostCapUsdCents: number;
 }
 
 export default function ModelPolicyPage() {
-  const [loading, setLoading] = useState(true)
-  const [forbidden, setForbidden] = useState(false)
-  const [isAdmin, setIsAdmin] = useState(false)
-  const [teamId, setTeamId] = useState<string | null>(null)
-  const [allowedIds, setAllowedIds] = useState<Set<string>>(new Set())
-  const [deniedIds, setDeniedIds] = useState<Set<string>>(new Set())
-  const [capDollars, setCapDollars] = useState("0")
-  const [mode, setMode] = useState<"allowlist" | "denylist" | "none">("none")
-  const [saving, setSaving] = useState(false)
-  const [saved, setSaved] = useState(false)
-  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(true);
+  const [forbidden, setForbidden] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [teamId, setTeamId] = useState<string | null>(null);
+  const [allowedIds, setAllowedIds] = useState<Set<string>>(new Set());
+  const [deniedIds, setDeniedIds] = useState<Set<string>>(new Set());
+  const [capDollars, setCapDollars] = useState("0");
+  const [mode, setMode] = useState<"allowlist" | "denylist" | "none">("none");
+  const [saving, setSaving] = useState(false);
+  const [saved, setSaved] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     fetch("/api/org/model-policy")
       .then((r) => {
-        if (r.status === 403) { setForbidden(true); setLoading(false); return null }
-        return r.json()
+        if (r.status === 403) {
+          setForbidden(true);
+          setLoading(false);
+          return null;
+        }
+        return r.json();
       })
       .then((data) => {
-        if (!data) return
-        setIsAdmin(data.isAdmin)
-        setTeamId(data.teamId)
-        const p: OrgPolicy | null = data.policy
+        if (!data) return;
+        setIsAdmin(data.isAdmin);
+        setTeamId(data.teamId);
+        const p: OrgPolicy | null = data.policy;
         if (p) {
           if (p.allowedModelIds && p.allowedModelIds.length > 0) {
-            setMode("allowlist")
-            setAllowedIds(new Set(p.allowedModelIds))
+            setMode("allowlist");
+            setAllowedIds(new Set(p.allowedModelIds));
           } else if (p.deniedModelIds && p.deniedModelIds.length > 0) {
-            setMode("denylist")
-            setDeniedIds(new Set(p.deniedModelIds))
+            setMode("denylist");
+            setDeniedIds(new Set(p.deniedModelIds));
           }
-          setCapDollars(p.monthlyCostCapUsdCents > 0 ? (p.monthlyCostCapUsdCents / 100).toFixed(2) : "0")
+          setCapDollars(
+            p.monthlyCostCapUsdCents > 0
+              ? (p.monthlyCostCapUsdCents / 100).toFixed(2)
+              : "0"
+          );
         }
-        setLoading(false)
+        setLoading(false);
       })
-      .catch(() => { setError("Failed to load policy"); setLoading(false) })
-  }, [])
+      .catch(() => {
+        setError("Failed to load policy");
+        setLoading(false);
+      });
+  }, []);
 
-  function toggleModel(id: string, set: Set<string>, setter: (s: Set<string>) => void) {
-    const next = new Set(set)
-    if (next.has(id)) next.delete(id); else next.add(id)
-    setter(next)
+  function toggleModel(
+    id: string,
+    set: Set<string>,
+    setter: (s: Set<string>) => void
+  ) {
+    const next = new Set(set);
+    if (next.has(id)) next.delete(id);
+    else next.add(id);
+    setter(next);
   }
 
   async function handleSave() {
-    if (!teamId) return
-    setSaving(true); setError(""); setSaved(false)
-    const capCents = Math.round(Number.parseFloat(capDollars || "0") * 100)
+    if (!teamId) return;
+    setSaving(true);
+    setError("");
+    setSaved(false);
+    const capCents = Math.round(Number.parseFloat(capDollars || "0") * 100);
     const body = {
       teamId,
       allowedModelIds: mode === "allowlist" ? [...allowedIds] : null,
       deniedModelIds: mode === "denylist" ? [...deniedIds] : null,
       monthlyCostCapUsdCents: capCents,
-    }
+    };
     try {
       const r = await fetch("/api/org/model-policy", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
-      })
-      if (!r.ok) { const d = await r.json(); setError(d.error ?? "Save failed") }
-      else setSaved(true)
-    } catch { setError("Network error") }
-    setSaving(false)
+      });
+      if (r.ok) setSaved(true);
+      else {
+        const d = await r.json();
+        setError(d.error ?? "Save failed");
+      }
+    } catch {
+      setError("Network error");
+    }
+    setSaving(false);
   }
 
-  if (loading) return <div className="p-8 text-sm text-muted-foreground">Loading…</div>
+  if (loading)
+    return <div className="p-8 text-muted-foreground text-sm">Loading…</div>;
 
   if (forbidden || !isAdmin) {
     return (
-      <div className="p-8 space-y-2">
-        <h1 className="text-lg font-semibold">Model Policy</h1>
-        <p className="text-sm text-muted-foreground">
+      <div className="space-y-2 p-8">
+        <h1 className="font-semibold text-lg">Model Policy</h1>
+        <p className="text-muted-foreground text-sm">
           This feature is available to team admins.{" "}
           {!teamId && (
             <>
               You are not part of a team.{" "}
-              <Link href="/settings" className="underline">Manage teams in Settings.</Link>
+              <Link className="underline" href="/settings">
+                Manage teams in Settings.
+              </Link>
             </>
           )}
         </p>
       </div>
-    )
+    );
   }
 
-  const activeSet = mode === "allowlist" ? allowedIds : deniedIds
-  const activeSetter = mode === "allowlist" ? setAllowedIds : setDeniedIds
+  const activeSet = mode === "allowlist" ? allowedIds : deniedIds;
+  const activeSetter = mode === "allowlist" ? setAllowedIds : setDeniedIds;
 
-  const byProvider = ALL_MODELS.reduce<Record<string, ModelInfo[]>>((acc, m) => {
-    ;(acc[m.provider] = acc[m.provider] ?? []).push(m)
-    return acc
-  }, {})
+  const byProvider = ALL_MODELS.reduce<Record<string, ModelInfo[]>>(
+    (acc, m) => {
+      (acc[m.provider] = acc[m.provider] ?? []).push(m);
+      return acc;
+    },
+    {}
+  );
 
   return (
-    <div className="p-8 max-w-2xl space-y-6">
+    <div className="max-w-2xl space-y-6 p-8">
       <div>
-        <h1 className="text-lg font-semibold">Model Policy</h1>
-        <p className="text-sm text-muted-foreground mt-1">
-          Control which AI models your team members can access, and set a monthly spending cap per user.
+        <h1 className="font-semibold text-lg">Model Policy</h1>
+        <p className="mt-1 text-muted-foreground text-sm">
+          Control which AI models your team members can access, and set a
+          monthly spending cap per user.
         </p>
       </div>
 
       {/* Mode selector */}
       <div className="space-y-2">
-        <label className="text-sm font-medium">Restriction mode</label>
+        <label className="font-medium text-sm">Restriction mode</label>
         <div className="flex gap-3">
           {(["none", "allowlist", "denylist"] as const).map((m) => (
             <button
-              key={m}
-              type="button"
-              onClick={() => setMode(m)}
-              className={`px-3 py-1.5 rounded text-sm border transition-colors ${
+              className={`rounded border px-3 py-1.5 text-sm transition-colors ${
                 mode === m
-                  ? "bg-primary text-primary-foreground border-primary"
+                  ? "border-primary bg-primary text-primary-foreground"
                   : "border-input hover:bg-accent"
               }`}
+              key={m}
+              onClick={() => setMode(m)}
+              type="button"
             >
-              {m === "none" ? "No restriction" : m === "allowlist" ? "Allowlist (permit only)" : "Denylist (block these)"}
+              {m === "none"
+                ? "No restriction"
+                : m === "allowlist"
+                  ? "Allowlist (permit only)"
+                  : "Denylist (block these)"}
             </button>
           ))}
         </div>
@@ -149,22 +185,29 @@ export default function ModelPolicyPage() {
       {/* Model checkboxes */}
       {mode !== "none" && (
         <div className="space-y-4">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             {mode === "allowlist"
               ? "Check the models team members ARE allowed to use."
               : "Check the models team members are NOT allowed to use."}
           </p>
           {Object.entries(byProvider).map(([provider, models]) => (
             <div key={provider}>
-              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-1">{provider}</p>
+              <p className="mb-1 font-semibold text-muted-foreground text-xs uppercase tracking-wide">
+                {provider}
+              </p>
               <div className="grid grid-cols-1 gap-1">
                 {models.map((m) => (
-                  <label key={m.id} className="flex items-center gap-2 cursor-pointer text-sm hover:bg-accent rounded px-2 py-1">
+                  <label
+                    className="flex cursor-pointer items-center gap-2 rounded px-2 py-1 text-sm hover:bg-accent"
+                    key={m.id}
+                  >
                     <input
-                      type="checkbox"
                       checked={activeSet.has(m.id)}
-                      onChange={() => toggleModel(m.id, activeSet, activeSetter)}
                       className="h-4 w-4"
+                      onChange={() =>
+                        toggleModel(m.id, activeSet, activeSetter)
+                      }
+                      type="checkbox"
                     />
                     {m.name}
                   </label>
@@ -177,36 +220,42 @@ export default function ModelPolicyPage() {
 
       {/* Cost cap */}
       <div className="space-y-2">
-        <label className="text-sm font-medium" htmlFor="cost-cap">
+        <label className="font-medium text-sm" htmlFor="cost-cap">
           Monthly cost cap per user (USD)
         </label>
         <div className="flex items-center gap-2">
           <span className="text-sm">$</span>
           <input
-            id="cost-cap"
-            type="number"
-            min="0"
-            step="1"
-            value={capDollars}
-            onChange={(e) => setCapDollars(e.target.value)}
             className="w-28 rounded border border-input bg-background px-3 py-1.5 text-sm"
+            id="cost-cap"
+            min="0"
+            onChange={(e) => setCapDollars(e.target.value)}
             placeholder="0 = unlimited"
+            step="1"
+            type="number"
+            value={capDollars}
           />
-          <span className="text-xs text-muted-foreground">per user / month (0 = unlimited)</span>
+          <span className="text-muted-foreground text-xs">
+            per user / month (0 = unlimited)
+          </span>
         </div>
       </div>
 
-      {error && <p className="text-sm text-destructive">{error}</p>}
-      {saved && <p className="text-sm text-green-600">Policy saved. Changes take effect on next page load.</p>}
+      {error && <p className="text-destructive text-sm">{error}</p>}
+      {saved && (
+        <p className="text-green-600 text-sm">
+          Policy saved. Changes take effect on next page load.
+        </p>
+      )}
 
       <button
-        type="button"
-        onClick={handleSave}
+        className="rounded bg-primary px-4 py-2 font-medium text-primary-foreground text-sm hover:bg-primary/90 disabled:opacity-50"
         disabled={saving}
-        className="px-4 py-2 rounded bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 disabled:opacity-50"
+        onClick={handleSave}
+        type="button"
       >
         {saving ? "Saving…" : "Save Policy"}
       </button>
     </div>
-  )
+  );
 }

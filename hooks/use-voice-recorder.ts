@@ -92,13 +92,14 @@ export function useVoiceRecorder({
     }
   }, [state, maxDurationMs, onBlob, onError, stopRecording, stopStream]);
 
-  useEffect(() => {
-    return () => {
+  useEffect(
+    () => () => {
       if (autoStopTimerRef.current) clearTimeout(autoStopTimerRef.current);
       mediaRecorderRef.current?.stop();
       stopStream();
-    };
-  }, [stopStream]);
+    },
+    [stopStream]
+  );
 
   const isSupported =
     typeof window !== "undefined" &&

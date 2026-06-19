@@ -1,8 +1,11 @@
-import { auth } from "@/app/(auth)/auth";
-import { experimental_transcribe as transcribe } from "ai";
 import { openai } from "@ai-sdk/openai";
+import { experimental_transcribe as transcribe } from "ai";
 import { NextResponse } from "next/server";
-import { rateLimitMiddleware, createRateLimitResponse } from "@/lib/middleware/rate-limit";
+import { auth } from "@/app/(auth)/auth";
+import {
+  createRateLimitResponse,
+  rateLimitMiddleware,
+} from "@/lib/middleware/rate-limit";
 
 export const maxDuration = 30;
 
@@ -28,11 +31,17 @@ export async function POST(request: Request) {
 
   const audioFile = formData.get("audio");
   if (!audioFile || !(audioFile instanceof Blob)) {
-    return NextResponse.json({ error: "No audio file provided" }, { status: 400 });
+    return NextResponse.json(
+      { error: "No audio file provided" },
+      { status: 400 }
+    );
   }
 
   if (audioFile.size > 25 * 1024 * 1024) {
-    return NextResponse.json({ error: "Audio file too large (max 25MB)" }, { status: 413 });
+    return NextResponse.json(
+      { error: "Audio file too large (max 25MB)" },
+      { status: 413 }
+    );
   }
 
   try {

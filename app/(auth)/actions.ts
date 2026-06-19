@@ -88,7 +88,11 @@ export const register = async (
       return { status: "user_exists" } as RegisterActionState;
     }
     const ref = formData.get("ref") as string | null;
-    await createUser(validatedData.email, validatedData.password, ref ?? undefined);
+    await createUser(
+      validatedData.email,
+      validatedData.password,
+      ref ?? undefined
+    );
     // Fire welcome email (don't block sign-in on failure)
     sendWelcomeEmail(validatedData.email).catch(() => {});
     await signIn("credentials", {

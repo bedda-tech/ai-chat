@@ -1,7 +1,7 @@
 "use client";
 
-import { memo } from "react";
 import { Download } from "lucide-react";
+import { memo } from "react";
 import { ShareToTeamButton } from "@/components/share-to-team-button";
 import { SidebarToggle } from "@/components/sidebar-toggle";
 import { Button } from "@/components/ui/button";
@@ -34,16 +34,16 @@ function PureChatHeader({
   isReadonly: boolean;
 }) {
   return (
-    <div className="absolute left-2 top-2 z-50 flex items-center gap-2 md:left-2 md:top-2">
+    <div className="absolute top-2 left-2 z-50 flex items-center gap-2 md:top-2 md:left-2">
       <SidebarToggle />
       {!isReadonly && <ShareToTeamButton chatId={chatId} />}
       {!isReadonly && (
         <Button
-          variant="ghost"
-          size="icon"
           className="size-8"
-          title="Export chat as Markdown"
           onClick={() => handleExport(chatId)}
+          size="icon"
+          title="Export chat as Markdown"
+          variant="ghost"
         >
           <Download className="size-4" />
         </Button>
@@ -52,10 +52,10 @@ function PureChatHeader({
   );
 }
 
-export const ChatHeader = memo(PureChatHeader, (prevProps, nextProps) => {
-  return (
+export const ChatHeader = memo(
+  PureChatHeader,
+  (prevProps, nextProps) =>
     prevProps.chatId === nextProps.chatId &&
     prevProps.selectedVisibilityType === nextProps.selectedVisibilityType &&
     prevProps.isReadonly === nextProps.isReadonly
-  );
-});
+);

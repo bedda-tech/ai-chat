@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Loader2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { useAnalytics } from "@/hooks/use-analytics";
 
 type PlanName = "plus" | "pro" | "max";
@@ -55,13 +55,13 @@ export function UpgradeInitiator({
 
   if (error) {
     return (
-      <div className="text-center space-y-4 max-w-sm">
-        <p className="text-sm text-destructive">{error}</p>
+      <div className="max-w-sm space-y-4 text-center">
+        <p className="text-destructive text-sm">{error}</p>
         <div className="flex flex-col gap-2">
           <Button asChild>
             <Link href="/settings">Go to Settings</Link>
           </Button>
-          <Button variant="outline" onClick={() => window.location.reload()}>
+          <Button onClick={() => window.location.reload()} variant="outline">
             Try Again
           </Button>
         </div>
@@ -70,8 +70,8 @@ export function UpgradeInitiator({
   }
 
   return (
-    <div className="text-center space-y-4">
-      <Loader2 className="h-8 w-8 animate-spin mx-auto text-muted-foreground" />
+    <div className="space-y-4 text-center">
+      <Loader2 className="mx-auto h-8 w-8 animate-spin text-muted-foreground" />
       <p className="text-muted-foreground text-sm">
         Setting up {PLAN_LABELS[plan][billingPeriod]} checkout&hellip;
       </p>

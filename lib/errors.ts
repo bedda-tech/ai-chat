@@ -42,7 +42,12 @@ export class ChatSDKError extends Error {
   upgrade?: boolean;
   upgradeUrl?: string;
 
-  constructor(errorCode: ErrorCode, cause?: string, upgrade?: boolean, upgradeUrl?: string) {
+  constructor(
+    errorCode: ErrorCode,
+    cause?: string,
+    upgrade?: boolean,
+    upgradeUrl?: string
+  ) {
     super();
 
     const [type, surface] = errorCode.split(":");

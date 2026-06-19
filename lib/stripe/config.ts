@@ -56,8 +56,8 @@ export const STRIPE_PLANS = {
     name: "plus",
     displayName: "Plus",
     dbTier: "pro" as const,
-    price: 1200,       // $12.00/mo in cents
-    annualPrice: 11520, // $115.20/yr ($9.60/mo) — 20% off
+    price: 1200, // $12.00/mo in cents
+    annualPrice: 11_520, // $115.20/yr ($9.60/mo) — 20% off
     messagesPerDay: 300,
     messagesPerMonth: 999_999_999,
   },
@@ -67,9 +67,9 @@ export const STRIPE_PLANS = {
     name: "pro",
     displayName: "Pro",
     dbTier: "premium" as const,
-    price: 2500,       // $25.00/mo in cents
-    annualPrice: 24000, // $240/yr ($20/mo) — 20% off
-    messagesPerDay: 1_500,
+    price: 2500, // $25.00/mo in cents
+    annualPrice: 24_000, // $240/yr ($20/mo) — 20% off
+    messagesPerDay: 1500,
     messagesPerMonth: 999_999_999,
   },
   MAX: {
@@ -78,9 +78,9 @@ export const STRIPE_PLANS = {
     name: "max",
     displayName: "Max",
     dbTier: "enterprise" as const,
-    price: 5000,       // $50.00/mo in cents
-    annualPrice: 48000, // $480/yr ($40/mo) — 20% off
-    messagesPerDay: 5_000,
+    price: 5000, // $50.00/mo in cents
+    annualPrice: 48_000, // $480/yr ($40/mo) — 20% off
+    messagesPerDay: 5000,
     messagesPerMonth: 999_999_999,
   },
 } as const;
@@ -102,9 +102,15 @@ export const TIER_DISPLAY_NAMES: Record<DbTier, string> = {
  * Handles both monthly and annual price IDs.
  */
 export function mapStripePriceToTier(priceId: string): DbTier {
-  if (priceId === STRIPE_PLANS.PLUS.id || priceId === STRIPE_PLANS.PLUS.annualId) return "pro";
-  if (priceId === STRIPE_PLANS.PRO.id || priceId === STRIPE_PLANS.PRO.annualId) return "premium";
-  if (priceId === STRIPE_PLANS.MAX.id || priceId === STRIPE_PLANS.MAX.annualId) return "enterprise";
+  if (
+    priceId === STRIPE_PLANS.PLUS.id ||
+    priceId === STRIPE_PLANS.PLUS.annualId
+  )
+    return "pro";
+  if (priceId === STRIPE_PLANS.PRO.id || priceId === STRIPE_PLANS.PRO.annualId)
+    return "premium";
+  if (priceId === STRIPE_PLANS.MAX.id || priceId === STRIPE_PLANS.MAX.annualId)
+    return "enterprise";
   return "free";
 }
 
@@ -113,11 +119,17 @@ export function mapStripePriceToTier(priceId: string): DbTier {
  * If billingPeriod is "annual" and the annual price ID is configured, uses it.
  * Falls back to monthly if annual price ID is not set.
  */
-export function mapPlanToStripePrice(plan: PlanName, billingPeriod: BillingPeriod = "monthly"): string | null {
+export function mapPlanToStripePrice(
+  plan: PlanName,
+  billingPeriod: BillingPeriod = "monthly"
+): string | null {
   if (billingPeriod === "annual") {
-    if (plan === "plus") return STRIPE_PLANS.PLUS.annualId || STRIPE_PLANS.PLUS.id || null;
-    if (plan === "pro") return STRIPE_PLANS.PRO.annualId || STRIPE_PLANS.PRO.id || null;
-    if (plan === "max") return STRIPE_PLANS.MAX.annualId || STRIPE_PLANS.MAX.id || null;
+    if (plan === "plus")
+      return STRIPE_PLANS.PLUS.annualId || STRIPE_PLANS.PLUS.id || null;
+    if (plan === "pro")
+      return STRIPE_PLANS.PRO.annualId || STRIPE_PLANS.PRO.id || null;
+    if (plan === "max")
+      return STRIPE_PLANS.MAX.annualId || STRIPE_PLANS.MAX.id || null;
   }
   if (plan === "plus") return STRIPE_PLANS.PLUS.id || null;
   if (plan === "pro") return STRIPE_PLANS.PRO.id || null;
@@ -128,7 +140,9 @@ export function mapPlanToStripePrice(plan: PlanName, billingPeriod: BillingPerio
 /**
  * Map an internal DB tier to its Stripe price ID.
  */
-export function mapTierToStripePrice(tier: DbTier | "enterprise"): string | null {
+export function mapTierToStripePrice(
+  tier: DbTier | "enterprise"
+): string | null {
   if (tier === "pro") return STRIPE_PLANS.PLUS.id || null;
   if (tier === "premium") return STRIPE_PLANS.PRO.id || null;
   if (tier === "enterprise") return STRIPE_PLANS.MAX.id || null;

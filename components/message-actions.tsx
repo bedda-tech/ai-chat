@@ -6,7 +6,14 @@ import { useCopyToClipboard } from "usehooks-ts";
 import type { Vote } from "@/lib/db/schema";
 import type { ChatMessage } from "@/lib/types";
 import { Action, Actions } from "./elements/actions";
-import { CopyIcon, PencilEditIcon, SpeakerIcon, SpeakerStopIcon, ThumbDownIcon, ThumbUpIcon } from "./icons";
+import {
+  CopyIcon,
+  PencilEditIcon,
+  SpeakerIcon,
+  SpeakerStopIcon,
+  ThumbDownIcon,
+  ThumbUpIcon,
+} from "./icons";
 
 function useTTS(text: string | undefined) {
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -39,13 +46,14 @@ function useTTS(text: string | undefined) {
   }, []);
 
   // Cancel on unmount
-  useEffect(() => {
-    return () => {
+  useEffect(
+    () => () => {
       if (typeof window !== "undefined" && window.speechSynthesis) {
         window.speechSynthesis.cancel();
       }
-    };
-  }, []);
+    },
+    []
+  );
 
   return { isSpeaking, speak, stop };
 }

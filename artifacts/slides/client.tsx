@@ -48,7 +48,7 @@ ${markdown}
 function SlidesRenderer({ content, status }: SlidesContent) {
   if (status === "streaming") {
     return (
-      <div className="flex items-center justify-center h-full min-h-[500px] text-muted-foreground text-sm">
+      <div className="flex h-full min-h-[500px] items-center justify-center text-muted-foreground text-sm">
         Generating slides...
       </div>
     );
@@ -56,7 +56,7 @@ function SlidesRenderer({ content, status }: SlidesContent) {
 
   if (!content) {
     return (
-      <div className="flex items-center justify-center h-full min-h-[500px] text-muted-foreground text-sm">
+      <div className="flex h-full min-h-[500px] items-center justify-center text-muted-foreground text-sm">
         No content yet
       </div>
     );
@@ -64,9 +64,9 @@ function SlidesRenderer({ content, status }: SlidesContent) {
 
   return (
     <iframe
-      srcDoc={buildRevealHTML(content)}
-      sandbox="allow-scripts allow-same-origin"
       className="w-full border-0"
+      sandbox="allow-scripts allow-same-origin"
+      srcDoc={buildRevealHTML(content)}
       style={{ minHeight: "500px", height: "100%" }}
       title="Slide Presentation"
     />

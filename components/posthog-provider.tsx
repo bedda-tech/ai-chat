@@ -1,15 +1,12 @@
 "use client";
 
-import { useEffect } from "react";
+import { useSession } from "next-auth/react";
 import posthog from "posthog-js";
 import { PostHogProvider as PHProvider, usePostHog } from "posthog-js/react";
-import { useSession } from "next-auth/react";
+import { useEffect } from "react";
 import { guestRegex } from "@/lib/constants";
 
-if (
-  typeof window !== "undefined" &&
-  process.env.NEXT_PUBLIC_POSTHOG_KEY
-) {
+if (typeof window !== "undefined" && process.env.NEXT_PUBLIC_POSTHOG_KEY) {
   posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
     api_host:
       process.env.NEXT_PUBLIC_POSTHOG_HOST ?? "https://us.i.posthog.com",
@@ -39,11 +36,7 @@ function PostHogUserIdentifier() {
   return null;
 }
 
-export function PostHogProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function PostHogProvider({ children }: { children: React.ReactNode }) {
   if (!process.env.NEXT_PUBLIC_POSTHOG_KEY) {
     return <>{children}</>;
   }

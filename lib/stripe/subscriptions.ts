@@ -1,5 +1,5 @@
 import type Stripe from "stripe";
-import { stripe, mapStripePriceToTier, type DbTier } from "./config";
+import { type DbTier, mapStripePriceToTier, stripe } from "./config";
 
 /**
  * Create a Stripe Checkout session for subscription
@@ -45,6 +45,11 @@ export async function createCheckoutSession({
     mode: "subscription",
     payment_method_types: ["card"],
     allow_promotion_codes: true,
+    // Don't require a card upfront when the session includes a free trial —
+    // this matches the "no credit card required" copy on the pricing page.
+    // If no card is added by trial end, Stripe will cancel the subscription
+    // and our customer.subscription.deleted webhook downgrades the user to free.
+    ...(trialDays ? { payment_method_collection: "if_required" } : {}),
     line_items: [
       {
         price: priceId,
@@ -57,7 +62,16 @@ export async function createCheckoutSession({
       metadata: {
         userId,
       },
-      ...(trialDays ? { trial_period_days: trialDays } : {}),
+      ...(trialDays
+        ? {
+            trial_period_days: trialDays,
+            trial_settings: {
+              end_behavior: {
+                missing_payment_method: "cancel",
+              },
+            },
+          }
+        : {}),
     },
     metadata: {
       userId,
@@ -93,8 +107,16 @@ export async function getCustomerSubscription(
 ): Promise<Stripe.Subscription | null> {
   // Include trialing subscriptions so trial users are recognized
   const [active, trialing] = await Promise.all([
-    stripe.subscriptions.list({ customer: customerId, status: "active", limit: 1 }),
-    stripe.subscriptions.list({ customer: customerId, status: "trialing", limit: 1 }),
+    stripe.subscriptions.list({
+      customer: customerId,
+      status: "active",
+      limit: 1,
+    }),
+    stripe.subscriptions.list({
+      customer: customerId,
+      status: "trialing",
+      limit: 1,
+    }),
   ]);
 
   return active.data[0] || trialing.data[0] || null;

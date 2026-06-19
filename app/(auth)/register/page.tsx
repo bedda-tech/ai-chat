@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { useActionState, useEffect, useState, Suspense } from "react";
+import { Suspense, useActionState, useEffect, useState } from "react";
 import { AuthForm } from "@/components/auth-form";
 import { SocialLoginButtons } from "@/components/social-login-buttons";
 import { SubmitButton } from "@/components/submit-button";
@@ -80,7 +80,9 @@ function RegisterForm() {
             {" instead."}
           </p>
         </AuthForm>
-        <SocialLoginButtons callbackUrl={plan ? `/upgrade?plan=${plan}` : "/"} />
+        <SocialLoginButtons
+          callbackUrl={plan ? `/upgrade?plan=${plan}` : "/"}
+        />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
-import { embed, rerank, tool } from "ai";
-import { openai } from "@ai-sdk/openai";
 import { createCohere } from "@ai-sdk/cohere";
+import { openai } from "@ai-sdk/openai";
+import { embed, rerank, tool } from "ai";
 import { z } from "zod";
 import { searchKBChunks } from "@/lib/db/queries";
 
@@ -8,7 +8,10 @@ import { searchKBChunks } from "@/lib/db/queries";
  * RAG tool: searches the user's uploaded knowledge base documents
  * using vector similarity search (pgvector on Neon).
  */
-export const queryKnowledgeBaseTool = (userId: string, projectId?: string | null) =>
+export const queryKnowledgeBaseTool = (
+  userId: string,
+  projectId?: string | null
+) =>
   tool({
     description:
       "Search your knowledge base of uploaded documents. Use this when the user asks about content from files they have uploaded, or when you need to retrieve specific information from their documents. Returns the most relevant text passages.",
@@ -62,7 +65,10 @@ export const queryKnowledgeBaseTool = (userId: string, projectId?: string | null
             );
             chunks = ranking.map((item) => candidates[item.originalIndex]);
           } catch (rerankError) {
-            console.warn("[kb] rerank failed, falling back to vector search:", rerankError);
+            console.warn(
+              "[kb] rerank failed, falling back to vector search:",
+              rerankError
+            );
             chunks = candidates.slice(0, limit);
           }
         }

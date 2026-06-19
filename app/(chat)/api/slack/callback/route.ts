@@ -54,7 +54,11 @@ export async function GET(req: Request) {
     installedByUserId: session?.user?.id ?? null,
   });
 
-  console.log("[slack] workspace connected:", tokenData.team.name, tokenData.team.id);
+  console.log(
+    "[slack] workspace connected:",
+    tokenData.team.name,
+    tokenData.team.id
+  );
 
   return Response.redirect(`${appUrl}/settings?slack_connected=1`);
 }

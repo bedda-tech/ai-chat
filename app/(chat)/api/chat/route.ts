@@ -1,19 +1,19 @@
+import { createMCPClient } from "@ai-sdk/mcp";
+import { openai } from "@ai-sdk/openai";
 import * as Sentry from "@sentry/nextjs";
 import { geolocation } from "@vercel/functions";
 import {
   convertToModelMessages,
   createUIMessageStream,
   embed,
-  jsonSchema,
   JsonToSseTransformStream,
+  jsonSchema,
   smoothStream,
   stepCountIs,
   streamText,
   tool,
   wrapLanguageModel,
 } from "ai";
-import { openai } from "@ai-sdk/openai";
-import { createMCPClient } from "@ai-sdk/mcp";
 import { unstable_cache as cache } from "next/cache";
 import { after } from "next/server";
 import {
@@ -25,20 +25,29 @@ import { fetchModels } from "tokenlens/fetch";
 import { getUsage } from "tokenlens/helpers";
 import { auth, type UserType } from "@/app/(auth)/auth";
 import type { VisibilityType } from "@/components/visibility-selector";
+import { sanitizeMessagesForProvider } from "@/lib/ai/cross-provider-context";
+import { isModelAllowedForTier } from "@/lib/ai/entitlements";
 import { buildGatewayConfig, getThinkingBudget } from "@/lib/ai/gateway-config";
 import { getModelConfig, getModelContextWindow } from "@/lib/ai/model-config";
-import { sanitizeMessagesForProvider } from "@/lib/ai/cross-provider-context";
 import type { ChatModel } from "@/lib/ai/models";
-import { type RequestHints, getCacheableSystemPrompt } from "@/lib/ai/prompts";
+import { dispatchPluginTool } from "@/lib/ai/plugin-tool-dispatcher";
+import { getCacheableSystemPrompt, type RequestHints } from "@/lib/ai/prompts";
 import { myProvider } from "@/lib/ai/providers";
 import { ragMiddleware } from "@/lib/ai/rag-middleware";
 import { analyzeDataTool } from "@/lib/ai/tools/analyze-data";
-import { executeCodeTool } from "@/lib/ai/tools/execute-code";
 import { createDocument } from "@/lib/ai/tools/create-document";
+import { executeCodeTool } from "@/lib/ai/tools/execute-code";
+import { generateChartTool } from "@/lib/ai/tools/generate-chart";
 import { generateImageTool } from "@/lib/ai/tools/generate-image";
+import { generateSpeechTool } from "@/lib/ai/tools/generate-speech";
 import { generateStructuredDataTool } from "@/lib/ai/tools/generate-structured-data";
 import { getWeather } from "@/lib/ai/tools/get-weather";
+import { googleDriveTool } from "@/lib/ai/tools/google-drive";
+import { queryKnowledgeBaseTool } from "@/lib/ai/tools/knowledge-base";
+import { notionTool } from "@/lib/ai/tools/notion";
+import { renderUITool } from "@/lib/ai/tools/render-ui";
 import { requestSuggestions } from "@/lib/ai/tools/request-suggestions";
+import { saveMemoryTool } from "@/lib/ai/tools/save-memory";
 import {
   compareTextSimilarityTool,
   generateTextEmbeddingsTool,
@@ -46,21 +55,14 @@ import {
 import { transcribeAudioTool } from "@/lib/ai/tools/transcribe-audio";
 import { updateDocument } from "@/lib/ai/tools/update-document";
 import { webSearchTool } from "@/lib/ai/tools/web-search";
-import { queryKnowledgeBaseTool } from "@/lib/ai/tools/knowledge-base";
-import { googleDriveTool } from "@/lib/ai/tools/google-drive";
-import { notionTool } from "@/lib/ai/tools/notion";
-import { generateSpeechTool } from "@/lib/ai/tools/generate-speech";
-import { generateChartTool } from "@/lib/ai/tools/generate-chart";
-import { saveMemoryTool } from "@/lib/ai/tools/save-memory";
-import { renderUITool } from "@/lib/ai/tools/render-ui";
-import { dispatchPluginTool } from "@/lib/ai/plugin-tool-dispatcher";
-import { getEnabledPluginTools } from "@/lib/db/queries";
+import { logAuditEvent } from "@/lib/audit";
 import { isProductionEnvironment } from "@/lib/constants";
 import {
   createStreamId,
   deleteChatById,
   getChatById,
   getEnabledMcpServers,
+  getEnabledPluginTools,
   getMessagesByChatId,
   getProjectById,
   getUserMemories,
@@ -71,19 +73,21 @@ import {
   searchKBChunks,
   updateChatLastContextById,
 } from "@/lib/db/queries";
-import { isModelAllowedForTier } from "@/lib/ai/entitlements";
+import { getOrgModelPolicyForUser } from "@/lib/db/team-queries";
 import { ChatSDKError } from "@/lib/errors";
 import {
   createRateLimitResponse,
   rateLimitMiddleware,
 } from "@/lib/middleware/rate-limit";
+import { publishChatEvent } from "@/lib/realtime";
 import type { ChatMessage } from "@/lib/types";
 import type { AppUsage } from "@/lib/usage";
 import { getCurrentMonthUsage, recordUsage } from "@/lib/usage/tracking";
-import { getOrgModelPolicyForUser } from "@/lib/db/team-queries";
-import { convertToUIMessages, generateUUID, pruneUIMessages } from "@/lib/utils";
-import { logAuditEvent } from "@/lib/audit";
-import { publishChatEvent } from "@/lib/realtime";
+import {
+  convertToUIMessages,
+  generateUUID,
+  pruneUIMessages,
+} from "@/lib/utils";
 import { generateTitleFromUserMessage } from "../../actions";
 import { type PostRequestBody, postRequestBodySchema } from "./schema";
 
@@ -188,9 +192,15 @@ export async function POST(request: Request) {
 
     // Enforce org-level monthly cost cap if set
     const orgPolicy = await getOrgModelPolicyForUser(session.user.id);
-    if (orgPolicy?.monthlyCostCapUsdCents && orgPolicy.monthlyCostCapUsdCents > 0) {
+    if (
+      orgPolicy?.monthlyCostCapUsdCents &&
+      orgPolicy.monthlyCostCapUsdCents > 0
+    ) {
       const monthUsage = await getCurrentMonthUsage(session.user.id);
-      if (Math.round(monthUsage.totalCost * 100) >= orgPolicy.monthlyCostCapUsdCents) {
+      if (
+        Math.round(monthUsage.totalCost * 100) >=
+        orgPolicy.monthlyCostCapUsdCents
+      ) {
         const capDollars = (orgPolicy.monthlyCostCapUsdCents / 100).toFixed(2);
         return Response.json(
           {
@@ -209,7 +219,10 @@ export async function POST(request: Request) {
       userPrefsPromise,
       userMemoriesPromise,
     ]);
-    const userMemories = userMemoriesRaw.map((m) => ({ content: m.content, category: m.category }));
+    const userMemories = userMemoriesRaw.map((m) => ({
+      content: m.content,
+      category: m.category,
+    }));
 
     // Fetch project instructions if chat belongs to a project
     let projectInstructions: string | undefined;
@@ -228,7 +241,10 @@ export async function POST(request: Request) {
       try {
         const lastUserText = message.parts
           .filter((p: { type: string }) => p.type === "text")
-          .map((p: { type: string; text?: string }) => (p as { type: string; text: string }).text)
+          .map(
+            (p: { type: string; text?: string }) =>
+              (p as { type: string; text: string }).text
+          )
           .join(" ")
           .trim();
         if (lastUserText) {
@@ -271,7 +287,10 @@ export async function POST(request: Request) {
         visibility: selectedVisibilityType,
         projectId: requestProjectId,
       });
-      void logAuditEvent(session.user.id, "chat.created", { chatId: id, modelId: selectedChatModel });
+      void logAuditEvent(session.user.id, "chat.created", {
+        chatId: id,
+        modelId: selectedChatModel,
+      });
     }
 
     const messagesFromDb = await getMessagesByChatId({ id });
@@ -279,7 +298,10 @@ export async function POST(request: Request) {
 
     // Prune history to 80% of model context window to prevent overflow on long conversations
     const contextWindow = getModelContextWindow(selectedChatModel);
-    const uiMessages = pruneUIMessages(allUiMessages, Math.floor(contextWindow * 0.8));
+    const uiMessages = pruneUIMessages(
+      allUiMessages,
+      Math.floor(contextWindow * 0.8)
+    );
     if (uiMessages.length < allUiMessages.length) {
       console.log(
         `[chat] pruned ${allUiMessages.length - uiMessages.length} messages for model ${selectedChatModel} (context: ${contextWindow})`
@@ -360,7 +382,8 @@ export async function POST(request: Request) {
         pluginToolMap[pt.name] = tool({
           description: pt.description,
           inputSchema: jsonSchema(pt.parametersSchema as any),
-          execute: async (args) => dispatchPluginTool(pt, args as Record<string, unknown>),
+          execute: async (args) =>
+            dispatchPluginTool(pt, args as Record<string, unknown>),
         });
       }
     }
@@ -422,7 +445,10 @@ export async function POST(request: Request) {
           generateTextEmbeddings: generateTextEmbeddingsTool(),
           compareTextSimilarity: compareTextSimilarityTool(),
           executeCode: executeCodeTool(),
-          queryKnowledgeBase: queryKnowledgeBaseTool(session.user.id, chatProjectId),
+          queryKnowledgeBase: queryKnowledgeBaseTool(
+            session.user.id,
+            chatProjectId
+          ),
           googleDrive: googleDriveTool(session.user.id),
           notion: notionTool(session.user.id),
           generateSpeech: generateSpeechTool(),
@@ -660,7 +686,8 @@ export async function POST(request: Request) {
             createdAt: new Date(),
             attachments: [],
             chatId: id,
-            modelId: currentMessage.role === "assistant" ? selectedChatModel : null,
+            modelId:
+              currentMessage.role === "assistant" ? selectedChatModel : null,
           })),
         });
 

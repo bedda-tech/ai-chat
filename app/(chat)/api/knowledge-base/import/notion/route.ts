@@ -1,5 +1,5 @@
-import { embedMany } from "ai";
 import { openai } from "@ai-sdk/openai";
+import { embedMany } from "ai";
 import { NextResponse } from "next/server";
 
 import { auth } from "@/app/(auth)/auth";
@@ -25,10 +25,7 @@ function extractPlainText(richText: Array<{ plain_text: string }>): string {
   return richText?.map((t) => t.plain_text).join("") ?? "";
 }
 
-function blockToText(block: {
-  type: string;
-  [key: string]: unknown;
-}): string {
+function blockToText(block: { type: string; [key: string]: unknown }): string {
   const type = block.type;
   const data = block[type] as {
     rich_text?: Array<{ plain_text: string }>;
@@ -145,7 +142,10 @@ export async function POST(request: Request) {
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Invalid request body" },
+      { status: 400 }
+    );
   }
 
   const { pageId, title: providedTitle } = body;
@@ -174,9 +174,7 @@ export async function POST(request: Request) {
   const page = await pageRes.json();
 
   const titleProp =
-    page.properties?.title ??
-    page.properties?.Name ??
-    page.properties?.name;
+    page.properties?.title ?? page.properties?.Name ?? page.properties?.name;
   const inferredTitle = titleProp?.title
     ? extractPlainText(titleProp.title)
     : titleProp?.rich_text
@@ -200,9 +198,7 @@ export async function POST(request: Request) {
     cursor = blocksData.has_more ? blocksData.next_cursor : undefined;
   } while (cursor);
 
-  const lines = allBlocks
-    .map(blockToText)
-    .filter((l) => l.length > 0);
+  const lines = allBlocks.map(blockToText).filter((l) => l.length > 0);
   const content = lines.join("\n\n");
 
   if (content.trim().length < 20) {
@@ -259,8 +255,7 @@ export async function POST(request: Request) {
     console.error("Notion KB import error:", error);
     return NextResponse.json(
       {
-        error:
-          error instanceof Error ? error.message : "Failed to import page",
+        error: error instanceof Error ? error.message : "Failed to import page",
       },
       { status: 500 }
     );

@@ -20,8 +20,7 @@
  */
 
 const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-const APP_URL =
-  process.env.NEXT_PUBLIC_APP_URL ?? "https://www.bedda.tech";
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "https://www.bedda.tech";
 const SECRET = process.env.TELEGRAM_WEBHOOK_SECRET;
 
 if (!TOKEN) {
@@ -42,14 +41,11 @@ if (SECRET) {
   console.log("Using webhook secret token for verification");
 }
 
-const res = await fetch(
-  `https://api.telegram.org/bot${TOKEN}/setWebhook`,
-  {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  }
-);
+const res = await fetch(`https://api.telegram.org/bot${TOKEN}/setWebhook`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(body),
+});
 
 const data = await res.json();
 if (data.ok) {

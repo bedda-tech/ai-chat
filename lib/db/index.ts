@@ -1,2 +1,2 @@
 // Re-export all schema types and tables
-export * from './schema';
+export * from "./schema";

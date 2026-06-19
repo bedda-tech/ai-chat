@@ -2,13 +2,13 @@
 
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import useSWR, { useSWRConfig } from "swr";
 import { unstable_serialize } from "swr/infinite";
 import { ChatHeader } from "@/components/chat-header";
 import { SharedChatBanner } from "@/components/shared-chat-banner";
-import Link from "next/link";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -19,9 +19,11 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { useAnalytics } from "@/hooks/use-analytics";
 import { useArtifactSelector } from "@/hooks/use-artifact";
 import { useAutoResume } from "@/hooks/use-auto-resume";
 import { useChatVisibility } from "@/hooks/use-chat-visibility";
+import { useTeamRealtime } from "@/hooks/use-team-realtime";
 import type { Vote } from "@/lib/db/schema";
 import { ChatSDKError } from "@/lib/errors";
 import type { Attachment, ChatMessage } from "@/lib/types";
@@ -32,11 +34,9 @@ import { useDataStream } from "./data-stream-provider";
 import { Messages } from "./messages";
 import { MultimodalInput } from "./multimodal-input";
 import { getChatHistoryPaginationKey } from "./sidebar-history";
+import { TeamTypingIndicator } from "./team-typing-indicator";
 import { toast } from "./toast";
 import type { VisibilityType } from "./visibility-selector";
-import { useTeamRealtime } from "@/hooks/use-team-realtime";
-import { TeamTypingIndicator } from "./team-typing-indicator";
-import { useAnalytics } from "@/hooks/use-analytics";
 
 export function Chat({
   id,
@@ -144,14 +144,14 @@ export function Chat({
               title: "Premium model",
               description:
                 (error.cause as string) ||
-                "This model requires a Plus plan or higher. Upgrade to access all 30+ AI models.",
+                "This model requires a Plus plan. Try Plus free for 7 days to access all 30+ AI models, then $12/mo.",
             });
           } else {
             // rate_limit or other upgrade-required errors
             setUpgradeDialogContent({
               title: "Daily limit reached",
               description:
-                "You've used all your free messages for today. Upgrade to Plus for 300 messages/day, or Pro for 1,500/day — all 30+ AI models included.",
+                "You've used all your free messages for today. Try Plus free for 7 days — 300 messages/day and all 30+ AI models. Then $12/mo.",
             });
           }
           track("upgrade_modal_shown", {
@@ -320,10 +320,7 @@ export function Chat({
         </AlertDialogContent>
       </AlertDialog>
 
-      <AlertDialog
-        onOpenChange={setShowUpgradeDialog}
-        open={showUpgradeDialog}
-      >
+      <AlertDialog onOpenChange={setShowUpgradeDialog} open={showUpgradeDialog}>
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>{upgradeDialogContent.title}</AlertDialogTitle>
@@ -343,7 +340,7 @@ export function Chat({
                   })
                 }
               >
-                Upgrade to Plus — $12/mo
+                Start 7-day free trial
               </Link>
             </AlertDialogAction>
           </AlertDialogFooter>

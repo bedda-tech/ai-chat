@@ -1,6 +1,6 @@
+import { NextResponse } from "next/server";
 import { auth } from "@/app/(auth)/auth";
 import { deleteNotionConnection, getNotionConnection } from "@/lib/db/queries";
-import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 

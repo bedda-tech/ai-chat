@@ -1,13 +1,15 @@
+import { type NextRequest, NextResponse } from "next/server";
 import { auth } from "@/app/(auth)/auth";
 import { saveDriveConnection } from "@/lib/db/queries";
-import { NextRequest, NextResponse } from "next/server";
 
 const GOOGLE_TOKEN_URL = "https://oauth2.googleapis.com/token";
 
 export async function GET(request: NextRequest) {
   const session = await auth();
   if (!session?.user?.id) {
-    return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/drive?error=unauthorized`);
+    return NextResponse.redirect(
+      `${process.env.NEXTAUTH_URL}/drive?error=unauthorized`
+    );
   }
 
   const { searchParams } = new URL(request.url);
@@ -16,17 +18,23 @@ export async function GET(request: NextRequest) {
   const error = searchParams.get("error");
 
   if (error) {
-    return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/drive?error=${error}`);
+    return NextResponse.redirect(
+      `${process.env.NEXTAUTH_URL}/drive?error=${error}`
+    );
   }
 
   if (!code) {
-    return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/drive?error=no_code`);
+    return NextResponse.redirect(
+      `${process.env.NEXTAUTH_URL}/drive?error=no_code`
+    );
   }
 
   // Verify state matches session user
   const expectedState = Buffer.from(session.user.id).toString("base64");
   if (state !== expectedState) {
-    return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/drive?error=invalid_state`);
+    return NextResponse.redirect(
+      `${process.env.NEXTAUTH_URL}/drive?error=invalid_state`
+    );
   }
 
   const redirectUri = `${process.env.NEXTAUTH_URL}/api/drive/callback`;
@@ -44,7 +52,9 @@ export async function GET(request: NextRequest) {
   });
 
   if (!tokenRes.ok) {
-    return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/drive?error=token_exchange_failed`);
+    return NextResponse.redirect(
+      `${process.env.NEXTAUTH_URL}/drive?error=token_exchange_failed`
+    );
   }
 
   const tokens = await tokenRes.json();
@@ -52,9 +62,13 @@ export async function GET(request: NextRequest) {
   await saveDriveConnection(session.user.id, {
     accessToken: tokens.access_token,
     refreshToken: tokens.refresh_token ?? null,
-    expiresAt: tokens.expires_in ? Math.floor(Date.now() / 1000) + tokens.expires_in : null,
+    expiresAt: tokens.expires_in
+      ? Math.floor(Date.now() / 1000) + tokens.expires_in
+      : null,
     scope: tokens.scope ?? null,
   });
 
-  return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/drive?connected=true`);
+  return NextResponse.redirect(
+    `${process.env.NEXTAUTH_URL}/drive?connected=true`
+  );
 }

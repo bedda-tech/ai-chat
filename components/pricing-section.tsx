@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { Check, Crown, Rocket, Zap } from "lucide-react";
 import Link from "next/link";
-import { Check, Zap, Crown, Rocket } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -110,15 +110,19 @@ export function PricingSection() {
     <>
       {/* Billing Toggle */}
       <div className="mx-auto mt-10 flex items-center justify-center gap-3">
-        <span className={`text-sm font-medium ${billing === "monthly" ? "text-foreground" : "text-muted-foreground"}`}>
+        <span
+          className={`font-medium text-sm ${billing === "monthly" ? "text-foreground" : "text-muted-foreground"}`}
+        >
           Monthly
         </span>
         <button
-          type="button"
-          onClick={() => setBilling(billing === "monthly" ? "annual" : "monthly")}
           className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
             billing === "annual" ? "bg-primary" : "bg-input"
           }`}
+          onClick={() =>
+            setBilling(billing === "monthly" ? "annual" : "monthly")
+          }
+          type="button"
         >
           <span
             className={`inline-block h-4 w-4 rounded-full bg-white shadow-sm transition-transform ${
@@ -126,11 +130,13 @@ export function PricingSection() {
             }`}
           />
         </button>
-        <span className={`text-sm font-medium ${billing === "annual" ? "text-foreground" : "text-muted-foreground"}`}>
+        <span
+          className={`font-medium text-sm ${billing === "annual" ? "text-foreground" : "text-muted-foreground"}`}
+        >
           Annual
         </span>
         {billing === "annual" && (
-          <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs font-semibold text-green-700 dark:bg-green-900/30 dark:text-green-400">
+          <span className="rounded-full bg-green-100 px-2 py-0.5 font-semibold text-green-700 text-xs dark:bg-green-900/30 dark:text-green-400">
             Save 20%
           </span>
         )}
@@ -139,24 +145,25 @@ export function PricingSection() {
       {/* Pricing Cards */}
       <div className="mx-auto mt-10 grid max-w-7xl gap-6 md:grid-cols-2 lg:grid-cols-4">
         {tiers.map((tier) => {
-          const displayPrice = billing === "annual" && tier.annualPerMonth
-            ? tier.annualPerMonth
-            : tier.monthlyPrice;
+          const displayPrice =
+            billing === "annual" && tier.annualPerMonth
+              ? tier.annualPerMonth
+              : tier.monthlyPrice;
           const href = tier.planKey
             ? `${tier.href}${billing === "annual" ? "&billing=annual" : ""}`
             : tier.href;
 
           return (
             <Card
-              key={tier.name}
               className={
                 tier.highlighted
-                  ? "border-primary relative shadow-lg scale-[1.02]"
+                  ? "relative scale-[1.02] border-primary shadow-lg"
                   : "relative"
               }
+              key={tier.name}
             >
               {tier.highlighted && (
-                <div className="bg-primary text-primary-foreground absolute top-0 right-0 rounded-bl-lg rounded-tr-lg px-3 py-1 text-sm font-medium">
+                <div className="absolute top-0 right-0 rounded-tr-lg rounded-bl-lg bg-primary px-3 py-1 font-medium text-primary-foreground text-sm">
                   Best Value
                 </div>
               )}
@@ -169,22 +176,24 @@ export function PricingSection() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-baseline space-x-1">
-                  <span className="text-4xl font-bold">{displayPrice}</span>
+                  <span className="font-bold text-4xl">{displayPrice}</span>
                   {tier.period && (
                     <span className="text-muted-foreground text-sm">
                       {tier.period}
                     </span>
                   )}
                 </div>
-                {billing === "annual" && tier.annualPrice && tier.annualPerMonth && (
-                  <p className="text-xs text-muted-foreground">
-                    Billed {tier.annualPrice}/year
-                  </p>
-                )}
+                {billing === "annual" &&
+                  tier.annualPrice &&
+                  tier.annualPerMonth && (
+                    <p className="text-muted-foreground text-xs">
+                      Billed {tier.annualPrice}/year
+                    </p>
+                  )}
                 <ul className="space-y-2.5">
                   {tier.features.map((feature) => (
-                    <li key={feature} className="flex items-start space-x-3">
-                      <Check className="h-4 w-4 mt-0.5 flex-shrink-0 text-green-500" />
+                    <li className="flex items-start space-x-3" key={feature}>
+                      <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-500" />
                       <span className="text-sm">{feature}</span>
                     </li>
                   ))}
@@ -198,11 +207,13 @@ export function PricingSection() {
                 >
                   <Link href={href}>{tier.cta}</Link>
                 </Button>
-                {"trialNote" in tier && tier.trialNote && billing === "monthly" && (
-                  <p className="text-center text-xs text-muted-foreground">
-                    {tier.trialNote}
-                  </p>
-                )}
+                {"trialNote" in tier &&
+                  tier.trialNote &&
+                  billing === "monthly" && (
+                    <p className="text-center text-muted-foreground text-xs">
+                      {tier.trialNote}
+                    </p>
+                  )}
               </CardFooter>
             </Card>
           );

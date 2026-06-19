@@ -2,6 +2,15 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type {
   Feature,
   FeaturePriority,
@@ -9,9 +18,6 @@ import type {
   RoadmapPhase,
 } from "@/lib/roadmap-data";
 import { expectedImpact, roadmapData, roadmapStats } from "@/lib/roadmap-data";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const statusColors: Record<FeatureStatus, string> = {
   completed: "bg-green-500/10 text-green-500 border-green-500/20",
@@ -43,7 +49,10 @@ function FeatureCard({ feature }: { feature: Feature }) {
             <Badge className={statusColors[feature.status]} variant="outline">
               {feature.status}
             </Badge>
-            <Badge className={priorityColors[feature.priority]} variant="outline">
+            <Badge
+              className={priorityColors[feature.priority]}
+              variant="outline"
+            >
               {feature.priority}
             </Badge>
           </div>
@@ -73,14 +82,14 @@ function FeatureCard({ feature }: { feature: Feature }) {
           {feature.keyFeatures && feature.keyFeatures.length > 0 && (
             <div>
               <button
-                className="text-sm font-medium text-primary hover:underline"
+                className="font-medium text-primary text-sm hover:underline"
                 onClick={() => setIsExpanded(!isExpanded)}
                 type="button"
               >
                 {isExpanded ? "Hide" : "Show"} key features
               </button>
               {isExpanded && (
-                <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
+                <ul className="mt-2 space-y-1 text-muted-foreground text-sm">
                   {feature.keyFeatures.map((keyFeature, idx) => (
                     <li className="flex items-start gap-2" key={idx}>
                       <span className="text-primary">•</span>
@@ -95,7 +104,7 @@ function FeatureCard({ feature }: { feature: Feature }) {
           {feature.documentLink && (
             <div>
               <Link
-                className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+                className="inline-flex items-center gap-1 font-medium text-primary text-sm hover:underline"
                 href={`https://github.com/bedda-tech/chat/blob/main/docs/feature-ideas/${feature.documentLink}`}
                 target="_blank"
               >
@@ -114,7 +123,7 @@ function PhaseSection({ phase }: { phase: RoadmapPhase }) {
     <div className="space-y-4">
       <div className="space-y-2">
         <div className="flex items-center gap-3">
-          <h2 className="text-2xl font-bold">{phase.title}</h2>
+          <h2 className="font-bold text-2xl">{phase.title}</h2>
           <Badge className="bg-primary/10" variant="outline">
             {phase.timeline}
           </Badge>
@@ -135,10 +144,10 @@ function StatsSection() {
     <div className="grid gap-4 md:grid-cols-3">
       <Card>
         <CardHeader>
-          <CardTitle className="text-sm font-medium">Total Features</CardTitle>
+          <CardTitle className="font-medium text-sm">Total Features</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{roadmapStats.totalFeatures}</div>
+          <div className="font-bold text-2xl">{roadmapStats.totalFeatures}</div>
           <p className="text-muted-foreground text-xs">
             Planned across all phases
           </p>
@@ -146,10 +155,10 @@ function StatsSection() {
       </Card>
       <Card>
         <CardHeader>
-          <CardTitle className="text-sm font-medium">Estimated Value</CardTitle>
+          <CardTitle className="font-medium text-sm">Estimated Value</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">
+          <div className="font-bold text-2xl">
             {roadmapStats.estimatedValue.split(" ")[0]}
           </div>
           <p className="text-muted-foreground text-xs">
@@ -159,13 +168,11 @@ function StatsSection() {
       </Card>
       <Card>
         <CardHeader>
-          <CardTitle className="text-sm font-medium">Timeline</CardTitle>
+          <CardTitle className="font-medium text-sm">Timeline</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">12-18 mo</div>
-          <p className="text-muted-foreground text-xs">
-            With 2-3 developers
-          </p>
+          <div className="font-bold text-2xl">12-18 mo</div>
+          <p className="text-muted-foreground text-xs">With 2-3 developers</p>
         </CardContent>
       </Card>
     </div>
@@ -178,9 +185,7 @@ function ImpactSection() {
       <Card>
         <CardHeader>
           <CardTitle>Competitive Advantages</CardTitle>
-          <CardDescription>
-            Key differentiators vs. competitors
-          </CardDescription>
+          <CardDescription>Key differentiators vs. competitors</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-2 text-sm">
@@ -208,9 +213,11 @@ function ImpactSection() {
                 {expectedImpact.competitiveAdvantages.videoStudio}
               </span>
             </div>
-            <div className="border-t pt-2 flex justify-between font-semibold">
+            <div className="flex justify-between border-t pt-2 font-semibold">
               <span>Model Comparison:</span>
-              <span>{expectedImpact.competitiveAdvantages.modelComparison}</span>
+              <span>
+                {expectedImpact.competitiveAdvantages.modelComparison}
+              </span>
             </div>
           </div>
         </CardContent>
@@ -254,8 +261,8 @@ export function RoadmapView() {
   return (
     <div className="space-y-8">
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">Product Roadmap</h1>
-        <p className="text-muted-foreground text-lg">
+        <h1 className="font-bold text-4xl tracking-tight">Product Roadmap</h1>
+        <p className="text-lg text-muted-foreground">
           Our vision for the future of bedda.ai - transforming AI chat into a
           comprehensive productivity platform
         </p>
@@ -301,7 +308,9 @@ export function RoadmapView() {
       </Tabs>
 
       <div className="rounded-lg border bg-muted/50 p-6">
-        <h3 className="mb-2 font-semibold">Want to contribute or suggest features?</h3>
+        <h3 className="mb-2 font-semibold">
+          Want to contribute or suggest features?
+        </h3>
         <p className="text-muted-foreground text-sm">
           We're building in public and welcome feedback from our community. Each
           feature has detailed documentation in our{" "}

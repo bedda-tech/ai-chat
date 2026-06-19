@@ -14,33 +14,42 @@ export default function ForgotPasswordPage() {
   const [isSuccessful, setIsSuccessful] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const [state, formAction] = useActionState<ForgotPasswordActionState, FormData>(
-    forgotPassword,
-    { status: "idle" }
-  );
+  const [state, formAction] = useActionState<
+    ForgotPasswordActionState,
+    FormData
+  >(forgotPassword, { status: "idle" });
 
   useEffect(() => {
     if (state.status === "success") {
       setIsSuccessful(true);
       setSubmitted(true);
     } else if (state.status === "failed") {
-      toast({ type: "error", description: "Something went wrong. Please try again." });
+      toast({
+        type: "error",
+        description: "Something went wrong. Please try again.",
+      });
     } else if (state.status === "invalid_data") {
-      toast({ type: "error", description: "Please enter a valid email address." });
+      toast({
+        type: "error",
+        description: "Please enter a valid email address.",
+      });
     }
   }, [state.status]);
 
   if (submitted) {
     return (
       <div className="flex h-dvh w-screen items-start justify-center bg-background pt-12 md:items-center md:pt-0">
-        <div className="flex w-full max-w-md flex-col gap-6 overflow-hidden rounded-2xl px-4 sm:px-16 text-center">
-          <h3 className="font-semibold text-xl dark:text-zinc-50">Check your email</h3>
+        <div className="flex w-full max-w-md flex-col gap-6 overflow-hidden rounded-2xl px-4 text-center sm:px-16">
+          <h3 className="font-semibold text-xl dark:text-zinc-50">
+            Check your email
+          </h3>
           <p className="text-gray-500 text-sm dark:text-zinc-400">
-            If an account exists with that email, we sent a password reset link. Check your inbox and follow the instructions.
+            If an account exists with that email, we sent a password reset link.
+            Check your inbox and follow the instructions.
           </p>
           <Link
+            className="font-semibold text-gray-800 text-sm hover:underline dark:text-zinc-200"
             href="/login"
-            className="text-sm font-semibold text-gray-800 hover:underline dark:text-zinc-200"
           >
             Back to sign in
           </Link>
@@ -53,7 +62,9 @@ export default function ForgotPasswordPage() {
     <div className="flex h-dvh w-screen items-start justify-center bg-background pt-12 md:items-center md:pt-0">
       <div className="flex w-full max-w-md flex-col gap-12 overflow-hidden rounded-2xl">
         <div className="flex flex-col items-center justify-center gap-2 px-4 text-center sm:px-16">
-          <h3 className="font-semibold text-xl dark:text-zinc-50">Forgot password</h3>
+          <h3 className="font-semibold text-xl dark:text-zinc-50">
+            Forgot password
+          </h3>
           <p className="text-gray-500 text-sm dark:text-zinc-400">
             Enter your email and we&apos;ll send you a reset link.
           </p>
@@ -77,7 +88,9 @@ export default function ForgotPasswordPage() {
               type="email"
             />
           </div>
-          <SubmitButton isSuccessful={isSuccessful}>Send reset link</SubmitButton>
+          <SubmitButton isSuccessful={isSuccessful}>
+            Send reset link
+          </SubmitButton>
           <p className="mt-4 text-center text-gray-600 text-sm dark:text-zinc-400">
             <Link
               className="font-semibold text-gray-800 hover:underline dark:text-zinc-200"

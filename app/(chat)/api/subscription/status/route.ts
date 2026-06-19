@@ -1,16 +1,19 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/app/(auth)/auth";
-import { getUserTier, getUserTierRecord, getCurrentMonthUsage, getDailyUsage, TIER_LIMITS } from "@/lib/usage/tracking";
+import {
+  getCurrentMonthUsage,
+  getDailyUsage,
+  getUserTier,
+  getUserTierRecord,
+  TIER_LIMITS,
+} from "@/lib/usage/tracking";
 
 export async function GET(_req: Request) {
   try {
     const session = await auth();
 
     if (!session?.user) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const [tier, record, [usage, dailyCount]] = await Promise.all([
@@ -23,9 +26,15 @@ export async function GET(_req: Request) {
     ]);
 
     const isTrial = record?.subscriptionStatus === "trialing";
-    const trialEndDate = isTrial && record?.currentPeriodEnd ? record.currentPeriodEnd : null;
+    const trialEndDate =
+      isTrial && record?.currentPeriodEnd ? record.currentPeriodEnd : null;
     const trialDaysLeft = trialEndDate
-      ? Math.max(0, Math.ceil((trialEndDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24)))
+      ? Math.max(
+          0,
+          Math.ceil(
+            (trialEndDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24)
+          )
+        )
       : null;
     const limits = TIER_LIMITS[tier];
 
@@ -51,12 +60,14 @@ export async function GET(_req: Request) {
         messagesPerDay: dailyLimit,
         messagesPerMinute: limits.messagesPerMinute,
       },
-      percentUsed: monthlyLimit > 0 && monthlyLimit < 999_999_999
-        ? (usage.messageCount / monthlyLimit) * 100
-        : 0,
-      dailyPercentUsed: dailyLimit > 0 && dailyLimit < 999_999_999
-        ? (dailyCount / dailyLimit) * 100
-        : 0,
+      percentUsed:
+        monthlyLimit > 0 && monthlyLimit < 999_999_999
+          ? (usage.messageCount / monthlyLimit) * 100
+          : 0,
+      dailyPercentUsed:
+        dailyLimit > 0 && dailyLimit < 999_999_999
+          ? (dailyCount / dailyLimit) * 100
+          : 0,
     });
   } catch (error) {
     console.error("Error getting subscription status:", error);

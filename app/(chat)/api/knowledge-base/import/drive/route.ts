@@ -1,5 +1,5 @@
-import { embedMany } from "ai";
 import { openai } from "@ai-sdk/openai";
+import { embedMany } from "ai";
 import { NextResponse } from "next/server";
 
 import { auth } from "@/app/(auth)/auth";
@@ -7,8 +7,8 @@ import { chunkText } from "@/lib/ai/chunker";
 import {
   createKBDocument,
   getDriveConnection,
-  saveKBChunks,
   saveDriveConnection,
+  saveKBChunks,
 } from "@/lib/db/queries";
 
 const DRIVE_API = "https://www.googleapis.com/drive/v3";
@@ -118,7 +118,10 @@ export async function POST(request: Request) {
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Invalid request body" },
+      { status: 400 }
+    );
   }
 
   const { fileId, title: providedTitle } = body;

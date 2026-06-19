@@ -1,6 +1,6 @@
+import { gateway } from "@ai-sdk/gateway";
 import { generateText } from "ai";
 import { after } from "next/server";
-import { gateway } from "@ai-sdk/gateway";
 
 const DISCORD_PUBLIC_KEY = process.env.DISCORD_PUBLIC_KEY ?? "";
 const DISCORD_APP_ID = process.env.DISCORD_APP_ID ?? "";
@@ -26,7 +26,10 @@ const MODEL_ALIASES: Record<string, string> = {
 
 function hexToArrayBuffer(hex: string): ArrayBuffer {
   const buf = Buffer.from(hex, "hex");
-  return buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength) as ArrayBuffer;
+  return buf.buffer.slice(
+    buf.byteOffset,
+    buf.byteOffset + buf.byteLength
+  ) as ArrayBuffer;
 }
 
 // Verify Discord's Ed25519 signature using Web Crypto API (no external deps)
@@ -45,7 +48,12 @@ async function verifySignature(
       ["verify"]
     );
     const message = new TextEncoder().encode(timestamp + body);
-    return await crypto.subtle.verify("Ed25519", key, hexToArrayBuffer(signature), message);
+    return await crypto.subtle.verify(
+      "Ed25519",
+      key,
+      hexToArrayBuffer(signature),
+      message
+    );
   } catch {
     return false;
   }
@@ -65,7 +73,11 @@ async function editInteractionResponse(
     }
   );
   if (!res.ok) {
-    console.error("[discord] editInteractionResponse failed:", res.status, await res.text());
+    console.error(
+      "[discord] editInteractionResponse failed:",
+      res.status,
+      await res.text()
+    );
   }
 }
 
@@ -87,7 +99,12 @@ export async function POST(req: Request) {
   }
 
   const rawBody = await req.text();
-  const isValid = await verifySignature(DISCORD_PUBLIC_KEY, signature, timestamp, rawBody);
+  const isValid = await verifySignature(
+    DISCORD_PUBLIC_KEY,
+    signature,
+    timestamp,
+    rawBody
+  );
   if (!isValid) {
     return new Response("Invalid signature", { status: 401 });
   }
@@ -104,7 +121,9 @@ export async function POST(req: Request) {
     if (!DISCORD_APP_ID) {
       return Response.json({
         type: 4,
-        data: { content: "Bot is not fully configured (missing DISCORD_APP_ID)." },
+        data: {
+          content: "Bot is not fully configured (missing DISCORD_APP_ID).",
+        },
       });
     }
 
@@ -136,7 +155,11 @@ export async function POST(req: Request) {
           maxOutputTokens: 1500,
         });
 
-        await editInteractionResponse(DISCORD_APP_ID, interactionToken, aiResponse);
+        await editInteractionResponse(
+          DISCORD_APP_ID,
+          interactionToken,
+          aiResponse
+        );
       } catch (err) {
         console.error("[discord] AI response error:", err);
         await editInteractionResponse(

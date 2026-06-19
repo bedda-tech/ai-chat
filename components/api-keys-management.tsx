@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Check, Copy, Eye, EyeOff, Plus, Trash2 } from "lucide-react";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Trash2, Copy, Check, Plus, Eye, EyeOff } from "lucide-react";
-import { toast } from "sonner";
 
 interface ApiKeyRecord {
   id: string;
@@ -39,18 +39,18 @@ function CopyableKey({ value }: { value: string }) {
         {visible ? value : `${value.slice(0, 12)}${"•".repeat(20)}`}
       </span>
       <button
-        type="button"
-        onClick={() => setVisible((v) => !v)}
-        className="text-muted-foreground hover:text-foreground"
         aria-label="Toggle visibility"
+        className="text-muted-foreground hover:text-foreground"
+        onClick={() => setVisible((v) => !v)}
+        type="button"
       >
         {visible ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
       </button>
       <button
-        type="button"
-        onClick={copy}
-        className="text-muted-foreground hover:text-foreground"
         aria-label="Copy key"
+        className="text-muted-foreground hover:text-foreground"
+        onClick={copy}
+        type="button"
       >
         {copied ? (
           <Check className="size-4 text-green-500" />
@@ -109,7 +109,10 @@ export function ApiKeysManagement() {
   }
 
   async function revokeKey(id: string) {
-    if (!window.confirm("Revoke this API key? It will stop working immediately.")) return;
+    if (
+      !window.confirm("Revoke this API key? It will stop working immediately.")
+    )
+      return;
     setRevoking(id);
     try {
       const res = await fetch("/api/api-keys", {
@@ -131,21 +134,21 @@ export function ApiKeysManagement() {
     return (
       <div className="space-y-4">
         <div>
-          <p className="text-sm font-medium">API Keys</p>
+          <p className="font-medium text-sm">API Keys</p>
           <p className="mt-1 text-muted-foreground text-xs">
             Use these keys to access Bedda via the OpenAI-compatible API.
           </p>
         </div>
         <div className="rounded-md border border-amber-500/40 bg-amber-50 p-4 dark:bg-amber-950/20">
-          <p className="text-sm font-medium text-amber-800 dark:text-amber-300">
+          <p className="font-medium text-amber-800 text-sm dark:text-amber-300">
             API access requires a paid subscription
           </p>
-          <p className="mt-1 text-xs text-amber-700 dark:text-amber-400">
+          <p className="mt-1 text-amber-700 text-xs dark:text-amber-400">
             Upgrade to Plus, Pro, or Max to create and use API keys.
           </p>
           <a
+            className="mt-3 inline-flex items-center rounded-md bg-amber-600 px-3 py-1.5 font-medium text-white text-xs hover:bg-amber-700"
             href="/upgrade"
-            className="mt-3 inline-flex items-center rounded-md bg-amber-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-amber-700"
           >
             Upgrade now
           </a>
@@ -158,7 +161,7 @@ export function ApiKeysManagement() {
     <div className="space-y-4">
       <div className="flex items-start justify-between">
         <div>
-          <p className="text-sm font-medium">API Keys</p>
+          <p className="font-medium text-sm">API Keys</p>
           <p className="mt-1 text-muted-foreground text-xs">
             Use these keys to access Bedda via the OpenAI-compatible API at{" "}
             <code className="rounded bg-muted px-1 py-0.5 text-xs">
@@ -167,11 +170,7 @@ export function ApiKeysManagement() {
           </p>
         </div>
         {!showForm && (
-          <Button
-            size="sm"
-            variant="outline"
-            onClick={() => setShowForm(true)}
-          >
+          <Button onClick={() => setShowForm(true)} size="sm" variant="outline">
             <Plus className="mr-1 size-3" />
             New key
           </Button>
@@ -181,16 +180,27 @@ export function ApiKeysManagement() {
       {showForm && (
         <div className="flex gap-2">
           <Input
-            placeholder="Key name (e.g. My App)"
-            value={newName}
+            className="max-w-xs"
             onChange={(e) => setNewName(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && createKey()}
-            className="max-w-xs"
+            placeholder="Key name (e.g. My App)"
+            value={newName}
           />
-          <Button size="sm" onClick={createKey} disabled={creating || !newName.trim()}>
+          <Button
+            disabled={creating || !newName.trim()}
+            onClick={createKey}
+            size="sm"
+          >
             {creating ? "Creating…" : "Create"}
           </Button>
-          <Button size="sm" variant="ghost" onClick={() => { setShowForm(false); setNewName(""); }}>
+          <Button
+            onClick={() => {
+              setShowForm(false);
+              setNewName("");
+            }}
+            size="sm"
+            variant="ghost"
+          >
             Cancel
           </Button>
         </div>
@@ -198,15 +208,15 @@ export function ApiKeysManagement() {
 
       {newKey && (
         <div className="rounded-md border border-green-500/40 bg-green-50 p-3 dark:bg-green-950/20">
-          <p className="mb-1 text-sm font-medium text-green-800 dark:text-green-300">
+          <p className="mb-1 font-medium text-green-800 text-sm dark:text-green-300">
             API key created — copy it now, it won't be shown again
           </p>
           <CopyableKey value={newKey.key} />
           <Button
-            size="sm"
-            variant="ghost"
             className="mt-2 text-xs"
             onClick={() => setNewKey(null)}
+            size="sm"
+            variant="ghost"
           >
             Dismiss
           </Button>
@@ -221,8 +231,8 @@ export function ApiKeysManagement() {
         <div className="space-y-2">
           {keys.map((key) => (
             <div
-              key={key.id}
               className="flex items-center justify-between rounded-md border px-3 py-2 text-sm"
+              key={key.id}
             >
               <div className="min-w-0">
                 <span className="font-medium">{key.name}</span>
@@ -235,12 +245,12 @@ export function ApiKeysManagement() {
                 </p>
               </div>
               <Button
-                size="icon"
-                variant="ghost"
+                aria-label="Revoke key"
                 className="ml-2 shrink-0 text-destructive hover:bg-destructive/10 hover:text-destructive"
                 disabled={revoking === key.id}
                 onClick={() => revokeKey(key.id)}
-                aria-label="Revoke key"
+                size="icon"
+                variant="ghost"
               >
                 <Trash2 className="size-4" />
               </Button>
@@ -253,7 +263,8 @@ export function ApiKeysManagement() {
         Example:{" "}
         <code className="rounded bg-muted px-1 py-0.5">
           curl https://www.bedda.tech/api/v1/chat/completions -H
-          &quot;Authorization: Bearer bai_...&quot; -d &apos;&#123;&quot;model&quot;:
+          &quot;Authorization: Bearer bai_...&quot; -d
+          &apos;&#123;&quot;model&quot;:
           &quot;anthropic-claude-sonnet-4.5&quot;,&quot;messages&quot;:
           [&#123;&quot;role&quot;:&quot;user&quot;,&quot;content&quot;:&quot;Hello&quot;&#125;]&#125;&apos;
         </code>

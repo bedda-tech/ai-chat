@@ -26,11 +26,11 @@ export async function GET(
 
   const date = new Date(chat.createdAt).toISOString().split("T")[0];
   const lines: string[] = [
-    `# Chat Export`,
-    ``,
+    "# Chat Export",
+    "",
     `**Date:** ${date}`,
     `**ID:** ${id}`,
-    ``,
+    "",
   ];
 
   for (const msg of messages) {
@@ -43,7 +43,7 @@ export async function GET(
 
     if (!textContent.trim()) continue;
 
-    lines.push(`---`, ``, `${label}:`, ``, textContent, ``);
+    lines.push("---", "", `${label}:`, "", textContent, "");
   }
 
   const markdown = lines.join("\n");

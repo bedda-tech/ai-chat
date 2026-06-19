@@ -1,14 +1,22 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import Link from "next/link";
+import { useCallback, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import Link from "next/link";
 
 const IMAGE_MODELS = [
   { key: "dalle3", label: "DALL-E 3", description: "OpenAI — photorealistic" },
-  { key: "imagen3", label: "Imagen 3 Fast", description: "Google — fast generation" },
-  { key: "flux", label: "Flux 1.1 Pro", description: "Black Forest Labs — artistic" },
+  {
+    key: "imagen3",
+    label: "Imagen 3 Fast",
+    description: "Google — fast generation",
+  },
+  {
+    key: "flux",
+    label: "Flux 1.1 Pro",
+    description: "Black Forest Labs — artistic",
+  },
 ] as const;
 
 const ASPECT_RATIOS = [
@@ -61,7 +69,9 @@ export function ImageStudio() {
 
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        setError(data.cause ?? data.error ?? "Generation failed. Please try again.");
+        setError(
+          data.cause ?? data.error ?? "Generation failed. Please try again."
+        );
         return;
       }
 
@@ -83,17 +93,18 @@ export function ImageStudio() {
 
   return (
     <div className="flex h-dvh flex-col overflow-hidden bg-background">
-      <div className="shrink-0 border-b border-border px-4 py-3">
+      <div className="shrink-0 border-border border-b px-4 py-3">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-sm font-semibold">Image Studio</h1>
-            <p className="text-xs text-muted-foreground">
-              Generate images with DALL-E 3, Imagen 3, and Flux 1.1 Pro side-by-side
+            <h1 className="font-semibold text-sm">Image Studio</h1>
+            <p className="text-muted-foreground text-xs">
+              Generate images with DALL-E 3, Imagen 3, and Flux 1.1 Pro
+              side-by-side
             </p>
           </div>
           <Link
+            className="text-muted-foreground text-xs transition-colors hover:text-foreground"
             href="/studio/video"
-            className="text-xs text-muted-foreground hover:text-foreground transition-colors"
           >
             Video Studio →
           </Link>
@@ -105,22 +116,24 @@ export function ImageStudio() {
           {/* Controls panel */}
           <div className="w-full shrink-0 space-y-4 md:w-64">
             <div>
-              <p className="mb-2 text-xs font-medium text-foreground">Models</p>
+              <p className="mb-2 font-medium text-foreground text-xs">Models</p>
               <div className="space-y-1.5">
                 {IMAGE_MODELS.map((m) => (
                   <label
-                    key={m.key}
                     className="flex cursor-pointer items-start gap-2 rounded-md border border-border p-2 transition-colors hover:bg-accent/40"
+                    key={m.key}
                   >
                     <input
-                      type="checkbox"
-                      className="mt-0.5 h-3.5 w-3.5 shrink-0"
                       checked={selectedModels.includes(m.key)}
+                      className="mt-0.5 h-3.5 w-3.5 shrink-0"
                       onChange={() => toggleModel(m.key)}
+                      type="checkbox"
                     />
                     <div>
-                      <p className="text-xs font-medium">{m.label}</p>
-                      <p className="text-[10px] text-muted-foreground">{m.description}</p>
+                      <p className="font-medium text-xs">{m.label}</p>
+                      <p className="text-[10px] text-muted-foreground">
+                        {m.description}
+                      </p>
                     </div>
                   </label>
                 ))}
@@ -128,20 +141,22 @@ export function ImageStudio() {
             </div>
 
             <div>
-              <p className="mb-2 text-xs font-medium text-foreground">Aspect Ratio</p>
+              <p className="mb-2 font-medium text-foreground text-xs">
+                Aspect Ratio
+              </p>
               <div className="space-y-1">
                 {ASPECT_RATIOS.map((r) => (
                   <label
-                    key={r.value}
                     className="flex cursor-pointer items-center gap-2 rounded-md border border-border px-2 py-1.5 transition-colors hover:bg-accent/40"
+                    key={r.value}
                   >
                     <input
-                      type="radio"
-                      name="aspectRatio"
-                      value={r.value}
                       checked={aspectRatio === r.value}
-                      onChange={() => setAspectRatio(r.value)}
                       className="h-3.5 w-3.5"
+                      name="aspectRatio"
+                      onChange={() => setAspectRatio(r.value)}
+                      type="radio"
+                      value={r.value}
                     />
                     <span className="text-xs">{r.label}</span>
                   </label>
@@ -150,27 +165,31 @@ export function ImageStudio() {
             </div>
 
             <div>
-              <p className="mb-1.5 text-xs font-medium text-foreground">Prompt</p>
+              <p className="mb-1.5 font-medium text-foreground text-xs">
+                Prompt
+              </p>
               <Textarea
                 className="min-h-[80px] resize-none text-xs"
-                placeholder="Describe the image you want to generate…"
-                value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
+                placeholder="Describe the image you want to generate…"
                 rows={4}
+                value={prompt}
               />
             </div>
 
             <div>
-              <p className="mb-1.5 text-xs font-medium text-foreground">
+              <p className="mb-1.5 font-medium text-foreground text-xs">
                 Negative Prompt{" "}
-                <span className="font-normal text-muted-foreground">(optional)</span>
+                <span className="font-normal text-muted-foreground">
+                  (optional)
+                </span>
               </p>
               <Textarea
                 className="min-h-[56px] resize-none text-xs"
-                placeholder="What to avoid in the image…"
-                value={negativePrompt}
                 onChange={(e) => setNegativePrompt(e.target.value)}
+                placeholder="What to avoid in the image…"
                 rows={2}
+                value={negativePrompt}
               />
               <p className="mt-1 text-[10px] text-muted-foreground">
                 Supported by Imagen 3 and Flux. Ignored by DALL-E 3.
@@ -179,7 +198,9 @@ export function ImageStudio() {
 
             <Button
               className="w-full"
-              disabled={!prompt.trim() || selectedModels.length === 0 || loading}
+              disabled={
+                !prompt.trim() || selectedModels.length === 0 || loading
+              }
               onClick={handleGenerate}
               size="sm"
             >
@@ -187,7 +208,7 @@ export function ImageStudio() {
             </Button>
 
             {error && (
-              <p className="rounded-md bg-destructive/10 px-3 py-2 text-xs text-destructive">
+              <p className="rounded-md bg-destructive/10 px-3 py-2 text-destructive text-xs">
                 {error}
               </p>
             )}
@@ -196,13 +217,13 @@ export function ImageStudio() {
           {/* Results grid */}
           <div className="min-w-0 flex-1">
             {results.length === 0 && !loading && (
-              <div className="flex h-full min-h-[200px] items-center justify-center text-sm text-muted-foreground">
+              <div className="flex h-full min-h-[200px] items-center justify-center text-muted-foreground text-sm">
                 Select models, enter a prompt, and click Generate
               </div>
             )}
 
             {loading && (
-              <div className="flex h-full min-h-[200px] items-center justify-center gap-2 text-sm text-muted-foreground">
+              <div className="flex h-full min-h-[200px] items-center justify-center gap-2 text-muted-foreground text-sm">
                 <svg
                   className="h-4 w-4 animate-spin"
                   fill="none"
@@ -218,8 +239,8 @@ export function ImageStudio() {
                   />
                   <path
                     className="opacity-75"
-                    fill="currentColor"
                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                    fill="currentColor"
                   />
                 </svg>
                 Generating with {selectedModels.length} model
@@ -231,7 +252,7 @@ export function ImageStudio() {
               <div
                 className={`grid gap-4 ${
                   results.length === 1
-                    ? "grid-cols-1 max-w-lg"
+                    ? "max-w-lg grid-cols-1"
                     : results.length === 2
                       ? "grid-cols-1 sm:grid-cols-2"
                       : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
@@ -239,17 +260,21 @@ export function ImageStudio() {
               >
                 {results.map((result) => (
                   <div
-                    key={result.modelKey}
                     className="overflow-hidden rounded-lg border border-border bg-card"
+                    key={result.modelKey}
                   >
-                    <div className="flex items-center justify-between border-b border-border px-3 py-2">
-                      <span className="text-xs font-medium">{result.label}</span>
+                    <div className="flex items-center justify-between border-border border-b px-3 py-2">
+                      <span className="font-medium text-xs">
+                        {result.label}
+                      </span>
                       {result.success && result.base64 && (
                         <Button
+                          className="h-6 gap-1 px-2 text-[10px]"
+                          onClick={() =>
+                            handleDownload(result.base64!, result.label)
+                          }
                           size="sm"
                           variant="ghost"
-                          className="h-6 gap-1 px-2 text-[10px]"
-                          onClick={() => handleDownload(result.base64!, result.label)}
                         >
                           <svg
                             fill="none"
@@ -272,13 +297,13 @@ export function ImageStudio() {
 
                     {result.success && result.base64 ? (
                       <img
-                        src={`data:image/png;base64,${result.base64}`}
                         alt={`Generated by ${result.label}`}
                         className="w-full object-contain"
+                        src={`data:image/png;base64,${result.base64}`}
                       />
                     ) : (
                       <div className="flex min-h-[120px] items-center justify-center p-4">
-                        <p className="text-center text-xs text-destructive">
+                        <p className="text-center text-destructive text-xs">
                           {result.error ?? "Generation failed"}
                         </p>
                       </div>

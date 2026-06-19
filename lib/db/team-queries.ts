@@ -3,7 +3,15 @@ import "server-only";
 import { and, count, desc, eq, isNull } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
-import { chat, organizationModelPolicy, team, teamChat, teamInvite, teamMember, user } from "./schema";
+import {
+  chat,
+  organizationModelPolicy,
+  team,
+  teamChat,
+  teamInvite,
+  teamMember,
+  user,
+} from "./schema";
 
 // biome-ignore lint: Forbidden non-null assertion.
 const client = postgres(process.env.POSTGRES_URL!);
@@ -76,9 +84,7 @@ export async function isTeamMember(teamId: string, userId: string) {
 export async function removeMemberFromTeam(teamId: string, userId: string) {
   return db
     .delete(teamMember)
-    .where(
-      and(eq(teamMember.teamId, teamId), eq(teamMember.userId, userId))
-    );
+    .where(and(eq(teamMember.teamId, teamId), eq(teamMember.userId, userId)));
 }
 
 export async function createTeamInvite(
@@ -123,9 +129,7 @@ export async function getPendingInvitesByTeam(teamId: string) {
   return db
     .select()
     .from(teamInvite)
-    .where(
-      and(eq(teamInvite.teamId, teamId), isNull(teamInvite.acceptedAt))
-    );
+    .where(and(eq(teamInvite.teamId, teamId), isNull(teamInvite.acceptedAt)));
 }
 
 export async function shareChat(
@@ -170,11 +174,7 @@ export async function getTeamsForChat(chatId: string) {
 }
 
 export async function getTeamById(teamId: string) {
-  const rows = await db
-    .select()
-    .from(team)
-    .where(eq(team.id, teamId))
-    .limit(1);
+  const rows = await db.select().from(team).where(eq(team.id, teamId)).limit(1);
   return rows[0] ?? null;
 }
 

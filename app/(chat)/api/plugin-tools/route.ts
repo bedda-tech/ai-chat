@@ -37,17 +37,33 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  const { name, description, parametersSchema, webhookUrl, authHeaderName, authHeaderValue } = body;
+  const {
+    name,
+    description,
+    parametersSchema,
+    webhookUrl,
+    authHeaderName,
+    authHeaderValue,
+  } = body;
 
   if (!name?.trim() || !description?.trim() || !webhookUrl?.trim()) {
-    return NextResponse.json({ error: "name, description, and webhookUrl are required" }, { status: 400 });
+    return NextResponse.json(
+      { error: "name, description, and webhookUrl are required" },
+      { status: 400 }
+    );
   }
 
   if (!webhookUrl.startsWith("https://")) {
-    return NextResponse.json({ error: "webhookUrl must use HTTPS" }, { status: 400 });
+    return NextResponse.json(
+      { error: "webhookUrl must use HTTPS" },
+      { status: 400 }
+    );
   }
 
-  const toolName = name.trim().replace(/[^a-zA-Z0-9_]/g, "_").slice(0, 64);
+  const toolName = name
+    .trim()
+    .replace(/[^a-zA-Z0-9_]/g, "_")
+    .slice(0, 64);
 
   const tool = await createPluginTool({
     userId: session.user.id,
@@ -56,7 +72,9 @@ export async function POST(request: Request) {
     parametersSchema: parametersSchema ?? { type: "object", properties: {} },
     webhookUrl: webhookUrl.trim(),
     authHeaderName: authHeaderName?.trim() || undefined,
-    authHeaderValueEncrypted: authHeaderValue ? encryptValue(authHeaderValue) : undefined,
+    authHeaderValueEncrypted: authHeaderValue
+      ? encryptValue(authHeaderValue)
+      : undefined,
   });
 
   return NextResponse.json({ tool }, { status: 201 });

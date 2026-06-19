@@ -1,7 +1,7 @@
 import "server-only";
-import { embed } from "ai";
 import { openai } from "@ai-sdk/openai";
 import type { LanguageModelMiddleware } from "ai";
+import { embed } from "ai";
 import { hasKBDocuments, searchKBChunks } from "@/lib/db/queries";
 
 const ragEnabled = () => process.env.RAG_MIDDLEWARE_ENABLED !== "false";
@@ -56,7 +56,11 @@ export const ragMiddleware: LanguageModelMiddleware = {
     if (!textContent || textContent.length < 3) return params;
 
     // Embed the query and search KB chunks
-    let chunks: Array<{ content: string; documentTitle: string; similarity: number }>;
+    let chunks: Array<{
+      content: string;
+      documentTitle: string;
+      similarity: number;
+    }>;
     try {
       const { embedding } = await embed({
         model: openai.textEmbeddingModel("text-embedding-3-small"),
@@ -89,7 +93,12 @@ export const ragMiddleware: LanguageModelMiddleware = {
     if (typeof content === "string") {
       updatedContent = content + contextBlock;
     } else {
-      const parts = [...(content as unknown as Array<{ type: string; [k: string]: unknown }>)];
+      const parts = [
+        ...(content as unknown as Array<{
+          type: string;
+          [k: string]: unknown;
+        }>),
+      ];
       let lastTextPartIdx = -1;
       for (let i = parts.length - 1; i >= 0; i--) {
         if (parts[i].type === "text") {

@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
-import { toast } from "sonner";
 import type { PluginTool } from "@/lib/db/schema";
 
 export function PluginToolsForm() {
@@ -54,7 +54,11 @@ export function PluginToolsForm() {
   }
 
   async function handleAdd() {
-    if (!form.name.trim() || !form.description.trim() || !form.webhookUrl.trim()) {
+    if (
+      !form.name.trim() ||
+      !form.description.trim() ||
+      !form.webhookUrl.trim()
+    ) {
       toast.error("Name, description, and webhook URL are required");
       return;
     }
@@ -120,7 +124,9 @@ export function PluginToolsForm() {
     const prev = tools;
     setTools((s) => s.filter((t) => t.id !== id));
     try {
-      const res = await fetch(`/api/plugin-tools?id=${id}`, { method: "DELETE" });
+      const res = await fetch(`/api/plugin-tools?id=${id}`, {
+        method: "DELETE",
+      });
       if (!res.ok) throw new Error("Failed to delete");
       toast.success("Plugin tool removed");
     } catch {
@@ -132,39 +138,46 @@ export function PluginToolsForm() {
   return (
     <div className="space-y-4">
       <div>
-        <Label className="text-sm font-medium">Plugin Tools</Label>
+        <Label className="font-medium text-sm">Plugin Tools</Label>
         <p className="mt-1 text-muted-foreground text-xs">
-          Add custom webhook tools the AI can call during chat. Define a name, description, and HTTPS endpoint.
+          Add custom webhook tools the AI can call during chat. Define a name,
+          description, and HTTPS endpoint.
         </p>
       </div>
 
       {loading ? (
         <p className="text-muted-foreground text-sm">Loading...</p>
       ) : tools.length === 0 && !showForm ? (
-        <p className="text-muted-foreground text-sm">No plugin tools configured.</p>
+        <p className="text-muted-foreground text-sm">
+          No plugin tools configured.
+        </p>
       ) : (
         <div className="space-y-2">
           {tools.map((pt) => (
             <div
-              key={pt.id}
               className="flex items-center justify-between rounded-md border p-3 text-sm"
+              key={pt.id}
             >
               <div className="min-w-0 flex-1">
                 <p className="truncate font-medium font-mono">{pt.name}</p>
-                <p className="truncate text-muted-foreground text-xs">{pt.description}</p>
-                <p className="truncate text-muted-foreground text-xs">{pt.webhookUrl}</p>
+                <p className="truncate text-muted-foreground text-xs">
+                  {pt.description}
+                </p>
+                <p className="truncate text-muted-foreground text-xs">
+                  {pt.webhookUrl}
+                </p>
               </div>
               <div className="ml-3 flex items-center gap-3">
                 <Switch
+                  aria-label={`Toggle ${pt.name}`}
                   checked={pt.enabled}
                   onCheckedChange={() => handleToggle(pt)}
-                  aria-label={`Toggle ${pt.name}`}
                 />
                 <Button
-                  variant="ghost"
-                  size="sm"
                   className="h-7 px-2 text-destructive hover:text-destructive"
                   onClick={() => handleDelete(pt.id)}
+                  size="sm"
+                  variant="ghost"
                 >
                   Remove
                 </Button>
@@ -178,80 +191,104 @@ export function PluginToolsForm() {
         <div className="space-y-3 rounded-md border p-3">
           <div className="grid grid-cols-2 gap-3">
             <div className="space-y-1">
-              <Label htmlFor="pt-name" className="text-xs">Tool Name (alphanumeric + _)</Label>
+              <Label className="text-xs" htmlFor="pt-name">
+                Tool Name (alphanumeric + _)
+              </Label>
               <Input
-                id="pt-name"
-                value={form.name}
-                onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-                placeholder="my_webhook_tool"
                 className="h-8 font-mono text-sm"
+                id="pt-name"
+                onChange={(e) =>
+                  setForm((f) => ({ ...f, name: e.target.value }))
+                }
+                placeholder="my_webhook_tool"
+                value={form.name}
               />
             </div>
             <div className="space-y-1">
-              <Label htmlFor="pt-url" className="text-xs">Webhook URL (HTTPS)</Label>
+              <Label className="text-xs" htmlFor="pt-url">
+                Webhook URL (HTTPS)
+              </Label>
               <Input
-                id="pt-url"
-                value={form.webhookUrl}
-                onChange={(e) => setForm((f) => ({ ...f, webhookUrl: e.target.value }))}
-                placeholder="https://hooks.example.com/tool"
                 className="h-8 text-sm"
+                id="pt-url"
+                onChange={(e) =>
+                  setForm((f) => ({ ...f, webhookUrl: e.target.value }))
+                }
+                placeholder="https://hooks.example.com/tool"
+                value={form.webhookUrl}
               />
             </div>
           </div>
           <div className="space-y-1">
-            <Label htmlFor="pt-desc" className="text-xs">Description</Label>
+            <Label className="text-xs" htmlFor="pt-desc">
+              Description
+            </Label>
             <Input
-              id="pt-desc"
-              value={form.description}
-              onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))}
-              placeholder="What this tool does..."
               className="h-8 text-sm"
+              id="pt-desc"
+              onChange={(e) =>
+                setForm((f) => ({ ...f, description: e.target.value }))
+              }
+              placeholder="What this tool does..."
+              value={form.description}
             />
           </div>
           <div className="space-y-1">
-            <Label htmlFor="pt-schema" className="text-xs">Parameters Schema (JSON Schema)</Label>
+            <Label className="text-xs" htmlFor="pt-schema">
+              Parameters Schema (JSON Schema)
+            </Label>
             <Textarea
-              id="pt-schema"
-              value={form.parametersSchema}
-              onChange={(e) => setForm((f) => ({ ...f, parametersSchema: e.target.value }))}
               className="font-mono text-xs"
+              id="pt-schema"
+              onChange={(e) =>
+                setForm((f) => ({ ...f, parametersSchema: e.target.value }))
+              }
               rows={4}
+              value={form.parametersSchema}
             />
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div className="space-y-1">
-              <Label htmlFor="pt-header-name" className="text-xs">Auth Header Name (optional)</Label>
+              <Label className="text-xs" htmlFor="pt-header-name">
+                Auth Header Name (optional)
+              </Label>
               <Input
-                id="pt-header-name"
-                value={form.authHeaderName}
-                onChange={(e) => setForm((f) => ({ ...f, authHeaderName: e.target.value }))}
-                placeholder="Authorization"
                 className="h-8 text-sm"
+                id="pt-header-name"
+                onChange={(e) =>
+                  setForm((f) => ({ ...f, authHeaderName: e.target.value }))
+                }
+                placeholder="Authorization"
+                value={form.authHeaderName}
               />
             </div>
             <div className="space-y-1">
-              <Label htmlFor="pt-header-value" className="text-xs">Auth Header Value (optional)</Label>
+              <Label className="text-xs" htmlFor="pt-header-value">
+                Auth Header Value (optional)
+              </Label>
               <Input
+                className="h-8 text-sm"
                 id="pt-header-value"
+                onChange={(e) =>
+                  setForm((f) => ({ ...f, authHeaderValue: e.target.value }))
+                }
+                placeholder="Bearer sk-..."
                 type="password"
                 value={form.authHeaderValue}
-                onChange={(e) => setForm((f) => ({ ...f, authHeaderValue: e.target.value }))}
-                placeholder="Bearer sk-..."
-                className="h-8 text-sm"
               />
             </div>
           </div>
           <div className="flex gap-2">
-            <Button size="sm" onClick={handleAdd} disabled={adding}>
+            <Button disabled={adding} onClick={handleAdd} size="sm">
               {adding ? "Adding..." : "Add Tool"}
             </Button>
-            <Button size="sm" variant="ghost" onClick={resetForm}>
+            <Button onClick={resetForm} size="sm" variant="ghost">
               Cancel
             </Button>
           </div>
         </div>
       ) : (
-        <Button size="sm" variant="outline" onClick={() => setShowForm(true)}>
+        <Button onClick={() => setShowForm(true)} size="sm" variant="outline">
           Add Plugin Tool
         </Button>
       )}

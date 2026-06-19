@@ -68,7 +68,8 @@ export const generateChartTool = () =>
 
       if (input.chartType === "pie") {
         if (!nameKey) {
-          nameKey = keys.find((k) => typeof firstRow[k] === "string") ?? keys[0];
+          nameKey =
+            keys.find((k) => typeof firstRow[k] === "string") ?? keys[0];
         }
         if (!valueKey) {
           valueKey =

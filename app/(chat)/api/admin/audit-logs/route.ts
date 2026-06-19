@@ -1,9 +1,9 @@
+import { and, desc, eq, gte, lte } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
-import postgres from "postgres";
 import { NextResponse } from "next/server";
+import postgres from "postgres";
 import { auth } from "@/app/(auth)/auth";
 import { auditLog } from "@/lib/db/schema";
-import { desc, eq, and, gte, lte } from "drizzle-orm";
 
 const client = postgres(process.env.POSTGRES_URL!);
 const db = drizzle(client);
@@ -37,8 +37,14 @@ export async function GET(request: Request) {
   }
 
   const { searchParams } = new URL(request.url);
-  const page = Math.max(1, parseInt(searchParams.get("page") ?? "1", 10));
-  const limit = Math.min(200, Math.max(1, parseInt(searchParams.get("limit") ?? "50", 10)));
+  const page = Math.max(
+    1,
+    Number.parseInt(searchParams.get("page") ?? "1", 10)
+  );
+  const limit = Math.min(
+    200,
+    Math.max(1, Number.parseInt(searchParams.get("limit") ?? "50", 10))
+  );
   const offset = (page - 1) * limit;
   const actionFilter = searchParams.get("action");
   const userIdFilter = searchParams.get("userId");
@@ -48,7 +54,8 @@ export async function GET(request: Request) {
   const conditions = [];
   if (actionFilter) conditions.push(eq(auditLog.action, actionFilter));
   if (userIdFilter) conditions.push(eq(auditLog.userId, userIdFilter));
-  if (fromFilter) conditions.push(gte(auditLog.createdAt, new Date(fromFilter)));
+  if (fromFilter)
+    conditions.push(gte(auditLog.createdAt, new Date(fromFilter)));
   if (toFilter) conditions.push(lte(auditLog.createdAt, new Date(toFilter)));
 
   const rows = await db

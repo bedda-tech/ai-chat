@@ -52,7 +52,7 @@ export default function NotionPage() {
   return (
     <div className="mx-auto max-w-2xl px-4 py-10">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold tracking-tight">Notion</h1>
+        <h1 className="font-bold text-2xl tracking-tight">Notion</h1>
         <p className="mt-1 text-muted-foreground text-sm">
           Connect your Notion workspace to search and read pages in chat.
         </p>
@@ -84,16 +84,21 @@ export default function NotionPage() {
               </div>
               <div>
                 <p className="font-medium text-sm">
-                  {status.workspaceName ? `${status.workspaceName} connected` : "Notion connected"}
+                  {status.workspaceName
+                    ? `${status.workspaceName} connected`
+                    : "Notion connected"}
                 </p>
                 {status.connectedAt && (
                   <p className="text-muted-foreground text-xs">
                     Since{" "}
-                    {new Date(status.connectedAt).toLocaleDateString(undefined, {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                    })}
+                    {new Date(status.connectedAt).toLocaleDateString(
+                      undefined,
+                      {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      }
+                    )}
                   </p>
                 )}
               </div>
@@ -140,7 +145,9 @@ export default function NotionPage() {
       </div>
 
       <div className="mt-6 space-y-3 text-muted-foreground text-sm">
-        <p className="font-medium text-foreground">What you can do with Notion connected:</p>
+        <p className="font-medium text-foreground">
+          What you can do with Notion connected:
+        </p>
         <ul className="ml-4 list-disc space-y-1">
           <li>Search across all pages in your workspace</li>
           <li>Read page content as context for AI responses</li>
@@ -148,7 +155,8 @@ export default function NotionPage() {
           <li>Reference Notion docs while working on projects</li>
         </ul>
         <p className="text-xs">
-          Bedda requests read access to the pages you select during setup. You control exactly which pages are shared.
+          Bedda requests read access to the pages you select during setup. You
+          control exactly which pages are shared.
         </p>
       </div>
     </div>

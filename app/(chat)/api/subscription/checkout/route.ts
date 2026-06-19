@@ -1,9 +1,13 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/app/(auth)/auth";
-import { createCheckoutSession } from "@/lib/stripe";
-import { mapPlanToStripePrice, type BillingPeriod, type PlanName } from "@/lib/stripe/config";
-import { getUserTier } from "@/lib/usage/tracking";
 import { getUser } from "@/lib/db/queries";
+import { createCheckoutSession } from "@/lib/stripe";
+import {
+  type BillingPeriod,
+  mapPlanToStripePrice,
+  type PlanName,
+} from "@/lib/stripe/config";
+import { getUserTier } from "@/lib/usage/tracking";
 
 const VALID_PLANS: PlanName[] = ["plus", "pro", "max"];
 const VALID_PERIODS: BillingPeriod[] = ["monthly", "annual"];
@@ -13,14 +17,14 @@ export async function POST(req: Request) {
     const session = await auth();
 
     if (!session?.user?.email) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const body = await req.json();
-    const { plan, billingPeriod } = body as { plan?: string; billingPeriod?: string };
+    const { plan, billingPeriod } = body as {
+      plan?: string;
+      billingPeriod?: string;
+    };
 
     if (!plan || !VALID_PLANS.includes(plan as PlanName)) {
       return NextResponse.json(
@@ -38,7 +42,9 @@ export async function POST(req: Request) {
 
     if (!priceId) {
       return NextResponse.json(
-        { error: `Price ID not configured for plan: ${plan}. Set STRIPE_${plan.toUpperCase()}_PRICE_ID.` },
+        {
+          error: `Price ID not configured for plan: ${plan}. Set STRIPE_${plan.toUpperCase()}_PRICE_ID.`,
+        },
         { status: 500 }
       );
     }

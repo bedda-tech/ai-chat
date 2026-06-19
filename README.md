@@ -51,6 +51,13 @@ You will need to use the environment variables [defined in `.env.example`](.env.
 
 > Note: You should not commit your `.env` file or it will expose secrets that will allow others to control access to your various AI and authentication provider accounts.
 
+### Stripe Configuration
+
+The billing system requires proper Stripe setup:
+1. Create a Stripe account at https://dashboard.stripe.com/
+2. Run `STRIPE_SECRET_KEY=sk_live_... npx tsx scripts/setup-stripe.ts` to create products/prices
+3. Add the returned price IDs to your `.env.local`
+
 1. Install Vercel CLI: `npm i -g vercel`
 2. Link local instance with Vercel and GitHub accounts (creates `.vercel` directory): `vercel link`
 3. Download your environment variables: `vercel env pull`

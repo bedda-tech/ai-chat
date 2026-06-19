@@ -1,12 +1,15 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/app/(auth)/auth";
-import { getUserTier } from "@/lib/usage/tracking";
 import { createVideoJob, updateVideoJob } from "@/lib/db/queries";
+import { getUserTier } from "@/lib/usage/tracking";
 
 const FAL_API_KEY = process.env.FAL_API_KEY;
 const FAL_QUEUE_BASE = "https://queue.fal.run";
 
-function getAppId(mode: "text-to-video" | "image-to-video", quality: "standard" | "pro") {
+function getAppId(
+  mode: "text-to-video" | "image-to-video",
+  quality: "standard" | "pro"
+) {
   return `fal-ai/kling-video/v1.6/${quality}/${mode}`;
 }
 
@@ -34,30 +37,54 @@ export async function POST(request: Request) {
     );
   }
 
-  let body: { prompt: string; duration?: number; aspectRatio?: string; imageUrl?: string; quality?: string };
+  let body: {
+    prompt: string;
+    duration?: number;
+    aspectRatio?: string;
+    imageUrl?: string;
+    quality?: string;
+  };
   try {
     body = await request.json();
   } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  const { prompt, duration = 5, aspectRatio = "16:9", imageUrl, quality } = body;
+  const {
+    prompt,
+    duration = 5,
+    aspectRatio = "16:9",
+    imageUrl,
+    quality,
+  } = body;
 
   if (!prompt?.trim()) {
     return NextResponse.json({ error: "Prompt is required" }, { status: 400 });
   }
 
   const validDuration = duration === 10 ? "10" : "5";
-  const validAspect = ["16:9", "9:16", "1:1"].includes(aspectRatio) ? aspectRatio : "16:9";
-  const validQuality: "standard" | "pro" = quality === "pro" ? "pro" : "standard";
+  const validAspect = ["16:9", "9:16", "1:1"].includes(aspectRatio)
+    ? aspectRatio
+    : "16:9";
+  const validQuality: "standard" | "pro" =
+    quality === "pro" ? "pro" : "standard";
 
   const videoMode = imageUrl ? "image-to-video" : "text-to-video";
   const appId = getAppId(videoMode, validQuality);
   const falBase = `${FAL_QUEUE_BASE}/${appId}`;
 
   const requestBody = imageUrl
-    ? { image_url: imageUrl, prompt: prompt.trim(), duration: validDuration, aspect_ratio: validAspect }
-    : { prompt: prompt.trim(), duration: validDuration, aspect_ratio: validAspect };
+    ? {
+        image_url: imageUrl,
+        prompt: prompt.trim(),
+        duration: validDuration,
+        aspect_ratio: validAspect,
+      }
+    : {
+        prompt: prompt.trim(),
+        duration: validDuration,
+        aspect_ratio: validAspect,
+      };
 
   const submitRes = await fetch(falBase, {
     method: "POST",
@@ -70,7 +97,10 @@ export async function POST(request: Request) {
 
   if (!submitRes.ok) {
     const errText = await submitRes.text().catch(() => "Unknown error");
-    return NextResponse.json({ error: `Submission failed: ${errText}` }, { status: 502 });
+    return NextResponse.json(
+      { error: `Submission failed: ${errText}` },
+      { status: 502 }
+    );
   }
 
   const { request_id } = await submitRes.json();
@@ -104,10 +134,14 @@ export async function GET(request: Request) {
 
   const { searchParams } = new URL(request.url);
   const requestId = searchParams.get("id");
-  const appId = searchParams.get("appId") ?? getAppId("text-to-video", "standard");
+  const appId =
+    searchParams.get("appId") ?? getAppId("text-to-video", "standard");
   const jobId = searchParams.get("jobId");
   if (!requestId) {
-    return NextResponse.json({ error: "Missing id parameter" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Missing id parameter" },
+      { status: 400 }
+    );
   }
 
   const falBase = `${FAL_QUEUE_BASE}/${appId}`;
@@ -117,7 +151,10 @@ export async function GET(request: Request) {
   });
 
   if (!statusRes.ok) {
-    return NextResponse.json({ error: "Failed to check status" }, { status: 502 });
+    return NextResponse.json(
+      { error: "Failed to check status" },
+      { status: 502 }
+    );
   }
 
   const statusData = await statusRes.json();
@@ -128,7 +165,10 @@ export async function GET(request: Request) {
       headers: { Authorization: `Key ${FAL_API_KEY}` },
     });
     if (!resultRes.ok) {
-      return NextResponse.json({ error: "Failed to fetch result" }, { status: 502 });
+      return NextResponse.json(
+        { error: "Failed to fetch result" },
+        { status: 502 }
+      );
     }
     const result = await resultRes.json();
     const videoUrl = result.video?.url ?? null;

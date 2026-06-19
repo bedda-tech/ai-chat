@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/app/(auth)/auth";
 import {
-  getCompareSession,
   deleteCompareSession,
+  getCompareSession,
 } from "@/lib/db/compare-queries";
 
 export async function GET(

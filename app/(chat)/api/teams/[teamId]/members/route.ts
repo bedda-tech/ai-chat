@@ -1,18 +1,18 @@
 import crypto from "node:crypto";
 import { NextResponse } from "next/server";
 import { auth } from "@/app/(auth)/auth";
-import { sendTeamInviteEmail } from "@/lib/email/send-team-invite";
 import { logAuditEvent } from "@/lib/audit";
 import {
   createTeamInvite,
+  getPendingInvitesByTeam,
   getTeamById,
   getTeamMemberCount,
   getTeamMembersWithEmail,
-  getPendingInvitesByTeam,
   isTeamAdmin,
   isTeamMember,
   removeMemberFromTeam,
 } from "@/lib/db/team-queries";
+import { sendTeamInviteEmail } from "@/lib/email/send-team-invite";
 
 export async function GET(
   _request: Request,
@@ -71,9 +71,16 @@ export async function POST(
     getTeamById(teamId),
     getTeamMemberCount(teamId),
   ]);
-  if (teamRecord?.stripeSubscriptionId && memberCount >= (teamRecord.seatLimit ?? 5)) {
+  if (
+    teamRecord?.stripeSubscriptionId &&
+    memberCount >= (teamRecord.seatLimit ?? 5)
+  ) {
     return NextResponse.json(
-      { error: "seat_limit_reached", message: "Seat limit reached. Upgrade your team plan to invite more members." },
+      {
+        error: "seat_limit_reached",
+        message:
+          "Seat limit reached. Upgrade your team plan to invite more members.",
+      },
       { status: 403 }
     );
   }
@@ -97,7 +104,10 @@ export async function POST(
     console.error("Failed to send invite email:", err);
   }
 
-  void logAuditEvent(session.user.id, "team.member_invited", { teamId, inviteeEmail: email.trim() });
+  void logAuditEvent(session.user.id, "team.member_invited", {
+    teamId,
+    inviteeEmail: email.trim(),
+  });
 
   return NextResponse.json({ invite }, { status: 201 });
 }
@@ -125,6 +135,9 @@ export async function DELETE(
   }
 
   await removeMemberFromTeam(teamId, userId);
-  void logAuditEvent(session.user.id, "team.member_removed", { teamId, removedUserId: userId });
+  void logAuditEvent(session.user.id, "team.member_removed", {
+    teamId,
+    removedUserId: userId,
+  });
   return NextResponse.json({ success: true });
 }

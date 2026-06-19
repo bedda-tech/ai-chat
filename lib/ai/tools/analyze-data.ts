@@ -80,4 +80,3 @@ Provide structured insights with:
       }
     },
   });
-

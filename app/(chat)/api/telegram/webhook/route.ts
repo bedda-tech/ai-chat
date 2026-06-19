@@ -1,6 +1,6 @@
+import { gateway } from "@ai-sdk/gateway";
 import { generateText } from "ai";
 import { after } from "next/server";
-import { gateway } from "@ai-sdk/gateway";
 
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN ?? "";
 const WEBHOOK_SECRET = process.env.TELEGRAM_WEBHOOK_SECRET ?? "";
@@ -61,7 +61,11 @@ async function sendMessage(
     }
   );
   if (!res.ok) {
-    console.error("[telegram] sendMessage failed:", res.status, await res.text());
+    console.error(
+      "[telegram] sendMessage failed:",
+      res.status,
+      await res.text()
+    );
   }
 }
 
@@ -86,9 +90,12 @@ interface TelegramUpdate {
 
 export async function POST(req: Request) {
   if (!BOT_TOKEN) {
-    return new Response("Telegram not configured — TELEGRAM_BOT_TOKEN missing", {
-      status: 503,
-    });
+    return new Response(
+      "Telegram not configured — TELEGRAM_BOT_TOKEN missing",
+      {
+        status: 503,
+      }
+    );
   }
 
   // Verify Telegram's secret token header

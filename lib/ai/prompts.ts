@@ -81,20 +81,17 @@ export const systemPrompt = ({
 }) => {
   const requestPrompt = getRequestPromptFromHints(requestHints);
 
-  const customInstructionsBlock =
-    customInstructions?.trim()
-      ? `\n\n<custom_instructions>\n${customInstructions.trim()}\n</custom_instructions>`
-      : "";
+  const customInstructionsBlock = customInstructions?.trim()
+    ? `\n\n<custom_instructions>\n${customInstructions.trim()}\n</custom_instructions>`
+    : "";
 
-  const projectInstructionsBlock =
-    projectInstructions?.trim()
-      ? `\n\n<project_instructions>\n${projectInstructions.trim()}\n</project_instructions>`
-      : "";
+  const projectInstructionsBlock = projectInstructions?.trim()
+    ? `\n\n<project_instructions>\n${projectInstructions.trim()}\n</project_instructions>`
+    : "";
 
-  const kbContextBlock =
-    kbContext?.trim()
-      ? `\n\n<knowledge_base_context>\nThe following passages from the user's uploaded documents are relevant to their message. Use them to inform your response:\n\n${kbContext.trim()}\n</knowledge_base_context>`
-      : "";
+  const kbContextBlock = kbContext?.trim()
+    ? `\n\n<knowledge_base_context>\nThe following passages from the user's uploaded documents are relevant to their message. Use them to inform your response:\n\n${kbContext.trim()}\n</knowledge_base_context>`
+    : "";
 
   const agentModeBlock = agentMode ? `\n\n${agentPrompt}` : "";
 
@@ -103,7 +100,8 @@ export const systemPrompt = ({
       ? `\n\n<user_memory>\nThe following facts have been remembered about the user across previous conversations. Use them to personalize your responses:\n${userMemories.map((m) => `- [${m.category}] ${m.content}`).join("\n")}\n</user_memory>`
       : "";
 
-  const isGemini25FlashImage = selectedChatModel === "google-gemini-2.5-flash-image-preview";
+  const isGemini25FlashImage =
+    selectedChatModel === "google-gemini-2.5-flash-image-preview";
 
   const imageGenerationPrompt = isGemini25FlashImage
     ? "\n\nImage Generation: You are using Gemini 2.5 Flash Image which can generate images directly in responses. When users ask to create, generate, or draw images, simply describe the image you're generating in your response. The model will automatically generate the image alongside your text response. Be descriptive and creative!"
@@ -138,22 +136,33 @@ export const getCacheableSystemPrompt = ({
   agentMode?: boolean;
   userMemories?: Array<{ content: string; category: string }>;
 }) => {
-  const content = systemPrompt({ selectedChatModel, requestHints, customInstructions, projectInstructions, kbContext, agentMode, userMemories });
+  const content = systemPrompt({
+    selectedChatModel,
+    requestHints,
+    customInstructions,
+    projectInstructions,
+    kbContext,
+    agentMode,
+    userMemories,
+  });
 
   // Determine if this model supports caching
-  const isAnthropicModel = selectedChatModel.includes('anthropic') || selectedChatModel.includes('claude');
-  const isOpenAIModel = selectedChatModel.includes('openai') || selectedChatModel.includes('gpt');
+  const isAnthropicModel =
+    selectedChatModel.includes("anthropic") ||
+    selectedChatModel.includes("claude");
+  const isOpenAIModel =
+    selectedChatModel.includes("openai") || selectedChatModel.includes("gpt");
 
   // For Anthropic models, add cache control via providerOptions
   if (isAnthropicModel) {
     return {
-      role: 'system' as const,
+      role: "system" as const,
       content,
       providerOptions: {
         anthropic: {
-          cacheControl: { type: 'ephemeral' }
-        }
-      }
+          cacheControl: { type: "ephemeral" },
+        },
+      },
     };
   }
 

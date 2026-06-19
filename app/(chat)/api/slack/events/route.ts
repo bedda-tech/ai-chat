@@ -1,7 +1,7 @@
-import crypto from "crypto";
-import { generateText } from "ai";
-import { after } from "next/server";
 import { gateway } from "@ai-sdk/gateway";
+import { generateText } from "ai";
+import crypto from "crypto";
+import { after } from "next/server";
 import { getSlackWorkspaceByTeamId } from "@/lib/db/queries";
 
 const SLACK_SIGNING_SECRET = process.env.SLACK_SIGNING_SECRET ?? "";
@@ -134,7 +134,7 @@ export async function POST(req: Request) {
   const slackSig = req.headers.get("X-Slack-Signature") ?? "";
 
   // Replay attack prevention: reject if request is older than 5 minutes
-  const age = Math.abs(Date.now() / 1000 - parseInt(timestamp, 10));
+  const age = Math.abs(Date.now() / 1000 - Number.parseInt(timestamp, 10));
   if (!timestamp || age > 300) {
     return new Response("Request timestamp too old", { status: 400 });
   }
@@ -200,8 +200,10 @@ export async function POST(req: Request) {
           ? await fetchThreadHistory(botToken, channel, threadTs)
           : [];
 
-      const messages: Array<{ role: "user" | "assistant"; content: string }> =
-        [...history, { role: "user", content: userText }];
+      const messages: Array<{ role: "user" | "assistant"; content: string }> = [
+        ...history,
+        { role: "user", content: userText },
+      ];
 
       const { text: aiResponse } = await generateText({
         model: gateway.languageModel(model),

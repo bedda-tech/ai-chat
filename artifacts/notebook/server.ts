@@ -1,8 +1,8 @@
 import { streamObject } from "ai";
 import { z } from "zod";
+import { notebookPrompt, updateDocumentPrompt } from "@/lib/ai/prompts";
 import { myProvider } from "@/lib/ai/providers";
 import { createDocumentHandler } from "@/lib/artifacts/server";
-import { notebookPrompt, updateDocumentPrompt } from "@/lib/ai/prompts";
 
 const cellSchema = z.object({
   type: z.enum(["markdown", "code"]),

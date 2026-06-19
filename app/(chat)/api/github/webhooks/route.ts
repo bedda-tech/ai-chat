@@ -1,7 +1,7 @@
-import crypto from "crypto";
-import { generateText } from "ai";
-import { after } from "next/server";
 import { gateway } from "@ai-sdk/gateway";
+import { generateText } from "ai";
+import crypto from "crypto";
+import { after } from "next/server";
 
 const GITHUB_WEBHOOK_SECRET = process.env.GITHUB_WEBHOOK_SECRET ?? "";
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN ?? "";
@@ -88,7 +88,9 @@ async function getPRDiff(
     if (!res.ok) return "";
     const diff = await res.text();
     // Truncate to stay within model context limits (~12k chars ≈ 3k tokens)
-    return diff.length > 12000 ? diff.slice(0, 12000) + "\n... (diff truncated)" : diff;
+    return diff.length > 12_000
+      ? diff.slice(0, 12_000) + "\n... (diff truncated)"
+      : diff;
   } catch {
     return "";
   }

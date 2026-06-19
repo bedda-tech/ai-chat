@@ -1,4 +1,4 @@
-import modelsData from "./models-data.json";
+import modelsData from "./models-data.json" with { type: "json" };
 
 export const DEFAULT_CHAT_MODEL: string = "google-gemini-2.5-flash";
 
@@ -24,6 +24,7 @@ export const chatModels: ChatModel[] = [
   {
     id: "chat-model-reasoning",
     name: "Grok Reasoning (Default)",
-    description: "Uses advanced chain-of-thought reasoning for complex problems",
+    description:
+      "Uses advanced chain-of-thought reasoning for complex problems",
   },
 ];

@@ -10,7 +10,7 @@ export interface TypingUser {
   since: number;
 }
 
-const TYPING_DISPLAY_MS = 4_000;
+const TYPING_DISPLAY_MS = 4000;
 
 export function useTeamRealtime(chatId: string, enabled: boolean) {
   const { mutate } = useSWRConfig();
@@ -26,7 +26,7 @@ export function useTeamRealtime(chatId: string, enabled: boolean) {
       setTypingUsers((prev) =>
         prev.filter((u) => now - u.since < TYPING_DISPLAY_MS)
       );
-    }, 1_000);
+    }, 1000);
     return () => clearInterval(interval);
   }, [enabled]);
 
@@ -51,8 +51,10 @@ export function useTeamRealtime(chatId: string, enabled: boolean) {
       if (payload.type === "new_message") {
         // Invalidate the chat messages SWR cache so they refetch
         mutate((key: unknown) => {
-          if (typeof key === "string") return key.includes(`/api/chat/${chatId}/messages`);
-          if (Array.isArray(key)) return key.some((k) => typeof k === "string" && k.includes(chatId));
+          if (typeof key === "string")
+            return key.includes(`/api/chat/${chatId}/messages`);
+          if (Array.isArray(key))
+            return key.some((k) => typeof k === "string" && k.includes(chatId));
           return false;
         });
       } else if (
@@ -72,7 +74,7 @@ export function useTeamRealtime(chatId: string, enabled: boolean) {
       es.close();
       esRef.current = null;
       // Reconnect after 3 s
-      reconnectTimer.current = setTimeout(connect, 3_000);
+      reconnectTimer.current = setTimeout(connect, 3000);
     };
   }, [chatId, enabled, mutate]);
 

@@ -1,4 +1,4 @@
-import modelsData from "./models-data.json";
+import modelsData from "./models-data.json" with { type: "json" };
 
 /**
  * Model-specific configuration for AI features
@@ -47,7 +47,12 @@ export function getModelConfig(modelId: string): ModelConfig {
       supportsToolCalling: true,
       supportsReasoning: true, // Extended thinking capability
       supportsImageGeneration: false,
-      idealFor: ["complex reasoning", "extended thinking", "analysis", "research"],
+      idealFor: [
+        "complex reasoning",
+        "extended thinking",
+        "analysis",
+        "research",
+      ],
     };
   }
 
@@ -60,7 +65,12 @@ export function getModelConfig(modelId: string): ModelConfig {
       supportsToolCalling: true,
       supportsReasoning: true, // Extended thinking capability
       supportsImageGeneration: false,
-      idealFor: ["complex reasoning", "extended thinking", "analysis", "research"],
+      idealFor: [
+        "complex reasoning",
+        "extended thinking",
+        "analysis",
+        "research",
+      ],
     };
   }
 
@@ -124,7 +134,11 @@ export function getModelConfig(modelId: string): ModelConfig {
         supportsToolCalling: true,
         supportsReasoning: false,
         supportsImageGeneration: false,
-        idealFor: ["efficient processing", "everyday tasks", "balanced performance"],
+        idealFor: [
+          "efficient processing",
+          "everyday tasks",
+          "balanced performance",
+        ],
       };
     }
     return {
@@ -171,7 +185,12 @@ export function getModelConfig(modelId: string): ModelConfig {
       supportsToolCalling: true,
       supportsReasoning: false,
       supportsImageGeneration: false,
-      idealFor: ["multimodal tasks", "vision", "structured outputs", "function calling"],
+      idealFor: [
+        "multimodal tasks",
+        "vision",
+        "structured outputs",
+        "function calling",
+      ],
     };
   }
 
@@ -403,7 +422,10 @@ export function getModelContextWindow(modelId: string): number {
  */
 export function applyOrgModelPolicy(
   modelIds: string[],
-  policy: { allowedModelIds?: string[] | null; deniedModelIds?: string[] | null } | null
+  policy: {
+    allowedModelIds?: string[] | null;
+    deniedModelIds?: string[] | null;
+  } | null
 ): string[] {
   if (!policy) return modelIds;
 

@@ -1,9 +1,9 @@
-import { embedMany } from "ai";
 import { openai } from "@ai-sdk/openai";
+import { embedMany } from "ai";
 import { NextResponse } from "next/server";
 
 import { auth } from "@/app/(auth)/auth";
-import { extractText, chunkText } from "@/lib/ai/chunker";
+import { chunkText, extractText } from "@/lib/ai/chunker";
 import {
   createKBDocument,
   deleteKBDocument,
@@ -150,9 +150,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          error instanceof Error
-            ? error.message
-            : "Failed to process document",
+          error instanceof Error ? error.message : "Failed to process document",
       },
       { status: 500 }
     );

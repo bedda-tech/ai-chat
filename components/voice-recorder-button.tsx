@@ -1,12 +1,19 @@
 "use client";
 
-import { type Dispatch, memo, type SetStateAction, useCallback, useEffect, useState } from "react";
+import {
+  type Dispatch,
+  memo,
+  type SetStateAction,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import { toast } from "sonner";
 import { useVoiceRecorder } from "@/hooks/use-voice-recorder";
+import { cn } from "@/lib/utils";
 import { MicIcon, MicOffIcon } from "./icons";
 import { Button } from "./ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
-import { cn } from "@/lib/utils";
 
 function PureVoiceRecorderButton({
   setInput,
@@ -67,6 +74,7 @@ function PureVoiceRecorderButton({
     <Tooltip>
       <TooltipTrigger asChild>
         <Button
+          aria-label={isRecording ? "Stop recording" : "Record voice message"}
           className={cn(
             "aspect-square h-8 rounded-lg p-1 transition-colors",
             isRecording
@@ -78,9 +86,8 @@ function PureVoiceRecorderButton({
           data-testid="voice-recorder-button"
           disabled={disabled || isProcessing}
           onClick={isRecording ? stopRecording : startRecording}
-          variant="ghost"
           type="button"
-          aria-label={isRecording ? "Stop recording" : "Record voice message"}
+          variant="ghost"
         >
           {isRecording ? <MicOffIcon size={14} /> : <MicIcon size={14} />}
         </Button>

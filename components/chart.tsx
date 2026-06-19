@@ -63,12 +63,10 @@ function CustomTooltip({
   if (!active || !payload?.length) return null;
 
   return (
-    <div className="rounded-lg border bg-background px-3 py-2 shadow-lg text-sm">
-      {label && (
-        <p className="font-medium text-foreground mb-1">{label}</p>
-      )}
+    <div className="rounded-lg border bg-background px-3 py-2 text-sm shadow-lg">
+      {label && <p className="mb-1 font-medium text-foreground">{label}</p>}
       {payload.map((entry) => (
-        <div key={entry.name} className="flex items-center gap-2">
+        <div className="flex items-center gap-2" key={entry.name}>
           <span
             className="inline-block size-2 rounded-full"
             style={{ backgroundColor: entry.color }}
@@ -87,13 +85,17 @@ function PieTooltip({
   unit,
 }: {
   active?: boolean;
-  payload?: Array<{ name: string; value: number; payload: { percent: number } }>;
+  payload?: Array<{
+    name: string;
+    value: number;
+    payload: { percent: number };
+  }>;
   unit?: string;
 }) {
   if (!active || !payload?.length) return null;
   const entry = payload[0];
   return (
-    <div className="rounded-lg border bg-background px-3 py-2 shadow-lg text-sm">
+    <div className="rounded-lg border bg-background px-3 py-2 text-sm shadow-lg">
       <p className="font-medium text-foreground">{entry.name}</p>
       <p className="text-muted-foreground">
         {formatValue(entry.value, unit)}{" "}
@@ -117,30 +119,28 @@ export function Chart({ config }: { config: ChartConfig }) {
       return (
         <PieChart>
           <Pie
-            data={config.data}
-            dataKey={valueKey}
-            nameKey={nameKey}
             cx="50%"
             cy="50%"
-            outerRadius={110}
-            paddingAngle={2}
+            data={config.data}
+            dataKey={valueKey}
             label={(props) => {
               const name = props.name ?? "";
               const percent = props.percent ?? 0;
               return `${name} ${(percent * 100).toFixed(0)}%`;
             }}
             labelLine={false}
+            nameKey={nameKey}
+            outerRadius={110}
+            paddingAngle={2}
           >
             {config.data.map((_, index) => (
               <Cell
-                key={`cell-${index}`}
                 fill={colors[index % colors.length]}
+                key={`cell-${index}`}
               />
             ))}
           </Pie>
-          <Tooltip
-            content={<PieTooltip unit={config.unit} />}
-          />
+          <Tooltip content={<PieTooltip unit={config.unit} />} />
           <Legend />
         </PieChart>
       );
@@ -155,25 +155,23 @@ export function Chart({ config }: { config: ChartConfig }) {
 
     const axes = (
       <>
-        <CartesianGrid strokeDasharray="3 3" className="stroke-border" />
+        <CartesianGrid className="stroke-border" strokeDasharray="3 3" />
         <XAxis
+          axisLine={false}
+          className="text-muted-foreground"
           dataKey={xKey}
           tick={{ fontSize: 12 }}
           tickLine={false}
-          axisLine={false}
-          className="text-muted-foreground"
         />
         <YAxis
-          tickFormatter={(v) => formatValue(v, config.unit)}
-          tick={{ fontSize: 12 }}
-          tickLine={false}
           axisLine={false}
-          width={60}
           className="text-muted-foreground"
+          tick={{ fontSize: 12 }}
+          tickFormatter={(v) => formatValue(v, config.unit)}
+          tickLine={false}
+          width={60}
         />
-        <Tooltip
-          content={<CustomTooltip unit={config.unit} />}
-        />
+        <Tooltip content={<CustomTooltip unit={config.unit} />} />
         {yKeys.length > 1 && <Legend />}
       </>
     );
@@ -184,11 +182,11 @@ export function Chart({ config }: { config: ChartConfig }) {
           {axes}
           {yKeys.map((key, i) => (
             <Bar
-              key={key}
               dataKey={key}
               fill={colors[i % colors.length]}
-              radius={[3, 3, 0, 0]}
+              key={key}
               maxBarSize={60}
+              radius={[3, 3, 0, 0]}
             />
           ))}
         </BarChart>
@@ -201,15 +199,15 @@ export function Chart({ config }: { config: ChartConfig }) {
           {axes}
           {yKeys.map((key, i) => (
             <Area
-              key={key}
-              type="monotone"
+              activeDot={{ r: 4 }}
               dataKey={key}
-              stroke={colors[i % colors.length]}
+              dot={false}
               fill={colors[i % colors.length]}
               fillOpacity={0.15}
+              key={key}
+              stroke={colors[i % colors.length]}
               strokeWidth={2}
-              dot={false}
-              activeDot={{ r: 4 }}
+              type="monotone"
             />
           ))}
         </AreaChart>
@@ -222,13 +220,13 @@ export function Chart({ config }: { config: ChartConfig }) {
         {axes}
         {yKeys.map((key, i) => (
           <Line
-            key={key}
-            type="monotone"
+            activeDot={{ r: 4 }}
             dataKey={key}
+            dot={false}
+            key={key}
             stroke={colors[i % colors.length]}
             strokeWidth={2}
-            dot={false}
-            activeDot={{ r: 4 }}
+            type="monotone"
           />
         ))}
       </LineChart>
@@ -236,18 +234,18 @@ export function Chart({ config }: { config: ChartConfig }) {
   };
 
   return (
-    <div className="rounded-xl border bg-card p-4 shadow-sm w-full">
+    <div className="w-full rounded-xl border bg-card p-4 shadow-sm">
       <div className="mb-3">
-        <h3 className="text-sm font-semibold text-card-foreground">
+        <h3 className="font-semibold text-card-foreground text-sm">
           {config.title}
         </h3>
         {config.description && (
-          <p className="text-xs text-muted-foreground mt-0.5">
+          <p className="mt-0.5 text-muted-foreground text-xs">
             {config.description}
           </p>
         )}
       </div>
-      <ResponsiveContainer width="100%" height={260}>
+      <ResponsiveContainer height={260} width="100%">
         {renderChart()}
       </ResponsiveContainer>
     </div>

@@ -49,11 +49,7 @@ export async function rateLimitMiddleware(
     }
 
     // Check daily limit
-    const dailyLimit = await checkRateLimit(
-      userId,
-      "messages_per_day",
-      tier
-    );
+    const dailyLimit = await checkRateLimit(userId, "messages_per_day", tier);
 
     if (!dailyLimit.allowed) {
       const retryAfterHours = dailyLimit.retryAfter

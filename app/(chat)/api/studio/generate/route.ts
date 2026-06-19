@@ -1,13 +1,27 @@
-import { experimental_generateImage as generateImage } from "ai";
 import { gateway } from "@ai-sdk/gateway";
+import { experimental_generateImage as generateImage } from "ai";
 import { NextResponse } from "next/server";
 import { auth } from "@/app/(auth)/auth";
-import { rateLimitMiddleware, createRateLimitResponse } from "@/lib/middleware/rate-limit";
+import {
+  createRateLimitResponse,
+  rateLimitMiddleware,
+} from "@/lib/middleware/rate-limit";
 
-const MODEL_META: Record<string, { gatewayId: string; label: string; useSize: boolean }> = {
+const MODEL_META: Record<
+  string,
+  { gatewayId: string; label: string; useSize: boolean }
+> = {
   dalle3: { gatewayId: "openai/dall-e-3", label: "DALL-E 3", useSize: true },
-  imagen3: { gatewayId: "google/imagen-3-fast", label: "Imagen 3 Fast", useSize: false },
-  flux: { gatewayId: "black-forest-labs/flux-1.1-pro", label: "Flux 1.1 Pro", useSize: false },
+  imagen3: {
+    gatewayId: "google/imagen-3-fast",
+    label: "Imagen 3 Fast",
+    useSize: false,
+  },
+  flux: {
+    gatewayId: "black-forest-labs/flux-1.1-pro",
+    label: "Flux 1.1 Pro",
+    useSize: false,
+  },
 };
 
 const SIZE_MAP = {
@@ -27,7 +41,12 @@ export async function POST(request: Request) {
     return createRateLimitResponse(rateLimitResult);
   }
 
-  let body: { models: string[]; prompt: string; negativePrompt?: string; aspectRatio?: string };
+  let body: {
+    models: string[];
+    prompt: string;
+    negativePrompt?: string;
+    aspectRatio?: string;
+  };
   try {
     body = await request.json();
   } catch {
@@ -42,10 +61,14 @@ export async function POST(request: Request) {
 
   const validModels = (models ?? []).filter((m) => MODEL_META[m]);
   if (validModels.length === 0) {
-    return NextResponse.json({ error: "At least one valid model required" }, { status: 400 });
+    return NextResponse.json(
+      { error: "At least one valid model required" },
+      { status: 400 }
+    );
   }
 
-  const sizeConfig = SIZE_MAP[aspectRatio as keyof typeof SIZE_MAP] ?? SIZE_MAP["1:1"];
+  const sizeConfig =
+    SIZE_MAP[aspectRatio as keyof typeof SIZE_MAP] ?? SIZE_MAP["1:1"];
 
   const results = await Promise.all(
     validModels.map(async (modelKey) => {

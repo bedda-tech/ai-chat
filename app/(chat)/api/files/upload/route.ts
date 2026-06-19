@@ -42,7 +42,8 @@ const FileSchema = z.object({
       message: "File size should be less than 25MB",
     })
     .refine((file) => ALLOWED_FILE_TYPES.includes(file.type), {
-      message: "File type not supported. Allowed types: images (JPEG, PNG, GIF, WebP, SVG), audio (MP3, WAV, M4A, WebM, OGG), video (MP4, WebM), documents (PDF, TXT, MD, CSV, JSON)",
+      message:
+        "File type not supported. Allowed types: images (JPEG, PNG, GIF, WebP, SVG), audio (MP3, WAV, M4A, WebM, OGG), video (MP4, WebM), documents (PDF, TXT, MD, CSV, JSON)",
     }),
 });
 

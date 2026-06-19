@@ -1,9 +1,9 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useSearchParams } from "next/navigation";
-import Link from "next/link";
 import { formatDistanceToNow } from "date-fns";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 
@@ -75,7 +75,7 @@ export default function KnowledgeBasePage() {
   useEffect(() => {
     if (!projectId) return;
     fetch("/api/projects")
-      .then((r) => r.ok ? r.json() : null)
+      .then((r) => (r.ok ? r.json() : null))
       .then((data) => {
         if (!data) return;
         const p = (data.projects ?? []).find(
@@ -131,13 +131,13 @@ export default function KnowledgeBasePage() {
           body: formData,
         });
         const data = await res.json();
-        if (!res.ok) {
-          toast.error(data.error ?? "Upload failed");
-        } else {
+        if (res.ok) {
           toast.success(
             `"${data.document.title}" uploaded (${data.document.chunkCount} chunks)`
           );
           fetchDocuments();
+        } else {
+          toast.error(data.error ?? "Upload failed");
         }
       } catch {
         toast.error("Upload failed");
@@ -210,16 +210,20 @@ export default function KnowledgeBasePage() {
         const res = await fetch("/api/knowledge-base/import/drive", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ fileId: file.id, title: file.name, projectId }),
+          body: JSON.stringify({
+            fileId: file.id,
+            title: file.name,
+            projectId,
+          }),
         });
         const data = await res.json();
-        if (!res.ok) {
-          toast.error(data.error ?? "Import failed");
-        } else {
+        if (res.ok) {
           toast.success(
             `"${data.document.title}" imported (${data.document.chunkCount} chunks)`
           );
           fetchDocuments();
+        } else {
+          toast.error(data.error ?? "Import failed");
         }
       } catch {
         toast.error("Import failed");
@@ -256,16 +260,20 @@ export default function KnowledgeBasePage() {
         const res = await fetch("/api/knowledge-base/import/notion", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ pageId: page.id, title: page.title, projectId }),
+          body: JSON.stringify({
+            pageId: page.id,
+            title: page.title,
+            projectId,
+          }),
         });
         const data = await res.json();
-        if (!res.ok) {
-          toast.error(data.error ?? "Import failed");
-        } else {
+        if (res.ok) {
           toast.success(
             `"${data.document.title}" imported (${data.document.chunkCount} chunks)`
           );
           fetchDocuments();
+        } else {
+          toast.error(data.error ?? "Import failed");
         }
       } catch {
         toast.error("Import failed");
@@ -290,14 +298,20 @@ export default function KnowledgeBasePage() {
         loadNotionPages("");
       }
     },
-    [openPanel, driveConnected, notionConnected, loadDriveFiles, loadNotionPages]
+    [
+      openPanel,
+      driveConnected,
+      notionConnected,
+      loadDriveFiles,
+      loadNotionPages,
+    ]
   );
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-10">
       <div className="mb-8">
         {projectId && (
-          <div className="mb-3 flex items-center gap-2 text-sm text-muted-foreground">
+          <div className="mb-3 flex items-center gap-2 text-muted-foreground text-sm">
             <Link className="hover:text-foreground" href="/projects">
               Projects
             </Link>
@@ -309,7 +323,7 @@ export default function KnowledgeBasePage() {
             <span>Knowledge Base</span>
           </div>
         )}
-        <h1 className="text-2xl font-bold tracking-tight">
+        <h1 className="font-bold text-2xl tracking-tight">
           {projectId ? "Project Knowledge Base" : "Knowledge Base"}
         </h1>
         <p className="mt-1 text-muted-foreground text-sm">
@@ -384,13 +398,32 @@ export default function KnowledgeBasePage() {
           size="sm"
           variant={openPanel === "drive" ? "secondary" : "outline"}
         >
-          <svg className="size-4" viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6.6 66.85l3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3L27.5 50H0c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/>
-            <path d="M43.65 25L29.9 0c-1.35.8-2.5 1.9-3.3 3.3L1.2 45.5c-.8 1.4-1.2 2.95-1.2 4.5h27.5z" fill="#00ac47"/>
-            <path d="M73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75L86.1 54.5c.8-1.4 1.2-2.95 1.2-4.5H59.8L73.55 76.8z" fill="#ea4335"/>
-            <path d="M43.65 25L57.4 0H29.9l13.75 25z" fill="#00832d"/>
-            <path d="M59.8 50H87.3c0-1.55-.4-3.1-1.2-4.5L60.5 3.3c-.8-1.4-1.95-2.5-3.3-3.3L43.65 25l16.15 25z" fill="#2684fc"/>
-            <path d="M27.5 50L13.75 76.8c1.35.8 2.9 1.2 4.5 1.2H69.1c1.6 0 3.1-.45 4.45-1.2L59.8 50H27.5z" fill="#ffba00"/>
+          <svg
+            className="size-4"
+            viewBox="0 0 87.3 78"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6.6 66.85l3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3L27.5 50H0c0 1.55.4 3.1 1.2 4.5z"
+              fill="#0066da"
+            />
+            <path
+              d="M43.65 25L29.9 0c-1.35.8-2.5 1.9-3.3 3.3L1.2 45.5c-.8 1.4-1.2 2.95-1.2 4.5h27.5z"
+              fill="#00ac47"
+            />
+            <path
+              d="M73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75L86.1 54.5c.8-1.4 1.2-2.95 1.2-4.5H59.8L73.55 76.8z"
+              fill="#ea4335"
+            />
+            <path d="M43.65 25L57.4 0H29.9l13.75 25z" fill="#00832d" />
+            <path
+              d="M59.8 50H87.3c0-1.55-.4-3.1-1.2-4.5L60.5 3.3c-.8-1.4-1.95-2.5-3.3-3.3L43.65 25l16.15 25z"
+              fill="#2684fc"
+            />
+            <path
+              d="M27.5 50L13.75 76.8c1.35.8 2.9 1.2 4.5 1.2H69.1c1.6 0 3.1-.45 4.45-1.2L59.8 50H27.5z"
+              fill="#ffba00"
+            />
           </svg>
           Import from Google Drive
         </Button>
@@ -400,8 +433,13 @@ export default function KnowledgeBasePage() {
           size="sm"
           variant={openPanel === "notion" ? "secondary" : "outline"}
         >
-          <svg className="size-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.212-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.047.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.14c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"/>
+          <svg
+            className="size-4"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.212-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.047.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.14c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z" />
           </svg>
           Import from Notion
         </Button>
@@ -461,7 +499,7 @@ export default function KnowledgeBasePage() {
                       key={file.id}
                     >
                       <div className="min-w-0 flex-1">
-                        <p className="truncate text-sm font-medium">
+                        <p className="truncate font-medium text-sm">
                           {file.name}
                         </p>
                         <p className="text-muted-foreground text-xs">
@@ -544,7 +582,7 @@ export default function KnowledgeBasePage() {
                       key={page.id}
                     >
                       <div className="min-w-0 flex-1">
-                        <p className="truncate text-sm font-medium">
+                        <p className="truncate font-medium text-sm">
                           {page.title}
                         </p>
                         {page.lastEdited && (
@@ -579,7 +617,7 @@ export default function KnowledgeBasePage() {
 
       {/* Documents list */}
       <div>
-        <h2 className="mb-3 font-semibold text-sm text-muted-foreground uppercase tracking-wide">
+        <h2 className="mb-3 font-semibold text-muted-foreground text-sm uppercase tracking-wide">
           {projectId ? "Project Documents" : "Your Documents"}
         </h2>
 
@@ -598,8 +636,8 @@ export default function KnowledgeBasePage() {
           <ul className="space-y-2">
             {documents.map((doc) => (
               <li
-                key={doc.id}
                 className="flex items-center justify-between gap-3 rounded-lg border border-border bg-card px-4 py-3"
+                key={doc.id}
               >
                 <div className="min-w-0 flex-1">
                   <p className="truncate font-medium text-sm">{doc.title}</p>

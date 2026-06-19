@@ -53,7 +53,7 @@ export default function DrivePage() {
   return (
     <div className="mx-auto max-w-2xl px-4 py-10">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold tracking-tight">Google Drive</h1>
+        <h1 className="font-bold text-2xl tracking-tight">Google Drive</h1>
         <p className="mt-1 text-muted-foreground text-sm">
           Connect your Google Drive to attach documents directly in chat.
         </p>
@@ -88,11 +88,14 @@ export default function DrivePage() {
                 {status.connectedAt && (
                   <p className="text-muted-foreground text-xs">
                     Since{" "}
-                    {new Date(status.connectedAt).toLocaleDateString(undefined, {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                    })}
+                    {new Date(status.connectedAt).toLocaleDateString(
+                      undefined,
+                      {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      }
+                    )}
                   </p>
                 )}
               </div>
@@ -139,14 +142,17 @@ export default function DrivePage() {
       </div>
 
       <div className="mt-6 space-y-3 text-muted-foreground text-sm">
-        <p className="font-medium text-foreground">What you can do with Drive connected:</p>
+        <p className="font-medium text-foreground">
+          What you can do with Drive connected:
+        </p>
         <ul className="ml-4 list-disc space-y-1">
           <li>Browse and attach Google Docs, Sheets, and Slides in chat</li>
           <li>Ask the AI to summarize or analyze your documents</li>
           <li>Use Drive files as context when asking questions</li>
         </ul>
         <p className="text-xs">
-          Bedda requests read-only access to your Drive. We never modify or delete your files.
+          Bedda requests read-only access to your Drive. We never modify or
+          delete your files.
         </p>
       </div>
     </div>

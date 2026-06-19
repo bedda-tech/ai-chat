@@ -3,8 +3,8 @@ import type { Session } from "next-auth";
 import { codeDocumentHandler } from "@/artifacts/code/server";
 import { htmlDocumentHandler } from "@/artifacts/html/server";
 import { mermaidDocumentHandler } from "@/artifacts/mermaid/server";
-import { sheetDocumentHandler } from "@/artifacts/sheet/server";
 import { notebookDocumentHandler } from "@/artifacts/notebook/server";
+import { sheetDocumentHandler } from "@/artifacts/sheet/server";
 import { slidesDocumentHandler } from "@/artifacts/slides/server";
 import { textDocumentHandler } from "@/artifacts/text/server";
 import type { ArtifactKind } from "@/components/artifact";
@@ -103,4 +103,12 @@ export const documentHandlersByArtifactKind: DocumentHandler[] = [
   notebookDocumentHandler,
 ];
 
-export const artifactKinds = ["text", "code", "sheet", "mermaid", "html", "slides", "notebook"] as const;
+export const artifactKinds = [
+  "text",
+  "code",
+  "sheet",
+  "mermaid",
+  "html",
+  "slides",
+  "notebook",
+] as const;

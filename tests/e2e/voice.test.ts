@@ -64,7 +64,9 @@ test.describe("Voice Input (Whisper)", () => {
           this.state = "inactive";
           // Emit a tiny audio blob then fire onstop
           if (capturedDataAvailable) {
-            capturedDataAvailable({ data: new Blob(["audio"], { type: "audio/webm" }) });
+            capturedDataAvailable({
+              data: new Blob(["audio"], { type: "audio/webm" }),
+            });
           }
           if (capturedStop) capturedStop();
         }
@@ -119,7 +121,9 @@ test.describe("Voice Input (Whisper)", () => {
         stop() {
           this.state = "inactive";
           if (this.ondataavailable) {
-            this.ondataavailable({ data: new Blob(["audio"], { type: "audio/webm" }) });
+            this.ondataavailable({
+              data: new Blob(["audio"], { type: "audio/webm" }),
+            });
           }
           if (this.onstop) this.onstop();
         }

@@ -2,7 +2,13 @@ import type { UseChatHelpers } from "@ai-sdk/react";
 import equal from "fast-deep-equal";
 import { AnimatePresence } from "framer-motion";
 import { ArrowDownIcon } from "lucide-react";
-import { memo, useEffect, useMemo, type Dispatch, type SetStateAction } from "react";
+import {
+  type Dispatch,
+  memo,
+  type SetStateAction,
+  useEffect,
+  useMemo,
+} from "react";
 import { useMessages } from "@/hooks/use-messages";
 import type { Vote } from "@/lib/db/schema";
 import type { ChatMessage } from "@/lib/types";

@@ -2,18 +2,18 @@
  * Defines which tools are available for each model
  */
 
+import type { LucideIcon } from "lucide-react";
 import {
-  CloudSun,
-  FileText,
-  Lightbulb,
-  Image as ImageIcon,
   BarChart3,
+  CloudSun,
   Database,
-  Mic,
+  FileText,
   Hash,
+  Image as ImageIcon,
+  Lightbulb,
+  Mic,
   Search,
 } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 
 export type ModelTool =
   | "weather"

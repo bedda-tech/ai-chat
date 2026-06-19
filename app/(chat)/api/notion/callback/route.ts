@@ -1,13 +1,15 @@
+import { type NextRequest, NextResponse } from "next/server";
 import { auth } from "@/app/(auth)/auth";
 import { saveNotionConnection } from "@/lib/db/queries";
-import { NextRequest, NextResponse } from "next/server";
 
 const NOTION_TOKEN_URL = "https://api.notion.com/v1/oauth/token";
 
 export async function GET(request: NextRequest) {
   const session = await auth();
   if (!session?.user?.id) {
-    return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/notion?error=unauthorized`);
+    return NextResponse.redirect(
+      `${process.env.NEXTAUTH_URL}/notion?error=unauthorized`
+    );
   }
 
   const { searchParams } = new URL(request.url);
@@ -16,16 +18,22 @@ export async function GET(request: NextRequest) {
   const error = searchParams.get("error");
 
   if (error) {
-    return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/notion?error=${error}`);
+    return NextResponse.redirect(
+      `${process.env.NEXTAUTH_URL}/notion?error=${error}`
+    );
   }
 
   if (!code) {
-    return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/notion?error=no_code`);
+    return NextResponse.redirect(
+      `${process.env.NEXTAUTH_URL}/notion?error=no_code`
+    );
   }
 
   const expectedState = Buffer.from(session.user.id).toString("base64");
   if (state !== expectedState) {
-    return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/notion?error=invalid_state`);
+    return NextResponse.redirect(
+      `${process.env.NEXTAUTH_URL}/notion?error=invalid_state`
+    );
   }
 
   const redirectUri = `${process.env.NEXTAUTH_URL}/api/notion/callback`;
@@ -62,5 +70,7 @@ export async function GET(request: NextRequest) {
     botId: tokens.bot_id ?? null,
   });
 
-  return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/notion?connected=true`);
+  return NextResponse.redirect(
+    `${process.env.NEXTAUTH_URL}/notion?connected=true`
+  );
 }

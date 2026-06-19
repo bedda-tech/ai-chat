@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -22,11 +22,13 @@ export default function SubscriptionCanceledPage() {
   return (
     <div className="container flex min-h-[calc(100vh-4rem)] items-center justify-center p-4">
       <div className="w-full max-w-lg space-y-6">
-        <div className="text-center space-y-2">
-          <p className="text-muted-foreground text-sm uppercase tracking-wide font-medium">
+        <div className="space-y-2 text-center">
+          <p className="font-medium text-muted-foreground text-sm uppercase tracking-wide">
             No charges were made
           </p>
-          <h1 className="text-3xl font-bold">Still thinking? That&apos;s okay.</h1>
+          <h1 className="font-bold text-3xl">
+            Still thinking? That&apos;s okay.
+          </h1>
           <p className="text-muted-foreground">
             Here&apos;s a quick recap of what you&apos;d be getting.
           </p>
@@ -37,19 +39,19 @@ export default function SubscriptionCanceledPage() {
             <div className="flex items-baseline justify-between">
               <CardTitle className="text-xl">Bedda Plus</CardTitle>
               <div className="text-right">
-                <span className="text-2xl font-bold">$12</span>
+                <span className="font-bold text-2xl">$12</span>
                 <span className="text-muted-foreground text-sm">/mo</span>
               </div>
             </div>
-            <p className="text-sm text-green-600 font-medium">
+            <p className="font-medium text-green-600 text-sm">
               7-day free trial included — cancel anytime
             </p>
           </CardHeader>
           <CardContent>
             <ul className="space-y-2">
               {PLUS_FEATURES.map((f) => (
-                <li key={f} className="flex items-start gap-2 text-sm">
-                  <Check className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
+                <li className="flex items-start gap-2 text-sm" key={f}>
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
                   <span>{f}</span>
                 </li>
               ))}
@@ -62,20 +64,20 @@ export default function SubscriptionCanceledPage() {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            <div className="flex gap-3 w-full">
-              <Button asChild variant="outline" className="flex-1">
+            <div className="flex w-full gap-3">
+              <Button asChild className="flex-1" variant="outline">
                 <Link href="/pricing">Compare all plans</Link>
               </Button>
-              <Button asChild variant="ghost" className="flex-1">
+              <Button asChild className="flex-1" variant="ghost">
                 <Link href="/">Continue free</Link>
               </Button>
             </div>
           </CardFooter>
         </Card>
 
-        <p className="text-center text-xs text-muted-foreground">
+        <p className="text-center text-muted-foreground text-xs">
           Questions? Email us at{" "}
-          <a href="mailto:support@bedda.ai" className="underline">
+          <a className="underline" href="mailto:support@bedda.ai">
             support@bedda.ai
           </a>{" "}
           — we respond within 24 hours.

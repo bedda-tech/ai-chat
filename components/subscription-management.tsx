@@ -1,5 +1,6 @@
 "use client";
 
+import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,13 +11,19 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Loader2 } from "lucide-react";
 
 type DbTier = "free" | "pro" | "premium" | "enterprise";
 
 // DB tier → display info mapping
 // DB "pro" = Plus plan, DB "premium" = Pro plan, DB "enterprise" = Max plan
-const PLAN_INFO: Record<DbTier, { displayName: string; price: string; nextPlan?: { name: string; planKey: string; price: string } }> = {
+const PLAN_INFO: Record<
+  DbTier,
+  {
+    displayName: string;
+    price: string;
+    nextPlan?: { name: string; planKey: string; price: string };
+  }
+> = {
   free: {
     displayName: "Free",
     price: "$0/mo",
@@ -136,49 +143,58 @@ export function SubscriptionManagement({
       </CardHeader>
       <CardContent className="space-y-4">
         {error && (
-          <div className="bg-destructive/10 text-destructive rounded-md p-3 text-sm">
+          <div className="rounded-md bg-destructive/10 p-3 text-destructive text-sm">
             {error}
           </div>
         )}
 
         {currentTier === "free" && (
           <div className="space-y-3">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground text-sm">
               Upgrade to unlock all 30+ AI models, more messages, and advanced
               features.
             </p>
             <div className="flex flex-col gap-2">
               <Button
-                onClick={() => handleUpgrade("plus")}
-                disabled={loading}
                 className="w-full"
+                disabled={loading}
+                onClick={() => handleUpgrade("plus")}
               >
                 {loading ? (
-                  <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Processing...</>
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Processing...
+                  </>
                 ) : (
                   "Upgrade to Plus — $12/mo"
                 )}
               </Button>
               <Button
-                onClick={() => handleUpgrade("pro")}
-                disabled={loading}
-                variant="outline"
                 className="w-full"
+                disabled={loading}
+                onClick={() => handleUpgrade("pro")}
+                variant="outline"
               >
                 {loading ? (
-                  <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Processing...</>
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Processing...
+                  </>
                 ) : (
                   "Upgrade to Pro — $25/mo"
                 )}
               </Button>
               <Button
-                onClick={() => handleUpgrade("max")}
-                disabled={loading}
-                variant="outline"
                 className="w-full"
+                disabled={loading}
+                onClick={() => handleUpgrade("max")}
+                variant="outline"
               >
                 {loading ? (
-                  <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Processing...</>
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Processing...
+                  </>
                 ) : (
                   "Upgrade to Max — $50/mo"
                 )}
@@ -189,16 +205,20 @@ export function SubscriptionManagement({
 
         {planInfo.nextPlan && currentTier !== "free" && (
           <div className="space-y-2">
-            <p className="text-sm text-muted-foreground">
-              Upgrade to {planInfo.nextPlan.name} for more messages and features.
+            <p className="text-muted-foreground text-sm">
+              Upgrade to {planInfo.nextPlan.name} for more messages and
+              features.
             </p>
             <Button
-              onClick={() => handleUpgrade(planInfo.nextPlan!.planKey)}
-              disabled={loading}
               className="w-full"
+              disabled={loading}
+              onClick={() => handleUpgrade(planInfo.nextPlan!.planKey)}
             >
               {loading ? (
-                <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Processing...</>
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Processing...
+                </>
               ) : (
                 `Upgrade to ${planInfo.nextPlan.name} — ${planInfo.nextPlan.price}`
               )}
@@ -207,20 +227,23 @@ export function SubscriptionManagement({
         )}
 
         {currentTier === "enterprise" && (
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             You&apos;re on the Max plan — the highest tier available.
           </p>
         )}
 
         {isPaid && (
           <Button
-            onClick={handleManageBilling}
-            disabled={loading}
-            variant="outline"
             className="w-full"
+            disabled={loading}
+            onClick={handleManageBilling}
+            variant="outline"
           >
             {loading ? (
-              <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Loading...</>
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Loading...
+              </>
             ) : (
               "Manage Billing"
             )}
@@ -228,11 +251,11 @@ export function SubscriptionManagement({
         )}
       </CardContent>
       <CardFooter className="flex-col items-start space-y-1">
-        <p className="text-xs text-muted-foreground">
+        <p className="text-muted-foreground text-xs">
           All plans include automatic billing. Cancel anytime.
         </p>
         {isPaid && (
-          <p className="text-xs text-muted-foreground">
+          <p className="text-muted-foreground text-xs">
             Upgrades and downgrades are prorated.
           </p>
         )}

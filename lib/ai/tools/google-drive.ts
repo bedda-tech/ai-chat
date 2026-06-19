@@ -5,7 +5,10 @@ import { getDriveConnection, saveDriveConnection } from "@/lib/db/queries";
 const DRIVE_API = "https://www.googleapis.com/drive/v3";
 const TOKEN_URL = "https://oauth2.googleapis.com/token";
 
-async function refreshToken(userId: string, refreshTok: string): Promise<string | null> {
+async function refreshToken(
+  userId: string,
+  refreshTok: string
+): Promise<string | null> {
   const res = await fetch(TOKEN_URL, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -21,7 +24,9 @@ async function refreshToken(userId: string, refreshTok: string): Promise<string 
   await saveDriveConnection(userId, {
     accessToken: data.access_token,
     refreshToken: refreshTok,
-    expiresAt: data.expires_in ? Math.floor(Date.now() / 1000) + data.expires_in : null,
+    expiresAt: data.expires_in
+      ? Math.floor(Date.now() / 1000) + data.expires_in
+      : null,
     scope: null,
   });
   return data.access_token;
@@ -51,7 +56,9 @@ export const googleDriveTool = (userId: string) =>
       query: z
         .string()
         .optional()
-        .describe("Search query to find files (for list action). Empty = recent files."),
+        .describe(
+          "Search query to find files (for list action). Empty = recent files."
+        ),
       fileId: z
         .string()
         .optional()
@@ -59,7 +66,9 @@ export const googleDriveTool = (userId: string) =>
       fileName: z
         .string()
         .optional()
-        .describe("File name to search for and read (alternative to fileId for read action)."),
+        .describe(
+          "File name to search for and read (alternative to fileId for read action)."
+        ),
     }),
     execute: async ({ action, query, fileId, fileName }) => {
       const token = await getValidToken(userId);
@@ -104,7 +113,9 @@ export const googleDriveTool = (userId: string) =>
           files: files.map((f) => ({
             id: f.id,
             name: f.name,
-            type: f.mimeType.replace("application/vnd.google-apps.", "Google ").replace("application/", ""),
+            type: f.mimeType
+              .replace("application/vnd.google-apps.", "Google ")
+              .replace("application/", ""),
             modified: f.modifiedTime,
           })),
           count: files.length,
@@ -115,7 +126,11 @@ export const googleDriveTool = (userId: string) =>
       let targetId = fileId;
       if (!targetId && fileName) {
         const q = `name = '${fileName.replace(/'/g, "\\'")}' and trashed=false`;
-        const params = new URLSearchParams({ q, pageSize: "1", fields: "files(id,name,mimeType)" });
+        const params = new URLSearchParams({
+          q,
+          pageSize: "1",
+          fields: "files(id,name,mimeType)",
+        });
         const searchRes = await fetch(`${DRIVE_API}/files?${params}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -128,14 +143,18 @@ export const googleDriveTool = (userId: string) =>
       if (!targetId) {
         return {
           success: false,
-          error: "No file ID provided. Use the list action first to find the file, then pass its ID.",
+          error:
+            "No file ID provided. Use the list action first to find the file, then pass its ID.",
         };
       }
 
       // Get file metadata
-      const metaRes = await fetch(`${DRIVE_API}/files/${targetId}?fields=name,mimeType`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const metaRes = await fetch(
+        `${DRIVE_API}/files/${targetId}?fields=name,mimeType`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       if (!metaRes.ok) {
         return { success: false, error: "File not found or access denied." };
       }
@@ -168,7 +187,7 @@ export const googleDriveTool = (userId: string) =>
         content = await dlRes.text();
       }
 
-      const MAX_CHARS = 20000;
+      const MAX_CHARS = 20_000;
       const truncated = content.length > MAX_CHARS;
       if (truncated) content = content.slice(0, MAX_CHARS);
 

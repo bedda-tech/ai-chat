@@ -1,10 +1,10 @@
-import { NextResponse } from "next/server";
-import { auth } from "@/app/(auth)/auth";
-import { createBillingPortalSession } from "@/lib/stripe";
-import { drizzle } from "drizzle-orm/postgres-js";
 import { eq } from "drizzle-orm";
+import { drizzle } from "drizzle-orm/postgres-js";
+import { NextResponse } from "next/server";
 import postgres from "postgres";
+import { auth } from "@/app/(auth)/auth";
 import { userTier } from "@/lib/db/schema";
+import { createBillingPortalSession } from "@/lib/stripe";
 
 const connectionString = process.env.POSTGRES_URL!;
 const client = postgres(connectionString);
@@ -15,10 +15,7 @@ export async function POST(_req: Request) {
     const session = await auth();
 
     if (!session?.user) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     // Get customer ID from database
@@ -28,10 +25,7 @@ export async function POST(_req: Request) {
       .where(eq(userTier.userId, session.user.id))
       .limit(1);
 
-    if (
-      !userTierRecord.length ||
-      !userTierRecord[0].stripeCustomerId
-    ) {
+    if (!userTierRecord.length || !userTierRecord[0].stripeCustomerId) {
       return NextResponse.json(
         { error: "No subscription found" },
         { status: 404 }

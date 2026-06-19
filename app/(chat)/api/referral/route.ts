@@ -8,8 +8,7 @@ export async function GET() {
   }
 
   const info = await getUserReferralInfo(session.user.id);
-  const appUrl =
-    process.env.NEXT_PUBLIC_APP_URL ?? "https://www.bedda.tech";
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://www.bedda.tech";
 
   return Response.json({
     referralCode: info.referralCode,

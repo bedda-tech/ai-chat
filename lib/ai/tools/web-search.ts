@@ -55,7 +55,8 @@ async function searchDuckDuckGo(query: string): Promise<SearchResult[]> {
   for (const topic of data.RelatedTopics.slice(0, 5)) {
     if (topic.Text && topic.FirstURL) {
       results.push({
-        title: topic.FirstURL.split("/").pop()?.replace(/_/g, " ") || topic.FirstURL,
+        title:
+          topic.FirstURL.split("/").pop()?.replace(/_/g, " ") || topic.FirstURL,
         url: topic.FirstURL,
         snippet: topic.Text,
       });
@@ -65,7 +66,10 @@ async function searchDuckDuckGo(query: string): Promise<SearchResult[]> {
   return results;
 }
 
-async function searchBrave(query: string, apiKey: string): Promise<SearchResult[]> {
+async function searchBrave(
+  query: string,
+  apiKey: string
+): Promise<SearchResult[]> {
   const url = `https://api.search.brave.com/res/v1/web/search?q=${encodeURIComponent(query)}&count=8`;
   const response = await fetch(url, {
     headers: {
@@ -75,14 +79,17 @@ async function searchBrave(query: string, apiKey: string): Promise<SearchResult[
     },
   });
 
-  if (!response.ok) throw new Error(`Brave Search API error: ${response.status}`);
+  if (!response.ok)
+    throw new Error(`Brave Search API error: ${response.status}`);
 
   const data = await response.json();
-  return (data.web?.results || []).map((r: { title: string; url: string; description?: string }) => ({
-    title: r.title,
-    url: r.url,
-    snippet: r.description || "",
-  }));
+  return (data.web?.results || []).map(
+    (r: { title: string; url: string; description?: string }) => ({
+      title: r.title,
+      url: r.url,
+      snippet: r.description || "",
+    })
+  );
 }
 
 export const webSearchTool = tool({
@@ -119,7 +126,11 @@ export const webSearchTool = tool({
       yield {
         status: "success" as const,
         message: `Found ${results.length} results for "${query}"`,
-        data: { query, results, source: braveKey ? "Brave Search" : "DuckDuckGo" },
+        data: {
+          query,
+          results,
+          source: braveKey ? "Brave Search" : "DuckDuckGo",
+        },
       };
     } catch (err) {
       yield {

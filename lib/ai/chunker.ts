@@ -28,24 +28,22 @@ export function chunkText(text: string): string[] {
       currentChunk = currentChunk
         ? `${currentChunk}\n\n${trimmedPara}`
         : trimmedPara;
+    } else if (currentChunk) {
+      chunks.push(currentChunk);
+      // Create overlap by keeping the tail of the current chunk
+      const overlapStart = Math.max(0, currentChunk.length - CHUNK_OVERLAP);
+      currentChunk = currentChunk.slice(overlapStart) + "\n\n" + trimmedPara;
     } else {
-      if (currentChunk) {
-        chunks.push(currentChunk);
-        // Create overlap by keeping the tail of the current chunk
-        const overlapStart = Math.max(0, currentChunk.length - CHUNK_OVERLAP);
-        currentChunk = currentChunk.slice(overlapStart) + "\n\n" + trimmedPara;
-      } else {
-        // Paragraph itself is too large — split by sentence
-        const sentences = trimmedPara.split(/(?<=[.!?])\s+/);
-        for (const sentence of sentences) {
-          if (currentChunk.length + sentence.length + 1 <= CHUNK_SIZE) {
-            currentChunk = currentChunk
-              ? `${currentChunk} ${sentence}`
-              : sentence;
-          } else {
-            if (currentChunk) chunks.push(currentChunk);
-            currentChunk = sentence.slice(0, CHUNK_SIZE);
-          }
+      // Paragraph itself is too large — split by sentence
+      const sentences = trimmedPara.split(/(?<=[.!?])\s+/);
+      for (const sentence of sentences) {
+        if (currentChunk.length + sentence.length + 1 <= CHUNK_SIZE) {
+          currentChunk = currentChunk
+            ? `${currentChunk} ${sentence}`
+            : sentence;
+        } else {
+          if (currentChunk) chunks.push(currentChunk);
+          currentChunk = sentence.slice(0, CHUNK_SIZE);
         }
       }
     }

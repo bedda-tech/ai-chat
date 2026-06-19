@@ -26,9 +26,7 @@ export const executeCodeTool = () =>
     description:
       "Execute Python or JavaScript code in a secure sandboxed environment. Use this when users want to run, test, calculate, visualize, or analyze data with code. Supports matplotlib charts, pandas DataFrames, and standard libraries.",
     inputSchema: z.object({
-      code: z
-        .string()
-        .describe("The code to execute."),
+      code: z.string().describe("The code to execute."),
       language: z
         .enum(["python", "javascript"])
         .default("python")
@@ -42,7 +40,8 @@ export const executeCodeTool = () =>
           code,
           stdout: "",
           stderr: "",
-          error: "Code execution is not configured. Please add E2B_API_KEY to enable sandboxed execution.",
+          error:
+            "Code execution is not configured. Please add E2B_API_KEY to enable sandboxed execution.",
         };
       }
 
@@ -63,8 +62,18 @@ export const executeCodeTool = () =>
 
           const elapsedMs = Date.now() - start;
 
-          const results: NonNullable<CodeExecutionResult["results"]> = (execution.results ?? []).map((r) => {
-            const type = r.png ? "image/png" : r.svg ? "image/svg+xml" : r.html ? "text/html" : r.json ? "application/json" : "text/plain";
+          const results: NonNullable<CodeExecutionResult["results"]> = (
+            execution.results ?? []
+          ).map((r) => {
+            const type = r.png
+              ? "image/png"
+              : r.svg
+                ? "image/svg+xml"
+                : r.html
+                  ? "text/html"
+                  : r.json
+                    ? "application/json"
+                    : "text/plain";
             return {
               type,
               ...(r.text !== undefined && { text: r.text }),
@@ -97,7 +106,8 @@ export const executeCodeTool = () =>
           code,
           stdout: "",
           stderr: "",
-          error: error instanceof Error ? error.message : "Failed to execute code.",
+          error:
+            error instanceof Error ? error.message : "Failed to execute code.",
           executionTime: `${Date.now() - start}ms`,
         };
       }

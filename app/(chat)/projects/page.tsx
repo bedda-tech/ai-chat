@@ -1,12 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
+import { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 
 interface Project {
   id: string;
@@ -27,30 +27,32 @@ function ProjectCard({
   onDelete: (id: string) => void;
 }) {
   return (
-    <div className="rounded-lg border p-4 space-y-2">
+    <div className="space-y-2 rounded-lg border p-4">
       <div className="flex items-start justify-between gap-2">
         <div className="min-w-0">
-          <h3 className="font-semibold truncate">{project.name}</h3>
+          <h3 className="truncate font-semibold">{project.name}</h3>
           {project.description && (
-            <p className="text-sm text-muted-foreground mt-0.5 line-clamp-2">
+            <p className="mt-0.5 line-clamp-2 text-muted-foreground text-sm">
               {project.description}
             </p>
           )}
         </div>
-        <div className="flex gap-2 shrink-0 flex-wrap justify-end">
-          <Button size="sm" variant="default" asChild>
+        <div className="flex shrink-0 flex-wrap justify-end gap-2">
+          <Button asChild size="sm" variant="default">
             <Link href={`/?projectId=${project.id}`}>New Chat</Link>
           </Button>
-          <Button size="sm" variant="outline" asChild>
-            <Link href={`/knowledge-base?projectId=${project.id}`}>Knowledge Base</Link>
+          <Button asChild size="sm" variant="outline">
+            <Link href={`/knowledge-base?projectId=${project.id}`}>
+              Knowledge Base
+            </Link>
           </Button>
-          <Button size="sm" variant="outline" onClick={() => onEdit(project)}>
+          <Button onClick={() => onEdit(project)} size="sm" variant="outline">
             Edit
           </Button>
           <Button
+            onClick={() => onDelete(project.id)}
             size="sm"
             variant="destructive"
-            onClick={() => onDelete(project.id)}
           >
             Delete
           </Button>
@@ -58,10 +60,10 @@ function ProjectCard({
       </div>
       {project.instructions && (
         <div className="rounded-md bg-muted px-3 py-2">
-          <p className="text-xs text-muted-foreground font-medium mb-1">
+          <p className="mb-1 font-medium text-muted-foreground text-xs">
             Project instructions
           </p>
-          <p className="text-sm line-clamp-3 whitespace-pre-wrap">
+          <p className="line-clamp-3 whitespace-pre-wrap text-sm">
             {project.instructions}
           </p>
         </div>
@@ -77,7 +79,11 @@ function ProjectForm({
   saving,
 }: {
   initial?: Project | null;
-  onSave: (data: { name: string; description: string; instructions: string }) => void;
+  onSave: (data: {
+    name: string;
+    description: string;
+    instructions: string;
+  }) => void;
   onCancel: () => void;
   saving: boolean;
 }) {
@@ -86,37 +92,40 @@ function ProjectForm({
   const [instructions, setInstructions] = useState(initial?.instructions ?? "");
 
   return (
-    <div className="rounded-lg border p-4 space-y-4">
-      <h3 className="font-semibold">{initial ? "Edit project" : "New project"}</h3>
+    <div className="space-y-4 rounded-lg border p-4">
+      <h3 className="font-semibold">
+        {initial ? "Edit project" : "New project"}
+      </h3>
       <div className="space-y-2">
         <Label htmlFor="project-name">Name *</Label>
         <Input
           id="project-name"
+          onChange={(e) => setName(e.target.value)}
           placeholder="My project"
           value={name}
-          onChange={(e) => setName(e.target.value)}
         />
       </div>
       <div className="space-y-2">
         <Label htmlFor="project-desc">Description</Label>
         <Input
           id="project-desc"
+          onChange={(e) => setDescription(e.target.value)}
           placeholder="What is this project about?"
           value={description}
-          onChange={(e) => setDescription(e.target.value)}
         />
       </div>
       <div className="space-y-2">
         <Label htmlFor="project-instructions">Project instructions</Label>
-        <p className="text-xs text-muted-foreground">
-          These instructions are prepended to the AI system prompt for all chats in this project.
+        <p className="text-muted-foreground text-xs">
+          These instructions are prepended to the AI system prompt for all chats
+          in this project.
         </p>
         <Textarea
           id="project-instructions"
-          placeholder="e.g. You are helping me with a Python codebase. Always use type hints. Prefer functional patterns."
-          value={instructions}
           onChange={(e) => setInstructions(e.target.value)}
+          placeholder="e.g. You are helping me with a Python codebase. Always use type hints. Prefer functional patterns."
           rows={5}
+          value={instructions}
         />
       </div>
       <div className="flex gap-2">
@@ -126,7 +135,7 @@ function ProjectForm({
         >
           {saving ? "Saving…" : "Save"}
         </Button>
-        <Button variant="outline" onClick={onCancel}>
+        <Button onClick={onCancel} variant="outline">
           Cancel
         </Button>
       </div>
@@ -160,7 +169,11 @@ export default function ProjectsPage() {
   }, [fetchProjects]);
 
   const handleSave = useCallback(
-    async (data: { name: string; description: string; instructions: string }) => {
+    async (data: {
+      name: string;
+      description: string;
+      instructions: string;
+    }) => {
       setSaving(true);
       try {
         if (editing) {
@@ -184,7 +197,9 @@ export default function ProjectsPage() {
         setEditing(null);
         await fetchProjects();
       } catch {
-        toast.error(editing ? "Failed to update project" : "Failed to create project");
+        toast.error(
+          editing ? "Failed to update project" : "Failed to create project"
+        );
       } finally {
         setSaving(false);
       }
@@ -194,7 +209,8 @@ export default function ProjectsPage() {
 
   const handleDelete = useCallback(
     async (id: string) => {
-      if (!confirm("Delete this project? Chats in it won't be deleted.")) return;
+      if (!confirm("Delete this project? Chats in it won't be deleted."))
+        return;
       try {
         const res = await fetch(`/api/projects?id=${id}`, { method: "DELETE" });
         if (!res.ok) throw new Error("Failed to delete project");
@@ -235,8 +251,8 @@ export default function ProjectsPage() {
         <div className="mb-6">
           <ProjectForm
             initial={editing}
-            onSave={handleSave}
             onCancel={handleCancel}
+            onSave={handleSave}
             saving={saving}
           />
         </div>
@@ -255,9 +271,9 @@ export default function ProjectsPage() {
           {projects.map((p) => (
             <ProjectCard
               key={p.id}
-              project={p}
-              onEdit={handleEdit}
               onDelete={handleDelete}
+              onEdit={handleEdit}
+              project={p}
             />
           ))}
         </div>

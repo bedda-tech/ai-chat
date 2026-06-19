@@ -16,7 +16,8 @@ if (!appId || !token) {
 const commands = [
   {
     name: "bedda",
-    description: "Ask Bedda — your multi-model AI assistant (Claude, GPT, Gemini, Grok & more)",
+    description:
+      "Ask Bedda — your multi-model AI assistant (Claude, GPT, Gemini, Grok & more)",
     options: [
       {
         name: "prompt",
@@ -26,7 +27,8 @@ const commands = [
       },
       {
         name: "model",
-        description: "AI model to use (claude, gpt, gemini, grok, mistral, deepseek…)",
+        description:
+          "AI model to use (claude, gpt, gemini, grok, mistral, deepseek…)",
         type: 3, // STRING
         required: false,
         choices: [
@@ -68,4 +70,4 @@ for (const cmd of data) {
   console.log(`  /${cmd.name} (id: ${cmd.id})`);
 }
 console.log("\nDone. Set your Discord app's Interactions Endpoint URL to:");
-console.log(`  https://www.bedda.tech/api/discord/interactions`);
+console.log("  https://www.bedda.tech/api/discord/interactions");

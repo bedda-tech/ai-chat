@@ -1,9 +1,9 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import type { Metadata } from "next";
-import { isValidReferralCode } from "@/lib/db/queries";
 import { Button } from "@/components/ui/button";
+import { isValidReferralCode } from "@/lib/db/queries";
 
 export async function generateMetadata({
   params,
@@ -25,21 +25,57 @@ export async function generateMetadata({
 }
 
 const MODELS = [
-  { name: "Claude", provider: "Anthropic", color: "bg-orange-100 text-orange-800" },
+  {
+    name: "Claude",
+    provider: "Anthropic",
+    color: "bg-orange-100 text-orange-800",
+  },
   { name: "GPT-5", provider: "OpenAI", color: "bg-green-100 text-green-800" },
   { name: "Gemini", provider: "Google", color: "bg-blue-100 text-blue-800" },
   { name: "Grok", provider: "xAI", color: "bg-purple-100 text-purple-800" },
-  { name: "DeepSeek", provider: "DeepSeek", color: "bg-indigo-100 text-indigo-800" },
-  { name: "Mistral", provider: "Mistral AI", color: "bg-yellow-100 text-yellow-800" },
+  {
+    name: "DeepSeek",
+    provider: "DeepSeek",
+    color: "bg-indigo-100 text-indigo-800",
+  },
+  {
+    name: "Mistral",
+    provider: "Mistral AI",
+    color: "bg-yellow-100 text-yellow-800",
+  },
 ];
 
 const FEATURES = [
-  { icon: "🤖", title: "30+ AI models", desc: "Claude, GPT-5, Gemini, Grok, DeepSeek & more" },
-  { icon: "🖼️", title: "Image generation", desc: "DALL-E 3, Imagen 3, and Flux in one place" },
-  { icon: "🔍", title: "Web search", desc: "Real-time answers powered by live search" },
-  { icon: "🧠", title: "Deep research", desc: "Multi-step reasoning with agent mode" },
-  { icon: "📂", title: "Knowledge base", desc: "Upload docs and chat with your own files" },
-  { icon: "💬", title: "Slack & Discord bots", desc: "Bring bedda into your team workspace" },
+  {
+    icon: "🤖",
+    title: "30+ AI models",
+    desc: "Claude, GPT-5, Gemini, Grok, DeepSeek & more",
+  },
+  {
+    icon: "🖼️",
+    title: "Image generation",
+    desc: "DALL-E 3, Imagen 3, and Flux in one place",
+  },
+  {
+    icon: "🔍",
+    title: "Web search",
+    desc: "Real-time answers powered by live search",
+  },
+  {
+    icon: "🧠",
+    title: "Deep research",
+    desc: "Multi-step reasoning with agent mode",
+  },
+  {
+    icon: "📂",
+    title: "Knowledge base",
+    desc: "Upload docs and chat with your own files",
+  },
+  {
+    icon: "💬",
+    title: "Slack & Discord bots",
+    desc: "Bring bedda into your team workspace",
+  },
 ];
 
 export default async function JoinPage({
@@ -51,7 +87,7 @@ export default async function JoinPage({
 
   const valid = await isValidReferralCode(code);
   if (!valid) {
-    redirect(`/register`);
+    redirect("/register");
   }
 
   const registerUrl = `/register?ref=${code}`;
@@ -74,7 +110,7 @@ export default async function JoinPage({
           </Link>
           <div className="ml-auto flex items-center gap-3">
             <Link
-              className="text-sm text-muted-foreground hover:text-foreground"
+              className="text-muted-foreground text-sm hover:text-foreground"
               href="/login"
             >
               Sign in
@@ -89,11 +125,12 @@ export default async function JoinPage({
       <main>
         {/* Hero */}
         <section className="container mx-auto max-w-5xl px-4 py-16 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
-            <span>🎁</span> You&apos;ve been invited — exclusive 14-day free trial
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 font-medium text-primary text-sm">
+            <span>🎁</span> You&apos;ve been invited — exclusive 14-day free
+            trial
           </div>
 
-          <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 className="mb-4 font-bold text-4xl tracking-tight sm:text-5xl lg:text-6xl">
             All AI models.{" "}
             <span className="text-primary">One subscription.</span>
           </h1>
@@ -105,15 +142,15 @@ export default async function JoinPage({
           </p>
 
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <Button asChild size="lg" className="text-base px-8">
+            <Button asChild className="px-8 text-base" size="lg">
               <Link href={registerUrl}>Start your 14-day free trial →</Link>
             </Button>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground text-sm">
               No credit card required
             </p>
           </div>
 
-          <p className="mt-3 text-xs text-muted-foreground">
+          <p className="mt-3 text-muted-foreground text-xs">
             Free trial applies to Plus plan ($12/mo). Cancel anytime.
           </p>
         </section>
@@ -121,20 +158,22 @@ export default async function JoinPage({
         {/* Model logos */}
         <section className="border-y bg-muted/30 py-8">
           <div className="container mx-auto max-w-5xl px-4">
-            <p className="mb-5 text-center text-sm font-medium text-muted-foreground">
+            <p className="mb-5 text-center font-medium text-muted-foreground text-sm">
               ACCESS ALL OF THESE — AND MORE — WITH ONE ACCOUNT
             </p>
             <div className="flex flex-wrap justify-center gap-2">
               {MODELS.map((m) => (
                 <div
+                  className={`rounded-full px-4 py-1.5 font-medium text-sm ${m.color}`}
                   key={m.name}
-                  className={`rounded-full px-4 py-1.5 text-sm font-medium ${m.color}`}
                 >
                   {m.name}
-                  <span className="ml-1.5 opacity-60 text-xs">{m.provider}</span>
+                  <span className="ml-1.5 text-xs opacity-60">
+                    {m.provider}
+                  </span>
                 </div>
               ))}
-              <div className="rounded-full bg-gray-100 px-4 py-1.5 text-sm font-medium text-gray-600">
+              <div className="rounded-full bg-gray-100 px-4 py-1.5 font-medium text-gray-600 text-sm">
                 +24 more models
               </div>
             </div>
@@ -143,18 +182,15 @@ export default async function JoinPage({
 
         {/* Features */}
         <section className="container mx-auto max-w-5xl px-4 py-16">
-          <h2 className="mb-10 text-center text-2xl font-bold sm:text-3xl">
+          <h2 className="mb-10 text-center font-bold text-2xl sm:text-3xl">
             Everything you need to get work done with AI
           </h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {FEATURES.map((f) => (
-              <div
-                key={f.title}
-                className="rounded-xl border bg-card p-5"
-              >
+              <div className="rounded-xl border bg-card p-5" key={f.title}>
                 <div className="mb-3 text-2xl">{f.icon}</div>
                 <h3 className="mb-1 font-semibold">{f.title}</h3>
-                <p className="text-sm text-muted-foreground">{f.desc}</p>
+                <p className="text-muted-foreground text-sm">{f.desc}</p>
               </div>
             ))}
           </div>
@@ -163,36 +199,40 @@ export default async function JoinPage({
         {/* Pricing comparison */}
         <section className="border-t bg-muted/30 py-16">
           <div className="container mx-auto max-w-3xl px-4 text-center">
-            <h2 className="mb-3 text-2xl font-bold sm:text-3xl">
+            <h2 className="mb-3 font-bold text-2xl sm:text-3xl">
               Why pay for each AI separately?
             </h2>
             <p className="mb-10 text-muted-foreground">
-              Most people spend $40–60/mo on multiple AI subscriptions.
-              bedda.ai replaces them all.
+              Most people spend $40–60/mo on multiple AI subscriptions. bedda.ai
+              replaces them all.
             </p>
 
             <div className="grid gap-4 sm:grid-cols-3">
               <div className="rounded-xl border bg-destructive/5 p-5">
-                <p className="text-sm text-muted-foreground">Competitors</p>
-                <p className="mt-2 text-3xl font-bold text-destructive">$60+/mo</p>
-                <p className="mt-1 text-xs text-muted-foreground">
+                <p className="text-muted-foreground text-sm">Competitors</p>
+                <p className="mt-2 font-bold text-3xl text-destructive">
+                  $60+/mo
+                </p>
+                <p className="mt-1 text-muted-foreground text-xs">
                   Claude ($20) + GPT ($20) + Gemini ($20)
                 </p>
               </div>
               <div className="rounded-xl border-2 border-primary bg-primary/5 p-5 ring-2 ring-primary/20">
-                <p className="text-sm font-medium text-primary">bedda.ai Plus</p>
-                <p className="mt-2 text-3xl font-bold">$12/mo</p>
-                <p className="mt-1 text-xs text-muted-foreground">
+                <p className="font-medium text-primary text-sm">
+                  bedda.ai Plus
+                </p>
+                <p className="mt-2 font-bold text-3xl">$12/mo</p>
+                <p className="mt-1 text-muted-foreground text-xs">
                   All 30+ models included
                 </p>
-                <div className="mt-2 rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
+                <div className="mt-2 rounded-full bg-primary/10 px-2 py-0.5 font-medium text-primary text-xs">
                   Your invite: first 14 days free
                 </div>
               </div>
               <div className="rounded-xl border bg-muted p-5">
-                <p className="text-sm text-muted-foreground">You save</p>
-                <p className="mt-2 text-3xl font-bold text-green-600">$48/mo</p>
-                <p className="mt-1 text-xs text-muted-foreground">
+                <p className="text-muted-foreground text-sm">You save</p>
+                <p className="mt-2 font-bold text-3xl text-green-600">$48/mo</p>
+                <p className="mt-1 text-muted-foreground text-xs">
                   80% less than subscribing separately
                 </p>
               </div>
@@ -202,18 +242,21 @@ export default async function JoinPage({
 
         {/* Final CTA */}
         <section className="container mx-auto max-w-5xl px-4 py-16 text-center">
-          <h2 className="mb-3 text-2xl font-bold sm:text-3xl">
+          <h2 className="mb-3 font-bold text-2xl sm:text-3xl">
             Ready to try bedda.ai?
           </h2>
           <p className="mb-8 text-muted-foreground">
             Your 14-day free trial is waiting. No credit card needed to start.
           </p>
-          <Button asChild size="lg" className="text-base px-10">
+          <Button asChild className="px-10 text-base" size="lg">
             <Link href={registerUrl}>Create your free account →</Link>
           </Button>
-          <p className="mt-3 text-sm text-muted-foreground">
+          <p className="mt-3 text-muted-foreground text-sm">
             Already have an account?{" "}
-            <Link href="/login" className="text-primary underline-offset-4 hover:underline">
+            <Link
+              className="text-primary underline-offset-4 hover:underline"
+              href="/login"
+            >
               Sign in
             </Link>
           </p>
@@ -223,13 +266,20 @@ export default async function JoinPage({
       {/* Footer */}
       <footer className="border-t py-6">
         <div className="container mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-4 md:flex-row">
-          <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} bedda.ai — All AI models, one subscription.
+          <p className="text-muted-foreground text-sm">
+            &copy; {new Date().getFullYear()} bedda.ai — All AI models, one
+            subscription.
           </p>
-          <nav className="flex gap-4 text-sm text-muted-foreground">
-            <Link href="/privacy" className="hover:text-foreground">Privacy</Link>
-            <Link href="/terms" className="hover:text-foreground">Terms</Link>
-            <Link href="/pricing" className="hover:text-foreground">Pricing</Link>
+          <nav className="flex gap-4 text-muted-foreground text-sm">
+            <Link className="hover:text-foreground" href="/privacy">
+              Privacy
+            </Link>
+            <Link className="hover:text-foreground" href="/terms">
+              Terms
+            </Link>
+            <Link className="hover:text-foreground" href="/pricing">
+              Pricing
+            </Link>
           </nav>
         </div>
       </footer>

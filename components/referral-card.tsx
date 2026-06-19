@@ -25,13 +25,13 @@ export function ReferralCard() {
 
   if (isLoading) {
     return (
-      <p className="text-sm text-muted-foreground">Loading referral info…</p>
+      <p className="text-muted-foreground text-sm">Loading referral info…</p>
     );
   }
 
   if (!data?.referralCode) {
     return (
-      <p className="text-sm text-muted-foreground">
+      <p className="text-muted-foreground text-sm">
         Sign in to get your referral link.
       </p>
     );
@@ -41,7 +41,7 @@ export function ReferralCard() {
 
   return (
     <div className="space-y-4">
-      <p className="text-sm text-muted-foreground">
+      <p className="text-muted-foreground text-sm">
         Share your link with friends. Anyone who signs up gets a{" "}
         <strong>14-day free trial</strong> of Plus (double the standard 7 days).
         Every referral helps us grow — we&apos;ll reach out with a thank-you
@@ -50,12 +50,12 @@ export function ReferralCard() {
 
       <div className="flex items-center gap-2">
         <input
+          className="flex-1 rounded-md border bg-muted px-3 py-2 font-mono text-sm"
           readOnly
-          className="flex-1 rounded-md border bg-muted px-3 py-2 text-sm font-mono"
           value={data.referralUrl ?? ""}
         />
         <button
-          className="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 disabled:opacity-50"
+          className="shrink-0 rounded-md bg-primary px-4 py-2 font-medium text-primary-foreground text-sm hover:bg-primary/90 disabled:opacity-50"
           onClick={handleCopy}
           type="button"
         >

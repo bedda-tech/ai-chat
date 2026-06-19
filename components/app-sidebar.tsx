@@ -21,7 +21,13 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 
-export function AppSidebar({ user, isAdmin }: { user: User | undefined; isAdmin?: boolean }) {
+export function AppSidebar({
+  user,
+  isAdmin,
+}: {
+  user: User | undefined;
+  isAdmin?: boolean;
+}) {
   const { setOpenMobile } = useSidebar();
 
   return (

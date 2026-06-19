@@ -3,9 +3,9 @@
  * Uses LanguageModelMiddleware (v3) from AI SDK
  */
 
+import type { LanguageModelMiddleware } from "ai";
 import crypto from "crypto";
 import { createClient } from "redis";
-import type { LanguageModelMiddleware } from "ai";
 
 // In-memory performance metrics per model
 type ModelMetrics = {
@@ -57,7 +57,10 @@ export const loggingMiddleware: LanguageModelMiddleware = {
       return result;
     } catch (err) {
       if (logEnabled()) {
-        console.error(`[AI] model=${modelId} error after ${Date.now() - start}ms`, err);
+        console.error(
+          `[AI] model=${modelId} error after ${Date.now() - start}ms`,
+          err
+        );
       }
       throw err;
     }
@@ -70,12 +73,17 @@ export const loggingMiddleware: LanguageModelMiddleware = {
     try {
       const result = await doStream();
       if (logEnabled()) {
-        console.log(`[AI] model=${modelId} stream=ready latency=${Date.now() - start}ms`);
+        console.log(
+          `[AI] model=${modelId} stream=ready latency=${Date.now() - start}ms`
+        );
       }
       return result;
     } catch (err) {
       if (logEnabled()) {
-        console.error(`[AI] model=${modelId} stream=error after ${Date.now() - start}ms`, err);
+        console.error(
+          `[AI] model=${modelId} stream=error after ${Date.now() - start}ms`,
+          err
+        );
       }
       throw err;
     }
@@ -130,11 +138,20 @@ export const performanceMiddleware: LanguageModelMiddleware = {
 /**
  * Returns per-model performance metrics snapshot.
  */
-export function getModelMetrics(): Record<string, ModelMetrics & { avgLatencyMs: number; p95LatencyMs: number | null }> {
-  const out: Record<string, ModelMetrics & { avgLatencyMs: number; p95LatencyMs: number | null }> = {};
+export function getModelMetrics(): Record<
+  string,
+  ModelMetrics & { avgLatencyMs: number; p95LatencyMs: number | null }
+> {
+  const out: Record<
+    string,
+    ModelMetrics & { avgLatencyMs: number; p95LatencyMs: number | null }
+  > = {};
   for (const [modelId, m] of metricsStore.entries()) {
     const sorted = [...m.latencySamples].sort((a, b) => a - b);
-    const p95 = sorted.length > 0 ? sorted[Math.floor(sorted.length * 0.95)] ?? null : null;
+    const p95 =
+      sorted.length > 0
+        ? (sorted[Math.floor(sorted.length * 0.95)] ?? null)
+        : null;
     out[modelId] = {
       ...m,
       avgLatencyMs: m.calls > 0 ? Math.round(m.totalLatencyMs / m.calls) : 0,
@@ -179,7 +196,8 @@ async function getRedis(): Promise<RedisClient | null> {
 
 const CACHE_PREFIX = "ai:cache:";
 const cacheEnabled = () => process.env.CACHE_AI_RESPONSES !== "false";
-const cacheTTLSeconds = () => parseInt(process.env.CACHE_AI_TTL_SECONDS ?? "3600", 10);
+const cacheTTLSeconds = () =>
+  Number.parseInt(process.env.CACHE_AI_TTL_SECONDS ?? "3600", 10);
 
 function buildCacheKey(modelId: string, prompt: unknown): string {
   const hash = crypto
@@ -196,22 +214,33 @@ function syntheticStream(cachedResult: {
   warnings?: unknown[];
 }) {
   const textParts = (cachedResult.content ?? []).filter(
-    (p): p is { type: "text"; text: string } => p.type === "text" && typeof p.text === "string"
+    (p): p is { type: "text"; text: string } =>
+      p.type === "text" && typeof p.text === "string"
   );
 
   return new ReadableStream({
     start(controller) {
-      controller.enqueue({ type: "stream-start", warnings: cachedResult.warnings ?? [] });
+      controller.enqueue({
+        type: "stream-start",
+        warnings: cachedResult.warnings ?? [],
+      });
       for (let i = 0; i < textParts.length; i++) {
         const id = `cached-${i}`;
         controller.enqueue({ type: "text-start", id });
-        controller.enqueue({ type: "text-delta", id, delta: textParts[i].text });
+        controller.enqueue({
+          type: "text-delta",
+          id,
+          delta: textParts[i].text,
+        });
         controller.enqueue({ type: "text-end", id });
       }
       controller.enqueue({
         type: "finish",
         finishReason: cachedResult.finishReason ?? "stop",
-        usage: cachedResult.usage ?? { inputTokens: { total: 0 }, outputTokens: { total: 0 } },
+        usage: cachedResult.usage ?? {
+          inputTokens: { total: 0 },
+          outputTokens: { total: 0 },
+        },
       });
       controller.close();
     },
@@ -244,7 +273,9 @@ export const cachingMiddleware: LanguageModelMiddleware = {
 
     const result = await doGenerate();
     try {
-      await redis.set(cacheKey, JSON.stringify(result), { EX: cacheTTLSeconds() });
+      await redis.set(cacheKey, JSON.stringify(result), {
+        EX: cacheTTLSeconds(),
+      });
     } catch (err) {
       console.error("[cache] Redis set error:", err);
     }
@@ -261,7 +292,9 @@ export const cachingMiddleware: LanguageModelMiddleware = {
       const cached = await redis.get(cacheKey);
       if (cached) {
         console.log(`[cache] HIT stream model=${model.modelId}`);
-        return { stream: syntheticStream(JSON.parse(cached)) } as Awaited<ReturnType<typeof doStream>>;
+        return { stream: syntheticStream(JSON.parse(cached)) } as Awaited<
+          ReturnType<typeof doStream>
+        >;
       }
     } catch (err) {
       console.error("[cache] Redis get error:", err);
@@ -283,7 +316,10 @@ export async function getCacheStats(): Promise<{
     const entries = await Promise.all(
       keys.slice(0, 20).map(async (key) => {
         const remaining = await redis.ttl(key).catch(() => ttl);
-        return { key: key.replace(CACHE_PREFIX, ""), age: Math.max(0, ttl - remaining) };
+        return {
+          key: key.replace(CACHE_PREFIX, ""),
+          age: Math.max(0, ttl - remaining),
+        };
       })
     );
     return { size: keys.length, entries };
@@ -351,7 +387,9 @@ export const guardrailsMiddleware: LanguageModelMiddleware = {
 
     // In AI SDK v6, text content lives in result.content (array of parts)
     const textContent = result.content
-      .filter((p): p is Extract<typeof p, { type: "text" }> => p.type === "text")
+      .filter(
+        (p): p is Extract<typeof p, { type: "text" }> => p.type === "text"
+      )
       .map((p) => p.text)
       .join("");
 
@@ -370,7 +408,5 @@ export const guardrailsMiddleware: LanguageModelMiddleware = {
 
   // Phase 2: accumulate stream chunks and intercept mid-stream.
   // For now, pass through — buffering degrades perceived latency.
-  wrapStream: async ({ doStream }) => {
-    return doStream();
-  },
+  wrapStream: async ({ doStream }) => doStream(),
 };

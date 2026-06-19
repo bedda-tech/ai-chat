@@ -1,6 +1,6 @@
+import { gateway } from "@ai-sdk/gateway";
 import { generateText } from "ai";
 import { after } from "next/server";
-import { gateway } from "@ai-sdk/gateway";
 
 const VERIFY_TOKEN = process.env.WHATSAPP_VERIFY_TOKEN ?? "";
 const APP_SECRET = process.env.WHATSAPP_APP_SECRET ?? "";
@@ -41,7 +41,11 @@ function parseModelAndText(raw: string): { model: string; text: string } {
   return { model: DEFAULT_MODEL, text: raw };
 }
 
-async function verifySignature(secret: string, payload: string, sig: string): Promise<boolean> {
+async function verifySignature(
+  secret: string,
+  payload: string,
+  sig: string
+): Promise<boolean> {
   if (!secret) return true;
   const expected = sig.startsWith("sha256=") ? sig.slice(7) : sig;
   const key = await crypto.subtle.importKey(
@@ -78,7 +82,11 @@ async function sendMessage(to: string, text: string): Promise<void> {
     }
   );
   if (!res.ok) {
-    console.error("[whatsapp] sendMessage failed:", res.status, await res.text());
+    console.error(
+      "[whatsapp] sendMessage failed:",
+      res.status,
+      await res.text()
+    );
   }
 }
 
@@ -174,7 +182,10 @@ export async function POST(req: Request) {
             await sendMessage(from, aiResponse);
           } catch (err) {
             console.error("[whatsapp] AI response error:", err);
-            await sendMessage(from, "Sorry, I ran into an error. Please try again.");
+            await sendMessage(
+              from,
+              "Sorry, I ran into an error. Please try again."
+            );
           }
         });
       }

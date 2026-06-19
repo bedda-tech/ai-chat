@@ -63,9 +63,7 @@ export async function GET(request: Request) {
         {
           error: "Failed to fetch models",
           message:
-            error instanceof Error
-              ? error.message
-              : "Unknown error occurred",
+            error instanceof Error ? error.message : "Unknown error occurred",
         },
         { status: 500 }
       );

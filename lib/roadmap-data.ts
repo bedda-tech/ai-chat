@@ -263,7 +263,8 @@ export const roadmapData: RoadmapPhase[] = [
         status: "completed",
         priority: "critical",
         effort: "Completed",
-        impact: "Multi-model image gen (DALL-E 3, Imagen 3, Flux 1.1) — beats Claude (no image gen)",
+        impact:
+          "Multi-model image gen (DALL-E 3, Imagen 3, Flux 1.1) — beats Claude (no image gen)",
         keyFeatures: [
           "Multi-model image generation (DALL-E 3, Imagen 3 Fast, Flux 1.1 Pro)",
           "Aspect ratio controls (1:1, 16:9, 9:16, 3:4, 4:3)",
@@ -280,7 +281,8 @@ export const roadmapData: RoadmapPhase[] = [
         status: "completed",
         priority: "high",
         effort: "Completed",
-        impact: "Matches Sora (ChatGPT $20+) and Veo (Gemini $19.99+), beats Claude (none)",
+        impact:
+          "Matches Sora (ChatGPT $20+) and Veo (Gemini $19.99+), beats Claude (none)",
         keyFeatures: [
           "Text-to-video generation (Kling v1.6)",
           "Image-to-video animation",
@@ -475,7 +477,8 @@ export const roadmapData: RoadmapPhase[] = [
         status: "completed",
         priority: "high",
         effort: "Completed",
-        impact: "B2B channel — sticky team installs, per-seat revenue, no competitor offers multi-model access inside Slack/Discord",
+        impact:
+          "B2B channel — sticky team installs, per-seat revenue, no competitor offers multi-model access inside Slack/Discord",
         keyFeatures: [
           "Slack bot with multi-workspace OAuth install flow",
           "Thread history and model selection via [alias] prefix",
@@ -556,7 +559,8 @@ export const expectedImpact = {
     imageStudio: "Multi-model image gen (beats Claude which has none)",
     videoStudio: "Video gen at $12/mo (competitors charge $20-250/mo)",
     modelComparison: "Side-by-side model arena (unique to Bedda)",
-    platformBots: "Slack/Discord/GitHub/Telegram bots — multi-model AI inside team workspaces",
+    platformBots:
+      "Slack/Discord/GitHub/Telegram bots — multi-model AI inside team workspaces",
   },
   revenueProjections: {
     "10k users": "~$130k/month",

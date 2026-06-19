@@ -1,12 +1,8 @@
 import { createHash, randomBytes } from "node:crypto";
 import { auth } from "@/app/(auth)/auth";
-import {
-  createApiKey,
-  listApiKeys,
-  revokeApiKey,
-} from "@/lib/db/queries";
-import { getUserTier } from "@/lib/usage/tracking";
 import { logAuditEvent } from "@/lib/audit";
+import { createApiKey, listApiKeys, revokeApiKey } from "@/lib/db/queries";
+import { getUserTier } from "@/lib/usage/tracking";
 
 const UPGRADE_ERROR = {
   error: "API access requires a paid subscription. Upgrade at /upgrade.",
@@ -64,7 +60,10 @@ export async function POST(request: Request) {
     keyPrefix,
   });
 
-  void logAuditEvent(session.user.id, "api_key.created", { keyId: key.id, name });
+  void logAuditEvent(session.user.id, "api_key.created", {
+    keyId: key.id,
+    name,
+  });
 
   return Response.json({
     id: key.id,

@@ -56,9 +56,9 @@ test.describe("Knowledge Base (RAG)", () => {
       buffer: Buffer.from(DOC_CONTENT),
     });
 
-    await expect(
-      page.getByText("paris-facts").first()
-    ).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByText("paris-facts").first()).toBeVisible({
+      timeout: 15_000,
+    });
     await expect(page.getByText("1 chunk")).toBeVisible();
   });
 
@@ -94,9 +94,9 @@ test.describe("Knowledge Base (RAG)", () => {
     page.on("dialog", (dialog) => dialog.accept());
     await page.getByRole("button", { name: "Delete" }).first().click();
 
-    await expect(
-      page.getByText("No documents yet.")
-    ).toBeVisible({ timeout: 10_000 });
+    await expect(page.getByText("No documents yet.")).toBeVisible({
+      timeout: 10_000,
+    });
   });
 
   test("chat response references knowledge base content", async ({

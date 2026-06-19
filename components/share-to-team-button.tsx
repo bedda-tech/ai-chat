@@ -36,7 +36,11 @@ export function ShareToTeamButton({ chatId }: { chatId: string }) {
             const r = await fetch(`/api/teams/${t.id}/chats`);
             if (!r.ok) return;
             const d = await r.json();
-            if ((d.chats ?? []).some((c: { chatId: string }) => c.chatId === chatId)) {
+            if (
+              (d.chats ?? []).some(
+                (c: { chatId: string }) => c.chatId === chatId
+              )
+            ) {
               shared.add(t.id);
             }
           })
@@ -98,8 +102,8 @@ export function ShareToTeamButton({ chatId }: { chatId: string }) {
         <DropdownMenuSeparator />
         {teams.map((t) => (
           <DropdownMenuItem
+            className="flex cursor-pointer items-center gap-2"
             key={t.id}
-            className="flex items-center gap-2 cursor-pointer"
             onSelect={(e) => {
               e.preventDefault();
               toggle(t.id);
@@ -110,7 +114,7 @@ export function ShareToTeamButton({ chatId }: { chatId: string }) {
             />
             {t.name}
             {sharedTeamIds.has(t.id) && (
-              <span className="ml-auto text-xs text-muted-foreground">
+              <span className="ml-auto text-muted-foreground text-xs">
                 Shared
               </span>
             )}

@@ -58,7 +58,7 @@ export default async function TeamChatsPage({
       ) : (
         <ul className="divide-y rounded-lg border">
           {chats.map((c) => (
-            <li key={c.chatId} className="flex items-center gap-4 px-4 py-3">
+            <li className="flex items-center gap-4 px-4 py-3" key={c.chatId}>
               <div className="min-w-0 flex-1">
                 <Link
                   className="truncate font-medium hover:underline"

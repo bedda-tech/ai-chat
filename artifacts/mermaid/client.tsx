@@ -38,19 +38,23 @@ function MermaidRenderer({ content, status }: MermaidContent) {
         }
       } catch (err: unknown) {
         if (!cancelled) {
-          setError(err instanceof Error ? err.message : "Failed to render diagram");
+          setError(
+            err instanceof Error ? err.message : "Failed to render diagram"
+          );
           setSvg(null);
         }
       }
     }
 
     render();
-    return () => { cancelled = true; };
+    return () => {
+      cancelled = true;
+    };
   }, [content, status]);
 
   if (status === "streaming") {
     return (
-      <div className="flex items-center justify-center h-full min-h-48 text-muted-foreground text-sm">
+      <div className="flex h-full min-h-48 items-center justify-center text-muted-foreground text-sm">
         Generating diagram...
       </div>
     );
@@ -59,16 +63,22 @@ function MermaidRenderer({ content, status }: MermaidContent) {
   if (error) {
     return (
       <div className="p-6">
-        <p className="text-sm text-destructive font-medium mb-2">Diagram error</p>
-        <pre className="text-xs text-muted-foreground whitespace-pre-wrap font-mono bg-muted p-3 rounded">{error}</pre>
-        <pre className="mt-4 text-xs font-mono bg-muted p-3 rounded whitespace-pre-wrap">{content}</pre>
+        <p className="mb-2 font-medium text-destructive text-sm">
+          Diagram error
+        </p>
+        <pre className="whitespace-pre-wrap rounded bg-muted p-3 font-mono text-muted-foreground text-xs">
+          {error}
+        </pre>
+        <pre className="mt-4 whitespace-pre-wrap rounded bg-muted p-3 font-mono text-xs">
+          {content}
+        </pre>
       </div>
     );
   }
 
   if (!svg) {
     return (
-      <div className="flex items-center justify-center h-full min-h-48 text-muted-foreground text-sm">
+      <div className="flex h-full min-h-48 items-center justify-center text-muted-foreground text-sm">
         Loading...
       </div>
     );
@@ -76,17 +86,18 @@ function MermaidRenderer({ content, status }: MermaidContent) {
 
   return (
     <div
-      ref={containerRef}
-      className="flex items-center justify-center p-8 overflow-auto min-h-48"
-      // biome-ignore lint/security/noDangerouslySetInnerHtml: mermaid output is sanitized SVG
+      className="flex min-h-48 items-center justify-center overflow-auto p-8"
       dangerouslySetInnerHTML={{ __html: svg }}
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: mermaid output is sanitized SVG
+      ref={containerRef}
     />
   );
 }
 
 export const mermaidArtifact = new Artifact<"mermaid">({
   kind: "mermaid",
-  description: "Useful for diagrams: flowcharts, sequence diagrams, entity-relationship diagrams, class diagrams, state machines, and more.",
+  description:
+    "Useful for diagrams: flowcharts, sequence diagrams, entity-relationship diagrams, class diagrams, state machines, and more.",
   onStreamPart: ({ streamPart, setArtifact }) => {
     if (streamPart.type === "data-mermaidDelta") {
       setArtifact((draftArtifact) => ({

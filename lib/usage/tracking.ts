@@ -1,8 +1,8 @@
 import { and, eq, gte } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
+import modelsData from "@/lib/ai/models-data.json" with { type: "json" };
 import { rateLimit, usageEvent, userTier, userUsage } from "@/lib/db/schema";
-import modelsData from "@/lib/ai/models-data.json";
 
 type ModelPricing = {
   input: number;
@@ -79,13 +79,13 @@ export const TIER_LIMITS: Record<UserTierType, RateLimitConfig> = {
   premium: {
     // Pro plan: 1,500 msg/day, unlimited monthly
     messagesPerMinute: 20,
-    messagesPerDay: 1_500,
+    messagesPerDay: 1500,
     messagesPerMonth: 999_999_999,
   },
   enterprise: {
     // Max plan: 5,000 msg/day, unlimited monthly
     messagesPerMinute: 40,
-    messagesPerDay: 5_000,
+    messagesPerDay: 5000,
     messagesPerMonth: 999_999_999,
   },
 };

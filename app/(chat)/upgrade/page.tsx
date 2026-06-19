@@ -32,7 +32,7 @@ export default async function UpgradePage({
 
   return (
     <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center p-4">
-      <UpgradeInitiator plan={validPlan} billingPeriod={validBilling} />
+      <UpgradeInitiator billingPeriod={validBilling} plan={validPlan} />
     </div>
   );
 }

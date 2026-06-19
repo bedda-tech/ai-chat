@@ -1,11 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { toast } from "sonner";
 import {
   Sheet,
   SheetContent,
@@ -30,7 +29,7 @@ function PluginCard({
   return (
     <div className="flex flex-col rounded-xl border bg-card p-5 shadow-sm transition-shadow hover:shadow-md">
       <div className="mb-3 flex items-center gap-3">
-        <span className="text-2xl" role="img" aria-label={plugin.name}>
+        <span aria-label={plugin.name} className="text-2xl" role="img">
           {plugin.icon}
         </span>
         <div className="min-w-0">
@@ -41,11 +40,7 @@ function PluginCard({
       <p className="mb-4 flex-1 text-muted-foreground text-sm leading-snug">
         {plugin.description}
       </p>
-      <Button
-        size="sm"
-        className="w-full"
-        onClick={() => onInstall(plugin)}
-      >
+      <Button className="w-full" onClick={() => onInstall(plugin)} size="sm">
         Install
       </Button>
     </div>
@@ -90,8 +85,12 @@ function InstallDrawer({
           description: plugin.webhookToolDescription,
           webhookUrl: plugin.webhookUrlTemplate,
           parametersSchema: plugin.parametersSchema,
-          authHeaderName: authNameParam ? paramValues[authNameParam.name] || undefined : undefined,
-          authHeaderValue: authParam ? paramValues[authParam.name] || undefined : undefined,
+          authHeaderName: authNameParam
+            ? paramValues[authNameParam.name] || undefined
+            : undefined,
+          authHeaderValue: authParam
+            ? paramValues[authParam.name] || undefined
+            : undefined,
         }),
       });
 
@@ -100,7 +99,9 @@ function InstallDrawer({
         throw new Error(err.error ?? "Failed to install plugin");
       }
 
-      toast.success(`${plugin.name} installed! Configure the webhook URL in Settings → Plugin Tools.`);
+      toast.success(
+        `${plugin.name} installed! Configure the webhook URL in Settings → Plugin Tools.`
+      );
       setParamValues({});
       onClose();
     } catch (e: any) {
@@ -111,7 +112,7 @@ function InstallDrawer({
   }
 
   return (
-    <Sheet open={open} onOpenChange={(v) => !v && onClose()}>
+    <Sheet onOpenChange={(v) => !v && onClose()} open={open}>
       <SheetContent className="w-full overflow-y-auto sm:max-w-md">
         <SheetHeader className="mb-6">
           <div className="flex items-center gap-3">
@@ -130,23 +131,25 @@ function InstallDrawer({
             <div className="space-y-4">
               <h4 className="font-medium text-sm">Configuration</h4>
               {plugin.params.map((param) => (
-                <div key={param.name} className="space-y-1.5">
-                  <Label htmlFor={`param-${param.name}`} className="text-xs">
+                <div className="space-y-1.5" key={param.name}>
+                  <Label className="text-xs" htmlFor={`param-${param.name}`}>
                     {param.label}
-                    {param.required && <span className="ml-1 text-destructive">*</span>}
+                    {param.required && (
+                      <span className="ml-1 text-destructive">*</span>
+                    )}
                   </Label>
                   <Input
+                    className="h-9 text-sm"
                     id={`param-${param.name}`}
-                    type={param.secret ? "password" : "text"}
-                    placeholder={param.placeholder}
-                    value={paramValues[param.name] ?? ""}
                     onChange={(e) =>
                       setParamValues((prev) => ({
                         ...prev,
                         [param.name]: e.target.value,
                       }))
                     }
-                    className="h-9 text-sm"
+                    placeholder={param.placeholder}
+                    type={param.secret ? "password" : "text"}
+                    value={paramValues[param.name] ?? ""}
                   />
                 </div>
               ))}
@@ -159,7 +162,8 @@ function InstallDrawer({
               {plugin.webhookUrlTemplate}
             </p>
             <p className="text-muted-foreground text-xs">
-              You can update the exact URL after installation in Settings → Plugin Tools.
+              You can update the exact URL after installation in Settings →
+              Plugin Tools.
             </p>
           </div>
 
@@ -173,12 +177,12 @@ function InstallDrawer({
           <div className="flex gap-3 pt-2">
             <Button
               className="flex-1"
-              onClick={handleInstall}
               disabled={saving}
+              onClick={handleInstall}
             >
               {saving ? "Installing..." : "Install Plugin"}
             </Button>
-            <Button variant="outline" onClick={onClose} disabled={saving}>
+            <Button disabled={saving} onClick={onClose} variant="outline">
               Cancel
             </Button>
           </div>
@@ -190,8 +194,11 @@ function InstallDrawer({
 
 export default function PluginsMarketplacePage() {
   const [search, setSearch] = useState("");
-  const [activeCategory, setActiveCategory] = useState<MarketplaceCategory | "All">("All");
-  const [selectedPlugin, setSelectedPlugin] = useState<MarketplacePlugin | null>(null);
+  const [activeCategory, setActiveCategory] = useState<
+    MarketplaceCategory | "All"
+  >("All");
+  const [selectedPlugin, setSelectedPlugin] =
+    useState<MarketplacePlugin | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const filtered = MARKETPLACE_PLUGINS.filter((p) => {
@@ -221,17 +228,18 @@ export default function PluginsMarketplacePage() {
       <div className="mb-8">
         <h1 className="font-bold text-2xl">Plugin Marketplace</h1>
         <p className="mt-1 text-muted-foreground text-sm">
-          Browse and install community-curated webhook plugins to extend your AI with external tools.
+          Browse and install community-curated webhook plugins to extend your AI
+          with external tools.
         </p>
       </div>
 
       {/* Search */}
       <div className="mb-5">
         <Input
+          className="max-w-sm"
+          onChange={(e) => setSearch(e.target.value)}
           placeholder="Search plugins..."
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="max-w-sm"
         />
       </div>
 
@@ -239,14 +247,14 @@ export default function PluginsMarketplacePage() {
       <div className="mb-6 flex flex-wrap gap-2">
         {(["All", ...MARKETPLACE_CATEGORIES] as const).map((cat) => (
           <button
-            key={cat}
-            type="button"
-            onClick={() => setActiveCategory(cat)}
-            className={`rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
+            className={`rounded-full border px-4 py-1.5 font-medium text-sm transition-colors ${
               activeCategory === cat
                 ? "border-primary bg-primary text-primary-foreground"
                 : "border-border bg-background text-muted-foreground hover:border-primary/50 hover:text-foreground"
             }`}
+            key={cat}
+            onClick={() => setActiveCategory(cat)}
+            type="button"
           >
             {cat}
           </button>
@@ -261,12 +269,20 @@ export default function PluginsMarketplacePage() {
       ) : (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((plugin) => (
-            <PluginCard key={plugin.id} plugin={plugin} onInstall={handleInstall} />
+            <PluginCard
+              key={plugin.id}
+              onInstall={handleInstall}
+              plugin={plugin}
+            />
           ))}
         </div>
       )}
 
-      <InstallDrawer plugin={selectedPlugin} open={drawerOpen} onClose={handleClose} />
+      <InstallDrawer
+        onClose={handleClose}
+        open={drawerOpen}
+        plugin={selectedPlugin}
+      />
     </div>
   );
 }

@@ -7,7 +7,10 @@ const columnSchema = z.object({
   type: z.enum(["text", "number", "badge", "url"]).optional().default("text"),
 });
 
-const rowSchema = z.record(z.string(), z.union([z.string(), z.number(), z.null()]));
+const rowSchema = z.record(
+  z.string(),
+  z.union([z.string(), z.number(), z.null()])
+);
 
 const checklistItemSchema = z.object({
   id: z.string(),
@@ -29,7 +32,10 @@ const timelineItemSchema = z.object({
   date: z.string(),
   title: z.string(),
   description: z.string().optional(),
-  status: z.enum(["completed", "current", "upcoming"]).optional().default("upcoming"),
+  status: z
+    .enum(["completed", "current", "upcoming"])
+    .optional()
+    .default("upcoming"),
 });
 
 const comparisonRowSchema = z.object({
@@ -54,7 +60,9 @@ Use these when the data would be clearer or more useful as an interactive visual
       title: z.string().describe("Table title"),
       description: z.string().optional().describe("Optional description"),
       columns: z.array(columnSchema).describe("Column definitions"),
-      rows: z.array(rowSchema).describe("Data rows as objects keyed by column key"),
+      rows: z
+        .array(rowSchema)
+        .describe("Data rows as objects keyed by column key"),
     }),
     z.object({
       type: z.literal("checklist"),
@@ -82,7 +90,5 @@ Use these when the data would be clearer or more useful as an interactive visual
       rows: z.array(comparisonRowSchema).describe("Feature rows"),
     }),
   ]),
-  execute: async (input) => {
-    return { success: true, component: input };
-  },
+  execute: async (input) => ({ success: true, component: input }),
 });

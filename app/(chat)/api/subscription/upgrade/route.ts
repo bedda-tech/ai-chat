@@ -1,11 +1,15 @@
-import { NextResponse } from "next/server";
-import { auth } from "@/app/(auth)/auth";
-import { stripe, updateSubscription, getSubscriptionTier } from "@/lib/stripe";
-import { mapPlanToStripePrice, type PlanName, type BillingPeriod } from "@/lib/stripe/config";
-import { drizzle } from "drizzle-orm/postgres-js";
 import { eq } from "drizzle-orm";
+import { drizzle } from "drizzle-orm/postgres-js";
+import { NextResponse } from "next/server";
 import postgres from "postgres";
+import { auth } from "@/app/(auth)/auth";
 import { userTier } from "@/lib/db/schema";
+import { getSubscriptionTier, stripe, updateSubscription } from "@/lib/stripe";
+import {
+  type BillingPeriod,
+  mapPlanToStripePrice,
+  type PlanName,
+} from "@/lib/stripe/config";
 
 const connectionString = process.env.POSTGRES_URL!;
 const client = postgres(connectionString);
@@ -51,7 +55,9 @@ export async function POST(req: Request) {
 
     if (!existing.length || !existing[0].subscriptionId) {
       return NextResponse.json(
-        { error: "No active subscription found. Please use the checkout flow." },
+        {
+          error: "No active subscription found. Please use the checkout flow.",
+        },
         { status: 400 }
       );
     }
@@ -59,7 +65,8 @@ export async function POST(req: Request) {
     const subscriptionId = existing[0].subscriptionId;
 
     // Detect the current billing period (monthly vs annual) from Stripe
-    const currentSubscription = await stripe.subscriptions.retrieve(subscriptionId);
+    const currentSubscription =
+      await stripe.subscriptions.retrieve(subscriptionId);
     const currentPriceId = currentSubscription.items.data[0]?.price.id;
 
     let billingPeriod: BillingPeriod = "monthly";

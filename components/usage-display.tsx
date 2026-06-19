@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
 
 type SubscriptionStatus = {
   tier: "free" | "pro" | "premium" | "enterprise";
@@ -97,18 +97,15 @@ export function UsageDisplay() {
     }
   };
 
-  const formatNumber = (num: number) => {
-    return new Intl.NumberFormat().format(num);
-  };
+  const formatNumber = (num: number) => new Intl.NumberFormat().format(num);
 
-  const formatCost = (cost: number) => {
-    return new Intl.NumberFormat("en-US", {
+  const formatCost = (cost: number) =>
+    new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "USD",
       minimumFractionDigits: 2,
       maximumFractionDigits: 4,
     }).format(cost);
-  };
 
   return (
     <div className="space-y-4">
@@ -117,7 +114,9 @@ export function UsageDisplay() {
           <div className="flex items-center justify-between">
             <div>
               <CardTitle>Current Plan</CardTitle>
-              <CardDescription>Your subscription tier and usage</CardDescription>
+              <CardDescription>
+                Your subscription tier and usage
+              </CardDescription>
             </div>
             <Badge className={getTierColor(status.tier)}>
               {TIER_DISPLAY[status.tier] ?? status.tier.toUpperCase()}
@@ -134,7 +133,7 @@ export function UsageDisplay() {
                 {formatNumber(status.limits.messagesPerMonth)}
               </span>
             </div>
-            <Progress value={status.percentUsed} className="h-2" />
+            <Progress className="h-2" value={status.percentUsed} />
             <p className="text-muted-foreground text-xs">
               {status.percentUsed.toFixed(1)}% of monthly limit used
             </p>
@@ -162,7 +161,9 @@ export function UsageDisplay() {
       <Card>
         <CardHeader>
           <CardTitle>Token Usage & Cost</CardTitle>
-          <CardDescription>Detailed usage metrics for this month</CardDescription>
+          <CardDescription>
+            Detailed usage metrics for this month
+          </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid gap-4 md:grid-cols-2">
@@ -180,7 +181,7 @@ export function UsageDisplay() {
             </div>
             <div className="space-y-1">
               <p className="text-muted-foreground text-sm">Cached Tokens</p>
-              <p className="font-semibold text-xl text-green-600">
+              <p className="font-semibold text-green-600 text-xl">
                 {formatNumber(status.usage.cachedTokens)}
               </p>
             </div>
@@ -196,12 +197,12 @@ export function UsageDisplay() {
           {status.usage.cachedSavings > 0 && (
             <div className="border-t pt-4">
               <div className="flex items-center justify-between">
-                <p className="text-sm text-green-600">Savings from caching</p>
+                <p className="text-green-600 text-sm">Savings from caching</p>
                 <p className="font-semibold text-green-600">
                   {formatCost(status.usage.cachedSavings)}
                 </p>
               </div>
-              <p className="text-muted-foreground mt-1 text-xs">
+              <p className="mt-1 text-muted-foreground text-xs">
                 {(
                   (status.usage.cachedTokens /
                     (status.usage.inputTokens + status.usage.cachedTokens)) *

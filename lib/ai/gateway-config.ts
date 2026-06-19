@@ -74,4 +74,3 @@ export function getThinkingBudget(modelId: string): number | undefined {
 
   return 1000; // Default for other Anthropic models
 }
-

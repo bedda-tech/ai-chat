@@ -64,7 +64,7 @@ export function useAvailableModels(enabled = true) {
       // Cache for 1 hour
       revalidateOnFocus: false,
       revalidateOnReconnect: false,
-      refreshInterval: 3600000, // 1 hour in milliseconds
+      refreshInterval: 3_600_000, // 1 hour in milliseconds
       // Keep previous data while revalidating
       keepPreviousData: true,
       // Deduplicate requests within 2 seconds
@@ -138,9 +138,7 @@ export function useModelsByProvider(provider: string) {
 /**
  * Hook to get models filtered by capability
  */
-export function useModelsByCapability(
-  capability: keyof Model["capabilities"]
-) {
+export function useModelsByCapability(capability: keyof Model["capabilities"]) {
   const { models, isLoading, error, ...rest } = useAvailableModels();
 
   const filteredModels = models.filter((m) => m.capabilities[capability]);

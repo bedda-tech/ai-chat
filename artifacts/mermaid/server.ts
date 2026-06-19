@@ -1,8 +1,8 @@
 import { streamObject } from "ai";
 import { z } from "zod";
+import { mermaidPrompt, updateDocumentPrompt } from "@/lib/ai/prompts";
 import { myProvider } from "@/lib/ai/providers";
 import { createDocumentHandler } from "@/lib/artifacts/server";
-import { mermaidPrompt, updateDocumentPrompt } from "@/lib/ai/prompts";
 
 export const mermaidDocumentHandler = createDocumentHandler<"mermaid">({
   kind: "mermaid",

@@ -59,7 +59,9 @@ export const notionTool = (userId: string) =>
     inputSchema: z.object({
       action: z
         .enum(["search", "read"])
-        .describe("search: find pages by query. read: get full content of a specific page."),
+        .describe(
+          "search: find pages by query. read: get full content of a specific page."
+        ),
       query: z
         .string()
         .optional()
@@ -67,7 +69,9 @@ export const notionTool = (userId: string) =>
       pageId: z
         .string()
         .optional()
-        .describe("Notion page ID to read (for read action). Get from a prior search."),
+        .describe(
+          "Notion page ID to read (for read action). Get from a prior search."
+        ),
     }),
     execute: async ({ action, query, pageId }) => {
       const conn = await getNotionConnection(userId);
@@ -102,12 +106,14 @@ export const notionTool = (userId: string) =>
         const data = await res.json();
         const pages = (data.results ?? []).map((page: any) => {
           const titleProp =
-            page.properties?.title ?? page.properties?.Name ?? page.properties?.name;
+            page.properties?.title ??
+            page.properties?.Name ??
+            page.properties?.name;
           const title = titleProp?.title
             ? extractPlainText(titleProp.title)
             : titleProp?.rich_text
-            ? extractPlainText(titleProp.rich_text)
-            : "Untitled";
+              ? extractPlainText(titleProp.rich_text)
+              : "Untitled";
           return {
             id: page.id,
             title: title || "Untitled",
@@ -123,7 +129,8 @@ export const notionTool = (userId: string) =>
       if (!pageId) {
         return {
           success: false,
-          error: "No page ID provided. Use the search action first to find a page, then pass its ID.",
+          error:
+            "No page ID provided. Use the search action first to find a page, then pass its ID.",
         };
       }
 
@@ -134,17 +141,22 @@ export const notionTool = (userId: string) =>
       }
       const page = await pageRes.json();
       const titleProp =
-        page.properties?.title ?? page.properties?.Name ?? page.properties?.name;
+        page.properties?.title ??
+        page.properties?.Name ??
+        page.properties?.name;
       const title = titleProp?.title
         ? extractPlainText(titleProp.title)
         : titleProp?.rich_text
-        ? extractPlainText(titleProp.rich_text)
-        : "Untitled";
+          ? extractPlainText(titleProp.rich_text)
+          : "Untitled";
 
       // Fetch page blocks (content)
-      const blocksRes = await fetch(`${NOTION_API}/blocks/${pageId}/children?page_size=100`, {
-        headers,
-      });
+      const blocksRes = await fetch(
+        `${NOTION_API}/blocks/${pageId}/children?page_size=100`,
+        {
+          headers,
+        }
+      );
       if (!blocksRes.ok) {
         return { success: false, error: "Failed to read page content." };
       }
@@ -155,7 +167,7 @@ export const notionTool = (userId: string) =>
         .filter((l: string) => l.length > 0);
       let content = lines.join("\n\n");
 
-      const MAX_CHARS = 20000;
+      const MAX_CHARS = 20_000;
       const truncated = content.length > MAX_CHARS;
       if (truncated) content = content.slice(0, MAX_CHARS);
 

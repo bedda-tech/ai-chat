@@ -25,12 +25,14 @@ export default async function AdminPage() {
   }
 
   const metrics = getModelMetrics();
-  const entries = Object.entries(metrics).sort((a, b) => b[1].calls - a[1].calls);
+  const entries = Object.entries(metrics).sort(
+    (a, b) => b[1].calls - a[1].calls
+  );
 
   return (
-    <div className="container mx-auto p-8 max-w-6xl">
-      <h1 className="text-2xl font-bold mb-2">Admin: Model Performance</h1>
-      <p className="text-sm text-muted-foreground mb-6">
+    <div className="container mx-auto max-w-6xl p-8">
+      <h1 className="mb-2 font-bold text-2xl">Admin: Model Performance</h1>
+      <p className="mb-6 text-muted-foreground text-sm">
         In-memory metrics — resets on server restart.
       </p>
 
@@ -53,16 +55,24 @@ export default async function AdminPage() {
             </thead>
             <tbody>
               {entries.map(([modelId, m]) => (
-                <tr key={modelId} className="border-t hover:bg-muted/30">
+                <tr className="border-t hover:bg-muted/30" key={modelId}>
                   <td className="p-3 font-mono text-xs">{modelId}</td>
                   <td className="p-3 text-right">{m.calls.toLocaleString()}</td>
-                  <td className="p-3 text-right">{m.avgLatencyMs.toLocaleString()} ms</td>
                   <td className="p-3 text-right">
-                    {m.p95LatencyMs != null ? `${m.p95LatencyMs.toLocaleString()} ms` : "—"}
+                    {m.avgLatencyMs.toLocaleString()} ms
                   </td>
-                  <td className="p-3 text-right">{m.totalTokens.toLocaleString()}</td>
                   <td className="p-3 text-right">
-                    {m.calls > 0 ? `${((m.errors / m.calls) * 100).toFixed(1)}%` : "—"}
+                    {m.p95LatencyMs != null
+                      ? `${m.p95LatencyMs.toLocaleString()} ms`
+                      : "—"}
+                  </td>
+                  <td className="p-3 text-right">
+                    {m.totalTokens.toLocaleString()}
+                  </td>
+                  <td className="p-3 text-right">
+                    {m.calls > 0
+                      ? `${((m.errors / m.calls) * 100).toFixed(1)}%`
+                      : "—"}
                   </td>
                 </tr>
               ))}
@@ -74,8 +84,8 @@ export default async function AdminPage() {
       <div className="mt-6">
         <form action={resetMetricsAction}>
           <button
+            className="rounded-md bg-destructive px-4 py-2 font-medium text-destructive-foreground text-sm hover:bg-destructive/90"
             type="submit"
-            className="rounded-md bg-destructive px-4 py-2 text-sm font-medium text-destructive-foreground hover:bg-destructive/90"
           >
             Reset Metrics
           </button>

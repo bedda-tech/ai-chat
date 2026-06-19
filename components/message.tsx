@@ -3,15 +3,17 @@ import type { UseChatHelpers } from "@ai-sdk/react";
 import equal from "fast-deep-equal";
 import { motion } from "framer-motion";
 import { memo, useState } from "react";
+import { chatModels } from "@/lib/ai/models";
 import type { Vote } from "@/lib/db/schema";
 import type { ChatMessage } from "@/lib/types";
 import { cn, sanitizeText } from "@/lib/utils";
+import { Chart } from "./chart";
 import { useDataStream } from "./data-stream-provider";
 import { DocumentToolResult } from "./document";
 import { DocumentPreview } from "./document-preview";
+import { CodeBlock } from "./elements/code-block";
 import { MessageContent } from "./elements/message";
 import { Response } from "./elements/response";
-import { CodeBlock } from "./elements/code-block";
 import {
   Tool,
   ToolContent,
@@ -19,15 +21,13 @@ import {
   ToolInput,
   ToolOutput,
 } from "./elements/tool";
-import { chatModels } from "@/lib/ai/models";
+import { GenerativeUIRenderer } from "./generative-ui-renderer";
 import { SparklesIcon } from "./icons";
 import { MessageActions } from "./message-actions";
 import { MessageEditor } from "./message-editor";
 import { MessageReasoning } from "./message-reasoning";
 import { PreviewAttachment } from "./preview-attachment";
 import { Weather } from "./weather";
-import { Chart } from "./chart";
-import { GenerativeUIRenderer } from "./generative-ui-renderer";
 
 const PROVIDER_COLORS: Record<string, string> = {
   anthropic: "bg-orange-500",
@@ -72,8 +72,9 @@ const PurePreviewMessage = ({
 
   // Only show attachment previews for user uploads, not AI-generated images
   const attachmentsFromMessage = message.parts.filter(
-    (part) => part.type === "file" && 
-    (message.role === "user" || !part.mediaType?.startsWith("image/"))
+    (part) =>
+      part.type === "file" &&
+      (message.role === "user" || !part.mediaType?.startsWith("image/"))
   );
 
   useDataStream();
@@ -97,20 +98,23 @@ const PurePreviewMessage = ({
             <div className="flex size-8 items-center justify-center rounded-full bg-background ring-1 ring-border">
               <SparklesIcon size={14} />
             </div>
-            {showModelBadge && message.metadata?.modelId && (() => {
-              const modelId = message.metadata.modelId as string;
-              const model = chatModels.find(m => m.id === modelId);
-              const displayName = model?.name ?? modelId.split("-").slice(1).join("-");
-              const colorClass = getProviderColor(modelId);
-              return (
-                <span className="flex max-w-[5rem] flex-col items-center gap-0.5 opacity-100 transition-opacity md:opacity-0 md:group-hover/message:opacity-100">
-                  <span className={cn("size-1.5 rounded-full", colorClass)} />
-                  <span className="max-w-[4.5rem] text-center font-medium text-muted-foreground text-[10px] leading-tight">
-                    {displayName}
+            {showModelBadge &&
+              message.metadata?.modelId &&
+              (() => {
+                const modelId = message.metadata.modelId as string;
+                const model = chatModels.find((m) => m.id === modelId);
+                const displayName =
+                  model?.name ?? modelId.split("-").slice(1).join("-");
+                const colorClass = getProviderColor(modelId);
+                return (
+                  <span className="flex max-w-[5rem] flex-col items-center gap-0.5 opacity-100 transition-opacity md:opacity-0 md:group-hover/message:opacity-100">
+                    <span className={cn("size-1.5 rounded-full", colorClass)} />
+                    <span className="max-w-[4.5rem] text-center font-medium text-[10px] text-muted-foreground leading-tight">
+                      {displayName}
+                    </span>
                   </span>
-                </span>
-              );
-            })()}
+                );
+              })()}
           </div>
         )}
 
@@ -208,16 +212,24 @@ const PurePreviewMessage = ({
             if (type === "file" && part.mediaType?.startsWith("image/")) {
               const imagePart = part as any;
               // Handle both base64 string and URL formats
-              const imageSrc = imagePart.url || 
-                (imagePart.data ? `data:${imagePart.mediaType};base64,${imagePart.data}` : null) ||
-                (imagePart.base64 ? `data:${imagePart.mediaType};base64,${imagePart.base64}` : null);
-              
+              const imageSrc =
+                imagePart.url ||
+                (imagePart.data
+                  ? `data:${imagePart.mediaType};base64,${imagePart.data}`
+                  : null) ||
+                (imagePart.base64
+                  ? `data:${imagePart.mediaType};base64,${imagePart.base64}`
+                  : null);
+
               if (!imageSrc) {
                 return null;
               }
-              
+
               return (
-                <div key={key} className="overflow-hidden rounded-lg border border-border bg-muted/30 p-2">
+                <div
+                  className="overflow-hidden rounded-lg border border-border bg-muted/30 p-2"
+                  key={key}
+                >
                   {/* biome-ignore lint/nursery/useImageSize: Generated image from model */}
                   {/* biome-ignore lint/performance/noImgElement: Generated image display */}
                   <img
@@ -242,24 +254,29 @@ const PurePreviewMessage = ({
                     {state === "input-available" && (
                       <ToolInput input={part.input} />
                     )}
-                    {state === "output-available" && (() => {
-                      const output = part.output as any;
-                      
-                      return (
-                        <ToolOutput
-                          errorText={output?.error || output?.status === "error" ? output.error : undefined}
-                          output={
-                            output?.data ? (
-                              <Weather weatherAtLocation={output.data} />
-                            ) : output?.status === "loading" ? (
-                              <div className="text-muted-foreground text-sm p-4">
-                                {output.message}
-                              </div>
-                            ) : null
-                          }
-                        />
-                      );
-                    })()}
+                    {state === "output-available" &&
+                      (() => {
+                        const output = part.output as any;
+
+                        return (
+                          <ToolOutput
+                            errorText={
+                              output?.error || output?.status === "error"
+                                ? output.error
+                                : undefined
+                            }
+                            output={
+                              output?.data ? (
+                                <Weather weatherAtLocation={output.data} />
+                              ) : output?.status === "loading" ? (
+                                <div className="p-4 text-muted-foreground text-sm">
+                                  {output.message}
+                                </div>
+                              ) : null
+                            }
+                          />
+                        );
+                      })()}
                   </ToolContent>
                 </Tool>
               );
@@ -368,33 +385,38 @@ const PurePreviewMessage = ({
                               {/* biome-ignore lint/nursery/useImageSize: Generated image without explicit size */}
                               {/* biome-ignore lint/performance/noImgElement: Generated image display */}
                               <img
-                                alt={toolPart.input?.prompt || "Generated image"}
+                                alt={
+                                  toolPart.input?.prompt || "Generated image"
+                                }
                                 className="w-full"
                                 src={`data:${toolPart.output.image.mediaType};base64,${toolPart.output.image.base64}`}
                               />
                             </div>
                             {toolPart.input?.prompt && (
                               <div className="text-muted-foreground text-xs">
-                                <span className="font-medium">Prompt:</span> {toolPart.input.prompt}
+                                <span className="font-medium">Prompt:</span>{" "}
+                                {toolPart.input.prompt}
                               </div>
                             )}
-                            <div className="flex items-center justify-between gap-2 flex-wrap">
+                            <div className="flex flex-wrap items-center justify-between gap-2">
                               <div className="flex items-center gap-3 text-muted-foreground text-xs">
                                 {toolPart.output.model && (
                                   <span>
-                                    <span className="font-medium">Model:</span> {toolPart.output.model}
+                                    <span className="font-medium">Model:</span>{" "}
+                                    {toolPart.output.model}
                                   </span>
                                 )}
                                 {toolPart.output.size && (
                                   <span>
-                                    <span className="font-medium">Size:</span> {toolPart.output.size}
+                                    <span className="font-medium">Size:</span>{" "}
+                                    {toolPart.output.size}
                                   </span>
                                 )}
                               </div>
                               <a
-                                href={`data:${toolPart.output.image.mediaType};base64,${toolPart.output.image.base64}`}
+                                className="inline-flex items-center gap-1 rounded-md bg-primary px-2.5 py-1 font-medium text-primary-foreground text-xs transition-colors hover:bg-primary/90"
                                 download={`bedda-image-${Date.now()}.png`}
-                                className="inline-flex items-center gap-1 rounded-md bg-primary px-2.5 py-1 text-primary-foreground text-xs font-medium hover:bg-primary/90 transition-colors"
+                                href={`data:${toolPart.output.image.mediaType};base64,${toolPart.output.image.base64}`}
                               >
                                 Download
                               </a>
@@ -402,7 +424,8 @@ const PurePreviewMessage = ({
                           </div>
                         ) : (
                           <div className="rounded-md bg-destructive/10 p-3 text-destructive text-sm">
-                            {toolPart.output.error || "Failed to generate image"}
+                            {toolPart.output.error ||
+                              "Failed to generate image"}
                           </div>
                         )}
                       </div>
@@ -433,7 +456,9 @@ const PurePreviewMessage = ({
                             {/* Summary */}
                             {toolPart.output.analysis.summary && (
                               <div className="rounded-lg border border-border bg-muted/30 p-3">
-                                <div className="mb-2 font-medium text-sm">Summary</div>
+                                <div className="mb-2 font-medium text-sm">
+                                  Summary
+                                </div>
                                 <div className="text-foreground/80 text-sm">
                                   {toolPart.output.analysis.summary}
                                 </div>
@@ -441,56 +466,80 @@ const PurePreviewMessage = ({
                             )}
 
                             {/* Findings */}
-                            {toolPart.output.analysis.findings && toolPart.output.analysis.findings.length > 0 && (
-                              <div className="space-y-2">
-                                <div className="font-medium text-sm">Key Findings</div>
-                                {toolPart.output.analysis.findings.map((finding: any) => (
-                                  <div
-                                    key={`${finding.title}-${finding.confidence}`}
-                                    className="rounded-lg border border-border bg-muted/30 p-3"
-                                  >
-                                    <div className="mb-1 flex items-center justify-between">
-                                      <div className="font-medium text-sm">{finding.title}</div>
-                                      <div className="rounded-full bg-primary/10 px-2 py-0.5 font-medium text-primary text-xs">
-                                        {finding.confidence}% confidence
-                                      </div>
-                                    </div>
-                                    <div className="text-foreground/70 text-sm">
-                                      {finding.description}
-                                    </div>
+                            {toolPart.output.analysis.findings &&
+                              toolPart.output.analysis.findings.length > 0 && (
+                                <div className="space-y-2">
+                                  <div className="font-medium text-sm">
+                                    Key Findings
                                   </div>
-                                ))}
-                              </div>
-                            )}
-
-                            {/* Recommendations */}
-                            {toolPart.output.analysis.recommendations && toolPart.output.analysis.recommendations.length > 0 && (
-                              <div className="space-y-2">
-                                <div className="font-medium text-sm">Recommendations</div>
-                                <ul className="space-y-1.5 text-foreground/80 text-sm">
-                                  {toolPart.output.analysis.recommendations.map(
-                                    (rec: string) => (
-                                      <li key={rec} className="flex gap-2">
-                                        <span className="text-primary">•</span>
-                                        {rec}
-                                      </li>
+                                  {toolPart.output.analysis.findings.map(
+                                    (finding: any) => (
+                                      <div
+                                        className="rounded-lg border border-border bg-muted/30 p-3"
+                                        key={`${finding.title}-${finding.confidence}`}
+                                      >
+                                        <div className="mb-1 flex items-center justify-between">
+                                          <div className="font-medium text-sm">
+                                            {finding.title}
+                                          </div>
+                                          <div className="rounded-full bg-primary/10 px-2 py-0.5 font-medium text-primary text-xs">
+                                            {finding.confidence}% confidence
+                                          </div>
+                                        </div>
+                                        <div className="text-foreground/70 text-sm">
+                                          {finding.description}
+                                        </div>
+                                      </div>
                                     )
                                   )}
-                                </ul>
-                              </div>
-                            )}
+                                </div>
+                              )}
+
+                            {/* Recommendations */}
+                            {toolPart.output.analysis.recommendations &&
+                              toolPart.output.analysis.recommendations.length >
+                                0 && (
+                                <div className="space-y-2">
+                                  <div className="font-medium text-sm">
+                                    Recommendations
+                                  </div>
+                                  <ul className="space-y-1.5 text-foreground/80 text-sm">
+                                    {toolPart.output.analysis.recommendations.map(
+                                      (rec: string) => (
+                                        <li className="flex gap-2" key={rec}>
+                                          <span className="text-primary">
+                                            •
+                                          </span>
+                                          {rec}
+                                        </li>
+                                      )
+                                    )}
+                                  </ul>
+                                </div>
+                              )}
 
                             {/* Metadata */}
                             {toolPart.output.analysis.metadata && (
                               <div className="flex gap-4 text-muted-foreground text-xs">
-                                {toolPart.output.analysis.metadata.processingTime && (
+                                {toolPart.output.analysis.metadata
+                                  .processingTime && (
                                   <div>
-                                    Processing time: {toolPart.output.analysis.metadata.processingTime}
+                                    Processing time:{" "}
+                                    {
+                                      toolPart.output.analysis.metadata
+                                        .processingTime
+                                    }
                                   </div>
                                 )}
-                                {toolPart.output.analysis.metadata.dataLength !== undefined && (
+                                {toolPart.output.analysis.metadata
+                                  .dataLength !== undefined && (
                                   <div>
-                                    Data length: {toolPart.output.analysis.metadata.dataLength} chars
+                                    Data length:{" "}
+                                    {
+                                      toolPart.output.analysis.metadata
+                                        .dataLength
+                                    }{" "}
+                                    chars
                                   </div>
                                 )}
                               </div>
@@ -518,90 +567,128 @@ const PurePreviewMessage = ({
                     {state === "input-available" && (
                       <ToolInput input={part.input} />
                     )}
-                    {state === "output-available" && (() => {
-                      const output = part.output as any;
+                    {state === "output-available" &&
+                      (() => {
+                        const output = part.output as any;
 
-                      if (!output) return null;
+                        if (!output) return null;
 
-                      const { success, language, stdout, stderr, error, executionTime, results } = output;
+                        const {
+                          success,
+                          language,
+                          stdout,
+                          stderr,
+                          error,
+                          executionTime,
+                          results,
+                        } = output;
 
-                      return (
-                        <div className="space-y-3 p-4">
-                          {/* Stdout */}
-                          {stdout && (
-                            <div>
-                              <div className="mb-1 flex items-center justify-between">
-                                <span className="font-mono text-muted-foreground text-xs uppercase tracking-wide">Output</span>
-                                {executionTime && (
-                                  <span className="text-muted-foreground text-xs">{executionTime}</span>
-                                )}
+                        return (
+                          <div className="space-y-3 p-4">
+                            {/* Stdout */}
+                            {stdout && (
+                              <div>
+                                <div className="mb-1 flex items-center justify-between">
+                                  <span className="font-mono text-muted-foreground text-xs uppercase tracking-wide">
+                                    Output
+                                  </span>
+                                  {executionTime && (
+                                    <span className="text-muted-foreground text-xs">
+                                      {executionTime}
+                                    </span>
+                                  )}
+                                </div>
+                                <pre className="overflow-x-auto whitespace-pre-wrap rounded-md bg-muted/50 p-3 font-mono text-xs leading-relaxed">
+                                  {stdout}
+                                </pre>
                               </div>
-                              <pre className="overflow-x-auto rounded-md bg-muted/50 p-3 font-mono text-xs leading-relaxed whitespace-pre-wrap">
-                                {stdout}
-                              </pre>
-                            </div>
-                          )}
+                            )}
 
-                          {/* Stderr (non-error warnings) */}
-                          {stderr && !error && (
-                            <div>
-                              <span className="font-mono text-muted-foreground text-xs uppercase tracking-wide">Warnings</span>
-                              <pre className="mt-1 overflow-x-auto rounded-md bg-yellow-500/10 p-3 font-mono text-xs text-yellow-700 dark:text-yellow-400 whitespace-pre-wrap">
-                                {stderr}
-                              </pre>
-                            </div>
-                          )}
-
-                          {/* Rich results (charts, tables, etc.) */}
-                          {results && results.length > 0 && results.map((r: any, i: number) => (
-                            <div key={i}>
-                              {r.png && (
-                                <img
-                                  alt="Code output"
-                                  className="max-w-full rounded-md border border-border"
-                                  src={`data:image/png;base64,${r.png}`}
-                                />
-                              )}
-                              {r.svg && (
-                                <div
-                                  className="rounded-md border border-border p-2"
-                                  dangerouslySetInnerHTML={{ __html: r.svg }}
-                                />
-                              )}
-                              {r.html && (
-                                <div
-                                  className="overflow-x-auto rounded-md border border-border p-2 text-sm"
-                                  dangerouslySetInnerHTML={{ __html: r.html }}
-                                />
-                              )}
-                              {r.json !== undefined && !r.html && !r.png && !r.svg && (
-                                <pre className="overflow-x-auto rounded-md bg-muted/50 p-3 font-mono text-xs">
-                                  {JSON.stringify(r.json, null, 2)}
+                            {/* Stderr (non-error warnings) */}
+                            {stderr && !error && (
+                              <div>
+                                <span className="font-mono text-muted-foreground text-xs uppercase tracking-wide">
+                                  Warnings
+                                </span>
+                                <pre className="mt-1 overflow-x-auto whitespace-pre-wrap rounded-md bg-yellow-500/10 p-3 font-mono text-xs text-yellow-700 dark:text-yellow-400">
+                                  {stderr}
                                 </pre>
-                              )}
-                              {r.text && !r.html && !r.png && !r.svg && r.json === undefined && (
-                                <pre className="overflow-x-auto rounded-md bg-muted/50 p-3 font-mono text-xs whitespace-pre-wrap">
-                                  {r.text}
+                              </div>
+                            )}
+
+                            {/* Rich results (charts, tables, etc.) */}
+                            {results &&
+                              results.length > 0 &&
+                              results.map((r: any, i: number) => (
+                                <div key={i}>
+                                  {r.png && (
+                                    <img
+                                      alt="Code output"
+                                      className="max-w-full rounded-md border border-border"
+                                      src={`data:image/png;base64,${r.png}`}
+                                    />
+                                  )}
+                                  {r.svg && (
+                                    <div
+                                      className="rounded-md border border-border p-2"
+                                      dangerouslySetInnerHTML={{
+                                        __html: r.svg,
+                                      }}
+                                    />
+                                  )}
+                                  {r.html && (
+                                    <div
+                                      className="overflow-x-auto rounded-md border border-border p-2 text-sm"
+                                      dangerouslySetInnerHTML={{
+                                        __html: r.html,
+                                      }}
+                                    />
+                                  )}
+                                  {r.json !== undefined &&
+                                    !r.html &&
+                                    !r.png &&
+                                    !r.svg && (
+                                      <pre className="overflow-x-auto rounded-md bg-muted/50 p-3 font-mono text-xs">
+                                        {JSON.stringify(r.json, null, 2)}
+                                      </pre>
+                                    )}
+                                  {r.text &&
+                                    !r.html &&
+                                    !r.png &&
+                                    !r.svg &&
+                                    r.json === undefined && (
+                                      <pre className="overflow-x-auto whitespace-pre-wrap rounded-md bg-muted/50 p-3 font-mono text-xs">
+                                        {r.text}
+                                      </pre>
+                                    )}
+                                </div>
+                              ))}
+
+                            {/* Error */}
+                            {error && (
+                              <div className="rounded-md bg-destructive/10 p-3">
+                                <span className="mb-1 block font-mono font-semibold text-destructive text-xs uppercase">
+                                  Error
+                                </span>
+                                <pre className="whitespace-pre-wrap font-mono text-destructive text-xs">
+                                  {error}
                                 </pre>
+                              </div>
+                            )}
+
+                            {/* Empty success */}
+                            {success &&
+                              !stdout &&
+                              !stderr &&
+                              !error &&
+                              (!results || results.length === 0) && (
+                                <div className="text-muted-foreground text-xs">
+                                  (no output)
+                                </div>
                               )}
-                            </div>
-                          ))}
-
-                          {/* Error */}
-                          {error && (
-                            <div className="rounded-md bg-destructive/10 p-3">
-                              <span className="mb-1 block font-mono text-destructive text-xs font-semibold uppercase">Error</span>
-                              <pre className="font-mono text-destructive text-xs whitespace-pre-wrap">{error}</pre>
-                            </div>
-                          )}
-
-                          {/* Empty success */}
-                          {success && !stdout && !stderr && !error && (!results || results.length === 0) && (
-                            <div className="text-muted-foreground text-xs">(no output)</div>
-                          )}
-                        </div>
-                      );
-                    })()}
+                          </div>
+                        );
+                      })()}
                   </ToolContent>
                 </Tool>
               );
@@ -617,65 +704,71 @@ const PurePreviewMessage = ({
                     {state === "input-available" && (
                       <ToolInput input={part.input} />
                     )}
-                    {state === "output-available" && (() => {
-                      const output = part.output as any;
+                    {state === "output-available" &&
+                      (() => {
+                        const output = part.output as any;
 
-                      if (!output?.success) {
+                        if (!output?.success) {
+                          return (
+                            <ToolOutput
+                              errorText={
+                                output?.error || "Knowledge base search failed"
+                              }
+                              output={null}
+                            />
+                          );
+                        }
+
+                        if (!output?.found) {
+                          return (
+                            <div className="p-4 text-muted-foreground text-sm">
+                              {output.message || "No relevant documents found."}
+                            </div>
+                          );
+                        }
+
+                        const results = output.results as Array<{
+                          content: string;
+                          source: string;
+                          similarity: number;
+                        }>;
+
                         return (
-                          <ToolOutput
-                            errorText={output?.error || "Knowledge base search failed"}
-                            output={null}
-                          />
-                        );
-                      }
-
-                      if (!output?.found) {
-                        return (
-                          <div className="p-4 text-muted-foreground text-sm">
-                            {output.message || "No relevant documents found."}
-                          </div>
-                        );
-                      }
-
-                      const results = output.results as Array<{
-                        content: string;
-                        source: string;
-                        similarity: number;
-                      }>;
-
-                      return (
-                        <div className="space-y-3 p-4">
-                          <div className="flex items-center justify-between">
-                            <h4 className="font-medium text-muted-foreground text-xs uppercase tracking-wide">
-                              Knowledge Base Results
-                            </h4>
-                            <span className="text-muted-foreground text-xs">
-                              {results.length} passage{results.length !== 1 ? "s" : ""} for &ldquo;{output.query}&rdquo;
-                            </span>
-                          </div>
-                          <div className="space-y-2">
-                            {results.map((result, i) => (
-                              <div
-                                key={i}
-                                className="rounded-lg border border-border bg-muted/30 p-3"
-                              >
-                                <div className="mb-1 flex items-center justify-between gap-2">
-                                  <span className="font-medium text-primary text-sm">
-                                    {result.source}
-                                  </span>
-                                  <span className="shrink-0 text-muted-foreground text-xs">
-                                    {Math.round(result.similarity * 100)}% match
-                                  </span>
+                          <div className="space-y-3 p-4">
+                            <div className="flex items-center justify-between">
+                              <h4 className="font-medium text-muted-foreground text-xs uppercase tracking-wide">
+                                Knowledge Base Results
+                              </h4>
+                              <span className="text-muted-foreground text-xs">
+                                {results.length} passage
+                                {results.length !== 1 ? "s" : ""} for &ldquo;
+                                {output.query}&rdquo;
+                              </span>
+                            </div>
+                            <div className="space-y-2">
+                              {results.map((result, i) => (
+                                <div
+                                  className="rounded-lg border border-border bg-muted/30 p-3"
+                                  key={i}
+                                >
+                                  <div className="mb-1 flex items-center justify-between gap-2">
+                                    <span className="font-medium text-primary text-sm">
+                                      {result.source}
+                                    </span>
+                                    <span className="shrink-0 text-muted-foreground text-xs">
+                                      {Math.round(result.similarity * 100)}%
+                                      match
+                                    </span>
+                                  </div>
+                                  <p className="line-clamp-3 text-foreground/70 text-xs leading-relaxed">
+                                    {result.content}
+                                  </p>
                                 </div>
-                                <p className="text-foreground/70 text-xs leading-relaxed line-clamp-3">
-                                  {result.content}
-                                </p>
-                              </div>
-                            ))}
+                              ))}
+                            </div>
                           </div>
-                        </div>
-                      );
-                    })()}
+                        );
+                      })()}
                   </ToolContent>
                 </Tool>
               );
@@ -691,87 +784,101 @@ const PurePreviewMessage = ({
                     {state === "input-available" && (
                       <ToolInput input={part.input} />
                     )}
-                    {state === "output-available" && (() => {
-                      const output = part.output as any;
+                    {state === "output-available" &&
+                      (() => {
+                        const output = part.output as any;
 
-                      if (output?.status === "error") {
-                        return (
-                          <ToolOutput
-                            errorText={output.error || output.message || "Search failed"}
-                            output={null}
-                          />
-                        );
-                      }
+                        if (output?.status === "error") {
+                          return (
+                            <ToolOutput
+                              errorText={
+                                output.error ||
+                                output.message ||
+                                "Search failed"
+                              }
+                              output={null}
+                            />
+                          );
+                        }
 
-                      if (output?.status === "loading") {
-                        return (
-                          <div className="flex items-center gap-2 p-4 text-muted-foreground text-sm">
-                            <div className="size-3 animate-spin rounded-full border-2 border-current border-t-transparent" />
-                            {output.message}
-                          </div>
-                        );
-                      }
-
-                      if (output?.status === "success" && output?.data) {
-                        const { query, results, source } = output.data as {
-                          query: string;
-                          results: Array<{ title: string; url: string; snippet: string }>;
-                          source: string;
-                        };
-
-                        return (
-                          <div className="space-y-3 p-4">
-                            <div className="flex items-center justify-between">
-                              <h4 className="font-medium text-muted-foreground text-xs uppercase tracking-wide">
-                                Search Results
-                              </h4>
-                              <span className="text-muted-foreground text-xs">
-                                via {source} · {results.length} results for &ldquo;{query}&rdquo;
-                              </span>
+                        if (output?.status === "loading") {
+                          return (
+                            <div className="flex items-center gap-2 p-4 text-muted-foreground text-sm">
+                              <div className="size-3 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                              {output.message}
                             </div>
-                            <div className="space-y-2">
-                              {results.map((result, i) => (
-                                <div
-                                  key={`${result.url}-${i}`}
-                                  className="rounded-lg border border-border bg-muted/30 p-3"
-                                >
-                                  <div className="mb-1 flex items-start justify-between gap-2">
-                                    {result.url ? (
-                                      <a
-                                        className="font-medium text-primary text-sm hover:underline"
-                                        href={result.url}
-                                        rel="noopener noreferrer"
-                                        target="_blank"
-                                      >
-                                        {result.title}
-                                      </a>
-                                    ) : (
-                                      <span className="font-medium text-sm">{result.title}</span>
-                                    )}
-                                    {result.url && (
-                                      <span className="shrink-0 text-muted-foreground text-xs">
-                                        {(() => {
-                                          try {
-                                            return new URL(result.url).hostname.replace("www.", "");
-                                          } catch {
-                                            return "";
-                                          }
-                                        })()}
-                                      </span>
-                                    )}
+                          );
+                        }
+
+                        if (output?.status === "success" && output?.data) {
+                          const { query, results, source } = output.data as {
+                            query: string;
+                            results: Array<{
+                              title: string;
+                              url: string;
+                              snippet: string;
+                            }>;
+                            source: string;
+                          };
+
+                          return (
+                            <div className="space-y-3 p-4">
+                              <div className="flex items-center justify-between">
+                                <h4 className="font-medium text-muted-foreground text-xs uppercase tracking-wide">
+                                  Search Results
+                                </h4>
+                                <span className="text-muted-foreground text-xs">
+                                  via {source} · {results.length} results for
+                                  &ldquo;{query}&rdquo;
+                                </span>
+                              </div>
+                              <div className="space-y-2">
+                                {results.map((result, i) => (
+                                  <div
+                                    className="rounded-lg border border-border bg-muted/30 p-3"
+                                    key={`${result.url}-${i}`}
+                                  >
+                                    <div className="mb-1 flex items-start justify-between gap-2">
+                                      {result.url ? (
+                                        <a
+                                          className="font-medium text-primary text-sm hover:underline"
+                                          href={result.url}
+                                          rel="noopener noreferrer"
+                                          target="_blank"
+                                        >
+                                          {result.title}
+                                        </a>
+                                      ) : (
+                                        <span className="font-medium text-sm">
+                                          {result.title}
+                                        </span>
+                                      )}
+                                      {result.url && (
+                                        <span className="shrink-0 text-muted-foreground text-xs">
+                                          {(() => {
+                                            try {
+                                              return new URL(
+                                                result.url
+                                              ).hostname.replace("www.", "");
+                                            } catch {
+                                              return "";
+                                            }
+                                          })()}
+                                        </span>
+                                      )}
+                                    </div>
+                                    <p className="text-foreground/70 text-xs leading-relaxed">
+                                      {result.snippet}
+                                    </p>
                                   </div>
-                                  <p className="text-foreground/70 text-xs leading-relaxed">
-                                    {result.snippet}
-                                  </p>
-                                </div>
-                              ))}
+                                ))}
+                              </div>
                             </div>
-                          </div>
-                        );
-                      }
+                          );
+                        }
 
-                      return null;
-                    })()}
+                        return null;
+                      })()}
                   </ToolContent>
                 </Tool>
               );
@@ -794,19 +901,24 @@ const PurePreviewMessage = ({
                           <>
                             <div className="flex items-center gap-4 text-muted-foreground text-xs">
                               <span>{toolPart.output.wordCount} words</span>
-                              {toolPart.output.language && toolPart.output.language !== "auto-detected" && (
-                                <span>Language: {toolPart.output.language}</span>
-                              )}
+                              {toolPart.output.language &&
+                                toolPart.output.language !==
+                                  "auto-detected" && (
+                                  <span>
+                                    Language: {toolPart.output.language}
+                                  </span>
+                                )}
                             </div>
                             <div className="rounded-md bg-muted/50 p-3">
-                              <p className="text-sm leading-relaxed whitespace-pre-wrap">
+                              <p className="whitespace-pre-wrap text-sm leading-relaxed">
                                 {toolPart.output.transcript}
                               </p>
                             </div>
                           </>
                         ) : (
                           <div className="rounded-md bg-destructive/10 p-3 text-destructive text-sm">
-                            {toolPart.output.error || "Failed to transcribe audio"}
+                            {toolPart.output.error ||
+                              "Failed to transcribe audio"}
                           </div>
                         )}
                       </div>
@@ -822,7 +934,10 @@ const PurePreviewMessage = ({
 
               return (
                 <Tool defaultOpen={true} key={toolCallId}>
-                  <ToolHeader state={state} type="tool-generateStructuredData" />
+                  <ToolHeader
+                    state={state}
+                    type="tool-generateStructuredData"
+                  />
                   <ToolContent>
                     {state === "input-available" && toolPart.input && (
                       <ToolInput input={toolPart.input} />
@@ -841,14 +956,19 @@ const PurePreviewMessage = ({
                             </div>
                             <div className="rounded-md bg-muted/50">
                               <CodeBlock
-                                code={JSON.stringify(toolPart.output.data, null, 2)}
+                                code={JSON.stringify(
+                                  toolPart.output.data,
+                                  null,
+                                  2
+                                )}
                                 language="json"
                               />
                             </div>
                           </>
                         ) : (
                           <div className="rounded-md bg-destructive/10 p-3 text-destructive text-sm">
-                            {toolPart.output.error || "Failed to generate structured data"}
+                            {toolPart.output.error ||
+                              "Failed to generate structured data"}
                           </div>
                         )}
                       </div>
@@ -864,7 +984,10 @@ const PurePreviewMessage = ({
 
               return (
                 <Tool defaultOpen={false} key={toolCallId}>
-                  <ToolHeader state={state} type="tool-generateTextEmbeddings" />
+                  <ToolHeader
+                    state={state}
+                    type="tool-generateTextEmbeddings"
+                  />
                   <ToolContent>
                     {state === "input-available" && toolPart.input && (
                       <ToolInput input={{ texts: toolPart.input.texts }} />
@@ -874,23 +997,36 @@ const PurePreviewMessage = ({
                         {toolPart.output.success ? (
                           <div className="flex flex-wrap gap-4 text-sm">
                             <div className="rounded-lg border border-border bg-muted/30 px-3 py-2">
-                              <div className="text-muted-foreground text-xs">Texts embedded</div>
-                              <div className="font-medium">{toolPart.output.count}</div>
+                              <div className="text-muted-foreground text-xs">
+                                Texts embedded
+                              </div>
+                              <div className="font-medium">
+                                {toolPart.output.count}
+                              </div>
                             </div>
                             <div className="rounded-lg border border-border bg-muted/30 px-3 py-2">
-                              <div className="text-muted-foreground text-xs">Dimensions</div>
-                              <div className="font-medium">{toolPart.output.dimensions}</div>
+                              <div className="text-muted-foreground text-xs">
+                                Dimensions
+                              </div>
+                              <div className="font-medium">
+                                {toolPart.output.dimensions}
+                              </div>
                             </div>
                             {toolPart.output.usage?.tokens && (
                               <div className="rounded-lg border border-border bg-muted/30 px-3 py-2">
-                                <div className="text-muted-foreground text-xs">Tokens used</div>
-                                <div className="font-medium">{toolPart.output.usage.tokens}</div>
+                                <div className="text-muted-foreground text-xs">
+                                  Tokens used
+                                </div>
+                                <div className="font-medium">
+                                  {toolPart.output.usage.tokens}
+                                </div>
                               </div>
                             )}
                           </div>
                         ) : (
                           <div className="rounded-md bg-destructive/10 p-3 text-destructive text-sm">
-                            {toolPart.output.error || "Failed to generate embeddings"}
+                            {toolPart.output.error ||
+                              "Failed to generate embeddings"}
                           </div>
                         )}
                       </div>
@@ -918,49 +1054,63 @@ const PurePreviewMessage = ({
                             {toolPart.output.summary && (
                               <div className="flex flex-wrap gap-3 text-sm">
                                 <div className="rounded-lg border border-border bg-muted/30 px-3 py-2">
-                                  <div className="text-muted-foreground text-xs">Avg similarity</div>
+                                  <div className="text-muted-foreground text-xs">
+                                    Avg similarity
+                                  </div>
                                   <div className="font-medium">
-                                    {Math.round(toolPart.output.summary.averageSimilarity * 100)}%
+                                    {Math.round(
+                                      toolPart.output.summary
+                                        .averageSimilarity * 100
+                                    )}
+                                    %
                                   </div>
                                 </div>
                                 <div className="rounded-lg border border-border bg-muted/30 px-3 py-2">
-                                  <div className="text-muted-foreground text-xs">Threshold</div>
-                                  <div className="font-medium">{toolPart.output.threshold}</div>
+                                  <div className="text-muted-foreground text-xs">
+                                    Threshold
+                                  </div>
+                                  <div className="font-medium">
+                                    {toolPart.output.threshold}
+                                  </div>
                                 </div>
                               </div>
                             )}
                             <div className="space-y-2">
-                              {toolPart.output.comparisons?.map((c: any, i: number) => (
-                                <div
-                                  key={i}
-                                  className="rounded-lg border border-border bg-muted/30 p-3"
-                                >
-                                  <div className="mb-1 flex items-center justify-between gap-2">
-                                    <div
-                                      className={`rounded-full px-2 py-0.5 text-xs font-medium ${
-                                        c.isSimilar
-                                          ? "bg-green-500/10 text-green-600 dark:text-green-400"
-                                          : "bg-muted text-muted-foreground"
-                                      }`}
-                                    >
-                                      {Math.round(c.similarity * 100)}% {c.isSimilar ? "similar" : "different"}
+                              {toolPart.output.comparisons?.map(
+                                (c: any, i: number) => (
+                                  <div
+                                    className="rounded-lg border border-border bg-muted/30 p-3"
+                                    key={i}
+                                  >
+                                    <div className="mb-1 flex items-center justify-between gap-2">
+                                      <div
+                                        className={`rounded-full px-2 py-0.5 font-medium text-xs ${
+                                          c.isSimilar
+                                            ? "bg-green-500/10 text-green-600 dark:text-green-400"
+                                            : "bg-muted text-muted-foreground"
+                                        }`}
+                                      >
+                                        {Math.round(c.similarity * 100)}%{" "}
+                                        {c.isSimilar ? "similar" : "different"}
+                                      </div>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-2 text-foreground/70 text-xs">
+                                      <div className="truncate rounded bg-background/50 px-2 py-1">
+                                        {c.text1}
+                                      </div>
+                                      <div className="truncate rounded bg-background/50 px-2 py-1">
+                                        {c.text2}
+                                      </div>
                                     </div>
                                   </div>
-                                  <div className="grid grid-cols-2 gap-2 text-xs text-foreground/70">
-                                    <div className="truncate rounded bg-background/50 px-2 py-1">
-                                      {c.text1}
-                                    </div>
-                                    <div className="truncate rounded bg-background/50 px-2 py-1">
-                                      {c.text2}
-                                    </div>
-                                  </div>
-                                </div>
-                              ))}
+                                )
+                              )}
                             </div>
                           </>
                         ) : (
                           <div className="rounded-md bg-destructive/10 p-3 text-destructive text-sm">
-                            {toolPart.output.error || "Failed to compare text similarity"}
+                            {toolPart.output.error ||
+                              "Failed to compare text similarity"}
                           </div>
                         )}
                       </div>
@@ -981,64 +1131,77 @@ const PurePreviewMessage = ({
                     {state === "input-available" && toolPart.input && (
                       <ToolInput input={toolPart.input} />
                     )}
-                    {state === "output-available" && toolPart.output && (() => {
-                      const output = toolPart.output as any;
+                    {state === "output-available" &&
+                      toolPart.output &&
+                      (() => {
+                        const output = toolPart.output as any;
 
-                      if (!output?.success) {
-                        return (
-                          <ToolOutput
-                            errorText={output?.error || "Google Drive request failed"}
-                            output={null}
-                          />
-                        );
-                      }
+                        if (!output?.success) {
+                          return (
+                            <ToolOutput
+                              errorText={
+                                output?.error || "Google Drive request failed"
+                              }
+                              output={null}
+                            />
+                          );
+                        }
 
-                      // list action
-                      if (output.files) {
-                        const files = output.files as Array<{
-                          id: string;
-                          name: string;
-                          type: string;
-                          modified: string;
-                        }>;
-                        return (
-                          <div className="space-y-2 p-4">
-                            <div className="text-muted-foreground text-xs uppercase tracking-wide font-medium mb-3">
-                              {files.length} file{files.length !== 1 ? "s" : ""} found
-                            </div>
-                            {files.map((f) => (
-                              <div
-                                key={f.id}
-                                className="flex items-center justify-between rounded-lg border border-border bg-muted/30 px-3 py-2"
-                              >
-                                <div className="flex flex-col gap-0.5 min-w-0">
-                                  <span className="text-sm font-medium truncate">{f.name}</span>
-                                  <span className="text-xs text-muted-foreground">{f.type}</span>
-                                </div>
-                                <span className="shrink-0 text-xs text-muted-foreground ml-4">
-                                  {new Date(f.modified).toLocaleDateString()}
-                                </span>
+                        // list action
+                        if (output.files) {
+                          const files = output.files as Array<{
+                            id: string;
+                            name: string;
+                            type: string;
+                            modified: string;
+                          }>;
+                          return (
+                            <div className="space-y-2 p-4">
+                              <div className="mb-3 font-medium text-muted-foreground text-xs uppercase tracking-wide">
+                                {files.length} file
+                                {files.length !== 1 ? "s" : ""} found
                               </div>
-                            ))}
+                              {files.map((f) => (
+                                <div
+                                  className="flex items-center justify-between rounded-lg border border-border bg-muted/30 px-3 py-2"
+                                  key={f.id}
+                                >
+                                  <div className="flex min-w-0 flex-col gap-0.5">
+                                    <span className="truncate font-medium text-sm">
+                                      {f.name}
+                                    </span>
+                                    <span className="text-muted-foreground text-xs">
+                                      {f.type}
+                                    </span>
+                                  </div>
+                                  <span className="ml-4 shrink-0 text-muted-foreground text-xs">
+                                    {new Date(f.modified).toLocaleDateString()}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+                          );
+                        }
+
+                        // read action
+                        return (
+                          <div className="space-y-3 p-4">
+                            <div className="flex items-center justify-between">
+                              <span className="font-medium text-sm">
+                                {output.fileName}
+                              </span>
+                              {output.truncated && (
+                                <span className="text-muted-foreground text-xs">
+                                  Truncated to 20,000 chars
+                                </span>
+                              )}
+                            </div>
+                            <pre className="max-h-60 overflow-auto whitespace-pre-wrap rounded-lg bg-muted/50 p-3 text-foreground/80 text-xs">
+                              {output.content}
+                            </pre>
                           </div>
                         );
-                      }
-
-                      // read action
-                      return (
-                        <div className="space-y-3 p-4">
-                          <div className="flex items-center justify-between">
-                            <span className="text-sm font-medium">{output.fileName}</span>
-                            {output.truncated && (
-                              <span className="text-xs text-muted-foreground">Truncated to 20,000 chars</span>
-                            )}
-                          </div>
-                          <pre className="rounded-lg bg-muted/50 p-3 text-xs text-foreground/80 overflow-auto max-h-60 whitespace-pre-wrap">
-                            {output.content}
-                          </pre>
-                        </div>
-                      );
-                    })()}
+                      })()}
                   </ToolContent>
                 </Tool>
               );
@@ -1055,77 +1218,86 @@ const PurePreviewMessage = ({
                     {state === "input-available" && toolPart.input && (
                       <ToolInput input={toolPart.input} />
                     )}
-                    {state === "output-available" && toolPart.output && (() => {
-                      const output = toolPart.output as any;
+                    {state === "output-available" &&
+                      toolPart.output &&
+                      (() => {
+                        const output = toolPart.output as any;
 
-                      if (!output?.success) {
-                        return (
-                          <ToolOutput
-                            errorText={output?.error || "Notion request failed"}
-                            output={null}
-                          />
-                        );
-                      }
+                        if (!output?.success) {
+                          return (
+                            <ToolOutput
+                              errorText={
+                                output?.error || "Notion request failed"
+                              }
+                              output={null}
+                            />
+                          );
+                        }
 
-                      // search action
-                      if (output.pages) {
-                        const pages = output.pages as Array<{
-                          id: string;
-                          title: string;
-                          lastEdited: string;
-                          url: string;
-                        }>;
-                        return (
-                          <div className="space-y-2 p-4">
-                            <div className="text-muted-foreground text-xs uppercase tracking-wide font-medium mb-3">
-                              {pages.length} page{pages.length !== 1 ? "s" : ""} found
-                            </div>
-                            {pages.map((p) => (
-                              <div
-                                key={p.id}
-                                className="flex items-center justify-between rounded-lg border border-border bg-muted/30 px-3 py-2"
-                              >
-                                <div className="flex flex-col gap-0.5 min-w-0">
-                                  <a
-                                    className="text-sm font-medium truncate hover:underline"
-                                    href={p.url}
-                                    rel="noreferrer"
-                                    target="_blank"
-                                  >
-                                    {p.title}
-                                  </a>
-                                </div>
-                                <span className="shrink-0 text-xs text-muted-foreground ml-4">
-                                  {new Date(p.lastEdited).toLocaleDateString()}
-                                </span>
+                        // search action
+                        if (output.pages) {
+                          const pages = output.pages as Array<{
+                            id: string;
+                            title: string;
+                            lastEdited: string;
+                            url: string;
+                          }>;
+                          return (
+                            <div className="space-y-2 p-4">
+                              <div className="mb-3 font-medium text-muted-foreground text-xs uppercase tracking-wide">
+                                {pages.length} page
+                                {pages.length !== 1 ? "s" : ""} found
                               </div>
-                            ))}
+                              {pages.map((p) => (
+                                <div
+                                  className="flex items-center justify-between rounded-lg border border-border bg-muted/30 px-3 py-2"
+                                  key={p.id}
+                                >
+                                  <div className="flex min-w-0 flex-col gap-0.5">
+                                    <a
+                                      className="truncate font-medium text-sm hover:underline"
+                                      href={p.url}
+                                      rel="noreferrer"
+                                      target="_blank"
+                                    >
+                                      {p.title}
+                                    </a>
+                                  </div>
+                                  <span className="ml-4 shrink-0 text-muted-foreground text-xs">
+                                    {new Date(
+                                      p.lastEdited
+                                    ).toLocaleDateString()}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+                          );
+                        }
+
+                        // read action
+                        return (
+                          <div className="space-y-3 p-4">
+                            <div className="flex items-center justify-between">
+                              <a
+                                className="font-medium text-sm hover:underline"
+                                href={output.url}
+                                rel="noreferrer"
+                                target="_blank"
+                              >
+                                {output.title}
+                              </a>
+                              {output.truncated && (
+                                <span className="text-muted-foreground text-xs">
+                                  Truncated to 20,000 chars
+                                </span>
+                              )}
+                            </div>
+                            <pre className="max-h-60 overflow-auto whitespace-pre-wrap rounded-lg bg-muted/50 p-3 text-foreground/80 text-xs">
+                              {output.content}
+                            </pre>
                           </div>
                         );
-                      }
-
-                      // read action
-                      return (
-                        <div className="space-y-3 p-4">
-                          <div className="flex items-center justify-between">
-                            <a
-                              className="text-sm font-medium hover:underline"
-                              href={output.url}
-                              rel="noreferrer"
-                              target="_blank"
-                            >
-                              {output.title}
-                            </a>
-                            {output.truncated && (
-                              <span className="text-xs text-muted-foreground">Truncated to 20,000 chars</span>
-                            )}
-                          </div>
-                          <pre className="rounded-lg bg-muted/50 p-3 text-xs text-foreground/80 overflow-auto max-h-60 whitespace-pre-wrap">
-                            {output.content}
-                          </pre>
-                        </div>
-                      );
-                    })()}
+                      })()}
                   </ToolContent>
                 </Tool>
               );
@@ -1148,7 +1320,8 @@ const PurePreviewMessage = ({
                           <Chart config={toolPart.output.chart} />
                         ) : (
                           <div className="rounded-md bg-destructive/10 p-3 text-destructive text-sm">
-                            {toolPart.output.error || "Failed to generate chart"}
+                            {toolPart.output.error ||
+                              "Failed to generate chart"}
                           </div>
                         )}
                       </div>
@@ -1174,18 +1347,23 @@ const PurePreviewMessage = ({
                         {toolPart.output.success ? (
                           <div className="space-y-2">
                             <div className="flex items-center gap-3 text-muted-foreground text-xs">
-                              <span className="capitalize">{toolPart.output.voice} voice</span>
-                              <span>{toolPart.output.characterCount} characters</span>
+                              <span className="capitalize">
+                                {toolPart.output.voice} voice
+                              </span>
+                              <span>
+                                {toolPart.output.characterCount} characters
+                              </span>
                             </div>
                             <audio
+                              className="h-10 w-full rounded-md"
                               controls
-                              className="w-full h-10 rounded-md"
                               src={`data:audio/mp3;base64,${toolPart.output.audio?.base64}`}
                             />
                           </div>
                         ) : (
                           <div className="rounded-md bg-destructive/10 p-3 text-destructive text-sm">
-                            {toolPart.output.error || "Failed to generate speech"}
+                            {toolPart.output.error ||
+                              "Failed to generate speech"}
                           </div>
                         )}
                       </div>
@@ -1229,11 +1407,14 @@ const PurePreviewMessage = ({
                 <Tool defaultOpen={true} key={toolCallId}>
                   <ToolHeader state={state} type="tool-renderUI" />
                   <ToolContent>
-                    {state === "output-available" && toolPart.output?.component && (
-                      <div className="p-3">
-                        <GenerativeUIRenderer component={toolPart.output.component} />
-                      </div>
-                    )}
+                    {state === "output-available" &&
+                      toolPart.output?.component && (
+                        <div className="p-3">
+                          <GenerativeUIRenderer
+                            component={toolPart.output.component}
+                          />
+                        </div>
+                      )}
                   </ToolContent>
                 </Tool>
               );

@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Trash2 } from "lucide-react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 interface Memory {
   id: string;
@@ -16,8 +16,10 @@ interface Memory {
 const CATEGORY_COLORS: Record<string, string> = {
   preference: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
   goal: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
-  background: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
-  technical: "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
+  background:
+    "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
+  technical:
+    "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
   general: "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200",
 };
 
@@ -76,7 +78,7 @@ export function MemoryManagement() {
     <div className="space-y-3">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-sm font-medium">AI Memory</p>
+          <p className="font-medium text-sm">AI Memory</p>
           <p className="mt-1 text-muted-foreground text-xs">
             Facts the AI has learned about you across conversations. These are
             injected into every chat to personalize responses.
@@ -84,11 +86,11 @@ export function MemoryManagement() {
         </div>
         {memories.length > 0 && (
           <Button
-            variant="outline"
-            size="sm"
-            onClick={clearAll}
-            disabled={clearingAll}
             className="shrink-0 text-destructive hover:text-destructive"
+            disabled={clearingAll}
+            onClick={clearAll}
+            size="sm"
+            variant="outline"
           >
             {clearingAll ? "Clearing..." : "Clear all"}
           </Button>
@@ -106,25 +108,25 @@ export function MemoryManagement() {
         <ul className="space-y-2">
           {memories.map((m) => (
             <li
-              key={m.id}
               className="flex items-start justify-between gap-3 rounded-lg border px-3 py-2 text-sm"
+              key={m.id}
             >
               <div className="flex min-w-0 flex-1 flex-col gap-1">
                 <span className="leading-snug">{m.content}</span>
                 <Badge
-                  variant="secondary"
                   className={`w-fit text-xs ${CATEGORY_COLORS[m.category] ?? CATEGORY_COLORS.general}`}
+                  variant="secondary"
                 >
                   {m.category}
                 </Badge>
               </div>
               <Button
-                variant="ghost"
-                size="icon"
+                aria-label="Delete memory"
                 className="size-7 shrink-0 text-muted-foreground hover:text-destructive"
                 disabled={deleting === m.id}
                 onClick={() => deleteMemory(m.id)}
-                aria-label="Delete memory"
+                size="icon"
+                variant="ghost"
               >
                 <Trash2 className="size-4" />
               </Button>

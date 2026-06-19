@@ -15,7 +15,7 @@ function HtmlRenderer({ content, status }: HtmlContent) {
 
   if (status === "streaming") {
     return (
-      <div className="flex items-center justify-center h-full min-h-[500px] text-muted-foreground text-sm">
+      <div className="flex h-full min-h-[500px] items-center justify-center text-muted-foreground text-sm">
         Generating HTML...
       </div>
     );
@@ -23,7 +23,7 @@ function HtmlRenderer({ content, status }: HtmlContent) {
 
   if (!content) {
     return (
-      <div className="flex items-center justify-center h-full min-h-[500px] text-muted-foreground text-sm">
+      <div className="flex h-full min-h-[500px] items-center justify-center text-muted-foreground text-sm">
         No content yet
       </div>
     );
@@ -31,10 +31,10 @@ function HtmlRenderer({ content, status }: HtmlContent) {
 
   return (
     <iframe
-      ref={iframeRef}
-      srcDoc={content}
-      sandbox="allow-scripts allow-same-origin allow-forms"
       className="w-full border-0"
+      ref={iframeRef}
+      sandbox="allow-scripts allow-same-origin allow-forms"
+      srcDoc={content}
       style={{ minHeight: "500px", height: "100%" }}
       title="HTML Preview"
     />

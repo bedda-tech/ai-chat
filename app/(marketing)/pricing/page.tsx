@@ -1,6 +1,6 @@
+import { Check, X } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Check, X } from "lucide-react";
 import { PricingSection } from "@/components/pricing-section";
 
 export const metadata: Metadata = {
@@ -135,9 +135,12 @@ export default function PricingPage() {
       <PricingSection />
 
       {/* Zero-friction try link */}
-      <p className="mt-6 text-center text-sm text-muted-foreground">
+      <p className="mt-6 text-center text-muted-foreground text-sm">
         Not ready to commit?{" "}
-        <Link href="/api/auth/guest?redirectUrl=/" className="underline underline-offset-4 hover:text-foreground transition-colors">
+        <Link
+          className="underline underline-offset-4 transition-colors hover:text-foreground"
+          href="/api/auth/guest?redirectUrl=/"
+        >
           Try bedda without an account →
         </Link>
       </p>
@@ -147,7 +150,7 @@ export default function PricingPage() {
         <h2 className="mb-4 font-bold text-2xl">
           Stop paying for multiple AI subscriptions
         </h2>
-        <p className="text-muted-foreground text-lg">
+        <p className="text-lg text-muted-foreground">
           Claude Pro costs $20/mo. ChatGPT Plus costs $20/mo. Gemini Pro costs
           $20/mo. That&apos;s $60/mo for three services. Bedda Plus gives you
           all of them for $12/mo.
@@ -174,9 +177,9 @@ export default function PricingPage() {
             </thead>
             <tbody>
               {comparisonData.map((row) => (
-                <tr key={row.feature} className="border-b">
+                <tr className="border-b" key={row.feature}>
                   <td className="p-3 font-medium">{row.feature}</td>
-                  <td className="p-3 text-center bg-primary/5">
+                  <td className="bg-primary/5 p-3 text-center">
                     <ComparisonCell value={row.bedda} />
                   </td>
                   <td className="p-3 text-center">
@@ -227,8 +230,8 @@ export default function PricingPage() {
               What happens when I hit my daily limit?
             </h3>
             <p className="text-muted-foreground">
-              Your limit resets at midnight UTC. You can upgrade to a higher tier
-              at any time for more messages. We&apos;ll notify you when
+              Your limit resets at midnight UTC. You can upgrade to a higher
+              tier at any time for more messages. We&apos;ll notify you when
               you&apos;re approaching your limit.
             </p>
           </div>
@@ -266,9 +269,9 @@ export default function PricingPage() {
               Is annual billing available?
             </h3>
             <p className="text-muted-foreground">
-              Yes! Choose annual billing on the pricing toggle above and save 20%
-              compared to month-to-month. Annual plans are billed once per year
-              and include all the same features.
+              Yes! Choose annual billing on the pricing toggle above and save
+              20% compared to month-to-month. Annual plans are billed once per
+              year and include all the same features.
             </p>
           </div>
         </div>
@@ -282,8 +285,8 @@ export default function PricingPage() {
           dedicated support for your organization.
         </p>
         <Link
+          className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 font-medium text-sm shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground"
           href="mailto:matt@bedda.tech"
-          className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground"
         >
           Contact Sales
         </Link>

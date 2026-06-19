@@ -1,5 +1,5 @@
-import { cosineSimilarity, embed, embedMany, tool } from "ai";
 import { openai } from "@ai-sdk/openai";
+import { cosineSimilarity, embed, embedMany, tool } from "ai";
 import { z } from "zod";
 
 /**
@@ -90,9 +90,7 @@ export const compareTextSimilarityTool = () =>
         .array(z.string())
         .min(2)
         .max(5)
-        .describe(
-          "Array of 2-5 text strings to compare for similarity"
-        ),
+        .describe("Array of 2-5 text strings to compare for similarity"),
       threshold: z
         .number()
         .min(0)
@@ -172,4 +170,3 @@ export const compareTextSimilarityTool = () =>
       }
     },
   });
-

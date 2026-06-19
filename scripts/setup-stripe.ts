@@ -55,8 +55,12 @@ async function createPlan(
   });
 
   console.log(`  Product ID:      ${product.id}`);
-  console.log(`  Monthly Price:   ${monthlyPrice.id}  ($${monthlyAmountCents / 100}/mo)`);
-  console.log(`  Annual Price:    ${annualPrice.id}  ($${annualAmountCents / 100}/yr)`);
+  console.log(
+    `  Monthly Price:   ${monthlyPrice.id}  ($${monthlyAmountCents / 100}/mo)`
+  );
+  console.log(
+    `  Annual Price:    ${annualPrice.id}  ($${annualAmountCents / 100}/yr)`
+  );
   console.log(`  → ${monthlyEnvVar}=${monthlyPrice.id}`);
   console.log(`  → ${annualEnvVar}=${annualPrice.id}`);
 
@@ -73,8 +77,8 @@ async function main() {
     const plus = await createPlan(
       "Plus",
       "All 30+ AI models. 300 messages/day. One subscription.",
-      1200,   // $12/mo
-      11520,  // $115.20/yr (20% off)
+      1200, // $12/mo
+      11_520, // $115.20/yr (20% off)
       "STRIPE_PLUS_PRICE_ID",
       "STRIPE_PLUS_ANNUAL_PRICE_ID"
     );
@@ -82,8 +86,8 @@ async function main() {
     const pro = await createPlan(
       "Pro",
       "Power user plan. 1,500 messages/day. Priority model access.",
-      2500,   // $25/mo
-      24000,  // $240/yr (20% off)
+      2500, // $25/mo
+      24_000, // $240/yr (20% off)
       "STRIPE_PRO_PRICE_ID",
       "STRIPE_PRO_ANNUAL_PRICE_ID"
     );
@@ -91,8 +95,8 @@ async function main() {
     const max = await createPlan(
       "Max",
       "Unlimited everything. 5,000 messages/day. Team workspace.",
-      5000,   // $50/mo
-      48000,  // $480/yr (20% off)
+      5000, // $50/mo
+      48_000, // $480/yr (20% off)
       "STRIPE_MAX_PRICE_ID",
       "STRIPE_MAX_ANNUAL_PRICE_ID"
     );
@@ -115,9 +119,7 @@ async function main() {
     console.log(
       "  (Configure webhook at https://dashboard.stripe.com/webhooks)"
     );
-    console.log(
-      "  Webhook URL: https://www.bedda.tech/api/webhooks/stripe"
-    );
+    console.log("  Webhook URL: https://www.bedda.tech/api/webhooks/stripe");
     console.log("  Webhook events to enable:");
     console.log("    - checkout.session.completed");
     console.log("    - customer.subscription.created");

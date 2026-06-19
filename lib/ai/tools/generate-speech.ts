@@ -1,5 +1,5 @@
-import { experimental_generateSpeech as generateSpeech, tool } from "ai";
 import { openai } from "@ai-sdk/openai";
+import { experimental_generateSpeech as generateSpeech, tool } from "ai";
 import { z } from "zod";
 
 /**

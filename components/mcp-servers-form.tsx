@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { toast } from "sonner";
 import type { McpServer } from "@/lib/db/schema";
 
 export function McpServersForm() {
@@ -66,7 +66,9 @@ export function McpServersForm() {
   async function handleToggle(server: McpServer) {
     const prev = servers;
     setServers((s) =>
-      s.map((srv) => (srv.id === server.id ? { ...srv, enabled: !srv.enabled } : srv))
+      s.map((srv) =>
+        srv.id === server.id ? { ...srv, enabled: !srv.enabled } : srv
+      )
     );
     try {
       const res = await fetch(`/api/mcp-servers?id=${server.id}`, {
@@ -85,7 +87,9 @@ export function McpServersForm() {
     const prev = servers;
     setServers((s) => s.filter((srv) => srv.id !== id));
     try {
-      const res = await fetch(`/api/mcp-servers?id=${id}`, { method: "DELETE" });
+      const res = await fetch(`/api/mcp-servers?id=${id}`, {
+        method: "DELETE",
+      });
       if (!res.ok) throw new Error("Failed to delete");
       toast.success("MCP server removed");
     } catch {
@@ -97,38 +101,43 @@ export function McpServersForm() {
   return (
     <div className="space-y-4">
       <div>
-        <Label className="text-sm font-medium">MCP Servers</Label>
+        <Label className="font-medium text-sm">MCP Servers</Label>
         <p className="mt-1 text-muted-foreground text-xs">
-          Connect to Model Context Protocol servers to give the AI access to external tools and data sources.
+          Connect to Model Context Protocol servers to give the AI access to
+          external tools and data sources.
         </p>
       </div>
 
       {loading ? (
         <p className="text-muted-foreground text-sm">Loading...</p>
       ) : servers.length === 0 && !showForm ? (
-        <p className="text-muted-foreground text-sm">No MCP servers configured.</p>
+        <p className="text-muted-foreground text-sm">
+          No MCP servers configured.
+        </p>
       ) : (
         <div className="space-y-2">
           {servers.map((server) => (
             <div
-              key={server.id}
               className="flex items-center justify-between rounded-md border p-3 text-sm"
+              key={server.id}
             >
               <div className="min-w-0 flex-1">
                 <p className="truncate font-medium">{server.name}</p>
-                <p className="truncate text-muted-foreground text-xs">{server.url}</p>
+                <p className="truncate text-muted-foreground text-xs">
+                  {server.url}
+                </p>
               </div>
               <div className="ml-3 flex items-center gap-3">
                 <Switch
+                  aria-label={`Toggle ${server.name}`}
                   checked={server.enabled}
                   onCheckedChange={() => handleToggle(server)}
-                  aria-label={`Toggle ${server.name}`}
                 />
                 <Button
-                  variant="ghost"
-                  size="sm"
                   className="h-7 px-2 text-destructive hover:text-destructive"
                   onClick={() => handleDelete(server.id)}
+                  size="sm"
+                  variant="ghost"
                 >
                   Remove
                 </Button>
@@ -141,44 +150,48 @@ export function McpServersForm() {
       {showForm ? (
         <div className="space-y-3 rounded-md border p-3">
           <div className="space-y-1">
-            <Label htmlFor="mcp-name" className="text-xs">Name</Label>
+            <Label className="text-xs" htmlFor="mcp-name">
+              Name
+            </Label>
             <Input
+              className="h-8 text-sm"
               id="mcp-name"
-              value={newName}
               onChange={(e) => setNewName(e.target.value)}
               placeholder="My MCP Server"
-              className="h-8 text-sm"
+              value={newName}
             />
           </div>
           <div className="space-y-1">
-            <Label htmlFor="mcp-url" className="text-xs">URL</Label>
+            <Label className="text-xs" htmlFor="mcp-url">
+              URL
+            </Label>
             <Input
+              className="h-8 text-sm"
               id="mcp-url"
-              value={newUrl}
               onChange={(e) => setNewUrl(e.target.value)}
               placeholder="https://mcp.example.com/sse"
-              className="h-8 text-sm"
+              value={newUrl}
             />
           </div>
           <div className="flex gap-2">
-            <Button size="sm" onClick={handleAdd} disabled={adding}>
+            <Button disabled={adding} onClick={handleAdd} size="sm">
               {adding ? "Adding..." : "Add Server"}
             </Button>
             <Button
-              size="sm"
-              variant="ghost"
               onClick={() => {
                 setShowForm(false);
                 setNewName("");
                 setNewUrl("");
               }}
+              size="sm"
+              variant="ghost"
             >
               Cancel
             </Button>
           </div>
         </div>
       ) : (
-        <Button size="sm" variant="outline" onClick={() => setShowForm(true)}>
+        <Button onClick={() => setShowForm(true)} size="sm" variant="outline">
           Add MCP Server
         </Button>
       )}

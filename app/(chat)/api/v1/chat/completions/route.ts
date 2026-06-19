@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { generateText, streamText, type ModelMessage } from "ai";
+import { generateText, type ModelMessage, streamText } from "ai";
 import { isModelAllowedForTier } from "@/lib/ai/entitlements";
 import { myProvider } from "@/lib/ai/providers";
 import { validateApiKey } from "@/lib/db/queries";
@@ -39,7 +39,13 @@ export async function POST(request: Request) {
 
   if (!rawKey) {
     return Response.json(
-      { error: { message: "Missing or invalid Authorization header", type: "invalid_request_error", code: "invalid_api_key" } },
+      {
+        error: {
+          message: "Missing or invalid Authorization header",
+          type: "invalid_request_error",
+          code: "invalid_api_key",
+        },
+      },
       { status: 401 }
     );
   }
@@ -49,7 +55,13 @@ export async function POST(request: Request) {
 
   if (!keyRecord) {
     return Response.json(
-      { error: { message: "Invalid or revoked API key", type: "invalid_request_error", code: "invalid_api_key" } },
+      {
+        error: {
+          message: "Invalid or revoked API key",
+          type: "invalid_request_error",
+          code: "invalid_api_key",
+        },
+      },
       { status: 401 }
     );
   }
@@ -67,16 +79,29 @@ export async function POST(request: Request) {
     body = await request.json();
   } catch {
     return Response.json(
-      { error: { message: "Invalid JSON body", type: "invalid_request_error" } },
+      {
+        error: { message: "Invalid JSON body", type: "invalid_request_error" },
+      },
       { status: 400 }
     );
   }
 
-  const { model: rawModel, messages, stream = false, temperature, max_tokens } = body;
+  const {
+    model: rawModel,
+    messages,
+    stream = false,
+    temperature,
+    max_tokens,
+  } = body;
 
   if (!rawModel || !messages || messages.length === 0) {
     return Response.json(
-      { error: { message: "model and messages are required", type: "invalid_request_error" } },
+      {
+        error: {
+          message: "model and messages are required",
+          type: "invalid_request_error",
+        },
+      },
       { status: 400 }
     );
   }
@@ -92,7 +117,13 @@ export async function POST(request: Request) {
 
   if (!isModelAllowedForTier(modelId, tier)) {
     return Response.json(
-      { error: { message: `Model ${rawModel} requires a higher subscription tier`, type: "invalid_request_error", code: "model_not_available" } },
+      {
+        error: {
+          message: `Model ${rawModel} requires a higher subscription tier`,
+          type: "invalid_request_error",
+          code: "model_not_available",
+        },
+      },
       { status: 403 }
     );
   }
@@ -110,7 +141,13 @@ export async function POST(request: Request) {
     model = myProvider.languageModel(modelId);
   } catch {
     return Response.json(
-      { error: { message: `Unknown model: ${rawModel}`, type: "invalid_request_error", code: "model_not_found" } },
+      {
+        error: {
+          message: `Unknown model: ${rawModel}`,
+          type: "invalid_request_error",
+          code: "model_not_found",
+        },
+      },
       { status: 404 }
     );
   }
@@ -137,7 +174,13 @@ export async function POST(request: Request) {
             object: "chat.completion.chunk",
             created,
             model: modelId,
-            choices: [{ index: 0, delta: { role: "assistant", content: "" }, finish_reason: null }],
+            choices: [
+              {
+                index: 0,
+                delta: { role: "assistant", content: "" },
+                finish_reason: null,
+              },
+            ],
           })}\n\n`
         );
 
@@ -149,7 +192,9 @@ export async function POST(request: Request) {
                 object: "chat.completion.chunk",
                 created,
                 model: modelId,
-                choices: [{ index: 0, delta: { content: chunk }, finish_reason: null }],
+                choices: [
+                  { index: 0, delta: { content: chunk }, finish_reason: null },
+                ],
               })}\n\n`
             );
           }

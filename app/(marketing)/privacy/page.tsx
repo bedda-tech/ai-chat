@@ -36,15 +36,16 @@ export default function PrivacyPage() {
           <h3 className="font-medium text-base">Chat Messages</h3>
           <p className="text-muted-foreground leading-relaxed">
             We store the messages you send and receive through our service to
-            provide chat history and enable features like conversation search and
-            projects. Messages are sent to third-party AI model providers for
-            processing.
+            provide chat history and enable features like conversation search
+            and projects. Messages are sent to third-party AI model providers
+            for processing.
           </p>
           <h3 className="font-medium text-base">Usage Data</h3>
           <p className="text-muted-foreground leading-relaxed">
             We collect information about how you use the service, including
             models used, message counts, feature usage, and general interaction
-            patterns. This helps us improve the service and enforce usage limits.
+            patterns. This helps us improve the service and enforce usage
+            limits.
           </p>
           <h3 className="font-medium text-base">Uploaded Files</h3>
           <p className="text-muted-foreground leading-relaxed">
@@ -146,9 +147,7 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="font-semibold text-xl">
-            8. Children&apos;s Privacy
-          </h2>
+          <h2 className="font-semibold text-xl">8. Children&apos;s Privacy</h2>
           <p className="text-muted-foreground leading-relaxed">
             Our service is not directed to children under 13. We do not
             knowingly collect personal information from children under 13. If we

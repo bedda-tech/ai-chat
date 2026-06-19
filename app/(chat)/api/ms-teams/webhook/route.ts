@@ -1,5 +1,5 @@
-import { generateText } from "ai";
 import { gateway } from "@ai-sdk/gateway";
+import { generateText } from "ai";
 
 const TEAMS_SECURITY_TOKEN = process.env.TEAMS_SECURITY_TOKEN ?? "";
 const TEAMS_DEFAULT_MODEL =

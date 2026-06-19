@@ -54,7 +54,10 @@ export default function TermsPage() {
               Generate content that is harmful, abusive, threatening, or
               harassing
             </li>
-            <li>Generate child sexual abuse material or non-consensual intimate imagery</li>
+            <li>
+              Generate child sexual abuse material or non-consensual intimate
+              imagery
+            </li>
             <li>Impersonate others or misrepresent your identity</li>
             <li>
               Attempt to gain unauthorized access to the service or its systems
@@ -79,9 +82,7 @@ export default function TermsPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="font-semibold text-xl">
-            5. AI-Generated Content
-          </h2>
+          <h2 className="font-semibold text-xl">5. AI-Generated Content</h2>
           <p className="text-muted-foreground leading-relaxed">
             AI-generated responses are produced by third-party AI models and may
             contain inaccuracies, errors, or biases. You are responsible for
@@ -121,9 +122,7 @@ export default function TermsPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="font-semibold text-xl">
-            8. Service Availability
-          </h2>
+          <h2 className="font-semibold text-xl">8. Service Availability</h2>
           <p className="text-muted-foreground leading-relaxed">
             We strive to maintain high availability but do not guarantee
             uninterrupted access. The service may be temporarily unavailable due
@@ -133,9 +132,7 @@ export default function TermsPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="font-semibold text-xl">
-            9. Limitation of Liability
-          </h2>
+          <h2 className="font-semibold text-xl">9. Limitation of Liability</h2>
           <p className="text-muted-foreground leading-relaxed">
             To the maximum extent permitted by law, Bedda Tech shall not be
             liable for any indirect, incidental, special, consequential, or
@@ -182,9 +179,9 @@ export default function TermsPage() {
         <section className="space-y-3">
           <h2 className="font-semibold text-xl">13. Governing Law</h2>
           <p className="text-muted-foreground leading-relaxed">
-            These Terms shall be governed by and construed in accordance with the
-            laws of the State of Delaware, United States, without regard to its
-            conflict of law provisions.
+            These Terms shall be governed by and construed in accordance with
+            the laws of the State of Delaware, United States, without regard to
+            its conflict of law provisions.
           </p>
         </section>
 

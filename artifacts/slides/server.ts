@@ -1,8 +1,8 @@
 import { streamObject } from "ai";
 import { z } from "zod";
+import { slidesPrompt, updateDocumentPrompt } from "@/lib/ai/prompts";
 import { myProvider } from "@/lib/ai/providers";
 import { createDocumentHandler } from "@/lib/artifacts/server";
-import { slidesPrompt, updateDocumentPrompt } from "@/lib/ai/prompts";
 
 export const slidesDocumentHandler = createDocumentHandler<"slides">({
   kind: "slides",

@@ -38,7 +38,7 @@ export const generateStructuredDataTool = () =>
       try {
         // Define schema based on data type
         let schema: z.ZodType;
-        
+
         switch (dataType) {
           case "user-profile":
             schema = z.object({
@@ -51,7 +51,7 @@ export const generateStructuredDataTool = () =>
               interests: z.array(z.string()).optional(),
             });
             break;
-            
+
           case "api-response":
             schema = z.object({
               status: z.enum(["success", "error"]),
@@ -60,11 +60,11 @@ export const generateStructuredDataTool = () =>
               timestamp: z.string(),
             });
             break;
-            
+
           case "config-file":
             schema = z.record(z.string(), z.any());
             break;
-            
+
           case "test-data":
           case "mock-data":
             schema = z.object({
@@ -73,7 +73,7 @@ export const generateStructuredDataTool = () =>
               attributes: z.record(z.string(), z.any()),
             });
             break;
-            
+
           case "report":
             schema = z.object({
               title: z.string(),
@@ -88,7 +88,7 @@ export const generateStructuredDataTool = () =>
               generatedAt: z.string(),
             });
             break;
-            
+
           default:
             schema = z.record(z.string(), z.any());
         }
@@ -122,4 +122,3 @@ export const generateStructuredDataTool = () =>
       }
     },
   });
-

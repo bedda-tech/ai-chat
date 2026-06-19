@@ -14,7 +14,11 @@ export type PromptTemplate = {
   modelId?: string;
 };
 
-export const PROMPT_CATEGORIES: { id: PromptCategory; label: string; emoji: string }[] = [
+export const PROMPT_CATEGORIES: {
+  id: PromptCategory;
+  label: string;
+  emoji: string;
+}[] = [
   { id: "writing", label: "Writing", emoji: "✍️" },
   { id: "coding", label: "Coding", emoji: "💻" },
   { id: "analysis", label: "Analysis", emoji: "📊" },
@@ -245,6 +249,8 @@ export const PROMPT_TEMPLATES: PromptTemplate[] = [
   },
 ];
 
-export function getPromptsByCategory(category: PromptCategory): PromptTemplate[] {
+export function getPromptsByCategory(
+  category: PromptCategory
+): PromptTemplate[] {
   return PROMPT_TEMPLATES.filter((t) => t.category === category);
 }

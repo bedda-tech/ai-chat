@@ -53,7 +53,7 @@ export const Greeting = ({
         initial={{ opacity: 0, y: 10 }}
         transition={{ delay: 0.5 }}
       >
-        <div className="text-sm font-normal sm:text-base md:text-lg">
+        <div className="font-normal text-sm sm:text-base md:text-lg">
           Welcome to <span className="font-bold">bedda.ai</span> chat!
         </div>
         <div className="text-muted-foreground text-xs sm:text-sm md:text-base">

@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useCallback, useRef, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import Link from "next/link";
-import Image from "next/image";
 
 const QUALITY_OPTIONS = [
   { value: "standard", label: "Standard", detail: "720p" },
@@ -75,31 +75,36 @@ export function VideoStudio() {
     }
   }, []);
 
-  useEffect(() => { fetchHistory(); }, [fetchHistory]);
+  useEffect(() => {
+    fetchHistory();
+  }, [fetchHistory]);
 
-  const pollStatus = useCallback(async (requestId: string, appId: string) => {
-    try {
-      const jobId = jobIdRef.current;
-      const params = new URLSearchParams({ id: requestId, appId });
-      if (jobId) params.set("jobId", jobId);
-      const res = await fetch(`/api/studio/video?${params.toString()}`);
-      const data = await res.json();
+  const pollStatus = useCallback(
+    async (requestId: string, appId: string) => {
+      try {
+        const jobId = jobIdRef.current;
+        const params = new URLSearchParams({ id: requestId, appId });
+        if (jobId) params.set("jobId", jobId);
+        const res = await fetch(`/api/studio/video?${params.toString()}`);
+        const data = await res.json();
 
-      if (data.status === "completed") {
-        stopPolling();
-        setVideoUrl(data.videoUrl);
-        setJobStatus("completed");
-        fetchHistory();
-      } else if (data.status === "failed") {
-        stopPolling();
-        setError(data.error ?? "Generation failed");
-        setJobStatus("failed");
-        fetchHistory();
+        if (data.status === "completed") {
+          stopPolling();
+          setVideoUrl(data.videoUrl);
+          setJobStatus("completed");
+          fetchHistory();
+        } else if (data.status === "failed") {
+          stopPolling();
+          setError(data.error ?? "Generation failed");
+          setJobStatus("failed");
+          fetchHistory();
+        }
+      } catch {
+        // Transient network error — keep polling
       }
-    } catch {
-      // Transient network error — keep polling
-    }
-  }, [stopPolling, fetchHistory]);
+    },
+    [stopPolling, fetchHistory]
+  );
 
   const handleImageUpload = useCallback(async (file: File) => {
     setImageError(null);
@@ -109,7 +114,10 @@ export function VideoStudio() {
     try {
       const formData = new FormData();
       formData.append("file", file);
-      const res = await fetch("/api/files/upload", { method: "POST", body: formData });
+      const res = await fetch("/api/files/upload", {
+        method: "POST",
+        body: formData,
+      });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
         setImageError(data.error ?? "Upload failed");
@@ -181,7 +189,16 @@ export function VideoStudio() {
       setError("Network error. Please try again.");
       setJobStatus("failed");
     }
-  }, [prompt, duration, aspectRatio, quality, mode, imageUrl, jobStatus, pollStatus]);
+  }, [
+    prompt,
+    duration,
+    aspectRatio,
+    quality,
+    mode,
+    imageUrl,
+    jobStatus,
+    pollStatus,
+  ]);
 
   const handleDownload = useCallback(() => {
     if (!videoUrl) return;
@@ -200,21 +217,22 @@ export function VideoStudio() {
   }, []);
 
   const isGenerating = jobStatus === "submitting" || jobStatus === "processing";
-  const canGenerate = prompt.trim() && !isGenerating && (mode === "text" || !!imageUrl);
+  const canGenerate =
+    prompt.trim() && !isGenerating && (mode === "text" || !!imageUrl);
 
   return (
     <div className="flex h-dvh flex-col overflow-hidden bg-background">
-      <div className="shrink-0 border-b border-border px-4 py-3">
+      <div className="shrink-0 border-border border-b px-4 py-3">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-sm font-semibold">Video Studio</h1>
-            <p className="text-xs text-muted-foreground">
+            <h1 className="font-semibold text-sm">Video Studio</h1>
+            <p className="text-muted-foreground text-xs">
               Generate videos with Kling AI — powered by fal.ai
             </p>
           </div>
           <Link
+            className="text-muted-foreground text-xs transition-colors hover:text-foreground"
             href="/studio"
-            className="text-xs text-muted-foreground hover:text-foreground transition-colors"
           >
             Image Studio →
           </Link>
@@ -227,19 +245,19 @@ export function VideoStudio() {
           <div className="w-full shrink-0 space-y-4 md:w-64">
             {/* Mode toggle */}
             <div>
-              <p className="mb-2 text-xs font-medium text-foreground">Mode</p>
+              <p className="mb-2 font-medium text-foreground text-xs">Mode</p>
               <div className="flex gap-1 rounded-md border border-border p-0.5">
                 {(["text", "image"] as const).map((m) => (
                   <button
-                    key={m}
-                    type="button"
-                    disabled={isGenerating}
-                    onClick={() => handleModeChange(m)}
-                    className={`flex-1 rounded px-2 py-1 text-xs font-medium transition-colors ${
+                    className={`flex-1 rounded px-2 py-1 font-medium text-xs transition-colors ${
                       mode === m
                         ? "bg-primary text-primary-foreground"
                         : "text-muted-foreground hover:text-foreground"
                     }`}
+                    disabled={isGenerating}
+                    key={m}
+                    onClick={() => handleModeChange(m)}
+                    type="button"
                   >
                     {m === "text" ? "Text to Video" : "Image to Video"}
                   </button>
@@ -249,22 +267,23 @@ export function VideoStudio() {
 
             {/* Quality toggle */}
             <div>
-              <p className="mb-2 text-xs font-medium text-foreground">Quality</p>
+              <p className="mb-2 font-medium text-foreground text-xs">
+                Quality
+              </p>
               <div className="flex gap-1 rounded-md border border-border p-0.5">
                 {QUALITY_OPTIONS.map((q) => (
                   <button
-                    key={q.value}
-                    type="button"
-                    disabled={isGenerating}
-                    onClick={() => setQuality(q.value)}
-                    className={`flex-1 rounded px-2 py-1 text-xs font-medium transition-colors ${
+                    className={`flex-1 rounded px-2 py-1 font-medium text-xs transition-colors ${
                       quality === q.value
                         ? "bg-primary text-primary-foreground"
                         : "text-muted-foreground hover:text-foreground"
                     }`}
+                    disabled={isGenerating}
+                    key={q.value}
+                    onClick={() => setQuality(q.value)}
+                    type="button"
                   >
-                    {q.label}{" "}
-                    <span className="opacity-70">{q.detail}</span>
+                    {q.label} <span className="opacity-70">{q.detail}</span>
                   </button>
                 ))}
               </div>
@@ -278,47 +297,50 @@ export function VideoStudio() {
             {/* Image upload (image mode only) */}
             {mode === "image" && (
               <div>
-                <p className="mb-1.5 text-xs font-medium text-foreground">Source Image</p>
+                <p className="mb-1.5 font-medium text-foreground text-xs">
+                  Source Image
+                </p>
                 <input
-                  ref={fileInputRef}
-                  type="file"
                   accept="image/jpeg,image/png,image/webp,image/gif"
                   className="hidden"
-                  onChange={handleFileChange}
                   disabled={isGenerating}
+                  onChange={handleFileChange}
+                  ref={fileInputRef}
+                  type="file"
                 />
                 {imageUrl ? (
                   <div className="space-y-2">
                     <div className="relative overflow-hidden rounded-md border border-border">
                       <Image
-                        src={imageUrl}
                         alt="Source image"
-                        width={256}
-                        height={144}
                         className="w-full object-cover"
+                        height={144}
+                        src={imageUrl}
                         unoptimized
+                        width={256}
                       />
                     </div>
                     <Button
-                      variant="outline"
-                      size="sm"
                       className="w-full text-xs"
                       disabled={isGenerating}
                       onClick={() => {
                         setImageUrl(null);
                         setImageError(null);
-                        if (fileInputRef.current) fileInputRef.current.value = "";
+                        if (fileInputRef.current)
+                          fileInputRef.current.value = "";
                       }}
+                      size="sm"
+                      variant="outline"
                     >
                       Change Image
                     </Button>
                   </div>
                 ) : (
                   <button
-                    type="button"
+                    className="flex w-full flex-col items-center justify-center gap-1.5 rounded-md border border-border border-dashed bg-muted/30 px-3 py-6 text-muted-foreground text-xs transition-colors hover:bg-muted/50 disabled:opacity-50"
                     disabled={isGenerating || imageUploading}
                     onClick={() => fileInputRef.current?.click()}
-                    className="flex w-full flex-col items-center justify-center gap-1.5 rounded-md border border-dashed border-border bg-muted/30 px-3 py-6 text-xs text-muted-foreground transition-colors hover:bg-muted/50 disabled:opacity-50"
+                    type="button"
                   >
                     {imageUploading ? (
                       <span>Uploading…</span>
@@ -339,32 +361,38 @@ export function VideoStudio() {
                           />
                         </svg>
                         <span>Click to upload image</span>
-                        <span className="text-[10px]">JPEG, PNG, WebP, GIF</span>
+                        <span className="text-[10px]">
+                          JPEG, PNG, WebP, GIF
+                        </span>
                       </>
                     )}
                   </button>
                 )}
                 {imageError && (
-                  <p className="mt-1 text-[10px] text-destructive">{imageError}</p>
+                  <p className="mt-1 text-[10px] text-destructive">
+                    {imageError}
+                  </p>
                 )}
               </div>
             )}
 
             <div>
-              <p className="mb-2 text-xs font-medium text-foreground">Duration</p>
+              <p className="mb-2 font-medium text-foreground text-xs">
+                Duration
+              </p>
               <div className="space-y-1">
                 {DURATIONS.map((d) => (
                   <label
-                    key={d.value}
                     className="flex cursor-pointer items-center gap-2 rounded-md border border-border px-2 py-1.5 transition-colors hover:bg-accent/40"
+                    key={d.value}
                   >
                     <input
-                      type="radio"
-                      name="duration"
-                      value={d.value}
                       checked={duration === d.value}
-                      onChange={() => setDuration(d.value)}
                       className="h-3.5 w-3.5"
+                      name="duration"
+                      onChange={() => setDuration(d.value)}
+                      type="radio"
+                      value={d.value}
                     />
                     <span className="text-xs">{d.label}</span>
                   </label>
@@ -373,20 +401,22 @@ export function VideoStudio() {
             </div>
 
             <div>
-              <p className="mb-2 text-xs font-medium text-foreground">Aspect Ratio</p>
+              <p className="mb-2 font-medium text-foreground text-xs">
+                Aspect Ratio
+              </p>
               <div className="space-y-1">
                 {ASPECT_RATIOS.map((r) => (
                   <label
-                    key={r.value}
                     className="flex cursor-pointer items-center gap-2 rounded-md border border-border px-2 py-1.5 transition-colors hover:bg-accent/40"
+                    key={r.value}
                   >
                     <input
-                      type="radio"
-                      name="aspectRatio"
-                      value={r.value}
                       checked={aspectRatio === r.value}
-                      onChange={() => setAspectRatio(r.value)}
                       className="h-3.5 w-3.5"
+                      name="aspectRatio"
+                      onChange={() => setAspectRatio(r.value)}
+                      type="radio"
+                      value={r.value}
                     />
                     <span className="text-xs">{r.label}</span>
                   </label>
@@ -395,18 +425,20 @@ export function VideoStudio() {
             </div>
 
             <div>
-              <p className="mb-1.5 text-xs font-medium text-foreground">Prompt</p>
+              <p className="mb-1.5 font-medium text-foreground text-xs">
+                Prompt
+              </p>
               <Textarea
                 className="min-h-[100px] resize-none text-xs"
+                disabled={isGenerating}
+                onChange={(e) => setPrompt(e.target.value)}
                 placeholder={
                   mode === "image"
                     ? "Describe the motion or animation…"
                     : "Describe the video you want to generate…"
                 }
-                value={prompt}
-                onChange={(e) => setPrompt(e.target.value)}
                 rows={5}
-                disabled={isGenerating}
+                value={prompt}
               />
             </div>
 
@@ -425,15 +457,15 @@ export function VideoStudio() {
 
             {upgradeRequired && (
               <div className="rounded-md border border-amber-200 bg-amber-50 px-3 py-2 dark:border-amber-800 dark:bg-amber-950/20">
-                <p className="text-xs font-medium text-amber-800 dark:text-amber-400">
+                <p className="font-medium text-amber-800 text-xs dark:text-amber-400">
                   Paid plan required
                 </p>
                 <p className="mt-0.5 text-[10px] text-amber-700 dark:text-amber-500">
                   Video generation is available on Plus and above.
                 </p>
                 <Link
+                  className="mt-1.5 inline-block font-medium text-[10px] text-amber-800 underline dark:text-amber-400"
                   href="/upgrade"
-                  className="mt-1.5 inline-block text-[10px] font-medium text-amber-800 underline dark:text-amber-400"
                 >
                   Upgrade →
                 </Link>
@@ -441,7 +473,7 @@ export function VideoStudio() {
             )}
 
             {error && (
-              <p className="rounded-md bg-destructive/10 px-3 py-2 text-xs text-destructive">
+              <p className="rounded-md bg-destructive/10 px-3 py-2 text-destructive text-xs">
                 {error}
               </p>
             )}
@@ -450,7 +482,7 @@ export function VideoStudio() {
           {/* Result area + gallery */}
           <div className="min-w-0 flex-1 space-y-6">
             {jobStatus === "idle" && !videoUrl && (
-              <div className="flex h-full min-h-[200px] items-center justify-center text-sm text-muted-foreground">
+              <div className="flex h-full min-h-[200px] items-center justify-center text-muted-foreground text-sm">
                 {mode === "image" && !imageUrl
                   ? "Upload an image and enter a prompt to animate it"
                   : "Enter a prompt and click Generate"}
@@ -458,8 +490,12 @@ export function VideoStudio() {
             )}
 
             {isGenerating && (
-              <div className="flex h-full min-h-[200px] flex-col items-center justify-center gap-3 text-sm text-muted-foreground">
-                <svg className="h-6 w-6 animate-spin" fill="none" viewBox="0 0 24 24">
+              <div className="flex h-full min-h-[200px] flex-col items-center justify-center gap-3 text-muted-foreground text-sm">
+                <svg
+                  className="h-6 w-6 animate-spin"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
                   <circle
                     className="opacity-25"
                     cx="12"
@@ -470,14 +506,16 @@ export function VideoStudio() {
                   />
                   <path
                     className="opacity-75"
-                    fill="currentColor"
                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                    fill="currentColor"
                   />
                 </svg>
                 <span>
-                  {jobStatus === "submitting" ? "Submitting job…" : "Generating video…"}
+                  {jobStatus === "submitting"
+                    ? "Submitting job…"
+                    : "Generating video…"}
                 </span>
-                <span className="text-xs text-muted-foreground/70">
+                <span className="text-muted-foreground/70 text-xs">
                   Video generation typically takes 1-3 minutes
                 </span>
               </div>
@@ -486,13 +524,15 @@ export function VideoStudio() {
             {jobStatus === "completed" && videoUrl && (
               <div className="space-y-3">
                 <div className="overflow-hidden rounded-lg border border-border bg-card">
-                  <div className="flex items-center justify-between border-b border-border px-3 py-2">
-                    <span className="text-xs font-medium">Kling AI — Generated Video</span>
+                  <div className="flex items-center justify-between border-border border-b px-3 py-2">
+                    <span className="font-medium text-xs">
+                      Kling AI — Generated Video
+                    </span>
                     <Button
-                      size="sm"
-                      variant="ghost"
                       className="h-6 gap-1 px-2 text-[10px]"
                       onClick={handleDownload}
+                      size="sm"
+                      variant="ghost"
                     >
                       <svg
                         fill="none"
@@ -512,20 +552,20 @@ export function VideoStudio() {
                     </Button>
                   </div>
                   <video
-                    src={videoUrl}
-                    controls
                     className="w-full"
+                    controls
                     playsInline
+                    src={videoUrl}
                   />
                 </div>
                 <Button
-                  variant="outline"
-                  size="sm"
                   className="w-full"
                   onClick={() => {
                     setJobStatus("idle");
                     setVideoUrl(null);
                   }}
+                  size="sm"
+                  variant="outline"
                 >
                   Generate Another
                 </Button>
@@ -535,12 +575,12 @@ export function VideoStudio() {
             {jobStatus === "failed" && (
               <div className="flex h-full min-h-[200px] items-center justify-center">
                 <div className="text-center">
-                  <p className="text-sm text-destructive">Generation failed</p>
+                  <p className="text-destructive text-sm">Generation failed</p>
                   <Button
-                    variant="outline"
-                    size="sm"
                     className="mt-3"
                     onClick={() => setJobStatus("idle")}
+                    size="sm"
+                    variant="outline"
                   >
                     Try Again
                   </Button>
@@ -551,28 +591,34 @@ export function VideoStudio() {
             {/* Video gallery */}
             {history.length > 0 && (
               <div>
-                <h2 className="mb-3 text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                <h2 className="mb-3 font-semibold text-muted-foreground text-xs uppercase tracking-wide">
                   Recent Videos
                 </h2>
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                   {history.map((job) => (
                     <div
-                      key={job.id}
                       className="overflow-hidden rounded-lg border border-border bg-card"
+                      key={job.id}
                     >
                       {job.videoUrl ? (
                         <video
-                          src={job.videoUrl}
                           className="aspect-video w-full object-cover"
-                          playsInline
-                          muted
                           loop
-                          onMouseEnter={(e) => (e.currentTarget as HTMLVideoElement).play()}
-                          onMouseLeave={(e) => (e.currentTarget as HTMLVideoElement).pause()}
+                          muted
+                          onMouseEnter={(e) =>
+                            (e.currentTarget as HTMLVideoElement).play()
+                          }
+                          onMouseLeave={(e) =>
+                            (e.currentTarget as HTMLVideoElement).pause()
+                          }
+                          playsInline
+                          src={job.videoUrl}
                         />
                       ) : (
-                        <div className="flex aspect-video w-full items-center justify-center bg-muted text-xs text-muted-foreground">
-                          {job.status === "processing" ? "Processing…" : "Failed"}
+                        <div className="flex aspect-video w-full items-center justify-center bg-muted text-muted-foreground text-xs">
+                          {job.status === "processing"
+                            ? "Processing…"
+                            : "Failed"}
                         </div>
                       )}
                       <div className="p-2">
@@ -585,11 +631,11 @@ export function VideoStudio() {
                           </span>
                           {job.videoUrl && (
                             <a
-                              href={job.videoUrl}
+                              className="font-medium text-[10px] text-primary underline-offset-2 hover:underline"
                               download
-                              target="_blank"
+                              href={job.videoUrl}
                               rel="noopener noreferrer"
-                              className="text-[10px] font-medium text-primary underline-offset-2 hover:underline"
+                              target="_blank"
                             >
                               Download
                             </a>

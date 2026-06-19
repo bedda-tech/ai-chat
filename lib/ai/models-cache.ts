@@ -4,7 +4,7 @@
  */
 
 import { gateway } from "ai";
-import modelsData from "./models-data.json";
+import modelsData from "./models-data.json" with { type: "json" };
 
 interface AvailableModel {
   id: string;
@@ -50,7 +50,7 @@ interface EnrichedModel {
 }
 
 let cache: CachedModels | null = null;
-const CACHE_DURATION = 3600000; // 1 hour
+const CACHE_DURATION = 3_600_000; // 1 hour
 
 /**
  * Infer tool capabilities based on model ID
@@ -98,7 +98,7 @@ function inferCapabilities(modelId: string): EnrichedModel["capabilities"] {
     vision:
       modelId.includes("gpt-4") ||
       modelId.includes("gemini") ||
-      modelId.includes("claude") && !modelId.includes("3-haiku"),
+      (modelId.includes("claude") && !modelId.includes("3-haiku")),
     toolCalling: true, // Most modern models support tools
     reasoning:
       modelId.includes("sonnet-4") ||
@@ -117,7 +117,12 @@ function inferCapabilities(modelId: string): EnrichedModel["capabilities"] {
  */
 function inferConfig(modelId: string): EnrichedModel["config"] {
   // Haiku/Fast models
-  if (modelId.includes("haiku") || modelId.includes("fast") || modelId.includes("nano") || modelId.includes("lite")) {
+  if (
+    modelId.includes("haiku") ||
+    modelId.includes("fast") ||
+    modelId.includes("nano") ||
+    modelId.includes("lite")
+  ) {
     return {
       maxSteps: 5,
       temperature: 0.6,
@@ -164,11 +169,7 @@ export async function getAvailableModels(
   const now = Date.now();
 
   // Return cached if still valid and not forcing refresh
-  if (
-    !forceRefresh &&
-    cache &&
-    now - cache.timestamp < CACHE_DURATION
-  ) {
+  if (!forceRefresh && cache && now - cache.timestamp < CACHE_DURATION) {
     console.log("✅ Returning cached models from server-side cache");
     return transformToEnrichedModels(cache.models);
   }
@@ -184,9 +185,7 @@ export async function getAvailableModels(
       timestamp: now,
     };
 
-    console.log(
-      `✅ Fetched ${models.length} models from AI Gateway`
-    );
+    console.log(`✅ Fetched ${models.length} models from AI Gateway`);
     return transformToEnrichedModels(models);
   } catch (error) {
     console.error("❌ Failed to fetch dynamic models:", error);
@@ -212,9 +211,7 @@ function transformToEnrichedModels(
   return gatewayModels.map((model) => {
     // Find matching static model for custom metadata
     const staticModel = modelsData.models.find(
-      (m) =>
-        m.gatewayId === model.id ||
-        m.id === model.id.replace("/", "-")
+      (m) => m.gatewayId === model.id || m.id === model.id.replace("/", "-")
     );
 
     // Extract provider from gateway ID (e.g., "anthropic/claude-sonnet-4" -> "anthropic")

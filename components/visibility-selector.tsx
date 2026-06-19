@@ -86,7 +86,10 @@ export function VisibilitySelector({
               if (visibility.id === "public") {
                 const shareUrl = `${window.location.origin}/chat/${chatId}`;
                 navigator.clipboard.writeText(shareUrl).catch(() => {});
-                toast({ type: "success", description: "Share link copied to clipboard!" });
+                toast({
+                  type: "success",
+                  description: "Share link copied to clipboard!",
+                });
               }
               setOpen(false);
             }}

@@ -84,7 +84,7 @@ export function SidebarUserNav({ user }: { user: User }) {
               <>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
-                  <Link href="/settings" className="cursor-pointer">
+                  <Link className="cursor-pointer" href="/settings">
                     Settings &amp; Billing
                   </Link>
                 </DropdownMenuItem>

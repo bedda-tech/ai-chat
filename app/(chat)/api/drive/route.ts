@@ -1,9 +1,6 @@
-import { auth } from "@/app/(auth)/auth";
-import {
-  deleteDriveConnection,
-  getDriveConnection,
-} from "@/lib/db/queries";
 import { NextResponse } from "next/server";
+import { auth } from "@/app/(auth)/auth";
+import { deleteDriveConnection, getDriveConnection } from "@/lib/db/queries";
 
 export const dynamic = "force-dynamic";
 

@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/app/(auth)/auth";
-import { stripe } from "@/lib/stripe";
 import {
   getTeamById,
   getTeamMemberCount,
   isTeamAdmin,
   updateTeamBilling,
 } from "@/lib/db/team-queries";
+import { stripe } from "@/lib/stripe";
 
 const SEAT_PRICE_ID = process.env.STRIPE_TEAM_SEAT_PRICE_ID;
 
@@ -109,8 +109,7 @@ export async function POST(
     await updateTeamBilling(teamId, { stripeCustomerId: customerId });
   }
 
-  const baseUrl =
-    process.env.NEXT_PUBLIC_APP_URL ?? "https://www.bedda.tech";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://www.bedda.tech";
 
   const checkoutSession = await stripe.checkout.sessions.create({
     customer: customerId,

@@ -3,6 +3,7 @@
 import type { UseChatHelpers } from "@ai-sdk/react";
 import type { UIMessage } from "ai";
 import equal from "fast-deep-equal";
+import { nanoid } from "nanoid";
 import {
   type ChangeEvent,
   type Dispatch,
@@ -18,19 +19,21 @@ import {
 import { toast } from "sonner";
 import { useLocalStorage, useWindowSize } from "usehooks-ts";
 import { saveChatModelAsCookie } from "@/app/(chat)/actions";
-import { chatModels } from "@/lib/ai/models";
+import { useArtifact } from "@/hooks/use-artifact";
+import { useAvailableModels } from "@/hooks/use-available-models";
+import { FREE_TIER_MODEL_IDS } from "@/lib/ai/entitlements";
 import {
-  type ModelTool,
   getModelTools,
   getToolDisplayName,
   getToolIcon,
+  type ModelTool,
 } from "@/lib/ai/model-tools";
-import { FREE_TIER_MODEL_IDS } from "@/lib/ai/entitlements";
+import { chatModels } from "@/lib/ai/models";
 import { myProvider } from "@/lib/ai/providers";
-import { useAvailableModels } from "@/hooks/use-available-models";
 import type { Attachment, ChatMessage } from "@/lib/types";
 import type { AppUsage } from "@/lib/usage";
 import { cn } from "@/lib/utils";
+import type { ArtifactKind } from "./artifact";
 import { Context } from "./elements/context";
 import {
   PromptInput,
@@ -48,6 +51,7 @@ import {
   StopIcon,
 } from "./icons";
 import { PreviewAttachment } from "./preview-attachment";
+import { PromptLibraryModal } from "./prompt-library-modal";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import {
@@ -57,24 +61,16 @@ import {
   DialogHeader,
   DialogTitle,
 } from "./ui/dialog";
-import { Input } from "./ui/input";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "./ui/tooltip";
-import { VisibilitySelector, type VisibilityType } from "./visibility-selector";
-import { PromptLibraryModal } from "./prompt-library-modal";
-import { VoiceRecorderButton } from "./voice-recorder-button";
-import type { ArtifactKind } from "./artifact";
-import { useArtifact } from "@/hooks/use-artifact";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { nanoid } from "nanoid";
+import { Input } from "./ui/input";
+import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
+import { VisibilitySelector, type VisibilityType } from "./visibility-selector";
+import { VoiceRecorderButton } from "./voice-recorder-button";
 
 function PureMultimodalInput({
   chatId,
@@ -181,7 +177,7 @@ function PureMultimodalInput({
           },
         ],
       },
-      { body: { agentMode: agentMode || undefined } },
+      { body: { agentMode: agentMode || undefined } }
     );
 
     setAttachments([]);
@@ -232,9 +228,10 @@ function PureMultimodalInput({
     }
   }, []);
 
-  const _modelResolver = useMemo(() => {
-    return myProvider.languageModel(selectedModelId);
-  }, [selectedModelId]);
+  const _modelResolver = useMemo(
+    () => myProvider.languageModel(selectedModelId),
+    [selectedModelId]
+  );
 
   const contextProps = useMemo(
     () => ({
@@ -347,7 +344,10 @@ function PureMultimodalInput({
               selectedModelId={selectedModelId}
               status={status}
             />
-            <VoiceRecorderButton setInput={setInput} disabled={status !== "ready"} />
+            <VoiceRecorderButton
+              disabled={status !== "ready"}
+              setInput={setInput}
+            />
             <ModelSelectorCompact
               onModelChange={onModelChange}
               selectedModelId={selectedModelId}
@@ -436,14 +436,15 @@ function PureAgentModeButton({
           data-tour="deep-research"
           disabled={status !== "ready"}
           onClick={() => setAgentMode(!agentMode)}
-          variant="ghost"
           type="button"
+          variant="ghost"
         >
           <BotIcon />
         </Button>
       </TooltipTrigger>
       <TooltipContent side="top">
-        {agentMode ? "Deep Research: ON" : "Deep Research: OFF"} — AI chains multiple tools to research and write comprehensive answers
+        {agentMode ? "Deep Research: ON" : "Deep Research: OFF"} — AI chains
+        multiple tools to research and write comprehensive answers
       </TooltipContent>
     </Tooltip>
   );
@@ -467,16 +468,78 @@ function PureCanvasModeButton({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          content: kind === "code" ? "// Start coding here\n" : kind === "mermaid" ? "graph TD\n    A[Start] --> B[End]" : kind === "html" ? "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Untitled</title>\n  <style></style>\n</head>\n<body>\n  <script></script>\n</body>\n</html>" : kind === "slides" ? "## New Presentation\n\nSubtitle here" : kind === "notebook" ? JSON.stringify({ cells: [{ type: "markdown", content: "# Notebook\n\nStart adding cells..." }] }) : "",
-          title: kind === "code" ? "Untitled Code" : kind === "sheet" ? "Untitled Sheet" : kind === "mermaid" ? "Untitled Diagram" : kind === "html" ? "Untitled HTML" : kind === "slides" ? "Untitled Presentation" : kind === "notebook" ? "Untitled Notebook" : "Untitled Document",
+          content:
+            kind === "code"
+              ? "// Start coding here\n"
+              : kind === "mermaid"
+                ? "graph TD\n    A[Start] --> B[End]"
+                : kind === "html"
+                  ? '<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>Untitled</title>\n  <style></style>\n</head>\n<body>\n  <script></script>\n</body>\n</html>'
+                  : kind === "slides"
+                    ? "## New Presentation\n\nSubtitle here"
+                    : kind === "notebook"
+                      ? JSON.stringify({
+                          cells: [
+                            {
+                              type: "markdown",
+                              content: "# Notebook\n\nStart adding cells...",
+                            },
+                          ],
+                        })
+                      : "",
+          title:
+            kind === "code"
+              ? "Untitled Code"
+              : kind === "sheet"
+                ? "Untitled Sheet"
+                : kind === "mermaid"
+                  ? "Untitled Diagram"
+                  : kind === "html"
+                    ? "Untitled HTML"
+                    : kind === "slides"
+                      ? "Untitled Presentation"
+                      : kind === "notebook"
+                        ? "Untitled Notebook"
+                        : "Untitled Document",
           kind,
         }),
       });
       setArtifact({
         documentId: id,
         kind,
-        title: kind === "code" ? "Untitled Code" : kind === "sheet" ? "Untitled Sheet" : kind === "mermaid" ? "Untitled Diagram" : kind === "html" ? "Untitled HTML" : kind === "slides" ? "Untitled Presentation" : kind === "notebook" ? "Untitled Notebook" : "Untitled Document",
-        content: kind === "code" ? "// Start coding here\n" : kind === "mermaid" ? "graph TD\n    A[Start] --> B[End]" : kind === "html" ? "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Untitled</title>\n</head>\n<body>\n</body>\n</html>" : kind === "slides" ? "## New Presentation\n\nSubtitle here" : kind === "notebook" ? JSON.stringify({ cells: [{ type: "markdown", content: "# Notebook\n\nStart adding cells..." }] }) : "",
+        title:
+          kind === "code"
+            ? "Untitled Code"
+            : kind === "sheet"
+              ? "Untitled Sheet"
+              : kind === "mermaid"
+                ? "Untitled Diagram"
+                : kind === "html"
+                  ? "Untitled HTML"
+                  : kind === "slides"
+                    ? "Untitled Presentation"
+                    : kind === "notebook"
+                      ? "Untitled Notebook"
+                      : "Untitled Document",
+        content:
+          kind === "code"
+            ? "// Start coding here\n"
+            : kind === "mermaid"
+              ? "graph TD\n    A[Start] --> B[End]"
+              : kind === "html"
+                ? '<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <title>Untitled</title>\n</head>\n<body>\n</body>\n</html>'
+                : kind === "slides"
+                  ? "## New Presentation\n\nSubtitle here"
+                  : kind === "notebook"
+                    ? JSON.stringify({
+                        cells: [
+                          {
+                            type: "markdown",
+                            content: "# Notebook\n\nStart adding cells...",
+                          },
+                        ],
+                      })
+                    : "",
         status: "idle",
         isVisible: true,
         boundingBox: { top: 0, left: 0, width: 0, height: 0 },
@@ -493,10 +556,10 @@ function PureCanvasModeButton({
           <DropdownMenuTrigger asChild>
             <Button
               className="aspect-square h-8 rounded-lg p-1 transition-colors hover:bg-accent"
-              disabled={status !== "ready"}
-              variant="ghost"
-              type="button"
               data-testid="canvas-mode-button"
+              disabled={status !== "ready"}
+              type="button"
+              variant="ghost"
             >
               <CpuIcon size={16} />
             </Button>
@@ -572,22 +635,27 @@ function PureModelSelectorCompact({
   const [optimisticModelId, setOptimisticModelId] = useState(selectedModelId);
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedToolFilters, setSelectedToolFilters] = useState<Set<ModelTool>>(new Set());
+  const [selectedToolFilters, setSelectedToolFilters] = useState<
+    Set<ModelTool>
+  >(new Set());
   const { models: dynamicModels } = useAvailableModels();
 
-  const selectedModelRef = useCallback((node: HTMLButtonElement | null) => {
-    if (node && isOpen && !searchQuery) {
-      requestAnimationFrame(() => {
-        setTimeout(() => {
-          node.scrollIntoView({
-            behavior: "smooth",
-            block: "center",
-            inline: "nearest",
-          });
-        }, 100);
-      });
-    }
-  }, [isOpen, searchQuery]);
+  const selectedModelRef = useCallback(
+    (node: HTMLButtonElement | null) => {
+      if (node && isOpen && !searchQuery) {
+        requestAnimationFrame(() => {
+          setTimeout(() => {
+            node.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+              inline: "nearest",
+            });
+          }, 100);
+        });
+      }
+    },
+    [isOpen, searchQuery]
+  );
 
   useEffect(() => {
     setOptimisticModelId(selectedModelId);
@@ -596,11 +664,15 @@ function PureModelSelectorCompact({
   const allModels = useMemo(() => {
     if (dynamicModels.length === 0) return chatModels;
     const merged = [
-      ...dynamicModels.map(m => ({ id: m.id, name: m.name, description: m.description })),
+      ...dynamicModels.map((m) => ({
+        id: m.id,
+        name: m.name,
+        description: m.description,
+      })),
       ...chatModels,
     ];
     const seen = new Set<string>();
-    return merged.filter(m => {
+    return merged.filter((m) => {
       if (seen.has(m.id)) return false;
       seen.add(m.id);
       return true;
@@ -623,10 +695,10 @@ function PureModelSelectorCompact({
 
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
-      const queryWords = query.split(/\s+/).filter(word => word.length > 0);
+      const queryWords = query.split(/\s+/).filter((word) => word.length > 0);
       models = models.filter((model) => {
         const searchText = `${model.name} ${model.description}`.toLowerCase();
-        return queryWords.every(word => searchText.includes(word));
+        return queryWords.every((word) => searchText.includes(word));
       });
     }
 
@@ -673,18 +745,18 @@ function PureModelSelectorCompact({
   return (
     <>
       <Button
-        className="h-8 rounded-lg px-2 transition-colors hover:bg-accent flex items-center gap-1.5 max-w-[140px] sm:max-w-[200px]"
-        onClick={() => setIsOpen(true)}
-        variant="ghost"
-        type="button"
+        className="flex h-8 max-w-[140px] items-center gap-1.5 rounded-lg px-2 transition-colors hover:bg-accent sm:max-w-[200px]"
         data-tour="model-selector"
+        onClick={() => setIsOpen(true)}
+        type="button"
+        variant="ghost"
       >
         <SparklesIcon size={14} />
-        <span className="text-xs font-medium text-muted-foreground truncate">
+        <span className="truncate font-medium text-muted-foreground text-xs">
           {selectedModel?.name || "Select Model"}
         </span>
       </Button>
-      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <Dialog onOpenChange={setIsOpen} open={isOpen}>
         <DialogContent className="max-w-lg">
           <DialogHeader>
             <DialogTitle>Select Model</DialogTitle>
@@ -694,13 +766,13 @@ function PureModelSelectorCompact({
           </DialogHeader>
           <div className="flex flex-col gap-4">
             <Input
+              autoFocus
+              className="w-full"
+              onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search models..."
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full"
-              autoFocus
             />
-            
+
             {allAvailableTools.length > 0 && (
               <div className="flex flex-col gap-2">
                 <div className="font-medium text-muted-foreground text-xs">
@@ -709,13 +781,16 @@ function PureModelSelectorCompact({
                 <div className="flex flex-wrap gap-2">
                   {allAvailableTools.map((tool) => (
                     <Badge
-                      key={tool}
-                      variant={selectedToolFilters.has(tool) ? "default" : "outline"}
                       className={cn(
                         "cursor-pointer transition-colors",
-                        selectedToolFilters.has(tool) && "bg-primary text-primary-foreground"
+                        selectedToolFilters.has(tool) &&
+                          "bg-primary text-primary-foreground"
                       )}
+                      key={tool}
                       onClick={() => toggleToolFilter(tool)}
+                      variant={
+                        selectedToolFilters.has(tool) ? "default" : "outline"
+                      }
                     >
                       {(() => {
                         const Icon = getToolIcon(tool);
@@ -726,10 +801,10 @@ function PureModelSelectorCompact({
                   ))}
                   {selectedToolFilters.size > 0 && (
                     <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => setSelectedToolFilters(new Set())}
                       className="h-6 px-2 text-xs"
+                      onClick={() => setSelectedToolFilters(new Set())}
+                      size="sm"
+                      variant="ghost"
                     >
                       Clear
                     </Button>
@@ -737,7 +812,7 @@ function PureModelSelectorCompact({
                 </div>
               </div>
             )}
-            
+
             <div className="max-h-[400px] overflow-y-auto">
               <div className="flex flex-col gap-1">
                 {filteredModels.map((model) => {
@@ -746,20 +821,28 @@ function PureModelSelectorCompact({
 
                   return (
                     <button
-                      key={model.id}
-                      ref={model.id === optimisticModelId ? selectedModelRef : null}
-                      onClick={() => handleModelSelect(model.id)}
                       className={cn(
                         "flex w-full flex-col gap-2 rounded-lg p-3 text-left transition-colors hover:bg-accent hover:text-accent-foreground",
-                        model.id === optimisticModelId && "bg-accent text-accent-foreground"
+                        model.id === optimisticModelId &&
+                          "bg-accent text-accent-foreground"
                       )}
+                      key={model.id}
+                      onClick={() => handleModelSelect(model.id)}
+                      ref={
+                        model.id === optimisticModelId ? selectedModelRef : null
+                      }
                       type="button"
                     >
                       <div className="flex items-center justify-between gap-2">
-                        <div className="flex items-center gap-1.5 min-w-0">
-                          <span className="truncate font-medium text-sm">{model.name}</span>
+                        <div className="flex min-w-0 items-center gap-1.5">
+                          <span className="truncate font-medium text-sm">
+                            {model.name}
+                          </span>
                           {isPremium && (
-                            <Badge variant="secondary" className="h-4 shrink-0 px-1 text-[9px] font-semibold uppercase tracking-wide">
+                            <Badge
+                              className="h-4 shrink-0 px-1 font-semibold text-[9px] uppercase tracking-wide"
+                              variant="secondary"
+                            >
                               Plus
                             </Badge>
                           )}
@@ -768,24 +851,28 @@ function PureModelSelectorCompact({
                           <div className="size-2 shrink-0 rounded-full bg-accent-foreground" />
                         )}
                       </div>
-                      <div className={cn(
-                        "text-xs leading-tight",
-                        model.id === optimisticModelId ? "text-accent-foreground/80" : "text-foreground/60"
-                      )}>
+                      <div
+                        className={cn(
+                          "text-xs leading-tight",
+                          model.id === optimisticModelId
+                            ? "text-accent-foreground/80"
+                            : "text-foreground/60"
+                        )}
+                      >
                         {model.description}
                       </div>
                       {modelTools.length > 0 && (
                         <div className="flex flex-wrap gap-1">
                           {modelTools.map((tool) => (
                             <Badge
-                              key={tool}
-                              variant="secondary"
                               className={cn(
                                 "h-5 px-1.5 text-[10px]",
-                                model.id === optimisticModelId 
-                                  ? "bg-accent-foreground/20 text-accent-foreground" 
+                                model.id === optimisticModelId
+                                  ? "bg-accent-foreground/20 text-accent-foreground"
                                   : "bg-muted text-muted-foreground"
                               )}
+                              key={tool}
+                              variant="secondary"
                             >
                               {(() => {
                                 const Icon = getToolIcon(tool);
@@ -801,7 +888,7 @@ function PureModelSelectorCompact({
                 })}
                 {filteredModels.length === 0 && (
                   <div className="py-8 text-center text-foreground/60 text-sm">
-                    {selectedToolFilters.size > 0 
+                    {selectedToolFilters.size > 0
                       ? "No models found with selected tools"
                       : "No models found"}
                   </div>

@@ -1,5 +1,5 @@
-import { experimental_generateImage as generateImage, tool } from "ai";
 import { gateway } from "@ai-sdk/gateway";
+import { experimental_generateImage as generateImage, tool } from "ai";
 import { z } from "zod";
 
 const SIZE_MAP = {
@@ -8,10 +8,21 @@ const SIZE_MAP = {
   portrait: { dalleSize: "1024x1792", aspectRatio: "9:16" },
 } as const;
 
-const MODEL_META: Record<string, { gatewayId: string; label: string; useSize: boolean }> = {
-  "dalle3": { gatewayId: "openai/dall-e-3", label: "DALL-E 3", useSize: true },
-  "imagen3": { gatewayId: "google/imagen-3-fast", label: "Imagen 3 Fast", useSize: false },
-  "flux": { gatewayId: "black-forest-labs/flux-1.1-pro", label: "Flux 1.1 Pro", useSize: false },
+const MODEL_META: Record<
+  string,
+  { gatewayId: string; label: string; useSize: boolean }
+> = {
+  dalle3: { gatewayId: "openai/dall-e-3", label: "DALL-E 3", useSize: true },
+  imagen3: {
+    gatewayId: "google/imagen-3-fast",
+    label: "Imagen 3 Fast",
+    useSize: false,
+  },
+  flux: {
+    gatewayId: "black-forest-labs/flux-1.1-pro",
+    label: "Flux 1.1 Pro",
+    useSize: false,
+  },
 };
 
 export const generateImageTool = () =>
@@ -35,11 +46,15 @@ export const generateImageTool = () =>
         .enum(["square", "landscape", "portrait"])
         .optional()
         .default("square")
-        .describe("Image dimensions: square (1:1), landscape (16:9), portrait (9:16)"),
+        .describe(
+          "Image dimensions: square (1:1), landscape (16:9), portrait (9:16)"
+        ),
       style: z
         .enum(["vivid", "natural"])
         .optional()
-        .describe("DALL-E 3 only: vivid (hyper-real) or natural (more subdued). Ignored for other models."),
+        .describe(
+          "DALL-E 3 only: vivid (hyper-real) or natural (more subdued). Ignored for other models."
+        ),
     }),
     execute: async ({ prompt, model = "dalle3", size = "square", style }) => {
       const meta = MODEL_META[model] ?? MODEL_META["dalle3"];
@@ -50,8 +65,12 @@ export const generateImageTool = () =>
         const { image } = await generateImage({
           model: imageModel,
           prompt,
-          ...(meta.useSize ? { size: sizeConfig.dalleSize } : { aspectRatio: sizeConfig.aspectRatio }),
-          ...(model === "dalle3" && style ? { providerOptions: { openai: { style } } } : {}),
+          ...(meta.useSize
+            ? { size: sizeConfig.dalleSize }
+            : { aspectRatio: sizeConfig.aspectRatio }),
+          ...(model === "dalle3" && style
+            ? { providerOptions: { openai: { style } } }
+            : {}),
         } as any);
 
         return {

@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 
 interface CustomInstructionsFormProps {
   initialValue: string;
@@ -36,7 +36,7 @@ export function CustomInstructionsForm({
   return (
     <div className="space-y-3">
       <div>
-        <Label htmlFor="custom-instructions" className="text-sm font-medium">
+        <Label className="font-medium text-sm" htmlFor="custom-instructions">
           Custom Instructions
         </Label>
         <p className="mt-1 text-muted-foreground text-xs">
@@ -45,18 +45,18 @@ export function CustomInstructionsForm({
         </p>
       </div>
       <Textarea
+        className="min-h-[140px] resize-y text-sm"
         id="custom-instructions"
-        value={value}
+        maxLength={2000}
         onChange={(e) => setValue(e.target.value)}
         placeholder="E.g. I'm a software engineer. Always respond concisely. Use TypeScript examples."
-        className="min-h-[140px] resize-y text-sm"
-        maxLength={2000}
+        value={value}
       />
       <div className="flex items-center justify-between">
         <span className="text-muted-foreground text-xs">
           {value.length} / 2000 characters
         </span>
-        <Button size="sm" onClick={handleSave} disabled={saving}>
+        <Button disabled={saving} onClick={handleSave} size="sm">
           {saving ? "Saving..." : "Save"}
         </Button>
       </div>

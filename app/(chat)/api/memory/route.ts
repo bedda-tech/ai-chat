@@ -34,5 +34,8 @@ export async function DELETE(request: Request) {
     return Response.json({ success: true });
   }
 
-  return Response.json({ error: "Missing id or all parameter" }, { status: 400 });
+  return Response.json(
+    { error: "Missing id or all parameter" },
+    { status: 400 }
+  );
 }

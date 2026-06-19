@@ -22,7 +22,13 @@
       "config": {
         "maxSteps": 10,
         "temperature": 0.7,
-        "idealFor": ["complex research", "advanced coding", "nuanced analysis", "long-form writing", "agentic tasks"]
+        "idealFor": [
+          "complex research",
+          "advanced coding",
+          "nuanced analysis",
+          "long-form writing",
+          "agentic tasks"
+        ]
       }
     },
     {
@@ -47,7 +53,13 @@
       "config": {
         "maxSteps": 8,
         "temperature": 0.7,
-        "idealFor": ["complex reasoning", "coding", "analysis", "research", "writing"]
+        "idealFor": [
+          "complex reasoning",
+          "coding",
+          "analysis",
+          "research",
+          "writing"
+        ]
       }
     },
     {
@@ -72,7 +84,12 @@
       "config": {
         "maxSteps": 10,
         "temperature": 0.7,
-        "idealFor": ["complex research", "advanced coding", "nuanced analysis", "long-form writing"]
+        "idealFor": [
+          "complex research",
+          "advanced coding",
+          "nuanced analysis",
+          "long-form writing"
+        ]
       }
     },
     {
@@ -97,7 +114,12 @@
       "config": {
         "maxSteps": 8,
         "temperature": 0.7,
-        "idealFor": ["complex reasoning", "extended thinking", "analysis", "research"]
+        "idealFor": [
+          "complex reasoning",
+          "extended thinking",
+          "analysis",
+          "research"
+        ]
       }
     },
     {
@@ -122,7 +144,12 @@
       "config": {
         "maxSteps": 8,
         "temperature": 0.7,
-        "idealFor": ["complex reasoning", "extended thinking", "analysis", "research"]
+        "idealFor": [
+          "complex reasoning",
+          "extended thinking",
+          "analysis",
+          "research"
+        ]
       }
     },
     {
@@ -172,7 +199,12 @@
       "config": {
         "maxSteps": 8,
         "temperature": 0.7,
-        "idealFor": ["complex reasoning", "extended thinking", "analysis", "research"]
+        "idealFor": [
+          "complex reasoning",
+          "extended thinking",
+          "analysis",
+          "research"
+        ]
       }
     },
     {
@@ -297,7 +329,11 @@
       "config": {
         "maxSteps": 6,
         "temperature": 0.6,
-        "idealFor": ["fast responses", "high throughput", "efficient processing"]
+        "idealFor": [
+          "fast responses",
+          "high throughput",
+          "efficient processing"
+        ]
       }
     },
     {
@@ -322,7 +358,11 @@
       "config": {
         "maxSteps": 6,
         "temperature": 0.7,
-        "idealFor": ["efficient processing", "everyday tasks", "balanced performance"]
+        "idealFor": [
+          "efficient processing",
+          "everyday tasks",
+          "balanced performance"
+        ]
       }
     },
     {
@@ -447,7 +487,12 @@
       "config": {
         "maxSteps": 7,
         "temperature": 0.7,
-        "idealFor": ["multimodal tasks", "vision", "structured outputs", "function calling"]
+        "idealFor": [
+          "multimodal tasks",
+          "vision",
+          "structured outputs",
+          "function calling"
+        ]
       }
     },
     {
@@ -472,7 +517,11 @@
       "config": {
         "maxSteps": 5,
         "temperature": 0.7,
-        "idealFor": ["fast responses", "affordable processing", "everyday tasks"]
+        "idealFor": [
+          "fast responses",
+          "affordable processing",
+          "everyday tasks"
+        ]
       }
     },
     {
@@ -697,7 +746,11 @@
       "config": {
         "maxSteps": 6,
         "temperature": 0.7,
-        "idealFor": ["fast responses", "general purpose", "efficient processing"]
+        "idealFor": [
+          "fast responses",
+          "general purpose",
+          "efficient processing"
+        ]
       }
     },
     {
@@ -747,7 +800,11 @@
       "config": {
         "maxSteps": 5,
         "temperature": 0.9,
-        "idealFor": ["image generation", "multimodal", "visual content creation"]
+        "idealFor": [
+          "image generation",
+          "multimodal",
+          "visual content creation"
+        ]
       }
     },
     {
@@ -897,7 +954,11 @@
       "config": {
         "maxSteps": 6,
         "temperature": 0.7,
-        "idealFor": ["ultra-fast responses", "real-time applications", "quick Q&A"]
+        "idealFor": [
+          "ultra-fast responses",
+          "real-time applications",
+          "quick Q&A"
+        ]
       }
     }
   ]

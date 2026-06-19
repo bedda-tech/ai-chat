@@ -1,5 +1,5 @@
-import { experimental_transcribe as transcribe, tool } from "ai";
 import { openai } from "@ai-sdk/openai";
+import { tool, experimental_transcribe as transcribe } from "ai";
 import { z } from "zod";
 
 const WHITESPACE_REGEX = /\s+/;
@@ -28,7 +28,7 @@ export const transcribeAudioTool = () =>
       try {
         // Fetch the audio file
         const audioResponse = await fetch(audioUrl);
-        
+
         if (!audioResponse.ok) {
           return {
             success: false,
@@ -67,4 +67,3 @@ export const transcribeAudioTool = () =>
       }
     },
   });
-

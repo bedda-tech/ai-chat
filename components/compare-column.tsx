@@ -3,19 +3,23 @@
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { useEffect, useRef, useState } from "react";
+import { Response } from "@/components/elements/response";
+import { ThinkingMessage } from "@/components/message";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import { Response } from "@/components/elements/response";
-import { ThinkingMessage } from "@/components/message";
 import type { ChatMessage } from "@/lib/types";
-import { fetchWithErrorHandlers, generateUUID, sanitizeText } from "@/lib/utils";
+import {
+  cn,
+  fetchWithErrorHandlers,
+  generateUUID,
+  sanitizeText,
+} from "@/lib/utils";
 import { ChevronDownIcon } from "./icons";
-import { cn } from "@/lib/utils";
 
 interface PendingSubmit {
   text: string;
@@ -109,30 +113,33 @@ export function CompareColumn({
   const colorClass = providerColor[provider] || "text-foreground";
 
   return (
-    <div className="flex min-w-0 flex-1 flex-col border-r last:border-r-0 border-border">
+    <div className="flex min-w-0 flex-1 flex-col border-border border-r last:border-r-0">
       {/* Column header: model selector */}
-      <div className="flex shrink-0 items-center gap-2 border-b border-border px-3 py-2">
+      <div className="flex shrink-0 items-center gap-2 border-border border-b px-3 py-2">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
+              className="h-auto gap-1.5 px-2 py-1 font-medium text-sm"
               variant="ghost"
-              className="h-auto gap-1.5 px-2 py-1 text-sm font-medium"
             >
-              <span className={cn("truncate max-w-[160px]", colorClass)}>
+              <span className={cn("max-w-[160px] truncate", colorClass)}>
                 {currentModel?.name ?? modelId}
               </span>
               <ChevronDownIcon size={12} />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="start" className="max-h-72 overflow-y-auto w-64">
+          <DropdownMenuContent
+            align="start"
+            className="max-h-72 w-64 overflow-y-auto"
+          >
             {models.map((m) => (
               <DropdownMenuItem
-                key={m.id}
-                onSelect={() => setModelId(m.id)}
                 className={cn(
                   "text-sm",
-                  m.id === modelId && "font-medium bg-accent"
+                  m.id === modelId && "bg-accent font-medium"
                 )}
+                key={m.id}
+                onSelect={() => setModelId(m.id)}
               >
                 {m.name}
               </DropdownMenuItem>
@@ -140,7 +147,7 @@ export function CompareColumn({
           </DropdownMenuContent>
         </DropdownMenu>
         {status === "streaming" && (
-          <span className="ml-auto text-xs text-muted-foreground animate-pulse">
+          <span className="ml-auto animate-pulse text-muted-foreground text-xs">
             Responding...
           </span>
         )}
@@ -148,11 +155,11 @@ export function CompareColumn({
 
       {/* Messages */}
       <div
-        ref={containerRef}
         className="flex flex-1 flex-col gap-3 overflow-y-auto px-3 py-3"
+        ref={containerRef}
       >
         {messages.length === 0 && (
-          <div className="flex flex-1 items-center justify-center text-xs text-muted-foreground">
+          <div className="flex flex-1 items-center justify-center text-muted-foreground text-xs">
             Ask a question below to compare this model
           </div>
         )}
@@ -162,8 +169,8 @@ export function CompareColumn({
               (p): p is { type: "text"; text: string } => p.type === "text"
             );
             return (
-              <div key={message.id} className="flex justify-end">
-                <div className="max-w-[85%] rounded-2xl bg-primary px-3 py-2 text-sm text-primary-foreground">
+              <div className="flex justify-end" key={message.id}>
+                <div className="max-w-[85%] rounded-2xl bg-primary px-3 py-2 text-primary-foreground text-sm">
                   {textParts.map((p, i) => (
                     <span key={i}>{p.text}</span>
                   ))}
@@ -176,7 +183,7 @@ export function CompareColumn({
               (p): p is { type: "text"; text: string } => p.type === "text"
             );
             return (
-              <div key={message.id} className="flex justify-start">
+              <div className="flex justify-start" key={message.id}>
                 <div className="max-w-[95%] text-sm">
                   {textParts.map((p, i) => (
                     <Response key={i}>{sanitizeText(p.text)}</Response>

@@ -1,8 +1,4 @@
-import type {
-  AssistantModelMessage,
-  ModelMessage,
-  UserModelMessage,
-} from "ai";
+import type { AssistantModelMessage, ModelMessage, UserModelMessage } from "ai";
 import { getModelConfig } from "./model-config";
 
 export interface SanitizeResult {
@@ -52,13 +48,12 @@ export function sanitizeMessagesForProvider(
 
       const filtered = rawContent.filter((part) => {
         if (
-          part.type === "reasoning" ||
-          (part as { type: string }).type === "redacted-reasoning"
+          (part.type === "reasoning" ||
+            (part as { type: string }).type === "redacted-reasoning") &&
+          !isAnthropic
         ) {
-          if (!isAnthropic) {
-            didStripReasoning = true;
-            return false;
-          }
+          didStripReasoning = true;
+          return false;
         }
         return true;
       });

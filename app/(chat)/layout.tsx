@@ -36,7 +36,7 @@ export default async function Layout({
     <>
       <DataStreamProvider>
         <SidebarProvider defaultOpen={!isCollapsed}>
-          <AppSidebar user={session?.user} isAdmin={adminUser} />
+          <AppSidebar isAdmin={adminUser} user={session?.user} />
           <SidebarInset>
             <TrialBanner />
             {children}

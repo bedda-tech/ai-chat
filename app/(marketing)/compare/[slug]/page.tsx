@@ -1,7 +1,7 @@
+import { ArrowRight, Check, X } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Check, X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 type ComparisonRow = {
@@ -168,10 +168,12 @@ const COMPARISONS: Record<string, ComparisonData> = {
     competitorPrice: "$19.99/mo",
     beddaPrice: "$12/mo",
     title: "bedda.ai vs Gemini Advanced",
-    metaTitle: "bedda.ai vs Gemini Advanced (2026) — All Gemini Models + 25 More",
+    metaTitle:
+      "bedda.ai vs Gemini Advanced (2026) — All Gemini Models + 25 More",
     metaDescription:
       "Compare bedda.ai and Gemini Advanced. Get Gemini 2.5 Pro, Flash and Ultra PLUS Claude, GPT-5, Grok and 30+ more models for $12/mo. 7-day free trial.",
-    ogTitle: "bedda.ai vs Gemini Advanced — Same Gemini, More Models, Lower Cost",
+    ogTitle:
+      "bedda.ai vs Gemini Advanced — Same Gemini, More Models, Lower Cost",
     ogDescription:
       "Gemini Advanced costs $20/mo for Google models only. bedda.ai gives you Gemini 2.5 Pro + Flash PLUS Claude 4, GPT-5, Grok and 30+ models for $12/mo.",
     heroHeadline: "All Gemini models — plus Claude 4, GPT-5, Grok and 25 more",
@@ -239,7 +241,8 @@ const COMPARISONS: Record<string, ComparisonData> = {
     ogTitle: "bedda.ai vs Grok SuperGrok — Same Grok, 60% Lower Price",
     ogDescription:
       "Grok SuperGrok costs $30/mo. bedda.ai gives you Grok 3 PLUS Claude 4, GPT-5, Gemini and 30+ more models for just $12/mo.",
-    heroHeadline: "Grok 3 access — plus Claude, GPT-5, Gemini and 25 more models",
+    heroHeadline:
+      "Grok 3 access — plus Claude, GPT-5, Gemini and 25 more models",
     heroSubtext:
       "SuperGrok charges $30/mo for xAI models only. bedda.ai gives you Grok 3 alongside every other frontier model — for $18 less per month.",
     verdict:
@@ -359,7 +362,7 @@ export default async function ComparePage({
             <Link href="/pricing">See pricing</Link>
           </Button>
         </div>
-        <p className="text-xs text-muted-foreground">
+        <p className="text-muted-foreground text-xs">
           7-day free trial · No credit card required
         </p>
       </div>
@@ -368,18 +371,18 @@ export default async function ComparePage({
       <div className="mx-auto mt-16 max-w-2xl">
         <div className="grid grid-cols-2 gap-6">
           <div className="rounded-lg border bg-primary/5 p-6 text-center">
-            <p className="text-sm text-muted-foreground mb-1">bedda.ai Plus</p>
-            <p className="text-4xl font-bold">{data.beddaPrice}</p>
-            <p className="text-sm text-muted-foreground mt-1">30+ AI models</p>
+            <p className="mb-1 text-muted-foreground text-sm">bedda.ai Plus</p>
+            <p className="font-bold text-4xl">{data.beddaPrice}</p>
+            <p className="mt-1 text-muted-foreground text-sm">30+ AI models</p>
           </div>
           <div className="rounded-lg border p-6 text-center">
-            <p className="text-sm text-muted-foreground mb-1">
+            <p className="mb-1 text-muted-foreground text-sm">
               {data.competitor}
             </p>
-            <p className="text-4xl font-bold text-muted-foreground">
+            <p className="font-bold text-4xl text-muted-foreground">
               {data.competitorPrice}
             </p>
-            <p className="text-sm text-muted-foreground mt-1">
+            <p className="mt-1 text-muted-foreground text-sm">
               1 company&apos;s models
             </p>
           </div>
@@ -406,9 +409,9 @@ export default async function ComparePage({
             </thead>
             <tbody>
               {data.rows.map((row) => (
-                <tr key={row.feature} className="border-b">
+                <tr className="border-b" key={row.feature}>
                   <td className="p-3 font-medium">{row.feature}</td>
-                  <td className="p-3 text-center bg-primary/5">
+                  <td className="bg-primary/5 p-3 text-center">
                     <Cell value={row.bedda} />
                   </td>
                   <td className="p-3 text-center">
@@ -423,12 +426,12 @@ export default async function ComparePage({
 
       {/* Switch reasons */}
       <div className="mx-auto mt-20 max-w-2xl">
-        <h2 className="mb-6 font-bold text-2xl text-center">
+        <h2 className="mb-6 text-center font-bold text-2xl">
           Why people switch from {data.competitor}
         </h2>
         <ul className="space-y-3">
           {data.switchReasons.map((reason) => (
-            <li key={reason} className="flex items-start gap-3">
+            <li className="flex items-start gap-3" key={reason}>
               <Check className="mt-0.5 h-5 w-5 shrink-0 text-green-500" />
               <span className="text-muted-foreground">{reason}</span>
             </li>
@@ -443,10 +446,13 @@ export default async function ComparePage({
         <div className="mt-6 flex flex-col items-center gap-2">
           <Button asChild size="lg">
             <Link href="/register">
-              Try bedda.ai free for 7 days <ArrowRight className="ml-2 h-4 w-4" />
+              Try bedda.ai free for 7 days{" "}
+              <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
-          <p className="text-xs text-muted-foreground">No credit card required</p>
+          <p className="text-muted-foreground text-xs">
+            No credit card required
+          </p>
         </div>
       </div>
 
@@ -467,17 +473,15 @@ export default async function ComparePage({
 
       {/* Other comparisons */}
       <div className="mx-auto mt-16 max-w-2xl text-center">
-        <p className="text-sm text-muted-foreground mb-4">
-          Also compare:
-        </p>
+        <p className="mb-4 text-muted-foreground text-sm">Also compare:</p>
         <div className="flex flex-wrap justify-center gap-3">
           {Object.values(COMPARISONS)
             .filter((c) => c.slug !== slug)
             .map((c) => (
               <Link
-                key={c.slug}
-                href={`/compare/${c.slug}`}
                 className="rounded-md border px-3 py-1.5 text-sm transition-colors hover:bg-muted"
+                href={`/compare/${c.slug}`}
+                key={c.slug}
               >
                 {c.title}
               </Link>

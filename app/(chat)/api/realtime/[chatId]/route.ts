@@ -5,13 +5,11 @@ export const maxDuration = 60;
 
 import { NextResponse } from "next/server";
 import { auth } from "@/app/(auth)/auth";
-import { isTeamMember } from "@/lib/db/team-queries";
-import { getTeamsForChat } from "@/lib/db/team-queries";
+import { getTeamsForChat, isTeamMember } from "@/lib/db/team-queries";
 import {
-  REALTIME_CHANNEL,
-  TYPING_TTL_SECONDS,
   createSubscriber,
   publishChatEvent,
+  REALTIME_CHANNEL,
   setTyping,
 } from "@/lib/realtime";
 

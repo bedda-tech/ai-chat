@@ -1,9 +1,8 @@
 import { auth } from "@/app/(auth)/auth";
 import {
-  getOrgModelPolicy,
   getOrgModelPolicyForUser,
-  getUserTeamAdminRole,
   getTeamsByUserId,
+  getUserTeamAdminRole,
   upsertOrgModelPolicy,
 } from "@/lib/db/team-queries";
 
@@ -27,7 +26,8 @@ export async function PATCH(request: Request) {
   }
 
   const body = await request.json();
-  const { teamId, allowedModelIds, deniedModelIds, monthlyCostCapUsdCents } = body;
+  const { teamId, allowedModelIds, deniedModelIds, monthlyCostCapUsdCents } =
+    body;
 
   if (!teamId) {
     return Response.json({ error: "teamId required" }, { status: 400 });
@@ -35,7 +35,10 @@ export async function PATCH(request: Request) {
 
   const role = await getUserTeamAdminRole(session.user.id, teamId);
   if (role !== "admin") {
-    return Response.json({ error: "Only team admins can update the model policy" }, { status: 403 });
+    return Response.json(
+      { error: "Only team admins can update the model policy" },
+      { status: 403 }
+    );
   }
 
   const policy = await upsertOrgModelPolicy(teamId, {
