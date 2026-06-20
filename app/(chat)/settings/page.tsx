@@ -10,7 +10,7 @@ import { SubscriptionManagement } from "@/components/subscription-management";
 import { TeamManagement } from "@/components/team-management";
 import { UsageDisplay } from "@/components/usage-display";
 import { getUserPreferences } from "@/lib/db/queries";
-import { getUserTier } from "@/lib/usage/tracking";
+import { getUserTierRecord } from "@/lib/usage/tracking";
 
 export default async function SettingsPage() {
   const session = await auth();
@@ -20,11 +20,26 @@ export default async function SettingsPage() {
   }
 
   let tier: "free" | "pro" | "premium" | "enterprise" = "free";
+  let isTrial = false;
+  let trialDaysLeft: number | null = null;
+  let trialEndDate: string | null = null;
   try {
-    tier = await getUserTier(session.user.id);
+    const record = await getUserTierRecord(session.user.id);
+    if (record) {
+      tier = record.tier as typeof tier;
+      isTrial = record.subscriptionStatus === "trialing";
+      if (isTrial && record.currentPeriodEnd) {
+        const msLeft = record.currentPeriodEnd.getTime() - Date.now();
+        trialDaysLeft = Math.max(0, Math.ceil(msLeft / (1000 * 60 * 60 * 24)));
+        trialEndDate = record.currentPeriodEnd.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+      }
+    }
   } catch (error) {
     console.error("Error getting user tier:", error);
-    // Default to free tier on error
   }
 
   let prefs = null;
@@ -45,7 +60,12 @@ export default async function SettingsPage() {
 
       <div className="grid gap-6 md:grid-cols-2">
         <div className="space-y-6">
-          <SubscriptionManagement currentTier={tier} />
+          <SubscriptionManagement
+            currentTier={tier}
+            isTrial={isTrial}
+            trialDaysLeft={trialDaysLeft}
+            trialEndDate={trialEndDate}
+          />
         </div>
         <div>
           <UsageDisplay />

@@ -1,6 +1,6 @@
 "use client";
 
-import { Loader2 } from "lucide-react";
+import { Clock, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -47,10 +47,16 @@ const PLAN_INFO: Record<
 
 type SubscriptionManagementProps = {
   currentTier: DbTier;
+  isTrial?: boolean;
+  trialDaysLeft?: number | null;
+  trialEndDate?: string | null;
 };
 
 export function SubscriptionManagement({
   currentTier,
+  isTrial = false,
+  trialDaysLeft = null,
+  trialEndDate = null,
 }: SubscriptionManagementProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -137,11 +143,39 @@ export function SubscriptionManagement({
         <CardDescription>
           Current plan:{" "}
           <strong>
-            {planInfo.displayName} ({planInfo.price})
+            {planInfo.displayName} ({planInfo.price}){isTrial ? " — Trial" : ""}
           </strong>
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
+        {isTrial && (
+          <div
+            className={`flex items-start gap-2 rounded-md p-3 text-sm ${
+              trialDaysLeft !== null && trialDaysLeft <= 1
+                ? "bg-red-50 text-red-700 dark:bg-red-950/30 dark:text-red-400"
+                : trialDaysLeft !== null && trialDaysLeft <= 3
+                  ? "bg-amber-50 text-amber-700 dark:bg-amber-950/30 dark:text-amber-400"
+                  : "bg-blue-50 text-blue-700 dark:bg-blue-950/30 dark:text-blue-400"
+            }`}
+          >
+            <Clock className="mt-0.5 h-4 w-4 shrink-0" />
+            <div>
+              <p className="font-medium">
+                {trialDaysLeft !== null && trialDaysLeft <= 0
+                  ? "Your trial ends today"
+                  : trialDaysLeft === 1
+                    ? "1 day left in your trial"
+                    : trialDaysLeft !== null
+                      ? `${trialDaysLeft} days left in your trial`
+                      : "Free trial active"}
+              </p>
+              {trialEndDate && (
+                <p className="text-xs opacity-80">Trial ends {trialEndDate}</p>
+              )}
+            </div>
+          </div>
+        )}
+
         {error && (
           <div className="rounded-md bg-destructive/10 p-3 text-destructive text-sm">
             {error}
