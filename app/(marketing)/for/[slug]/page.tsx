@@ -530,6 +530,312 @@ const USE_CASES: Record<string, UseCase> = {
     ],
     ctaHeadline: "One AI platform. Every model. Every department.",
   },
+
+  marketing: {
+    slug: "marketing",
+    title: "AI for Marketers",
+    metaTitle: "Best AI for Marketing (2026) — 36+ Models for Campaigns, Copy & Strategy",
+    metaDescription:
+      "Claude for brand voice, GPT-5 for copy, Gemini for research — get every AI marketing model for $12/mo. Web search for trend research, knowledge base for brand docs, team workspaces. 7-day free trial.",
+    heroHeadline: "Every AI marketing model. One affordable subscription.",
+    heroSubtext:
+      "Claude for brand-consistent copy. GPT-5 for high-volume content. Gemini for competitive research. Mistral for fast first drafts. All 36+ models, built-in web search, and team workspaces — $12/mo.",
+    tagline: "Marketing teams that use the right model for every campaign",
+    bestModels: [
+      { name: "Claude 4 Opus", reason: "Brand voice, tone consistency, long-form campaigns" },
+      { name: "GPT-5", reason: "Ad copy, email sequences, high-volume content" },
+      { name: "Gemini 2.5 Pro", reason: "Competitive research and trend analysis" },
+      { name: "Mistral Large", reason: "Fast first drafts and content variations" },
+      { name: "Grok 3", reason: "Social media copy and real-time trend angles" },
+    ],
+    features: [
+      {
+        title: "Web search for real-time research",
+        description:
+          "Research competitors, trending topics, and industry news in real-time. Ask bedda to find what's trending in your niche and get citation-backed summaries — no separate browser tab needed.",
+      },
+      {
+        title: "Knowledge base for brand assets",
+        description:
+          "Upload your brand guidelines, tone-of-voice docs, product specs, and past campaigns. Every model references them automatically — so output is always on-brand, even for new team members.",
+      },
+      {
+        title: "Team workspaces for campaign collaboration",
+        description:
+          "Share chat threads with your team. A copywriter and strategist can iterate on the same campaign brief, with shared context and real-time collaboration.",
+      },
+      {
+        title: "Model comparison arena for A/B testing copy",
+        description:
+          "Paste your ad brief and get 4 different copy angles from Claude, GPT-5, Gemini, and Grok simultaneously. Pick the best performer without writing 4 separate prompts.",
+      },
+      {
+        title: "Image generation for campaign visuals",
+        description:
+          "Generate concept images, mood boards, and social media visuals with DALL-E 3, Imagen 3, or Flux — all in the same conversation where you're writing the copy.",
+      },
+      {
+        title: "Custom instructions for your brand",
+        description:
+          "Set your brand voice, target audience, and style preferences once. Every conversation with every model follows them automatically — no re-briefing every session.",
+      },
+    ],
+    useCaseExamples: [
+      "Write 10 Facebook ad variations for this product launch",
+      "Research what our top 3 competitors are saying about this topic",
+      "Create a 6-email drip campaign for new trial users",
+      "Summarize this 50-page market research report",
+      "Write LinkedIn posts for our CEO's thought leadership calendar",
+      "Generate 30-day content calendar ideas for our Instagram",
+    ],
+    testimonials: [
+      {
+        quote:
+          "I use Claude for long-form blog posts and GPT-5 for email sequences. bedda lets me run both in one place — saves me two separate subscriptions.",
+        author: "Sarah M.",
+        role: "Content Marketing Manager",
+      },
+      {
+        quote:
+          "The model arena is my new A/B test tool. I paste an ad headline brief and get 4 versions instantly. The team picks the best one before we test it.",
+        author: "Daniel R.",
+        role: "Paid Acquisition Lead",
+      },
+      {
+        quote:
+          "We uploaded our brand guidelines to the knowledge base. Every model follows our voice now. New contractors are instantly on-brand.",
+        author: "Priya K.",
+        role: "Brand Director",
+      },
+    ],
+    faq: [
+      {
+        q: "Which AI model is best for marketing copy?",
+        a: "It depends on the task. GPT-5 excels at high-volume copy — ads, emails, CTAs. Claude 4 Opus is best for brand-consistent long-form content and nuanced tone. Gemini 2.5 Pro handles competitive research and data synthesis. bedda gives you all three for $12/mo.",
+      },
+      {
+        q: "Can bedda search the web for marketing research?",
+        a: "Yes. bedda's web search tool lets any model pull real-time data — competitor analysis, trending topics, recent news, SEO keywords — and synthesize it into actionable insights in the same conversation.",
+      },
+      {
+        q: "How do team workspaces work for marketing teams?",
+        a: "Team members share a workspace where chat threads are visible to the whole team. You can share a campaign brief thread so copywriters, designers, and strategists all have the same AI context. No re-explaining the brief to each person's AI.",
+      },
+      {
+        q: "Can I use bedda for social media content at scale?",
+        a: "Yes. Use GPT-5 for volume — generating 30 post variations from a brief. Use Claude for quality-checking tone. Use the model arena to compare angles. bedda's unlimited Plus plan means no per-message cost for high-volume workflows.",
+      },
+      {
+        q: "Is my marketing data private?",
+        a: "Yes. Messages go directly to model providers (Anthropic, OpenAI, Google) under their API terms, which exclude training on API data. bedda does not read, use, or sell your marketing content.",
+      },
+    ],
+    ctaHeadline: "Stop paying for three AI tools. Get all of them in one.",
+  },
+
+  finance: {
+    slug: "finance",
+    title: "AI for Finance Professionals",
+    metaTitle: "Best AI for Finance (2026) — Analysis, Modeling & Research at $12/mo",
+    metaDescription:
+      "DeepSeek R1 for quantitative reasoning, GPT-5 for financial analysis, Claude for report writing — get every AI finance model for $12/mo. Code execution for Python modeling. 7-day free trial.",
+    heroHeadline: "The AI assistant that handles numbers, not just words.",
+    heroSubtext:
+      "GPT-5 for financial analysis and modeling. DeepSeek R1 for quantitative reasoning. Claude 4 for clear, precise report writing. Gemini 2.5 Pro for processing massive documents. All in one place — $12/mo.",
+    tagline: "Finance professionals who trust models that show their work",
+    bestModels: [
+      { name: "GPT-5", reason: "Financial analysis, modeling guidance, and data interpretation" },
+      { name: "DeepSeek R1", reason: "Quantitative reasoning, math-heavy problems, and step-by-step derivations" },
+      { name: "Claude 4 Opus", reason: "Clear financial writing, board reports, and client-facing documents" },
+      { name: "Gemini 2.5 Pro", reason: "Processing lengthy 10-Ks, contracts, and multi-hundred-page reports" },
+      { name: "Groq Llama 3.3", reason: "Fast lookups and quick calculations" },
+    ],
+    features: [
+      {
+        title: "Code execution for Python financial modeling",
+        description:
+          "Run Python directly in the chat — calculate IRR, build DCF models, run Monte Carlo simulations, and plot results. No Jupyter notebook required. E2B sandbox, clean and isolated.",
+      },
+      {
+        title: "1M token context for long documents",
+        description:
+          "Gemini 2.5 Pro handles 1 million tokens — that's a full 10-K filing, multiple earnings transcripts, or a 500-page legal agreement in one conversation without truncation.",
+      },
+      {
+        title: "Knowledge base for internal docs",
+        description:
+          "Upload valuation models, internal guidelines, industry data, or proprietary research. Every model references them in conversation — your institutional knowledge embedded in every query.",
+      },
+      {
+        title: "Structured data extraction",
+        description:
+          "Extract tables, financial figures, and key metrics from uploaded PDFs and documents. Ask models to structure the output as JSON or CSV for downstream use.",
+      },
+      {
+        title: "Web search for market research",
+        description:
+          "Pull real-time price data, earnings releases, regulatory filings, and analyst commentary. Models synthesize the findings with citations — faster than manual research.",
+      },
+      {
+        title: "Model comparison for high-stakes analysis",
+        description:
+          "Run the same valuation question through DeepSeek R1, GPT-5, and Claude simultaneously. Use the arena to spot where models agree — and disagree — before committing to a view.",
+      },
+    ],
+    useCaseExamples: [
+      "Build a DCF model for this company using these assumptions",
+      "Summarize the risk factors from this 10-K filing",
+      "Calculate the blended discount rate for this portfolio",
+      "Explain the variance between Q3 and Q4 EBITDA in plain English",
+      "Write an investment memo based on these financial statements",
+      "Find recent analyst reports on this sector and summarize the consensus",
+    ],
+    testimonials: [
+      {
+        quote:
+          "DeepSeek R1 shows its reasoning step-by-step on quantitative problems. I can actually see where the logic goes — critical for any number I'm putting in a deck.",
+        author: "Marcus T.",
+        role: "Investment Analyst",
+      },
+      {
+        quote:
+          "I upload a 200-page offering memorandum and ask Gemini to extract the key terms table. What used to take 2 hours takes 3 minutes.",
+        author: "Jen L.",
+        role: "M&A Associate",
+      },
+      {
+        quote:
+          "Using Claude to write the narrative sections of client reports. The tone is consistently professional. I spend time on judgment calls, not sentence structure.",
+        author: "David K.",
+        role: "Portfolio Manager",
+      },
+    ],
+    faq: [
+      {
+        q: "Which AI is best for financial analysis?",
+        a: "For quantitative reasoning and showing math step-by-step: DeepSeek R1. For broad financial analysis, scenario modeling, and data interpretation: GPT-5. For processing very long documents (full 10-Ks, contracts): Gemini 2.5 Pro. For precise professional writing: Claude 4. bedda gives you all four.",
+      },
+      {
+        q: "Can I run Python for financial modeling in bedda?",
+        a: "Yes. bedda's code execution sandbox lets you run Python — import pandas, numpy, scipy, and matplotlib. Build DCF models, run simulations, and plot charts, all within the conversation.",
+      },
+      {
+        q: "Is my financial data private?",
+        a: "Yes. Messages are sent directly to model providers (Anthropic, OpenAI, Google) via their API. API data is excluded from training under provider terms. bedda does not store, read, or use your financial data beyond serving your query.",
+      },
+      {
+        q: "Can bedda read a full 10-K filing?",
+        a: "Yes, via Gemini 2.5 Pro with a 1 million token context window. A typical 10-K is 100-150 pages — well within Gemini's capacity. Upload it to the knowledge base or paste the text, and ask any question about the document.",
+      },
+      {
+        q: "Is bedda suitable for a finance team?",
+        a: "Yes. Team workspaces let multiple analysts share research threads, knowledge bases, and workflows. Enterprise model policies let admins control which models are available and set monthly cost caps.",
+      },
+    ],
+    ctaHeadline: "Sharper analysis. Faster research. All the models you need.",
+  },
+
+  legal: {
+    slug: "legal",
+    title: "AI for Legal Professionals",
+    metaTitle: "Best AI for Legal Work (2026) — Contract Review, Research & Drafting",
+    metaDescription:
+      "Claude 4 for careful legal reasoning, Gemini for long contracts, GPT-5 for drafting — get every AI legal model for $12/mo. Knowledge base for case law. 7-day free trial.",
+    heroHeadline: "Legal-grade AI reasoning. Frontier models. One subscription.",
+    heroSubtext:
+      "Claude 4 for careful, precise legal reasoning. Gemini 2.5 Pro for reading 500-page contracts without truncation. GPT-5 for fast drafting. Knowledge base for your firm's precedents and playbooks — all for $12/mo.",
+    tagline: "Legal professionals who demand precision, not just fluency",
+    bestModels: [
+      { name: "Claude 4 Opus", reason: "Careful legal reasoning, precise contract analysis, privileged communication drafting" },
+      { name: "Gemini 2.5 Pro", reason: "1M token context — entire contracts, case files, and discovery documents" },
+      { name: "GPT-5", reason: "Fast clause drafting, brief writing, and document summarization" },
+      { name: "DeepSeek R1", reason: "Step-by-step logical analysis of complex statutory questions" },
+      { name: "Mistral Large", reason: "Quick cross-reference lookups during document review" },
+    ],
+    features: [
+      {
+        title: "1M token context for full contracts",
+        description:
+          "Gemini 2.5 Pro reads 1 million tokens in a single context — that's a 500-page contract or a full deposition transcript. Ask any question about any section without re-uploading.",
+      },
+      {
+        title: "Knowledge base for firm playbooks and precedents",
+        description:
+          "Upload standard clauses, past agreements, firm templates, and internal guidelines. Every AI conversation can reference them — so output matches your firm's style and precedent.",
+      },
+      {
+        title: "Precise reasoning with step-by-step analysis",
+        description:
+          "Claude 4 and DeepSeek R1 can walk through complex statutory interpretation or contract clause analysis step-by-step — showing the logic, not just the conclusion.",
+      },
+      {
+        title: "Document drafting and redlining support",
+        description:
+          "Draft NDAs, MSAs, employment agreements, and demand letters. Ask models to identify unusual clauses, flag missing standard protections, or compare two contract versions.",
+      },
+      {
+        title: "Research synthesis with web search",
+        description:
+          "Pull recent case law, regulatory guidance, and legislative updates. Models synthesize findings with citations, flagging the most relevant precedents for your matter.",
+      },
+      {
+        title: "Team workspaces for matter collaboration",
+        description:
+          "Share research threads with colleagues. A partner and associate can work from the same AI context on a matter — shared knowledge base, shared conversation history.",
+      },
+    ],
+    useCaseExamples: [
+      "Review this SaaS agreement and flag non-standard clauses",
+      "Summarize the key obligations in this 200-page supply agreement",
+      "Draft a cease and desist letter based on these facts",
+      "Compare these two versions of the indemnification clause",
+      "Find recent cases interpreting this GDPR provision",
+      "Write a plain-English summary of this judgment for the client",
+    ],
+    testimonials: [
+      {
+        quote:
+          "I upload an entire contract to Gemini and ask it to flag anything that deviates from our standard terms. It catches things I'd miss on a first read.",
+        author: "Rebecca T.",
+        role: "Corporate Partner",
+      },
+      {
+        quote:
+          "Claude's reasoning on contract interpretation is remarkably careful. It hedges appropriately and asks clarifying questions — more like a thoughtful junior associate than an autocomplete engine.",
+        author: "James L.",
+        role: "M&A Attorney",
+      },
+      {
+        quote:
+          "We uploaded our entire clause library to the knowledge base. Now every associate pulls from the same approved language — instantly, without emailing templates around.",
+        author: "Anita K.",
+        role: "General Counsel",
+      },
+    ],
+    faq: [
+      {
+        q: "Is AI reliable enough for legal work?",
+        a: "AI models are powerful drafting, research, and analysis tools — but they are not lawyers and can make errors. Use bedda.ai to accelerate your work: first-pass contract review, research starting points, draft language — always reviewed and approved by a qualified attorney before use.",
+      },
+      {
+        q: "Which AI model is best for contract review?",
+        a: "Gemini 2.5 Pro for large documents (1M token context handles entire agreements without truncation). Claude 4 Opus for precise, careful analysis and spotting unusual clauses. GPT-5 for fast redlining and clause drafting. bedda.ai gives you all three in one interface.",
+      },
+      {
+        q: "Are my client matters confidential when using bedda?",
+        a: "Messages are sent to model providers (Anthropic, OpenAI, Google) via API under their terms, which exclude training on API data. Treat bedda like any other cloud tool — apply your firm's data security and confidentiality policies. Do not upload highly sensitive client data without reviewing your firm's AI policy.",
+      },
+      {
+        q: "Can bedda help with legal research?",
+        a: "bedda's web search can pull recent case summaries, regulatory updates, and legislative changes. It's useful for getting oriented on a topic quickly. For authoritative research with full case law databases, bedda complements (not replaces) tools like Westlaw or LexisNexis.",
+      },
+      {
+        q: "Is there a team plan for law firms?",
+        a: "Yes. bedda team workspaces let multiple attorneys share knowledge bases, workflows, and research threads. Enterprise model policies let firm admins control which models junior associates can use and set usage cost caps.",
+      },
+    ],
+    ctaHeadline: "Faster research. Tighter drafts. Every frontier model.",
+  },
 };
 
 type Params = Promise<{ slug: string }>;

@@ -1074,6 +1074,206 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-t3chat": {
+    slug: "bedda-vs-t3chat",
+    competitor: "T3 Chat",
+    competitorUrl: "https://t3.gg/chat",
+    competitorPrice: "$8/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs T3 Chat",
+    metaTitle: "bedda.ai vs T3 Chat (2026) — More Models, More Tools",
+    metaDescription:
+      "Compare bedda.ai and T3 Chat. Both offer flat-rate unlimited AI chat. bedda adds 36+ models, code execution, image/video generation, knowledge base, and team workspaces — for $4 more. 7-day free trial.",
+    ogTitle: "bedda.ai vs T3 Chat — Flat-Rate AI with More Models and Tools",
+    ogDescription:
+      "T3 Chat is $8/mo for a handful of models. bedda.ai is $12/mo for 36+ models including Claude 4, GPT-5, Gemini 2.5 Pro, Grok 3, plus code execution, image gen, and team workspaces.",
+    heroHeadline: "Same flat-rate idea — 4× more models and a full toolset",
+    heroSubtext:
+      "T3 Chat is a clean, fast AI chat app. bedda.ai does the same thing and adds 36+ models, code execution, image and video generation, a knowledge base, and team workspaces — for $4 more per month.",
+    verdict:
+      "T3 Chat is a solid, affordable option if you mainly need Claude Sonnet or GPT-4o in a fast interface. bedda.ai is the better pick if you want to mix models, run code, generate images and video, or collaborate with a team — the $4/mo difference pays for itself quickly.",
+    switchReasons: [
+      "Access 36+ frontier models — not just Claude and GPT-4o",
+      "Built-in code execution sandbox (Python and JavaScript via E2B)",
+      "Image generation (DALL-E 3, Imagen 3, Flux) and video generation",
+      "Knowledge base — upload docs and reference them across all conversations",
+      "Team workspaces with shared chat threads and real-time collaboration",
+      "Model comparison arena — run your prompt against 4 models simultaneously",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$8/mo" },
+      { feature: "Claude 4 Sonnet", bedda: true, competitor: true },
+      { feature: "Claude 4 Opus", bedda: true, competitor: false },
+      { feature: "GPT-5 / GPT-4o", bedda: true, competitor: true },
+      { feature: "Gemini 2.5 Pro (1M context)", bedda: true, competitor: false },
+      { feature: "Grok 3", bedda: true, competitor: false },
+      { feature: "DeepSeek R1", bedda: true, competitor: false },
+      { feature: "Mistral Large", bedda: true, competitor: false },
+      { feature: "Groq (fast inference)", bedda: true, competitor: false },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: true },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "~6" },
+    ],
+    faq: [
+      {
+        q: "Is T3 Chat worth it?",
+        a: "T3 Chat is a well-designed, affordable AI chat app. At $8/mo it's a great deal if you primarily use Claude Sonnet and GPT-4o. If you want access to Gemini 2.5 Pro, Grok 3, DeepSeek R1, or tools like code execution and image generation, bedda.ai at $12/mo is the better fit.",
+      },
+      {
+        q: "Who made T3 Chat?",
+        a: "T3 Chat was built by Theo (Theodorus Browne), a popular developer and content creator known for the T3 stack (TypeScript, Tailwind, tRPC). It launched in 2025 and gained traction in developer circles for its clean UI and flat-rate pricing.",
+      },
+      {
+        q: "Does bedda.ai have the same models as T3 Chat?",
+        a: "bedda.ai includes all the models T3 Chat offers (Claude Sonnet, GPT-4o) plus many more: Claude 4 Opus, GPT-5, Gemini 2.5 Pro, Grok 3, DeepSeek R1, Mistral Large, Groq Llama, and Cerebras. You're getting a superset.",
+      },
+      {
+        q: "What does bedda.ai have that T3 Chat doesn't?",
+        a: "Code execution (Python/JS sandbox), image generation (DALL-E 3, Imagen 3, Flux), video generation (Kling), knowledge base RAG, cross-conversation memory, model comparison arena, team workspaces with real-time collaboration, and an OpenAI-compatible API.",
+      },
+    ],
+  },
+
+  "bedda-vs-meta-ai": {
+    slug: "bedda-vs-meta-ai",
+    competitor: "Meta AI",
+    competitorUrl: "https://meta.ai",
+    competitorPrice: "Free",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Meta AI",
+    metaTitle: "bedda.ai vs Meta AI (2026) — Why Paid Beats Free for Serious Work",
+    metaDescription:
+      "Meta AI is free but limited to Llama models. bedda.ai gives you Claude 4, GPT-5, Gemini 2.5 Pro, Grok 3 and 36+ frontier models with code execution, RAG, and team workspaces — $12/mo.",
+    ogTitle: "bedda.ai vs Meta AI — Claude + GPT-5 + Gemini vs Llama Only",
+    ogDescription:
+      "Meta AI is free and convenient for casual queries. bedda.ai gives you every frontier model — Claude 4, GPT-5, Gemini 2.5 Pro, Grok 3, DeepSeek R1 — plus tools like code execution, knowledge base, and video generation, for $12/mo.",
+    heroHeadline: "Meta AI is free. bedda.ai gives you every frontier model.",
+    heroSubtext:
+      "Meta AI is convenient for quick questions inside WhatsApp or Instagram. For serious work — research, coding, writing, analysis — you need Claude 4, GPT-5, and Gemini 2.5 Pro. bedda.ai gives you all 36+ frontier models for $12/mo.",
+    verdict:
+      "Meta AI is excellent for quick, casual queries and it costs nothing. If you're doing serious work — coding, research, content creation, data analysis — you'll hit its limits quickly. bedda.ai's $12/mo gives you every frontier model with professional tools that Meta AI simply doesn't offer.",
+    switchReasons: [
+      "Access Claude 4 Opus, GPT-5, and Gemini 2.5 Pro — not just Llama",
+      "Run code in a real E2B sandbox — not simulated output",
+      "Upload documents to a knowledge base and reference across conversations",
+      "Generate images with DALL-E 3, Imagen 3, or Flux (not just text)",
+      "Compare models side-by-side in the arena for important decisions",
+      "Team workspaces for collaborative AI workflows",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "Free" },
+      { feature: "Claude 4 (Opus, Sonnet)", bedda: true, competitor: false },
+      { feature: "GPT-5 / GPT-4o", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 3", bedda: true, competitor: false },
+      { feature: "Llama 3.3 / Llama 4", bedda: true, competitor: true },
+      { feature: "DeepSeek R1", bedda: true, competitor: false },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: "Basic (Imagine)" },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Available in WhatsApp/Instagram", bedda: false, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "1 (Llama)" },
+    ],
+    faq: [
+      {
+        q: "Is Meta AI good enough for serious work?",
+        a: "Meta AI is great for casual questions, quick lookups, and social integrations. For professional work — coding, research, long-form writing, data analysis — you'll want access to Claude 4, GPT-5, or Gemini 2.5 Pro, which offer significantly higher reasoning, context windows, and accuracy.",
+      },
+      {
+        q: "Why would I pay $12/mo when Meta AI is free?",
+        a: "You're paying for Claude 4 Opus, GPT-5, Gemini 2.5 Pro, and 33 other frontier models — plus code execution, knowledge base RAG, team workspaces, and video generation. If your work depends on AI output quality, the productivity gain from better models easily justifies the cost.",
+      },
+      {
+        q: "Can bedda.ai access Meta's Llama models?",
+        a: "Yes. bedda.ai includes Llama 3.3 70B (via Groq for fast inference and Cerebras for ultra-fast responses) alongside all commercial frontier models. You can use Llama inside bedda.ai too.",
+      },
+      {
+        q: "Will Meta AI ever have a paid plan with better models?",
+        a: "Meta has not announced a paid AI subscription as of 2026. Meta AI is bundled with Meta's social platforms. If you want frontier models beyond Llama, you need a separate service like bedda.ai.",
+      },
+    ],
+  },
+
+  "bedda-vs-huggingchat": {
+    slug: "bedda-vs-huggingchat",
+    competitor: "HuggingChat",
+    competitorUrl: "https://huggingface.co/chat",
+    competitorPrice: "Free",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs HuggingChat",
+    metaTitle: "bedda.ai vs HuggingChat (2026) — Open-Source Models vs Frontier AI",
+    metaDescription:
+      "HuggingChat is free with open-source models. bedda.ai gives you Claude 4, GPT-5, Gemini 2.5 Pro, Grok 3 AND open-source models — plus code execution, image/video gen, RAG, and team workspaces. $12/mo.",
+    ogTitle: "bedda.ai vs HuggingChat — Frontier AI vs Open-Source Only",
+    ogDescription:
+      "HuggingChat offers open-source models for free but has no Claude, GPT-5, or Gemini. bedda.ai gives you all 36+ frontier AND open-source models with professional tools for $12/mo.",
+    heroHeadline: "Open-source models are great. Frontier models are better.",
+    heroSubtext:
+      "HuggingChat offers Llama, Mistral, and Qwen for free. bedda.ai gives you those same open-source models PLUS Claude 4, GPT-5, Gemini 2.5 Pro, and Grok 3 — with code execution, knowledge base, and team workspaces — for $12/mo.",
+    verdict:
+      "HuggingChat is a great way to try open-source AI for free. When you need Claude's reasoning, GPT-5's code generation, or Gemini's 1M token context — along with professional tools like code execution, RAG, and team workspaces — bedda.ai at $12/mo is where you graduate to.",
+    switchReasons: [
+      "Add Claude 4, GPT-5, and Gemini 2.5 Pro alongside open-source models",
+      "Code execution in a real Python/JS sandbox — not just chat responses",
+      "Knowledge base — upload PDFs, docs, and code for RAG retrieval",
+      "Image and video generation (DALL-E 3, Imagen 3, Flux, Kling)",
+      "Cross-conversation memory that persists across sessions",
+      "Team workspaces for collaborative AI use at work",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "Free" },
+      { feature: "Claude 4 (Opus, Sonnet)", bedda: true, competitor: false },
+      { feature: "GPT-5 / GPT-4o", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro (1M context)", bedda: true, competitor: false },
+      { feature: "Grok 3", bedda: true, competitor: false },
+      { feature: "Llama 3.3 70B", bedda: true, competitor: true },
+      { feature: "Mistral (Small / Large)", bedda: true, competitor: "Mistral 7B" },
+      { feature: "Qwen models", bedda: false, competitor: true },
+      { feature: "DeepSeek R1", bedda: true, competitor: true },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "~15 open-source" },
+    ],
+    faq: [
+      {
+        q: "What is HuggingChat?",
+        a: "HuggingChat is a free chat interface from Hugging Face that lets you talk to open-source AI models including Llama, Mistral, Qwen, and others. It's a great way to try open-source models without API setup. It does not include commercial models like Claude, GPT-5, or Gemini.",
+      },
+      {
+        q: "Are open-source models as good as Claude or GPT-5?",
+        a: "Open-source models have improved dramatically and are excellent for many tasks. For coding, complex reasoning, very long documents, or tasks where output quality directly impacts your work, frontier commercial models (Claude 4, GPT-5, Gemini 2.5 Pro) still outperform open-source alternatives on most benchmarks.",
+      },
+      {
+        q: "Can I use Llama on bedda.ai?",
+        a: "Yes. bedda.ai includes Llama 3.3 70B via Groq (for fast inference) and Cerebras (for ultra-fast responses). You can use Llama inside bedda.ai alongside Claude, GPT-5, and Gemini — switching between them in the same conversation.",
+      },
+      {
+        q: "Why pay for bedda.ai when HuggingChat is free?",
+        a: "You're getting Claude 4 Opus, GPT-5, and Gemini 2.5 Pro — the top frontier models — plus professional tools: code execution, knowledge base RAG, image/video generation, team workspaces, and cross-conversation memory. If your work produces value, the quality difference from frontier models is worth $12/mo.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
