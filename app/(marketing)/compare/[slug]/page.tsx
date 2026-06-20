@@ -435,6 +435,218 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-poe": {
+    slug: "bedda-vs-poe",
+    competitor: "Poe (Quora)",
+    competitorUrl: "https://poe.com",
+    competitorPrice: "$19.99/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Poe (Quora)",
+    metaTitle: "bedda.ai vs Poe AI (2026) — No Message Credits, More Models",
+    metaDescription:
+      "Compare bedda.ai and Poe by Quora. Get Claude, GPT-5, Gemini and 36+ AI models with unlimited messages for $12/mo — no compute credits to burn. 7-day free trial.",
+    ogTitle: "bedda.ai vs Poe — Unlimited Messages, 36+ Models, 40% Cheaper",
+    ogDescription:
+      "Poe Pro costs $19.99/mo and limits premium model usage with compute credits. bedda.ai gives you unlimited access to 36+ frontier models for $12/mo — no credits, no limits.",
+    heroHeadline:
+      "Every frontier AI model — unlimited, no compute credits, $8 cheaper than Poe",
+    heroSubtext:
+      "Poe Pro charges $19.99/mo and rations premium models via a compute credit system. bedda.ai gives you unlimited Claude, GPT-5, Gemini, Grok and 36+ models — for $8 less per month.",
+    verdict:
+      "Poe is a discovery platform for AI bots; bedda.ai is a productivity platform for getting real work done. If you're hitting Poe's credit limits or tired of tracking usage, bedda.ai gives you more models for less money with no metering.",
+    switchReasons: [
+      "No compute credits — unlimited messages to premium models every month",
+      "Save $8/mo ($96/year) vs Poe Pro",
+      "Access models Poe doesn't have: DeepSeek R1, Mistral Large, Cerebras Llama",
+      "Knowledge base: upload your own documents and query them in any chat",
+      "Video generation, code execution, and team workspaces built in",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$19.99/mo" },
+      {
+        feature: "Premium model usage limits",
+        bedda: "Unlimited",
+        competitor: "Credit-based",
+      },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: true },
+      { feature: "GPT-5 / GPT-4o", bedda: true, competitor: true },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: true },
+      { feature: "Grok 3", bedda: true, competitor: true },
+      { feature: "DeepSeek R1", bedda: true, competitor: false },
+      { feature: "Mistral Large", bedda: true, competitor: false },
+      { feature: "Cerebras Llama 3.3", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Audio transcription", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "100s (bots)" },
+    ],
+    faq: [
+      {
+        q: "Does bedda.ai have a compute credit system like Poe?",
+        a: "No. bedda.ai charges a flat monthly fee with no compute credits, no daily caps on premium models, and no surprise overages. $12/mo is $12/mo.",
+      },
+      {
+        q: "Poe has hundreds of AI bots — does bedda have that?",
+        a: "bedda.ai focuses on the 36+ best frontier models (Claude, GPT-5, Gemini, Grok, Mistral, DeepSeek, etc.) rather than a bot marketplace. You also get the Plugin Marketplace to add custom tools.",
+      },
+      {
+        q: "Can I use Claude on bedda.ai without compute credit limits?",
+        a: "Yes. Claude 4 Opus and Sonnet are available to Plus subscribers with no per-message credit system — just a reasonable daily usage tier that resets every 24 hours.",
+      },
+      {
+        q: "Does bedda.ai have a free tier like Poe?",
+        a: "Yes. bedda.ai has a free tier with 500 messages/month across a selection of models. The Plus plan ($12/mo) unlocks all 36+ models and premium features with a 7-day free trial.",
+      },
+    ],
+  },
+
+  "bedda-vs-you": {
+    slug: "bedda-vs-you",
+    competitor: "You.com Pro",
+    competitorUrl: "https://you.com",
+    competitorPrice: "$20/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs You.com Pro",
+    metaTitle:
+      "bedda.ai vs You.com Pro (2026) — More AI Models, Knowledge Base, $8 Cheaper",
+    metaDescription:
+      "Compare bedda.ai and You.com Pro. Get Claude, GPT-5, Gemini and 36+ AI models with web search, knowledge base, and video generation for $12/mo. 7-day free trial.",
+    ogTitle:
+      "bedda.ai vs You.com Pro — 36+ AI Models + Knowledge Base, 40% Cheaper",
+    ogDescription:
+      "You.com Pro costs $20/mo for AI search. bedda.ai gives you Claude 4, GPT-5, Gemini, Grok and 36+ models with web search and your own knowledge base for $12/mo.",
+    heroHeadline:
+      "AI search + every frontier model — plus knowledge base, video, and code execution",
+    heroSubtext:
+      "You.com Pro combines AI search with chat for $20/mo. bedda.ai gives you web search inside every frontier model — Claude, GPT-5, Gemini, Grok and 36+ more — for $8 less.",
+    verdict:
+      "You.com Pro is built around AI-powered web search. bedda.ai gives you the same web search capability but wraps it in 36+ frontier models, a personal knowledge base, image and video generation, and a multi-model comparison arena — for 40% less.",
+    switchReasons: [
+      "Web search included — works across Claude, GPT-5, Gemini and all models",
+      "Save $8/mo ($96/year) vs You.com Pro",
+      "Personal knowledge base: upload documents and query them alongside web results",
+      "Image and video generation You.com doesn't offer",
+      "Model comparison arena to run the same prompt through multiple AI at once",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$20/mo" },
+      { feature: "Real-time web search", bedda: true, competitor: true },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: true },
+      { feature: "GPT-5 / GPT-4o", bedda: true, competitor: true },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 3", bedda: true, competitor: false },
+      { feature: "DeepSeek R1", bedda: true, competitor: false },
+      { feature: "Mistral Large", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Audio transcription", bedda: true, competitor: false },
+      { feature: "Knowledge base (upload your docs)", bedda: true, competitor: false },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "~5" },
+    ],
+    faq: [
+      {
+        q: "Does bedda.ai have web search like You.com?",
+        a: "Yes. bedda.ai has built-in web search via Brave Search, available to all Plus subscribers. Any model — Claude, GPT-5, Gemini — can search the web and return cited results in real time.",
+      },
+      {
+        q: "What makes bedda.ai different from You.com for research?",
+        a: "You.com focuses on search-first AI. bedda.ai combines web search with a personal knowledge base (upload PDFs, docs, CSVs) so you can query your own documents alongside live web results — great for deep research workflows.",
+      },
+      {
+        q: "Does You.com have a knowledge base for uploading documents?",
+        a: "You.com allows file uploads within individual chats. bedda.ai's knowledge base persists across all conversations — upload once and every future chat can reference those documents via RAG.",
+      },
+      {
+        q: "Can I compare AI models side by side on bedda.ai?",
+        a: "Yes. bedda.ai's model comparison arena lets you run the same prompt through up to 4 models simultaneously and compare responses — a feature You.com doesn't offer.",
+      },
+    ],
+  },
+
+  "bedda-vs-notion-ai": {
+    slug: "bedda-vs-notion-ai",
+    competitor: "Notion AI",
+    competitorUrl: "https://notion.so",
+    competitorPrice: "$10/mo add-on",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Notion AI",
+    metaTitle:
+      "bedda.ai vs Notion AI (2026) — 36+ AI Models vs One Writing Tool",
+    metaDescription:
+      "Compare bedda.ai and Notion AI. Get Claude, GPT-5, Gemini and 36+ AI models for $12/mo — vs paying $10/mo extra just for AI inside Notion. 7-day free trial.",
+    ogTitle: "bedda.ai vs Notion AI — Full AI Platform vs Add-on, Same Price",
+    ogDescription:
+      "Notion AI costs $10/mo on top of your Notion subscription ($16-18/mo). bedda.ai gives you Claude 4, GPT-5, Gemini and 36+ frontier models as a standalone app for $12/mo.",
+    heroHeadline:
+      "Claude, GPT-5, Gemini and 36+ AI models — for $2 more than just Notion AI",
+    heroSubtext:
+      "Notion AI is $10/mo extra on top of Notion ($16-18/mo base) — $26-28/mo total for AI writing in one tool. bedda.ai gives you every frontier AI model in a dedicated platform for $12/mo.",
+    verdict:
+      "If you use Notion primarily for AI features, you're overpaying significantly. bedda.ai is a dedicated AI platform that gives you 36+ frontier models, web search, image generation, video, and code execution — at less than half the effective cost of a full Notion + Notion AI stack.",
+    switchReasons: [
+      "Stop paying $26-28/mo (Notion + Notion AI) — switch to $12/mo for more AI power",
+      "Access Claude 4, GPT-5, Gemini, Grok and 36+ models in one app",
+      "Web search, image generation, and video generation not available in Notion AI",
+      "Knowledge base: index your Notion-exported docs and query them in bedda",
+      "Code execution, model comparison arena, and Slack/Discord/Telegram bots",
+    ],
+    rows: [
+      { feature: "Standalone price", bedda: "$12/mo", competitor: "$10/mo add-on" },
+      {
+        feature: "Requires another subscription",
+        bedda: false,
+        competitor: true,
+      },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "GPT-5 / GPT-4o", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 3", bedda: true, competitor: false },
+      { feature: "DeepSeek R1", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Real-time web search", bedda: true, competitor: false },
+      { feature: "Audio transcription", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "AI writing inside your workspace", bedda: false, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "1" },
+    ],
+    faq: [
+      {
+        q: "Is Notion AI worth $10/mo extra?",
+        a: "If you live in Notion and just need quick writing assistance, Notion AI is convenient. But if you use AI for research, coding, image generation, or multi-model reasoning, bedda.ai gives dramatically more capability for roughly the same incremental cost.",
+      },
+      {
+        q: "Can I still use Notion with bedda.ai?",
+        a: "Absolutely. Many users use bedda.ai for AI-heavy work (research, drafting, analysis) and Notion for organizing the results. You can paste content between them freely, or use bedda's knowledge base to index your Notion exports.",
+      },
+      {
+        q: "Does bedda.ai have a writing assistant like Notion AI?",
+        a: "Yes — Claude 4, GPT-5, and Gemini are all excellent writing assistants, often outperforming Notion AI's underlying model. You can also use custom instructions to set a writing style that persists across all sessions.",
+      },
+      {
+        q: "What AI model does Notion AI use?",
+        a: "Notion AI uses a combination of models (primarily Claude and GPT-4 class models) tuned for document editing tasks. bedda.ai lets you choose between 36+ models directly, including the same Claude and GPT variants.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
