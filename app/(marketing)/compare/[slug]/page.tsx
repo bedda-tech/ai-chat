@@ -862,6 +862,218 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-writesonic": {
+    slug: "bedda-vs-writesonic",
+    competitor: "Writesonic Pro",
+    competitorUrl: "https://writesonic.com",
+    competitorPrice: "$16/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Writesonic",
+    metaTitle:
+      "bedda.ai vs Writesonic (2026) — 36+ AI Models vs AI Writing Tool",
+    metaDescription:
+      "Compare bedda.ai and Writesonic. bedda gives you Claude 4, GPT-5, Gemini, Grok and 36+ models for $12/mo — $4 cheaper than Writesonic Pro, with no word-count caps. 7-day free trial.",
+    ogTitle:
+      "bedda.ai vs Writesonic — More Models, Lower Price, No Word Limits",
+    ogDescription:
+      "Writesonic is built for marketing copy at $16-79/mo. bedda.ai gives you 36+ frontier AI models including GPT-5 and Claude 4 for $12/mo — better for general-purpose AI work.",
+    heroHeadline:
+      "36+ frontier AI models for less than Writesonic's entry plan",
+    heroSubtext:
+      "Writesonic focuses on AI-generated marketing copy with word-count limits. bedda.ai gives you Claude 4, GPT-5, Gemini 2.5 Pro, Grok 3 and 36+ more models for unlimited conversations — for $4 less per month.",
+    verdict:
+      "Writesonic is a specialized marketing copywriting tool. If you need a dedicated SEO content pipeline, it has templates built for that. But if you want frontier AI for general tasks — research, coding, analysis, writing — bedda.ai gives you better underlying models for less money and no word-count restrictions.",
+    switchReasons: [
+      "Access Claude 4, GPT-5, Gemini 2.5 Pro and Grok 3 — not just one AI engine",
+      "Save $4/mo — no word-count caps, no credit system",
+      "Image generation, video generation, and code execution in one app",
+      "Knowledge base RAG for grounding responses in your own documents",
+      "Chat across 36+ models without switching apps or subscriptions",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$16–79/mo" },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "GPT-5 / GPT-4o", bedda: true, competitor: "Via API key" },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 3", bedda: true, competitor: false },
+      { feature: "DeepSeek R1", bedda: true, competitor: false },
+      {
+        feature: "Word / credit limits",
+        bedda: "None",
+        competitor: "Yes (plan-based)",
+      },
+      { feature: "Real-time web search", bedda: true, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: true },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: true },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Marketing copy templates", bedda: false, competitor: true },
+      { feature: "SEO content optimizer", bedda: false, competitor: true },
+      { feature: "Team workspaces", bedda: true, competitor: true },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "~2" },
+    ],
+    faq: [
+      {
+        q: "Is bedda.ai good for writing marketing copy?",
+        a: "Yes. Claude 4 Opus and GPT-5 both excel at persuasive copy, email campaigns, and blog posts. You don't get Writesonic's pre-built SEO templates, but the underlying model quality is higher and you can switch models to find the tone that fits.",
+      },
+      {
+        q: "Does bedda.ai have word limits like Writesonic?",
+        a: "No. bedda.ai Plus ($12/mo) gives you unlimited messages — no word counts, no credits, no overage charges. Writesonic's entry plan caps output; heavier users need the $79+/mo Business plan.",
+      },
+      {
+        q: "What does Writesonic have that bedda.ai doesn't?",
+        a: "Writesonic's core strength is its library of 100+ marketing copy templates (landing pages, Google Ads, product descriptions) and its Surfer SEO integration. If you're running a content production workflow at scale, those purpose-built features add genuine value.",
+      },
+      {
+        q: "Can I use bedda.ai for SEO content?",
+        a: "Yes. You can use web search to pull in current SERP data, ask Claude 4 or GPT-5 to write optimized drafts, and use the knowledge base to feed in your brand guidelines. It's a manual workflow vs Writesonic's end-to-end pipeline, but the output quality from frontier models is competitive.",
+      },
+    ],
+  },
+
+  "bedda-vs-phind": {
+    slug: "bedda-vs-phind",
+    competitor: "Phind Pro",
+    competitorUrl: "https://www.phind.com",
+    competitorPrice: "$17/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Phind",
+    metaTitle:
+      "bedda.ai vs Phind Pro (2026) — Full-Stack AI vs Coding-Only Search",
+    metaDescription:
+      "Compare bedda.ai and Phind Pro. bedda gives you Claude 4, GPT-5, Gemini, DeepSeek and 36+ models for $12/mo — $5 cheaper than Phind Pro, with writing, image gen, and video too. 7-day free trial.",
+    ogTitle: "bedda.ai vs Phind — Same Coding AI + 35 More Models, $5 Cheaper",
+    ogDescription:
+      "Phind Pro is $17/mo for coding-focused AI search. bedda.ai gives you DeepSeek R1, Claude 4, GPT-5 and 36+ models for general coding AND writing AND research — for $12/mo.",
+    heroHeadline: "DeepSeek, Claude 4, and GPT-5 for coding — plus everything else",
+    heroSubtext:
+      "Phind Pro is a great coding search tool at $17/mo. bedda.ai gives you DeepSeek R1, Claude 4 Sonnet, GPT-5, and Gemini for code — plus the same models for writing, research, images and video — for $5 less per month.",
+    verdict:
+      "Phind is purpose-built for developers who want AI-powered code search and explanation. If coding is your only use case, it's a solid tool. But if you write documentation, communicate with non-technical teammates, or need image generation alongside coding help, bedda.ai covers all of that with better frontier models at a lower price.",
+    switchReasons: [
+      "Save $5/mo — same DeepSeek R1 coding power plus 35 more models",
+      "Claude 4 Sonnet and GPT-5 for code alongside DeepSeek R1",
+      "Write docs, emails, and reports in the same app as your coding AI",
+      "Code execution sandbox for testing Python and JavaScript directly",
+      "No separate subscription — one $12/mo plan for everything",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$17/mo" },
+      { feature: "DeepSeek R1 (coding)", bedda: true, competitor: true },
+      { feature: "Claude 4 Sonnet", bedda: true, competitor: true },
+      { feature: "GPT-5 / GPT-4o", bedda: true, competitor: true },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 3", bedda: true, competitor: false },
+      { feature: "Mistral Large", bedda: true, competitor: false },
+      { feature: "Real-time web search", bedda: true, competitor: true },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "IDE plugin (VS Code)", bedda: false, competitor: true },
+      { feature: "Codebase search", bedda: false, competitor: true },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "~4" },
+    ],
+    faq: [
+      {
+        q: "Does bedda.ai have the same coding models as Phind?",
+        a: "Yes. bedda.ai includes DeepSeek R1 (which Phind uses heavily for coding), Claude 4 Sonnet, and GPT-5 — the same frontier models Phind routes to. You also get Gemini 2.5 Pro and Grok 3 for alternative perspectives on hard problems.",
+      },
+      {
+        q: "Does bedda.ai have a VS Code extension like Phind?",
+        a: "Not currently. Phind's VS Code plugin is a genuine advantage for developers who want inline AI assistance inside their editor. bedda.ai is browser-based — you tab over to it rather than using it in-editor.",
+      },
+      {
+        q: "Is Phind better than bedda.ai for coding-only workflows?",
+        a: "Phind's codebase search and IDE integration give it an edge for pure coding workflows. If you spend all day in VS Code and want AI inline, Phind's plugin is purpose-built for that. If you need AI for coding AND writing, research, and image work, bedda.ai covers more ground for less money.",
+      },
+      {
+        q: "Can I use bedda.ai to run code?",
+        a: "Yes. bedda.ai has a code execution sandbox powered by E2B — you can run Python and JavaScript directly in the chat and see the output. This is something Phind doesn't offer in its chat interface.",
+      },
+    ],
+  },
+
+  "bedda-vs-openrouter": {
+    slug: "bedda-vs-openrouter",
+    competitor: "OpenRouter",
+    competitorUrl: "https://openrouter.ai",
+    competitorPrice: "Pay-per-use",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs OpenRouter",
+    metaTitle:
+      "bedda.ai vs OpenRouter (2026) — Flat Rate Chat vs Pay-Per-Token API",
+    metaDescription:
+      "Compare bedda.ai and OpenRouter. bedda gives you 36+ AI models with a chat interface for $12/mo flat — no token math, no API keys, no surprise bills. 7-day free trial.",
+    ogTitle:
+      "bedda.ai vs OpenRouter — $12/mo Flat vs Per-Token Billing for 36+ Models",
+    ogDescription:
+      "OpenRouter charges per token with no subscription. bedda.ai gives you 36+ models including Claude 4, GPT-5, Gemini and Grok via a full chat interface for $12/mo — predictable pricing, no API setup.",
+    heroHeadline: "36+ AI models with a chat interface — no token math required",
+    heroSubtext:
+      "OpenRouter is a powerful API router for developers. bedda.ai gives you the same 36+ frontier models — Claude 4, GPT-5, Gemini 2.5 Pro, Grok 3 — with a full chat interface, artifacts, memory, and tools, for a flat $12/mo. No API key setup, no per-token billing.",
+    verdict:
+      "OpenRouter is the right choice if you're building an application and need programmatic access to many models with pay-as-you-go pricing. bedda.ai is the right choice if you're a user who wants to chat with all those models without writing code, tracking token costs, or managing API keys. Same model access, completely different use cases.",
+    switchReasons: [
+      "No token math — one flat $12/mo price for unlimited conversations",
+      "Full chat interface with artifacts, memory, and tools — not just API calls",
+      "Knowledge base, code execution, image & video generation built in",
+      "No API key management — sign up and start chatting immediately",
+      "Predictable monthly cost instead of variable per-use bills",
+    ],
+    rows: [
+      {
+        feature: "Pricing model",
+        bedda: "$12/mo flat",
+        competitor: "Pay-per-token",
+      },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: true },
+      { feature: "GPT-5 / GPT-4o", bedda: true, competitor: true },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: true },
+      { feature: "Grok 3", bedda: true, competitor: true },
+      { feature: "DeepSeek R1", bedda: true, competitor: true },
+      { feature: "Mistral Large", bedda: true, competitor: true },
+      { feature: "Chat interface (no code)", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Web search tool", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: true },
+      { feature: "Programmatic API access", bedda: "Via API keys", competitor: true },
+      { feature: "500+ model catalog", bedda: false, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "500+" },
+    ],
+    faq: [
+      {
+        q: "Who is OpenRouter built for?",
+        a: "OpenRouter is an API aggregator built for developers and companies building AI-powered applications. You call one API endpoint and route to whichever model you want. It has no chat interface — you interact with it through code.",
+      },
+      {
+        q: "Who is bedda.ai built for?",
+        a: "bedda.ai is built for end users — researchers, writers, developers, and professionals who want to chat with frontier AI models without writing code. You get a polished chat interface, artifacts, tools, and team workspaces for a flat monthly price.",
+      },
+      {
+        q: "Is OpenRouter cheaper than bedda.ai?",
+        a: "It depends on usage. OpenRouter charges per token — at $3/M input + $15/M output tokens for Claude 4 Sonnet, 50 conversations at 4k tokens each costs roughly $4-5. At 200+ conversations per month, bedda.ai's $12/mo flat rate is almost certainly cheaper. Heavy users save significantly.",
+      },
+      {
+        q: "Does bedda.ai have an API like OpenRouter?",
+        a: "Yes. bedda.ai has an OpenAI-compatible API (available to paid subscribers) for programmatic access to its models. It's not as broad as OpenRouter's 500+ model catalog, but it covers all 36+ models bedda offers and uses the same OpenAI client libraries.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
