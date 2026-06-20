@@ -57,6 +57,12 @@ export default function MarketingLayout({
               </Link>
               <Link
                 className="text-foreground/60 transition-colors hover:text-foreground/80"
+                href="/teams"
+              >
+                Teams
+              </Link>
+              <Link
+                className="text-foreground/60 transition-colors hover:text-foreground/80"
                 href="/roadmap"
               >
                 Roadmap
