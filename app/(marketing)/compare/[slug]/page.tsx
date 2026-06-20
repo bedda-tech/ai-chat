@@ -647,6 +647,221 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-github-copilot": {
+    slug: "bedda-vs-github-copilot",
+    competitor: "GitHub Copilot",
+    competitorUrl: "https://github.com/features/copilot",
+    competitorPrice: "$10/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs GitHub Copilot",
+    metaTitle:
+      "bedda.ai vs GitHub Copilot (2026) — AI Coding + 36 Models vs Code Only",
+    metaDescription:
+      "Compare bedda.ai and GitHub Copilot. Get AI coding help plus Claude 4, GPT-5, Gemini, web search, image generation and 36+ models for $12/mo. 7-day free trial.",
+    ogTitle: "bedda.ai vs GitHub Copilot — Code + Every AI Model for $2 More",
+    ogDescription:
+      "GitHub Copilot is $10/mo for coding only. bedda.ai gives you AI coding conversations PLUS Claude 4, GPT-5, Gemini, Grok, web search, image gen and 36+ models for $12/mo.",
+    heroHeadline:
+      "AI coding plus research, writing, images and 36+ models — not just code completion",
+    heroSubtext:
+      "GitHub Copilot helps you write code at $10/mo. bedda.ai gives you AI coding conversations alongside Claude 4, GPT-5, Gemini, Grok and 36+ models for research, writing, images and more — for just $2 more.",
+    verdict:
+      "GitHub Copilot is the gold standard for IDE code completion. But if you also use AI for research, writing, or image generation, paying $10 for Copilot and $20 for ChatGPT adds up to $30/mo. bedda.ai covers coding conversations plus every other AI use case for $12/mo.",
+    switchReasons: [
+      "Stop paying $30/mo for Copilot + ChatGPT — bedda covers both for $12/mo",
+      "Ask Claude 4 or GPT-5 to explain code, debug, review PRs and write tests in chat",
+      "Switch to Gemini or DeepSeek R1 for different coding styles in the same session",
+      "Web search, knowledge base, and image generation included — one subscription",
+      "Model comparison arena: run the same coding question through 4 models at once",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$10/mo" },
+      { feature: "AI coding assistance (chat)", bedda: true, competitor: true },
+      { feature: "IDE autocomplete plugin", bedda: false, competitor: true },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "GPT-5 / GPT-4o", bedda: true, competitor: "GPT-4o" },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 3", bedda: true, competitor: false },
+      { feature: "DeepSeek R1 (reasoning)", bedda: true, competitor: false },
+      { feature: "Mistral Large", bedda: true, competitor: false },
+      { feature: "Real-time web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: true },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1" },
+    ],
+    faq: [
+      {
+        q: "Can bedda.ai replace GitHub Copilot for coding?",
+        a: "For chat-based coding help — explaining code, debugging, writing functions, PR reviews — bedda.ai is a strong alternative. Claude 4 and GPT-5 are excellent programmers. However, Copilot's inline IDE autocomplete is unique: if you rely on tab-completion inside VS Code or JetBrains, Copilot does that and bedda does not.",
+      },
+      {
+        q: "What AI models does GitHub Copilot use?",
+        a: "GitHub Copilot uses OpenAI GPT-4o for Copilot Chat. bedda.ai gives you GPT-4o and GPT-5, plus Claude 4 (Opus/Sonnet), Gemini 2.5 Pro, Grok 3, DeepSeek R1, Mistral Large and 30+ more models — each with different coding strengths.",
+      },
+      {
+        q: "Does bedda.ai work for code reviews like Copilot Chat?",
+        a: "Yes. Paste code into bedda.ai and ask Claude 4 or GPT-5 to review it, suggest improvements, write tests, or explain what it does — the same as Copilot Chat, but across more models with no IDE dependency.",
+      },
+      {
+        q: "Is it worth paying for both Copilot and bedda.ai?",
+        a: "If you need IDE tab-completion specifically, you might keep Copilot for that. But for coding chat, research, writing, images, and all other AI tasks, bedda.ai at $12/mo replaces ChatGPT Plus and most other chat subscriptions — saving you $20-30/mo versus running multiple subscriptions.",
+      },
+    ],
+  },
+
+  "bedda-vs-jasper": {
+    slug: "bedda-vs-jasper",
+    competitor: "Jasper",
+    competitorUrl: "https://jasper.ai",
+    competitorPrice: "$39/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Jasper",
+    metaTitle:
+      "bedda.ai vs Jasper AI (2026) — 36+ Models vs AI Writing Tool, $27 Cheaper",
+    metaDescription:
+      "Compare bedda.ai and Jasper AI. Get Claude 4, GPT-5, Gemini and 36+ models with web search, image gen, code execution and video for $12/mo — vs Jasper at $39/mo. 7-day free trial.",
+    ogTitle: "bedda.ai vs Jasper — Claude 4 + GPT-5 Writing for $27 Less Per Month",
+    ogDescription:
+      "Jasper is $39-59/mo for AI writing with one model. bedda.ai gives you Claude 4, GPT-5, Gemini and 36+ AI models for writing, coding, images and research for $12/mo.",
+    heroHeadline:
+      "Claude 4 and GPT-5 write better than Jasper — at a third of the price",
+    heroSubtext:
+      "Jasper charges $39/mo for AI writing powered by GPT-4 class models. bedda.ai gives you Claude 4 Opus, GPT-5, Gemini 2.5 Pro and 36+ models for writing, research, coding, image generation and more — for $27 less per month.",
+    verdict:
+      "Jasper is a polished content marketing tool with templates and brand voice features. But its underlying AI writing quality is matched or exceeded by Claude 4 and GPT-5 — both available on bedda.ai for $12/mo. Unless you specifically need Jasper's workflow templates and brand voice system, bedda.ai gives you better models at 70% less cost.",
+    switchReasons: [
+      "Save $27/mo ($324/year) vs Jasper Starter — same or better writing quality",
+      "Claude 4 Opus produces longer, more nuanced writing than GPT-4-class models",
+      "Switch between models mid-conversation to get multiple drafts in different voices",
+      "Web search, knowledge base, code execution and video generation Jasper doesn't offer",
+      "7-day free trial — compare Claude 4 and GPT-5 writing quality for yourself",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$39/mo" },
+      { feature: "AI long-form writing", bedda: true, competitor: true },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "GPT-5 / GPT-4o", bedda: true, competitor: "GPT-4o" },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 3", bedda: true, competitor: false },
+      { feature: "DeepSeek R1", bedda: true, competitor: false },
+      { feature: "Content templates library", bedda: false, competitor: true },
+      {
+        feature: "Brand voice (saved style guide)",
+        bedda: "Via custom instructions",
+        competitor: true,
+      },
+      { feature: "Real-time web search", bedda: true, competitor: false },
+      {
+        feature: "Image generation",
+        bedda: true,
+        competitor: "Limited (Jasper Art)",
+      },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: true },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1-2" },
+    ],
+    faq: [
+      {
+        q: "Is bedda.ai as good as Jasper for content writing?",
+        a: "bedda.ai gives you Claude 4 Opus, GPT-5, and Gemini 2.5 Pro — the most capable AI writing models available. Jasper uses a similar underlying model (GPT-4 class) but with a writing-focused interface. Most writers find Claude 4 Opus produces more nuanced, long-form writing than Jasper's default output.",
+      },
+      {
+        q: "Does bedda.ai have writing templates like Jasper?",
+        a: "bedda.ai doesn't have Jasper's 80+ pre-built templates, but you can save custom system prompts via the Prompt Library that act as reusable writing templates. For brand voice consistency, bedda's Custom Instructions feature lets you set a persistent writing style for every session.",
+      },
+      {
+        q: "Can I use bedda.ai for SEO writing like Jasper?",
+        a: "Yes. bedda.ai's web search feature pulls real-time data for SEO content. Claude 4 and GPT-5 excel at writing keyword-optimized long-form content — pair them with a web search call to get up-to-date facts and competitor insights.",
+      },
+      {
+        q: "Why does Jasper cost $39/mo when the same models are cheaper elsewhere?",
+        a: "Jasper adds workflow features — templates, brand voice, document collaboration — on top of the underlying model. If those workflow features are critical to your team, Jasper may be worth the premium. If you primarily want the best AI writing quality, the same (or newer) models on bedda.ai cost 70% less.",
+      },
+    ],
+  },
+
+  "bedda-vs-mistral": {
+    slug: "bedda-vs-mistral",
+    competitor: "Mistral Le Chat Pro",
+    competitorUrl: "https://chat.mistral.ai",
+    competitorPrice: "$14.99/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Mistral Le Chat",
+    metaTitle:
+      "bedda.ai vs Mistral Le Chat Pro (2026) — 36+ Models vs Mistral Only",
+    metaDescription:
+      "Compare bedda.ai and Mistral Le Chat Pro. Get Mistral Large PLUS Claude 4, GPT-5, Gemini, Grok and 36+ models for $12/mo — $3 cheaper than Le Chat Pro alone. 7-day free trial.",
+    ogTitle:
+      "bedda.ai vs Mistral Le Chat — Same Mistral + 35 More Models, $3 Cheaper",
+    ogDescription:
+      "Mistral Le Chat Pro is $14.99/mo for Mistral models only. bedda.ai gives you Mistral Large + Claude 4, GPT-5, Gemini, Grok and 36+ models for $12/mo.",
+    heroHeadline:
+      "Mistral Large plus every other frontier AI — for $3 less than Le Chat Pro",
+    heroSubtext:
+      "Mistral Le Chat Pro gives you Mistral's models for $14.99/mo. bedda.ai includes Mistral Large alongside Claude 4, GPT-5, Gemini 2.5 Pro, Grok 3 and 36+ models total — for $2.99 less per month.",
+    verdict:
+      "Le Chat Pro is a fast, clean chat experience built around Mistral's own models — great if you specifically want Mistral's European-hosted inference. But if you want Mistral's models AND the ability to switch to Claude 4, GPT-5, or Gemini mid-conversation, bedda.ai gives you all of that for $3 less per month.",
+    switchReasons: [
+      "Access Mistral Large + Claude 4, GPT-5, Gemini, Grok and 36+ models in one app",
+      "Save $3/mo ($36/year) vs Le Chat Pro — more models for less",
+      "Switch models mid-conversation: start with Mistral, continue with Claude 4",
+      "Video generation, knowledge base, code execution and model comparison arena",
+      "7-day free trial — no credit card required to test all 36+ models",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$14.99/mo" },
+      { feature: "Mistral Large", bedda: true, competitor: true },
+      { feature: "Mistral Small (fast)", bedda: true, competitor: true },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "GPT-5 / GPT-4o", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 3", bedda: true, competitor: false },
+      { feature: "DeepSeek R1", bedda: true, competitor: false },
+      { feature: "Real-time web search", bedda: true, competitor: true },
+      {
+        feature: "Image generation",
+        bedda: true,
+        competitor: "Limited",
+      },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "European data hosting", bedda: false, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "~4" },
+    ],
+    faq: [
+      {
+        q: "Does bedda.ai include Mistral models?",
+        a: "Yes. bedda.ai includes Mistral Large and Mistral Small via the Vercel AI Gateway. You get the same Mistral models as Le Chat Pro, plus Claude 4, GPT-5, Gemini, Grok, DeepSeek and 30+ more — all in one interface.",
+      },
+      {
+        q: "Is Mistral Le Chat better than bedda.ai for European privacy?",
+        a: "Mistral hosts inference infrastructure in Europe, which makes Le Chat a strong choice if EU data residency is a strict requirement. bedda.ai routes through the Vercel AI Gateway and does not currently offer EU-region data residency guarantees — so for GDPR-sensitive enterprise workloads, Le Chat has an advantage.",
+      },
+      {
+        q: "Why use bedda.ai over Le Chat if both have Mistral?",
+        a: "Le Chat is optimized for Mistral's own models. bedda.ai lets you use Mistral as one of 36+ options — switch to Claude 4 for nuanced reasoning, GPT-5 for coding, or Gemini for multimodal tasks, all within the same conversation history.",
+      },
+      {
+        q: "Does bedda.ai have a free tier like Le Chat?",
+        a: "Yes. bedda.ai's free tier includes 500 messages/month across a selection of models including Mistral Small and other fast models. The Plus plan ($12/mo) unlocks all 36+ models including Mistral Large, Claude 4 Opus, and GPT-5.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
