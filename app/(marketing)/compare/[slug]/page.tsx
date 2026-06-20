@@ -292,6 +292,149 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-perplexity": {
+    slug: "bedda-vs-perplexity",
+    competitor: "Perplexity Pro",
+    competitorUrl: "https://perplexity.ai",
+    competitorPrice: "$20/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Perplexity Pro",
+    metaTitle:
+      "bedda.ai vs Perplexity Pro (2026) — AI Chat + Search, 40% Cheaper",
+    metaDescription:
+      "Compare bedda.ai and Perplexity Pro. Get web search PLUS Claude, GPT-5, Gemini, Grok and 36+ AI models for $12/mo — 40% cheaper than Perplexity Pro. 7-day free trial.",
+    ogTitle:
+      "bedda.ai vs Perplexity Pro — Web Search + Every AI Model, $8 Less",
+    ogDescription:
+      "Perplexity Pro costs $20/mo and focuses on AI search. bedda.ai gives you web search PLUS Claude 4, GPT-5, Gemini, Grok and 36+ models for $12/mo.",
+    heroHeadline:
+      "Perplexity's web search — plus Claude, GPT-5, Gemini and 25 more AI models",
+    heroSubtext:
+      "Perplexity Pro specializes in AI-powered search at $20/mo. bedda.ai gives you web search inside every frontier AI model — for $8 less per month.",
+    verdict:
+      "If you use Perplexity for research, bedda.ai gives you the same web search capability inside Claude, GPT-5, and Gemini — plus image generation, code execution, and 36+ models — for 40% less.",
+    switchReasons: [
+      "Keep real-time web search — available across all models on bedda",
+      "Add open-ended chat with Claude 4, GPT-5, Gemini and Grok",
+      "Save $8/mo ($96/year) vs Perplexity Pro",
+      "Image and video generation Perplexity doesn't offer",
+      "Build a personal knowledge base and query your own documents",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$20/mo" },
+      { feature: "Real-time web search", bedda: true, competitor: true },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 3", bedda: true, competitor: false },
+      { feature: "DeepSeek R1", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Audio transcription", bedda: true, competitor: false },
+      {
+        feature: "Knowledge base (upload your docs)",
+        bedda: true,
+        competitor: false,
+      },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "4" },
+    ],
+    faq: [
+      {
+        q: "Does bedda.ai have web search like Perplexity?",
+        a: "Yes. bedda.ai has built-in web search (via Brave Search) available to all paid users. Any model — Claude, GPT-5, Gemini — can search the web and cite sources in real time.",
+      },
+      {
+        q: "Is Perplexity better for research?",
+        a: "Perplexity is optimized for quick factual lookups with citations. bedda.ai gives you the same web search but also lets you do deep research with Claude or Gemini 2.5 Pro's long-context windows — often producing more nuanced analysis.",
+      },
+      {
+        q: "Can I use multiple AI models on bedda like I can on Perplexity?",
+        a: "Yes — bedda.ai gives you 36+ models including Claude, GPT-5, Gemini, Grok, DeepSeek, Mistral and more. Perplexity Pro lets you pick between a limited set of models for their search interface.",
+      },
+      {
+        q: "Does bedda.ai have citations like Perplexity?",
+        a: "When using web search on bedda.ai, the AI cites sources inline with links. The format is clean and readable, similar to Perplexity's approach.",
+      },
+    ],
+  },
+
+  "bedda-vs-copilot": {
+    slug: "bedda-vs-copilot",
+    competitor: "Microsoft Copilot Pro",
+    competitorUrl: "https://copilot.microsoft.com",
+    competitorPrice: "$20/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Microsoft Copilot Pro",
+    metaTitle:
+      "bedda.ai vs Microsoft Copilot Pro (2026) — No Microsoft 365 Required",
+    metaDescription:
+      "Compare bedda.ai and Copilot Pro. Get Claude, GPT-5, Gemini, Grok and 36+ AI models for $12/mo — no Microsoft 365 subscription needed. 7-day free trial.",
+    ogTitle:
+      "bedda.ai vs Copilot Pro — More AI Models, Lower Cost, No Office Required",
+    ogDescription:
+      "Copilot Pro costs $20/mo and ties you to Microsoft's ecosystem. bedda.ai gives you GPT-5 PLUS Claude 4, Gemini, Grok and 36+ models for $12/mo — no Microsoft account needed.",
+    heroHeadline:
+      "GPT-5 access — plus Claude, Gemini, Grok and 25 more models, no Microsoft required",
+    heroSubtext:
+      "Copilot Pro costs $20/mo and works best if you already pay for Microsoft 365. bedda.ai gives you GPT-5, Claude, Gemini and every other frontier model — standalone, for $8 less.",
+    verdict:
+      "Copilot Pro shines for Word and Excel users already in Microsoft's ecosystem. If you want the best AI models for general use without a Microsoft 365 dependency, bedda.ai gives you more for less.",
+    switchReasons: [
+      "No Microsoft 365 subscription required to get value",
+      "Access Claude 4, Gemini 2.5, Grok and DeepSeek alongside GPT-5",
+      "Save $8/mo ($96/year) vs Copilot Pro",
+      "Video generation, code execution sandbox, and knowledge base built in",
+      "Switch models mid-conversation to find the best one for each task",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$20/mo" },
+      {
+        feature: "Microsoft 365 required for full value",
+        bedda: false,
+        competitor: true,
+      },
+      { feature: "GPT-5 / GPT-4o access", bedda: true, competitor: true },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 3", bedda: true, competitor: false },
+      { feature: "DeepSeek R1", bedda: true, competitor: false },
+      { feature: "Image generation (DALL-E 3)", bedda: true, competitor: true },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: true },
+      { feature: "Audio transcription", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "2" },
+    ],
+    faq: [
+      {
+        q: "Does bedda.ai work without a Microsoft account?",
+        a: "Yes. bedda.ai is completely standalone — no Microsoft account, no Microsoft 365, no Outlook required. Sign up with any email and start chatting immediately.",
+      },
+      {
+        q: "Can bedda.ai integrate with Word and Excel like Copilot?",
+        a: "bedda.ai doesn't plug into the Office ribbon, but you can paste content from Word/Excel into the chat or upload files directly. For teams, bedda has shared workspaces with custom knowledge bases.",
+      },
+      {
+        q: "Is bedda.ai's GPT-5 access the same as Copilot Pro?",
+        a: "Yes — bedda routes to GPT-5 via OpenAI's API, the same model. You get the same intelligence without the Microsoft 365 requirement.",
+      },
+      {
+        q: "Does Copilot Pro have a free trial?",
+        a: "Microsoft occasionally offers trial periods for Copilot Pro. bedda.ai always offers a 7-day free trial with no credit card required.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
