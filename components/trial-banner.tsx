@@ -49,12 +49,12 @@ export function TrialBanner() {
         <Clock className="size-4 shrink-0" />
         <span className="font-medium">{label}</span>
         <span className="hidden opacity-75 sm:inline">
-          — upgrade to keep full access.
+          — add a payment method to keep access.
         </span>
       </div>
       <div className="flex shrink-0 items-center gap-2">
         <Button asChild className="h-7 px-3 text-xs" size="sm">
-          <Link href="/upgrade">Upgrade now</Link>
+          <Link href="/settings">Add payment method</Link>
         </Button>
         <button
           aria-label="Dismiss"
