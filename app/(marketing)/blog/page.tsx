@@ -126,6 +126,42 @@ const posts = [
     readingTime: "9 min read",
     category: "Guides",
   },
+  {
+    slug: "grok-vs-chatgpt",
+    title: "Grok 4 vs ChatGPT: Which AI Is Better in 2026?",
+    description:
+      "Grok 4 by xAI vs ChatGPT (GPT-5) by OpenAI — a head-to-head comparison on reasoning, coding, real-time search, pricing, and which AI to use in 2026.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Model Comparisons",
+  },
+  {
+    slug: "perplexity-vs-chatgpt",
+    title: "Perplexity AI vs ChatGPT: Which Is Better for Research in 2026?",
+    description:
+      "Perplexity AI vs ChatGPT — comparing two very different tools. Perplexity is a research engine; ChatGPT is a general AI assistant. Here's when to use each.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Model Comparisons",
+  },
+  {
+    slug: "deepseek-vs-chatgpt",
+    title: "DeepSeek vs ChatGPT: Is the Free Alternative Actually Better?",
+    description:
+      "DeepSeek V3 and R1 vs ChatGPT GPT-5 — comparing capabilities, pricing, privacy, and when the open-source alternative is worth choosing over OpenAI in 2026.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Model Comparisons",
+  },
+  {
+    slug: "claude-opus-4-review",
+    title: "Claude Opus 4.8 Review: Is Anthropic's AI the Best in 2026?",
+    description:
+      "An honest review of Claude Opus 4.8 — strengths, weaknesses, pricing, and how it compares to GPT-5 and Gemini 2.5 Pro for writing, coding, and research.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Model Reviews",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
