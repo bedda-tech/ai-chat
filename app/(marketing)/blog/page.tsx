@@ -90,6 +90,42 @@ const posts = [
     readingTime: "8 min read",
     category: "Model Comparisons",
   },
+  {
+    slug: "best-free-ai-chatbot",
+    title: "Best Free AI Chatbot in 2026 (No Credit Card Required)",
+    description:
+      "Looking for a free AI chatbot? We ranked the best options in 2026 — including ChatGPT free, Claude free tier, Gemini, and bedda.ai's free plan with 10+ models.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Guides",
+  },
+  {
+    slug: "grok-4-review",
+    title: "Grok 4 Review: Is xAI's Latest Model Worth It? (2026)",
+    description:
+      "An honest review of Grok 4 by xAI — strengths, weaknesses, pricing, and how it compares to ChatGPT, Claude, and Gemini in 2026.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Model Reviews",
+  },
+  {
+    slug: "chatgpt-vs-gemini",
+    title: "ChatGPT vs Google Gemini: Which Is Better in 2026?",
+    description:
+      "ChatGPT Plus vs Google Gemini Advanced — a detailed 2026 comparison covering writing, coding, accuracy, multimodal tasks, and pricing.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Model Comparisons",
+  },
+  {
+    slug: "ai-for-productivity",
+    title: "How to Use AI to 10x Your Productivity in 2026",
+    description:
+      "Practical guide to using AI for work productivity — which models to use for writing, coding, research, email, and analysis. With real examples.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "Guides",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
