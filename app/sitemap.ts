@@ -1,9 +1,17 @@
 import type { MetadataRoute } from "next";
+import modelsData from "@/lib/ai/models-data.json" with { type: "json" };
 
 const BASE_URL = "https://bedda.ai";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
+
+  const modelPages: MetadataRoute.Sitemap = modelsData.models.map((m) => ({
+    url: `${BASE_URL}/models/${m.id}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }));
 
   return [
     {
@@ -276,5 +284,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.3,
     },
+    ...modelPages,
   ];
 }
