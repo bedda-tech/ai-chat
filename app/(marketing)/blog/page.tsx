@@ -54,6 +54,42 @@ const posts = [
     readingTime: "9 min read",
     category: "Developer Guides",
   },
+  {
+    slug: "claude-vs-chatgpt",
+    title: "Claude vs ChatGPT in 2026: Which AI Should You Use?",
+    description:
+      "Claude vs ChatGPT — a detailed comparison of Anthropic Claude and OpenAI ChatGPT on writing, coding, reasoning, and instruction-following. Which is better for your work?",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "Model Comparisons",
+  },
+  {
+    slug: "deepseek-r1-review",
+    title: "DeepSeek R1 Review: Is It Really Better Than GPT-5?",
+    description:
+      "DeepSeek R1 made headlines with its open-source reasoning model. How does it compare to GPT-5 and Claude Opus 4.8 on math, coding, and real-world tasks in 2026?",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Model Reviews",
+  },
+  {
+    slug: "best-ai-for-writing",
+    title: "Best AI for Writing in 2026: A Practical Guide",
+    description:
+      "Which AI is best for writing in 2026? Claude, ChatGPT, Gemini, and Jasper compared for long-form writing, marketing copy, creative fiction, and content creation.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Guides",
+  },
+  {
+    slug: "gemini-vs-claude",
+    title: "Gemini 2.5 Pro vs Claude Opus 4.8: Head-to-Head Comparison",
+    description:
+      "Google Gemini 2.5 Pro vs Anthropic Claude Opus 4.8 — which AI model is better for coding, writing, multimodal tasks, and long-context processing in 2026?",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Model Comparisons",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
