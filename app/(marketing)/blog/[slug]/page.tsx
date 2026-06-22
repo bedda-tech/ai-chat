@@ -5935,6 +5935,743 @@ const POSTS: Record<string, BlogPost> = {
       </article>
     ),
   },
+
+  "kimi-k2-review": {
+    slug: "kimi-k2-review",
+    title: "Kimi K2 Review: Is MoonshotAI's Model Worth Using in 2026?",
+    description:
+      "MoonshotAI's Kimi K2 is one of the fastest and most capable AI models of 2026. How does it compare to GPT-5, Claude Opus 4.8, and Gemini 2.5 Pro? An honest review.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Model Reviews",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          MoonshotAI&apos;s Kimi K2 arrived in mid-2026 as one of the fastest
+          large language models available. With a trillion-parameter
+          mixture-of-experts architecture and class-leading inference speed, it
+          has drawn comparisons to GPT-5 and Claude Opus 4.8. Here&apos;s what
+          it can actually do.
+        </p>
+
+        <h2>What Is Kimi K2?</h2>
+        <p>
+          Kimi K2 is a mixture-of-experts (MoE) model from MoonshotAI, a
+          Beijing-based AI lab. It activates 32B parameters per forward pass
+          from a 1T+ total parameter pool, delivering high capability at low
+          latency. The model supports a 128K context window, strong multilingual
+          performance (especially Chinese and English), and solid coding ability.
+        </p>
+
+        <h2>Where Kimi K2 Excels</h2>
+        <ul>
+          <li>
+            <strong>Speed:</strong> Kimi K2 Turbo is significantly faster than
+            GPT-5 and Claude Opus 4.8. If latency matters — real-time
+            applications, quick answers, high-volume pipelines — Kimi is
+            compelling.
+          </li>
+          <li>
+            <strong>Multilingual tasks:</strong> Kimi K2 outperforms most
+            Western models on Chinese-language tasks, making it the best choice
+            for content that spans English and Chinese.
+          </li>
+          <li>
+            <strong>Long-context reasoning:</strong> Its 128K context window
+            handles long documents, codebases, and research papers well.
+          </li>
+          <li>
+            <strong>Cost efficiency:</strong> Kimi K2 Turbo is one of the most
+            cost-effective frontier models, often priced lower than comparable
+            GPT or Claude tiers via API.
+          </li>
+        </ul>
+
+        <h2>Where It Falls Short</h2>
+        <ul>
+          <li>
+            <strong>Writing quality:</strong> For nuanced long-form English
+            prose, Claude Sonnet 4.6 and Claude Opus 4.8 remain superior. Kimi
+            K2&apos;s writing is accurate but can feel mechanical.
+          </li>
+          <li>
+            <strong>Tool use:</strong> GPT-5 and Claude have more mature
+            agentic tooling. Kimi K2&apos;s function calling works but is not as
+            reliable for complex multi-step agent tasks.
+          </li>
+          <li>
+            <strong>Ecosystem:</strong> Fewer third-party integrations compared
+            to OpenAI or Anthropic. Wider support is growing but lags behind.
+          </li>
+        </ul>
+
+        <h2>Kimi K2 vs the Top Models</h2>
+        <div className="not-prose overflow-hidden rounded-xl border">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b bg-muted/50">
+                <th className="p-4 text-left font-semibold">Dimension</th>
+                <th className="p-4 text-left font-semibold">Kimi K2</th>
+                <th className="p-4 text-left font-semibold">GPT-5</th>
+                <th className="p-4 text-left font-semibold">Claude Opus 4.8</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["Speed", "Fastest", "Medium", "Medium"],
+                ["Coding", "Strong", "Best-in-class", "Excellent"],
+                ["Writing (English)", "Good", "Excellent", "Best-in-class"],
+                ["Multilingual", "Best (Chinese)", "Good", "Good"],
+                ["Context window", "128K", "128K", "200K"],
+                ["Cost", "Lowest", "High", "High"],
+              ].map(([dim, kimi, gpt, claude], i) => (
+                <tr key={i} className={i % 2 === 0 ? "bg-muted/20" : ""}>
+                  <td className="p-4 font-medium">{dim}</td>
+                  <td className="p-4 text-muted-foreground">{kimi}</td>
+                  <td className="p-4 text-muted-foreground">{gpt}</td>
+                  <td className="p-4 text-muted-foreground">{claude}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Who Should Use Kimi K2?</h2>
+        <p>
+          Kimi K2 is an excellent choice if you need:
+        </p>
+        <ul>
+          <li>Fast responses for high-volume or real-time tasks</li>
+          <li>Strong Chinese–English bilingual capability</li>
+          <li>Cost-effective API usage at scale</li>
+          <li>A capable coding assistant with large context</li>
+        </ul>
+        <p>
+          It&apos;s a secondary choice (after Claude or GPT-5) for:
+        </p>
+        <ul>
+          <li>Nuanced English creative writing</li>
+          <li>Complex multi-step agentic workflows</li>
+          <li>Tasks requiring maximum reasoning depth</li>
+        </ul>
+
+        <h2>Verdict</h2>
+        <p>
+          Kimi K2 is a genuinely impressive model — fast, capable, and
+          cost-effective. It belongs in your rotation alongside GPT-5 and Claude,
+          particularly for speed-sensitive tasks and multilingual work. The
+          pragmatic choice is to use multiple models and switch based on the
+          task at hand.
+        </p>
+
+        <div className="not-prose mt-8 rounded-xl border bg-muted/30 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            Try Kimi K2 alongside GPT-5, Claude, and Gemini
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Access Kimi K2 Turbo, Claude Opus 4.8, GPT-5, and 33+ other models
+            on bedda.ai — one subscription, starting at $12/month. 7-day free
+            trial.
+          </p>
+          <div className="flex justify-center gap-3">
+            <Button asChild>
+              <Link href="/register">Start Free Trial</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/models">Browse All Models</Link>
+            </Button>
+          </div>
+        </div>
+      </article>
+    ),
+  },
+
+  "deepseek-v3-review": {
+    slug: "deepseek-v3-review",
+    title: "DeepSeek V3 Review: The Best Open-Source AI Model in 2026?",
+    description:
+      "DeepSeek V3 is the most capable open-source AI model in 2026. How does it compare to GPT-5, Claude, and what makes it different from DeepSeek R1? An honest review.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Model Reviews",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          DeepSeek V3 is the open-weights model that shocked the AI industry —
+          matching GPT-4o performance at a fraction of the training cost. In
+          2026, the V3 series remains one of the most capable open-source AI
+          models available. Here&apos;s an honest assessment.
+        </p>
+
+        <h2>DeepSeek V3 vs DeepSeek R1: What&apos;s the Difference?</h2>
+        <p>
+          Many users confuse the two DeepSeek models. They serve different
+          purposes:
+        </p>
+        <ul>
+          <li>
+            <strong>DeepSeek R1</strong>: A pure reasoning model. It thinks
+            through problems step-by-step before answering. Excellent for math,
+            logic puzzles, and complex reasoning chains. Slower; outputs include
+            its thinking process.
+          </li>
+          <li>
+            <strong>DeepSeek V3</strong>: A general-purpose chat model. Fast,
+            highly capable at coding and writing, and better for everyday
+            tasks where you want a direct answer without extended chain-of-thought.
+          </li>
+        </ul>
+        <p>
+          Use R1 for math and hard reasoning problems. Use V3 for coding, writing,
+          analysis, and general chat.
+        </p>
+
+        <h2>What DeepSeek V3 Does Well</h2>
+        <ul>
+          <li>
+            <strong>Coding:</strong> DeepSeek V3 is one of the best coding models
+            available. It regularly matches GPT-4o and Claude 3.5 Sonnet on
+            HumanEval, LiveCodeBench, and SWE-bench Lite. For Python, JavaScript,
+            and systems languages, it&apos;s excellent.
+          </li>
+          <li>
+            <strong>Speed:</strong> V3 is fast — significantly faster than R1
+            and comparable to GPT-4o Mini for everyday tasks.
+          </li>
+          <li>
+            <strong>Open weights:</strong> You can run DeepSeek V3 locally or on
+            your own infrastructure. This matters for privacy, compliance, and
+            cost control at scale.
+          </li>
+          <li>
+            <strong>Context window:</strong> 128K tokens — handles large
+            codebases, long documents, and multi-turn conversations well.
+          </li>
+          <li>
+            <strong>Cost:</strong> Via API, DeepSeek V3 is among the cheapest
+            frontier-class models, often 10–20× cheaper per token than GPT-5.
+          </li>
+        </ul>
+
+        <h2>Limitations of DeepSeek V3</h2>
+        <ul>
+          <li>
+            <strong>Privacy considerations:</strong> DeepSeek is a Chinese
+            company. For sensitive business data or regulated industries, verify
+            data handling policies before use. Running the open weights locally
+            eliminates this concern.
+          </li>
+          <li>
+            <strong>Content policies:</strong> DeepSeek applies different content
+            restrictions than Western models, which can be a feature or a
+            limitation depending on your use case.
+          </li>
+          <li>
+            <strong>Multimodal:</strong> DeepSeek V3 is primarily text-in,
+            text-out. For vision tasks, GPT-5, Claude Opus 4.8, or Gemini 2.5
+            Pro are better choices.
+          </li>
+        </ul>
+
+        <h2>DeepSeek V3 vs the Competition</h2>
+        <div className="not-prose overflow-hidden rounded-xl border">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b bg-muted/50">
+                <th className="p-4 text-left font-semibold">Model</th>
+                <th className="p-4 text-left font-semibold">Coding</th>
+                <th className="p-4 text-left font-semibold">Speed</th>
+                <th className="p-4 text-left font-semibold">Cost</th>
+                <th className="p-4 text-left font-semibold">Open Source</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["DeepSeek V3", "★★★★★", "Fast", "Very Low", "Yes"],
+                ["DeepSeek R1", "★★★★☆", "Slow", "Very Low", "Yes"],
+                ["GPT-5", "★★★★★", "Medium", "High", "No"],
+                ["Claude Opus 4.8", "★★★★★", "Medium", "High", "No"],
+                ["Gemini 2.5 Pro", "★★★★☆", "Medium", "Medium", "No"],
+              ].map(([model, coding, speed, cost, oss], i) => (
+                <tr key={i} className={i % 2 === 0 ? "bg-muted/20" : ""}>
+                  <td className="p-4 font-medium">{model}</td>
+                  <td className="p-4 text-muted-foreground">{coding}</td>
+                  <td className="p-4 text-muted-foreground">{speed}</td>
+                  <td className="p-4 text-muted-foreground">{cost}</td>
+                  <td className="p-4 text-muted-foreground">{oss}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>DeepSeek V3.1: The Latest Version</h2>
+        <p>
+          DeepSeek V3.1 (also called DeepSeek-V3-0324) is the most recent
+          iteration with improved reasoning, better instruction following, and
+          enhanced code generation. If you&apos;re accessing DeepSeek V3 via
+          API or a multi-model platform, request V3.1 for best results.
+        </p>
+
+        <h2>Should You Use DeepSeek V3?</h2>
+        <p>
+          <strong>Yes, if you:</strong> care about cost efficiency, are building
+          coding tools, need an open-source model, or want a fast general
+          assistant without paying frontier prices.
+        </p>
+        <p>
+          <strong>Supplement with closed models if you:</strong> handle sensitive
+          data requiring Western data residency, need best-in-class vision
+          capabilities, or require the absolute frontier of writing quality.
+        </p>
+        <p>
+          The practical answer for most users: add DeepSeek V3 to your rotation
+          alongside Claude and GPT-5. Use it for coding, quick answers, and
+          cost-sensitive tasks. Switch to Claude for nuanced writing or Gemini
+          for multimodal work.
+        </p>
+
+        <div className="not-prose mt-8 rounded-xl border bg-muted/30 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            DeepSeek V3 + Claude + GPT-5 — one subscription
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Access DeepSeek V3, DeepSeek R1, Claude Opus 4.8, GPT-5, and 33+
+            other models in one place. Plans from $12/month. 7-day free trial.
+          </p>
+          <div className="flex justify-center gap-3">
+            <Button asChild>
+              <Link href="/register">Start Free Trial</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/models">Browse All Models</Link>
+            </Button>
+          </div>
+        </div>
+      </article>
+    ),
+  },
+
+  "best-ai-for-healthcare": {
+    slug: "best-ai-for-healthcare",
+    title: "Best AI for Healthcare Professionals in 2026: Doctors, Nurses & Researchers",
+    description:
+      "Which AI models should healthcare professionals use in 2026? A guide to using Claude, GPT-5, and Gemini for clinical notes, research, patient education, and medical writing.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "Professional Guides",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          Healthcare professionals are among the most active AI users in 2026 —
+          using it for clinical documentation, medical research, patient
+          communication, and continuing education. Here&apos;s a practical guide
+          to which AI models work best for each healthcare use case.
+        </p>
+
+        <h2>Key Principles Before You Start</h2>
+        <ul>
+          <li>
+            <strong>AI is a tool, not a clinician.</strong> Never use AI to make
+            final diagnostic or treatment decisions. It can assist with
+            research, drafting, and summarization — not replace clinical
+            judgment.
+          </li>
+          <li>
+            <strong>Check your institution&apos;s policies.</strong> Many
+            hospitals have specific guidance on AI tools, especially regarding
+            PHI (protected health information). Follow your compliance team&apos;s
+            guidance.
+          </li>
+          <li>
+            <strong>Don&apos;t enter patient data into consumer AI tools.</strong>{" "}
+            Use de-identified information or purpose-built HIPAA-compliant AI
+            products when real patient data is involved.
+          </li>
+        </ul>
+
+        <h2>Clinical Documentation</h2>
+        <p>
+          One of the highest-value uses of AI for clinicians is generating and
+          improving clinical notes, discharge summaries, referral letters, and
+          patient instructions.
+        </p>
+        <p>
+          <strong>Best model:</strong> Claude Sonnet 4.6 or Claude Opus 4.8.
+          Claude&apos;s precise instruction-following and long-context support
+          makes it ideal for structured medical documentation. It follows
+          templates consistently and handles medical terminology accurately.
+        </p>
+        <p>Practical workflows:</p>
+        <ul>
+          <li>
+            Paste a de-identified set of bullet notes and ask Claude to generate
+            a structured SOAP note
+          </li>
+          <li>
+            Draft a patient discharge summary from a list of diagnoses,
+            medications, and follow-up instructions
+          </li>
+          <li>
+            Convert technical clinical notes into plain-language patient
+            instructions
+          </li>
+        </ul>
+
+        <h2>Medical Literature Research</h2>
+        <p>
+          AI is transforming how clinicians keep up with medical literature.
+        </p>
+        <p>
+          <strong>Best model:</strong> Gemini 2.5 Pro (with its 1M-token context
+          window, it can process entire systematic reviews or multiple papers
+          simultaneously). GPT-5 is also strong here, particularly for
+          synthesizing information from multiple sources.
+        </p>
+        <ul>
+          <li>Summarize a clinical trial PDF in 200 words for a team briefing</li>
+          <li>
+            Compare three recent meta-analyses on a treatment question and
+            identify areas of agreement and disagreement
+          </li>
+          <li>
+            Generate a literature review outline for a research submission
+          </li>
+          <li>
+            Explain a complex statistical method (NNT, hazard ratio, Kaplan-Meier)
+            in terms your patients can understand
+          </li>
+        </ul>
+
+        <h2>Patient Communication</h2>
+        <p>
+          Writing clear, empathetic patient-facing content is time-consuming.
+          AI can dramatically accelerate it.
+        </p>
+        <p>
+          <strong>Best model:</strong> Claude (any tier) for its natural,
+          empathetic tone. GPT-5 is a close second.
+        </p>
+        <ul>
+          <li>
+            Rewrite a technical consent form in plain language (6th-grade reading
+            level)
+          </li>
+          <li>
+            Draft pre-procedure instructions for patients undergoing colonoscopy,
+            surgery, or imaging
+          </li>
+          <li>
+            Create FAQ sheets for common diagnoses (Type 2 diabetes, hypertension,
+            post-op care)
+          </li>
+          <li>
+            Generate a script for explaining a new diagnosis sensitively
+          </li>
+        </ul>
+
+        <h2>Medical Education &amp; Exam Prep</h2>
+        <p>
+          Medical students, residents, and nurses studying for certifications
+          (USMLE, NCLEX, board exams) have found AI to be an excellent
+          personalized tutor.
+        </p>
+        <p>
+          <strong>Best model:</strong> GPT-5 or Claude Opus 4.8 for complex
+          clinical reasoning cases; Gemini 2.5 Flash for quick Q&amp;A drills.
+        </p>
+        <ul>
+          <li>
+            &quot;Create 10 USMLE Step 1-style questions on cardiac pharmacology
+            with detailed explanations&quot;
+          </li>
+          <li>
+            &quot;Present a clinical case of septic shock and walk me through
+            the differential and management&quot;
+          </li>
+          <li>
+            &quot;Explain the mechanism of action of beta-blockers at a second-year
+            medical student level&quot;
+          </li>
+        </ul>
+
+        <h2>AI Tools for Healthcare: Model Recommendations</h2>
+        <div className="not-prose overflow-hidden rounded-xl border">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b bg-muted/50">
+                <th className="p-4 text-left font-semibold">Task</th>
+                <th className="p-4 text-left font-semibold">Best Model</th>
+                <th className="p-4 text-left font-semibold">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["Clinical notes", "Claude Sonnet 4.6", "Structured, precise"],
+                ["Literature review", "Gemini 2.5 Pro", "1M context, search grounding"],
+                ["Patient education", "Claude (any)", "Empathetic, clear prose"],
+                ["Exam prep / Q&A", "GPT-5", "Strong clinical reasoning"],
+                ["Medical writing", "Claude Opus 4.8", "Best long-form quality"],
+                ["Quick research", "Gemini 2.5 Flash", "Fast, accurate summaries"],
+              ].map(([task, model, why], i) => (
+                <tr key={i} className={i % 2 === 0 ? "bg-muted/20" : ""}>
+                  <td className="p-4 font-medium">{task}</td>
+                  <td className="p-4 text-muted-foreground">{model}</td>
+                  <td className="p-4 text-muted-foreground">{why}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>A Note on HIPAA and AI</h2>
+        <p>
+          General-purpose AI tools like ChatGPT, Claude.ai, and Gemini are
+          NOT HIPAA-compliant by default. Do not input real patient names,
+          dates of birth, MRNs, or other PHI into consumer AI interfaces.
+        </p>
+        <p>
+          For clinical workflows involving real patient data, use HIPAA-compliant
+          AI products (many EHR vendors offer built-in AI, or you can configure
+          enterprise agreements with Anthropic, OpenAI, or Google). For
+          everything else — research, education, writing templates, protocol
+          development — general AI tools are appropriate when used with
+          de-identified data.
+        </p>
+
+        <div className="not-prose mt-8 rounded-xl border bg-muted/30 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            Claude + GPT-5 + Gemini — one healthcare-ready subscription
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Access all the AI models healthcare professionals rely on — Claude
+            Opus 4.8, GPT-5, and Gemini 2.5 Pro — in one interface. Plans from
+            $12/month. 7-day free trial.
+          </p>
+          <div className="flex justify-center gap-3">
+            <Button asChild>
+              <Link href="/register">Start Free Trial</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/models">Browse Models</Link>
+            </Button>
+          </div>
+        </div>
+      </article>
+    ),
+  },
+
+  "ai-for-hr-professionals": {
+    slug: "ai-for-hr-professionals",
+    title: "Best AI for HR Professionals in 2026: Hiring, Onboarding & HR Tasks",
+    description:
+      "How HR teams are using AI in 2026 — writing job descriptions, screening guidance, employee onboarding, policy creation, and performance reviews. Best models and workflows.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Professional Guides",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          HR professionals are among the biggest beneficiaries of AI in 2026.
+          From drafting job descriptions to developing onboarding programs, the
+          time savings are enormous. Here&apos;s how to use AI for core HR tasks
+          — and which models work best.
+        </p>
+
+        <h2>Recruiting &amp; Job Descriptions</h2>
+        <p>
+          Writing job descriptions is one of the most time-consuming recurring
+          tasks in HR. AI can generate first drafts in seconds, helping you
+          write more compelling, inclusive, and SEO-optimized listings.
+        </p>
+        <p>
+          <strong>Best model:</strong> Claude Sonnet 4.6 or GPT-5. Claude
+          produces clean, well-structured job descriptions that are easy to
+          customize; GPT-5 adds strong keyword optimization for job boards.
+        </p>
+        <p>Prompts that work:</p>
+        <ul>
+          <li>
+            &quot;Write a job description for a Senior Product Manager at a
+            B2B SaaS company. 5+ years required. Emphasize cross-functional
+            collaboration and data-driven decision making. Use inclusive language.&quot;
+          </li>
+          <li>
+            &quot;Rewrite this job description to remove gendered language and
+            focus on outcomes over credentials.&quot;
+          </li>
+          <li>
+            &quot;Create 5 behavioral interview questions for this role based
+            on the competencies in the job description.&quot;
+          </li>
+        </ul>
+
+        <h2>Employee Onboarding</h2>
+        <p>
+          New employee onboarding documentation — welcome guides, role-specific
+          checklists, 30/60/90-day plans, and policy summaries — can be
+          generated and customized quickly with AI.
+        </p>
+        <p>
+          <strong>Best model:</strong> Claude Opus 4.8 for comprehensive
+          onboarding programs; Claude Sonnet 4.6 for quick document generation.
+        </p>
+        <ul>
+          <li>
+            &quot;Create a 30/60/90-day onboarding plan for a new Sales
+            Development Representative. Include week-by-week milestones,
+            key people to meet, and skills to develop.&quot;
+          </li>
+          <li>
+            &quot;Write a welcome email from the CEO to a new hire joining
+            the engineering team on their first day.&quot;
+          </li>
+          <li>
+            &quot;Summarize our employee handbook into a one-page cheat sheet
+            of the most important policies for day-one new hires.&quot;
+          </li>
+        </ul>
+
+        <h2>HR Policies &amp; Documentation</h2>
+        <p>
+          Policy drafting is legal-adjacent work that benefits from
+          AI&apos;s ability to produce structured, comprehensive documents
+          while leaving final review to HR and legal.
+        </p>
+        <p>
+          <strong>Best model:</strong> Claude Opus 4.8 for policy documents
+          requiring nuance and precision. GPT-5 is a solid alternative.
+        </p>
+        <ul>
+          <li>
+            Remote work policy with clear expectations on availability, equipment,
+            and reimbursement
+          </li>
+          <li>
+            PTO and leave policy with state-specific requirements highlighted
+            for attorney review
+          </li>
+          <li>
+            Performance improvement plan (PIP) template with customizable
+            goals, timelines, and check-in cadence
+          </li>
+          <li>
+            Anti-harassment policy aligned with EEOC guidelines
+          </li>
+        </ul>
+
+        <h2>Performance Reviews</h2>
+        <p>
+          AI helps managers write more consistent, meaningful performance
+          reviews and helps HR create review frameworks.
+        </p>
+        <ul>
+          <li>
+            &quot;Write a performance review for an employee who consistently
+            meets targets but struggles with proactive communication. Tone:
+            direct, constructive, supportive.&quot;
+          </li>
+          <li>
+            &quot;Create a performance review rubric for individual contributors
+            in a software engineering team. Include dimensions for technical
+            skills, collaboration, ownership, and growth.&quot;
+          </li>
+          <li>
+            &quot;Generate 10 calibration questions for a performance review
+            committee to ensure rating consistency across departments.&quot;
+          </li>
+        </ul>
+
+        <h2>Training &amp; Development</h2>
+        <p>
+          Building L&amp;D content, training outlines, and learning assessments
+          is significantly faster with AI.
+        </p>
+        <ul>
+          <li>
+            Create a training curriculum for new managers on giving feedback
+            and conducting 1:1s
+          </li>
+          <li>
+            Develop a lunch-and-learn presentation on AI tools for HR teams
+          </li>
+          <li>
+            Generate quiz questions to assess comprehension of a new compliance
+            training module
+          </li>
+        </ul>
+
+        <h2>HR AI Toolkit: Model Guide</h2>
+        <div className="not-prose overflow-hidden rounded-xl border">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b bg-muted/50">
+                <th className="p-4 text-left font-semibold">HR Task</th>
+                <th className="p-4 text-left font-semibold">Best Model</th>
+                <th className="p-4 text-left font-semibold">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["Job descriptions", "Claude Sonnet 4.6", "Clean, inclusive writing"],
+                ["Policy drafting", "Claude Opus 4.8", "Precise, comprehensive"],
+                ["Onboarding docs", "Claude (any)", "Structured, empathetic"],
+                ["Interview questions", "GPT-5", "Creative, varied formats"],
+                ["Performance reviews", "Claude Sonnet 4.6", "Constructive tone"],
+                ["Training content", "GPT-5 or Claude", "Both produce clean L&D copy"],
+              ].map(([task, model, why], i) => (
+                <tr key={i} className={i % 2 === 0 ? "bg-muted/20" : ""}>
+                  <td className="p-4 font-medium">{task}</td>
+                  <td className="p-4 text-muted-foreground">{model}</td>
+                  <td className="p-4 text-muted-foreground">{why}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Considerations for HR Teams</h2>
+        <ul>
+          <li>
+            <strong>Bias in hiring:</strong> AI can reflect and amplify biases
+            in training data. Use AI for drafting job descriptions and
+            interview questions, but make hiring decisions based on structured
+            human evaluation.
+          </li>
+          <li>
+            <strong>Employee data privacy:</strong> Don&apos;t paste employee
+            performance data, compensation details, or PII into consumer AI
+            tools. Use de-identified examples or work through your company&apos;s
+            enterprise AI agreements.
+          </li>
+          <li>
+            <strong>Legal review:</strong> AI-generated HR policies should be
+            reviewed by employment counsel before deployment, especially for
+            state-specific compliance.
+          </li>
+        </ul>
+
+        <div className="not-prose mt-8 rounded-xl border bg-muted/30 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            The full AI toolkit for HR professionals
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and 33+ other models —
+            one subscription at $12/month. Switch models by task and get the
+            best result every time. 7-day free trial.
+          </p>
+          <div className="flex justify-center gap-3">
+            <Button asChild>
+              <Link href="/register">Start Free Trial</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/pricing">View Plans</Link>
+            </Button>
+          </div>
+        </div>
+      </article>
+    ),
+  },
 };
 
 export function generateStaticParams() {

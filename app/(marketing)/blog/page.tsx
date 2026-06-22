@@ -342,6 +342,42 @@ const posts = [
     readingTime: "9 min read",
     category: "Professional Guides",
   },
+  {
+    slug: "kimi-k2-review",
+    title: "Kimi K2 Review: Is MoonshotAI's Model Worth Using in 2026?",
+    description:
+      "MoonshotAI's Kimi K2 is one of the fastest and most capable AI models of 2026. How does it compare to GPT-5, Claude Opus 4.8, and Gemini 2.5 Pro? An honest review.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Model Reviews",
+  },
+  {
+    slug: "deepseek-v3-review",
+    title: "DeepSeek V3 Review: The Best Open-Source AI Model in 2026?",
+    description:
+      "DeepSeek V3 is the most capable open-source AI model in 2026. How does it compare to GPT-5, Claude, and what makes it different from DeepSeek R1? An honest review.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Model Reviews",
+  },
+  {
+    slug: "best-ai-for-healthcare",
+    title: "Best AI for Healthcare Professionals in 2026: Doctors, Nurses & Researchers",
+    description:
+      "Which AI models should healthcare professionals use in 2026? A guide to using Claude, GPT-5, and Gemini for clinical notes, research, patient education, and medical writing.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "Professional Guides",
+  },
+  {
+    slug: "ai-for-hr-professionals",
+    title: "Best AI for HR Professionals in 2026: Hiring, Onboarding & HR Tasks",
+    description:
+      "How HR teams are using AI in 2026 — writing job descriptions, screening guidance, employee onboarding, policy creation, and performance reviews. Best models and workflows.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Professional Guides",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
