@@ -29,6 +29,8 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith("/api/cron/") ||
     pathname.startsWith("/api/unsubscribe") ||
     pathname.startsWith("/compare/") || // SEO comparison pages — must be crawlable
+    pathname === "/blog" ||
+    pathname.startsWith("/blog/") || // SEO blog — must be crawlable
     pathname.startsWith("/join/") || // Referral landing pages
     ["/home", "/pricing", "/roadmap", "/privacy", "/terms", "/unsubscribed"].includes(pathname)
   ) {
