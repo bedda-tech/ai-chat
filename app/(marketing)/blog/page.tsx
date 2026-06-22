@@ -270,6 +270,42 @@ const posts = [
     readingTime: "7 min read",
     category: "AI Guides",
   },
+  {
+    slug: "is-chatgpt-plus-worth-it-2026",
+    title: "Is ChatGPT Plus Worth $20/Month in 2026? An Honest Answer",
+    description:
+      "ChatGPT Plus costs $20/month for GPT-5, o3, and DALL-E 3. Is it worth it — or are there better options? An honest breakdown for 2026.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Guides",
+  },
+  {
+    slug: "best-ai-for-marketers",
+    title: "Best AI for Marketing in 2026: Tools, Models & Workflows",
+    description:
+      "Which AI models work best for marketing teams in 2026? A practical guide to using Claude, GPT-5, and Gemini for copy, content strategy, SEO, and social media.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "AI Guides",
+  },
+  {
+    slug: "mistral-vs-chatgpt",
+    title: "Mistral vs ChatGPT in 2026: Is the European AI Worth It?",
+    description:
+      "Mistral Large vs ChatGPT GPT-5 — comparing the European open-weight AI against OpenAI on coding, writing, pricing, and privacy. Which should you use in 2026?",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Model Comparisons",
+  },
+  {
+    slug: "ai-for-social-media",
+    title: "How to Use AI for Social Media in 2026: Content, Strategy & Posting",
+    description:
+      "A practical guide to using AI for social media in 2026 — writing posts, planning content, generating captions, and choosing the right AI model for each platform.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "AI Guides",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
