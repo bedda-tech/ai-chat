@@ -200,9 +200,12 @@ export function SubscriptionManagement({
                     Processing...
                   </>
                 ) : (
-                  "Upgrade to Plus — $12/mo"
+                  "Start 7-day free trial — then $12/mo"
                 )}
               </Button>
+              <p className="text-center text-muted-foreground text-xs">
+                No charge for 7 days. Cancel anytime.
+              </p>
               <Button
                 className="w-full"
                 disabled={loading}

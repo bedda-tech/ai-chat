@@ -2854,6 +2854,617 @@ const POSTS: Record<string, BlogPost> = {
       </article>
     ),
   },
+
+  "best-ai-subscription-2026": {
+    slug: "best-ai-subscription-2026",
+    title: "Best AI Subscription in 2026: ChatGPT Plus vs Claude Pro vs All-in-One",
+    description:
+      "Comparing the top AI subscriptions in 2026 — ChatGPT Plus ($20/mo), Claude Pro ($20/mo), Gemini Advanced ($19.99/mo), and multi-model alternatives. Which gives you the best value?",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Guides",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          In 2026, you can pay $20/month for ChatGPT Plus, $20/month for Claude Pro,
+          or $19.99/month for Gemini Advanced — and get only that company&apos;s
+          models. Or you can pay $12/month for a multi-model subscription and get
+          all of them. Here&apos;s how to choose.
+        </p>
+
+        <h2>The Main Options</h2>
+        <p>The leading AI subscriptions in 2026:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Subscription</th>
+              <th>Price</th>
+              <th>Models Included</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ChatGPT Plus</td>
+              <td>$20/mo</td>
+              <td>GPT-5, GPT-4o, o3, o4-mini</td>
+            </tr>
+            <tr>
+              <td>Claude Pro</td>
+              <td>$20/mo</td>
+              <td>Claude Opus 4.8, Claude Sonnet 4.6, Haiku</td>
+            </tr>
+            <tr>
+              <td>Gemini Advanced</td>
+              <td>$19.99/mo</td>
+              <td>Gemini 2.5 Pro, Gemini 2.0 Flash</td>
+            </tr>
+            <tr>
+              <td>Grok Premium</td>
+              <td>$30/mo</td>
+              <td>Grok 4, Grok 3</td>
+            </tr>
+            <tr>
+              <td><strong>bedda.ai Plus</strong></td>
+              <td><strong>$12/mo</strong></td>
+              <td><strong>All of the above + 31 more models</strong></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>ChatGPT Plus — $20/Month</h2>
+        <p>
+          ChatGPT Plus gives you access to OpenAI&apos;s full model lineup: GPT-5,
+          GPT-4o, o3 (the most powerful reasoning model), and o4-mini for fast tasks.
+          You also get DALL·E 3 image generation, GPT-4o with voice mode, and
+          Advanced Data Analysis (code execution with Python).
+        </p>
+        <p>
+          <strong>Best for:</strong> Power users who prefer OpenAI models, developers
+          familiar with the GPT ecosystem, and anyone who needs o3 for complex
+          reasoning tasks.
+        </p>
+        <p>
+          <strong>Limitation:</strong> GPT-only. No Claude, no Gemini, no Grok.
+          If you want to compare models or use the best model for each task type,
+          you&apos;re out of luck.
+        </p>
+
+        <h2>Claude Pro — $20/Month</h2>
+        <p>
+          Claude Pro includes Claude Opus 4.8 (one of the best writing and
+          analysis models), Claude Sonnet 4.6 (fast and capable), and Haiku
+          (ultra-fast for simple tasks). It has a 200K context window — the largest
+          of any subscription — making it ideal for long documents and book-length
+          analysis.
+        </p>
+        <p>
+          <strong>Best for:</strong> Writers, researchers, and professionals who
+          primarily need long-context analysis, nuanced writing, and strong
+          instruction-following.
+        </p>
+        <p>
+          <strong>Limitation:</strong> Claude-only. No GPT-5, no Gemini, no Grok.
+          Claude is exceptional at writing but lags slightly behind GPT-5 on
+          certain coding and tool-use benchmarks.
+        </p>
+
+        <h2>Gemini Advanced — $19.99/Month</h2>
+        <p>
+          Gemini Advanced (part of Google One AI Premium) includes Gemini 2.5 Pro —
+          Google&apos;s most capable model. It integrates with Gmail, Docs, Drive,
+          and Meet, making it useful if you live in the Google ecosystem.
+        </p>
+        <p>
+          <strong>Best for:</strong> Google Workspace users who want AI embedded in
+          their existing tools, or users who prefer Gemini&apos;s multimodal
+          capabilities (it handles video, audio, and images natively).
+        </p>
+        <p>
+          <strong>Limitation:</strong> Gemini-only. The Google Workspace integration
+          is valuable, but if you&apos;re not in that ecosystem, you&apos;re paying
+          $19.99/month for a single model family.
+        </p>
+
+        <h2>The Multi-Model Alternative</h2>
+        <p>
+          Here&apos;s the math that most people don&apos;t run:
+        </p>
+        <ul>
+          <li>ChatGPT Plus + Claude Pro = <strong>$40/month</strong> for 2 model families</li>
+          <li>Adding Gemini = <strong>$59.99/month</strong> for 3 model families</li>
+          <li>bedda.ai Plus = <strong>$12/month</strong> for 36+ models across all families</li>
+        </ul>
+        <p>
+          A multi-model subscription like bedda.ai gives you GPT-5, Claude Opus 4.8,
+          Gemini 2.5 Pro, Grok 4, DeepSeek R1, Mistral Large, and 30+ more models —
+          all in one interface, for less than the cost of ChatGPT Plus alone.
+        </p>
+
+        <h2>Which Subscription Is Right for You?</h2>
+        <p>
+          <strong>Choose ChatGPT Plus if:</strong> You specifically need o3 reasoning,
+          you&apos;re deeply integrated into the OpenAI ecosystem, or you use
+          Advanced Data Analysis heavily.
+        </p>
+        <p>
+          <strong>Choose Claude Pro if:</strong> You work primarily with very long
+          documents (200K+ context), you need the best writing quality, or you
+          prefer Anthropic&apos;s approach to AI safety.
+        </p>
+        <p>
+          <strong>Choose a multi-model subscription if:</strong> You want the best
+          model for each task, you&apos;re curious about model differences, you want
+          to future-proof your subscription as new models release, or you want to
+          save $8–48/month compared to multiple subscriptions.
+        </p>
+
+        <h2>The Free Trial Test</h2>
+        <p>
+          The cleanest way to decide: try a multi-model subscription free for 7 days.
+          Most people discover within a week that they use 3–4 different models
+          regularly — and that the ability to switch models mid-task is genuinely
+          valuable, not just a feature on paper.
+        </p>
+
+        <div className="not-prose mt-8 rounded-xl border bg-muted/30 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            Try All 36+ Models Free for 7 Days
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, Grok 4, and 32 more models —
+            all in one subscription. $12/month after trial. Less than ChatGPT Plus alone.
+          </p>
+          <Button asChild>
+            <Link href="/register">Start Free Trial</Link>
+          </Button>
+        </div>
+      </article>
+    ),
+  },
+
+  "openai-o3-review": {
+    slug: "openai-o3-review",
+    title: "OpenAI o3 Review: The Reasoning Model That Changes Everything",
+    description:
+      "OpenAI o3 is the most capable reasoning model ever released. How does it compare to Claude's extended thinking and DeepSeek R1? An honest review with real benchmarks.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Model Reviews",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          OpenAI o3 is the most powerful reasoning AI ever released as of 2026.
+          It demolished every major benchmark: ARC-AGI, AIME, SWE-bench, and
+          FrontierMath. But does that make it the right model for your work? Here&apos;s
+          an honest assessment.
+        </p>
+
+        <h2>What Makes o3 Different</h2>
+        <p>
+          o3 is a &quot;thinking&quot; model — it reasons through problems step-by-step before
+          answering, similar to DeepSeek R1 and Claude&apos;s extended thinking mode.
+          The difference is scale: o3&apos;s compute budget for reasoning is dramatically
+          larger, which explains its benchmark dominance.
+        </p>
+        <p>
+          On ARC-AGI (a test of novel visual reasoning), o3 scored 87.5% — a massive
+          leap from GPT-4o&apos;s 5%. On AIME 2024 (competition mathematics), it achieved
+          96.7%. These aren&apos;t incremental improvements; they&apos;re qualitative jumps.
+        </p>
+
+        <h2>Real-World Performance</h2>
+        <p>Where o3 genuinely excels:</p>
+        <ul>
+          <li>
+            <strong>Competition math and logic puzzles:</strong> o3 can solve problems
+            that stumped every previous AI. If you work with formal proofs, quantitative
+            finance, or advanced statistics, this matters.
+          </li>
+          <li>
+            <strong>Complex coding with multiple constraints:</strong> o3 is the best
+            model for systems-level programming tasks with many interacting requirements.
+            It outperforms GPT-5 on SWE-bench by a meaningful margin.
+          </li>
+          <li>
+            <strong>Scientific research assistance:</strong> Hypothesis generation,
+            research design critique, and interpreting complex data are all stronger.
+          </li>
+        </ul>
+
+        <p>Where o3 is overkill:</p>
+        <ul>
+          <li>
+            <strong>Everyday writing and editing:</strong> Claude Opus 4.8 produces
+            better prose. o3&apos;s writing is competent but less natural.
+          </li>
+          <li>
+            <strong>Simple Q&A and chat:</strong> GPT-5 or even GPT-4o is faster and
+            cheaper for straightforward questions. o3&apos;s reasoning overhead is wasteful
+            on easy tasks.
+          </li>
+          <li>
+            <strong>Speed-sensitive tasks:</strong> o3&apos;s extended thinking means
+            responses take longer. For real-time chat, o4-mini is more practical.
+          </li>
+        </ul>
+
+        <h2>o3 vs Claude Extended Thinking</h2>
+        <p>
+          Claude Opus 4.8 has its own &quot;extended thinking&quot; mode that also reasons
+          step-by-step. On most practical tasks, the gap between o3 and Claude extended
+          thinking is smaller than benchmarks suggest. Claude edges ahead on:
+        </p>
+        <ul>
+          <li>Long-context reasoning (200K token window vs o3&apos;s smaller window)</li>
+          <li>Writing quality during reasoning tasks</li>
+          <li>Instruction-following in complex multi-step prompts</li>
+        </ul>
+        <p>
+          o3 edges ahead on pure mathematical and formal reasoning benchmarks.
+        </p>
+
+        <h2>o3 vs DeepSeek R1</h2>
+        <p>
+          DeepSeek R1 is the only open-source model that approaches o3 on reasoning
+          benchmarks — and it&apos;s free to run locally. For math and coding, R1 is
+          roughly competitive with GPT-4o but still well behind o3. The practical
+          advantage of R1: privacy (runs locally), cost (free), and speed (self-hosted).
+          o3&apos;s advantage: higher ceiling on the hardest problems.
+        </p>
+
+        <h2>How to Access o3</h2>
+        <p>
+          o3 is available via ChatGPT Plus ($20/month) and the OpenAI API
+          (pay-per-use, expensive). On a multi-model subscription like bedda.ai Plus,
+          you get o3 access along with Claude Opus 4.8, Gemini 2.5 Pro, Grok 4,
+          and DeepSeek R1 — making it easy to route each task to the right model.
+        </p>
+
+        <h2>Verdict</h2>
+        <p>
+          o3 is genuinely the best model for hard reasoning tasks. If you regularly
+          solve competition-level math, do complex systems programming, or need
+          scientific research assistance, o3 will change what you think AI can do.
+        </p>
+        <p>
+          For most other tasks, GPT-5, Claude Opus 4.8, and Gemini 2.5 Pro are
+          more practical choices — faster, cheaper per token, and better at
+          everyday writing and conversation. The ideal setup: access to all of
+          them, so you can route each task to the right model.
+        </p>
+
+        <div className="not-prose mt-8 rounded-xl border bg-muted/30 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            Access o3, Claude, Gemini & More in One Place
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Use the right model for each task — o3 for reasoning, Claude for writing,
+            Gemini for multimodal. All 36+ models on bedda.ai Plus for $12/month.
+          </p>
+          <Button asChild>
+            <Link href="/register">Start 7-Day Free Trial</Link>
+          </Button>
+        </div>
+      </article>
+    ),
+  },
+
+  "gemini-25-pro-review": {
+    slug: "gemini-25-pro-review",
+    title: "Gemini 2.5 Pro Review: Is Google's AI Worth Using in 2026?",
+    description:
+      "Google Gemini 2.5 Pro is the most capable Gemini model ever. Does it finally match GPT-5 and Claude Opus? An honest review of its strengths, weaknesses, and best use cases.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Model Reviews",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          Gemini 2.5 Pro is Google&apos;s most capable AI model as of 2026. It tops
+          several key benchmarks and has genuine advantages in multimodal tasks.
+          But is it worth switching from GPT-5 or Claude? Here&apos;s the honest answer.
+        </p>
+
+        <h2>What&apos;s New in Gemini 2.5 Pro</h2>
+        <p>
+          Gemini 2.5 Pro represents a major leap from earlier Gemini models:
+        </p>
+        <ul>
+          <li>
+            <strong>1 million token context window</strong> — the longest of any
+            major AI model. You can analyze entire codebases, multi-year research
+            papers, or complete books in a single prompt.
+          </li>
+          <li>
+            <strong>Native multimodal reasoning</strong> — handles text, images,
+            audio, and video in the same conversation without needing separate tools.
+          </li>
+          <li>
+            <strong>Deep Google integration</strong> — connects to Search, Workspace,
+            YouTube, and Maps when accessed via Google One AI Premium.
+          </li>
+          <li>
+            <strong>Strong coding performance</strong> — competitive with GPT-5
+            on HumanEval and SWE-bench.
+          </li>
+        </ul>
+
+        <h2>Gemini 2.5 Pro vs GPT-5</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Gemini 2.5 Pro</th>
+              <th>GPT-5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Long-context (1M+ tokens)</td>
+              <td>✅ Best-in-class</td>
+              <td>Good (128K limit)</td>
+            </tr>
+            <tr>
+              <td>Video understanding</td>
+              <td>✅ Native</td>
+              <td>Limited</td>
+            </tr>
+            <tr>
+              <td>Coding benchmarks</td>
+              <td>Competitive</td>
+              <td>✅ Slightly ahead</td>
+            </tr>
+            <tr>
+              <td>Writing quality</td>
+              <td>Good</td>
+              <td>✅ Better</td>
+            </tr>
+            <tr>
+              <td>Google Workspace integration</td>
+              <td>✅ Deep</td>
+              <td>None</td>
+            </tr>
+            <tr>
+              <td>Price (subscription)</td>
+              <td>$19.99/mo</td>
+              <td>$20/mo (via ChatGPT Plus)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Gemini 2.5 Pro vs Claude Opus 4.8</h2>
+        <p>
+          Against Claude Opus 4.8, Gemini 2.5 Pro wins on context window size
+          (1M vs 200K tokens) and multimodal tasks. Claude wins on writing quality,
+          instruction-following, and nuanced reasoning. For most writing and analysis
+          tasks, Claude still has an edge — but Gemini 2.5 Pro is much closer than
+          previous versions.
+        </p>
+
+        <h2>Where Gemini 2.5 Pro Excels</h2>
+        <p>
+          <strong>Video and audio analysis:</strong> If you need to analyze YouTube
+          videos, meeting recordings, or podcasts, Gemini 2.5 Pro is the clear
+          choice. GPT-5 and Claude can&apos;t process video natively.
+        </p>
+        <p>
+          <strong>Extremely long documents:</strong> With a 1M token context,
+          Gemini 2.5 Pro can process entire research libraries that would require
+          chunking in any other model.
+        </p>
+        <p>
+          <strong>Google Workspace tasks:</strong> If you use Gmail, Docs, and Sheets
+          daily, Gemini&apos;s native integration saves meaningful time.
+        </p>
+
+        <h2>Where Gemini 2.5 Pro Falls Short</h2>
+        <p>
+          Writing quality is still slightly behind Claude Opus 4.8. For long-form
+          essays, marketing copy, and creative writing, most professional writers
+          still prefer Claude. Gemini&apos;s writing is competent but less distinctive.
+        </p>
+        <p>
+          Gemini 2.5 Pro also occasionally refuses or hedges on tasks where GPT-5
+          and Claude would give direct answers. Google&apos;s safety tuning tends to
+          be more conservative in ways that affect non-harmful use cases.
+        </p>
+
+        <h2>Verdict</h2>
+        <p>
+          Gemini 2.5 Pro is the right choice if you need the longest context window
+          available, work with video and audio natively, or are deeply embedded in
+          Google Workspace. For general writing, coding, and reasoning, GPT-5 and
+          Claude Opus 4.8 are still the frontrunners.
+        </p>
+        <p>
+          The most practical approach: don&apos;t pick one. Gemini 2.5 Pro is at its
+          best when you can reach for it specifically for video analysis and
+          long-document work, while using Claude for writing and GPT-5 for coding.
+          A multi-model subscription makes this workflow practical.
+        </p>
+
+        <div className="not-prose mt-8 rounded-xl border bg-muted/30 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            Access Gemini 2.5 Pro + 35 Other Models
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Use Gemini 2.5 Pro for video and long-context tasks, Claude for writing,
+            GPT-5 for coding — all on bedda.ai Plus for $12/month.
+          </p>
+          <Button asChild>
+            <Link href="/register">Start 7-Day Free Trial</Link>
+          </Button>
+        </div>
+      </article>
+    ),
+  },
+
+  "how-to-use-multiple-ai-models": {
+    slug: "how-to-use-multiple-ai-models",
+    title: "How to Use Multiple AI Models (Without Paying for 3 Subscriptions)",
+    description:
+      "A practical guide to using GPT-5, Claude, and Gemini together — when to switch models, which excels at what, and how to access all of them without spending $60/month.",
+    date: "June 2026",
+    readingTime: "6 min read",
+    category: "Guides",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          The best AI power users in 2026 don&apos;t use just one model — they route
+          tasks to the model best suited for each job. Here&apos;s the practical playbook
+          for using multiple AI models efficiently, without juggling three subscriptions.
+        </p>
+
+        <h2>Why Use Multiple Models?</h2>
+        <p>
+          Each major AI model has genuine strengths. Using only one means leaving
+          capability on the table:
+        </p>
+        <ul>
+          <li>GPT-5 is better at coding and complex tool use</li>
+          <li>Claude Opus 4.8 is better at writing and long-document analysis</li>
+          <li>Gemini 2.5 Pro is better at video analysis and has a 1M token context</li>
+          <li>o3 is better at hard math and formal reasoning</li>
+          <li>DeepSeek R1 is excellent for reasoning tasks and is open-source/free</li>
+          <li>Grok 4 has real-time X/Twitter data and is strong at current events</li>
+        </ul>
+        <p>
+          Trying to make one model do everything is like using a screwdriver to hammer
+          a nail. It works, but it&apos;s not optimal.
+        </p>
+
+        <h2>The Model Routing Playbook</h2>
+
+        <h3>Writing and Editing → Claude Opus 4.8</h3>
+        <p>
+          For essays, reports, marketing copy, email drafts, and creative writing,
+          Claude Opus 4.8 produces the most natural prose. It follows stylistic
+          instructions precisely and adapts to your voice better than GPT-5.
+        </p>
+        <p>
+          <em>Prompt tip:</em> Give Claude a brief style guide: &quot;Write in the style
+          of [example]. Short sentences. No jargon. Professional but approachable.&quot;
+          It will maintain that style across thousands of words.
+        </p>
+
+        <h3>Coding and Debugging → GPT-5 or Claude</h3>
+        <p>
+          GPT-5 leads on coding benchmarks and handles multi-file refactoring and
+          complex debugging better. Claude is slightly behind on benchmarks but
+          produces cleaner explanations and adapts better to existing codebases.
+          Use GPT-5 for greenfield; Claude for codebases you need to understand and
+          extend.
+        </p>
+
+        <h3>Research and Analysis → Claude or Gemini 2.5 Pro</h3>
+        <p>
+          For long documents (PDFs, research papers, reports), Claude handles up to
+          200K tokens and excels at synthesis. Gemini 2.5 Pro handles up to 1M tokens
+          — use it for entire codebases, lengthy transcripts, or books. Both are
+          better than GPT-5 for document-heavy research tasks.
+        </p>
+
+        <h3>Math and Reasoning → o3 or DeepSeek R1</h3>
+        <p>
+          For competition-level math, formal proofs, quantitative problems, and
+          complex logical reasoning, o3 is the best model available. DeepSeek R1
+          is free (open-source) and competitive on most reasoning tasks below the
+          top 5% of difficulty.
+        </p>
+
+        <h3>Current Events and News → Grok 4 or Perplexity</h3>
+        <p>
+          For questions about what happened this week, recent data, stock prices,
+          or breaking news, Grok 4 has real-time access to X (Twitter) data and
+          outperforms models with stale training cutoffs. Web-connected search
+          (available in most multi-model platforms) also helps here.
+        </p>
+
+        <h3>Video, Audio, and Images → Gemini 2.5 Pro</h3>
+        <p>
+          If you need to analyze YouTube videos, transcribe and summarize meetings,
+          or process audio natively, Gemini 2.5 Pro is the only major model that
+          handles all three natively without a separate transcription step.
+        </p>
+
+        <h2>Making This Practical</h2>
+        <p>
+          The challenge with using multiple models is friction: logging into
+          different apps, keeping track of conversation history across platforms,
+          and paying for multiple subscriptions. There are two practical solutions:
+        </p>
+        <p>
+          <strong>Option 1: Use multiple free tiers.</strong> Most major models
+          have free tiers with usage limits. You can juggle Claude.ai free,
+          ChatGPT free, and Gemini free — but you&apos;ll hit limits quickly, and
+          switching between 3 apps mid-task is disruptive.
+        </p>
+        <p>
+          <strong>Option 2: Use a multi-model subscription.</strong> Platforms like
+          bedda.ai give you access to all major models in one interface, with one
+          subscription ($12/month). You can switch models mid-conversation, compare
+          responses side-by-side, and maintain conversation history across sessions.
+        </p>
+
+        <h2>Quick Reference: Which Model to Use</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Best Model</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Long-form writing, essays, copy</td>
+              <td>Claude Opus 4.8</td>
+            </tr>
+            <tr>
+              <td>Complex coding, multi-file tasks</td>
+              <td>GPT-5</td>
+            </tr>
+            <tr>
+              <td>Very long documents (200K+ tokens)</td>
+              <td>Gemini 2.5 Pro</td>
+            </tr>
+            <tr>
+              <td>Hard math, formal reasoning</td>
+              <td>o3 or DeepSeek R1</td>
+            </tr>
+            <tr>
+              <td>Current events, real-time data</td>
+              <td>Grok 4 or web search</td>
+            </tr>
+            <tr>
+              <td>Video and audio analysis</td>
+              <td>Gemini 2.5 Pro</td>
+            </tr>
+            <tr>
+              <td>Quick Q&A, everyday tasks</td>
+              <td>GPT-5 or Claude Sonnet</td>
+            </tr>
+            <tr>
+              <td>Image generation</td>
+              <td>DALL·E 3 or Flux</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div className="not-prose mt-8 rounded-xl border bg-muted/30 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            All 36+ Models. One Subscription.
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Stop switching between apps. Use Claude, GPT-5, Gemini, Grok, o3,
+            and 31 more models in one place — $12/month with a 7-day free trial.
+          </p>
+          <Button asChild>
+            <Link href="/register">Start Free Trial</Link>
+          </Button>
+        </div>
+      </article>
+    ),
+  },
 };
 
 export function generateStaticParams() {

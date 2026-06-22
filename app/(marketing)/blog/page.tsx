@@ -162,6 +162,42 @@ const posts = [
     readingTime: "8 min read",
     category: "Model Reviews",
   },
+  {
+    slug: "best-ai-subscription-2026",
+    title: "Best AI Subscription in 2026: ChatGPT Plus vs Claude Pro vs All-in-One",
+    description:
+      "Comparing the top AI subscriptions in 2026 — ChatGPT Plus ($20/mo), Claude Pro ($20/mo), Gemini Advanced ($19.99/mo), and multi-model alternatives. Which gives you the best value?",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Guides",
+  },
+  {
+    slug: "openai-o3-review",
+    title: "OpenAI o3 Review: The Reasoning Model That Changes Everything",
+    description:
+      "OpenAI o3 is the most capable reasoning model ever released. How does it compare to Claude's extended thinking and DeepSeek R1? An honest review with real benchmarks.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Model Reviews",
+  },
+  {
+    slug: "gemini-25-pro-review",
+    title: "Gemini 2.5 Pro Review: Is Google's AI Worth Using in 2026?",
+    description:
+      "Google Gemini 2.5 Pro is the most capable Gemini model ever. Does it finally match GPT-5 and Claude Opus? An honest review of its strengths, weaknesses, and best use cases.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Model Reviews",
+  },
+  {
+    slug: "how-to-use-multiple-ai-models",
+    title: "How to Use Multiple AI Models (Without Paying for 3 Subscriptions)",
+    description:
+      "A practical guide to using GPT-5, Claude, and Gemini together — when to switch models, which excels at what, and how to access all of them without spending $60/month.",
+    date: "June 2026",
+    readingTime: "6 min read",
+    category: "Guides",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
