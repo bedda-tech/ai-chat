@@ -1274,6 +1274,265 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-character-ai": {
+    slug: "bedda-vs-character-ai",
+    competitor: "Character.AI",
+    competitorUrl: "https://character.ai",
+    competitorPrice: "$9.99/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Character.AI",
+    metaTitle: "bedda.ai vs Character.AI (2026) — Frontier AI vs Entertainment Chat",
+    metaDescription:
+      "Character.AI is fun but limited to character roleplay. bedda.ai gives you Claude 4, GPT-5, Gemini 2.5 Pro, and 36+ frontier models for real work — coding, research, writing, analysis — for $12/mo. 7-day free trial.",
+    ogTitle: "bedda.ai vs Character.AI — Serious AI vs Entertainment Bots",
+    ogDescription:
+      "Character.AI is great for roleplay at $9.99/mo. bedda.ai gives you Claude 4, GPT-5, Gemini 2.5 Pro, and 36+ frontier models for real productivity — coding, research, writing — at $12/mo.",
+    heroHeadline: "Character.AI is for entertainment. bedda.ai is for work.",
+    heroSubtext:
+      "Character.AI is a great platform for creative roleplay and entertainment. When you need frontier AI to help you code, research, write, or analyze data, bedda.ai gives you Claude 4, GPT-5, Gemini 2.5 Pro, and 36+ professional models — for $2 more per month.",
+    verdict:
+      "Character.AI and bedda.ai serve different needs. Character.AI excels at entertainment, creative writing, and social roleplay. bedda.ai is built for productivity — professional AI models, code execution, knowledge base, and team workspaces. For serious work, bedda.ai is the clear choice.",
+    switchReasons: [
+      "Access Claude 4 Opus, GPT-5, and Gemini 2.5 Pro — state-of-the-art frontier models",
+      "Run Python and JavaScript code in a real E2B sandbox",
+      "Upload documents to a knowledge base and reference them in any conversation",
+      "Generate images (DALL-E 3, Imagen 3, Flux) and videos (Kling) natively",
+      "Web search integration for real-time information",
+      "Team workspaces for collaborative AI workflows at work",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$9.99/mo" },
+      { feature: "Claude 4 (Opus, Sonnet)", bedda: true, competitor: false },
+      { feature: "GPT-5 / GPT-4o", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 3", bedda: true, competitor: false },
+      { feature: "Character roleplay bots", bedda: false, competitor: true },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Proprietary only" },
+    ],
+    faq: [
+      {
+        q: "Is Character.AI good for serious work?",
+        a: "Character.AI is designed for entertainment, creative roleplay, and social interaction — not professional productivity. It uses proprietary AI tuned for character simulation, not frontier reasoning models like Claude 4 or GPT-5. For coding, research, writing, or data analysis, bedda.ai with Claude 4 and GPT-5 will significantly outperform Character.AI.",
+      },
+      {
+        q: "What do people use Character.AI for?",
+        a: "Character.AI is primarily used for entertainment: roleplaying with AI characters, creative storytelling, social companionship, and casual conversation. It has a large teen and young adult user base. It's not a productivity tool and doesn't offer tools like code execution, knowledge base, or web search.",
+      },
+      {
+        q: "Is bedda.ai $2 more worth it vs Character.AI?",
+        a: "If your goal is entertainment and roleplay, Character.AI is the right choice at $9.99/mo. If you want to use AI for work — coding, research, writing, analysis — bedda.ai's $12/mo gives you Claude 4, GPT-5, Gemini 2.5 Pro, plus code execution, knowledge base, and image generation. That's a fundamentally different and more capable product.",
+      },
+      {
+        q: "Does bedda.ai have roleplay or character features?",
+        a: "bedda.ai is focused on productivity and professional AI use. It doesn't have built-in character personas or roleplay features like Character.AI. You can use custom system instructions to give any model a specific persona, but the platform is designed for serious work, not entertainment roleplay.",
+      },
+    ],
+  },
+
+  "bedda-vs-cursor": {
+    slug: "bedda-vs-cursor",
+    competitor: "Cursor",
+    competitorUrl: "https://cursor.com",
+    competitorPrice: "$20/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Cursor",
+    metaTitle: "bedda.ai vs Cursor AI (2026) — Full AI Suite vs Coding IDE",
+    metaDescription:
+      "Cursor is a $20/mo AI coding IDE. bedda.ai gives you 36+ frontier models for coding AND research, writing, image/video gen, and team workspaces — for $12/mo. 7-day free trial.",
+    ogTitle: "bedda.ai vs Cursor — Broader AI for Less Money",
+    ogDescription:
+      "Cursor is an excellent coding IDE at $20/mo but it's limited to code. bedda.ai gives you Claude 4, GPT-5, Gemini 2.5 Pro and 36+ models for coding, research, writing, and image generation — all for $12/mo.",
+    heroHeadline: "Cursor is great for code. bedda.ai works for everything.",
+    heroSubtext:
+      "Cursor is an AI-powered IDE that's genuinely excellent for coding. But at $20/mo it's 67% more expensive than bedda.ai, and it only does code. bedda.ai gives you 36+ frontier models for coding, research, writing, analysis, image generation, and team collaboration — all in one place.",
+    verdict:
+      "Cursor is the right choice if your AI use is almost entirely inside a code editor. If you want AI for more than just coding — research, writing, analysis, image generation, customer conversations — bedda.ai at $12/mo gives you a complete AI suite at a lower price. Many developers use both: Cursor for in-editor AI, bedda.ai for everything else.",
+    switchReasons: [
+      "Save $8/mo — bedda.ai is $12/mo vs Cursor's $20/mo",
+      "Use AI for research, writing, and analysis outside the code editor",
+      "36+ models vs Cursor's limited model selection (Claude and GPT only)",
+      "Image and video generation for design and content work",
+      "Knowledge base — upload docs, specs, and codebases for RAG retrieval",
+      "Team workspaces with shared AI context and real-time collaboration",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$20/mo" },
+      { feature: "Claude 4 (Opus, Sonnet)", bedda: true, competitor: true },
+      { feature: "GPT-5 / GPT-4o", bedda: true, competitor: true },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 3", bedda: true, competitor: false },
+      { feature: "DeepSeek R1", bedda: true, competitor: false },
+      { feature: "IDE integration (VS Code-style)", bedda: false, competitor: true },
+      { feature: "Inline code suggestions", bedda: false, competitor: true },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "~4" },
+    ],
+    faq: [
+      {
+        q: "Is Cursor worth $20/mo?",
+        a: "Cursor is excellent if you spend most of your day in a code editor. The inline suggestions, chat-in-editor experience, and multi-file context awareness are genuinely helpful for coding workflows. At $20/mo it's on the expensive side — bedda.ai is $12/mo and offers a superset of AI capabilities for everything outside the IDE.",
+      },
+      {
+        q: "Can bedda.ai replace Cursor?",
+        a: "Not fully. Cursor's in-editor experience (inline suggestions, file context, multi-file edits) is unique to IDE integration. bedda.ai doesn't run as a VS Code extension. However, bedda.ai's code execution sandbox, Claude 4 and GPT-5 access, and broader AI toolset complement Cursor well — many developers use both.",
+      },
+      {
+        q: "What models does Cursor use?",
+        a: "Cursor uses Claude Sonnet, GPT-4o, and a few other models. bedda.ai gives you all of those plus Claude 4 Opus, GPT-5, Gemini 2.5 Pro, Grok 3, DeepSeek R1, Mistral Large, and 30+ more — at $8/mo less.",
+      },
+      {
+        q: "What do developers use bedda.ai for alongside Cursor?",
+        a: "Developers use bedda.ai for tasks that don't fit in an IDE: researching APIs and libraries, writing technical documentation, comparing how different models explain a concept, generating images for projects, and collaborating with non-technical team members. The model comparison arena is popular for evaluating which model gives the best answer for a specific problem.",
+      },
+    ],
+  },
+
+  "bedda-vs-bolt": {
+    slug: "bedda-vs-bolt",
+    competitor: "Bolt.new",
+    competitorUrl: "https://bolt.new",
+    competitorPrice: "$20/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Bolt.new",
+    metaTitle: "bedda.ai vs Bolt.new (2026) — Full AI Suite vs App Generator",
+    metaDescription:
+      "Bolt.new generates web apps for $20/mo. bedda.ai gives you 36+ frontier models for coding, research, writing, image generation, and team workspaces — for $12/mo. 7-day free trial.",
+    ogTitle: "bedda.ai vs Bolt.new — Broader AI for Less Money",
+    ogDescription:
+      "Bolt.new generates full-stack apps for $20/mo but is limited to app building. bedda.ai gives you Claude 4, GPT-5, Gemini 2.5 Pro, and 36+ models for coding, research, writing, and image/video generation — for $12/mo.",
+    heroHeadline: "Bolt.new builds apps. bedda.ai powers your entire workflow.",
+    heroSubtext:
+      "Bolt.new is impressive for generating web apps quickly, but at $20/mo it's a single-purpose tool. bedda.ai gives you 36+ frontier models for every AI task — coding, research, writing, image and video generation, team workspaces, and more — for $8 less per month.",
+    verdict:
+      "Bolt.new is the right choice if you're specifically building web applications via natural language and want the visual editor experience. For broader AI productivity — coding help, research, writing, image generation, team collaboration — bedda.ai at $12/mo delivers more value. The two tools can complement each other: use Bolt for rapid prototyping, bedda for everything else.",
+    switchReasons: [
+      "Save $8/mo — bedda.ai is $12/mo vs Bolt.new's $20/mo",
+      "Use Claude 4, GPT-5, and Gemini 2.5 Pro for research and writing beyond app building",
+      "36+ models vs Bolt's limited model selection",
+      "Knowledge base — upload project specs, APIs, and docs for reference",
+      "Image and video generation for design and content alongside code",
+      "Team workspaces with shared AI context for non-technical collaborators",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$20/mo" },
+      { feature: "Claude 4 (Opus, Sonnet)", bedda: true, competitor: true },
+      { feature: "GPT-5 / GPT-4o", bedda: true, competitor: true },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 3", bedda: true, competitor: false },
+      { feature: "Full-stack app generation", bedda: false, competitor: true },
+      { feature: "Visual app editor", bedda: false, competitor: true },
+      { feature: "One-click deploy", bedda: false, competitor: true },
+      { feature: "Code execution sandbox", bedda: true, competitor: true },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "~3" },
+    ],
+    faq: [
+      {
+        q: "Is Bolt.new worth $20/mo?",
+        a: "Bolt.new is impressive if you want to build web apps by describing them in natural language. The visual editor and one-click deploy are genuinely useful. At $20/mo, it's 67% more expensive than bedda.ai and is limited to app building — if you also need AI for research, writing, or image generation, you'd need to pay for additional tools.",
+      },
+      {
+        q: "Can bedda.ai generate web apps like Bolt.new?",
+        a: "bedda.ai can help you write and debug code, explain architecture, and generate UI components — but it doesn't have Bolt's visual editor or one-click deployment. bedda.ai's code execution sandbox runs Python and JavaScript but isn't a full web app builder. The two tools serve different needs and can work well together.",
+      },
+      {
+        q: "What's the difference between Bolt, Lovable, and bedda.ai?",
+        a: "Bolt.new and Lovable are specialized app-generation tools — they're excellent for quickly spinning up web applications by describing what you want. bedda.ai is a general-purpose AI suite with 36+ models, code execution, knowledge base, image/video generation, and team workspaces. Bedda handles the full range of AI productivity tasks that Bolt and Lovable don't cover.",
+      },
+      {
+        q: "What do vibe coders use bedda.ai for?",
+        a: "Developers using Bolt, Lovable, or Cursor often use bedda.ai alongside them for tasks that don't fit in those tools: researching libraries and APIs, writing product descriptions and docs, comparing how different AI models approach a problem, generating images and videos for their projects, and collaborating with non-technical teammates.",
+      },
+    ],
+  },
+
+  "bedda-vs-windsurf": {
+    slug: "bedda-vs-windsurf",
+    competitor: "Windsurf (Codeium)",
+    competitorUrl: "https://windsurf.com",
+    competitorPrice: "$15/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Windsurf AI",
+    metaTitle: "bedda.ai vs Windsurf AI (2026) — Full AI Suite vs Coding IDE",
+    metaDescription:
+      "Windsurf by Codeium is a $15/mo AI coding IDE. bedda.ai gives you 36+ frontier models for coding AND everything else — research, writing, image/video gen, team workspaces — for $12/mo. 7-day free trial.",
+    ogTitle: "bedda.ai vs Windsurf — Cheaper and Broader AI",
+    ogDescription:
+      "Windsurf is a solid AI coding IDE at $15/mo. bedda.ai gives you Claude 4, GPT-5, Gemini 2.5 Pro, and 36+ models for coding, research, writing, and image/video generation — for $3 less per month.",
+    heroHeadline: "Windsurf codes. bedda.ai does everything.",
+    heroSubtext:
+      "Windsurf by Codeium is a capable AI coding assistant. But at $15/mo it only handles code. bedda.ai gives you 36+ frontier models for coding, research, writing, analysis, image and video generation, and team collaboration — for $3 less per month.",
+    verdict:
+      "Windsurf is a solid AI coding IDE at a fair price. If your AI use is exclusively in the code editor, Windsurf is worth considering. If you want AI capabilities beyond coding — research, writing, image generation, team workspaces — bedda.ai at $12/mo covers everything Windsurf does (via its code execution sandbox) plus a full AI productivity suite.",
+    switchReasons: [
+      "Save $3/mo — bedda.ai is $12/mo vs Windsurf's $15/mo",
+      "36+ frontier models including Gemini 2.5 Pro, Grok 3, and DeepSeek R1",
+      "Research, writing, and analysis beyond the code editor",
+      "Image and video generation for design alongside code",
+      "Knowledge base — upload docs, specs, and API references for retrieval",
+      "Team workspaces with shared AI context for mixed technical/non-technical teams",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$15/mo" },
+      { feature: "Claude 4 (Opus, Sonnet)", bedda: true, competitor: true },
+      { feature: "GPT-5 / GPT-4o", bedda: true, competitor: true },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 3", bedda: true, competitor: false },
+      { feature: "DeepSeek R1", bedda: true, competitor: false },
+      { feature: "IDE integration (VS Code-style)", bedda: false, competitor: true },
+      { feature: "Inline code completions", bedda: false, competitor: true },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "~4" },
+    ],
+    faq: [
+      {
+        q: "Is Windsurf better than Cursor?",
+        a: "Both Windsurf and Cursor are capable AI coding IDEs with similar feature sets. Windsurf is $5/mo cheaper ($15 vs $20) and has a simpler flow state model. Cursor has broader model support and a slightly larger ecosystem. Both are specialized coding tools — for AI beyond coding, bedda.ai at $12/mo covers the rest.",
+      },
+      {
+        q: "What is Codeium / Windsurf?",
+        a: "Codeium was an AI code assistant that rebranded to Windsurf in 2025 after launching their AI IDE product. They offer both a free tier (autocomplete only) and a paid Pro plan at $15/mo for full chat, multi-file context, and access to premium models including Claude Sonnet and GPT-4o.",
+      },
+      {
+        q: "Can bedda.ai replace Windsurf?",
+        a: "Partially. bedda.ai doesn't run as a VS Code extension with inline suggestions. For in-editor AI, Windsurf has the native experience. For everything outside the editor — research, writing, image generation, team collaboration, model comparisons — bedda.ai covers what Windsurf can't. Many developers use both.",
+      },
+      {
+        q: "What models does Windsurf use?",
+        a: "Windsurf Pro includes Claude Sonnet, GPT-4o, and Codeium's own models. bedda.ai gives you all of those plus Claude 4 Opus, GPT-5, Gemini 2.5 Pro, Grok 3, DeepSeek R1, Mistral Large, and 30+ more — at $3/mo less.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
