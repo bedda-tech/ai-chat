@@ -198,6 +198,42 @@ const posts = [
     readingTime: "6 min read",
     category: "Guides",
   },
+  {
+    slug: "gpt-5-review",
+    title: "GPT-5 Review: Benchmarks, Pricing, and Who Should Use It",
+    description:
+      "A thorough review of OpenAI GPT-5 — what it can do, how it performs on real tasks, and whether it's worth $20/month compared to the alternatives.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Model Reviews",
+  },
+  {
+    slug: "best-ai-assistant-2026",
+    title: "Best AI Assistants in 2026: Ranked and Reviewed",
+    description:
+      "We tested every major AI assistant in 2026 — ChatGPT, Claude, Gemini, Grok, Copilot, and more. Here's how they compare on real tasks.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "AI Guides",
+  },
+  {
+    slug: "llama-4-review",
+    title: "Llama 4 Review: Meta's Open-Source AI in 2026",
+    description:
+      "Meta's Llama 4 brings open-source AI to a competitive level with GPT-4o. Here's what it can do, how to use it, and whether it beats the closed models.",
+    date: "June 2026",
+    readingTime: "6 min read",
+    category: "Model Reviews",
+  },
+  {
+    slug: "ai-for-email",
+    title: "Best AI Email Assistants in 2026: Write Faster, Reply Smarter",
+    description:
+      "AI has transformed email. Here's how to use Claude, GPT-5, and other AI models to draft emails, manage replies, and cut your inbox time in half.",
+    date: "June 2026",
+    readingTime: "6 min read",
+    category: "AI Guides",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];

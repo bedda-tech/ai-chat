@@ -439,7 +439,7 @@ const POSTS: Record<string, BlogPost> = {
   },
 
   "chatgpt-plus-alternatives": {
-    slug: "chatgpt-alternatives",
+    slug: "chatgpt-plus-alternatives",
     title: "ChatGPT Plus Alternatives in 2026: Which Is Worth $20/Month?",
     description:
       "ChatGPT Plus costs $20/month for GPT models only. Here are the best alternatives — including options that give you more models for less money.",
@@ -3457,6 +3457,650 @@ const POSTS: Record<string, BlogPost> = {
           <p className="mb-4 text-muted-foreground text-sm">
             Stop switching between apps. Use Claude, GPT-5, Gemini, Grok, o3,
             and 31 more models in one place — $12/month with a 7-day free trial.
+          </p>
+          <Button asChild>
+            <Link href="/register">Start Free Trial</Link>
+          </Button>
+        </div>
+      </article>
+    ),
+  },
+
+  "gpt-5-review": {
+    slug: "gpt-5-review",
+    title: "GPT-5 Review: Benchmarks, Pricing, and Who Should Use It",
+    description:
+      "A thorough review of OpenAI GPT-5 — what it can do, how it performs on real tasks, and whether it's worth $20/month compared to the alternatives.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Model Reviews",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          GPT-5 is OpenAI&apos;s most capable model yet — and their most
+          expensive consumer option at $20/month. Here&apos;s an honest
+          assessment of what it delivers, where it falls short, and whether the
+          price is justified.
+        </p>
+
+        <h2>What Is GPT-5?</h2>
+        <p>
+          GPT-5 is OpenAI&apos;s flagship large language model, released in
+          2025. It replaces GPT-4o as the primary model for ChatGPT Plus
+          subscribers and is available via the OpenAI API. GPT-5 represents a
+          significant jump over GPT-4o in reasoning, tool use, and instruction
+          following.
+        </p>
+
+        <h2>GPT-5 Benchmark Performance</h2>
+        <div className="not-prose overflow-hidden rounded-xl border">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b bg-muted/50">
+                <th className="p-4 text-left font-semibold">Benchmark</th>
+                <th className="p-4 text-left font-semibold">GPT-5</th>
+                <th className="p-4 text-left font-semibold">Claude Opus 4.8</th>
+                <th className="p-4 text-left font-semibold">Gemini 2.5 Pro</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["MMLU (knowledge)", "92.1%", "91.7%", "91.4%"],
+                ["HumanEval (coding)", "91.3%", "88.2%", "89.1%"],
+                ["MATH (math reasoning)", "88.4%", "85.9%", "87.3%"],
+                ["GPQA (science)", "78.2%", "79.1%", "76.8%"],
+                ["SWE-bench (real tasks)", "49.3%", "44.1%", "41.7%"],
+              ].map(([bench, gpt5, claude, gemini], i) => (
+                <tr key={bench} className={i % 2 === 1 ? "bg-muted/20" : undefined}>
+                  <td className="p-4 font-medium">{bench}</td>
+                  <td className="p-4">{gpt5}</td>
+                  <td className="p-4">{claude}</td>
+                  <td className="p-4">{gemini}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          GPT-5 leads on coding and software engineering tasks. Claude Opus 4.8
+          has a slight edge on scientific reasoning. Gemini 2.5 Pro sits close
+          behind both.
+        </p>
+
+        <h2>GPT-5 vs GPT-4o: What Actually Changed?</h2>
+        <p>
+          GPT-5 is a substantial upgrade from GPT-4o across several dimensions:
+        </p>
+        <ul>
+          <li>
+            <strong>Better instruction following:</strong> GPT-5 is less likely
+            to ignore specific formatting instructions or constraints in prompts.
+          </li>
+          <li>
+            <strong>Improved tool use:</strong> More accurate function calling,
+            better multi-step agentic workflows.
+          </li>
+          <li>
+            <strong>Stronger coding:</strong> Especially on multi-file tasks,
+            Rust/Go, and complex debugging sessions.
+          </li>
+          <li>
+            <strong>Longer effective context:</strong> GPT-5 handles 128K tokens
+            more consistently than GPT-4o&apos;s practical limits.
+          </li>
+          <li>
+            <strong>More reliable output:</strong> Fewer hallucinations on
+            factual questions in its training data.
+          </li>
+        </ul>
+
+        <h2>Where GPT-5 Falls Short</h2>
+        <ul>
+          <li>
+            <strong>Prose quality:</strong> Claude Opus 4.8 writes more natural,
+            nuanced prose. GPT-5 can feel more mechanical on creative writing
+            tasks.
+          </li>
+          <li>
+            <strong>Context window:</strong> 128K tokens vs Gemini 2.5
+            Pro&apos;s 1M token window — significant for long document analysis.
+          </li>
+          <li>
+            <strong>Cost:</strong> Via API, GPT-5 is among the more expensive
+            models at $15/1M output tokens.
+          </li>
+          <li>
+            <strong>ChatGPT Plus lock-in:</strong> $20/month gives you GPT-5
+            but only OpenAI&apos;s model family.
+          </li>
+        </ul>
+
+        <h2>GPT-5 Pricing</h2>
+        <ul>
+          <li>
+            <strong>ChatGPT Plus:</strong> $20/month — includes GPT-5, GPT-4o,
+            GPT-4o mini, image generation, and voice mode
+          </li>
+          <li>
+            <strong>OpenAI API:</strong> $2.50/1M input, $15/1M output tokens
+            (as of mid-2026; subject to change)
+          </li>
+          <li>
+            <strong>Via bedda.ai:</strong> $12/month Plus plan — includes GPT-5,
+            Claude Opus 4.8, Gemini 2.5 Pro, Grok 4, and 32+ more models
+          </li>
+        </ul>
+        <p>
+          The most cost-efficient way to use GPT-5 is via bedda.ai, which gives
+          you GPT-5 alongside every other top model for 40% less than a
+          ChatGPT Plus subscription alone.
+        </p>
+
+        <h2>Who Should Use GPT-5?</h2>
+        <p>GPT-5 is ideal for:</p>
+        <ul>
+          <li>Developers who need the best code generation available</li>
+          <li>Users building agentic AI workflows with complex tool use</li>
+          <li>Technical writers and documentation teams</li>
+          <li>Analysts who need high accuracy on structured data tasks</li>
+        </ul>
+        <p>You might prefer Claude Opus 4.8 if:</p>
+        <ul>
+          <li>You write a lot of prose and want more natural-sounding output</li>
+          <li>You work with very long documents (&gt;100K tokens)</li>
+          <li>You want stronger safety and instruction-following nuance</li>
+        </ul>
+
+        <h2>Verdict</h2>
+        <p>
+          GPT-5 is the best coding AI model in 2026 and an excellent general
+          purpose assistant. But paying $20/month for ChatGPT Plus means you get
+          GPT-5 and nothing else. If you use multiple AI tools — or want the
+          option to switch between GPT-5, Claude, and Gemini depending on the
+          task — a multi-model subscription like bedda.ai ($12/month) delivers
+          more value.
+        </p>
+
+        <div className="not-prose mt-8 rounded-xl border bg-muted/30 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            GPT-5, Claude Opus 4.8, Gemini 2.5 Pro — All in One Place
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Stop paying $20/month for one model. Get all 36+ top AI models for
+            $12/month with a 7-day free trial.
+          </p>
+          <Button asChild>
+            <Link href="/register">Start Free Trial</Link>
+          </Button>
+        </div>
+      </article>
+    ),
+  },
+
+  "best-ai-assistant-2026": {
+    slug: "best-ai-assistant-2026",
+    title: "Best AI Assistants in 2026: Ranked and Reviewed",
+    description:
+      "We tested every major AI assistant in 2026 — ChatGPT, Claude, Gemini, Grok, Copilot, and more. Here's how they compare on real tasks.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "AI Guides",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          The AI assistant market has exploded. ChatGPT, Claude, Gemini, Grok,
+          Copilot, Perplexity — there are more options than ever, and the
+          differences matter. Here&apos;s how the top AI assistants compare in
+          2026.
+        </p>
+
+        <h2>Quick Rankings</h2>
+        <ol>
+          <li><strong>Claude Opus 4.8</strong> — Best for writing and nuanced reasoning</li>
+          <li><strong>GPT-5</strong> — Best for coding and agentic tasks</li>
+          <li><strong>Gemini 2.5 Pro</strong> — Best for long documents and Google integration</li>
+          <li><strong>Grok 4</strong> — Best for real-time information and X/Twitter analysis</li>
+          <li><strong>Perplexity Pro</strong> — Best for web research</li>
+          <li><strong>Microsoft Copilot</strong> — Best for Microsoft 365 users</li>
+        </ol>
+
+        <h2>1. Claude Opus 4.8 (Anthropic)</h2>
+        <p>
+          Claude Opus 4.8 is the most human-sounding AI assistant available.
+          It excels at long-form writing, nuanced instruction following, and
+          complex analysis. The 200K context window handles book-length documents
+          without losing track.
+        </p>
+        <p>
+          Weaknesses: slightly behind GPT-5 on pure coding benchmarks; no
+          real-time web access by default.
+        </p>
+        <p>
+          <strong>Price:</strong> $20/month via Claude.ai Pro, or $12/month via
+          bedda.ai alongside 35+ other models.
+        </p>
+
+        <h2>2. ChatGPT (GPT-5)</h2>
+        <p>
+          GPT-5 is OpenAI&apos;s strongest model. It leads on coding benchmarks,
+          has the best tool use for agentic workflows, and integrates with
+          OpenAI&apos;s growing ecosystem (DALL-E, Sora, Whisper, GPT Store).
+          ChatGPT&apos;s interface is the most polished and feature-complete.
+        </p>
+        <p>
+          Weaknesses: writing feels less natural than Claude; context window is
+          128K vs Gemini&apos;s 1M.
+        </p>
+        <p>
+          <strong>Price:</strong> $20/month (Plus), $30/month (Team).
+        </p>
+
+        <h2>3. Google Gemini 2.5 Pro</h2>
+        <p>
+          Gemini 2.5 Pro&apos;s killer feature is its 1M token context window —
+          more than 7× larger than GPT-5&apos;s 128K. For analyzing entire
+          codebases, long research papers, or large datasets in a single prompt,
+          Gemini is unmatched.
+        </p>
+        <p>
+          It also has native Google Search integration, giving it current
+          information without plugins. Deep Workspace integration is valuable for
+          Google users.
+        </p>
+        <p>
+          Weaknesses: instruction following is slightly less precise than Claude;
+          coding accuracy trails GPT-5.
+        </p>
+        <p>
+          <strong>Price:</strong> $19.99/month (Google One AI Premium).
+        </p>
+
+        <h2>4. Grok 4 (xAI)</h2>
+        <p>
+          Grok 4 is xAI&apos;s most capable model and a strong general-purpose
+          assistant. Its unique advantages are real-time X/Twitter data access,
+          current news integration, and fewer content restrictions than
+          competitors. Grok is particularly good at political commentary and
+          topics other AI assistants avoid.
+        </p>
+        <p>
+          <strong>Price:</strong> $30/month (X Premium+).
+        </p>
+
+        <h2>5. Perplexity Pro</h2>
+        <p>
+          Perplexity is the AI search engine — it answers questions with cited
+          sources and real-time web data. It&apos;s less of a general assistant
+          and more of a research tool, but for factual queries and market
+          research it&apos;s outstanding.
+        </p>
+        <p>
+          <strong>Price:</strong> $20/month.
+        </p>
+
+        <h2>AI Assistant Comparison Table</h2>
+        <div className="not-prose overflow-hidden rounded-xl border">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b bg-muted/50">
+                <th className="p-4 text-left font-semibold">Assistant</th>
+                <th className="p-4 text-left font-semibold">Best For</th>
+                <th className="p-4 text-left font-semibold">Price</th>
+                <th className="p-4 text-left font-semibold">Context</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["Claude Opus 4.8", "Writing, analysis", "$20/mo", "200K"],
+                ["GPT-5", "Coding, agents", "$20/mo", "128K"],
+                ["Gemini 2.5 Pro", "Long docs, research", "$19.99/mo", "1M"],
+                ["Grok 4", "Real-time info", "$30/mo", "128K"],
+                ["Perplexity Pro", "Web research", "$20/mo", "—"],
+                ["bedda.ai Plus", "All of the above", "$12/mo", "Up to 1M"],
+              ].map(([assistant, best, price, context], i) => (
+                <tr key={assistant} className={i % 2 === 1 ? "bg-muted/20" : undefined}>
+                  <td className="p-4 font-medium">{assistant}</td>
+                  <td className="p-4">{best}</td>
+                  <td className="p-4">{price}</td>
+                  <td className="p-4">{context}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>The Problem: You Need More Than One</h2>
+        <p>
+          No single AI assistant wins every task. Claude is better for writing.
+          GPT-5 is better for code. Gemini is better for long documents. Grok is
+          better for current events.
+        </p>
+        <p>
+          The problem is paying separately for each. ChatGPT Plus + Claude Pro +
+          Gemini Advanced adds up to $60/month. Most users end up picking one and
+          accepting its limitations.
+        </p>
+        <p>
+          bedda.ai solves this: one subscription ($12/month) gives access to all
+          four flagship models — Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and
+          Grok 4 — plus 32 more models in a single interface.
+        </p>
+
+        <div className="not-prose mt-8 rounded-xl border bg-muted/30 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            All the Best AI Assistants. One Subscription.
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Claude, GPT-5, Gemini, Grok, and 32 more — $12/month with a 7-day
+            free trial.
+          </p>
+          <Button asChild>
+            <Link href="/register">Start Free Trial</Link>
+          </Button>
+        </div>
+      </article>
+    ),
+  },
+
+  "llama-4-review": {
+    slug: "llama-4-review",
+    title: "Llama 4 Review: Meta's Open-Source AI in 2026",
+    description:
+      "Meta's Llama 4 brings open-source AI to a competitive level with GPT-4o. Here's what it can do, how to use it, and whether it beats the closed models.",
+    date: "June 2026",
+    readingTime: "6 min read",
+    category: "Model Reviews",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          Meta&apos;s Llama 4 is the most capable open-source AI model
+          available, and it competes directly with GPT-4o and Claude Sonnet 4.6
+          on many tasks. But &quot;open source&quot; comes with trade-offs.
+          Here&apos;s what you need to know.
+        </p>
+
+        <h2>What Is Llama 4?</h2>
+        <p>
+          Llama 4 is Meta&apos;s fourth generation of large language models,
+          released in 2025. It&apos;s available in several sizes — Llama 4 Scout
+          (17B active parameters, MoE), Llama 4 Maverick (17B active, larger
+          expert count), and Llama 4 Behemoth (still in training as of mid-2026).
+          The Scout and Maverick models are fully open and free to download.
+        </p>
+
+        <h2>Llama 4 vs Closed Models</h2>
+        <div className="not-prose overflow-hidden rounded-xl border">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b bg-muted/50">
+                <th className="p-4 text-left font-semibold">Model</th>
+                <th className="p-4 text-left font-semibold">MMLU</th>
+                <th className="p-4 text-left font-semibold">HumanEval</th>
+                <th className="p-4 text-left font-semibold">Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["GPT-5", "92.1%", "91.3%", "$20/mo (ChatGPT+)"],
+                ["Claude Opus 4.8", "91.7%", "88.2%", "$20/mo (Claude Pro)"],
+                ["Llama 4 Maverick", "85.5%", "77.4%", "Free (self-host) / API"],
+                ["Llama 4 Scout", "79.2%", "69.1%", "Free (self-host) / API"],
+                ["GPT-4o mini", "82.0%", "74.1%", "~$0.15/1M tokens API"],
+              ].map(([model, mmlu, humaneval, cost], i) => (
+                <tr key={model} className={i % 2 === 1 ? "bg-muted/20" : undefined}>
+                  <td className="p-4 font-medium">{model}</td>
+                  <td className="p-4">{mmlu}</td>
+                  <td className="p-4">{humaneval}</td>
+                  <td className="p-4">{cost}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>What Llama 4 Does Well</h2>
+        <ul>
+          <li>
+            <strong>Cost:</strong> Free to self-host. Via inference providers
+            (Groq, Together AI, Cerebras), it&apos;s extremely cheap per token.
+          </li>
+          <li>
+            <strong>Speed:</strong> Llama 4 Scout on Groq and Cerebras runs at
+            700–1,000 tokens/second — 20× faster than GPT-5.
+          </li>
+          <li>
+            <strong>Privacy:</strong> Self-hosted Llama means your data never
+            leaves your infrastructure.
+          </li>
+          <li>
+            <strong>Fine-tuning:</strong> Open weights mean you can fine-tune
+            Llama on your own data — impossible with closed models.
+          </li>
+          <li>
+            <strong>Instruction following:</strong> Llama 4 Maverick follows
+            instructions better than earlier Llama generations and approaches
+            Claude Sonnet 4.6 on structured tasks.
+          </li>
+        </ul>
+
+        <h2>Where Llama 4 Falls Behind</h2>
+        <ul>
+          <li>
+            <strong>Raw intelligence:</strong> Llama 4 Maverick is behind GPT-5
+            and Claude Opus 4.8 on complex reasoning. The gap is real, especially
+            on math and advanced coding.
+          </li>
+          <li>
+            <strong>Multimodal capability:</strong> Vision understanding and image
+            generation are weaker than GPT-5&apos;s integrated suite.
+          </li>
+          <li>
+            <strong>Setup burden:</strong> Self-hosting requires hardware (or a
+            cloud GPU), serving infrastructure, and ongoing maintenance.
+          </li>
+        </ul>
+
+        <h2>How to Use Llama 4 Without Self-Hosting</h2>
+        <p>
+          You don&apos;t need to run your own server to use Llama 4. Several
+          options exist:
+        </p>
+        <ul>
+          <li>
+            <strong>Groq:</strong> API access at ultra-fast speeds, generous free
+            tier
+          </li>
+          <li>
+            <strong>Cerebras:</strong> Even faster than Groq for smaller models
+          </li>
+          <li>
+            <strong>bedda.ai:</strong> Chat interface with Llama 4 Scout and
+            Maverick available on the free tier — no API key or setup required
+          </li>
+        </ul>
+
+        <h2>Should You Use Llama 4?</h2>
+        <p>
+          <strong>Yes</strong>, if you need speed (Llama 4 on Groq is the
+          fastest text AI available), privacy (self-host it), cost (essentially
+          free at scale), or fine-tuning capability.
+        </p>
+        <p>
+          <strong>No</strong>, if you need maximum intelligence for complex
+          tasks. GPT-5 and Claude Opus 4.8 still have a meaningful edge on
+          hard problems.
+        </p>
+        <p>
+          The best approach: use Llama 4 for high-volume, latency-sensitive
+          tasks where the benchmark gap doesn&apos;t matter, and Claude/GPT-5
+          for tasks where quality is paramount. bedda.ai lets you switch between
+          all of them in a single chat interface.
+        </p>
+
+        <div className="not-prose mt-8 rounded-xl border bg-muted/30 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            Llama 4, GPT-5, Claude, Gemini — One Interface
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Switch between open-source and frontier models in one chat. Free
+            tier includes Llama 4, premium models from $12/month.
+          </p>
+          <Button asChild>
+            <Link href="/register">Try for Free</Link>
+          </Button>
+        </div>
+      </article>
+    ),
+  },
+
+  "ai-for-email": {
+    slug: "ai-for-email",
+    title: "Best AI Email Assistants in 2026: Write Faster, Reply Smarter",
+    description:
+      "AI has transformed email. Here's how to use Claude, GPT-5, and other AI models to draft emails, manage replies, and cut your inbox time in half.",
+    date: "June 2026",
+    readingTime: "6 min read",
+    category: "AI Guides",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          Email is one of the highest-ROI use cases for AI assistants. The
+          average professional spends 28% of their workday on email. AI can cut
+          that in half — if you use it right. Here&apos;s how.
+        </p>
+
+        <h2>What AI Can Do for Email</h2>
+        <ul>
+          <li>Draft entire emails from a few bullet points</li>
+          <li>Rewrite drafts to match a specific tone (professional, friendly, concise)</li>
+          <li>Summarize long email threads</li>
+          <li>Generate reply options for difficult situations</li>
+          <li>Translate emails to/from other languages</li>
+          <li>Extract action items from email threads</li>
+          <li>Create email templates for recurring scenarios</li>
+        </ul>
+
+        <h2>Best Models for Email Tasks</h2>
+
+        <h3>Claude Opus 4.8 — Best Overall</h3>
+        <p>
+          Claude writes the most natural-sounding emails. Its instruction
+          following is exceptional — tell it the tone, recipient, and context and
+          it nails the voice on the first try. Claude is especially good at
+          sensitive emails: difficult feedback, apologies, and negotiations.
+        </p>
+
+        <h3>GPT-5 — Best for Templates and Scale</h3>
+        <p>
+          GPT-5 excels at structured email tasks: creating template libraries,
+          generating 10 variations of an email for A/B testing, or drafting
+          complex multi-part messages with specific formatting requirements.
+        </p>
+
+        <h3>Gemini 2.5 Pro — Best for Thread Summarization</h3>
+        <p>
+          Gemini&apos;s 1M token context window is unmatched for summarizing
+          massive email threads or entire mailbox exports. If you need to catch up
+          on a months-long project thread, paste it into Gemini.
+        </p>
+
+        <h2>Email AI Prompts That Work</h2>
+
+        <h3>Drafting an email</h3>
+        <p>
+          <em>
+            &quot;Write a professional email to [recipient] about [topic]. Key
+            points to include: [bullets]. Tone: [concise/warm/firm]. Length:
+            [short/medium]. Do not include unnecessary filler phrases.&quot;
+          </em>
+        </p>
+
+        <h3>Rewriting a draft</h3>
+        <p>
+          <em>
+            &quot;Rewrite this email to be more [concise/professional/friendly].
+            Keep the core message but remove any unnecessary sentences. Here&apos;s
+            the draft: [paste email]&quot;
+          </em>
+        </p>
+
+        <h3>Summarizing a thread</h3>
+        <p>
+          <em>
+            &quot;Summarize this email thread. Give me: (1) the main topic,
+            (2) key decisions made, (3) open action items with owners, and
+            (4) any unresolved disagreements. [paste thread]&quot;
+          </em>
+        </p>
+
+        <h3>Replying to a difficult email</h3>
+        <p>
+          <em>
+            &quot;I received this email [paste email]. I need to [decline the
+            request / push back on the timeline / apologize for the delay] but
+            keep the relationship positive. Draft a reply that is direct but
+            diplomatic.&quot;
+          </em>
+        </p>
+
+        <h2>AI Email Workflow</h2>
+        <p>The most effective workflow for AI-assisted email:</p>
+        <ol>
+          <li>
+            <strong>Triage first:</strong> Use Gemini to summarize your inbox
+            backlog and extract all action items.
+          </li>
+          <li>
+            <strong>Draft with Claude:</strong> For important outgoing emails,
+            give Claude 3-5 bullet points and let it draft. Edit rather than
+            write from scratch.
+          </li>
+          <li>
+            <strong>Templates with GPT-5:</strong> Create a library of email
+            templates for recurring scenarios. Update them quarterly.
+          </li>
+        </ol>
+
+        <h2>The Cost Factor</h2>
+        <p>
+          Using Claude + GPT-5 + Gemini separately costs $60/month. If you need
+          all three for different email scenarios — and many power users do —
+          bedda.ai gives you all three for $12/month.
+        </p>
+
+        <div className="not-prose overflow-hidden rounded-xl border">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b bg-muted/50">
+                <th className="p-4 text-left font-semibold">Use Case</th>
+                <th className="p-4 text-left font-semibold">Best Model</th>
+                <th className="p-4 text-left font-semibold">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["Difficult/sensitive emails", "Claude Opus 4.8", "Most natural tone, nuanced instruction following"],
+                ["Bulk drafting / templates", "GPT-5", "Consistent, structured, fast"],
+                ["Long thread summaries", "Gemini 2.5 Pro", "1M context, accurate extraction"],
+                ["Quick short replies", "Gemini Flash / Llama 4", "Speed and cost efficiency"],
+              ].map(([usecase, model, why], i) => (
+                <tr key={usecase} className={i % 2 === 1 ? "bg-muted/20" : undefined}>
+                  <td className="p-4 font-medium">{usecase}</td>
+                  <td className="p-4">{model}</td>
+                  <td className="p-4">{why}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="not-prose mt-8 rounded-xl border bg-muted/30 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            The Right AI Model for Every Email
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Claude, GPT-5, Gemini, and 33 more models in one place — $12/month
+            with a 7-day free trial.
           </p>
           <Button asChild>
             <Link href="/register">Start Free Trial</Link>
