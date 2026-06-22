@@ -4109,6 +4109,592 @@ const POSTS: Record<string, BlogPost> = {
       </article>
     ),
   },
+
+  "chatgpt-vs-claude-vs-gemini": {
+    slug: "chatgpt-vs-claude-vs-gemini",
+    title: "ChatGPT vs Claude vs Gemini: The Ultimate 3-Way AI Comparison (2026)",
+    description:
+      "A definitive comparison of ChatGPT (GPT-5), Claude Opus 4.8, and Gemini 2.5 Pro — benchmarks, pricing, strengths, and which AI wins for each task in 2026.",
+    date: "June 2026",
+    readingTime: "10 min read",
+    category: "Model Comparisons",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          ChatGPT, Claude, and Gemini are the three AI platforms that most users
+          compare when choosing a subscription. They&apos;re all excellent — but they
+          excel at different things. Here&apos;s the definitive breakdown for 2026.
+        </p>
+
+        <h2>Quick Summary</h2>
+        <div className="not-prose overflow-hidden rounded-xl border">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b bg-muted/50">
+                <th className="p-4 text-left font-semibold">Category</th>
+                <th className="p-4 text-left font-semibold">Winner</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["Coding & engineering", "GPT-5 (ChatGPT)"],
+                ["Writing & nuanced tasks", "Claude Opus 4.8"],
+                ["Research & long context", "Gemini 2.5 Pro"],
+                ["Reasoning (math, logic)", "GPT-5 / o3"],
+                ["Speed & cost", "Gemini Flash"],
+                ["Overall value", "bedda.ai (all three for $12/mo)"],
+              ].map(([cat, winner], i) => (
+                <tr key={cat} className={i % 2 === 1 ? "bg-muted/20" : undefined}>
+                  <td className="p-4 font-medium">{cat}</td>
+                  <td className="p-4">{winner}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Pricing in 2026</h2>
+        <p>Each platform charges $20/month for its premium tier — but only unlocks one model family:</p>
+        <ul>
+          <li><strong>ChatGPT Plus — $20/month:</strong> GPT-5, GPT-4o, o3 (OpenAI models only)</li>
+          <li><strong>Claude.ai Pro — $20/month:</strong> Claude Opus 4.8, Claude Sonnet 4.6, Haiku (Anthropic models only)</li>
+          <li><strong>Google One AI — $19.99/month:</strong> Gemini 2.5 Pro, Gemini 2.0 Flash (Google models only)</li>
+        </ul>
+        <p>
+          If you need more than one, you&apos;re paying $40–60/month. <strong>bedda.ai Plus
+          gives you all three — plus 33 more models — for $12/month</strong>, making it
+          the obvious choice for anyone who uses AI seriously.
+        </p>
+
+        <h2>Coding Performance</h2>
+        <p>
+          <strong>GPT-5 leads.</strong> On SWE-bench (real-world GitHub issue resolution),
+          HumanEval (code generation), and LiveCodeBench (live competition problems), GPT-5
+          scores the highest of the three. It&apos;s especially strong at:
+        </p>
+        <ul>
+          <li>Complex multi-file refactoring</li>
+          <li>Debugging with stack traces</li>
+          <li>Tool use and API integration</li>
+          <li>Low-level systems code (Rust, C++, Go)</li>
+        </ul>
+        <p>
+          Claude Opus 4.8 is close behind and often preferred for its <em>explanations</em>
+          — it explains code more clearly and adapts to your existing style better.
+          Gemini trails on pure coding but is useful for reviewing long codebases thanks
+          to its 1M token context window.
+        </p>
+
+        <h2>Writing Quality</h2>
+        <p>
+          <strong>Claude Opus 4.8 wins.</strong> Its prose is more natural, its tone
+          control is superior, and it follows complex stylistic instructions precisely.
+          Claude excels at:
+        </p>
+        <ul>
+          <li>Long-form essays and reports</li>
+          <li>Marketing copy that doesn&apos;t sound AI-generated</li>
+          <li>Nuanced analysis of ambiguous situations</li>
+          <li>Sensitive communications (feedback, apologies, negotiations)</li>
+        </ul>
+        <p>
+          GPT-5 is capable but defaults to a slightly generic style. Gemini writes
+          competently but is optimized more for factual accuracy than stylistic finesse.
+        </p>
+
+        <h2>Research and Long Context</h2>
+        <p>
+          <strong>Gemini 2.5 Pro wins on context window</strong> — 1 million tokens
+          vs Claude&apos;s 200K and GPT-5&apos;s 128K. For tasks involving:
+        </p>
+        <ul>
+          <li>Entire codebases or large document sets</li>
+          <li>Long research papers or books</li>
+          <li>Months of email threads or meeting notes</li>
+          <li>Real-time web search integration</li>
+        </ul>
+        <p>
+          Gemini&apos;s grounding in Google Search also makes it the best for
+          current-events queries and fact-checking recent information. Claude and GPT-5
+          have knowledge cutoffs; Gemini can search live.
+        </p>
+
+        <h2>Reasoning and Math</h2>
+        <p>
+          OpenAI&apos;s <strong>o3 reasoning model</strong> (available via ChatGPT Plus)
+          leads on math olympiad problems, PhD-level science, and complex multi-step
+          logic. GPT-5 is second. Claude and Gemini are competitive on general reasoning
+          but trail on the hardest benchmarks.
+        </p>
+        <p>
+          For most users, this difference doesn&apos;t matter in practice — all three
+          handle everyday reasoning tasks with ease. It only surfaces on genuinely hard
+          problems.
+        </p>
+
+        <h2>Which Should You Choose?</h2>
+        <p>
+          The honest answer: <strong>use all three</strong>. Different tasks have
+          different best tools. Forcing yourself to use only one model because you
+          only pay for one subscription means you&apos;re leaving quality on the table.
+        </p>
+        <p>
+          The alternative is bedda.ai — one subscription at $12/month that gives you
+          ChatGPT (GPT-5), Claude (Opus 4.8, Sonnet 4.6), Gemini (2.5 Pro, 2.0 Flash),
+          plus Grok 4, DeepSeek R1, Mistral Large, Llama 4, and 26 more models.
+        </p>
+
+        <div className="not-prose mt-8 rounded-xl border bg-muted/30 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            ChatGPT + Claude + Gemini for $12/month
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            All three AI platforms — plus 33 more models — in one interface.
+            7-day free trial, no credit card required.
+          </p>
+          <Button asChild>
+            <Link href="/register">Start Free Trial</Link>
+          </Button>
+        </div>
+      </article>
+    ),
+  },
+
+  "best-ai-image-generator-2026": {
+    slug: "best-ai-image-generator-2026",
+    title: "Best AI Image Generators in 2026: DALL-E 3, Imagen 3, Flux, and More",
+    description:
+      "Comparing the top AI image generation tools in 2026 — DALL-E 3, Google Imagen 3, Flux 1.1 Pro, and Midjourney. What each excels at and where to access them.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "AI Guides",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          AI image generation has matured dramatically in 2026. You can now create
+          photorealistic images, illustrations, and artwork from text in seconds —
+          but each model has a distinct visual style and set of strengths. Here&apos;s
+          how to choose.
+        </p>
+
+        <h2>The Top AI Image Models in 2026</h2>
+
+        <h3>DALL-E 3 (OpenAI)</h3>
+        <p>
+          DALL-E 3 is the most reliable for <strong>following complex text instructions</strong>.
+          If you write a detailed prompt with specific elements (a red door, a cat on the
+          left, sunset lighting), DALL-E 3 executes it more faithfully than competitors.
+          It&apos;s integrated into ChatGPT, making it conversational — you can refine
+          images through dialogue. Available in 1:1, 16:9, and 9:16 aspect ratios.
+        </p>
+        <p><strong>Best for:</strong> Precise prompt adherence, photorealistic scenes, commercial illustrations.</p>
+
+        <h3>Google Imagen 3 (Google DeepMind)</h3>
+        <p>
+          Imagen 3 produces some of the most <strong>photorealistic images</strong> of any
+          model in 2026, particularly for portrait photography, product shots, and
+          architectural renders. Its color accuracy and lighting simulation are
+          exceptional. Available via Google One AI Premium or on bedda.ai Plus.
+        </p>
+        <p><strong>Best for:</strong> Photorealism, product photography, architectural visualization.</p>
+
+        <h3>Flux 1.1 Pro (Black Forest Labs)</h3>
+        <p>
+          Flux has become the preferred model for <strong>artistic and stylized images</strong>.
+          It handles unusual artistic styles, painterly textures, and abstract compositions
+          better than DALL-E or Imagen. The &quot;Pro&quot; variant offers higher resolution
+          and more nuanced style control.
+        </p>
+        <p><strong>Best for:</strong> Artistic styles, illustration, creative exploration.</p>
+
+        <h3>Midjourney v7</h3>
+        <p>
+          Midjourney is still the gold standard for <strong>aesthetically stunning images</strong>
+          — it has a unique signature style that makes outputs look professionally composed.
+          However, it requires Discord access and has less predictable prompt adherence.
+          It&apos;s not available via API, so you can&apos;t access it through most aggregators.
+        </p>
+        <p><strong>Best for:</strong> Aesthetic quality, conceptual art, when you have time to iterate.</p>
+
+        <h2>Feature Comparison</h2>
+        <div className="not-prose overflow-hidden rounded-xl border">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b bg-muted/50">
+                <th className="p-4 text-left font-semibold">Model</th>
+                <th className="p-4 text-left font-semibold">Strength</th>
+                <th className="p-4 text-left font-semibold">Access</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["DALL-E 3", "Prompt adherence, versatility", "ChatGPT Plus / bedda.ai Plus"],
+                ["Imagen 3 Fast", "Photorealism, product shots", "Google One AI / bedda.ai Plus"],
+                ["Flux 1.1 Pro", "Artistic style, illustration", "Replicate / bedda.ai Plus"],
+                ["Midjourney v7", "Aesthetic quality", "Discord (Midjourney only)"],
+                ["Stable Diffusion XL", "Open-source, customizable", "Self-hosted / various APIs"],
+              ].map(([model, strength, access], i) => (
+                <tr key={model} className={i % 2 === 1 ? "bg-muted/20" : undefined}>
+                  <td className="p-4 font-medium">{model}</td>
+                  <td className="p-4">{strength}</td>
+                  <td className="p-4">{access}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Pricing: What You Actually Pay</h2>
+        <p>AI image generation pricing varies widely:</p>
+        <ul>
+          <li><strong>DALL-E 3 via ChatGPT Plus:</strong> $20/month (includes limited image credits)</li>
+          <li><strong>Imagen 3 via Google One AI:</strong> $19.99/month</li>
+          <li><strong>Flux via Replicate:</strong> ~$0.04 per image (pay-per-use)</li>
+          <li><strong>Midjourney Basic:</strong> $10/month (200 images)</li>
+          <li>
+            <strong>bedda.ai Plus:</strong> $12/month — includes DALL-E 3, Imagen 3 Fast,
+            and Flux 1.1 Pro in the Image Studio, plus all text AI models
+          </li>
+        </ul>
+        <p>
+          If you want access to multiple image generation models without juggling separate
+          subscriptions, bedda.ai is the most cost-effective option.
+        </p>
+
+        <h2>How to Choose</h2>
+        <ul>
+          <li>
+            <strong>Need the image to match your prompt exactly?</strong> DALL-E 3.
+          </li>
+          <li>
+            <strong>Making product photos or realistic renders?</strong> Imagen 3.
+          </li>
+          <li>
+            <strong>Creating art or illustrations with a unique style?</strong> Flux 1.1 Pro.
+          </li>
+          <li>
+            <strong>Want the most beautiful images and don&apos;t mind Discord?</strong> Midjourney.
+          </li>
+          <li>
+            <strong>Want all three (DALL-E + Imagen + Flux) for less than one Midjourney plan?</strong> bedda.ai Plus.
+          </li>
+        </ul>
+
+        <div className="not-prose mt-8 rounded-xl border bg-muted/30 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            DALL-E 3 + Imagen 3 + Flux — All in One Place
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Image Studio on bedda.ai Plus gives you all three image generators plus
+            36+ text AI models for $12/month. 7-day free trial.
+          </p>
+          <Button asChild>
+            <Link href="/register">Start Free Trial</Link>
+          </Button>
+        </div>
+      </article>
+    ),
+  },
+
+  "claude-sonnet-4-review": {
+    slug: "claude-sonnet-4-review",
+    title: "Claude Sonnet 4.6 Review: Anthropic's Best Value Model in 2026",
+    description:
+      "A complete review of Claude Sonnet 4.6 — how it compares to Claude Opus 4.8, when to use it over GPT-4o, and why it's the workhorse model for most users.",
+    date: "June 2026",
+    readingTime: "6 min read",
+    category: "Model Reviews",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          Claude Sonnet 4.6 is Anthropic&apos;s sweet-spot model: significantly faster
+          and cheaper than Opus 4.8, but barely behind on most real-world tasks. For
+          the majority of users, Sonnet is the right daily driver — and one of the
+          best models available in 2026.
+        </p>
+
+        <h2>What Is Claude Sonnet 4.6?</h2>
+        <p>
+          Claude Sonnet 4.6 sits in the middle of Anthropic&apos;s model lineup between
+          Haiku (fast and cheap) and Opus (most capable). The &quot;4.6&quot; version is the
+          latest update in the Claude 4 family, released in 2026. It represents
+          a significant step forward from Claude 3.5 Sonnet in reasoning, instruction
+          following, and code generation.
+        </p>
+
+        <h2>Sonnet vs Opus 4.8: When Does Opus Win?</h2>
+        <p>
+          Claude Opus 4.8 wins over Sonnet 4.6 on:
+        </p>
+        <ul>
+          <li>Very long, complex reasoning chains (PhD-level analysis)</li>
+          <li>Extremely nuanced writing where tone control is critical</li>
+          <li>Tasks requiring deep synthesis across many sources</li>
+          <li>Edge cases where Sonnet stumbles or gives shallow answers</li>
+        </ul>
+        <p>
+          For everyday tasks — drafting emails, writing code, summarizing documents,
+          answering questions, generating content — <strong>Sonnet 4.6 is indistinguishable
+          from Opus in practice</strong>. It&apos;s about 2–3x faster and significantly
+          cheaper per token.
+        </p>
+
+        <h2>Benchmark Performance</h2>
+        <p>Claude Sonnet 4.6 scores impressively on key benchmarks:</p>
+        <ul>
+          <li><strong>MMLU:</strong> 92.1% (vs Opus 94.8%, GPT-4o 88.7%)</li>
+          <li><strong>HumanEval (coding):</strong> 85.3% (vs Opus 89.2%, GPT-4o 85.1%)</li>
+          <li><strong>MATH:</strong> 78.9% (vs Opus 84.1%)</li>
+          <li><strong>Long context (200K):</strong> Supported (same as Opus)</li>
+        </ul>
+        <p>
+          On coding, Sonnet 4.6 essentially matches GPT-4o. On writing quality and
+          nuance, it outperforms GPT-4o meaningfully — this is where Claude&apos;s
+          training shows.
+        </p>
+
+        <h2>Best Use Cases for Claude Sonnet 4.6</h2>
+
+        <h3>Writing and Editing</h3>
+        <p>
+          Sonnet 4.6 produces excellent prose. For most writing tasks (blog posts,
+          emails, reports, marketing copy), it&apos;s on par with Opus. The difference
+          only appears in highly stylized or extremely nuanced long-form work.
+        </p>
+
+        <h3>Coding</h3>
+        <p>
+          Sonnet is a strong coding model — better than most for explanation and
+          refactoring, competitive with GPT-4o on generation. For complex multi-file
+          projects, Opus or GPT-5 may be preferred, but Sonnet handles 90% of
+          coding tasks well.
+        </p>
+
+        <h3>Summarization and Analysis</h3>
+        <p>
+          With a 200K token context window, Sonnet can process entire books, codebases,
+          or research collections. It accurately extracts and synthesizes information —
+          ideal for document analysis, research summaries, and meeting notes.
+        </p>
+
+        <h3>Question Answering and Reasoning</h3>
+        <p>
+          For factual Q&amp;A, explanations, and logical reasoning, Sonnet 4.6 is
+          exceptional. It&apos;s Claude&apos;s hallmark: clear, accurate, well-reasoned
+          answers that don&apos;t over-promise.
+        </p>
+
+        <h2>How to Access Claude Sonnet 4.6</h2>
+        <ul>
+          <li>
+            <strong>Claude.ai Free:</strong> Limited access to Claude Sonnet 4.6
+            (rate-limited)
+          </li>
+          <li>
+            <strong>Claude.ai Pro — $20/month:</strong> Unlimited Sonnet, with
+            Opus access up to usage limits
+          </li>
+          <li>
+            <strong>Anthropic API:</strong> $3/MTok input, $15/MTok output
+          </li>
+          <li>
+            <strong>bedda.ai Plus — $12/month:</strong> Claude Sonnet 4.6 + Opus 4.8
+            + 34 other models, all in one interface
+          </li>
+        </ul>
+
+        <h2>Verdict</h2>
+        <p>
+          Claude Sonnet 4.6 is one of the best AI models you can use in 2026 for
+          the price. It delivers most of Opus 4.8&apos;s quality at higher speed. If you&apos;re
+          using Claude as your primary AI — or want to add it to your toolkit — Sonnet
+          is the right starting point.
+        </p>
+        <p>
+          The best value is accessing Sonnet <em>and</em> Opus <em>and</em> GPT-5 <em>and</em>
+          Gemini 2.5 Pro on a single bedda.ai subscription for less than the cost of a
+          single-model subscription.
+        </p>
+
+        <div className="not-prose mt-8 rounded-xl border bg-muted/30 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            Claude Sonnet 4.6 + Opus 4.8 + 34 More Models
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Access the full Claude family alongside GPT-5, Gemini, and Grok on
+            bedda.ai — $12/month with a 7-day free trial.
+          </p>
+          <Button asChild>
+            <Link href="/register">Start Free Trial</Link>
+          </Button>
+        </div>
+      </article>
+    ),
+  },
+
+  "ai-tools-for-teams": {
+    slug: "ai-tools-for-teams",
+    title: "Best AI Tools for Teams in 2026: Collaborate Smarter with AI",
+    description:
+      "How teams use AI together — shared knowledge bases, real-time collaboration, model access policies, and the best platforms for team AI workflows in 2026.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "AI Guides",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          Individual AI subscriptions are great. But teams using AI together —
+          with shared context, consistent models, and centralized billing — get
+          dramatically more value. Here&apos;s how to set up AI for your team in 2026.
+        </p>
+
+        <h2>Why Teams Need a Different Approach</h2>
+        <p>
+          The standard model — everyone has their own ChatGPT/Claude subscription —
+          creates four problems:
+        </p>
+        <ol>
+          <li>
+            <strong>Fragmented knowledge:</strong> Everyone&apos;s context is siloed.
+            Useful prompts, docs, and insights aren&apos;t shared.
+          </li>
+          <li>
+            <strong>Inconsistent outputs:</strong> Different team members using
+            different models and prompts produce inconsistent results.
+          </li>
+          <li>
+            <strong>Cost inefficiency:</strong> A 10-person team paying $20/person
+            = $200/month. Team plans can cut that significantly.
+          </li>
+          <li>
+            <strong>No oversight:</strong> No way to see how AI is being used,
+            what data is shared, or what it&apos;s costing.
+          </li>
+        </ol>
+
+        <h2>Key Features for Team AI</h2>
+
+        <h3>Shared Knowledge Base</h3>
+        <p>
+          The most impactful team AI feature: a shared knowledge base that all
+          team members can query. Upload your documentation, past work, product
+          specs, and company knowledge — then anyone on the team can ask questions
+          and get answers grounded in your actual context.
+        </p>
+        <p>
+          This is much more powerful than individual ChatGPT accounts where
+          each person starts from scratch.
+        </p>
+
+        <h3>Team Workspaces and Projects</h3>
+        <p>
+          AI platforms with project/workspace features let you organize work by
+          client, product, or initiative. Set shared system instructions for a
+          project (e.g., &quot;We&apos;re building a fintech app, always suggest security
+          best practices&quot;) so every team member works in the same context.
+        </p>
+
+        <h3>Model Access Policies</h3>
+        <p>
+          Enterprise teams need to control which models employees can use — for
+          compliance, cost management, or consistency. Look for platforms that
+          let admins set allowed/denied model lists and monthly cost caps per team.
+        </p>
+
+        <h3>Audit Logs</h3>
+        <p>
+          For regulated industries (healthcare, finance, legal), audit logging
+          is essential. Know which AI model was used, when, by whom — for
+          compliance documentation and security reviews.
+        </p>
+
+        <h3>Real-Time Collaboration</h3>
+        <p>
+          Advanced team AI platforms let multiple team members work on the same
+          AI conversation simultaneously — with live presence indicators and
+          typing awareness. Useful for collaborative writing and brainstorming sessions.
+        </p>
+
+        <h2>Platform Comparison: Team AI in 2026</h2>
+        <div className="not-prose overflow-hidden rounded-xl border">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b bg-muted/50">
+                <th className="p-4 text-left font-semibold">Platform</th>
+                <th className="p-4 text-left font-semibold">Team Price</th>
+                <th className="p-4 text-left font-semibold">Models</th>
+                <th className="p-4 text-left font-semibold">Key Features</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["ChatGPT Teams", "$30/user/mo", "OpenAI only", "Shared workspace, no training on data"],
+                ["Claude for Work", "$25/user/mo", "Anthropic only", "Projects, 200K context"],
+                ["Google Workspace AI", "$30/user/mo", "Google only", "Gemini in Docs/Gmail/Sheets"],
+                ["bedda.ai Teams", "$12/user/mo", "36+ models", "Shared KB, realtime collab, audit logs, model policies"],
+              ].map(([platform, price, models, features], i) => (
+                <tr key={platform} className={i % 2 === 1 ? "bg-muted/20" : undefined}>
+                  <td className="p-4 font-medium">{platform}</td>
+                  <td className="p-4">{price}</td>
+                  <td className="p-4">{models}</td>
+                  <td className="p-4 text-xs">{features}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Team AI Best Practices</h2>
+
+        <h3>Create a Prompt Library</h3>
+        <p>
+          Build a shared library of proven prompts for common team tasks: writing
+          client emails, generating meeting summaries, reviewing code, writing job
+          descriptions. Standardizing prompts improves output consistency and
+          saves time across the team.
+        </p>
+
+        <h3>Use a Shared Knowledge Base for Onboarding</h3>
+        <p>
+          Upload your onboarding docs, internal wikis, and process guides into a
+          shared KB. New employees can ask questions and get accurate answers
+          immediately — reducing the load on senior team members.
+        </p>
+
+        <h3>Assign Models to Tasks</h3>
+        <p>
+          Different models for different team tasks:
+        </p>
+        <ul>
+          <li><strong>Client communications:</strong> Claude Opus (natural, nuanced)</li>
+          <li><strong>Code review:</strong> GPT-5 (technical precision)</li>
+          <li><strong>Research synthesis:</strong> Gemini 2.5 Pro (long context, search grounding)</li>
+          <li><strong>Quick answers / summarization:</strong> Gemini Flash (speed + cost)</li>
+        </ul>
+
+        <h2>Getting Started</h2>
+        <p>
+          The fastest way to set up team AI: start with a shared account on a
+          multi-model platform, create a project for your main workstream, upload
+          your core documentation to the knowledge base, and share a prompt library
+          with your team. You can have this running in under an hour.
+        </p>
+
+        <div className="not-prose mt-8 rounded-xl border bg-muted/30 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            AI for Your Whole Team — $12/person/month
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Shared knowledge base, real-time collaboration, 36+ AI models, audit logs,
+            and model access policies. Teams of 2–50+.
+          </p>
+          <Button asChild>
+            <Link href="/teams">Learn About bedda Teams</Link>
+          </Button>
+        </div>
+      </article>
+    ),
+  },
 };
 
 export function generateStaticParams() {

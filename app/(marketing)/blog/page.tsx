@@ -234,6 +234,42 @@ const posts = [
     readingTime: "6 min read",
     category: "AI Guides",
   },
+  {
+    slug: "chatgpt-vs-claude-vs-gemini",
+    title: "ChatGPT vs Claude vs Gemini: The Ultimate 3-Way AI Comparison (2026)",
+    description:
+      "A definitive comparison of ChatGPT (GPT-5), Claude Opus 4.8, and Gemini 2.5 Pro — benchmarks, pricing, strengths, and which AI wins for each task in 2026.",
+    date: "June 2026",
+    readingTime: "10 min read",
+    category: "Model Comparisons",
+  },
+  {
+    slug: "best-ai-image-generator-2026",
+    title: "Best AI Image Generators in 2026: DALL-E 3, Imagen 3, Flux, and More",
+    description:
+      "Comparing the top AI image generation tools in 2026 — DALL-E 3, Google Imagen 3, Flux 1.1 Pro, and Midjourney. What each excels at and where to access them.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "AI Guides",
+  },
+  {
+    slug: "claude-sonnet-4-review",
+    title: "Claude Sonnet 4.6 Review: Anthropic's Best Value Model in 2026",
+    description:
+      "A complete review of Claude Sonnet 4.6 — how it compares to Claude Opus 4.8, when to use it over GPT-4o, and why it's the workhorse model for most users.",
+    date: "June 2026",
+    readingTime: "6 min read",
+    category: "Model Reviews",
+  },
+  {
+    slug: "ai-tools-for-teams",
+    title: "Best AI Tools for Teams in 2026: Collaborate Smarter with AI",
+    description:
+      "How teams use AI together — shared knowledge bases, real-time collaboration, model access policies, and the best platforms for team AI workflows in 2026.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "AI Guides",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
