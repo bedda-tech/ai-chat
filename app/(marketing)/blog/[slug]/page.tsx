@@ -5294,6 +5294,647 @@ const POSTS: Record<string, BlogPost> = {
       </article>
     ),
   },
+
+  "gpt-4o-vs-gpt-5": {
+    slug: "gpt-4o-vs-gpt-5",
+    title: "GPT-4o vs GPT-5: Should You Upgrade in 2026?",
+    description:
+      "GPT-4o vs GPT-5 — a detailed comparison of OpenAI's two flagship models on performance, speed, cost, and real-world tasks. Is GPT-5 worth the upgrade?",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Model Comparisons",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          GPT-5 is OpenAI&apos;s most capable model — but GPT-4o is still
+          excellent and significantly cheaper. Is GPT-5 worth the upgrade for
+          your use case? Here&apos;s a practical comparison to help you decide.
+        </p>
+
+        <h2>The Short Answer</h2>
+        <p>
+          <strong>Upgrade to GPT-5 if you:</strong> work on complex reasoning,
+          multi-step coding, or research tasks where accuracy matters more than
+          speed.
+          <br />
+          <strong>Stick with GPT-4o if you:</strong> do everyday writing,
+          summarization, or high-volume tasks where the cost savings are
+          significant.
+          <br />
+          <strong>Best of both:</strong> a multi-model subscription (like{" "}
+          <Link href="/pricing" className="text-primary underline">
+            bedda.ai
+          </Link>
+          ) gives you both GPT-4o and GPT-5 for $12/month.
+        </p>
+
+        <h2>Performance</h2>
+        <p>GPT-5 leads meaningfully on hard tasks:</p>
+        <ul>
+          <li>
+            <strong>Coding:</strong> GPT-5 scores notably higher on SWE-bench
+            (real-world software engineering) and LiveCodeBench. It writes fewer
+            bugs and handles multi-file context better.
+          </li>
+          <li>
+            <strong>Math and reasoning:</strong> GPT-5 closes the gap with
+            reasoning-specialized models like DeepSeek R1 on competition math
+            and logic problems.
+          </li>
+          <li>
+            <strong>Writing:</strong> Both are strong. GPT-5 has better
+            long-form coherence; GPT-4o is faster for shorter tasks.
+          </li>
+          <li>
+            <strong>Everyday tasks:</strong> For summarization, translation,
+            Q&amp;A, and basic writing, the gap is small. GPT-4o handles these
+            fine.
+          </li>
+        </ul>
+
+        <h2>Speed and Cost</h2>
+        <p>
+          GPT-4o is faster for most responses. GPT-5&apos;s additional
+          reasoning capability comes with slightly higher latency on complex
+          outputs. On a per-token basis:
+        </p>
+        <ul>
+          <li>GPT-4o: lower cost per token (good for high-volume use)</li>
+          <li>GPT-5: higher cost per token (justified for precision tasks)</li>
+          <li>
+            GPT-5 Mini / GPT-4.1 Mini: lightweight variants for fast,
+            affordable responses
+          </li>
+        </ul>
+
+        <div className="not-prose overflow-hidden rounded-xl border">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b bg-muted/50">
+                <th className="p-4 text-left font-semibold">Capability</th>
+                <th className="p-4 text-left font-semibold">GPT-4o</th>
+                <th className="p-4 text-left font-semibold">GPT-5</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["Complex coding", "Good", "Excellent"],
+                ["Long-form writing", "Good", "Better"],
+                ["Everyday tasks", "Excellent", "Excellent"],
+                ["Speed", "Faster", "Slightly slower"],
+                ["API cost", "Lower", "Higher"],
+                ["Context window", "128K tokens", "128K tokens"],
+                ["Multimodal (vision)", "Yes", "Yes"],
+              ].map(([task, gpt4o, gpt5], i) => (
+                <tr key={i} className={i % 2 === 0 ? "bg-muted/20" : ""}>
+                  <td className="p-4 font-medium">{task}</td>
+                  <td className="p-4 text-muted-foreground">{gpt4o}</td>
+                  <td className="p-4 text-muted-foreground">{gpt5}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>When GPT-4o Is the Right Choice</h2>
+        <ul>
+          <li>High-volume API applications where cost matters</li>
+          <li>Real-time or low-latency use cases</li>
+          <li>Standard writing, Q&amp;A, and summarization tasks</li>
+          <li>When you&apos;re already happy with your results</li>
+        </ul>
+
+        <h2>When GPT-5 Is Worth It</h2>
+        <ul>
+          <li>Complex multi-step coding or debugging sessions</li>
+          <li>Research synthesis requiring careful reasoning</li>
+          <li>Tasks where a small accuracy improvement matters (legal, medical, finance)</li>
+          <li>When you need the best available model for a critical task</li>
+        </ul>
+
+        <h2>The Smarter Option: Use Both</h2>
+        <p>
+          You don&apos;t have to choose. On bedda.ai, you get GPT-4o, GPT-5,
+          GPT-5 Mini, GPT-4.1, and 32+ other models — all in one subscription
+          at $12/month. Use GPT-4o for quick tasks, GPT-5 when you need the
+          best. No separate subscriptions.
+        </p>
+
+        <div className="not-prose mt-8 rounded-xl border bg-muted/30 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            GPT-4o + GPT-5 + 34 more models — $12/month
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Every OpenAI model, every Anthropic model, Gemini, Grok, and more.
+            7-day free trial.
+          </p>
+          <Button asChild>
+            <Link href="/register">Start Free Trial</Link>
+          </Button>
+        </div>
+      </article>
+    ),
+  },
+
+  "best-ai-for-students-2026": {
+    slug: "best-ai-for-students-2026",
+    title: "Best AI for Students in 2026: Study Smarter, Write Better, Research Faster",
+    description:
+      "The best AI tools for students in 2026 — for essay writing, research, exam prep, summarizing papers, and coding. Ranked by use case with pricing.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "AI Guides",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          AI has transformed how students learn, write, and research. In 2026,
+          the right AI tool can help you write better essays, understand complex
+          topics faster, and finish research in a fraction of the time. Here&apos;s
+          what actually works — and what to use for each task.
+        </p>
+
+        <h2>What Students Actually Use AI For</h2>
+        <ul>
+          <li>
+            <strong>Essay writing and editing</strong> — structuring arguments,
+            improving prose, checking grammar
+          </li>
+          <li>
+            <strong>Research synthesis</strong> — summarizing papers, comparing
+            sources, finding key points
+          </li>
+          <li>
+            <strong>Exam prep</strong> — generating practice questions, explaining
+            concepts, creating study guides
+          </li>
+          <li>
+            <strong>Coding help</strong> — debugging, learning new languages,
+            understanding algorithms
+          </li>
+          <li>
+            <strong>Language learning</strong> — translation, grammar correction,
+            conversation practice
+          </li>
+        </ul>
+
+        <h2>Best AI Models for Students by Task</h2>
+
+        <h3>Essay Writing and Editing</h3>
+        <p>
+          <strong>Best: Claude Sonnet 4.6</strong> — the best AI for writing
+          quality. It follows style instructions precisely, writes in natural
+          prose, and helps improve your own writing without making it sound
+          robotic. Use it to outline, draft, and refine.
+        </p>
+        <p>
+          <strong>Also good: GPT-5</strong> — excellent at argumentative
+          structure and adapting to different citation styles (MLA, APA, Chicago).
+        </p>
+
+        <h3>Research and Paper Summarization</h3>
+        <p>
+          <strong>Best: Gemini 2.5 Pro</strong> — massive context window (up
+          to 1M tokens), Google Search grounding, and strong summarization. Paste
+          an entire research paper and ask for a structured summary. Or use its
+          web search to find relevant sources on a topic.
+        </p>
+        <p>
+          <strong>Also good: Claude Opus 4.8</strong> — 200K token context,
+          excellent at synthesizing multiple sources and comparing positions.
+        </p>
+
+        <h3>Explaining Difficult Concepts</h3>
+        <p>
+          <strong>Best: Claude Sonnet 4.6 or GPT-5</strong> — both excel at
+          adapting explanations to your level. Ask for an explanation
+          &quot;like I&apos;m a first-year student&quot; or &quot;assuming I know
+          basic calculus.&quot;
+        </p>
+
+        <h3>Coding Assignments</h3>
+        <p>
+          <strong>Best: GPT-5 or Claude Opus 4.8</strong> — both are
+          exceptional at code. GPT-5 is better at debugging and explaining why
+          something broke. Claude is often clearer at explaining the underlying
+          logic.
+        </p>
+        <p>
+          For learning a new language: use DeepSeek R1 for step-by-step
+          reasoning through algorithms, or Gemini 2.5 Flash for quick answers.
+        </p>
+
+        <h3>Exam Prep and Study Guides</h3>
+        <p>
+          <strong>Best: Any model via structured prompting.</strong> Ask it to:
+          &quot;Generate 10 practice questions based on Chapter 5 of my notes,
+          then quiz me and explain each answer.&quot; Claude and GPT-5 both handle
+          this format well.
+        </p>
+
+        <h2>Pricing for Students</h2>
+        <div className="not-prose overflow-hidden rounded-xl border">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b bg-muted/50">
+                <th className="p-4 text-left font-semibold">Service</th>
+                <th className="p-4 text-left font-semibold">Price</th>
+                <th className="p-4 text-left font-semibold">Models Included</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["ChatGPT Plus", "$20/mo", "GPT-4o, GPT-5 (OpenAI only)"],
+                ["Claude.ai Pro", "$20/mo", "Claude family only"],
+                ["Gemini Advanced", "$20/mo", "Gemini family only"],
+                ["bedda.ai Plus", "$12/mo", "36+ models (all of the above + more)"],
+              ].map(([service, price, models], i) => (
+                <tr key={i} className={i % 2 === 0 ? "bg-muted/20" : ""}>
+                  <td className="p-4 font-medium">{service}</td>
+                  <td className="p-4 text-muted-foreground">{price}</td>
+                  <td className="p-4 text-muted-foreground">{models}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          For students on a budget, bedda.ai is the best deal: one subscription
+          gives you every major AI model, so you can pick the right tool for each
+          assignment rather than being locked into one provider.
+        </p>
+
+        <h2>Free Options</h2>
+        <p>
+          All major AI tools have free tiers. The limitations vary:
+        </p>
+        <ul>
+          <li>
+            <strong>ChatGPT free:</strong> GPT-4o mini access, limited GPT-4o
+            usage
+          </li>
+          <li>
+            <strong>Claude.ai free:</strong> Claude Sonnet with usage limits
+          </li>
+          <li>
+            <strong>Google Gemini free:</strong> Gemini 2.0 Flash
+          </li>
+          <li>
+            <strong>bedda.ai free:</strong> 14 free-tier models including
+            Gemini Flash, Claude Haiku, GPT-5 Nano, DeepSeek R1 — no credit
+            card required
+          </li>
+        </ul>
+
+        <h2>Tips for Using AI as a Student</h2>
+        <ul>
+          <li>
+            <strong>Use it to improve your writing, not replace it.</strong> Ask
+            for feedback and edits, then rewrite yourself. You&apos;ll learn
+            faster and avoid academic integrity issues.
+          </li>
+          <li>
+            <strong>Always verify factual claims.</strong> AI models can
+            hallucinate — especially on specific dates, citations, and statistics.
+            Cross-check sources.
+          </li>
+          <li>
+            <strong>Use context windows effectively.</strong> Paste your entire
+            assignment prompt, your notes, and any relevant readings into one
+            conversation for better results.
+          </li>
+          <li>
+            <strong>Try different models for different tasks.</strong> Claude for
+            writing, GPT-5 for coding, Gemini for research — the best model
+            varies by what you&apos;re doing.
+          </li>
+        </ul>
+
+        <div className="not-prose mt-8 rounded-xl border bg-muted/30 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            Try all AI models free — no card required
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Claude, GPT-5, Gemini, Grok, DeepSeek — all in one place, starting
+            at $12/month. Free tier available with 14 models.
+          </p>
+          <Button asChild>
+            <Link href="/register">Start Free</Link>
+          </Button>
+        </div>
+      </article>
+    ),
+  },
+
+  "is-perplexity-pro-worth-it": {
+    slug: "is-perplexity-pro-worth-it",
+    title: "Is Perplexity Pro Worth It in 2026? An Honest Review",
+    description:
+      "Is Perplexity Pro worth $20/month in 2026? We review what you get, where it falls short, and whether there's a better value option for AI-powered research.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Guides",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          Perplexity Pro costs $20/month and promises AI-powered search with
+          citations. It&apos;s genuinely useful — but is it the best use of
+          $20? Here&apos;s an honest look at what you get, where it falls short,
+          and what alternatives exist.
+        </p>
+
+        <h2>What Is Perplexity Pro?</h2>
+        <p>
+          Perplexity is an AI search engine that returns sourced answers instead
+          of a list of links. Perplexity Pro ($20/month) adds:
+        </p>
+        <ul>
+          <li>Unlimited Pro searches (vs 5/day on free)</li>
+          <li>Access to Claude, GPT-5, and Gemini as the underlying model</li>
+          <li>Image and file uploads</li>
+          <li>API access</li>
+        </ul>
+
+        <h2>What Perplexity Does Well</h2>
+        <p>
+          Perplexity is genuinely good for one specific thing: <strong>quick,
+          cited research on factual questions.</strong> It&apos;s faster than
+          doing a Google search, reading 5 pages, and synthesizing the answer
+          yourself. Good use cases:
+        </p>
+        <ul>
+          <li>Fact-checking a specific claim</li>
+          <li>Getting a quick answer with sources you can verify</li>
+          <li>Summarizing current events or recent developments</li>
+          <li>Researching a topic where source attribution matters</li>
+        </ul>
+
+        <h2>Where Perplexity Falls Short</h2>
+        <ul>
+          <li>
+            <strong>Not great for long-form work.</strong> Perplexity is built
+            for search, not for drafting documents, writing code, or complex
+            multi-turn conversations. For these tasks, you need Claude, GPT-5,
+            or Gemini directly.
+          </li>
+          <li>
+            <strong>You&apos;re paying for web search, not the models.</strong>{" "}
+            Perplexity Pro gives you access to Claude, GPT-5, and Gemini —
+            but only through the Perplexity interface, for search tasks. You
+            can&apos;t use those models for writing, coding, analysis, or anything
+            outside of search.
+          </li>
+          <li>
+            <strong>Citations aren&apos;t always accurate.</strong> Like all AI
+            systems, Perplexity can misattribute or misquote sources. Always
+            verify.
+          </li>
+          <li>
+            <strong>$20/month for a narrow use case.</strong> If you only
+            need AI for research/search, Perplexity is fine. But if you need
+            AI for a variety of tasks, you&apos;re paying a premium for limited
+            scope.
+          </li>
+        </ul>
+
+        <h2>How Perplexity Pro Compares</h2>
+        <div className="not-prose overflow-hidden rounded-xl border">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b bg-muted/50">
+                <th className="p-4 text-left font-semibold">Feature</th>
+                <th className="p-4 text-left font-semibold">Perplexity Pro ($20)</th>
+                <th className="p-4 text-left font-semibold">bedda.ai Plus ($12)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["AI-powered web search", "Yes", "Yes (via web search tool)"],
+                ["Claude / GPT-5 / Gemini", "Search only", "Full access, all tasks"],
+                ["Long-form writing", "Limited", "Full"],
+                ["Code generation", "Limited", "Full"],
+                ["Image generation", "No", "Yes"],
+                ["Knowledge base / uploads", "Yes", "Yes"],
+                ["Total models", "3–4", "36+"],
+                ["Price", "$20/month", "$12/month"],
+              ].map(([feature, perplexity, bedda], i) => (
+                <tr key={i} className={i % 2 === 0 ? "bg-muted/20" : ""}>
+                  <td className="p-4 font-medium">{feature}</td>
+                  <td className="p-4 text-muted-foreground">{perplexity}</td>
+                  <td className="p-4 text-muted-foreground">{bedda}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>The Verdict</h2>
+        <p>
+          <strong>Perplexity Pro is worth it if:</strong> you do a lot of
+          quick factual research, value citations, and don&apos;t need AI for
+          writing, coding, or other creative tasks.
+        </p>
+        <p>
+          <strong>Consider an alternative if:</strong> you want access to the
+          full capabilities of Claude, GPT-5, and Gemini — not just their search
+          mode — and you&apos;d like to save $8/month in the process.
+        </p>
+        <p>
+          A multi-model subscription like bedda.ai gives you web search (via
+          Gemini&apos;s grounding or the built-in web search tool) plus full
+          access to all those models for writing, coding, analysis, image
+          generation, and more. It&apos;s a broader tool for $8 less per month.
+        </p>
+
+        <div className="not-prose mt-8 rounded-xl border bg-muted/30 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            Web search + 36 AI models — $12/month
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Claude, GPT-5, Gemini (with search grounding), Grok, and 32 more.
+            7-day free trial. No commitment.
+          </p>
+          <Button asChild>
+            <Link href="/register">Start Free Trial</Link>
+          </Button>
+        </div>
+      </article>
+    ),
+  },
+
+  "ai-for-legal-professionals": {
+    slug: "ai-for-legal-professionals",
+    title: "Best AI Tools for Lawyers and Legal Professionals in 2026",
+    description:
+      "How lawyers are using AI in 2026 — contract review, legal research, drafting, and due diligence. Best models, workflows, and what to avoid.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "Professional Guides",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          AI is becoming essential in legal practice — not to replace lawyers,
+          but to handle research, drafting, and document review faster than any
+          associate could. Here&apos;s how legal professionals are using AI
+          effectively in 2026, and which tools work best.
+        </p>
+
+        <h2>How Lawyers Are Using AI</h2>
+        <ul>
+          <li>
+            <strong>Contract review and analysis</strong> — identifying risky
+            clauses, comparing to standard terms, flagging missing provisions
+          </li>
+          <li>
+            <strong>Legal research</strong> — summarizing case law, finding
+            relevant precedents, synthesizing statutory interpretation
+          </li>
+          <li>
+            <strong>Document drafting</strong> — generating first drafts of
+            contracts, demand letters, briefs, and memos
+          </li>
+          <li>
+            <strong>Due diligence</strong> — processing large document sets,
+            extracting key terms, creating summary tables
+          </li>
+          <li>
+            <strong>Client communication</strong> — writing clear explanations
+            of complex legal matters for non-lawyers
+          </li>
+        </ul>
+
+        <h2>Best AI Models for Legal Work</h2>
+
+        <h3>Contract Review and Drafting</h3>
+        <p>
+          <strong>Best: Claude Opus 4.8</strong> — the most precise
+          instruction-follower among AI models. For legal work, this matters:
+          Claude is more likely to notice what&apos;s missing, flag ambiguous
+          language accurately, and follow a structured review framework you
+          provide. Its 200K token context window handles long contracts
+          comfortably.
+        </p>
+        <p>
+          Prompt pattern: &quot;Review this contract clause by clause. For each
+          clause, note: (1) what it requires, (2) any unusual or risky terms,
+          (3) whether it&apos;s standard market practice for a [type of deal].
+          Flag any missing standard provisions.&quot;
+        </p>
+
+        <h3>Legal Research Synthesis</h3>
+        <p>
+          <strong>Best: Gemini 2.5 Pro</strong> — Google Search grounding
+          means it can access current case law and statutory sources. For
+          initial research on a topic, its ability to synthesize across sources
+          and cite them is valuable.
+        </p>
+        <p>
+          <strong>Important caveat:</strong> Never rely on AI for final legal
+          research. Use it to identify leads, then verify everything in Westlaw,
+          LexisNexis, or your jurisdiction&apos;s official sources. AI models
+          can and do hallucinate case citations.
+        </p>
+
+        <h3>Brief and Memo Drafting</h3>
+        <p>
+          <strong>Best: Claude Sonnet 4.6 or GPT-5</strong> — both produce
+          clean, formal legal prose. For briefs: provide the relevant facts,
+          the legal standard you&apos;re arguing under, and your key arguments,
+          then ask for a structured draft. Expect to revise substantially —
+          AI drafts are starting points, not finished work product.
+        </p>
+
+        <h3>Due Diligence and Document Processing</h3>
+        <p>
+          <strong>Best: Gemini 2.5 Pro or Claude Opus 4.8</strong> — for
+          processing large document sets, you need a large context window.
+          Gemini 2.5 Pro&apos;s 1M token context is unmatched for processing
+          entire contract portfolios. Upload multiple documents and ask for
+          a comparative summary table.
+        </p>
+
+        <h2>What to Avoid</h2>
+        <ul>
+          <li>
+            <strong>Don&apos;t cite AI-generated case law without verification.</strong>{" "}
+            Several attorneys have faced sanctions for submitting briefs with
+            AI-hallucinated citations. Always verify every case in an authoritative
+            database.
+          </li>
+          <li>
+            <strong>Don&apos;t submit AI output as final work product without review.</strong>{" "}
+            AI-drafted contracts and briefs need careful attorney review. The AI
+            may miss jurisdiction-specific requirements, recent law changes, or
+            nuances of your client&apos;s situation.
+          </li>
+          <li>
+            <strong>Be careful with confidential information.</strong> Understand
+            how each AI provider uses your input data before uploading privileged
+            documents. Many firms have policies on this; check yours.
+          </li>
+        </ul>
+
+        <h2>AI Workflows for Legal Teams</h2>
+        <div className="not-prose overflow-hidden rounded-xl border">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b bg-muted/50">
+                <th className="p-4 text-left font-semibold">Task</th>
+                <th className="p-4 text-left font-semibold">Recommended Model</th>
+                <th className="p-4 text-left font-semibold">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["Contract review", "Claude Opus 4.8", "Precise, 200K context"],
+                ["Legal research synthesis", "Gemini 2.5 Pro", "Search grounding"],
+                ["Brief drafting", "Claude Sonnet 4.6", "Clean legal prose"],
+                ["Due diligence", "Gemini 2.5 Pro", "1M token context"],
+                ["Client memos", "GPT-5", "Clear, structured writing"],
+                ["Deposition prep", "Claude Opus 4.8", "Detail retention"],
+              ].map(([task, model, why], i) => (
+                <tr key={i} className={i % 2 === 0 ? "bg-muted/20" : ""}>
+                  <td className="p-4 font-medium">{task}</td>
+                  <td className="p-4 text-muted-foreground">{model}</td>
+                  <td className="p-4 text-muted-foreground">{why}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Cost Considerations</h2>
+        <p>
+          Legal-specific AI tools (Clio AI, Westlaw AI, Harvey) cost $50–200+
+          per user per month. General-purpose AI models like Claude, GPT-5, and
+          Gemini cover 80% of the same tasks for a fraction of the cost.
+        </p>
+        <p>
+          A multi-model subscription gives you access to all the leading models
+          — Claude, GPT-5, and Gemini — for $12–50/month depending on usage.
+          For most solo practitioners and small firms, this covers the
+          core AI-assisted workflows without specialized tooling.
+        </p>
+
+        <div className="not-prose mt-8 rounded-xl border bg-muted/30 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            Claude Opus 4.8 + GPT-5 + Gemini 2.5 Pro — one subscription
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            All 36 leading AI models for legal research, drafting, and document
+            review. Team plans available. 7-day free trial.
+          </p>
+          <div className="flex justify-center gap-3">
+            <Button asChild>
+              <Link href="/register">Start Free Trial</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/teams">View Team Plans</Link>
+            </Button>
+          </div>
+        </div>
+      </article>
+    ),
+  },
 };
 
 export function generateStaticParams() {

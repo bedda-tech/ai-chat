@@ -306,6 +306,42 @@ const posts = [
     readingTime: "7 min read",
     category: "AI Guides",
   },
+  {
+    slug: "gpt-4o-vs-gpt-5",
+    title: "GPT-4o vs GPT-5: Should You Upgrade in 2026?",
+    description:
+      "GPT-4o vs GPT-5 — a detailed comparison of OpenAI's two flagship models on performance, speed, cost, and real-world tasks. Is GPT-5 worth the upgrade?",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Model Comparisons",
+  },
+  {
+    slug: "best-ai-for-students-2026",
+    title: "Best AI for Students in 2026: Study Smarter, Write Better, Research Faster",
+    description:
+      "The best AI tools for students in 2026 — for essay writing, research, exam prep, summarizing papers, and coding. Ranked by use case with pricing.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "AI Guides",
+  },
+  {
+    slug: "is-perplexity-pro-worth-it",
+    title: "Is Perplexity Pro Worth It in 2026? An Honest Review",
+    description:
+      "Is Perplexity Pro worth $20/month in 2026? We review what you get, where it falls short, and whether there's a better value option for AI-powered research.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Guides",
+  },
+  {
+    slug: "ai-for-legal-professionals",
+    title: "Best AI Tools for Lawyers and Legal Professionals in 2026",
+    description:
+      "How lawyers are using AI in 2026 — contract review, legal research, drafting, and due diligence. Best models, workflows, and what to avoid.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "Professional Guides",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
