@@ -378,6 +378,42 @@ const posts = [
     readingTime: "8 min read",
     category: "Professional Guides",
   },
+  {
+    slug: "best-ai-for-teachers-2026",
+    title: "Best AI for Teachers in 2026: Lesson Plans, Rubrics & Student Feedback",
+    description:
+      "How educators are using AI in 2026 — generating lesson plans in minutes, creating differentiated materials, writing rubrics, and giving better student feedback faster.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Professional Guides",
+  },
+  {
+    slug: "chatgpt-teams-vs-bedda",
+    title: "ChatGPT Teams vs Bedda: Which AI Platform Is Better for Teams in 2026?",
+    description:
+      "ChatGPT Teams is $30/user/month for GPT models only. Bedda gives your whole team 36+ models (GPT-5, Claude, Gemini, Grok) for less. A complete comparison.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Model Comparisons",
+  },
+  {
+    slug: "best-ai-for-startups-2026",
+    title: "Best AI Tools for Startups in 2026: Cut Costs Without Cutting Corners",
+    description:
+      "Most startups pay $60+/mo for ChatGPT Plus AND Claude Pro. There's a smarter way. The best AI tools for founders — pitches, code, research, and legal — for less.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Guides",
+  },
+  {
+    slug: "ai-for-content-creators",
+    title: "Best AI for Content Creators in 2026: YouTube, Newsletters & Social Media",
+    description:
+      "How top creators are using AI in 2026 — scripting YouTube videos, writing newsletters, repurposing content across platforms, and finding trending topics before they peak.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Professional Guides",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];

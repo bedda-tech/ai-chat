@@ -836,6 +836,414 @@ const USE_CASES: Record<string, UseCase> = {
     ],
     ctaHeadline: "Faster research. Tighter drafts. Every frontier model.",
   },
+
+  educators: {
+    slug: "educators",
+    title: "AI for Educators",
+    metaTitle: "Best AI for Teachers & Educators (2026) — 36+ Models for $12/mo",
+    metaDescription:
+      "Claude for lesson plans, GPT-5 for rubrics, Gemini for curriculum research — get every AI education model for $12/mo. Knowledge base for course materials. 7-day free trial.",
+    heroHeadline: "Every AI model teachers actually need — for less than a textbook.",
+    heroSubtext:
+      "Claude for writing lesson plans with the right tone. GPT-5 for generating rubrics, quizzes, and assessments. Gemini 2.5 Pro for synthesizing curriculum research. DeepSeek R1 for explaining complex concepts step-by-step. All 36+ models, one subscription, $12/mo.",
+    tagline: "Educators who spend time teaching, not prompting",
+    bestModels: [
+      { name: "Claude 4 Sonnet", reason: "Lesson plans, feedback, and student-facing writing" },
+      { name: "GPT-5", reason: "Quizzes, rubrics, and structured assessment creation" },
+      { name: "Gemini 2.5 Pro", reason: "Curriculum research and synthesizing long academic papers" },
+      { name: "DeepSeek R1", reason: "Step-by-step concept explanations and worked examples" },
+      { name: "Claude 3.5 Haiku", reason: "Fast differentiation — multiple reading levels in seconds" },
+    ],
+    features: [
+      {
+        title: "Lesson plan generator across grade levels",
+        description:
+          "Describe your learning objective and grade level — Claude generates a full lesson plan with activities, discussion questions, and differentiation strategies in under a minute.",
+      },
+      {
+        title: "Differentiation at scale",
+        description:
+          "Paste any text and ask bedda to rewrite it at three different reading levels simultaneously. Meets diverse classroom needs without tripling your prep time.",
+      },
+      {
+        title: "Knowledge base for your curriculum",
+        description:
+          "Upload syllabi, standards documents, and textbook chapters. Every AI conversation can reference them — no copy-pasting standards codes or re-explaining scope and sequence.",
+      },
+      {
+        title: "Assessment and rubric builder",
+        description:
+          "Describe the assignment and GPT-5 generates a standards-aligned rubric in seconds. Generate 20 quiz variations from the same content for retakes and differentiated assessment.",
+      },
+      {
+        title: "Student feedback at scale",
+        description:
+          "Paste a student draft and get specific, constructive feedback aligned to your rubric. Handle a full class set of essays in the time it used to take to read three.",
+      },
+      {
+        title: "Parent communication drafts",
+        description:
+          "Claude writes clear, professional parent emails and progress notes that match your tone. Edit and send — no starting from a blank page at 9pm.",
+      },
+    ],
+    useCaseExamples: [
+      "Create a week-long unit plan on the American Civil War for 8th graders",
+      "Write 20 multiple-choice questions on photosynthesis at a 6th grade level",
+      "Give detailed feedback on this student essay using my rubric",
+      "Rewrite this passage at 3rd, 5th, and 8th grade reading levels",
+      "Draft a parent email explaining this student's recent decline in participation",
+      "Create a Socratic seminar discussion guide for this chapter",
+    ],
+    testimonials: [
+      {
+        quote:
+          "I used to spend Sunday nights writing lesson plans. Now I do it in 20 minutes and spend the rest of the time actually thinking about my students.",
+        author: "Maria T.",
+        role: "7th Grade Science Teacher",
+      },
+      {
+        quote:
+          "Differentiation used to mean making three separate worksheets. Now I paste the original and ask bedda to rewrite at two additional levels. Done.",
+        author: "James R.",
+        role: "Special Education Coordinator",
+      },
+      {
+        quote:
+          "I upload my curriculum map at the start of the year. Every lesson plan bedda helps me write stays aligned to the scope and sequence automatically.",
+        author: "Priya L.",
+        role: "High School English Department Chair",
+      },
+    ],
+    faq: [
+      {
+        q: "Which AI model is best for writing lesson plans?",
+        a: "Claude 4 Sonnet is the best choice for lesson plans — it writes clear, structured content with appropriate tone for educational contexts. GPT-5 is better for structured formats like rubrics, quizzes, and assessment grids. bedda gives you both for $12/mo.",
+      },
+      {
+        q: "Can bedda help with IEP accommodations and differentiation?",
+        a: "Yes. Describe a student's needs and bedda can suggest accommodations, modify assignments to different cognitive levels, and draft differentiated versions of the same content. Always review AI suggestions in the context of each student's full IEP.",
+      },
+      {
+        q: "Is student data private when I use bedda?",
+        a: "Do not paste personally identifiable student information (names, IDs) into bedda. Use anonymized scenarios — 'a student who struggles with reading fluency' — and bedda can still give highly useful pedagogical support without any FERPA concerns.",
+      },
+      {
+        q: "Can I use bedda to grade essays?",
+        a: "bedda can provide detailed, rubric-aligned feedback on student writing — helpful as a first-pass review or a thinking partner. Final grading decisions should always be made by the teacher. Think of bedda as a TA that never sleeps.",
+      },
+      {
+        q: "Is there a plan for school teams or departments?",
+        a: "Yes. bedda team workspaces let departments share lesson plan templates, curriculum resources, and knowledge bases. New teachers on your team start with the department's full context already loaded.",
+      },
+    ],
+    ctaHeadline: "Spend less time on prep. Spend more time teaching.",
+  },
+
+  "customer-support": {
+    slug: "customer-support",
+    title: "AI for Customer Support Teams",
+    metaTitle: "Best AI for Customer Support (2026) — 36+ Models, One Subscription",
+    metaDescription:
+      "GPT-5 for fast responses, Claude for empathetic communication, Gemini for knowledge base synthesis — get every AI support model for $12/mo. 7-day free trial.",
+    heroHeadline: "Resolve tickets faster. Respond with more empathy. Handle more volume.",
+    heroSubtext:
+      "GPT-5 for fast, accurate response drafts. Claude 4 for empathetic, nuanced customer communication. Gemini 2.5 Pro for synthesizing long knowledge bases. All 36+ models in one subscription — $12/mo.",
+    tagline: "Support teams that close tickets, not just conversations",
+    bestModels: [
+      { name: "GPT-5", reason: "Fast, accurate response drafts for high-ticket volume" },
+      { name: "Claude 4 Sonnet", reason: "Empathetic, nuanced customer communication" },
+      { name: "Gemini 2.5 Pro", reason: "Synthesizing long help center docs and policy docs" },
+      { name: "DeepSeek R1", reason: "Step-by-step technical troubleshooting explanations" },
+      { name: "Mistral Large", reason: "Fast FAQ responses and canned reply suggestions" },
+    ],
+    features: [
+      {
+        title: "Knowledge base for your help center",
+        description:
+          "Upload your full help center, product docs, and internal SOPs. Every AI conversation references them — no hallucinated answers, no agents guessing at policy.",
+      },
+      {
+        title: "Response drafts in seconds",
+        description:
+          "Paste a customer message and get a full draft response in the right tone — empathetic, professional, or technical depending on what you specify. Edit and send in half the time.",
+      },
+      {
+        title: "Tone calibration per conversation",
+        description:
+          "Frustrated customer? Ask Claude for extra empathy. Technical issue? Use DeepSeek R1 for a step-by-step explanation. Right model for each ticket type.",
+      },
+      {
+        title: "Multi-language support without extra tools",
+        description:
+          "Handle tickets in Spanish, French, German, Japanese, and more. bedda's models translate and respond in the customer's language — no separate localization tool needed.",
+      },
+      {
+        title: "SOP synthesis for faster agent onboarding",
+        description:
+          "Upload your SOPs, escalation policies, and product guides to the knowledge base. New agents can ask questions and get accurate, policy-grounded answers from day one.",
+      },
+      {
+        title: "Model arena for response quality comparison",
+        description:
+          "For tricky escalations, run the same ticket through Claude and GPT-5 simultaneously. Pick the stronger response or combine the best elements — before hitting send.",
+      },
+    ],
+    useCaseExamples: [
+      "Draft a response to this angry customer complaint about a billing error",
+      "Explain this technical error in plain English for a non-technical customer",
+      "Translate this support ticket from Spanish and draft a response",
+      "Write a follow-up email for this unresolved ticket after 48 hours",
+      "Summarize this 30-message thread into a one-paragraph case summary",
+      "Suggest 5 ways to de-escalate this conversation before transferring to a manager",
+    ],
+    testimonials: [
+      {
+        quote:
+          "Our agents paste a ticket and get a draft response in 8 seconds. Handle time dropped by 40% in the first month. bedda paid for itself on day three.",
+        author: "Rachel M.",
+        role: "VP of Customer Success",
+      },
+      {
+        quote:
+          "We upload our entire help center to bedda's knowledge base. Agents stop making things up and start citing actual policy. CSAT went up 12 points.",
+        author: "Daniel K.",
+        role: "Support Operations Manager",
+      },
+      {
+        quote:
+          "International tickets used to go to a queue and wait for a bilingual agent. Now anyone on the team handles French or Spanish tickets in real time.",
+        author: "Sofia T.",
+        role: "Customer Experience Lead",
+      },
+    ],
+    faq: [
+      {
+        q: "Which AI is best for customer support?",
+        a: "GPT-5 for high-volume response drafting — fast and accurate. Claude 4 for sensitive, escalated situations requiring empathy and nuance. Gemini 2.5 Pro for synthesizing long knowledge bases and product docs. bedda gives you all three for $12/mo.",
+      },
+      {
+        q: "Can bedda integrate with Zendesk, Intercom, or Freshdesk?",
+        a: "bedda is a standalone chat interface and doesn't have native helpdesk integrations yet. Agents use bedda alongside their helpdesk — paste the ticket, get the draft, copy it across. API access lets technical teams build lightweight integrations via bedda's OpenAI-compatible endpoint.",
+      },
+      {
+        q: "How does the knowledge base work for support teams?",
+        a: "Upload your help center articles, internal SOPs, product docs, and escalation playbooks. bedda's RAG system retrieves the most relevant sections for each conversation and injects them as context. Models respond based on your actual documentation, not guesswork.",
+      },
+      {
+        q: "Is customer data private in bedda?",
+        a: "Messages are sent to model providers (Anthropic, OpenAI, Google) via API under their terms, which exclude training on API data. Don't paste PII (email addresses, account numbers) unless your legal team has reviewed your AI data handling policy.",
+      },
+      {
+        q: "Is there a team plan for support teams?",
+        a: "Yes. bedda team workspaces let your full support team share knowledge bases, SOPs, and model access. Enterprise plans include usage caps per seat and model access controls.",
+      },
+    ],
+    ctaHeadline: "Faster responses. Happier customers. One subscription.",
+  },
+
+  startups: {
+    slug: "startups",
+    title: "AI for Startups & Founders",
+    metaTitle: "Best AI for Startups in 2026 — 36+ Models for $12/mo",
+    metaDescription:
+      "GPT-5 for pitches, Claude for fundraising docs, Gemini for market research, DeepSeek for technical analysis — get every AI model founders need for $12/mo. 7-day free trial.",
+    heroHeadline: "One subscription. Every AI model your startup needs.",
+    heroSubtext:
+      "GPT-5 for pitch decks and investor emails. Claude for fundraising narratives and legal docs. Gemini 2.5 Pro for market research synthesis. DeepSeek R1 for technical architecture decisions. All 36+ models — $12/mo instead of $60+.",
+    tagline: "Founders who move fast without burning their runway on AI subscriptions",
+    bestModels: [
+      { name: "GPT-5", reason: "Pitch decks, sales emails, and product copy" },
+      { name: "Claude 4 Opus", reason: "Fundraising narratives, investor memos, and careful reasoning" },
+      { name: "Gemini 2.5 Pro", reason: "Market research synthesis and competitor analysis" },
+      { name: "DeepSeek R1", reason: "Technical architecture decisions and system design tradeoffs" },
+      { name: "Grok 4", reason: "Real-time market intelligence and trend research" },
+    ],
+    features: [
+      {
+        title: "Pitch deck and fundraising copy",
+        description:
+          "Claude writes compelling fundraising narratives — the kind investors actually read. GPT-5 drafts crisp product copy and one-pagers. Use both at $12/mo instead of hiring a copywriter.",
+      },
+      {
+        title: "Market research and competitor analysis",
+        description:
+          "Gemini 2.5 Pro synthesizes long research reports, analyst notes, and competitor websites. Ask it to summarize 10 competitors in one structured table — minutes, not hours.",
+      },
+      {
+        title: "Technical architecture decisions",
+        description:
+          "DeepSeek R1 reasons through system design tradeoffs step-by-step. Get a second opinion on your tech stack, infrastructure choices, or scaling strategy before committing.",
+      },
+      {
+        title: "Knowledge base for your company context",
+        description:
+          "Upload your pitch deck, product spec, and competitive landscape docs. Every AI conversation starts with full company context — no re-explaining your startup from scratch.",
+      },
+      {
+        title: "Investor outreach at scale",
+        description:
+          "Write personalized cold emails to 50 investors using your company context. GPT-5 generates the drafts; you review and personalize. Maintain quality at volume.",
+      },
+      {
+        title: "Legal document first drafts",
+        description:
+          "Claude drafts NDAs, advisor agreements, and employment contracts as starting points. Cut legal fees on routine docs. Always have a lawyer review before signing.",
+      },
+    ],
+    useCaseExamples: [
+      "Write a 3-sentence company description for a cold email to a Series A VC",
+      "Analyze these 5 competitors and summarize their pricing, GTM, and positioning",
+      "Draft an NDA for our new advisor relationship",
+      "Critique our Series A pitch narrative and suggest improvements",
+      "Write 10 headline variations for our landing page A/B test",
+      "Explain the tradeoffs between Postgres and DynamoDB for our expected load pattern",
+    ],
+    testimonials: [
+      {
+        quote:
+          "We cancelled three separate AI subscriptions ($60/mo total) and replaced them with bedda at $12/mo. More models, less money. Essential for a pre-revenue startup.",
+        author: "Aisha M.",
+        role: "Co-founder, SaaS startup",
+      },
+      {
+        quote:
+          "I uploaded our full pitch deck to bedda's knowledge base. Now every investor email, LinkedIn post, and sales call prep starts with the right context automatically.",
+        author: "Chris R.",
+        role: "Founder & CEO",
+      },
+      {
+        quote:
+          "Used GPT-5 for the first draft and Claude to punch up the narrative. Our Series A deck converted at 3x our previous rate. Can't attribute it all to AI — but it didn't hurt.",
+        author: "Kai L.",
+        role: "Founder",
+      },
+    ],
+    faq: [
+      {
+        q: "Which AI is best for startup founders?",
+        a: "It depends on the task. Claude 4 for fundraising narratives and investor-grade writing — it's careful, nuanced, and persuasive. GPT-5 for high-volume copy (emails, landing pages, product descriptions). Gemini 2.5 Pro for research-heavy work. DeepSeek R1 for technical decisions. bedda gives you all of them for $12/mo.",
+      },
+      {
+        q: "How does bedda compare to paying for ChatGPT Plus AND Claude Pro?",
+        a: "ChatGPT Plus is $20/mo. Claude Pro is $20/mo. That's $40/mo for two models. bedda Plus is $12/mo and includes GPT-5, Claude 4 Opus, Claude 4 Sonnet, Gemini 2.5 Pro, Grok 4, DeepSeek R1, and 30+ more. Most founders save $28-$48/mo by switching.",
+      },
+      {
+        q: "Can my early team all use one bedda subscription?",
+        a: "For collaboration, bedda Teams plans let multiple team members share workspaces, knowledge bases, and model access. Individual Plus plans are per-person; Teams plans are priced per seat.",
+      },
+      {
+        q: "Can bedda help with fundraising?",
+        a: "Yes. Claude is one of the strongest models for investor-facing writing — pitch narratives, exec summaries, and follow-up emails. Gemini can research investors and synthesize their thesis and portfolio. bedda won't write your fundraise, but it can dramatically accelerate every written component.",
+      },
+      {
+        q: "Is my company information private?",
+        a: "Yes. Messages are sent to model providers (Anthropic, OpenAI, Google) via API. Provider API terms explicitly exclude using API data for model training. Your pitch deck, product strategy, and financials stay private.",
+      },
+    ],
+    ctaHeadline: "Cancel three AI subscriptions. Replace them with one.",
+  },
+
+  "content-creators": {
+    slug: "content-creators",
+    title: "AI for Content Creators",
+    metaTitle: "Best AI for Content Creators (2026) — YouTube, Podcasts & Social Media",
+    metaDescription:
+      "Claude for scripts and storytelling, GPT-5 for SEO content and volume, Gemini for research — all 36+ AI models for content creators at $12/mo. 7-day free trial.",
+    heroHeadline: "Every AI model content creators need. One subscription.",
+    heroSubtext:
+      "Claude for scripts, stories, and long-form content. GPT-5 for SEO articles, titles, and thumbnail ideas at scale. Gemini 2.5 Pro for research synthesis. Grok 4 for real-time trend analysis. All 36+ models — $12/mo.",
+    tagline: "Creators who publish consistently without burning out",
+    bestModels: [
+      { name: "Claude 4 Opus", reason: "Long-form scripts, storytelling, and authentic voice" },
+      { name: "GPT-5", reason: "SEO content, headline generation, and high-volume copy" },
+      { name: "Gemini 2.5 Pro", reason: "Research synthesis and fact-checking for deep-dive content" },
+      { name: "Grok 4", reason: "Trending topics and real-time culture pulse" },
+      { name: "Mistral Large", reason: "Fast first drafts for rapid content iteration" },
+    ],
+    features: [
+      {
+        title: "YouTube script and video structure",
+        description:
+          "Claude writes full YouTube scripts with hooks, narrative structure, and call-to-action. Describe your topic and audience and get a production-ready script in minutes — not hours.",
+      },
+      {
+        title: "Thumbnail titles and A/B testing",
+        description:
+          "Generate 20 title variations for any video. Use GPT-5's high-volume output for rapid testing — find your best hook before publishing, not after.",
+      },
+      {
+        title: "Newsletter and long-form content",
+        description:
+          "Claude is the strongest model for newsletter writing that sounds like a real human — not AI-generated fluff. Upload your past issues to the knowledge base and it matches your voice.",
+      },
+      {
+        title: "Research without leaving the chat",
+        description:
+          "Gemini 2.5 Pro synthesizes long research papers, industry reports, and competitor content. Ask it to turn 5 sources into a tight summary for your next deep-dive video.",
+      },
+      {
+        title: "Social media repurposing at scale",
+        description:
+          "Paste a long-form piece and get 10 Twitter/X thread variations, 5 LinkedIn posts, and 3 Instagram captions — optimized for each platform in one conversation.",
+      },
+      {
+        title: "Trend research with Grok",
+        description:
+          "Grok 4 is trained on real-time data — use it to spot trending topics in your niche before they peak. Get content ideas grounded in what's actually moving right now.",
+      },
+    ],
+    useCaseExamples: [
+      "Write a 10-minute YouTube script on why creators are burning out in 2026",
+      "Generate 15 thumbnail title options for a video on AI productivity tools",
+      "Repurpose this 2,000-word article into a Twitter thread and LinkedIn post",
+      "Write a weekly newsletter intro about [topic] in my conversational style",
+      "Research what's trending in the personal finance creator space right now",
+      "Create a content calendar for my YouTube channel for the next 4 weeks",
+    ],
+    testimonials: [
+      {
+        quote:
+          "I use Claude for my newsletter because it sounds like me. GPT-5 for titles because I can generate 20 at once. bedda lets me use both without juggling two subscriptions.",
+        author: "Alex T.",
+        role: "Newsletter Author, 45k subscribers",
+      },
+      {
+        quote:
+          "My upload schedule went from twice a month to weekly. Scripts that used to take a day take two hours. The bottleneck is now editing, not writing.",
+        author: "Sofia K.",
+        role: "YouTube Creator, 280k subscribers",
+      },
+      {
+        quote:
+          "I paste any long-form piece and get a full social repurposing kit — thread, LinkedIn, IG caption — in 90 seconds. That's hours saved every week.",
+        author: "Marcus R.",
+        role: "Multi-platform Content Creator",
+      },
+    ],
+    faq: [
+      {
+        q: "Which AI is best for YouTube scripts?",
+        a: "Claude 4 Opus is the strongest for YouTube scripts — it understands narrative structure, builds tension, and writes hooks that feel human. GPT-5 is better for structured formats like explainer videos and listicle-style content. bedda gives you both for $12/mo.",
+      },
+      {
+        q: "Can bedda help with SEO for content?",
+        a: "Yes. Combine web search (for keyword research and SERP analysis) with GPT-5 (for SEO-optimized content) and Gemini (for competitor research). You get a full content SEO workflow without paying for separate tools.",
+      },
+      {
+        q: "How does bedda handle my brand voice?",
+        a: "Upload your past content, style guide, or brand notes to bedda's knowledge base. Every conversation can reference them — so output matches your voice without re-prompting every session.",
+      },
+      {
+        q: "Can bedda transcribe audio or video for repurposing?",
+        a: "bedda supports audio transcription via its transcription tool (powered by Whisper). Upload audio or record directly and get a transcript to repurpose into articles, newsletters, or social posts.",
+      },
+      {
+        q: "Is bedda cheaper than other AI writing tools?",
+        a: "Jasper Pro is $39/mo. Writesonic Pro is $19/mo. Both use Claude or GPT-5 under the hood. bedda gives you direct access to every model they use — plus 34 more — for $12/mo. No middleman markup.",
+      },
+    ],
+    ctaHeadline: "Publish more. Burn out less. Use every model.",
+  },
 };
 
 type Params = Promise<{ slug: string }>;
