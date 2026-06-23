@@ -99,6 +99,12 @@ function InfoRow({
   );
 }
 
+function formatTokens(n: number): string {
+  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
+  if (n >= 1_000) return `${(n / 1_000).toFixed(1)}k`;
+  return n.toString();
+}
+
 export const Context = ({ className, usage, ...props }: ContextProps) => {
   const used = usage?.totalTokens ?? 0;
   const max =
@@ -107,22 +113,38 @@ export const Context = ({ className, usage, ...props }: ContextProps) => {
     usage?.context?.inputMax;
   const hasMax = typeof max === "number" && Number.isFinite(max) && max > 0;
   const usedPercent = hasMax ? Math.min(100, (used / max) * 100) : 0;
+
+  const rawCost = usage?.costUSD?.totalUSD;
+  const hasCost =
+    rawCost !== undefined &&
+    rawCost !== null &&
+    !Number.isNaN(Number.parseFloat(rawCost.toString()));
+  const costText = hasCost
+    ? `$${Number.parseFloat(rawCost!.toString()).toFixed(4)}`
+    : null;
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <button
           className={cn(
-            "inline-flex select-none items-center gap-1 rounded-md text-sm",
-            "cursor-pointer bg-background text-foreground",
+            "inline-flex select-none items-center gap-1 rounded-md px-1 text-xs",
+            "cursor-pointer text-muted-foreground hover:text-foreground transition-colors",
             className
           )}
+          title="Token usage — click for breakdown"
           type="button"
           {...props}
         >
-          <span className="hidden font-medium text-muted-foreground">
-            {usedPercent.toFixed(1)}%
-          </span>
           <ContextIcon percent={usedPercent} />
+          {used > 0 && (
+            <span className="font-mono">
+              {formatTokens(used)}
+              {costText && (
+                <span className="ml-1 opacity-80">{costText}</span>
+              )}
+            </span>
+          )}
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-fit p-3" side="top">

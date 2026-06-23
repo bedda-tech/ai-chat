@@ -5,7 +5,9 @@ import { useSWRConfig } from "swr";
 import { useCopyToClipboard } from "usehooks-ts";
 import type { Vote } from "@/lib/db/schema";
 import type { ChatMessage } from "@/lib/types";
+import type { AppUsage } from "@/lib/usage";
 import { Action, Actions } from "./elements/actions";
+import { Context } from "./elements/context";
 import {
   CopyIcon,
   PencilEditIcon,
@@ -64,12 +66,14 @@ export function PureMessageActions({
   vote,
   isLoading,
   setMode,
+  usage,
 }: {
   chatId: string;
   message: ChatMessage;
   vote: Vote | undefined;
   isLoading: boolean;
   setMode?: (mode: "view" | "edit") => void;
+  usage?: AppUsage;
 }) {
   const { mutate } = useSWRConfig();
   const [_, copyToClipboard] = useCopyToClipboard();
@@ -120,6 +124,8 @@ export function PureMessageActions({
 
   return (
     <Actions className="-ml-0.5">
+      {usage && <Context usage={usage} />}
+
       <Action onClick={handleCopy} tooltip="Copy">
         <CopyIcon />
       </Action>
@@ -239,6 +245,9 @@ export const MessageActions = memo(
       return false;
     }
     if (prevProps.isLoading !== nextProps.isLoading) {
+      return false;
+    }
+    if (!equal(prevProps.usage, nextProps.usage)) {
       return false;
     }
 

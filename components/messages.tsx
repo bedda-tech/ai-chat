@@ -12,6 +12,7 @@ import {
 import { useMessages } from "@/hooks/use-messages";
 import type { Vote } from "@/lib/db/schema";
 import type { ChatMessage } from "@/lib/types";
+import type { AppUsage } from "@/lib/usage";
 import { useDataStream } from "./data-stream-provider";
 import { Conversation, ConversationContent } from "./elements/conversation";
 import { Greeting } from "./greeting";
@@ -32,6 +33,7 @@ type MessagesProps = {
   selectedVisibilityType: VisibilityType;
   onModelChange?: (modelId: string) => void;
   setInput: Dispatch<SetStateAction<string>>;
+  messageUsageMap?: Record<string, AppUsage>;
 };
 
 function PureMessages({
@@ -47,6 +49,7 @@ function PureMessages({
   selectedVisibilityType,
   onModelChange,
   setInput,
+  messageUsageMap,
 }: MessagesProps) {
   const {
     containerRef: messagesContainerRef,
@@ -116,6 +119,7 @@ function PureMessages({
               }
               setMessages={setMessages}
               showModelBadge={hasMixedModels}
+              usage={messageUsageMap?.[message.id]}
               vote={
                 votes
                   ? votes.find((vote) => vote.messageId === message.id)

@@ -6,6 +6,7 @@ import { memo, useState } from "react";
 import { chatModels } from "@/lib/ai/models";
 import type { Vote } from "@/lib/db/schema";
 import type { ChatMessage } from "@/lib/types";
+import type { AppUsage } from "@/lib/usage";
 import { cn, sanitizeText } from "@/lib/utils";
 import { Chart } from "./chart";
 import { useDataStream } from "./data-stream-provider";
@@ -57,6 +58,7 @@ const PurePreviewMessage = ({
   isReadonly,
   requiresScrollPadding,
   showModelBadge,
+  usage,
 }: {
   chatId: string;
   message: ChatMessage;
@@ -67,6 +69,7 @@ const PurePreviewMessage = ({
   isReadonly: boolean;
   requiresScrollPadding: boolean;
   showModelBadge?: boolean;
+  usage?: AppUsage;
 }) => {
   const [mode, setMode] = useState<"view" | "edit">("view");
 
@@ -1430,6 +1433,7 @@ const PurePreviewMessage = ({
               key={`action-${message.id}`}
               message={message}
               setMode={setMode}
+              usage={usage}
               vote={vote}
             />
           )}

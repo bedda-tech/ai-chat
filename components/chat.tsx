@@ -69,6 +69,14 @@ export function Chat({
 
   const [input, setInput] = useState<string>("");
   const [usage, setUsage] = useState<AppUsage | undefined>(initialLastContext);
+  const [messageUsageMap, setMessageUsageMap] = useState<
+    Record<string, AppUsage>
+  >(() => {
+    if (!initialLastContext) return {};
+    const lastAssistant = initialMessages.filter((m) => m.role === "assistant").at(-1);
+    return lastAssistant ? { [lastAssistant.id]: initialLastContext } : {};
+  });
+  const messagesRef = useRef<typeof messages>([]);
   const [showCreditCardAlert, setShowCreditCardAlert] = useState(false);
   const [showUpgradeDialog, setShowUpgradeDialog] = useState(false);
   const [upgradeDialogContent, setUpgradeDialogContent] = useState<{
@@ -88,6 +96,10 @@ export function Chat({
   useEffect(() => {
     currentModelIdRef.current = currentModelId;
   }, [currentModelId]);
+
+  useEffect(() => {
+    messagesRef.current = messages;
+  }, [messages]);
 
   const {
     messages,
@@ -122,6 +134,13 @@ export function Chat({
       setDataStream((ds) => (ds ? [...ds, dataPart] : []));
       if (dataPart.type === "data-usage") {
         setUsage(dataPart.data);
+        const lastMsg = messagesRef.current.at(-1);
+        if (lastMsg?.role === "assistant") {
+          setMessageUsageMap((prev) => ({
+            ...prev,
+            [lastMsg.id]: dataPart.data,
+          }));
+        }
       }
       if ((dataPart.type as string) === "data-context-warnings") {
         const warnings = dataPart.data as unknown as string[];
@@ -230,6 +249,7 @@ export function Chat({
           chatId={id}
           isArtifactVisible={isArtifactVisible}
           isReadonly={isReadonly}
+          messageUsageMap={messageUsageMap}
           messages={messages}
           onModelChange={setCurrentModelId}
           regenerate={regenerate}
