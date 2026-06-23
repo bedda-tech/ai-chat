@@ -11,6 +11,7 @@ import type { McpServer } from "@/lib/db/schema";
 export function McpServersForm() {
   const [servers, setServers] = useState<McpServer[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isPaidUser, setIsPaidUser] = useState<boolean | null>(null);
   const [adding, setAdding] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [newName, setNewName] = useState("");
@@ -23,7 +24,12 @@ export function McpServersForm() {
   async function fetchServers() {
     try {
       const res = await fetch("/api/mcp-servers");
+      if (res.status === 403) {
+        setIsPaidUser(false);
+        return;
+      }
       if (res.ok) {
+        setIsPaidUser(true);
         const data = await res.json();
         setServers(data.servers ?? []);
       }
@@ -96,6 +102,35 @@ export function McpServersForm() {
       setServers(prev);
       toast.error("Failed to remove server");
     }
+  }
+
+  if (!loading && isPaidUser === false) {
+    return (
+      <div className="space-y-4">
+        <div>
+          <Label className="font-medium text-sm">MCP Servers</Label>
+          <p className="mt-1 text-muted-foreground text-xs">
+            Connect to Model Context Protocol servers to give the AI access to
+            external tools and data sources.
+          </p>
+        </div>
+        <div className="rounded-md border border-amber-500/40 bg-amber-50 p-4 dark:bg-amber-950/20">
+          <p className="font-medium text-amber-800 text-sm dark:text-amber-300">
+            MCP integration requires a paid subscription
+          </p>
+          <p className="mt-1 text-amber-700 text-xs dark:text-amber-400">
+            Connect external tools and data sources via MCP servers. Available
+            on Plus, Pro, and Max plans.
+          </p>
+          <a
+            className="mt-3 inline-flex items-center rounded-md bg-amber-600 px-3 py-1.5 font-medium text-white text-xs hover:bg-amber-700"
+            href="/upgrade"
+          >
+            Upgrade now
+          </a>
+        </div>
+      </div>
+    );
   }
 
   return (

@@ -10,6 +10,13 @@ import {
   listKBDocuments,
   saveKBChunks,
 } from "@/lib/db/queries";
+import { getUserTier } from "@/lib/usage/tracking";
+
+const UPGRADE_ERROR = {
+  error:
+    "Knowledge Base requires a paid subscription. Upgrade at /upgrade.",
+  upgrade: true,
+};
 
 const SUPPORTED_TYPES = [
   "text/plain",
@@ -26,6 +33,11 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
+  const tier = await getUserTier(session.user.id);
+  if (tier === "free") {
+    return NextResponse.json(UPGRADE_ERROR, { status: 403 });
+  }
+
   const { searchParams } = new URL(request.url);
   const projectId = searchParams.get("projectId") ?? undefined;
 
@@ -38,6 +50,11 @@ export async function POST(request: Request) {
   const session = await auth();
   if (!session?.user?.id) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const tier = await getUserTier(session.user.id);
+  if (tier === "free") {
+    return NextResponse.json(UPGRADE_ERROR, { status: 403 });
   }
 
   let formData: FormData;

@@ -53,6 +53,7 @@ export default function KnowledgeBasePage() {
   const projectId = searchParams.get("projectId") ?? null;
   const [projectName, setProjectName] = useState<string | null>(null);
 
+  const [isPaidUser, setIsPaidUser] = useState<boolean | null>(null);
   const [documents, setDocuments] = useState<KBDocument[]>([]);
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
@@ -92,7 +93,12 @@ export default function KnowledgeBasePage() {
         ? `/api/knowledge-base?projectId=${encodeURIComponent(projectId)}`
         : "/api/knowledge-base";
       const res = await fetch(url);
+      if (res.status === 403) {
+        setIsPaidUser(false);
+        return;
+      }
       if (res.ok) {
+        setIsPaidUser(true);
         const data = await res.json();
         setDocuments(data.documents ?? []);
       }
@@ -337,59 +343,111 @@ export default function KnowledgeBasePage() {
         </p>
       </div>
 
-      {/* Upload zone */}
-      <div
-        className={`mb-4 flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed p-10 transition-colors ${
-          dragOver
-            ? "border-primary bg-primary/5"
-            : "border-border hover:border-primary/50 hover:bg-muted/40"
-        } ${uploading ? "pointer-events-none opacity-60" : ""}`}
-        onClick={() => fileInputRef.current?.click()}
-        onDragLeave={() => setDragOver(false)}
-        onDragOver={(e) => {
-          e.preventDefault();
-          setDragOver(true);
-        }}
-        onDrop={handleDrop}
-      >
-        {uploading ? (
-          <div className="flex flex-col items-center gap-3 text-muted-foreground">
-            <div className="size-6 animate-spin rounded-full border-2 border-current border-t-transparent" />
-            <span className="text-sm">Processing document...</span>
+      {/* Premium gate */}
+      {!loading && isPaidUser === false && (
+        <div className="rounded-xl border border-amber-500/40 bg-amber-50 p-6 dark:bg-amber-950/20">
+          <div className="flex items-start gap-4">
+            <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-amber-100 dark:bg-amber-900/40">
+              <svg
+                className="size-5 text-amber-700 dark:text-amber-400"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={1.5}
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+            <div>
+              <p className="font-semibold text-amber-800 text-sm dark:text-amber-300">
+                Knowledge Base is a Plus feature
+              </p>
+              <p className="mt-1 text-amber-700 text-xs dark:text-amber-400">
+                Upload documents, PDFs, and more — the AI will search your files
+                when answering questions. Available on Plus, Pro, and Max plans.
+              </p>
+              <div className="mt-4 flex gap-3">
+                <a
+                  className="inline-flex items-center rounded-md bg-amber-600 px-4 py-2 font-medium text-white text-xs hover:bg-amber-700"
+                  href="/upgrade"
+                >
+                  Start free trial — $12/mo
+                </a>
+                <a
+                  className="inline-flex items-center rounded-md border border-amber-400 px-4 py-2 font-medium text-amber-700 text-xs hover:bg-amber-100 dark:border-amber-600 dark:text-amber-400 dark:hover:bg-amber-900/30"
+                  href="/pricing"
+                >
+                  View plans
+                </a>
+              </div>
+            </div>
           </div>
-        ) : (
-          <>
-            <svg
-              className="mb-3 size-10 text-muted-foreground/60"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={1.5}
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            <span className="font-medium text-sm">
-              Drop a file here, or click to upload
-            </span>
-            <span className="text-muted-foreground text-xs">
-              .txt &nbsp;&middot;&nbsp; .md &nbsp;&middot;&nbsp; .csv
-              &nbsp;&middot;&nbsp; .json
-            </span>
-          </>
-        )}
-      </div>
-      <input
-        accept=".txt,.md,.csv,.json,text/plain,text/markdown,text/csv,application/json"
-        className="hidden"
-        onChange={handleFileChange}
-        ref={fileInputRef}
-        type="file"
-      />
+        </div>
+      )}
 
+      {/* Upload zone — hidden for free tier */}
+      {isPaidUser !== false && (
+        <>
+          <div
+            className={`mb-4 flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed p-10 transition-colors ${
+              dragOver
+                ? "border-primary bg-primary/5"
+                : "border-border hover:border-primary/50 hover:bg-muted/40"
+            } ${uploading ? "pointer-events-none opacity-60" : ""}`}
+            onClick={() => fileInputRef.current?.click()}
+            onDragLeave={() => setDragOver(false)}
+            onDragOver={(e) => {
+              e.preventDefault();
+              setDragOver(true);
+            }}
+            onDrop={handleDrop}
+          >
+            {uploading ? (
+              <div className="flex flex-col items-center gap-3 text-muted-foreground">
+                <div className="size-6 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                <span className="text-sm">Processing document...</span>
+              </div>
+            ) : (
+              <>
+                <svg
+                  className="mb-3 size-10 text-muted-foreground/60"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={1.5}
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span className="font-medium text-sm">
+                  Drop a file here, or click to upload
+                </span>
+                <span className="text-muted-foreground text-xs">
+                  .txt &nbsp;&middot;&nbsp; .md &nbsp;&middot;&nbsp; .csv
+                  &nbsp;&middot;&nbsp; .json
+                </span>
+              </>
+            )}
+          </div>
+          <input
+            accept=".txt,.md,.csv,.json,text/plain,text/markdown,text/csv,application/json"
+            className="hidden"
+            onChange={handleFileChange}
+            ref={fileInputRef}
+            type="file"
+          />
+        </>
+      )}
+
+      {/* Cloud import buttons — hidden for free tier */}
+      {isPaidUser !== false && <>
       {/* Cloud import buttons */}
       <div className="mb-8 flex gap-2">
         <Button
@@ -614,9 +672,10 @@ export default function KnowledgeBasePage() {
           )}
         </div>
       )}
+      </>}
 
-      {/* Documents list */}
-      <div>
+      {/* Documents list — hidden for free tier */}
+      {isPaidUser !== false && <div>
         <h2 className="mb-3 font-semibold text-muted-foreground text-sm uppercase tracking-wide">
           {projectId ? "Project Documents" : "Your Documents"}
         </h2>
@@ -663,7 +722,7 @@ export default function KnowledgeBasePage() {
             ))}
           </ul>
         )}
-      </div>
+      </div>}
     </div>
   );
 }

@@ -6,12 +6,23 @@ import {
   getMcpServers,
   updateMcpServer,
 } from "@/lib/db/queries";
+import { getUserTier } from "@/lib/usage/tracking";
+
+const UPGRADE_ERROR = {
+  error: "MCP tool integration requires a paid subscription. Upgrade at /upgrade.",
+  upgrade: true,
+};
 
 /** GET /api/mcp-servers — list user's MCP servers */
 export async function GET() {
   const session = await auth();
   if (!session?.user?.id) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const tier = await getUserTier(session.user.id);
+  if (tier === "free") {
+    return NextResponse.json(UPGRADE_ERROR, { status: 403 });
   }
 
   const servers = await getMcpServers(session.user.id);
@@ -23,6 +34,11 @@ export async function POST(request: Request) {
   const session = await auth();
   if (!session?.user?.id) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const tier = await getUserTier(session.user.id);
+  if (tier === "free") {
+    return NextResponse.json(UPGRADE_ERROR, { status: 403 });
   }
 
   let body: { name: string; url: string; headers?: Record<string, string> };
@@ -63,6 +79,11 @@ export async function PUT(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
+  const tier = await getUserTier(session.user.id);
+  if (tier === "free") {
+    return NextResponse.json(UPGRADE_ERROR, { status: 403 });
+  }
+
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
   if (!id) {
@@ -94,6 +115,11 @@ export async function DELETE(request: Request) {
   const session = await auth();
   if (!session?.user?.id) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const tier = await getUserTier(session.user.id);
+  if (tier === "free") {
+    return NextResponse.json(UPGRADE_ERROR, { status: 403 });
   }
 
   const { searchParams } = new URL(request.url);
