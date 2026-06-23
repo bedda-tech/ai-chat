@@ -76,7 +76,7 @@ export function Chat({
     const lastAssistant = initialMessages.filter((m) => m.role === "assistant").at(-1);
     return lastAssistant ? { [lastAssistant.id]: initialLastContext } : {};
   });
-  const messagesRef = useRef<typeof messages>([]);
+  const messagesRef = useRef<ChatMessage[]>([]);
   const [showCreditCardAlert, setShowCreditCardAlert] = useState(false);
   const [showUpgradeDialog, setShowUpgradeDialog] = useState(false);
   const [upgradeDialogContent, setUpgradeDialogContent] = useState<{
@@ -96,10 +96,6 @@ export function Chat({
   useEffect(() => {
     currentModelIdRef.current = currentModelId;
   }, [currentModelId]);
-
-  useEffect(() => {
-    messagesRef.current = messages;
-  }, [messages]);
 
   const {
     messages,
@@ -201,6 +197,10 @@ export function Chat({
       }
     },
   });
+
+  useEffect(() => {
+    messagesRef.current = messages;
+  }, [messages]);
 
   const searchParams = useSearchParams();
   const query = searchParams.get("query");
