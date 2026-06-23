@@ -1533,6 +1533,259 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-grammarly": {
+    slug: "bedda-vs-grammarly",
+    competitor: "Grammarly Premium",
+    competitorUrl: "https://grammarly.com",
+    competitorPrice: "$12/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Grammarly Premium",
+    metaTitle: "bedda.ai vs Grammarly Premium (2026) — Same Price, 36+ AI Models",
+    metaDescription:
+      "Compare bedda.ai and Grammarly Premium. Both cost $12/mo — but bedda gives you GPT-5, Claude 4, Gemini, web search, code execution, and 36+ AI models. Grammarly only fixes your writing.",
+    ogTitle: "bedda.ai vs Grammarly Premium — Same $12/mo, 100x More Capability",
+    ogDescription:
+      "Grammarly Premium is $12/mo for grammar and tone checking. bedda.ai is $12/mo for GPT-5, Claude 4, Gemini, Grok and 36+ frontier AI models. Your subscription, your choice.",
+    heroHeadline: "Same price as Grammarly — but it's a full AI suite",
+    heroSubtext:
+      "Grammarly Premium charges $12/mo to fix your writing. bedda.ai charges $12/mo for GPT-5, Claude 4 Opus, Gemini 2.5 Pro, Grok 3, web search, code execution, image generation, and 36+ more AI models — all in one app.",
+    verdict:
+      "At the same $12/mo price point, bedda.ai gives you every frontier AI model plus writing, coding, research, and creative tools. Grammarly is a writing assistant. bedda.ai is everything.",
+    switchReasons: [
+      "Same monthly cost — $12/mo gets you 36+ AI models instead of one writing checker",
+      "Claude 4 writes better than Grammarly's suggestions, not just edits",
+      "GPT-5 and Gemini 2.5 Pro for research, summaries, and analysis",
+      "Web search, code execution, image generation — Grammarly has none of these",
+      "Use bedda.ai to write content from scratch, not just polish it",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$12/mo" },
+      { feature: "AI writing assistance", bedda: true, competitor: true },
+      { feature: "Grammar & spell check", bedda: true, competitor: true },
+      { feature: "Tone detection", bedda: true, competitor: true },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 3", bedda: true, competitor: false },
+      { feature: "DeepSeek R1", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "API access", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1" },
+    ],
+    faq: [
+      {
+        q: "Does bedda.ai check grammar like Grammarly?",
+        a: "bedda.ai can check and correct grammar, improve writing style, suggest rephrasing, and catch errors — powered by Claude 4 and GPT-5. It doesn't have a browser extension that checks as you type, but for full-document review and rewriting it's more capable than Grammarly's suggestions.",
+      },
+      {
+        q: "Is bedda.ai useful for non-writers?",
+        a: "Absolutely. Grammarly is only useful if you're writing text. bedda.ai is useful for coding, research, data analysis, image creation, video generation, and much more. It's a general-purpose AI platform.",
+      },
+      {
+        q: "Can bedda.ai improve my writing style like Grammarly?",
+        a: "Yes — and often more deeply. You can ask Claude 4 to rewrite in a specific tone, match a target audience, shorten for brevity, or expand for depth. Grammarly's suggestions are pattern-based; bedda.ai understands intent.",
+      },
+      {
+        q: "Does bedda.ai have a browser extension?",
+        a: "Not currently. Grammarly's inline browser extension is its strongest feature for everyday text editing. If you need real-time in-browser checks, Grammarly is better there. For everything else — writing assistance, research, analysis, image generation — bedda.ai wins.",
+      },
+    ],
+  },
+
+  "bedda-vs-midjourney": {
+    slug: "bedda-vs-midjourney",
+    competitor: "Midjourney",
+    competitorUrl: "https://midjourney.com",
+    competitorPrice: "$10–$30/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Midjourney",
+    metaTitle: "bedda.ai vs Midjourney (2026) — AI Images + 36 Models for $12/mo",
+    metaDescription:
+      "Compare bedda.ai and Midjourney. Midjourney is $10-30/mo for images only. bedda.ai is $12/mo for image generation (DALL-E 3, Imagen 3, Flux) PLUS Claude 4, GPT-5, Gemini, and 36+ AI models.",
+    ogTitle: "bedda.ai vs Midjourney — AI Images Plus Everything Else",
+    ogDescription:
+      "Midjourney charges $10-30/mo for AI image generation only. bedda.ai gives you image generation (DALL-E 3, Imagen 3, Flux 1.1 Pro) PLUS the world's best chat AI models — all for $12/mo.",
+    heroHeadline: "Midjourney images — plus Claude 4, GPT-5, and 25 more AI models",
+    heroSubtext:
+      "Midjourney charges up to $30/mo for AI images only. bedda.ai gives you DALL-E 3, Google Imagen 3, and Flux 1.1 Pro for image generation — plus every frontier AI model for chat, coding, research, and more — starting at $12/mo.",
+    verdict:
+      "If you use AI images plus AI chat, bedda.ai is dramatically cheaper than paying for Midjourney AND a separate AI chat subscription. At $12/mo you get both.",
+    switchReasons: [
+      "Generate images with DALL-E 3, Google Imagen 3, and Flux 1.1 Pro",
+      "Add GPT-5, Claude 4, Gemini 2.5 Pro, and Grok 3 for chat and research",
+      "Midjourney Basic is $10/mo for images only — add $20 for ChatGPT = $30 total vs $12",
+      "Video generation with Kling AI included — Midjourney has no video",
+      "Everything in one app — no Discord server needed",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$10–$30/mo" },
+      { feature: "AI image generation", bedda: true, competitor: true },
+      { feature: "DALL-E 3", bedda: true, competitor: false },
+      { feature: "Google Imagen 3", bedda: true, competitor: false },
+      { feature: "Flux 1.1 Pro", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 3", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "API access", bedda: true, competitor: false },
+      { feature: "Web app (no Discord required)", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1 image model" },
+    ],
+    faq: [
+      {
+        q: "Is bedda.ai's image quality comparable to Midjourney?",
+        a: "Midjourney's aesthetic quality is exceptional — it's specialized for artistic images. bedda.ai offers DALL-E 3 (OpenAI), Imagen 3 (Google), and Flux 1.1 Pro, which are excellent for photorealistic, commercial, and diverse styles. For pure artistic exploration, Midjourney still has an edge. For everything else, bedda.ai is the better value.",
+      },
+      {
+        q: "Does bedda.ai require Discord?",
+        a: "No. bedda.ai is a fully self-contained web app. Midjourney's main interface still runs through Discord, which many users find inconvenient. bedda.ai has a clean chat UI with image generation built in.",
+      },
+      {
+        q: "What Midjourney plan does bedda.ai compare to?",
+        a: "Midjourney Basic is $10/mo (limited generations), Standard is $30/mo (more GPU time). bedda.ai Plus at $12/mo includes unlimited image generation requests alongside 36+ AI chat models, making it the better deal for most users.",
+      },
+      {
+        q: "Can I use bedda.ai for both image generation and AI chat?",
+        a: "Yes — that's exactly the point. Instead of paying $10-30/mo for Midjourney images and $20/mo for ChatGPT or Claude, bedda.ai covers both for $12/mo.",
+      },
+    ],
+  },
+
+  "bedda-vs-canva-ai": {
+    slug: "bedda-vs-canva-ai",
+    competitor: "Canva Pro (with AI)",
+    competitorUrl: "https://canva.com",
+    competitorPrice: "$15/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Canva AI",
+    metaTitle: "bedda.ai vs Canva AI (2026) — AI Models vs Design Tool AI Features",
+    metaDescription:
+      "Compare bedda.ai and Canva Pro's AI features. Canva Pro is $15/mo primarily for design templates — its AI is limited. bedda.ai is $12/mo for GPT-5, Claude 4, image generation, and 36+ frontier AI models.",
+    ogTitle: "bedda.ai vs Canva AI — Full AI Platform vs Design Tool AI Features",
+    ogDescription:
+      "Canva Pro costs $15/mo and its AI features are basic text-to-image and copywriting helpers. bedda.ai costs $12/mo and gives you Claude 4, GPT-5, Gemini, DALL-E 3, Imagen 3, video generation, and 36+ AI models.",
+    heroHeadline: "More AI capability than Canva Pro — for $3/mo less",
+    heroSubtext:
+      "Canva Pro's AI features are limited helpers built into a design tool. bedda.ai is a full-stack AI platform: GPT-5, Claude 4, Gemini, DALL-E 3, video generation, web search, code execution, and 36+ frontier models — for $12/mo vs Canva's $15/mo.",
+    verdict:
+      "If you use Canva primarily for AI features (not design templates), bedda.ai gives you dramatically more capability for $3/mo less. If you need Canva for graphic design, keep Canva — but add bedda.ai for serious AI work.",
+    switchReasons: [
+      "Better image generation — DALL-E 3, Imagen 3, Flux 1.1 Pro vs Canva's limited Magic Media",
+      "Claude 4 for copywriting far outperforms Canva's AI text tools",
+      "GPT-5, Gemini 2.5 Pro, Grok 3 for research, analysis, and strategy",
+      "Save $3/mo vs Canva Pro",
+      "Video generation, web search, code execution — none of which Canva offers",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$15/mo" },
+      { feature: "AI image generation", bedda: true, competitor: true },
+      { feature: "DALL-E 3 / Imagen 3 quality", bedda: true, competitor: false },
+      { feature: "AI copywriting (GPT-5 / Claude)", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: true },
+      { feature: "Graphic design templates", bedda: false, competitor: true },
+      { feature: "Brand kit & assets", bedda: false, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "Limited" },
+    ],
+    faq: [
+      {
+        q: "Should I cancel Canva Pro for bedda.ai?",
+        a: "Only if you primarily use Canva for AI features. If you rely on Canva for design templates, brand kits, and visual assets, keep Canva — it's the best design tool available. But for AI-powered writing, research, coding, and image generation, bedda.ai is substantially more capable.",
+      },
+      {
+        q: "What is Canva's Magic Studio / AI suite?",
+        a: "Canva Pro includes Magic Write (AI text generation), Magic Media (text-to-image), Magic Eraser, and a few other AI helpers. These are convenient additions to Canva's design workflow, but they're built on limited models compared to GPT-5 or Claude 4. bedda.ai's image generation and writing quality is significantly higher.",
+      },
+      {
+        q: "Can bedda.ai generate images for social media like Canva?",
+        a: "bedda.ai generates images with DALL-E 3, Imagen 3, and Flux 1.1 Pro at high resolution. You can specify dimensions and styles. For adding text overlays, logos, or brand elements to those images, you'd still want a design tool. bedda.ai generates the creative content; Canva handles the layout.",
+      },
+      {
+        q: "Does bedda.ai work for marketing teams?",
+        a: "Yes. bedda.ai has team workspaces, shared knowledge bases, project workspaces with custom instructions, and platform bots (Slack, Discord, Teams). Marketing teams use it for content drafts, campaign research, competitive analysis, and image generation — often alongside Canva for final design.",
+      },
+    ],
+  },
+
+  "bedda-vs-copy-ai": {
+    slug: "bedda-vs-copy-ai",
+    competitor: "Copy.ai",
+    competitorUrl: "https://copy.ai",
+    competitorPrice: "$49/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Copy.ai",
+    metaTitle: "bedda.ai vs Copy.ai (2026) — $12/mo vs $49/mo AI Writing",
+    metaDescription:
+      "Compare bedda.ai and Copy.ai. Copy.ai charges $49/mo for AI copywriting templates. bedda.ai is $12/mo for GPT-5, Claude 4, Gemini, 36+ frontier models, plus everything Copy.ai does and more.",
+    ogTitle: "bedda.ai vs Copy.ai — Save $37/mo and Get Better AI Writing",
+    ogDescription:
+      "Copy.ai is $49/mo for marketing copy templates. bedda.ai is $12/mo and includes GPT-5, Claude 4 Sonnet, web search, image generation, and 36+ frontier models — all of which write better copy than Copy.ai's templates.",
+    heroHeadline: "Better AI copywriting — for $37/mo less than Copy.ai",
+    heroSubtext:
+      "Copy.ai charges $49/mo for AI marketing templates powered by GPT-4. bedda.ai charges $12/mo and gives you GPT-5, Claude 4, Gemini 2.5 Pro, and 36+ frontier models — write any kind of copy, in any format, with the most capable AI available.",
+    verdict:
+      "Copy.ai wraps GPT-4 in marketing templates and charges $49/mo. bedda.ai gives you GPT-5 (the newer model), plus Claude 4, Gemini, and 34 more models — for $37/mo less. There's no scenario where Copy.ai is the better deal.",
+    switchReasons: [
+      "Save $37/mo ($444/year) — Copy.ai is $49/mo, bedda.ai is $12/mo",
+      "GPT-5 is newer and better than the GPT-4 powering Copy.ai templates",
+      "Claude 4 Sonnet often outperforms GPT for marketing and persuasive writing",
+      "No template lock-in — write any kind of copy with natural prompts",
+      "Web search, image generation, and 36+ models Copy.ai doesn't have",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$49/mo" },
+      { feature: "AI copywriting", bedda: true, competitor: true },
+      { feature: "Marketing templates", bedda: false, competitor: true },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 3", bedda: true, competitor: false },
+      { feature: "DeepSeek R1", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: true },
+      { feature: "API access", bedda: true, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "1–2" },
+    ],
+    faq: [
+      {
+        q: "Is Copy.ai just a ChatGPT wrapper?",
+        a: "Copy.ai uses GPT-4 under the hood but adds a library of marketing templates and workflows. The value proposition is the template structure, not the underlying model. bedda.ai uses GPT-5 (the successor to GPT-4) plus Claude 4, which often writes better marketing copy — without templates constraining the output.",
+      },
+      {
+        q: "Does bedda.ai have marketing templates?",
+        a: "bedda.ai has a prompt library with reusable templates you can save. It doesn't have Copy.ai's specific workflow-style templates (blog outline generator, ad copy generator, etc.) out of the box. However, Claude 4 and GPT-5 can produce that output from a simple natural-language prompt — often with better results than templates.",
+      },
+      {
+        q: "I use Copy.ai for my whole marketing team — does bedda.ai have team features?",
+        a: "Yes. bedda.ai has team workspaces with role-based access, shared knowledge bases, project workspaces with custom instructions, and a Slack bot for your team's workflow. Teams pricing starts at $25/mo per user.",
+      },
+      {
+        q: "What makes bedda.ai cheaper than Copy.ai?",
+        a: "Copy.ai's pricing reflects a SaaS premium on top of OpenAI API costs. bedda.ai passes on the efficiency of multi-provider routing (using cheaper models where appropriate) and a simpler product, so it can offer a lower price with more capability.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
