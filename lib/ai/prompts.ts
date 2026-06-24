@@ -153,7 +153,7 @@ export const getCacheableSystemPrompt = ({
   const isOpenAIModel =
     selectedChatModel.includes("openai") || selectedChatModel.includes("gpt");
 
-  // For Anthropic models, add cache control via providerOptions
+  // For Anthropic models, add cache control via providerOptions (AI SDK v6 API)
   if (isAnthropicModel) {
     return {
       role: "system" as const,
@@ -166,8 +166,7 @@ export const getCacheableSystemPrompt = ({
     };
   }
 
-  // For OpenAI models, cache control is automatic for system prompts
-  // (just return the content, SDK handles it)
+  // For OpenAI models, prompt caching is automatic for long prompts — no explicit hint needed
   return content;
 };
 

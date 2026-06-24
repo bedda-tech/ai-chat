@@ -1786,6 +1786,252 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-replit": {
+    slug: "bedda-vs-replit",
+    competitor: "Replit Core",
+    competitorUrl: "https://replit.com",
+    competitorPrice: "$25/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Replit Core",
+    metaTitle: "bedda.ai vs Replit Core (2026) — AI Without the IDE Tax",
+    metaDescription:
+      "Compare bedda.ai and Replit Core. Replit Core is $25/mo for a coding platform with AI. bedda.ai is $12/mo for 36+ frontier AI models, code execution, and web search — no cloud IDE required.",
+    ogTitle: "bedda.ai vs Replit Core — $12/mo vs $25/mo AI for Developers",
+    ogDescription:
+      "Replit Core bundles AI with a cloud IDE at $25/mo. bedda.ai gives you better AI (GPT-5, Claude 4, Gemini 2.5) with code execution and web search for $12/mo — use your own editor.",
+    heroHeadline: "Better AI for developers — for $13/mo less than Replit Core",
+    heroSubtext:
+      "Replit Core charges $25/mo and ties AI to their cloud IDE. bedda.ai charges $12/mo and gives you GPT-5, Claude 4, Gemini 2.5 Pro, and 36+ frontier models — use any editor, any stack.",
+    verdict:
+      "Replit Core makes sense if you want a complete cloud development environment. But if you already have VS Code, Cursor, or any other setup and just want better AI, bedda.ai gives you more capable models for half the price.",
+    switchReasons: [
+      "Save $13/mo ($156/year) — Replit is $25/mo, bedda.ai is $12/mo",
+      "Use GPT-5 and Claude 4 Opus instead of Replit's bundled AI model",
+      "No IDE lock-in — works with VS Code, Cursor, Neovim, or any editor",
+      "Code execution (Python, JS) plus web search in the same chat interface",
+      "Claude 4 for architecture decisions, Gemini 2.5 for data analysis, GPT-5 for debugging",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$25/mo" },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Code execution (Python/JS)", bedda: true, competitor: true },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Cloud IDE", bedda: false, competitor: true },
+      { feature: "Cloud hosting", bedda: false, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "1–2" },
+    ],
+    faq: [
+      {
+        q: "Does bedda.ai replace Replit for hosting?",
+        a: "No. bedda.ai is an AI chat interface — it doesn't host apps or provide a cloud development environment. If you need Replit's hosting and deployment features, keep using Replit. bedda.ai is the better choice if you just want the AI coding assistant part.",
+      },
+      {
+        q: "Can bedda.ai run code like Replit does?",
+        a: "Yes, bedda.ai has a code execution sandbox (Python and JavaScript) powered by E2B. You can write and run code directly in the chat interface. It's not a persistent environment like Replit — it's more like a scratchpad for testing and verifying code the AI writes.",
+      },
+      {
+        q: "Which AI is better for coding — Replit AI or bedda.ai?",
+        a: "bedda.ai routes to GPT-5 and Claude 4 Sonnet, which consistently outperform Replit's bundled AI on coding benchmarks. You can also switch to Gemini 2.5 Pro for multi-file reasoning or DeepSeek R1 for algorithmic problems.",
+      },
+      {
+        q: "Does bedda.ai work with VS Code?",
+        a: "bedda.ai is a web chat interface, not an editor extension. Use it in a browser tab alongside VS Code (or any editor) to get AI help, generate code, debug, and explain concepts. For inline AI in VS Code, Cursor or GitHub Copilot are the right tools.",
+      },
+    ],
+  },
+
+  "bedda-vs-runway": {
+    slug: "bedda-vs-runway",
+    competitor: "Runway Gen-3",
+    competitorUrl: "https://runwayml.com",
+    competitorPrice: "$15–35/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Runway ML",
+    metaTitle: "bedda.ai vs Runway ML (2026) — Video AI + 36 Models for $12/mo",
+    metaDescription:
+      "Compare bedda.ai and Runway ML. Runway Gen-3 Alpha starts at $15/mo (credits-based) for video generation only. bedda.ai is $12/mo and includes video generation plus 36+ frontier AI models.",
+    ogTitle: "bedda.ai vs Runway ML — Same Video AI, Plus 36 More Models",
+    ogDescription:
+      "Runway ML is $15–35/mo for AI video generation only. bedda.ai is $12/mo and includes video generation alongside GPT-5, Claude 4, Gemini, image generation, and 36+ models.",
+    heroHeadline: "Video AI plus 36 frontier models — for less than Runway alone",
+    heroSubtext:
+      "Runway ML specializes in video generation at $15–35/mo. bedda.ai gives you AI video generation (Kling) plus GPT-5, Claude 4, Gemini 2.5, image generation, and 36+ models — all for $12/mo.",
+    verdict:
+      "Runway ML is the right choice for professional video production with advanced editing tools. For casual and professional creators who need AI video alongside a full AI assistant, bedda.ai costs less and does more.",
+    switchReasons: [
+      "bedda.ai is $3–23/mo cheaper than Runway depending on plan",
+      "Video generation included alongside 36+ other AI models",
+      "Image generation (DALL-E 3, Imagen 3, Flux) for stills and thumbnails",
+      "Web search and knowledge base for research-heavy creative work",
+      "Claude 4 for scripts, GPT-5 for marketing copy, Gemini for ideation",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$15–35/mo" },
+      { feature: "AI video generation", bedda: true, competitor: true },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Video editing tools", bedda: false, competitor: true },
+      { feature: "Frame interpolation", bedda: false, competitor: true },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Video only" },
+    ],
+    faq: [
+      {
+        q: "Is bedda.ai's video generation as good as Runway?",
+        a: "bedda.ai uses Kling video (via fal.ai), which is competitive with Runway Gen-3 for text-to-video. Runway has a larger suite of video editing tools (inpainting, frame interpolation, motion brush) that bedda.ai doesn't offer. bedda.ai wins on price and breadth; Runway wins on video-specific depth.",
+      },
+      {
+        q: "Does bedda.ai have a credit system like Runway?",
+        a: "No. bedda.ai uses a flat monthly subscription ($12/mo Plus) with a usage limit on video generation for Plus subscribers. There are no per-generation credits to manage.",
+      },
+      {
+        q: "Can I generate both images and videos in bedda.ai?",
+        a: "Yes. bedda.ai has a dedicated Image Studio (DALL-E 3, Imagen 3, Flux 1.1 Pro) and a Video Studio (Kling text-to-video and image-to-video, standard and pro quality). Both are available from the sidebar.",
+      },
+      {
+        q: "Do I need Runway if I already have bedda.ai?",
+        a: "Depends on your workflow. For quick video generation alongside your AI research and writing, bedda.ai is enough. For professional video production — long-form content, advanced editing, precise motion control — Runway's specialized tools are worth the extra cost.",
+      },
+    ],
+  },
+
+  "bedda-vs-kagi": {
+    slug: "bedda-vs-kagi",
+    competitor: "Kagi Ultimate",
+    competitorUrl: "https://kagi.com",
+    competitorPrice: "$25/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Kagi Ultimate",
+    metaTitle: "bedda.ai vs Kagi Ultimate (2026) — AI Assistant for $12 vs $25",
+    metaDescription:
+      "Compare bedda.ai and Kagi Ultimate. Kagi Ultimate is $25/mo for privacy search + AI assistant. bedda.ai is $12/mo for 36+ frontier AI models, web search, and a full AI chat platform.",
+    ogTitle: "bedda.ai vs Kagi — Better AI, $13/mo Less",
+    ogDescription:
+      "Kagi Ultimate bundles privacy search with an AI assistant (Fast Answers) at $25/mo. bedda.ai gives you GPT-5, Claude 4, Gemini 2.5, web search, and 36+ models for $12/mo.",
+    heroHeadline: "36+ frontier AI models — at half the price of Kagi Ultimate",
+    heroSubtext:
+      "Kagi Ultimate is $25/mo for privacy search and AI answers. bedda.ai is $12/mo and gives you every major AI model (Claude 4, GPT-5, Gemini, Grok), web search, code execution, and more.",
+    verdict:
+      "Kagi is an excellent product for privacy-focused users who want search plus AI. If the AI assistant is the main draw and you use Google search anyway, bedda.ai at $12/mo gives you more powerful AI for less money.",
+    switchReasons: [
+      "Save $13/mo ($156/year) vs Kagi Ultimate",
+      "GPT-5 and Claude 4 Opus vs Kagi's assistant (powered by various models)",
+      "36+ model choices including DeepSeek, Grok, Mistral, and Cerebras",
+      "Web search integrated directly in AI chat (Brave Search API)",
+      "Code execution, image generation, and video generation in one place",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$25/mo" },
+      { feature: "AI chat assistant", bedda: true, competitor: true },
+      { feature: "Web search integration", bedda: true, competitor: true },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 3", bedda: true, competitor: false },
+      { feature: "DeepSeek R1", bedda: true, competitor: false },
+      { feature: "Privacy search engine", bedda: false, competitor: true },
+      { feature: "Search personalization", bedda: false, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "3–4" },
+    ],
+    faq: [
+      {
+        q: "Does bedda.ai protect my privacy like Kagi?",
+        a: "Kagi is built around privacy-first search — no tracking, no ads. bedda.ai is a standard SaaS product; conversations are stored for your history but not used to train models. If a no-tracking search engine is your priority, Kagi is the right choice. If you mainly want the AI assistant, bedda.ai is more capable at a lower price.",
+      },
+      {
+        q: "Does bedda.ai have web search like Kagi's Fast Answers?",
+        a: "Yes. bedda.ai integrates web search via the Brave Search API. The AI automatically searches the web when your question needs current information, then synthesizes the results with citations — similar to how Kagi's AI assistant works.",
+      },
+      {
+        q: "Which AI models does Kagi use?",
+        a: "Kagi Ultimate's AI assistant (Fast Answers) routes to a mix of models depending on query type. bedda.ai lets you explicitly choose GPT-5, Claude 4 Opus, Gemini 2.5 Pro, Grok 3, or any of 36+ models for each conversation.",
+      },
+      {
+        q: "Can I use bedda.ai and Kagi together?",
+        a: "Yes. Many users use Kagi for private web search and bedda.ai for deep AI conversations. At $12/mo for bedda.ai, the combination costs $37/mo — still less than tools like ChatGPT Plus + a separate search subscription.",
+      },
+    ],
+  },
+
+  "bedda-vs-adobe-firefly": {
+    slug: "bedda-vs-adobe-firefly",
+    competitor: "Adobe Firefly",
+    competitorUrl: "https://firefly.adobe.com",
+    competitorPrice: "$4.99–9.99/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Adobe Firefly",
+    metaTitle: "bedda.ai vs Adobe Firefly (2026) — Image AI + 36 Models",
+    metaDescription:
+      "Compare bedda.ai and Adobe Firefly. Firefly is $4.99–9.99/mo for AI image generation (generative credits). bedda.ai is $12/mo for image generation plus GPT-5, Claude 4, Gemini, and 36+ frontier models.",
+    ogTitle: "bedda.ai vs Adobe Firefly — Images + AI Chat for $12/mo",
+    ogDescription:
+      "Adobe Firefly is $4.99–9.99/mo for image generation with credits. bedda.ai is $12/mo and includes DALL-E 3, Imagen 3, Flux 1.1 Pro plus the full suite of frontier AI models for chat, code, and research.",
+    heroHeadline: "Image generation plus 36 frontier AI models — for $12/mo",
+    heroSubtext:
+      "Adobe Firefly is great for image generation but it's a credit-based, image-only tool. bedda.ai gives you DALL-E 3, Imagen 3, and Flux 1.1 Pro plus GPT-5, Claude 4, Gemini 2.5, and 36+ models — for $2–7/mo more.",
+    verdict:
+      "If you only generate images and already pay for Adobe Creative Cloud, Firefly is included and perfectly fine. If you want AI images plus a powerful AI assistant for writing, coding, and research, bedda.ai gives you both for a few dollars more.",
+    switchReasons: [
+      "Image generation (DALL-E 3, Imagen 3, Flux) included in bedda.ai Plus",
+      "No per-image credits — flat rate subscription",
+      "GPT-5, Claude 4, Gemini 2.5 for writing, coding, and research",
+      "Web search, code execution, and knowledge base in one product",
+      "Video generation also included — not just images",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$4.99–9.99/mo" },
+      { feature: "AI image generation", bedda: true, competitor: true },
+      { feature: "DALL-E 3", bedda: true, competitor: false },
+      { feature: "Google Imagen 3", bedda: true, competitor: false },
+      { feature: "Flux 1.1 Pro", bedda: true, competitor: false },
+      { feature: "Firefly model", bedda: false, competitor: true },
+      { feature: "Adobe CC integration", bedda: false, competitor: true },
+      { feature: "GPT-5 chat", bedda: true, competitor: false },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Flat-rate (no credits)", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Image only" },
+    ],
+    faq: [
+      {
+        q: "Is bedda.ai's image quality as good as Adobe Firefly?",
+        a: "bedda.ai uses DALL-E 3 (OpenAI), Imagen 3 Fast (Google), and Flux 1.1 Pro (Black Forest Labs). Firefly excels at commercially safe, stock-photo-style images. DALL-E 3 and Flux tend to produce more photorealistic and creative outputs. For brand-safe commercial use tied to Adobe CC, Firefly is the better fit.",
+      },
+      {
+        q: "Does bedda.ai use generative credits like Firefly?",
+        a: "No. bedda.ai Plus is a flat $12/mo subscription — you don't track or spend credits per image. There are usage limits (to prevent abuse), but typical usage never hits them.",
+      },
+      {
+        q: "Does bedda.ai work with Photoshop or Illustrator?",
+        a: "No. bedda.ai is a standalone web app — it doesn't integrate with Adobe Creative Cloud tools. Firefly is the right choice if you want AI generation inside Photoshop's generative fill or Illustrator's vector tools.",
+      },
+      {
+        q: "I just want to generate images — is bedda.ai worth $12/mo?",
+        a: "If image generation is all you need, Firefly at $4.99/mo is cheaper. bedda.ai is worth $12/mo if you also want an AI assistant for writing, coding, research, and conversation — the image generation is a bonus on top of a full AI platform.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
