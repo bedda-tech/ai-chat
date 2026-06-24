@@ -2282,6 +2282,253 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-quillbot": {
+    slug: "bedda-vs-quillbot",
+    competitor: "QuillBot",
+    competitorUrl: "https://quillbot.com",
+    competitorPrice: "$9.95/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs QuillBot",
+    metaTitle: "bedda.ai vs QuillBot (2026) — GPT-5 and Claude vs Paraphrasing Tool",
+    metaDescription:
+      "Compare bedda.ai and QuillBot. QuillBot is $9.95/mo for paraphrasing, grammar, and summarization. bedda.ai is $12/mo for GPT-5, Claude 4, Gemini 2.5, and 36+ frontier AI models that handle everything QuillBot does — and far more.",
+    ogTitle: "bedda.ai vs QuillBot — Better Writing AI for $2 More per Month",
+    ogDescription:
+      "QuillBot charges $9.95/mo for a paraphrasing tool powered by older AI. bedda.ai is $12/mo for GPT-5 and Claude 4 — the most capable writing models available — plus web search, code execution, and 36+ total models.",
+    heroHeadline: "The best writing models in the world — not a paraphrasing tool",
+    heroSubtext:
+      "QuillBot is useful for quick paraphrasing, but it runs on older AI. bedda.ai gives you GPT-5 and Claude 4 Sonnet — the same frontier models professional writers use — for $2 more per month. Edit, draft, rewrite, and research all in one place.",
+    verdict:
+      "QuillBot is a lightweight writing assistant optimized for paraphrasing, grammar checking, and summarization. bedda.ai is a full AI platform powered by GPT-5 and Claude 4. If your writing needs go beyond quick paraphrasing — drafting, researching, editing long-form content, or switching between model strengths — bedda.ai is worth the extra $2/mo.",
+    switchReasons: [
+      "GPT-5 and Claude 4 write, rewrite, and edit better than any paraphrasing tool",
+      "Web search for real-time research without leaving your writing workflow",
+      "Knowledge base — upload your own documents for context-aware writing",
+      "36+ models to pick the best one for tone, style, or language",
+      "Code execution for data-driven writing tasks",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$9.95/mo" },
+      { feature: "GPT-5 (OpenAI)", bedda: true, competitor: false },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Paraphrasing modes", bedda: false, competitor: true },
+      { feature: "Grammar checker", bedda: false, competitor: true },
+      { feature: "Plagiarism checker", bedda: false, competitor: true },
+      { feature: "Long-form drafting", bedda: true, competitor: false },
+      { feature: "Web search (real-time)", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Multi-model switching", bedda: true, competitor: false },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1 (proprietary)" },
+    ],
+    faq: [
+      {
+        q: "Is QuillBot better than bedda.ai for paraphrasing?",
+        a: "QuillBot's paraphrasing tool has 9 different modes (Standard, Fluency, Formal, Academic, etc.) and is optimized for quick rewrites. If paraphrasing is your primary task, QuillBot's dedicated UI is convenient. But Claude 4 and GPT-5 are more capable at understanding intent and producing natural-sounding rewrites — with the added advantage of understanding full documents, not just paragraphs.",
+      },
+      {
+        q: "Does bedda.ai have a grammar checker like QuillBot?",
+        a: "bedda.ai doesn't have a dedicated grammar-check button, but Claude 4 and GPT-5 catch grammar, punctuation, and style issues as part of editing tasks. Ask them to 'proofread and improve this text' and you'll get more nuanced feedback than a rule-based grammar checker.",
+      },
+      {
+        q: "Can bedda.ai check for plagiarism?",
+        a: "bedda.ai doesn't have a plagiarism checker. For academic plagiarism detection, dedicated tools (Turnitin, Grammarly's plagiarism checker) are purpose-built. bedda.ai's web search can help you verify whether specific phrases or ideas appear elsewhere online.",
+      },
+      {
+        q: "Why is bedda.ai $2 more than QuillBot?",
+        a: "QuillBot's $9.95/mo plan uses its own AI system. bedda.ai at $12/mo gives you direct access to GPT-5 ($20/mo standalone via ChatGPT Plus), Claude 4 ($20/mo via Claude Pro), Gemini 2.5 ($20/mo via Gemini Advanced), and 33 other models — all under one subscription. The $2 difference gets you a dramatically more capable system.",
+      },
+    ],
+  },
+
+  "bedda-vs-gamma": {
+    slug: "bedda-vs-gamma",
+    competitor: "Gamma",
+    competitorUrl: "https://gamma.app",
+    competitorPrice: "$8–15/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Gamma",
+    metaTitle: "bedda.ai vs Gamma (2026) — AI Presentations + Full AI Suite vs Slides Only",
+    metaDescription:
+      "Compare bedda.ai and Gamma. Gamma is $8-15/mo for AI-generated presentations and docs. bedda.ai is $12/mo for AI slides plus GPT-5, Claude 4, Gemini 2.5, web search, code execution, and 36+ frontier models.",
+    ogTitle: "bedda.ai vs Gamma — AI Slides Included, Plus the Full AI Stack",
+    ogDescription:
+      "Gamma is $8-15/mo for AI presentations. bedda.ai is $12/mo for AI presentations PLUS GPT-5, Claude 4, Gemini 2.5, web search, and 36+ models — one subscription for everything.",
+    heroHeadline: "AI presentations and the best AI models — all for $12/mo",
+    heroSubtext:
+      "Gamma makes beautiful AI-generated presentations and documents. bedda.ai includes an AI slides artifact that creates Reveal.js presentations, plus full access to GPT-5, Claude 4, Gemini 2.5, and 36+ frontier models for all your other AI needs.",
+    verdict:
+      "Gamma is a purpose-built presentation tool with polished themes, real-time collaboration, and export to PowerPoint. If presentations are 80% of your AI use, Gamma's specialized UX is worth it. If you want AI slide creation as part of a broader AI workflow — writing, research, coding, image generation — bedda.ai at $12/mo covers the full stack.",
+    switchReasons: [
+      "AI slides artifact creates Reveal.js presentations from a prompt",
+      "GPT-5 and Claude 4 for research, copywriting, and presentation scripts",
+      "Web search to pull in real-time data for your slide content",
+      "Code execution to generate charts and data visualizations",
+      "Knowledge base — ground presentations in your own documents",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$8–15/mo" },
+      { feature: "AI presentation generation", bedda: true, competitor: true },
+      { feature: "Polished themes / templates", bedda: false, competitor: true },
+      { feature: "PowerPoint export", bedda: false, competitor: true },
+      { feature: "Real-time collaboration", bedda: false, competitor: true },
+      { feature: "GPT-5 chat", bedda: true, competitor: false },
+      { feature: "Claude 4 (Opus + Sonnet)", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "AI video generation", bedda: true, competitor: false },
+      { feature: "Notebook / canvas artifacts", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1 (Gamma AI)" },
+    ],
+    faq: [
+      {
+        q: "Can bedda.ai make presentations like Gamma?",
+        a: "bedda.ai's Slides artifact generates Reveal.js presentations from a text prompt — including structured slides with headers, bullets, speaker notes, and optional speaker transitions. The output is rendered in a sandboxed preview you can copy as HTML. It doesn't have Gamma's polished themes or drag-and-drop editor, but the underlying AI (Claude 4 or GPT-5) produces well-structured, professional content.",
+      },
+      {
+        q: "Does Gamma use GPT-5 or Claude?",
+        a: "Gamma uses its own AI system built on top of language model APIs. It doesn't give you direct access to GPT-5, Claude 4, or Gemini 2.5 for general chat, writing, or coding tasks outside the presentation workflow.",
+      },
+      {
+        q: "Can I export bedda.ai slides to PowerPoint?",
+        a: "bedda.ai's Slides artifact outputs Reveal.js HTML, which can be opened in a browser and presented directly. Export to .pptx format isn't built in — for that, Gamma or native PowerPoint remain better options. bedda.ai is better for AI-first workflows where you iterate via chat.",
+      },
+      {
+        q: "Is Gamma free?",
+        a: "Gamma has a free plan with limited AI credits. The Plus plan is $8/mo (paid annually) or $10/mo monthly, and Pro is $15/mo. bedda.ai's free tier includes 500 messages/mo with multiple models. Paid plans start at $12/mo with a 7-day free trial.",
+      },
+    ],
+  },
+
+  "bedda-vs-rytr": {
+    slug: "bedda-vs-rytr",
+    competitor: "Rytr",
+    competitorUrl: "https://rytr.me",
+    competitorPrice: "$9–29/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Rytr",
+    metaTitle: "bedda.ai vs Rytr (2026) — GPT-5 and Claude vs Template-Based AI Writing",
+    metaDescription:
+      "Compare bedda.ai and Rytr. Rytr is $9-29/mo for AI content using templates and use cases. bedda.ai is $12/mo for GPT-5, Claude 4, Gemini 2.5, and 36+ models — no templates needed, just superior AI.",
+    ogTitle: "bedda.ai vs Rytr — Better AI Models for About the Same Price",
+    ogDescription:
+      "Rytr is $9/mo for template-based AI writing using older models. bedda.ai is $12/mo for GPT-5, Claude 4, Gemini 2.5 — the most capable writing models available — with no character caps on higher plans.",
+    heroHeadline: "Frontier AI models replace a hundred writing templates",
+    heroSubtext:
+      "Rytr provides 40+ use-case templates to guide AI writing. bedda.ai gives you GPT-5 and Claude 4 — models capable enough that you can describe what you want in natural language and get better results than any template. Plus web search, code execution, and 35 other models.",
+    verdict:
+      "Rytr is a solid entry-level writing tool for marketers who want guided templates for emails, ads, and social posts. bedda.ai is more powerful but requires more user direction. If you're comfortable prompting AI directly, bedda.ai's frontier models (GPT-5, Claude 4) produce higher-quality output for roughly the same price.",
+    switchReasons: [
+      "GPT-5 and Claude 4 outperform Rytr's underlying AI on every writing benchmark",
+      "No character generation limits — Rytr's $9/mo plan caps at 10,000 characters/mo",
+      "Web search for research-backed content without leaving your writing tab",
+      "36+ models to match the right AI to each writing task",
+      "Knowledge base to maintain consistent brand voice across content",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$9–29/mo" },
+      { feature: "GPT-5 (OpenAI)", bedda: true, competitor: false },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "40+ writing use-case templates", bedda: false, competitor: true },
+      { feature: "Tone selector", bedda: false, competitor: true },
+      { feature: "Character/word limits (free)", bedda: false, competitor: true },
+      { feature: "Unlimited characters (paid)", bedda: true, competitor: "$29/mo only" },
+      { feature: "Web search (real-time)", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1–2 (proprietary)" },
+    ],
+    faq: [
+      {
+        q: "Is Rytr worth it when bedda.ai exists?",
+        a: "Rytr's main value is its library of 40+ use-case templates that help less experienced writers get started quickly — email subject lines, product descriptions, blog intros, etc. If you're new to AI writing tools and want guided workflows, Rytr's template library is genuinely useful. If you're comfortable prompting directly, bedda.ai's frontier models will outperform Rytr for roughly the same price.",
+      },
+      {
+        q: "What AI does Rytr use?",
+        a: "Rytr uses its own AI writing system built on a combination of language models. It doesn't give users direct access to GPT-5, Claude 4, or Gemini 2.5. The output quality is generally below frontier models on complex, long-form, or nuanced writing tasks.",
+      },
+      {
+        q: "Does Rytr have character limits?",
+        a: "Rytr's $9/mo Saver plan caps you at 10,000 characters per month — roughly 5-10 short pieces of content. The Unlimited plan is $29/mo for no character caps. bedda.ai's Plus plan at $12/mo has no generation character limits (only a 300 messages/day fair-use cap).",
+      },
+      {
+        q: "Can bedda.ai replace Rytr for marketing copy?",
+        a: "Yes. Claude 4 Sonnet and GPT-5 are both excellent at marketing copy — email subject lines, ad copy, product descriptions, social posts. Tell them your product, audience, and tone and they produce high-quality copy without needing a template. For A/B variants, just ask for multiple versions in the same message.",
+      },
+    ],
+  },
+
+  "bedda-vs-wordtune": {
+    slug: "bedda-vs-wordtune",
+    competitor: "Wordtune",
+    competitorUrl: "https://www.wordtune.com",
+    competitorPrice: "$13.99/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Wordtune",
+    metaTitle: "bedda.ai vs Wordtune (2026) — Full AI Suite vs Writing Assistant",
+    metaDescription:
+      "Compare bedda.ai and Wordtune. Wordtune is $13.99/mo for AI rewriting and summarization. bedda.ai is $12/mo for GPT-5, Claude 4, Gemini 2.5, and 36+ frontier models — more capable AI for less money.",
+    ogTitle: "bedda.ai vs Wordtune — Better AI Writing for $2 Less per Month",
+    ogDescription:
+      "Wordtune charges $13.99/mo for AI-powered rewriting. bedda.ai is $12/mo for GPT-5, Claude 4, Gemini 2.5, web search, code execution, and 36+ frontier models. More AI, lower price.",
+    heroHeadline: "More capable AI writing — for $2 less per month",
+    heroSubtext:
+      "Wordtune rewrites and shortens your text using AI. bedda.ai gives you GPT-5 and Claude 4 — models that rewrite, draft, research, and explain — for $1.99 less per month. No browser extension required.",
+    verdict:
+      "Wordtune is a focused writing assistant with a browser extension that integrates into Gmail, Google Docs, and other web apps. If in-context rewriting inside your existing tools is the priority, Wordtune's integration is its main differentiator. If you work in a chat interface or want a broader AI toolkit, bedda.ai delivers more capable models for less.",
+    switchReasons: [
+      "GPT-5 and Claude 4 rewrite text with better judgment than Wordtune's AI",
+      "Save $1.99/mo — bedda.ai Plus is $12/mo vs Wordtune's $13.99/mo",
+      "Web search, code execution, and image generation in the same platform",
+      "36+ models — pick Claude for nuanced prose, GPT-5 for business writing",
+      "Knowledge base to maintain consistent brand voice across documents",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$13.99/mo" },
+      { feature: "GPT-5 (OpenAI)", bedda: true, competitor: false },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Browser extension (Gmail, Docs)", bedda: false, competitor: true },
+      { feature: "In-context text rewriting", bedda: false, competitor: true },
+      { feature: "Shorten / Expand text modes", bedda: false, competitor: true },
+      { feature: "Long-form drafting", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Multi-model comparison arena", bedda: true, competitor: false },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1 (Wordtune AI)" },
+    ],
+    faq: [
+      {
+        q: "What is Wordtune best for?",
+        a: "Wordtune is best for quick in-context text improvements — rewriting a sentence, shortening a paragraph, or adjusting the tone of text inside Gmail or Google Docs. Its browser extension integrates directly into web apps, making it low-friction for quick edits without switching tools.",
+      },
+      {
+        q: "Does bedda.ai have a browser extension like Wordtune?",
+        a: "bedda.ai doesn't have a browser extension. It's a standalone chat interface. To use bedda.ai for rewriting, you paste text into the chat, ask for improvements, then copy the result back. For heavy inline editing workflows, Wordtune's extension is more convenient. For deeper editing tasks, bedda.ai's frontier models produce better results.",
+      },
+      {
+        q: "Which AI does Wordtune use?",
+        a: "Wordtune uses its own proprietary AI models trained specifically for text rewriting and editing tasks. It doesn't use GPT-5, Claude 4, or Gemini 2.5 directly. The quality on nuanced, long-form, or context-heavy rewrites is generally below frontier models.",
+      },
+      {
+        q: "Is bedda.ai cheaper than Wordtune?",
+        a: "Yes — bedda.ai Plus is $12/mo vs Wordtune's $13.99/mo Premium plan. Wordtune also has an Advanced plan at higher price points. bedda.ai gives you 36+ frontier models for $1.99 less per month than Wordtune's entry-level paid plan.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
