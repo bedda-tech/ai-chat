@@ -414,6 +414,42 @@ const posts = [
     readingTime: "8 min read",
     category: "Professional Guides",
   },
+  {
+    slug: "is-chatgpt-pro-worth-it",
+    title: "Is ChatGPT Pro Worth $200/Month? (Honest 2026 Review)",
+    description:
+      "ChatGPT Pro costs $200/month for OpenAI's highest reasoning model access. We break down who it's for, what you get, and whether there's a smarter way to spend $200 on AI.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Value Guides",
+  },
+  {
+    slug: "gpt-5-vs-gemini-2-5-pro",
+    title: "GPT-5 vs Gemini 2.5 Pro: Which Is Better in 2026?",
+    description:
+      "A detailed comparison of OpenAI GPT-5 and Google Gemini 2.5 Pro — benchmarks, real-world performance, context windows, pricing, and which model to use for specific tasks.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Model Comparisons",
+  },
+  {
+    slug: "best-ai-for-freelancers",
+    title: "Best AI Tools for Freelancers in 2026: The Complete Guide",
+    description:
+      "The best AI models for freelancers in 2026 — for writing, coding, design, client communication, and more. Which AI subscriptions are actually worth it when you're self-employed?",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "Professional Guides",
+  },
+  {
+    slug: "ai-writing-assistant-2026",
+    title: "Best AI Writing Assistant in 2026: Ranked and Reviewed",
+    description:
+      "The best AI writing assistants in 2026 — ranked by writing quality, instruction-following, pricing, and use case. From Claude and GPT-5 to Jasper, Grammarly, and Copy.ai.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "Guides",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
