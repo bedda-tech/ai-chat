@@ -525,6 +525,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: `${BASE_URL}/blog/is-claude-pro-worth-it-2026`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${BASE_URL}/blog/best-ai-for-finance-professionals`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${BASE_URL}/blog/ai-for-project-management`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${BASE_URL}/blog/chatgpt-enterprise-alternatives`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
       url: `${BASE_URL}/for/educators`,
       lastModified: now,
       changeFrequency: "monthly",
