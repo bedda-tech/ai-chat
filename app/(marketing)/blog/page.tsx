@@ -450,6 +450,42 @@ const posts = [
     readingTime: "9 min read",
     category: "Guides",
   },
+  {
+    slug: "microsoft-copilot-vs-chatgpt",
+    title: "Microsoft Copilot vs ChatGPT in 2026: Which AI Is Worth Paying For?",
+    description:
+      "Microsoft Copilot ($30/mo with M365) vs ChatGPT Plus ($20/mo) — a full comparison of features, models, pricing, and real-world usefulness in 2026.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Model Comparisons",
+  },
+  {
+    slug: "is-gemini-advanced-worth-it",
+    title: "Is Gemini Advanced Worth $19.99/Month? (Honest 2026 Review)",
+    description:
+      "An honest look at whether Gemini Advanced is worth $19.99/month in 2026 — what you get, what you don't, and how it stacks up against ChatGPT Plus and bedda.ai.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Value Guides",
+  },
+  {
+    slug: "best-ai-for-research-2026",
+    title: "Best AI for Research in 2026: Academic, Market & Professional",
+    description:
+      "The best AI tools for research in 2026 — academic literature, market research, competitive intelligence, and professional research workflows.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "Professional Guides",
+  },
+  {
+    slug: "ai-for-data-analysis",
+    title: "Best AI for Data Analysis in 2026: A Practical Guide",
+    description:
+      "How to use AI for data analysis in 2026 — from CSV interpretation and SQL generation to chart creation and statistical analysis.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "Professional Guides",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
