@@ -1,6 +1,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { auth } from "@/app/(auth)/auth";
+import { getCacheAnalytics } from "@/lib/ai/cache-analytics";
 import { getModelMetrics, resetMetrics } from "@/lib/ai/middleware";
 
 function isAdmin(email: string | null | undefined): boolean {
@@ -28,6 +29,7 @@ export default async function AdminPage() {
   const entries = Object.entries(metrics).sort(
     (a, b) => b[1].calls - a[1].calls
   );
+  const cache24h = getCacheAnalytics("24h");
 
   return (
     <div className="container mx-auto max-w-6xl p-8">
@@ -35,6 +37,25 @@ export default async function AdminPage() {
       <p className="mb-6 text-muted-foreground text-sm">
         In-memory metrics — resets on server restart.
       </p>
+
+      <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <div className="rounded-lg border p-4">
+          <p className="text-muted-foreground text-xs uppercase tracking-wide">Requests (24h)</p>
+          <p className="mt-1 font-bold text-2xl">{cache24h.totalRequests.toLocaleString()}</p>
+        </div>
+        <div className="rounded-lg border p-4">
+          <p className="text-muted-foreground text-xs uppercase tracking-wide">Cache Hit Rate</p>
+          <p className="mt-1 font-bold text-2xl">{cache24h.hitRate}</p>
+        </div>
+        <div className="rounded-lg border p-4">
+          <p className="text-muted-foreground text-xs uppercase tracking-wide">Cached Tokens</p>
+          <p className="mt-1 font-bold text-2xl">{cache24h.cachedTokens.toLocaleString()}</p>
+        </div>
+        <div className="rounded-lg border p-4">
+          <p className="text-muted-foreground text-xs uppercase tracking-wide">Est. Cost Savings</p>
+          <p className="mt-1 font-bold text-2xl">{cache24h.totalSavings}</p>
+        </div>
+      </div>
 
       {entries.length === 0 ? (
         <p className="text-muted-foreground">

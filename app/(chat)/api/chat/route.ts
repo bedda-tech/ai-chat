@@ -55,6 +55,7 @@ import {
 import { transcribeAudioTool } from "@/lib/ai/tools/transcribe-audio";
 import { updateDocument } from "@/lib/ai/tools/update-document";
 import { webSearchTool } from "@/lib/ai/tools/web-search";
+import { recordCacheStats } from "@/lib/ai/cache-analytics";
 import { logAuditEvent } from "@/lib/audit";
 import { isProductionEnvironment } from "@/lib/constants";
 import {
@@ -638,6 +639,16 @@ export async function POST(request: Request) {
                   cacheHit,
                   toolsUsed: [],
                   success: true,
+                });
+
+                recordCacheStats({
+                  requestId: id,
+                  timestamp: new Date(),
+                  modelId: selectedChatModel,
+                  cacheHit,
+                  cachedTokens,
+                  totalTokens: (usage.inputTokens || 0) + (usage.outputTokens || 0),
+                  costSavings: (cachedTokens / 1_000_000) * 2.7,
                 });
               } catch (trackingErr) {
                 console.error("Failed to record usage:", trackingErr);
