@@ -2032,6 +2032,256 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-pi": {
+    slug: "bedda-vs-pi",
+    competitor: "Pi AI Pro",
+    competitorUrl: "https://pi.ai",
+    competitorPrice: "$20/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Pi AI",
+    metaTitle: "bedda.ai vs Pi AI (2026) — 36 Models vs One Personal Companion",
+    metaDescription:
+      "Compare bedda.ai and Pi AI. Pi is a free conversational AI companion — bedda.ai is $12/mo and gives you GPT-5, Claude 4, Gemini 2.5, and 36+ frontier models with web search, image generation, and code execution.",
+    ogTitle: "bedda.ai vs Pi AI — More Capability, Lower Price",
+    ogDescription:
+      "Pi AI is a conversational companion with no premium models, no image gen, no web search. bedda.ai gives you 36+ frontier AI models including GPT-5 and Claude 4 for $12/mo.",
+    heroHeadline: "More than a companion — 36 frontier AI models for $12/mo",
+    heroSubtext:
+      "Pi AI excels at warm conversation, but it's limited to one model with no web search, image generation, or code execution. bedda.ai gives you every frontier model — GPT-5, Claude 4, Gemini 2.5, Grok — in one subscription.",
+    verdict:
+      "Pi is a great free conversational companion. But if you want to get real work done — writing, coding, research, image generation — bedda.ai at $12/mo gives you 36+ frontier models that Pi simply can't match.",
+    switchReasons: [
+      "Access GPT-5, Claude 4 Opus, Gemini 2.5 and Grok 3 — not just one model",
+      "Web search grounded in real-time information",
+      "Image and video generation built in",
+      "Code execution, knowledge base RAG, and file analysis",
+      "Save $8/mo compared to Pi Pro if you need advanced AI",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "Free / $20/mo" },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude 4 (Opus, Sonnet)", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 3", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Conversational AI", bedda: true, competitor: true },
+      { feature: "Mobile app", bedda: false, competitor: true },
+      { feature: "Cross-conversation memory", bedda: true, competitor: true },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1" },
+    ],
+    faq: [
+      {
+        q: "Is Pi AI free?",
+        a: "Pi AI has a free tier with a single conversational model. Pi Pro is $20/mo for unlimited access to the same Pi model. There are no premium frontier models (GPT-5, Claude, Gemini) on any Pi plan.",
+      },
+      {
+        q: "Can bedda.ai do the kind of emotional support conversations Pi is known for?",
+        a: "Yes. bedda.ai's Claude models (especially Claude Sonnet) are well-suited for empathetic, nuanced conversations. You can have the same supportive conversations Pi offers, plus the power of a full AI platform.",
+      },
+      {
+        q: "Does bedda.ai have a mobile app like Pi?",
+        a: "bedda.ai is a web app with PWA support (installable on mobile from the browser). Pi has native iOS and Android apps. If mobile-first is critical, Pi's native apps offer a smoother experience.",
+      },
+      {
+        q: "Why is bedda.ai cheaper than Pi Pro?",
+        a: "bedda.ai routes to frontier models via the Vercel AI Gateway and bundles multiple model providers under one subscription. Pi Pro charges $20/mo for access to Inflection's single Pi model. bedda.ai gives you 36+ models for $12/mo.",
+      },
+    ],
+  },
+
+  "bedda-vs-amazon-q": {
+    slug: "bedda-vs-amazon-q",
+    competitor: "Amazon Q Business",
+    competitorUrl: "https://aws.amazon.com/q/business",
+    competitorPrice: "$19–25/user/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Amazon Q Business",
+    metaTitle: "bedda.ai vs Amazon Q Business (2026) — Simpler, Cheaper AI",
+    metaDescription:
+      "Compare bedda.ai and Amazon Q Business. Amazon Q starts at $19/user/mo and requires AWS setup. bedda.ai is $12/mo with no AWS dependency — GPT-5, Claude 4, Gemini, Grok, and 36+ models ready instantly.",
+    ogTitle: "bedda.ai vs Amazon Q — No AWS Required, Better Models, $12/mo",
+    ogDescription:
+      "Amazon Q Business requires AWS infrastructure and costs $19-25/user/mo. bedda.ai gives you GPT-5, Claude 4, Gemini 2.5, and 36+ models for $12/mo with zero AWS dependency.",
+    heroHeadline: "36 frontier AI models — no AWS setup, no per-seat pricing",
+    heroSubtext:
+      "Amazon Q Business is powerful for AWS-native enterprises, but costs $19–25/user/mo and requires significant AWS infrastructure setup. bedda.ai gives any individual or small team access to 36+ frontier AI models for a flat $12/mo.",
+    verdict:
+      "Amazon Q Business is the right choice for large enterprises already deep in the AWS ecosystem. For individuals, startups, and teams that want the best frontier AI models without AWS complexity or per-seat pricing, bedda.ai is dramatically simpler and cheaper.",
+    switchReasons: [
+      "No AWS account, IAM roles, or infrastructure setup required",
+      "Flat $12/mo vs $19–25/user/mo at Amazon Q",
+      "Access GPT-5, Claude 4, Gemini 2.5 — not just Amazon's Titan models",
+      "Instant setup — chat in minutes, not weeks",
+      "Image generation, video generation, and code execution included",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$19–25/user/mo" },
+      { feature: "GPT-5 / Claude 4", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 3 / DeepSeek R1", bedda: true, competitor: false },
+      { feature: "Amazon Titan / Nova", bedda: false, competitor: true },
+      { feature: "AWS data connectors (S3, etc.)", bedda: false, competitor: true },
+      { feature: "Web search", bedda: true, competitor: true },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "No AWS dependency", bedda: true, competitor: false },
+      { feature: "Setup time", bedda: "Minutes", competitor: "Days–weeks" },
+      { feature: "Team workspaces", bedda: true, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "Amazon models" },
+    ],
+    faq: [
+      {
+        q: "Who is Amazon Q Business for?",
+        a: "Amazon Q Business is designed for enterprises that want to connect AI to internal data sources across AWS services (S3, Confluence, Salesforce, etc.) with enterprise security controls. It requires AWS account setup, IAM configuration, and ongoing infrastructure management.",
+      },
+      {
+        q: "Can bedda.ai connect to my company data like Amazon Q?",
+        a: "bedda.ai has a knowledge base (RAG) feature where you upload documents (.txt, .md, .csv, .json) that the AI can search. It's simpler than Amazon Q's 40+ connectors but covers most team use cases without AWS infrastructure.",
+      },
+      {
+        q: "Is Amazon Q Business cheaper for teams?",
+        a: "Amazon Q Business starts at $19/user/mo (Lite) and $25/user/mo (Pro). For a 10-person team, that's $190–250/mo. bedda.ai Teams plans start much lower. Individual pricing: bedda is $12/mo vs Amazon Q's minimum $19/user/mo.",
+      },
+      {
+        q: "Does bedda.ai support enterprise security features?",
+        a: "bedda.ai offers SSO (SAML/WorkOS), team role management, audit logs, and organization model policies. For regulated industries requiring AWS GovCloud, VPC isolation, or SOC 2 Type II, Amazon Q Business is the enterprise-grade choice.",
+      },
+    ],
+  },
+
+  "bedda-vs-jenni-ai": {
+    slug: "bedda-vs-jenni-ai",
+    competitor: "Jenni.ai",
+    competitorUrl: "https://jenni.ai",
+    competitorPrice: "$20/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Jenni.ai",
+    metaTitle: "bedda.ai vs Jenni.ai (2026) — Better Models, Lower Price",
+    metaDescription:
+      "Compare bedda.ai and Jenni.ai. Jenni.ai is $20/mo for AI writing with citation help. bedda.ai is $12/mo and gives you GPT-5, Claude 4, Gemini 2.5, and 36+ frontier models for writing, research, and more.",
+    ogTitle: "bedda.ai vs Jenni.ai — More Powerful AI for $8 Less per Month",
+    ogDescription:
+      "Jenni.ai charges $20/mo for AI writing with citation suggestions. bedda.ai gives you GPT-5, Claude 4, web search with real citations, and 36+ models for $12/mo.",
+    heroHeadline: "Better AI writing models — plus research, code, and images",
+    heroSubtext:
+      "Jenni.ai is purpose-built for academic writing with citation tools, but it costs $20/mo and is limited to a single AI model. bedda.ai gives you GPT-5, Claude 4, Gemini 2.5, and web search for real-time research — for $8 less per month.",
+    verdict:
+      "Jenni.ai's citation generator and academic writing workflow are genuinely useful for students and researchers. But at $20/mo for one model, bedda.ai's $12/mo gives you access to every frontier model plus web search for real citations — making it a better value for most writing tasks.",
+    switchReasons: [
+      "Access GPT-5 and Claude 4 — stronger writing models than Jenni's underlying AI",
+      "Web search gives you real, citable sources — not just AI suggestions",
+      "Save $8/mo ($96/year) on your AI subscription",
+      "Code execution for research data analysis and visualization",
+      "Knowledge base to upload and reference your own papers and notes",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$20/mo" },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude 4 (Opus, Sonnet)", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Web search (real citations)", bedda: true, competitor: false },
+      { feature: "Academic citation helper", bedda: false, competitor: true },
+      { feature: "In-document AI writing", bedda: false, competitor: true },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1" },
+    ],
+    faq: [
+      {
+        q: "What is Jenni.ai used for?",
+        a: "Jenni.ai is an AI writing assistant designed for academic and professional writing. Its key features are in-document AI suggestions, citation generation (APA, MLA, Chicago), paraphrasing, and an AI research tool. It's popular with students writing essays and researchers drafting papers.",
+      },
+      {
+        q: "Does bedda.ai help with citations like Jenni.ai?",
+        a: "bedda.ai's web search tool can find real sources you can cite, with links and snippets. It doesn't have a dedicated citation formatter, but Claude and GPT-5 can format citations in any style when given a source URL or DOI. For heavy citation management, a reference manager (Zotero, Mendeley) paired with bedda.ai works well.",
+      },
+      {
+        q: "Is bedda.ai good for academic writing?",
+        a: "Yes. Claude 4 Sonnet is widely regarded as one of the best AI models for long-form writing, academic prose, and nuanced reasoning. Combined with web search for real-time research, bedda.ai supports the full research-write-edit workflow.",
+      },
+      {
+        q: "How does the price compare to Jenni.ai's free plan?",
+        a: "Jenni.ai has a free plan limited to ~200 AI words per day and restricted citations. bedda.ai has a free tier with 500 messages/mo across multiple models. For unlimited access, Jenni.ai charges $20/mo vs bedda.ai's $12/mo.",
+      },
+    ],
+  },
+
+  "bedda-vs-leonardo-ai": {
+    slug: "bedda-vs-leonardo-ai",
+    competitor: "Leonardo.ai",
+    competitorUrl: "https://leonardo.ai",
+    competitorPrice: "$12–60/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Leonardo.ai",
+    metaTitle: "bedda.ai vs Leonardo.ai (2026) — Images + AI Chat for Same Price",
+    metaDescription:
+      "Compare bedda.ai and Leonardo.ai. Leonardo.ai starts at $12/mo for AI image generation with token credits. bedda.ai is $12/mo for image generation (DALL-E 3, Imagen 3, Flux) PLUS GPT-5, Claude 4, Gemini, and 36+ frontier models.",
+    ogTitle: "bedda.ai vs Leonardo.ai — Same Price, Full AI Suite vs Images Only",
+    ogDescription:
+      "Leonardo.ai is $12/mo for AI image generation with token limits. bedda.ai is $12/mo for image generation PLUS chat with GPT-5, Claude 4, Gemini 2.5, and 36+ models — no token credits.",
+    heroHeadline: "Image generation plus 36 AI models — for the same price",
+    heroSubtext:
+      "Leonardo.ai is an excellent image generation platform, but $12/mo gets you only 8,500 generation tokens. bedda.ai is $12/mo for DALL-E 3, Imagen 3, and Flux 1.1 Pro image generation plus full access to GPT-5, Claude 4, Gemini, and 36+ frontier AI models.",
+    verdict:
+      "If professional AI image generation with fine-grained model control and a large creative community is your primary need, Leonardo.ai is purpose-built for that. If you want AI image generation as part of a full AI platform — with the best chat models for writing, coding, and research — bedda.ai delivers more for the same $12/mo.",
+    switchReasons: [
+      "No generation token limits — flat-rate image generation",
+      "DALL-E 3, Imagen 3, and Flux 1.1 Pro included at same price point",
+      "GPT-5, Claude 4, and Gemini for writing, coding, and research",
+      "Web search, code execution, and knowledge base included",
+      "Video generation — not just images",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$12–60/mo" },
+      { feature: "AI image generation", bedda: true, competitor: true },
+      { feature: "DALL-E 3 (OpenAI)", bedda: true, competitor: false },
+      { feature: "Flux 1.1 Pro", bedda: true, competitor: false },
+      { feature: "Google Imagen 3", bedda: true, competitor: false },
+      { feature: "Leonardo Phoenix / Kino", bedda: false, competitor: true },
+      { feature: "ControlNet / fine-tuned models", bedda: false, competitor: true },
+      { feature: "AI video generation", bedda: true, competitor: true },
+      { feature: "GPT-5 chat", bedda: true, competitor: false },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Token/credit system", bedda: false, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "Image models" },
+    ],
+    faq: [
+      {
+        q: "Is Leonardo.ai better than bedda.ai for image generation?",
+        a: "Leonardo.ai is a dedicated image generation platform with purpose-built features: ControlNet, fine-tuned model training, realtime generation canvas, and a large community sharing styles. For power users who generate dozens of images daily and need fine-grained control, Leonardo.ai's specialized tooling is hard to beat.",
+      },
+      {
+        q: "What image models does bedda.ai use?",
+        a: "bedda.ai's Image Studio uses DALL-E 3 (OpenAI), Imagen 3 Fast (Google), and Flux 1.1 Pro (Black Forest Labs). These are top-tier commercial image generation models. bedda.ai doesn't offer ControlNet or model fine-tuning.",
+      },
+      {
+        q: "Does bedda.ai have a token limit for images?",
+        a: "No. bedda.ai Plus is a flat-rate subscription — you don't spend tokens or credits per image. There are fair-use rate limits (to prevent abuse), but typical daily usage never hits them.",
+      },
+      {
+        q: "What's Leonardo.ai's Apprentice plan like?",
+        a: "Leonardo.ai Apprentice ($12/mo) gives you 8,500 generation tokens per month. At roughly 16–25 tokens per generation, that's 340–530 images/mo. The Artisan plan ($30/mo) provides 25,000 tokens. Pricing scales up with usage.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
