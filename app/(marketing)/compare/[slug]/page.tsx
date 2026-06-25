@@ -2776,6 +2776,256 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-murf-ai": {
+    slug: "bedda-vs-murf-ai",
+    competitor: "Murf AI",
+    competitorUrl: "https://murf.ai",
+    competitorPrice: "$29–99/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Murf AI",
+    metaTitle: "bedda.ai vs Murf AI (2026) — Full AI Suite vs Voice Only",
+    metaDescription:
+      "Compare bedda.ai and Murf AI. Murf AI is $29–99/mo for AI voice generation only. bedda.ai is $12/mo with GPT-5, Claude 4, Gemini 2.5, image generation, video generation, and 36+ models. 7-day free trial.",
+    ogTitle: "bedda.ai vs Murf AI — 36 AI Models for Less Than Voice Alone",
+    ogDescription:
+      "Murf AI charges $29–99/mo for AI voice generation. bedda.ai is $12/mo and gives you GPT-5, Claude 4, Gemini 2.5, image and video generation, and 36+ frontier models — plus AI transcription.",
+    heroHeadline: "36 frontier AI models for less than Murf's entry plan",
+    heroSubtext:
+      "Murf AI specializes in AI voice generation at $29–99/mo. bedda.ai gives you GPT-5, Claude 4, Gemini 2.5, image generation, video generation, and AI audio transcription — all for $12/mo.",
+    verdict:
+      "Murf AI is the right choice if AI voiceovers are your primary creative output. But if you need AI for writing, coding, research, and image/video creation — and want transcription included — bedda.ai covers far more ground for $17–87/mo less.",
+    switchReasons: [
+      "Save $17–87/mo — Murf is $29–99/mo vs bedda.ai at $12/mo",
+      "AI audio transcription (Whisper) included — convert recordings to text",
+      "36+ frontier models: GPT-5, Claude 4 Opus, Gemini 2.5 Pro, Grok 3",
+      "Image generation (DALL-E 3, Imagen 3) and video generation (Kling) built in",
+      "Web search, code execution, and knowledge base RAG in one subscription",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$29–99/mo" },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "AI voice generation (TTS)", bedda: false, competitor: true },
+      { feature: "100+ AI voices", bedda: false, competitor: true },
+      { feature: "Voice cloning", bedda: false, competitor: true },
+      { feature: "Audio transcription (Whisper)", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "Voice only" },
+    ],
+    faq: [
+      {
+        q: "What does Murf AI do?",
+        a: "Murf AI is an AI voice generator that turns text into realistic speech using 120+ AI voices across 20+ languages. It's popular for voiceovers, explainer videos, and podcast intros. Plans range from $29/mo (Creator) to $99/mo (Business).",
+      },
+      {
+        q: "Does bedda.ai have AI voice generation like Murf?",
+        a: "bedda.ai has text-to-speech via the browser's Web Speech API (basic TTS for reading responses aloud) and Whisper-powered audio transcription (convert speech to text). It does not have Murf-style high-quality custom AI voices or voice cloning. For professional voiceover work, Murf remains the specialist tool.",
+      },
+      {
+        q: "Can I use bedda.ai and Murf AI together?",
+        a: "Yes — they complement each other well. Use bedda.ai with GPT-5 or Claude 4 to write your script (web search for research, knowledge base for brand voice), then paste the polished script into Murf to generate the voiceover. You get better AI writing at $12/mo and keep Murf for production.",
+      },
+      {
+        q: "Is bedda.ai cheaper than Murf AI?",
+        a: "Yes — bedda.ai Plus is $12/mo vs Murf's entry Creator plan at $29/mo. That's $17/mo less. Murf Business is $99/mo — you could subscribe to bedda.ai for 8 months for the same cost as one month of Murf Business.",
+      },
+    ],
+  },
+
+  "bedda-vs-synthesia": {
+    slug: "bedda-vs-synthesia",
+    competitor: "Synthesia",
+    competitorUrl: "https://synthesia.io",
+    competitorPrice: "$18–67/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Synthesia",
+    metaTitle: "bedda.ai vs Synthesia (2026) — Full AI Suite vs Avatar Video",
+    metaDescription:
+      "Compare bedda.ai and Synthesia. Synthesia creates AI avatar videos starting at $18/mo. bedda.ai is $12/mo with GPT-5, Claude 4, Gemini 2.5, Kling video generation, image generation, and 36+ models. 7-day free trial.",
+    ogTitle: "bedda.ai vs Synthesia — Video AI + 36 Models for Less",
+    ogDescription:
+      "Synthesia is $18–67/mo for AI avatar videos. bedda.ai is $12/mo and gives you GPT-5, Claude 4, Gemini 2.5, video generation, image generation, and 36+ frontier models — plus script writing AI.",
+    heroHeadline: "AI video generation plus 36 frontier models — for less than Synthesia",
+    heroSubtext:
+      "Synthesia creates AI avatar videos at $18–67/mo. bedda.ai includes AI video generation (Kling) alongside GPT-5, Claude 4, Gemini 2.5 Pro, image generation, and web search — all for $12/mo.",
+    verdict:
+      "Synthesia is purpose-built for polished AI avatar videos with your face or a stock presenter — ideal for corporate training and marketing. If you need the full AI productivity stack including video generation for $6 less per month, bedda.ai is the broader value.",
+    switchReasons: [
+      "Save $6–55/mo — Synthesia is $18–67/mo vs bedda.ai at $12/mo",
+      "Kling AI video generation included in the $12/mo Plus plan",
+      "36+ frontier models: GPT-5, Claude 4, Gemini 2.5, Grok 3 for script writing",
+      "Image generation (DALL-E 3, Imagen 3, Flux) for thumbnails and stills",
+      "Web search and knowledge base RAG for research-driven video scripts",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$18–67/mo" },
+      { feature: "AI avatar video (human presenter)", bedda: false, competitor: true },
+      { feature: "Custom AI avatars", bedda: false, competitor: true },
+      { feature: "Text-to-video (no avatar)", bedda: true, competitor: true },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 3", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Script writing AI", bedda: true, competitor: "Basic" },
+      { feature: "Team workspaces", bedda: true, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "Video only" },
+    ],
+    faq: [
+      {
+        q: "What is Synthesia used for?",
+        a: "Synthesia creates professional AI avatar videos — you type a script and an AI presenter (from Synthesia's library or a custom avatar built from your own video) delivers it on screen. Popular for corporate training videos, product demos, and marketing content in 120+ languages. Starter plan is $18/mo for 10 minutes of video/month.",
+      },
+      {
+        q: "Does bedda.ai have AI avatar videos like Synthesia?",
+        a: "No. bedda.ai uses Kling (via fal.ai) for text-to-video generation — you describe a scene and AI generates a cinematic clip. It doesn't produce human-presenter avatar videos like Synthesia. For polished presenter videos, Synthesia is the specialist tool.",
+      },
+      {
+        q: "Can I use bedda.ai to write scripts for Synthesia?",
+        a: "Yes — this is an excellent workflow. Use bedda.ai with Claude 4 or GPT-5 to research and write your video script (web search grounded, knowledge base for brand voice), then paste the final script into Synthesia to produce the presenter video. Better AI for writing at $12/mo.",
+      },
+      {
+        q: "Is Synthesia or bedda.ai better for social media video?",
+        a: "For branded presenter-style videos (YouTube explainers, LinkedIn posts), Synthesia wins on polish. For raw generative video clips (Kling), bedda.ai works well. bedda.ai also helps write captions, generate image assets, and research content — Synthesia doesn't.",
+      },
+    ],
+  },
+
+  "bedda-vs-beautiful-ai": {
+    slug: "bedda-vs-beautiful-ai",
+    competitor: "Beautiful.ai",
+    competitorUrl: "https://beautiful.ai",
+    competitorPrice: "$12–40/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Beautiful.ai",
+    metaTitle: "bedda.ai vs Beautiful.ai (2026) — Same Price, Full AI Suite",
+    metaDescription:
+      "Compare bedda.ai and Beautiful.ai. Beautiful.ai is $12–40/mo for AI presentations only. bedda.ai is $12/mo with GPT-5, Claude 4, Gemini 2.5, Slides artifact, image generation, and 36+ models. 7-day free trial.",
+    ogTitle: "bedda.ai vs Beautiful.ai — Same $12/mo, 36 More AI Models",
+    ogDescription:
+      "Beautiful.ai Pro is $12/mo for AI-powered slide creation. bedda.ai is $12/mo and gives you GPT-5, Claude 4, Gemini 2.5, AI slides, image generation, video generation, and 36+ frontier models.",
+    heroHeadline: "Same price as Beautiful.ai — plus 36 frontier AI models",
+    heroSubtext:
+      "Beautiful.ai Pro is $12/mo for AI presentation design. bedda.ai Plus is also $12/mo and includes AI slide generation alongside GPT-5, Claude 4, Gemini 2.5, image generation, video generation, and web search.",
+    verdict:
+      "Beautiful.ai is a polished, design-first presentation tool that makes slide formatting effortless. If presentation design is your primary use case, it wins on UX. But at the same $12/mo, bedda.ai gives you slides plus a complete AI productivity platform — better value if you need more than slides.",
+    switchReasons: [
+      "Same price ($12/mo) — but get AI slides AND 36+ frontier models",
+      "GPT-5 and Claude 4 for writing the content that fills your slides",
+      "Image generation (DALL-E 3, Imagen 3) for visual assets",
+      "Web search for grounding presentations in real-time data",
+      "Knowledge base RAG — build presentations from your own documents",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$12–40/mo" },
+      { feature: "AI slide generation", bedda: true, competitor: true },
+      { feature: "Design-first presentation editor", bedda: false, competitor: true },
+      { feature: "Smart slide templates", bedda: false, competitor: true },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "Slides only" },
+    ],
+    faq: [
+      {
+        q: "What is Beautiful.ai?",
+        a: "Beautiful.ai is an AI-powered presentation builder. It uses smart templates and AI to auto-format slides as you add content — no manual resizing or alignment needed. The Pro plan is $12/mo; Team plans start at $40/user/mo. The AI is focused on design intelligence, not frontier language models.",
+      },
+      {
+        q: "Does bedda.ai create presentations?",
+        a: "Yes. bedda.ai has a Slides artifact that generates a complete Reveal.js presentation from a text prompt. The AI writes the structure, headlines, and bullet points. It's not a polished design tool like Beautiful.ai, but it produces presentation-ready content instantly using GPT-5 or Claude 4.",
+      },
+      {
+        q: "Can I use bedda.ai to write content for Beautiful.ai slides?",
+        a: "Absolutely — this is a popular workflow. Use bedda.ai with GPT-5 or Claude 4 to research and draft your presentation content (web search, knowledge base), then paste it into Beautiful.ai for professional design and formatting. Better AI writing, better design.",
+      },
+      {
+        q: "Which is better for business presentations — bedda.ai or Beautiful.ai?",
+        a: "Beautiful.ai wins if visual polish and consistent design are critical (investor decks, client presentations). bedda.ai wins if content depth matters more than design and you need AI for writing, research, and analysis alongside slides. At the same $12/mo, the choice comes down to whether you need 36 AI models or premium slide design.",
+      },
+    ],
+  },
+
+  "bedda-vs-anyword": {
+    slug: "bedda-vs-anyword",
+    competitor: "Anyword",
+    competitorUrl: "https://anyword.com",
+    competitorPrice: "$49–99/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Anyword",
+    metaTitle: "bedda.ai vs Anyword (2026) — Better Models, 75% Cheaper",
+    metaDescription:
+      "Compare bedda.ai and Anyword. Anyword starts at $49/mo for AI marketing copy. bedda.ai is $12/mo with GPT-5, Claude 4, Gemini 2.5, web search, image generation, and 36+ models. 7-day free trial.",
+    ogTitle: "bedda.ai vs Anyword — 4× Cheaper with Better Underlying Models",
+    ogDescription:
+      "Anyword is $49–99/mo for AI marketing copy prediction scores. bedda.ai is $12/mo and gives you GPT-5, Claude 4, Gemini 2.5, and 36+ frontier models — write better copy with better AI for 75% less.",
+    heroHeadline: "Write better marketing copy with better AI — for 75% less",
+    heroSubtext:
+      "Anyword charges $49–99/mo for AI marketing copy with performance prediction scores. bedda.ai gives you GPT-5, Claude 4, and Gemini 2.5 — consistently stronger models for writing — at $12/mo.",
+    verdict:
+      "Anyword's performance prediction scores and brand voice training are genuinely useful for large marketing teams optimizing ad copy at scale. But if you're a solo marketer or small team, bedda.ai gives you better underlying AI models for 75% less — and you can test copy variants yourself with the model comparison arena.",
+    switchReasons: [
+      "Save $37–87/mo — Anyword is $49–99/mo vs bedda.ai at $12/mo",
+      "GPT-5 and Claude 4 write stronger marketing copy than older GPT-4 models",
+      "Model comparison arena — test copy variants across multiple AI models at once",
+      "Web search for competitor research and trend-aware copy",
+      "Image generation for ad creative alongside the copy",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$49–99/mo" },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Performance prediction score", bedda: false, competitor: true },
+      { feature: "Brand voice training", bedda: "Via knowledge base", competitor: true },
+      { feature: "Marketing copy templates", bedda: false, competitor: true },
+      { feature: "Ad copy optimization", bedda: false, competitor: true },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "GPT-4 based" },
+    ],
+    faq: [
+      {
+        q: "What is Anyword?",
+        a: "Anyword is an AI copywriting platform with a unique 'Performance Prediction' score that estimates how well your marketing copy will perform before you publish it, based on historical ad data. Plans start at $49/mo (Starter) and scale to $99/mo (Data-Driven). It's focused on marketing teams with large ad budgets.",
+      },
+      {
+        q: "Can bedda.ai replace Anyword for marketing copy?",
+        a: "bedda.ai can write marketing copy with GPT-5 and Claude 4 — models that are more capable than the GPT-4 base Anyword uses. What bedda.ai doesn't have is Anyword's performance prediction score or trained brand voice profiles. For small teams writing copy manually, bedda.ai is a better-AI, lower-cost alternative. For large teams optimizing ad performance at scale, Anyword's scoring system adds real value.",
+      },
+      {
+        q: "How do I simulate Anyword's copy variants in bedda.ai?",
+        a: "Use bedda.ai's model comparison arena — send the same copy brief to GPT-5, Claude 4 Sonnet, and Gemini 2.5 simultaneously and compare outputs side by side. You get multiple variants instantly and can judge which performs best for your audience. No separate subscription needed.",
+      },
+      {
+        q: "Is bedda.ai cheaper than Anyword?",
+        a: "Yes — significantly. bedda.ai Plus is $12/mo vs Anyword Starter at $49/mo. That's $37/mo ($444/year) in savings. Anyword's Data-Driven plan at $99/mo is $87/mo ($1,044/year) more expensive than bedda.ai Plus.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
