@@ -522,6 +522,42 @@ const posts = [
     readingTime: "9 min read",
     category: "Model Comparisons",
   },
+  {
+    slug: "is-midjourney-worth-it-2026",
+    title: "Is Midjourney Worth It in 2026? An Honest Review",
+    description:
+      "Midjourney Pro costs $10-60/month for AI image generation only. Here's who should pay — and who's better served by a multi-model subscription that includes images plus GPT-5, Claude, and 33 more models.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Guides",
+  },
+  {
+    slug: "best-ai-for-sales-2026",
+    title: "Best AI for Sales Teams in 2026: Models, Workflows & ROI",
+    description:
+      "How sales professionals are using AI in 2026 — cold email, proposals, CRM notes, objection handling, and research. The best models for each task, and how to stop paying $40-60/mo for multiple subscriptions.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "Professional Guides",
+  },
+  {
+    slug: "ai-for-real-estate-agents",
+    title: "AI for Real Estate Agents in 2026: Listings, Emails & Market Analysis",
+    description:
+      "How real estate agents are using AI to write better listings, faster client emails, and sharper market reports — without paying $40-60/month for multiple AI subscriptions.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Professional Guides",
+  },
+  {
+    slug: "best-ai-for-consultants-2026",
+    title: "Best AI for Consultants in 2026: Research, Proposals & Client Decks",
+    description:
+      "How management and business consultants are using AI in 2026 — research synthesis, proposal writing, slide decks, and analysis. Which AI models to use for each task, and how to cut your AI subscription spend.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "Professional Guides",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
