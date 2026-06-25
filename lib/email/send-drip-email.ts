@@ -421,3 +421,58 @@ export async function sendNearLimitEmail(
     `,
   });
 }
+
+export async function sendReengagementEmail(email: string, userId: string): Promise<void> {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  await resend.emails.send({
+    from: FROM,
+    to: email,
+    subject: "You haven't been on Bedda in a while — here's what's new",
+    html: `
+      <div style="font-family: sans-serif; max-width: 520px; margin: 0 auto; padding: 32px 24px; color: #111;">
+        <h1 style="font-size: 22px; font-weight: 700; margin-bottom: 8px;">We noticed you've been away 👋</h1>
+        <p style="color: #555; font-size: 15px; line-height: 1.6; margin-bottom: 24px;">
+          It's been a couple of weeks. A few things have changed on Bedda that might be worth a look.
+        </p>
+
+        <div style="margin-bottom: 20px; border-left: 3px solid #000; padding-left: 16px;">
+          <p style="margin: 0 0 4px; font-weight: 700; font-size: 14px; color: #111;">Try GPT-5 and Claude Opus 4</p>
+          <p style="margin: 0; color: #555; font-size: 13px; line-height: 1.5;">
+            The latest flagship models from OpenAI and Anthropic are available on Bedda.
+            Free plan users can try them with a 7-day Plus trial — no charge until the trial ends.
+          </p>
+        </div>
+
+        <div style="margin-bottom: 20px; border-left: 3px solid #000; padding-left: 16px;">
+          <p style="margin: 0 0 4px; font-weight: 700; font-size: 14px; color: #111;">Compare 4 models on the same prompt</p>
+          <p style="margin: 0; color: #555; font-size: 13px; line-height: 1.5;">
+            The model comparison arena at
+            <a href="${APP_URL}/compare" style="color: #000; font-weight: 600;">/compare</a>
+            lets you ask a question once and see answers from GPT-5, Claude, Gemini, and Grok side by side.
+            Takes about 10 seconds and is surprisingly useful.
+          </p>
+        </div>
+
+        <div style="margin-bottom: 28px; border-left: 3px solid #000; padding-left: 16px;">
+          <p style="margin: 0 0 4px; font-weight: 700; font-size: 14px; color: #111;">Generate images inline or in the studio</p>
+          <p style="margin: 0; color: #555; font-size: 13px; line-height: 1.5;">
+            Type "generate an image of..." in any chat, or head to
+            <a href="${APP_URL}/studio" style="color: #000; font-weight: 600;">/studio</a>
+            to create images and videos side by side using DALL·E 3, Imagen 3, and Flux.
+          </p>
+        </div>
+
+        <a href="${APP_URL}" style="display: inline-block; background: #000; color: #fff; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 15px; margin-bottom: 24px;">
+          Open Bedda →
+        </a>
+
+        <p style="color: #888; font-size: 13px; line-height: 1.6; border-top: 1px solid #eee; padding-top: 20px; margin-top: 8px;">
+          Want access to every model with no daily limits?
+          <a href="${APP_URL}/upgrade?plan=plus&source=reengagement_email" style="color: #000; font-weight: 600;">Start a 7-day free trial ($12/mo after)</a>
+          — cancel any time before the trial ends.
+        </p>
+        ${unsubFooter(userId)}
+      </div>
+    `,
+  });
+}
