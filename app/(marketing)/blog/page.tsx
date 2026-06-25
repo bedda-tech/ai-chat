@@ -558,6 +558,42 @@ const posts = [
     readingTime: "9 min read",
     category: "Professional Guides",
   },
+  {
+    slug: "ai-for-video-creators",
+    title: "AI for Video Creators in 2026: YouTube, TikTok & Short-Form Content",
+    description:
+      "How video creators are using AI to script, research, and grow their channels — without burning out. Which models to use for each part of the production workflow.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "Professional Guides",
+  },
+  {
+    slug: "best-ai-for-accountants-2026",
+    title: "Best AI for Accountants and CPAs in 2026: Tax, Audit & Advisory",
+    description:
+      "How accountants and CPAs are using AI in 2026 — tax research, audit documentation, client communication, and advisory work. Which AI models to use for each accounting task.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Professional Guides",
+  },
+  {
+    slug: "claude-4-vs-gpt-5",
+    title: "Claude 4 vs GPT-5 (2026): Which AI Is Better and When to Use Each",
+    description:
+      "An honest comparison of Claude 4 Opus and GPT-5 in 2026 — coding, writing, reasoning, and analysis. Which model wins for each use case, and why you probably want both.",
+    date: "June 2026",
+    readingTime: "10 min read",
+    category: "Model Reviews",
+  },
+  {
+    slug: "ai-for-musicians-2026",
+    title: "AI for Musicians in 2026: Songwriting, Marketing & Career Growth",
+    description:
+      "How musicians and music producers are using AI in 2026 — lyrics, promo copy, sync licensing pitches, and fan engagement. Which AI models work best for music industry tasks.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Professional Guides",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];

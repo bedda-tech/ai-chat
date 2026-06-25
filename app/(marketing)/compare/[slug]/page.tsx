@@ -2529,6 +2529,253 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-elevenlabs": {
+    slug: "bedda-vs-elevenlabs",
+    competitor: "ElevenLabs",
+    competitorUrl: "https://elevenlabs.io",
+    competitorPrice: "$11-99/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs ElevenLabs",
+    metaTitle: "bedda.ai vs ElevenLabs (2026) — Full AI Suite vs Voice AI",
+    metaDescription:
+      "Compare bedda.ai and ElevenLabs. ElevenLabs is $11-99/mo for AI voice synthesis. bedda.ai is $12/mo for GPT-5, Claude 4, Gemini, Grok, image generation, and 36+ models. Different tools, different jobs.",
+    ogTitle: "bedda.ai vs ElevenLabs — AI Chat vs Voice Synthesis",
+    ogDescription:
+      "ElevenLabs specializes in AI voice cloning and text-to-speech. bedda.ai gives you 36+ frontier language models for chat, writing, coding, and research at $12/mo. Different tools for different workflows.",
+    heroHeadline: "36+ frontier AI models vs single-purpose voice synthesis",
+    heroSubtext:
+      "ElevenLabs is the best tool for AI voice generation and text-to-speech. bedda.ai is the best tool for AI chat, writing, coding, and research across GPT-5, Claude 4, Gemini, and 36+ models. Most professionals need both — at $12/mo, bedda.ai fits alongside any voice tool.",
+    verdict:
+      "ElevenLabs and bedda.ai aren't direct competitors — ElevenLabs creates AI voices; bedda.ai enables AI conversations and writing. If you're a content creator, podcaster, or developer who needs both AI text generation and voice synthesis, the cost is $12/mo for bedda.ai Plus plus whatever ElevenLabs tier fits your voice needs. If you're only paying for ElevenLabs to access AI writing features, bedda.ai's frontier models will produce dramatically better text.",
+    switchReasons: [
+      "GPT-5, Claude 4, and Gemini 2.5 produce better copy than ElevenLabs' text features",
+      "bedda.ai adds web search, code execution, image generation, and knowledge base",
+      "36+ specialized models — choose the best AI for each task",
+      "Model comparison arena to evaluate outputs side by side",
+      "At $12/mo, bedda.ai is cheaper than ElevenLabs Starter for text work",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$11-99/mo" },
+      { feature: "GPT-5 (OpenAI)", bedda: true, competitor: false },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "AI voice synthesis (TTS)", bedda: false, competitor: true },
+      { feature: "Voice cloning", bedda: false, competitor: true },
+      { feature: "Text-to-speech API", bedda: false, competitor: true },
+      { feature: "AI chat interface", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Total AI language models", bedda: "36+", competitor: "N/A (voice only)" },
+    ],
+    faq: [
+      {
+        q: "Is bedda.ai a replacement for ElevenLabs?",
+        a: "No — they solve different problems. ElevenLabs converts text to realistic AI voices and lets you clone voices. bedda.ai lets you chat with and get writing, coding, and research help from GPT-5, Claude 4, Gemini, and 36+ other language models. Many creators use both.",
+      },
+      {
+        q: "Does bedda.ai have text-to-speech?",
+        a: "bedda.ai doesn't offer professional text-to-speech or voice cloning. It's focused on AI chat, writing, and research. For TTS and voice synthesis, ElevenLabs is the category leader.",
+      },
+      {
+        q: "Can I use bedda.ai to write scripts for ElevenLabs?",
+        a: "Yes — this is a great workflow. Use Claude 4 or GPT-5 on bedda.ai to draft your script, refine the tone, and check the copy. Then paste the final script into ElevenLabs to generate the audio. The two tools complement each other well.",
+      },
+      {
+        q: "How does ElevenLabs pricing work?",
+        a: "ElevenLabs charges $11/mo for Starter (30 mins audio/mo, 10 custom voices), $99/mo for Creator (100 mins, unlimited voices), and $330/mo for Pro. If you only need AI writing — not voice synthesis — bedda.ai at $12/mo covers GPT-5, Claude 4, and 36+ models.",
+      },
+    ],
+  },
+
+  "bedda-vs-otter-ai": {
+    slug: "bedda-vs-otter-ai",
+    competitor: "Otter.ai",
+    competitorUrl: "https://otter.ai",
+    competitorPrice: "$16.99/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Otter.ai",
+    metaTitle: "bedda.ai vs Otter.ai (2026) — AI Chat Suite vs Meeting Transcription",
+    metaDescription:
+      "Compare bedda.ai and Otter.ai. Otter.ai is $16.99/mo for meeting transcription and notes. bedda.ai is $12/mo for GPT-5, Claude 4, Gemini, and 36+ AI models. Use bedda.ai alongside any meeting tool.",
+    ogTitle: "bedda.ai vs Otter.ai — AI Models vs Meeting Transcription",
+    ogDescription:
+      "Otter.ai transcribes meetings and generates summaries. bedda.ai gives you GPT-5, Claude 4, Gemini, and 36+ frontier models for $4.99 less per month. Different tools — both worth having.",
+    heroHeadline: "36+ frontier AI models for $5 less than meeting notes alone",
+    heroSubtext:
+      "Otter.ai automatically transcribes Zoom, Meet, and Teams calls and generates meeting summaries. bedda.ai gives you GPT-5, Claude 4, and Gemini to ask questions, draft docs, and analyze your transcripts — for $4.99 less per month.",
+    verdict:
+      "Otter.ai and bedda.ai serve different workflows. Otter.ai sits inside your video calls and captures everything automatically — it's a passive recording tool. bedda.ai is an active AI workspace where you bring the text and work with frontier models to do something with it. If you're manually copying meeting notes to analyze them with AI, bedda.ai can replace that step. If you need automatic real-time transcription of live video calls, Otter.ai remains the purpose-built tool.",
+    switchReasons: [
+      "Paste Otter transcripts into bedda.ai for deep analysis with GPT-5 or Claude 4",
+      "Save $4.99/mo — bedda.ai Plus is $12/mo vs Otter.ai Pro at $16.99/mo",
+      "Ask follow-up questions, draft action items, and write follow-up emails from meeting text",
+      "Web search, code execution, and image generation alongside meeting analysis",
+      "36+ models — use Claude for summarization, GPT-5 for action item extraction",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$16.99/mo" },
+      { feature: "GPT-5 (OpenAI)", bedda: true, competitor: false },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Auto meeting transcription (live)", bedda: false, competitor: true },
+      { feature: "Zoom / Meet / Teams integration", bedda: false, competitor: true },
+      { feature: "Real-time captions in calls", bedda: false, competitor: true },
+      { feature: "AI-generated meeting summaries", bedda: "Via paste", competitor: true },
+      { feature: "Action item extraction", bedda: "Via paste", competitor: true },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Otter AI (proprietary)" },
+    ],
+    faq: [
+      {
+        q: "Can bedda.ai replace Otter.ai?",
+        a: "For live meeting transcription and automatic capture of video calls, no — Otter.ai has purpose-built integrations that join Zoom, Meet, and Teams meetings in real time. bedda.ai is a text-based AI workspace; it doesn't record calls. But for analyzing transcripts, drafting follow-ups, and extracting insights from meeting text, bedda.ai's frontier models outperform Otter's built-in AI.",
+      },
+      {
+        q: "Can I use bedda.ai with Otter.ai?",
+        a: "Yes — the best workflow is to let Otter.ai transcribe your meetings, then paste the transcript into bedda.ai and use GPT-5 or Claude 4 to summarize, extract action items, draft follow-up emails, or answer specific questions about what was discussed.",
+      },
+      {
+        q: "What is Otter.ai best for?",
+        a: "Otter.ai is best for teams that want automatic, hands-free transcription of video meetings — especially recurring team calls where manual note-taking is impractical. Its integrations with Zoom, Google Meet, and Microsoft Teams make it a set-and-forget transcription layer.",
+      },
+      {
+        q: "Is bedda.ai cheaper than Otter.ai?",
+        a: "Yes — bedda.ai Plus is $12/mo vs Otter.ai Pro at $16.99/mo. bedda.ai gives you 36+ frontier AI models including GPT-5, Claude 4, and Gemini for $4.99 less per month than Otter.ai's basic paid plan.",
+      },
+    ],
+  },
+
+  "bedda-vs-descript": {
+    slug: "bedda-vs-descript",
+    competitor: "Descript",
+    competitorUrl: "https://www.descript.com",
+    competitorPrice: "$12-24/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Descript",
+    metaTitle: "bedda.ai vs Descript (2026) — AI Chat Suite vs Audio/Video Editing",
+    metaDescription:
+      "Compare bedda.ai and Descript. Descript is $12-24/mo for AI-powered audio and video editing. bedda.ai is $12/mo for GPT-5, Claude 4, Gemini, and 36+ frontier language models. Different tools for different workflows.",
+    ogTitle: "bedda.ai vs Descript — AI Writing Models vs Audio/Video Editing",
+    ogDescription:
+      "Descript uses AI to edit audio and video by editing a transcript. bedda.ai gives you GPT-5, Claude 4, and 36+ frontier models for writing, coding, and research at the same $12/mo price point.",
+    heroHeadline: "36+ frontier AI models — same price as Descript Creator",
+    heroSubtext:
+      "Descript lets you edit audio and video by editing text — remove filler words, cut silence, overdub your voice. bedda.ai gives you GPT-5, Claude 4, and Gemini for writing scripts, researching topics, and creating content — at the same $12/mo. Most creators need both.",
+    verdict:
+      "Descript and bedda.ai solve different problems. Descript is a media editing tool — its core value is text-based video/podcast editing and AI overdubbing. bedda.ai is a multi-model AI workspace for writing, research, and coding. If you're a podcaster or video creator, you likely need Descript for production and bedda.ai for content research and script drafting. At the same $12/mo price point, the decision is which capability you're missing, not which to replace.",
+    switchReasons: [
+      "Use Claude 4 or GPT-5 to write scripts before bringing them into Descript",
+      "Same price — bedda.ai Plus and Descript Creator are both $12/mo",
+      "36+ AI models for content research, ideation, and title generation",
+      "Web search to research topics before you start recording",
+      "Knowledge base to keep your show notes, episode history, and brand voice",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$12-24/mo" },
+      { feature: "GPT-5 (OpenAI)", bedda: true, competitor: false },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Text-based video editing", bedda: false, competitor: true },
+      { feature: "AI filler word removal", bedda: false, competitor: true },
+      { feature: "AI overdub / voice clone", bedda: false, competitor: true },
+      { feature: "Screen recording", bedda: false, competitor: true },
+      { feature: "Script writing / drafting", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Total AI language models", bedda: "36+", competitor: "N/A (media editing)" },
+    ],
+    faq: [
+      {
+        q: "Is bedda.ai a replacement for Descript?",
+        a: "No — Descript is a specialized audio and video editing tool that uses AI to make media production faster. bedda.ai is a multi-model AI chat platform for writing, research, and coding. They're complementary: use bedda.ai to draft your script with Claude 4 or GPT-5, then bring it into Descript for recording and editing.",
+      },
+      {
+        q: "Can bedda.ai write scripts for podcasts and videos?",
+        a: "Yes. Claude 4 and GPT-5 on bedda.ai are excellent for scripting — episode outlines, interview questions, monologue scripts, show notes, chapter titles, and social copy. You can also use web search to research your topic before writing.",
+      },
+      {
+        q: "Does Descript have AI writing features?",
+        a: "Descript has some AI features for editing and repurposing content (like generating social clips from transcripts), but it's not a frontier language model platform. For serious writing tasks — drafting, researching, rewriting — bedda.ai's GPT-5 and Claude 4 are significantly more capable.",
+      },
+      {
+        q: "How does Descript pricing compare?",
+        a: "Descript's Creator plan is $12/mo (same as bedda.ai Plus) and includes 10 hours of transcription/mo, watermark-free exports, and AI features. Pro is $24/mo. If you need both tools, the combined cost is $24/mo — less than a single ChatGPT Plus subscription at $20/mo without the media editing capabilities.",
+      },
+    ],
+  },
+
+  "bedda-vs-fireflies": {
+    slug: "bedda-vs-fireflies",
+    competitor: "Fireflies.ai",
+    competitorUrl: "https://fireflies.ai",
+    competitorPrice: "$18/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Fireflies.ai",
+    metaTitle: "bedda.ai vs Fireflies.ai (2026) — AI Chat Suite vs Meeting Notes AI",
+    metaDescription:
+      "Compare bedda.ai and Fireflies.ai. Fireflies.ai is $18/mo for AI meeting notes and transcription. bedda.ai is $12/mo for GPT-5, Claude 4, Gemini, and 36+ frontier AI models.",
+    ogTitle: "bedda.ai vs Fireflies.ai — 36+ AI Models vs Meeting Notes for $6 Less",
+    ogDescription:
+      "Fireflies.ai auto-joins meetings and generates AI notes at $18/mo. bedda.ai gives you GPT-5, Claude 4, and 36+ frontier models for $6 less per month. Use both or switch for AI writing work.",
+    heroHeadline: "36+ frontier AI models for $6 less than meeting notes alone",
+    heroSubtext:
+      "Fireflies.ai joins your Zoom and Teams calls, transcribes them, and generates AI summaries. bedda.ai gives you GPT-5, Claude 4, Gemini, and 36+ frontier models for writing, research, and analysis — at $12/mo, $6 less than Fireflies.ai Pro.",
+    verdict:
+      "Fireflies.ai is the better tool for automatically capturing and organizing meeting content across your whole organization — especially with its CRM integrations (Salesforce, HubSpot) for sales teams. bedda.ai is the better tool for everything else: writing, research, coding, analysis, and multi-model exploration. Many sales and customer success teams use Fireflies for call intelligence and bedda.ai for account research, email drafting, and proposal writing.",
+    switchReasons: [
+      "Save $6/mo — bedda.ai Plus is $12/mo vs Fireflies.ai Pro at $18/mo",
+      "Paste Fireflies transcripts into bedda.ai for deep analysis with GPT-5 or Claude",
+      "36+ models for writing follow-up emails, proposals, and account summaries",
+      "Web search to research prospects before sales calls",
+      "Knowledge base to store product information and ICP for consistent responses",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$18/mo" },
+      { feature: "GPT-5 (OpenAI)", bedda: true, competitor: false },
+      { feature: "Claude 4 Opus + Sonnet", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Auto meeting join & transcription", bedda: false, competitor: true },
+      { feature: "CRM integration (Salesforce, HubSpot)", bedda: false, competitor: true },
+      { feature: "AI meeting summaries (automatic)", bedda: false, competitor: true },
+      { feature: "Smart search across transcripts", bedda: false, competitor: true },
+      { feature: "AI chat / writing interface", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Fireflies AI (proprietary)" },
+    ],
+    faq: [
+      {
+        q: "What does Fireflies.ai do?",
+        a: "Fireflies.ai is an AI meeting assistant that automatically joins your Zoom, Google Meet, and Teams calls, records and transcribes them, and generates AI-powered summaries, action items, and talking points. It integrates with Salesforce, HubSpot, and Slack to push meeting intelligence into your existing tools.",
+      },
+      {
+        q: "Can bedda.ai replace Fireflies.ai?",
+        a: "Not for automatic meeting capture — Fireflies joins live video calls, which bedda.ai doesn't do. But if you're using Fireflies for the AI analysis features rather than auto-join, bedda.ai's frontier models (GPT-5, Claude 4, Gemini) will produce better analysis when you paste transcripts manually.",
+      },
+      {
+        q: "How do I use bedda.ai and Fireflies.ai together?",
+        a: "Let Fireflies.ai capture and transcribe your meetings automatically. Then paste key transcripts into bedda.ai to ask deeper questions, draft follow-up emails, build proposals, or extract competitive intelligence — using whichever model is best for each task.",
+      },
+      {
+        q: "Is bedda.ai cheaper than Fireflies.ai?",
+        a: "Yes — bedda.ai Plus is $12/mo vs Fireflies.ai Pro at $18/mo. bedda.ai gives you 36+ frontier AI models including GPT-5, Claude 4, and Gemini 2.5 for $6 less per month than Fireflies' paid plan.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
