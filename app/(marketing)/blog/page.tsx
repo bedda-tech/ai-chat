@@ -594,6 +594,42 @@ const posts = [
     readingTime: "7 min read",
     category: "Professional Guides",
   },
+  {
+    slug: "ai-for-e-commerce-2026",
+    title: "AI for E-Commerce in 2026: Product Descriptions, Ads & Customer Service",
+    description:
+      "How online stores use AI in 2026 — writing product descriptions at scale, generating ad copy, handling customer service, and personalizing the shopping experience. Which models work best.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Professional Guides",
+  },
+  {
+    slug: "best-ai-for-small-business-2026",
+    title: "Best AI Tools for Small Business in 2026: A Practical Owner's Guide",
+    description:
+      "The AI tools small business owners actually use in 2026 — from writing and customer communication to research and operations. Which models to use for each task, and how to keep costs low.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "Professional Guides",
+  },
+  {
+    slug: "how-to-choose-an-ai-model",
+    title: "How to Choose the Right AI Model in 2026: A Practical Framework",
+    description:
+      "With 36+ AI models available in 2026, which one should you use? A practical decision framework for choosing between GPT-5, Claude 4 Opus, Gemini 2.5 Pro, Grok 4, DeepSeek R1, and more.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Guides",
+  },
+  {
+    slug: "ai-for-cybersecurity",
+    title: "AI for Cybersecurity in 2026: How Security Teams Use AI Models",
+    description:
+      "How security professionals use AI in 2026 — threat analysis, incident reports, policy drafting, and training materials. Which models are most useful for security work, and what AI can't do.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Professional Guides",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
