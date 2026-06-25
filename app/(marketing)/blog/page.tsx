@@ -630,6 +630,42 @@ const posts = [
     readingTime: "7 min read",
     category: "Professional Guides",
   },
+  {
+    slug: "is-deepseek-safe-to-use-2026",
+    title: "Is DeepSeek Safe to Use? Privacy, Security, and Data Concerns (2026)",
+    description:
+      "DeepSeek stores data in China, raising privacy concerns for many users. Here's what the risks actually are, who should be cautious, and how to use AI safely regardless of which model you choose.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Guides",
+  },
+  {
+    slug: "openai-o4-mini-review",
+    title: "OpenAI o4-mini Review: Fast Reasoning at a Fraction of the Cost (2026)",
+    description:
+      "OpenAI o4-mini brings frontier reasoning to an affordable price point. Here's how it compares to o4, o3-mini, and Claude's reasoning models — and when it's the right choice.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Model Reviews",
+  },
+  {
+    slug: "ai-for-product-managers-2026",
+    title: "AI for Product Managers in 2026: The Complete Workflow Guide",
+    description:
+      "How product managers use AI in 2026 — from PRDs and user research synthesis to roadmap prioritization and stakeholder communications. Which models work best for each PM task.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "Professional Guides",
+  },
+  {
+    slug: "anthropic-claude-4-review",
+    title: "Anthropic Claude 4 Review: Opus, Sonnet, and Haiku Compared (2026)",
+    description:
+      "A comprehensive review of the Claude 4 model family — Opus 4.8, Sonnet 4.6, and Haiku 4.5. Which model to use, how they compare to GPT-5 and Gemini, and whether Claude Pro is worth $20/month.",
+    date: "June 2026",
+    readingTime: "10 min read",
+    category: "Model Reviews",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];

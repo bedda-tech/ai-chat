@@ -12142,6 +12142,486 @@ const POSTS: Record<string, BlogPost> = {
       </article>
     ),
   },
+
+  "is-deepseek-safe-to-use-2026": {
+    slug: "is-deepseek-safe-to-use-2026",
+    title: "Is DeepSeek Safe to Use? Privacy, Security, and Data Concerns (2026)",
+    description:
+      "DeepSeek stores data in China, raising privacy concerns for many users. Here's what the risks actually are, who should be cautious, and how to use AI safely regardless of which model you choose.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Guides",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          DeepSeek went viral in early 2025 as a powerful open-source AI from China. Since then,
+          millions of people have asked the same question: is it safe to use? The answer depends
+          on who you are and what you&apos;re using it for.
+        </p>
+
+        <h2>The Core Concern: Data Storage in China</h2>
+        <p>
+          DeepSeek&apos;s privacy policy states that user data — including chat history, messages,
+          and usage data — is stored on servers in the People&apos;s Republic of China. Under Chinese
+          law, companies are required to cooperate with government data requests.
+        </p>
+        <p>
+          This is the same concern that led to TikTok scrutiny. Whether it&apos;s a practical risk
+          depends entirely on what you&apos;re putting into the model.
+        </p>
+
+        <h2>Who Should Be Cautious</h2>
+        <ul>
+          <li><strong>Government and defense employees:</strong> Many agencies have already banned DeepSeek on work devices. Follow your organization&apos;s policy.</li>
+          <li><strong>Healthcare workers:</strong> HIPAA-regulated data should never go into any AI without a BAA in place. DeepSeek offers no HIPAA compliance.</li>
+          <li><strong>Legal professionals:</strong> Client-privileged information and case strategy should stay within tools that provide attorney-client privilege protections.</li>
+          <li><strong>Enterprise users:</strong> If your company handles proprietary IP, trade secrets, or competitive strategy, the China data residency issue is material.</li>
+          <li><strong>Financial services:</strong> Regulated institutions face specific data sovereignty requirements that DeepSeek&apos;s current infrastructure may not meet.</li>
+        </ul>
+
+        <h2>Who Is Probably Fine</h2>
+        <ul>
+          <li><strong>Students and academics:</strong> Using DeepSeek to summarize papers, draft essays, or learn concepts carries minimal real-world risk.</li>
+          <li><strong>Individual creators:</strong> Writing blog posts, brainstorming marketing copy, or creating personal projects is low-stakes for most people.</li>
+          <li><strong>Open-source developers:</strong> Working on public projects without proprietary elements faces no meaningful data sovereignty risk.</li>
+          <li><strong>Researchers:</strong> Using public data and published information for analysis is generally fine.</li>
+        </ul>
+
+        <h2>What the Actual Risk Looks Like</h2>
+        <p>
+          The realistic concern isn&apos;t that the Chinese government is reading your creative writing prompts. It&apos;s that:
+        </p>
+        <ul>
+          <li>Corporate espionage is a documented reality in competitive industries</li>
+          <li>Intellectual property theft through AI systems is an emerging threat vector</li>
+          <li>Government contractors and cleared personnel face legal compliance issues regardless of practical risk</li>
+        </ul>
+        <p>
+          The theoretical risk scales with the value and sensitivity of what you&apos;re putting into the model. For most personal use, it&apos;s similar to using any foreign-owned app.
+        </p>
+
+        <h2>How to Use DeepSeek Safely (If You Choose To)</h2>
+        <ul>
+          <li><strong>Never input confidential work data:</strong> Treat DeepSeek like any public AI — no internal documents, client data, or proprietary IP</li>
+          <li><strong>Use it for general knowledge tasks:</strong> Summarizing public information, explaining concepts, or brainstorming non-sensitive ideas</li>
+          <li><strong>Run it locally:</strong> DeepSeek V3 and R1 are open-source. Running them locally means your data never leaves your machine</li>
+          <li><strong>Check your company policy:</strong> Many enterprises have explicit AI data governance policies that cover this</li>
+        </ul>
+
+        <h2>Safer Alternatives with US/EU Data Storage</h2>
+        <p>
+          If data sovereignty matters to you, all of these process and store data in the US or EU:
+        </p>
+        <ul>
+          <li><strong>Claude (Anthropic)</strong> — US-based, strong privacy commitments, enterprise data processing agreements available</li>
+          <li><strong>ChatGPT (OpenAI)</strong> — US-based, enterprise tier with SOC 2 compliance and data processing agreements</li>
+          <li><strong>Gemini (Google)</strong> — US/EU data centers, enterprise agreements available</li>
+          <li><strong>Mistral (European)</strong> — French AI company, EU data residency</li>
+        </ul>
+
+        <h2>The Bottom Line</h2>
+        <p>
+          DeepSeek R1 and V3 are genuinely impressive models. For general personal use with non-sensitive content, the privacy risk is comparable to other consumer AI tools. For professional, enterprise, or regulated use cases involving sensitive data, the China data residency is a legitimate concern that warrants using alternatives.
+        </p>
+        <p>
+          The good news: you don&apos;t have to choose. Multi-model platforms like bedda.ai give you access to DeepSeek R1 <em>alongside</em> Claude, GPT-5, and Gemini — so you can pick the right model for each task without committing to any single provider.
+        </p>
+
+        <div className="rounded-lg border bg-muted/50 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            Access All AI Models — Including DeepSeek — in One Place
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Switch between Claude, GPT-5, Gemini, and DeepSeek based on what each task requires. 36+ models at $12/mo.
+          </p>
+          <div className="flex justify-center gap-3">
+            <Button asChild>
+              <Link href="/register">Start Free Trial</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/pricing">See Pricing</Link>
+            </Button>
+          </div>
+        </div>
+      </article>
+    ),
+  },
+
+  "openai-o4-mini-review": {
+    slug: "openai-o4-mini-review",
+    title: "OpenAI o4-mini Review: Fast Reasoning at a Fraction of the Cost (2026)",
+    description:
+      "OpenAI o4-mini brings frontier reasoning to an affordable price point. Here's how it compares to o4, o3-mini, and Claude's reasoning models — and when it's the right choice.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Model Reviews",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          OpenAI&apos;s o4-mini is the reasoning model that punches above its weight. It delivers
+          near-frontier mathematical and logical reasoning at a fraction of the cost of o4 — and in
+          many benchmarks, it&apos;s competitive with models twice its price.
+        </p>
+
+        <h2>What Is o4-mini?</h2>
+        <p>
+          o4-mini is a distilled reasoning model in OpenAI&apos;s &quot;o-series&quot; (formerly &quot;o1-series&quot;) lineup.
+          Like all o-series models, it uses extended chain-of-thought reasoning — it &quot;thinks&quot; before
+          answering, which dramatically improves performance on complex problems.
+        </p>
+        <p>
+          Unlike the full o4, which is among the most capable (and expensive) models available, o4-mini
+          is designed for high-volume reasoning tasks where cost matters. It hits a sweet spot: much
+          better than GPT-5 on hard math and logic, significantly cheaper than o4.
+        </p>
+
+        <h2>Performance: Where o4-mini Excels</h2>
+        <p>o4-mini is particularly strong in:</p>
+        <ul>
+          <li><strong>Mathematics:</strong> Competition-level math (AIME, AMC) where reasoning depth matters more than raw knowledge</li>
+          <li><strong>Code generation:</strong> Complex algorithmic problems, data structure challenges, debugging with multiple failure modes</li>
+          <li><strong>Logical reasoning:</strong> Multi-step deduction, constraint satisfaction, puzzles and riddles</li>
+          <li><strong>Science problems:</strong> Physics, chemistry, and engineering questions requiring structured problem decomposition</li>
+        </ul>
+        <p>
+          On AIME 2025 math benchmarks, o4-mini scores substantially above GPT-5 and comparably to Claude Opus 4.8 on
+          many reasoning tasks — at lower cost.
+        </p>
+
+        <h2>Where o4-mini Falls Short</h2>
+        <ul>
+          <li><strong>Creative writing:</strong> o-series models think in structured steps — this is less useful for prose, tone, and narrative</li>
+          <li><strong>Long-form writing:</strong> Claude and GPT-5 produce better essays and reports</li>
+          <li><strong>Conversational tasks:</strong> The &quot;thinking&quot; overhead is wasted on simple Q&amp;A</li>
+          <li><strong>Multimodal tasks:</strong> Image analysis is not a strength relative to Gemini 2.5 Pro</li>
+        </ul>
+
+        <h2>o4-mini vs o4: Which Should You Use?</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Factor</th>
+              <th>o4-mini</th>
+              <th>o4 (full)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Math &amp; reasoning</td><td>Excellent</td><td>Best-in-class</td></tr>
+            <tr><td>Coding</td><td>Very strong</td><td>Marginally better</td></tr>
+            <tr><td>Speed</td><td>Faster</td><td>Slower (more thinking)</td></tr>
+            <tr><td>Cost</td><td>~80% cheaper</td><td>Premium pricing</td></tr>
+            <tr><td>Writing quality</td><td>Functional</td><td>Better</td></tr>
+            <tr><td>Best for</td><td>Daily reasoning tasks</td><td>Hardest problems only</td></tr>
+          </tbody>
+        </table>
+        <p>
+          For most users, o4-mini is the better default reasoning model. Use full o4 only for the
+          genuinely hardest problems where you need maximum performance and cost doesn&apos;t matter.
+        </p>
+
+        <h2>o4-mini vs Claude&apos;s Reasoning Models</h2>
+        <p>
+          Anthropic doesn&apos;t have a direct equivalent to the o-series — Claude&apos;s extended thinking
+          is built into Claude Opus and Sonnet. In practice:
+        </p>
+        <ul>
+          <li>o4-mini is better for pure math and algorithmic coding</li>
+          <li>Claude 4 Sonnet with extended thinking is better for nuanced reasoning with prose output</li>
+          <li>Claude 4 Opus matches o4-mini on many benchmarks while producing better written explanations</li>
+        </ul>
+
+        <h2>When to Use o4-mini</h2>
+        <ul>
+          <li>Solving competition math or advanced STEM problems</li>
+          <li>Debugging complex code with non-obvious failure modes</li>
+          <li>Logical deduction chains (legal argument analysis, policy tradeoff evaluation)</li>
+          <li>Any task where you&apos;ve tried a standard model and gotten a shallow answer</li>
+        </ul>
+
+        <h2>Accessing o4-mini</h2>
+        <p>
+          o4-mini is available via ChatGPT Plus ($20/mo) and through the OpenAI API. It&apos;s also
+          available through multi-model platforms — giving you o4-mini alongside Claude, Gemini,
+          and DeepSeek R1 for less than the cost of ChatGPT Plus alone.
+        </p>
+
+        <div className="rounded-lg border bg-muted/50 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            Access o4-mini Alongside Every Other Frontier Model
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Use o4-mini for reasoning, Claude for writing, Gemini for research — 36+ models at $12/mo.
+          </p>
+          <div className="flex justify-center gap-3">
+            <Button asChild>
+              <Link href="/register">Start Free Trial</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/pricing">See Pricing</Link>
+            </Button>
+          </div>
+        </div>
+      </article>
+    ),
+  },
+
+  "ai-for-product-managers-2026": {
+    slug: "ai-for-product-managers-2026",
+    title: "AI for Product Managers in 2026: The Complete Workflow Guide",
+    description:
+      "How product managers use AI in 2026 — from PRDs and user research synthesis to roadmap prioritization and stakeholder communications. Which models work best for each PM task.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "Professional Guides",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          Product management involves more writing, synthesis, and communication than most technical
+          roles realize. AI has become an essential PM tool — not to automate decisions, but to
+          dramatically accelerate the knowledge work that surrounds them.
+        </p>
+
+        <h2>Writing Product Requirements Documents (PRDs)</h2>
+        <p>
+          PRDs are where AI has the most immediate impact for PMs. Claude 4 Sonnet and GPT-5 can
+          both generate well-structured first drafts from a brief. The workflow that works best:
+        </p>
+        <ol>
+          <li>Write a 3-5 sentence summary of what you&apos;re building and why</li>
+          <li>List the key constraints (timeline, technical dependencies, non-goals)</li>
+          <li>Ask the model to draft a PRD with sections for problem statement, success metrics, user stories, and open questions</li>
+          <li>Edit the output — your job is now editing and judgment, not blank-page drafting</li>
+        </ol>
+        <p>
+          <strong>Best model:</strong> Claude 4 Sonnet — produces structured, well-reasoned documents
+          that follow technical writing conventions without over-prompting.
+        </p>
+
+        <h2>User Research Synthesis</h2>
+        <p>
+          Qualitative research (interviews, support tickets, NPS verbatims) creates mountains of
+          unstructured text. AI is exceptional at synthesis:
+        </p>
+        <ul>
+          <li>Paste 10-20 interview transcripts and ask for common themes, pain points, and unmet needs</li>
+          <li>Feed in 500 support tickets and ask for categorized issue taxonomy with frequency signals</li>
+          <li>Ask the model to identify contradictions between what users say they want and what they describe doing</li>
+        </ul>
+        <p>
+          <strong>Best model:</strong> Claude 4 Opus — handles long documents and maintains coherent
+          synthesis across large amounts of input text. Gemini 2.5 Pro is excellent for this when
+          the research spans structured spreadsheet data too (multimodal).
+        </p>
+
+        <h2>Competitive Analysis</h2>
+        <p>
+          AI can rapidly synthesize public competitive intelligence:
+        </p>
+        <ul>
+          <li>Summarize competitor feature announcements from their changelogs and release notes</li>
+          <li>Compare positioning language across competitor landing pages</li>
+          <li>Analyze App Store reviews to surface competitor weaknesses your product can address</li>
+          <li>Build a SWOT analysis from available public data</li>
+        </ul>
+        <p>
+          <strong>Best model:</strong> Gemini 2.5 Pro with web search enabled — can access current
+          information and synthesize recent competitor moves. GPT-5 is strong when you provide
+          source material directly.
+        </p>
+
+        <h2>Roadmap Prioritization Frameworks</h2>
+        <p>
+          AI won&apos;t prioritize your roadmap for you — that requires context only you have — but it
+          can accelerate the process significantly:
+        </p>
+        <ul>
+          <li>Apply RICE, WSJF, or ICE scoring frameworks to a list of features you describe</li>
+          <li>Generate devil&apos;s advocate arguments against your top priorities</li>
+          <li>Draft the stakeholder rationale for deprioritization decisions</li>
+          <li>Identify dependencies you may have missed in a feature list</li>
+        </ul>
+
+        <h2>Stakeholder Communications</h2>
+        <p>
+          PMs write constantly — executive updates, eng briefs, customer comms, board materials.
+          AI dramatically reduces the cycle time:
+        </p>
+        <ul>
+          <li><strong>Executive summaries:</strong> Paste a 2,000-word analysis; get a 200-word exec brief</li>
+          <li><strong>Meeting prep:</strong> Brief summaries of stakeholder priorities before cross-functional meetings</li>
+          <li><strong>Announcement drafts:</strong> Feature launch announcements for internal and external audiences</li>
+          <li><strong>Difficult conversations:</strong> Help framing scope cut conversations or timeline pushbacks</li>
+        </ul>
+        <p>
+          <strong>Best model:</strong> Claude 4 for executive-facing writing (cleaner, more professional tone);
+          GPT-5 for engineering-facing communication (more direct, precise).
+        </p>
+
+        <h2>A/B Test Hypothesis Generation</h2>
+        <p>
+          Describe a problem you&apos;re trying to solve and ask the model to generate 5-10 testable
+          hypotheses with expected impact direction. This is a forcing function to think more
+          rigorously before committing to a test.
+        </p>
+
+        <h2>Model Selection for PMs</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Best Model</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>PRD drafting</td><td>Claude 4 Sonnet</td></tr>
+            <tr><td>Research synthesis (large docs)</td><td>Claude 4 Opus</td></tr>
+            <tr><td>Competitive research (live data)</td><td>Gemini 2.5 Pro + web search</td></tr>
+            <tr><td>Executive comms</td><td>Claude 4 Sonnet</td></tr>
+            <tr><td>Engineering-facing specs</td><td>GPT-5</td></tr>
+            <tr><td>Brainstorming and ideation</td><td>Grok 4 or GPT-5</td></tr>
+          </tbody>
+        </table>
+
+        <div className="rounded-lg border bg-muted/50 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            One Subscription for Your Entire PM Workflow
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Claude 4 for docs, Gemini for research, GPT-5 for specs — 36+ models at $12/mo.
+          </p>
+          <div className="flex justify-center gap-3">
+            <Button asChild>
+              <Link href="/register">Start Free Trial</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/pricing">See Pricing</Link>
+            </Button>
+          </div>
+        </div>
+      </article>
+    ),
+  },
+
+  "anthropic-claude-4-review": {
+    slug: "anthropic-claude-4-review",
+    title: "Anthropic Claude 4 Review: Opus, Sonnet, and Haiku Compared (2026)",
+    description:
+      "A comprehensive review of the Claude 4 model family — Opus 4.8, Sonnet 4.6, and Haiku 4.5. Which model to use, how they compare to GPT-5 and Gemini, and whether Claude Pro is worth $20/month.",
+    date: "June 2026",
+    readingTime: "10 min read",
+    category: "Model Reviews",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          The Claude 4 family represents Anthropic&apos;s most capable models to date. With three
+          tiers — Opus 4.8, Sonnet 4.6, and Haiku 4.5 — the lineup covers everything from
+          lightweight daily tasks to frontier-level reasoning and creative work.
+        </p>
+
+        <h2>The Claude 4 Model Lineup</h2>
+        <p>
+          Anthropic organizes Claude 4 into three tiers, each optimized for different use cases and
+          cost profiles:
+        </p>
+        <ul>
+          <li><strong>Claude Opus 4.8</strong> — The flagship. Anthropic&apos;s most capable model, best for complex reasoning, analysis, and creative work. Comparable to GPT-5 on most benchmarks.</li>
+          <li><strong>Claude Sonnet 4.6</strong> — The workhorse. Best balance of capability and speed. Handles 90% of tasks nearly as well as Opus at significantly lower cost.</li>
+          <li><strong>Claude Haiku 4.5</strong> — The fast option. Ultra-low latency for high-volume tasks, summarization, and tasks where speed matters more than depth.</li>
+        </ul>
+
+        <h2>Claude Opus 4.8: The Flagship</h2>
+        <p>Claude Opus 4.8 is Anthropic&apos;s answer to GPT-5. Key strengths:</p>
+        <ul>
+          <li><strong>Long-form writing:</strong> Produces the most natural, nuanced prose of any model — essays, reports, fiction, and technical writing all benefit from Opus</li>
+          <li><strong>Complex reasoning:</strong> Extended thinking mode enables multi-step chains that rival o4-mini on hard problems</li>
+          <li><strong>Instruction following:</strong> Exceptionally precise — it does exactly what you ask, with minimal interpretation errors</li>
+          <li><strong>Large context:</strong> 200K token context window handles entire codebases, long documents, and extended conversations without degradation</li>
+          <li><strong>Constitutional AI safety:</strong> Less likely than GPT-5 to produce harmful outputs; good for enterprise deployments with sensitive use cases</li>
+        </ul>
+
+        <h2>Claude Sonnet 4.6: The Daily Driver</h2>
+        <p>
+          For most users, Sonnet 4.6 is the right default. It&apos;s 2-3x faster than Opus, substantially
+          cheaper for API use, and only marginally behind on most real-world tasks:
+        </p>
+        <ul>
+          <li>Coding assistance, debugging, code review</li>
+          <li>Document drafting and editing</li>
+          <li>Research synthesis</li>
+          <li>Email and communication drafts</li>
+          <li>Data analysis and interpretation</li>
+        </ul>
+        <p>
+          The gap between Sonnet and Opus is most noticeable on: (1) very long creative tasks where
+          Opus maintains better coherence, (2) highly nuanced reasoning chains, and (3) tasks
+          requiring sophisticated tone control.
+        </p>
+
+        <h2>Claude Haiku 4.5: The Speed Tier</h2>
+        <p>
+          Haiku 4.5 is for tasks where speed matters and the cognitive demand is lower:
+        </p>
+        <ul>
+          <li>Summarization of documents or conversations</li>
+          <li>Quick factual lookups and Q&amp;A</li>
+          <li>Classification and routing</li>
+          <li>Simple code edits and fixes</li>
+          <li>High-volume chatbot applications</li>
+        </ul>
+
+        <h2>Claude 4 vs GPT-5: Head-to-Head</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Claude 4 Opus</th>
+              <th>GPT-5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Creative writing</td><td>&#9733;&#9733;&#9733;&#9733;&#9733;</td><td>&#9733;&#9733;&#9733;&#9733;</td></tr>
+            <tr><td>Coding</td><td>&#9733;&#9733;&#9733;&#9733;</td><td>&#9733;&#9733;&#9733;&#9733;&#9733;</td></tr>
+            <tr><td>Instruction following</td><td>&#9733;&#9733;&#9733;&#9733;&#9733;</td><td>&#9733;&#9733;&#9733;&#9733;</td></tr>
+            <tr><td>Reasoning (extended)</td><td>&#9733;&#9733;&#9733;&#9733;</td><td>&#9733;&#9733;&#9733;&#9733;</td></tr>
+            <tr><td>Long-context handling</td><td>&#9733;&#9733;&#9733;&#9733;&#9733;</td><td>&#9733;&#9733;&#9733;&#9733;</td></tr>
+            <tr><td>Safety / predictability</td><td>&#9733;&#9733;&#9733;&#9733;&#9733;</td><td>&#9733;&#9733;&#9733;&#9733;</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Is Claude Pro Worth $20/Month?</h2>
+        <p>
+          Claude.ai Pro ($20/mo) gives you access to the full Claude 4 model family through
+          Anthropic&apos;s chat interface. It&apos;s excellent if you primarily use Claude.
+        </p>
+        <p>
+          The limitation: you only get Claude. If you want GPT-5, Gemini, Grok, or DeepSeek, you&apos;d
+          need separate subscriptions — adding up to $60-80/mo for multiple AI tools.
+        </p>
+        <p>
+          The alternative: multi-model subscriptions give you Claude Opus 4.8 <em>plus</em> GPT-5,
+          Gemini 2.5 Pro, Grok 4, DeepSeek R1, and 30+ more models for $12/mo — less than Claude
+          Pro alone.
+        </p>
+
+        <div className="rounded-lg border bg-muted/50 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            Get Claude 4 Opus + 35 Other Models for $12/mo
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Less than Claude Pro, more than Claude Pro. 7-day free trial, no credit card required.
+          </p>
+          <div className="flex justify-center gap-3">
+            <Button asChild>
+              <Link href="/register">Start Free Trial</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/pricing">See Pricing</Link>
+            </Button>
+          </div>
+        </div>
+      </article>
+    ),
+  },
 };
 
 export function generateStaticParams() {

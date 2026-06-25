@@ -3026,6 +3026,226 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-lovable": {
+    slug: "bedda-vs-lovable",
+    competitor: "Lovable",
+    competitorUrl: "https://lovable.dev",
+    competitorPrice: "$20-500/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Lovable",
+    metaTitle: "bedda.ai vs Lovable (2026) — Full AI Suite vs Vibe-Coding Tool",
+    metaDescription:
+      "Compare bedda.ai and Lovable. Lovable is a great vibe-coding tool at $20-500/mo. bedda.ai gives you Claude 4, GPT-5, Gemini, and 36+ models for $12/mo — including code generation for any stack. 7-day free trial.",
+    ogTitle: "bedda.ai vs Lovable — 36+ AI Models vs One Coding Tool",
+    ogDescription:
+      "Lovable is excellent for vibe-coding React apps. bedda.ai gives you Claude 4 + GPT-5 + Gemini + 33 more AI models for any task — at $8 less per month.",
+    heroHeadline: "More than vibe-coding — every frontier AI model at $12/mo",
+    heroSubtext:
+      "Lovable is great for building React apps through chat. bedda.ai gives you that capability via Claude and GPT-5 code generation, plus 34+ other models for writing, research, analysis, and more — for less than Lovable Starter.",
+    verdict:
+      "If you only build React/Next.js apps and love Lovable's visual interface, it delivers real value. But if you use AI for more than coding — or want to code across different stacks without a dedicated tool — bedda.ai's $12/mo Plus plan gives you Claude 4, GPT-5, and every other frontier model at a lower entry price.",
+    switchReasons: [
+      "Access GPT-5 and Claude 4 for code generation across any language or framework — not just React",
+      "Save up to $488/mo vs Lovable's Teams plan for coding AI",
+      "Use the same subscription for writing, research, data analysis, and image generation",
+      "No credit limits or message caps on flagship models",
+      "Switch between Claude, GPT-5, and DeepSeek mid-session to pick the best coder for each task",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$20-500/mo" },
+      { feature: "Code generation", bedda: true, competitor: true },
+      { feature: "React/Next.js apps", bedda: true, competitor: true },
+      { feature: "Non-React frameworks", bedda: true, competitor: false },
+      { feature: "Claude 4 access", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Writing & analysis", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1" },
+    ],
+    faq: [
+      {
+        q: "Can bedda.ai build apps like Lovable does?",
+        a: "bedda.ai lets you use Claude 4 and GPT-5 to generate full application code, write components, debug, and refactor — across any language or framework. What you get is the raw model output rather than Lovable's integrated deploy-and-preview UI. For teams that already have a dev environment, the code generation quality is comparable.",
+      },
+      {
+        q: "Is Lovable better than Claude for vibe-coding?",
+        a: "Lovable has an advantage in its integrated visual environment — you can preview and deploy React apps directly in the interface. For the raw code generation, Claude 4 and GPT-5 are at least as capable. Choose based on whether you need the integrated deploy workflow or just the code.",
+      },
+      {
+        q: "How much can I save switching from Lovable to bedda.ai?",
+        a: "Lovable Starter is $20/mo, Teams is $50-500/mo. bedda.ai Plus is $12/mo, giving you $8-488/mo in savings depending on your current Lovable plan — plus you gain access to 35 additional AI models.",
+      },
+    ],
+  },
+
+  "bedda-vs-microsoft-365-copilot": {
+    slug: "bedda-vs-microsoft-365-copilot",
+    competitor: "Microsoft 365 Copilot",
+    competitorUrl: "https://microsoft.com/microsoft-365/copilot",
+    competitorPrice: "$30/user/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Microsoft 365 Copilot",
+    metaTitle: "bedda.ai vs Microsoft 365 Copilot (2026) — Save $18/mo, Get More Models",
+    metaDescription:
+      "Compare bedda.ai and Microsoft 365 Copilot. M365 Copilot costs $30/user/mo and is built into Office apps. bedda.ai gives you Claude 4, GPT-5, Gemini, and 36+ models for $12/mo — no Microsoft 365 required. 7-day free trial.",
+    ogTitle: "bedda.ai vs Microsoft 365 Copilot — Save $18/mo, Access 36+ Models",
+    ogDescription:
+      "Microsoft 365 Copilot is $30/user/mo on top of your M365 subscription. bedda.ai Plus is $12/mo with Claude 4, GPT-5, Gemini, and 33 more AI models — no Office required.",
+    heroHeadline: "36+ AI models for $12/mo — no Microsoft 365 subscription required",
+    heroSubtext:
+      "Microsoft 365 Copilot integrates AI into Word, Excel, and Outlook at $30/user/mo (on top of your existing M365 cost). bedda.ai gives you Claude 4, GPT-5, Gemini 2.5 Pro, and 33 more frontier models — for $18 less per month, with no Office dependency.",
+    verdict:
+      "Microsoft 365 Copilot makes sense if your entire workflow lives inside Office apps and your IT team has provisioned it. For standalone AI work — writing, research, coding, analysis, image generation — bedda.ai delivers more capable models, more flexibility, and significantly lower cost.",
+    switchReasons: [
+      "Save $18/mo ($216/year) per user vs M365 Copilot's additional fee",
+      "Access Claude 4, Gemini 2.5 Pro, and DeepSeek R1 — not just Microsoft's AI layer over GPT-4",
+      "No Microsoft 365 subscription required — works on any device or OS",
+      "Switch between 36+ models based on the task, not what Microsoft has licensed",
+      "Better model quality for writing and research — Claude 4 and GPT-5 outperform M365 Copilot's underlying models on most benchmarks",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$30/user/mo" },
+      { feature: "Requires M365 subscription", bedda: false, competitor: true },
+      { feature: "Claude 4 access", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "DeepSeek R1", bedda: true, competitor: false },
+      { feature: "Word/Excel integration", bedda: false, competitor: true },
+      { feature: "Web search", bedda: true, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: true },
+      { feature: "Code generation", bedda: true, competitor: true },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "1 (GPT-4 based)" },
+    ],
+    faq: [
+      {
+        q: "Does Microsoft 365 Copilot use GPT-5?",
+        a: "Microsoft 365 Copilot uses OpenAI models, but typically lags behind the latest frontier models available directly via OpenAI or multi-model platforms. bedda.ai provides direct access to GPT-5, Claude 4 Opus, and Gemini 2.5 Pro.",
+      },
+      {
+        q: "Is bedda.ai a good replacement for M365 Copilot?",
+        a: "bedda.ai is better for general AI tasks — writing, research, coding, analysis, image generation. M365 Copilot has an advantage for in-app integration (summarizing your Outlook calendar, editing in Word). If you spend most of your AI time outside Office apps, bedda.ai delivers more value for less money.",
+      },
+      {
+        q: "Can I use bedda.ai on Windows?",
+        a: "Yes — bedda.ai is a web app that works on any browser, operating system, and device. No Microsoft account required.",
+      },
+    ],
+  },
+
+  "bedda-vs-heygen": {
+    slug: "bedda-vs-heygen",
+    competitor: "HeyGen",
+    competitorUrl: "https://heygen.com",
+    competitorPrice: "$29-89/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs HeyGen",
+    metaTitle: "bedda.ai vs HeyGen (2026) — AI Chat Suite vs AI Avatar Video Tool",
+    metaDescription:
+      "Compare bedda.ai and HeyGen. HeyGen creates AI avatar videos at $29-89/mo. bedda.ai gives you Claude 4, GPT-5, Gemini, video generation, and 36+ AI models for $12/mo. 7-day free trial.",
+    ogTitle: "bedda.ai vs HeyGen — Full AI Suite vs Avatar Video Generator",
+    ogDescription:
+      "HeyGen creates AI avatar videos at $29-89/mo. bedda.ai gives you video generation (Kling AI) + Claude 4 + GPT-5 + 33 more AI models for $12/mo — $17-77/mo cheaper.",
+    heroHeadline: "Video generation + 36 AI models for less than HeyGen alone",
+    heroSubtext:
+      "HeyGen is excellent for AI avatar video content at $29-89/mo. bedda.ai gives you Kling AI video generation, DALL-E 3 image generation, Claude 4 for scripting, GPT-5 for content, and 33 more frontier models — all for $12/mo.",
+    verdict:
+      "HeyGen is the right choice if you specifically need realistic AI avatar videos with lip-syncing and custom personas. For teams creating video content and using AI for writing, research, and image generation too, bedda.ai provides more overall value at a much lower price point.",
+    switchReasons: [
+      "Save $17-77/mo vs HeyGen Creator or Business plans",
+      "Access Claude 4 and GPT-5 for script writing, storyboarding, and content strategy",
+      "Use Kling AI video generation for text-to-video and image-to-video creation",
+      "Generate images with DALL-E 3, Imagen 3, and Flux alongside video content",
+      "One subscription covers your entire content creation AI stack — not just video",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$29-89/mo" },
+      { feature: "AI avatar videos", bedda: false, competitor: true },
+      { feature: "Text-to-video generation", bedda: true, competitor: true },
+      { feature: "Image-to-video", bedda: true, competitor: true },
+      { feature: "Claude 4 for scripting", bedda: true, competitor: false },
+      { feature: "GPT-5 for content", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Writing & editing", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1" },
+    ],
+    faq: [
+      {
+        q: "Can bedda.ai create AI avatar videos like HeyGen?",
+        a: "bedda.ai uses Kling AI for text-to-video and image-to-video generation, but does not produce HeyGen-style talking avatar videos with lip-syncing to uploaded voice or text scripts. HeyGen is the specialist tool for that specific use case.",
+      },
+      {
+        q: "What video generation does bedda.ai support?",
+        a: "bedda.ai's Video Studio supports Kling AI video generation (text-to-video and image-to-video) in standard and pro quality, with duration and aspect ratio control. It's better for cinematic-style video clips than avatar-style presentations.",
+      },
+      {
+        q: "Is bedda.ai a good companion to HeyGen?",
+        a: "Yes — many creators use Claude or GPT-5 for scripting and content strategy, then produce the actual video in HeyGen. If you're spending $29+/mo on HeyGen, adding a $12/mo bedda.ai subscription gives you all your AI writing and research tools in one place.",
+      },
+    ],
+  },
+
+  "bedda-vs-deepl": {
+    slug: "bedda-vs-deepl",
+    competitor: "DeepL Pro",
+    competitorUrl: "https://deepl.com",
+    competitorPrice: "$8.74-57.49/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs DeepL Pro",
+    metaTitle: "bedda.ai vs DeepL Pro (2026) — Full AI Suite vs Translation Tool",
+    metaDescription:
+      "Compare bedda.ai and DeepL Pro. DeepL Pro is $8.74-57.49/mo for professional translation. bedda.ai gives you Claude 4, GPT-5, Gemini, and translation in 36+ AI models for $12/mo. 7-day free trial.",
+    ogTitle: "bedda.ai vs DeepL Pro — 36+ AI Models vs Translation-Only Tool",
+    ogDescription:
+      "DeepL Pro specializes in translation at $8.74-57.49/mo. bedda.ai gives you translation via Claude 4 + GPT-5 + Gemini, plus writing, coding, research, and 33 more capabilities — all for $12/mo.",
+    heroHeadline: "Translation + 36 AI models for $12/mo — more than DeepL alone",
+    heroSubtext:
+      "DeepL Pro is excellent for document translation at $8.74-57.49/mo. bedda.ai gives you high-quality translation via Claude 4, GPT-5, and Gemini — plus writing, coding, research, image generation, and 33 more frontier AI capabilities — starting at $12/mo.",
+    verdict:
+      "DeepL Pro is the right choice if high-volume, professional-grade document translation is your primary use case — it's the best pure translation tool available. If you translate occasionally and also use AI for writing, research, or coding, bedda.ai's $12/mo plan gives you comparable translation quality via frontier models alongside every other AI capability you need.",
+    switchReasons: [
+      "Get translation quality from Claude 4 and GPT-5 that rivals DeepL Pro for most professional use cases",
+      "Translate with full contextual understanding — not just sentence-by-sentence but document-aware",
+      "Use the same subscription for writing, research, coding, image generation, and more",
+      "No file size limits or character caps with modern frontier models",
+      "Switch between translation-optimized prompts for 36+ languages across multiple frontier models",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$8.74-57.49/mo" },
+      { feature: "Translation quality", bedda: "Excellent", competitor: "Best-in-class" },
+      { feature: "Document translation (PDF/DOCX)", bedda: false, competitor: true },
+      { feature: "Glossary/terminology control", bedda: false, competitor: true },
+      { feature: "Claude 4 access", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Code translation/explanation", bedda: true, competitor: false },
+      { feature: "Writing & content creation", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "36+ languages (via AI)", bedda: true, competitor: true },
+      { feature: "Total capabilities", bedda: "36+ models", competitor: "Translation only" },
+    ],
+    faq: [
+      {
+        q: "Is bedda.ai as good as DeepL for translation?",
+        a: "For conversational and content translation, Claude 4 and GPT-5 on bedda.ai produce high-quality results that rival DeepL Pro. DeepL has an edge for high-volume document translation workflows with PDF/DOCX format preservation, glossary management, and CAT tool integration — features that specialized translation teams need.",
+      },
+      {
+        q: "Can bedda.ai translate documents?",
+        a: "You can paste text content into bedda.ai and get high-quality translations via Claude or GPT-5. Automated document format preservation (maintaining PDF/DOCX layout) is a DeepL Pro specialty not replicated in bedda.ai's current feature set.",
+      },
+      {
+        q: "Which is better for business translation needs?",
+        a: "Translation teams handling high volumes of business documents (contracts, marketing materials, technical docs) benefit from DeepL Pro's specialized workflow. For professionals who translate occasionally and use AI for many other tasks, bedda.ai's $12/mo plan provides better overall value.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
