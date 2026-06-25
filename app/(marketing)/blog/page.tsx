@@ -486,6 +486,42 @@ const posts = [
     readingTime: "9 min read",
     category: "Professional Guides",
   },
+  {
+    slug: "best-ai-for-customer-service",
+    title: "Best AI for Customer Service in 2026: Tools, Models & Real Workflows",
+    description:
+      "From live chat support to ticket summarization and tone coaching — here's how to use AI models to cut handle time, boost CSAT, and scale your support team.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Professional Guides",
+  },
+  {
+    slug: "anthropic-vs-openai-vs-google",
+    title: "Anthropic vs OpenAI vs Google: Which AI Company Wins in 2026?",
+    description:
+      "Claude vs ChatGPT vs Gemini — a deep look at the companies, their models, safety philosophies, pricing, and which AI lab is ahead in 2026.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "AI Guides",
+  },
+  {
+    slug: "best-ai-for-designers-2026",
+    title: "Best AI Tools for Designers in 2026: UI, Branding & Creative Workflows",
+    description:
+      "From generating design briefs to creating image assets and writing UX copy — here's how UI/UX designers, brand designers, and creative directors are using AI in 2026.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Professional Guides",
+  },
+  {
+    slug: "chatgpt-vs-google-gemini-vs-claude",
+    title: "ChatGPT vs Google Gemini vs Claude: Full Comparison 2026",
+    description:
+      "An honest head-to-head comparison of ChatGPT Plus, Google Gemini Advanced, and Claude Pro — pricing, capability, context window, and which to choose.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "Model Comparisons",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
