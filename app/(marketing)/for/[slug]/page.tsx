@@ -1652,6 +1652,414 @@ const USE_CASES: Record<string, UseCase> = {
     ],
     ctaHeadline: "Hire better. Write policies faster. Make your team more effective.",
   },
+
+  designers: {
+    slug: "designers",
+    title: "AI for Designers",
+    metaTitle: "Best AI for Designers (2026) — UX, UI, and Graphic Design",
+    metaDescription:
+      "Claude for UX copy and design briefs, GPT-5 for user research synthesis, Gemini for visual inspiration — 36+ AI models for designers at $12/mo.",
+    heroHeadline: "AI tools for every stage of the design process",
+    heroSubtext:
+      "Claude for UX copy, design briefs, and user personas. GPT-5 for synthesizing user research and writing design specs. Gemini 2.5 Pro for trend analysis and competitive audits. All 36+ models — $12/mo.",
+    tagline: "Designers who want to move faster from research to final deliverable",
+    bestModels: [
+      { name: "Claude 4 Opus", reason: "UX copy, microcopy, and design briefs that match your voice" },
+      { name: "GPT-5", reason: "User research synthesis and structured usability findings" },
+      { name: "Gemini 2.5 Pro", reason: "Trend analysis, competitor audits, and visual inspiration" },
+      { name: "Claude Sonnet 4.6", reason: "Rapid persona creation and user journey mapping" },
+      { name: "DeepSeek R1", reason: "Complex design system decisions and trade-off analysis" },
+    ],
+    features: [
+      {
+        title: "UX copy that fits your design",
+        description:
+          "Claude writes button labels, error messages, onboarding flows, and empty states that match your brand voice and fit your layout constraints. Paste your wireframe context and get production-ready microcopy.",
+      },
+      {
+        title: "User research synthesis",
+        description:
+          "Upload interview transcripts, survey responses, or usability test notes. GPT-5 surfaces themes, quotes, and actionable insights — the analysis that usually takes days takes minutes.",
+      },
+      {
+        title: "Design briefs and creative strategy",
+        description:
+          "Claude structures design briefs, campaign briefs, and brand strategy documents. Describe the problem and audience, and get a professional brief that aligns stakeholders before a pixel is drawn.",
+      },
+      {
+        title: "Competitor and trend analysis",
+        description:
+          "Gemini 2.5 Pro analyzes competitor products, design trends, and industry patterns. Get a structured report on what the best-in-class experiences are doing before you start designing.",
+      },
+      {
+        title: "Persona and journey creation",
+        description:
+          "Turn raw research or assumptions into detailed user personas, journey maps, and jobs-to-be-done frameworks. Claude structures and writes personas that your team will actually use.",
+      },
+      {
+        title: "Design documentation",
+        description:
+          "Write design specs, component documentation, and handoff notes that developers can implement without follow-up questions. bedda's knowledge base stores your design system docs for instant reference.",
+      },
+    ],
+    useCaseExamples: [
+      "Write onboarding microcopy for a 3-step signup flow targeting first-time users",
+      "Synthesize these 20 user interview transcripts into key themes and pain points",
+      "Create a design brief for a mobile banking app rebrand targeting Gen Z",
+      "Write 5 user personas for a B2B SaaS project management tool",
+      "Audit the UX copy in this screenshot and suggest improvements for clarity",
+      "Explain the trade-offs between a tab bar vs bottom sheet navigation pattern",
+    ],
+    testimonials: [
+      {
+        quote:
+          "I use Claude to write all my UX copy now. It gets microcopy right — the right character counts, the right tone, the right empty states. My devs never push back on copy anymore.",
+        author: "Priya M.",
+        role: "Senior UX Designer, Fintech",
+      },
+      {
+        quote:
+          "Research synthesis used to be a week-long project. Now I upload my interview notes and GPT-5 gives me themes and quotes in 10 minutes. My clients get findings faster.",
+        author: "James L.",
+        role: "UX Researcher & Consultant",
+      },
+      {
+        quote:
+          "I asked Claude to critique my onboarding flow from a conversion perspective. It found 4 friction points I'd missed. Implemented them, conversion went up 22%.",
+        author: "Sofia R.",
+        role: "Product Designer, SaaS Startup",
+      },
+    ],
+    faq: [
+      {
+        q: "Which AI model is best for writing UX copy?",
+        a: "Claude 4 Opus is the best model for UX copy. It understands tone, context, and constraints — button labels, error messages, empty states, and onboarding flows all come out natural and brand-consistent. For high-volume microcopy generation, Claude Sonnet 4.6 is faster and nearly as good.",
+      },
+      {
+        q: "Can bedda help analyze user research?",
+        a: "Yes. Upload interview transcripts, usability test notes, or survey exports to bedda's knowledge base. GPT-5 and Gemini 2.5 Pro are both excellent at synthesizing qualitative data — surfacing themes, quotes, and actionable recommendations from large research corpora.",
+      },
+      {
+        q: "Can AI replace a designer?",
+        a: "No — AI replaces time-consuming tasks like writing copy, synthesizing research, and structuring documentation. The visual design, interaction design, and strategic thinking still require a human. AI makes designers faster and frees them for the high-value creative work.",
+      },
+      {
+        q: "Is bedda useful for design presentations?",
+        a: "Yes. Claude is strong for writing executive summaries, case study narratives, and design rationale. You can also use bedda's Slides artifact to create deck outlines and talking points. Pair it with a presentation tool for visuals.",
+      },
+      {
+        q: "Does bedda have a team plan for design teams?",
+        a: "Yes. bedda Teams lets your design team share knowledge bases (design system docs, brand guidelines, research), access all 36+ models, and collaborate in shared workspaces — one subscription for the whole team at $12/user/mo.",
+      },
+    ],
+    ctaHeadline: "Design faster. Write better copy. Deliver stronger work.",
+  },
+
+  journalists: {
+    slug: "journalists",
+    title: "AI for Journalists",
+    metaTitle: "Best AI for Journalists (2026) — Research, Writing & Fact-Checking",
+    metaDescription:
+      "Claude for article drafts and interview prep, GPT-5 for research synthesis, Gemini for trend analysis — 36+ AI models for journalists at $12/mo.",
+    heroHeadline: "AI tools for every step of the journalism workflow",
+    heroSubtext:
+      "Claude for article drafts, interview questions, and headline writing. GPT-5 for synthesizing research and summarizing documents. Gemini 2.5 Pro for trend analysis and source research. All 36+ models — $12/mo.",
+    tagline: "Journalists and reporters who need to research faster and write more",
+    bestModels: [
+      { name: "Claude 4 Opus", reason: "Long-form article drafts, columns, and investigative narratives" },
+      { name: "GPT-5", reason: "Research synthesis and document summarization at scale" },
+      { name: "Gemini 2.5 Pro", reason: "Trend analysis, data interpretation, and source discovery" },
+      { name: "Claude Sonnet 4.6", reason: "Fast headline writing, ledes, and article outlines" },
+      { name: "DeepSeek R1", reason: "Complex document analysis and cross-reference checking" },
+    ],
+    features: [
+      {
+        title: "Research and background synthesis",
+        description:
+          "Upload court documents, earnings reports, research papers, or government filings. GPT-5 summarizes the key facts, contradictions, and newsworthy elements — so you understand the story before you write it.",
+      },
+      {
+        title: "Interview preparation",
+        description:
+          "Claude generates interview questions tailored to your subject's background, recent statements, and the story angle you're pursuing. Get 20 sharp questions in minutes instead of hours of prep.",
+      },
+      {
+        title: "Article drafting and rewriting",
+        description:
+          "Write first drafts faster, restructure existing pieces, or punch up a lede that isn't working. Claude understands inverted pyramid structure, AP style patterns, and the difference between news and analysis.",
+      },
+      {
+        title: "Headline and social copy",
+        description:
+          "Generate 10 headline options for any story, optimized for clicks, accuracy, and SEO. Claude also writes tweet threads, newsletter blurbs, and LinkedIn posts from your articles.",
+      },
+      {
+        title: "Document and data analysis",
+        description:
+          "DeepSeek R1 parses dense legal filings, financial statements, and government reports to find the paragraph that matters. Upload 200 pages and ask what's newsworthy.",
+      },
+      {
+        title: "Source and trend research",
+        description:
+          "Gemini 2.5 Pro analyzes industry trends, tracks emerging narratives, and helps you identify expert sources for comment. Spend less time Googling and more time reporting.",
+      },
+    ],
+    useCaseExamples: [
+      "Summarize the key newsworthy findings in this 80-page SEC filing",
+      "Write 20 interview questions for a tech CEO about their layoff announcement",
+      "Rewrite this lede to be sharper and more specific",
+      "Generate 10 headline options for this story about housing affordability",
+      "What's the strongest angle for a feature on remote work trends in 2026?",
+      "Explain this actuarial report in plain English for a general audience",
+    ],
+    testimonials: [
+      {
+        quote:
+          "I cover finance. Reading an earnings call transcript used to take an hour. I paste it into bedda, ask GPT-5 what's newsworthy, and I have my story angle in 5 minutes.",
+        author: "Marcus W.",
+        role: "Business Reporter, National Publication",
+      },
+      {
+        quote:
+          "Claude writes interview questions that are actually sharp. It reads the subject's previous interviews, finds the gaps, and asks the follow-ups I would have missed.",
+        author: "Rachel S.",
+        role: "Freelance Journalist",
+      },
+      {
+        quote:
+          "I use bedda to turn a data-heavy government report into a readable story. It finds the human angle, suggests the lede, and drafts the explainer — I just refine it.",
+        author: "Thomas K.",
+        role: "Policy Correspondent",
+      },
+    ],
+    faq: [
+      {
+        q: "Which AI model is best for journalism writing?",
+        a: "Claude 4 Opus is best for long-form, analytical, or narrative journalism — it maintains consistent voice, handles complexity, and writes clean prose. For faster, fact-forward news writing, Claude Sonnet 4.6 is excellent and produces faster output.",
+      },
+      {
+        q: "Can bedda help me fact-check articles?",
+        a: "bedda can help you cross-reference claims against documents you upload and identify internal inconsistencies. However, AI is not a substitute for primary source verification — use it as a research accelerator, not a fact-checker. Always verify claims with authoritative sources.",
+      },
+      {
+        q: "Is my source material private when I upload it?",
+        a: "Documents you upload to bedda's knowledge base are private to your account. They are not used to train AI models. For sensitive investigations, review bedda's privacy policy and consider whether any documents should remain offline.",
+      },
+      {
+        q: "Can bedda help with data journalism?",
+        a: "Yes. Gemini 2.5 Pro and DeepSeek R1 are both strong at interpreting data, explaining statistical concepts, and helping you describe trends in plain language. Upload CSVs or paste data tables and ask what's noteworthy.",
+      },
+      {
+        q: "Does bedda work for broadcast journalists?",
+        a: "Yes. Claude is strong for scripts, teasers, and on-air language. It understands the difference between print and broadcast style — shorter sentences, active voice, and phonetic clarity. Use it to draft package scripts, anchor reads, or digital explainers.",
+      },
+    ],
+    ctaHeadline: "Report faster. Write stronger. Cover more ground.",
+  },
+
+  engineers: {
+    slug: "engineers",
+    title: "AI for Engineers",
+    metaTitle: "Best AI for Engineers (2026) — Technical Documentation, Code & Analysis",
+    metaDescription:
+      "Claude for technical writing and code review, GPT-5 for specs and documentation, DeepSeek R1 for complex analysis — 36+ AI models for engineers at $12/mo.",
+    heroHeadline: "AI tools built for technical and engineering work",
+    heroSubtext:
+      "Claude for technical documentation and code review. GPT-5 for spec writing and structured analysis. DeepSeek R1 for complex reasoning and trade-off analysis. All 36+ models — $12/mo.",
+    tagline: "Engineers who want to move faster without sacrificing technical rigor",
+    bestModels: [
+      { name: "Claude 4 Opus", reason: "Technical documentation, architecture decisions, and code review" },
+      { name: "GPT-5", reason: "Engineering specs, RFCs, and structured technical analysis" },
+      { name: "DeepSeek R1", reason: "Complex mathematical reasoning and multi-constraint optimization" },
+      { name: "Claude Sonnet 4.6", reason: "Fast code generation, debugging, and unit test writing" },
+      { name: "Gemini 2.5 Pro", reason: "Large codebase analysis and cross-system documentation" },
+    ],
+    features: [
+      {
+        title: "Technical documentation that gets written",
+        description:
+          "Claude writes system design docs, API references, runbooks, and architecture decision records. Paste your notes or a meeting transcript and get a structured, well-formatted technical document.",
+      },
+      {
+        title: "Code review and debugging",
+        description:
+          "Claude and GPT-5 review code for correctness, performance, and security issues. Paste a function, a PR diff, or an error message — get specific feedback and a suggested fix.",
+      },
+      {
+        title: "Engineering specs and RFCs",
+        description:
+          "GPT-5 structures engineering proposals, design documents, and RFCs. Describe the problem and constraints — it produces a draft spec with goals, non-goals, proposed approach, and open questions.",
+      },
+      {
+        title: "Complex technical analysis",
+        description:
+          "DeepSeek R1 handles multi-constraint optimization, mathematical modeling, and deep technical reasoning. Use it for algorithm analysis, capacity planning, and architecture trade-off comparisons.",
+      },
+      {
+        title: "Cross-codebase comprehension",
+        description:
+          "Gemini 2.5 Pro's 1M-token context window handles large codebases, sprawling documentation, and complex multi-file analysis. Ask questions about systems you didn't build.",
+      },
+      {
+        title: "Unit tests and quality documentation",
+        description:
+          "Generate unit tests, test plans, and QA documentation from function signatures or feature descriptions. Claude writes tests that cover edge cases, not just the happy path.",
+      },
+    ],
+    useCaseExamples: [
+      "Review this Python function for performance issues and suggest optimizations",
+      "Write an RFC for migrating our monolith to microservices, covering trade-offs",
+      "Explain why this Kubernetes pod keeps OOMKilling in plain terms",
+      "Generate comprehensive unit tests for this TypeScript authentication module",
+      "Write a runbook for our on-call team to handle database failover",
+      "What are the key architectural trade-offs between event sourcing and CRUD?",
+    ],
+    testimonials: [
+      {
+        quote:
+          "Writing technical docs used to be the thing everyone avoided. Now I paste my notes into Claude and have a polished architecture doc in 20 minutes. My team actually reads them.",
+        author: "Alex K.",
+        role: "Staff Software Engineer",
+      },
+      {
+        quote:
+          "DeepSeek R1 caught a logic error in my capacity planning model that had been wrong for months. The mathematical reasoning is genuinely impressive for hard infrastructure problems.",
+        author: "Nina R.",
+        role: "Infrastructure Engineer, Series B Startup",
+      },
+      {
+        quote:
+          "I use Claude to write the first draft of every RFC now. It structures the problem, lists alternatives I hadn't considered, and formats it so reviewers can give meaningful feedback.",
+        author: "Daniel M.",
+        role: "Principal Engineer",
+      },
+    ],
+    faq: [
+      {
+        q: "Which AI model is best for code review?",
+        a: "Claude 4 Opus is best for deep code review — it understands architectural patterns, security issues, and code quality beyond syntax. For faster reviews on smaller functions, Claude Sonnet 4.6 is excellent. GPT-5 is strong for structured code analysis with specific rubrics.",
+      },
+      {
+        q: "Can bedda handle technical documentation for large systems?",
+        a: "Yes. Gemini 2.5 Pro has a 1M-token context window, which means it can process large codebases, extended API documentation, and multi-file systems. Ask it to document a module you didn't write, explain a legacy system, or generate an onboarding guide for new engineers.",
+      },
+      {
+        q: "Is bedda useful for non-software engineers?",
+        a: "Yes. Mechanical, civil, electrical, and chemical engineers use bedda for technical report writing, standard compliance documentation, project specifications, and research synthesis. Claude writes clear technical prose; DeepSeek R1 handles mathematical and analytical work.",
+      },
+      {
+        q: "How does bedda compare to GitHub Copilot for engineers?",
+        a: "GitHub Copilot is an IDE-integrated inline code completion tool. bedda is a full AI chat interface with 36+ models, including Claude and GPT-5. bedda is better for documentation, architecture discussions, code review, and complex analysis — tasks that need more than an autocomplete suggestion.",
+      },
+      {
+        q: "Can bedda help with system design interview prep?",
+        a: "Yes. Claude is excellent for system design practice — it can act as an interviewer, critique your designs, suggest improvements, and explain distributed systems concepts clearly. Many engineers use bedda to prepare for senior/staff-level technical interviews.",
+      },
+    ],
+    ctaHeadline: "Write better docs. Ship cleaner code. Solve harder problems.",
+  },
+
+  consultants: {
+    slug: "consultants",
+    title: "AI for Consultants",
+    metaTitle: "Best AI for Consultants (2026) — Decks, Research & Client Deliverables",
+    metaDescription:
+      "Claude for client deliverables and frameworks, GPT-5 for market research synthesis, Gemini for industry analysis — 36+ AI models for consultants at $12/mo.",
+    heroHeadline: "AI tools for every stage of the consulting engagement",
+    heroSubtext:
+      "Claude for client deliverables, frameworks, and executive summaries. GPT-5 for market research and interview synthesis. Gemini 2.5 Pro for industry analysis and benchmarking. All 36+ models — $12/mo.",
+    tagline: "Consultants and advisors who want to deliver more in less time",
+    bestModels: [
+      { name: "Claude 4 Opus", reason: "Executive-level deliverables, frameworks, and strategic narratives" },
+      { name: "GPT-5", reason: "Market research synthesis and structured analysis reports" },
+      { name: "Gemini 2.5 Pro", reason: "Industry benchmarking and competitive landscape analysis" },
+      { name: "DeepSeek R1", reason: "Complex financial modeling and multi-variable analysis" },
+      { name: "Claude Sonnet 4.6", reason: "Fast deck outlines, email drafts, and quick research" },
+    ],
+    features: [
+      {
+        title: "Client deliverables that impress",
+        description:
+          "Claude writes executive summaries, recommendation memos, and strategic frameworks in polished, precise prose. Describe your findings and the client context — it produces a professional document ready for senior stakeholder review.",
+      },
+      {
+        title: "Market and competitive research",
+        description:
+          "GPT-5 synthesizes industry reports, analyst research, and news coverage into structured competitive landscapes. Understand any market, competitor set, or trend in minutes instead of days.",
+      },
+      {
+        title: "Interview and workshop synthesis",
+        description:
+          "Upload stakeholder interview transcripts or workshop notes. GPT-5 surfaces themes, contradictions, and consensus points — giving you the synthesis for your findings slide in minutes.",
+      },
+      {
+        title: "Framework development",
+        description:
+          "Claude builds 2x2 matrices, scoring models, prioritization frameworks, and decision trees from your problem description. Get the structure right first, then customize the content.",
+      },
+      {
+        title: "Financial analysis support",
+        description:
+          "DeepSeek R1 helps interpret financial statements, model scenarios, and identify the key drivers in a financial analysis. Useful for due diligence, business case development, and investment memos.",
+      },
+      {
+        title: "Presentation and deck content",
+        description:
+          "Generate slide outlines, talking point bullets, and executive-level narratives. Claude understands the McKinsey-style pyramid principle — each slide makes one clear point, supported by evidence.",
+      },
+    ],
+    useCaseExamples: [
+      "Write an executive summary for our go-to-market strategy recommendation",
+      "Synthesize these 15 stakeholder interviews into key themes and pain points",
+      "Build a scoring framework to prioritize these 8 strategic initiatives",
+      "Write a competitive landscape overview for the enterprise HR software market",
+      "Draft a 2-page recommendation memo for expanding into the APAC market",
+      "What are the key financial metrics to benchmark this B2B SaaS business against?",
+    ],
+    testimonials: [
+      {
+        quote:
+          "I billed 20% more hours last quarter without working more. Claude writes the first draft of everything now — executive summaries, frameworks, recommendation memos. I edit and refine.",
+        author: "Catherine B.",
+        role: "Independent Strategy Consultant",
+      },
+      {
+        quote:
+          "I used GPT-5 to synthesize 22 stakeholder interviews for a digital transformation engagement. What would have been 3 days of analysis took 4 hours. My client got findings faster.",
+        author: "Andrew T.",
+        role: "Senior Manager, Management Consulting",
+      },
+      {
+        quote:
+          "bedda's model switching is the killer feature for consulting work. I use Claude for narrative, GPT-5 for synthesis, DeepSeek R1 for financial analysis — all in one interface, one subscription.",
+        author: "Yuki N.",
+        role: "Freelance Management Consultant",
+      },
+    ],
+    faq: [
+      {
+        q: "Which AI model is best for consulting deliverables?",
+        a: "Claude 4 Opus writes the most polished, executive-level prose — it understands structured communication, MECE frameworks, and the Pyramid Principle. For faster output or high-volume synthesis, Claude Sonnet 4.6 is an excellent alternative at lower cost.",
+      },
+      {
+        q: "Can bedda replace research analysts or junior consultants?",
+        a: "AI accelerates the research, synthesis, and documentation tasks that junior consultants handle. It doesn't replace judgment, client relationships, or problem framing — those remain human skills. Think of bedda as a force multiplier: you do senior work faster, and your junior staff does more senior work.",
+      },
+      {
+        q: "Is client data secure if I use bedda for engagements?",
+        a: "Documents you upload to bedda's knowledge base are private to your account and not used for model training. For client engagements with NDAs or confidentiality requirements, review bedda's privacy policy and avoid uploading materials that can't leave your client environment.",
+      },
+      {
+        q: "Can bedda help with proposal writing?",
+        a: "Yes. Claude writes strong consulting proposals — problem statements, methodology overviews, team qualifications, and project timelines. Give it your win themes and client context, and it produces a professional first draft that you refine with your firm's voice.",
+      },
+      {
+        q: "Does bedda work for independent consultants and boutique firms?",
+        a: "Yes — and it's especially valuable for solo consultants and small teams who can't afford a research team. At $12/mo, bedda gives an independent consultant access to the same AI capabilities as a large firm with a dedicated AI tools budget.",
+      },
+    ],
+    ctaHeadline: "Deliver more. Synthesize faster. Win more engagements.",
+  },
 };
 
 type Params = Promise<{ slug: string }>;
