@@ -1244,6 +1244,414 @@ const USE_CASES: Record<string, UseCase> = {
     ],
     ctaHeadline: "Publish more. Burn out less. Use every model.",
   },
+
+  healthcare: {
+    slug: "healthcare",
+    title: "AI for Healthcare Professionals",
+    metaTitle: "Best AI for Healthcare Professionals (2026) — Clinical Research, Docs & Patient Comms",
+    metaDescription:
+      "Claude for clinical documentation, GPT-5 for research synthesis, Gemini for literature review — 36+ AI models for medical professionals at $12/mo. 7-day free trial.",
+    heroHeadline: "The AI subscription for healthcare professionals who need accuracy",
+    heroSubtext:
+      "Claude for clinical documentation and patient communication. GPT-5 for research and protocol writing. Gemini 2.5 Pro for literature synthesis across massive PDFs. All 36+ models — one subscription at $12/mo.",
+    tagline: "Clinicians and researchers who need the right model for high-stakes work",
+    bestModels: [
+      { name: "Claude 4 Opus", reason: "Clinical documentation, patient letters, and care summaries" },
+      { name: "GPT-5", reason: "Research writing, protocol drafts, and grant applications" },
+      { name: "Gemini 2.5 Pro", reason: "Medical literature synthesis with 1M token context" },
+      { name: "DeepSeek R1", reason: "Complex differential reasoning and stepwise analysis" },
+      { name: "Claude 3.5 Haiku", reason: "Fast patient FAQs and administrative communication" },
+    ],
+    features: [
+      {
+        title: "Clinical documentation at speed",
+        description:
+          "Generate SOAP notes, discharge summaries, referral letters, and prior authorization requests in seconds. Claude writes in formal clinical prose with the precision documentation requires.",
+      },
+      {
+        title: "Medical literature synthesis",
+        description:
+          "Upload clinical guidelines, systematic reviews, or full PDFs. Gemini 2.5 Pro reads across millions of tokens and synthesizes findings faster than any manual review.",
+      },
+      {
+        title: "Patient communication that's clear",
+        description:
+          "Draft patient education materials, post-visit summaries, and care plan explanations at the right reading level — adjusted for your patient population automatically.",
+      },
+      {
+        title: "Research and grant writing",
+        description:
+          "GPT-5 accelerates IRB applications, literature reviews, and research proposals. Switch to Claude for narrative sections that need to persuade review committees.",
+      },
+      {
+        title: "Knowledge base for clinical protocols",
+        description:
+          "Upload your institution's clinical protocols, formularies, or care pathways. Ask any model questions grounded in your actual practice standards — not generic advice.",
+      },
+      {
+        title: "Privacy-safe API access",
+        description:
+          "All model interactions happen via API — provider terms explicitly exclude API data from model training. No PHI should be shared, but your workflow content stays out of training sets.",
+      },
+    ],
+    useCaseExamples: [
+      "Draft a discharge summary for a patient with CHF and T2DM",
+      "Summarize the latest ACC guidelines on heart failure management",
+      "Write a referral letter to cardiology for a patient with new-onset AFib",
+      "Explain post-operative wound care instructions at a 6th grade reading level",
+      "Draft a prior authorization letter for a GLP-1 receptor agonist",
+      "Synthesize 5 RCTs on SGLT2 inhibitors in diabetic kidney disease",
+    ],
+    testimonials: [
+      {
+        quote:
+          "Documentation used to eat 3 hours of my evening. Now I dictate and Claude drafts — I spend 20 minutes reviewing instead of writing. My patients get more of me.",
+        author: "Dr. Sarah L.",
+        role: "Internal Medicine Physician",
+      },
+      {
+        quote:
+          "I used to pay for ChatGPT Plus and Claude Pro separately. bedda gives me both — plus Gemini for the lit reviews — for $12/mo. It's a no-brainer.",
+        author: "Dr. James K.",
+        role: "Hospital Cardiologist",
+      },
+      {
+        quote:
+          "Our research team uses the shared knowledge base to store our study protocols. Every model in any conversation pulls from the right context automatically.",
+        author: "Dr. Priya R.",
+        role: "Clinical Research Coordinator",
+      },
+    ],
+    faq: [
+      {
+        q: "Is bedda HIPAA-compliant?",
+        a: "bedda is not HIPAA-covered and should not be used with identifiable patient health information (PHI). Use it for clinical documentation templates, research tasks, and de-identified workflows. For HIPAA-covered use, work with your institution's compliance team and use enterprise agreements with OpenAI, Anthropic, or Google directly.",
+      },
+      {
+        q: "Which AI model is best for clinical documentation?",
+        a: "Claude 4 Opus is widely regarded as the strongest for formal medical prose — it writes carefully, avoids hedging on facts, and follows clinical documentation conventions. GPT-5 is better for structured templates and high-volume administrative writing.",
+      },
+      {
+        q: "Can bedda summarize medical PDFs and journal articles?",
+        a: "Yes. Gemini 2.5 Pro has a 1-million token context window — it can read entire clinical guidelines, systematic reviews, or study PDFs and synthesize findings in minutes. Upload directly to your knowledge base for persistent access.",
+      },
+      {
+        q: "How does bedda handle multiple models for different tasks?",
+        a: "You switch models per conversation — use Claude for a discharge summary, then open a new chat with Gemini for a literature review. bedda remembers context across your sessions so you don't re-explain your specialty every time.",
+      },
+      {
+        q: "Can I use bedda for CME research and board prep?",
+        a: "Yes. Students and residents use GPT-5 and DeepSeek R1 extensively for step-by-step clinical reasoning, case-based learning, and board question explanations. Claude handles long conceptual explanations well.",
+      },
+    ],
+    ctaHeadline: "Spend less time on documentation. More time on patients.",
+  },
+
+  "product-managers": {
+    slug: "product-managers",
+    title: "AI for Product Managers",
+    metaTitle: "Best AI for Product Managers (2026) — PRDs, Roadmaps & User Research",
+    metaDescription:
+      "Claude for PRDs and strategy docs, GPT-5 for frameworks and prioritization, Gemini for data synthesis — 36+ AI models for PMs at $12/mo. 7-day free trial.",
+    heroHeadline: "Every AI model product managers need. One subscription.",
+    heroSubtext:
+      "Claude for PRDs, strategy memos, and stakeholder-ready writing. GPT-5 for frameworks, prioritization matrices, and structured thinking. Gemini 2.5 Pro for user research synthesis and competitive analysis. All 36+ models — $12/mo.",
+    tagline: "PMs who ship faster by using the right model for each deliverable",
+    bestModels: [
+      { name: "Claude 4 Opus", reason: "PRDs, strategy memos, and exec-level communication" },
+      { name: "GPT-5", reason: "Frameworks, prioritization, and structured analysis" },
+      { name: "Gemini 2.5 Pro", reason: "User research synthesis and large doc analysis" },
+      { name: "DeepSeek R1", reason: "Complex tradeoff reasoning and decision analysis" },
+      { name: "Grok 4", reason: "Market and competitor intelligence with real-time data" },
+    ],
+    features: [
+      {
+        title: "PRDs that engineering actually reads",
+        description:
+          "Claude writes product requirement documents that are clear, structured, and complete. Describe the problem and goals — it drafts the full doc with user stories, edge cases, and acceptance criteria.",
+      },
+      {
+        title: "Prioritization frameworks on demand",
+        description:
+          "GPT-5 applies RICE, ICE, MoSCoW, or Kano models to your feature list. Describe your backlog and constraints and get a structured scoring table ready to share with your team.",
+      },
+      {
+        title: "User research synthesis at scale",
+        description:
+          "Upload interview transcripts, survey results, or support ticket exports. Gemini 2.5 Pro synthesizes patterns, surfacing top pain points and unmet needs across hundreds of responses.",
+      },
+      {
+        title: "Competitive intelligence in minutes",
+        description:
+          "Grok 4 tracks real-time competitor news, product updates, and market moves. Use Gemini to synthesize competitor pages and G2/Capterra reviews into a tight battlecard.",
+      },
+      {
+        title: "Roadmap narratives and executive briefs",
+        description:
+          "Turn your roadmap data into compelling narratives for exec reviews. Claude writes the strategic framing that context, justifies tradeoffs, and builds stakeholder confidence.",
+      },
+      {
+        title: "Knowledge base for product context",
+        description:
+          "Store your company strategy, OKRs, personas, and product principles. Every conversation starts with the right context — no re-explaining your product to each new chat.",
+      },
+    ],
+    useCaseExamples: [
+      "Write a PRD for a new user onboarding flow with these requirements",
+      "Score these 8 features using RICE and explain the tradeoffs",
+      "Synthesize these 30 user interview transcripts into the top 5 pain points",
+      "Write a 1-page strategy memo explaining why we should prioritize mobile",
+      "Create a competitive battlecard for [competitor] based on these review sites",
+      "Draft the product section of our Series B investor narrative",
+    ],
+    testimonials: [
+      {
+        quote:
+          "I draft a PRD with Claude and refine the prioritization with GPT-5's frameworks. What used to take a day takes two hours. My team ships faster because I'm not the bottleneck.",
+        author: "Emma S.",
+        role: "Senior Product Manager",
+      },
+      {
+        quote:
+          "I uploaded 200 support tickets to bedda's knowledge base and asked Gemini to find the top patterns. It surfaced things we'd been debating for quarters in 10 minutes.",
+        author: "Daniel K.",
+        role: "Head of Product",
+      },
+      {
+        quote:
+          "Before bedda I had ChatGPT Plus and Claude Pro separately — $40/mo for two models. Now I have 36+ models for $12/mo and I actually use Grok and Gemini regularly.",
+        author: "Natalia R.",
+        role: "Product Lead, Growth",
+      },
+    ],
+    faq: [
+      {
+        q: "Which AI model is best for writing PRDs?",
+        a: "Claude 4 Opus consistently produces the best PRDs — structured, comprehensive, and written in clear language that engineers understand. GPT-5 is better for templated PRD sections where you need speed and volume over nuance.",
+      },
+      {
+        q: "Can bedda help with user research analysis?",
+        a: "Yes. Upload interview transcripts, survey exports, or NPS verbatims to the knowledge base. Gemini 2.5 Pro's 1M token context can process hundreds of responses and synthesize themes, quotes, and patterns — faster than any manual affinity mapping session.",
+      },
+      {
+        q: "Can I use bedda for OKR and roadmap planning?",
+        a: "Yes. Claude is particularly strong at writing OKR narratives and roadmap rationales. GPT-5 helps you apply scoring frameworks. Describe your goals and constraints and you'll have a first-draft roadmap plan in minutes.",
+      },
+      {
+        q: "Is bedda useful for smaller PMs or solo product teams?",
+        a: "Especially useful. Solo PMs or early-stage product teams don't have a full research function or dedicated writer. bedda effectively gives you research synthesis, framework analysis, and executive communication support at $12/mo.",
+      },
+      {
+        q: "How does switching models mid-workflow work?",
+        a: "Each conversation in bedda has a model selector — switch from Claude to GPT-5 to Gemini per conversation. Use the knowledge base for persistent context so each model conversation starts with your product docs already loaded.",
+      },
+    ],
+    ctaHeadline: "Ship PRDs faster. Prioritize smarter. Use every model.",
+  },
+
+  "sales-teams": {
+    slug: "sales-teams",
+    title: "AI for Sales Teams",
+    metaTitle: "Best AI for Sales Teams (2026) — Outreach, Proposals & Deal Intelligence",
+    metaDescription:
+      "Claude for persuasive outreach and proposals, GPT-5 for high-volume personalization, Grok for prospect research — 36+ AI models for sales at $12/mo.",
+    heroHeadline: "AI for every stage of the sales cycle",
+    heroSubtext:
+      "Claude for proposal narratives and executive-level outreach. GPT-5 for personalized sequences at scale. Grok 4 for real-time prospect and company intelligence. Gemini for account research and competitor battlecards. All 36+ models — $12/mo.",
+    tagline: "Sales reps and managers who close more by researching faster and writing better",
+    bestModels: [
+      { name: "Claude 4 Opus", reason: "Proposals, exec outreach, and deal narratives" },
+      { name: "GPT-5", reason: "High-volume personalized email sequences at scale" },
+      { name: "Grok 4", reason: "Real-time company news and prospect intelligence" },
+      { name: "Gemini 2.5 Pro", reason: "Deep account research and industry synthesis" },
+      { name: "Mistral Large", reason: "Fast first drafts for high-volume prospecting" },
+    ],
+    features: [
+      {
+        title: "Outreach that actually gets replies",
+        description:
+          "Claude writes personalized cold outreach that references real context — not generic templates. Describe the prospect, their company, and your value prop and get a message worth sending.",
+      },
+      {
+        title: "Proposals that close",
+        description:
+          "Turn RFP requirements and discovery notes into polished proposals. Claude structures the narrative, positions your solution against stated pain points, and writes compelling ROI sections.",
+      },
+      {
+        title: "Real-time prospect research",
+        description:
+          "Grok 4 tracks company news, funding rounds, executive changes, and market moves in real time. Know exactly what's happening at a target account before you dial or email.",
+      },
+      {
+        title: "Competitive battlecards on demand",
+        description:
+          "Gemini synthesizes G2 reviews, competitor websites, and press releases into tight battlecards. Know every objection before it comes up — and how to counter it.",
+      },
+      {
+        title: "Email sequence generation at scale",
+        description:
+          "GPT-5 generates full multi-touch email sequences fast — variation A, variation B, follow-up 1, follow-up 2. Feed it your ICP and persona and get a complete cadence in minutes.",
+      },
+      {
+        title: "Knowledge base for your pitch",
+        description:
+          "Store case studies, objection handlers, pricing logic, and product positioning. Every model conversation pulls from your actual sales playbook — no copy-pasting pitch decks.",
+      },
+    ],
+    useCaseExamples: [
+      "Write a cold outreach email to a VP of Engineering at a 200-person fintech startup",
+      "Create a 5-touch email sequence for enterprise SaaS prospects in healthcare",
+      "Draft the ROI section of a proposal for a $120k annual contract",
+      "Research [company] and summarize what they care about before my call",
+      "Write objection handlers for 'we already use [competitor]'",
+      "Turn these 3 discovery call notes into a 2-page proposal outline",
+    ],
+    testimonials: [
+      {
+        quote:
+          "My reply rates doubled when I started using Claude to write outreach instead of templates. It sounds like me — just a much better version of me.",
+        author: "Jordan M.",
+        role: "Enterprise Account Executive",
+      },
+      {
+        quote:
+          "I use Grok to research a company for 5 minutes before every call. I know their latest funding news, their tech stack, and what their CEO said on LinkedIn last week.",
+        author: "Camille V.",
+        role: "Sales Development Rep",
+      },
+      {
+        quote:
+          "We uploaded our entire sales playbook to bedda's knowledge base. Now the whole team writes proposals that reference our actual positioning — not hallucinated features.",
+        author: "Ryan T.",
+        role: "VP of Sales",
+      },
+    ],
+    faq: [
+      {
+        q: "Which AI is best for sales outreach emails?",
+        a: "Claude 4 Opus writes the most persuasive and natural-sounding emails for high-value, personalized outreach. GPT-5 is better for volume — it generates many variations fast. Use Claude for your top 10 accounts; use GPT-5 to build your sequences at scale.",
+      },
+      {
+        q: "Can bedda help with sales proposals?",
+        a: "Yes. Claude is one of the best models for proposal writing — it structures arguments, builds ROI narratives, and writes exec-level prose. Upload discovery notes and RFP requirements to the knowledge base and Claude can reference them throughout the proposal.",
+      },
+      {
+        q: "How do I use bedda for account-based research?",
+        a: "Use Grok 4 for real-time company and news research (it has live web access). Use Gemini 2.5 Pro for deep synthesis of longer materials like annual reports, website copy, and G2 reviews. Store findings in your chat history or knowledge base for call prep.",
+      },
+      {
+        q: "Can bedda replace my sales engagement tool for writing?",
+        a: "bedda doesn't send emails — it writes them better. Use bedda to create high-quality sequences, then paste into your engagement tool (Outreach, Salesloft, Apollo, etc.). The quality of writing improves; your sending workflow stays the same.",
+      },
+      {
+        q: "Is there a team version for my sales org?",
+        a: "Yes. bedda Teams lets your entire sales team share knowledge bases (playbooks, battlecards, case studies), collaborate on shared workspaces, and all access 36+ models — priced per seat. Consistent messaging, higher quality output across your team.",
+      },
+    ],
+    ctaHeadline: "Research faster. Write better. Close more deals.",
+  },
+
+  "hr-teams": {
+    slug: "hr-teams",
+    title: "AI for HR & People Teams",
+    metaTitle: "Best AI for HR Teams (2026) — Job Descriptions, Policies & People Ops",
+    metaDescription:
+      "Claude for job descriptions and HR policies, GPT-5 for performance reviews and structured templates, Gemini for org research — 36+ AI models for HR at $12/mo.",
+    heroHeadline: "AI for every HR workflow — hiring, policies, and people ops",
+    heroSubtext:
+      "Claude for job descriptions, offer letters, and policy documents. GPT-5 for structured HR templates and performance reviews at scale. Gemini 2.5 Pro for org design research and benefits benchmarking. All 36+ models — $12/mo.",
+    tagline: "People teams who want better hiring materials and faster policy updates",
+    bestModels: [
+      { name: "Claude 4 Opus", reason: "Job descriptions, offer letters, and HR policy documents" },
+      { name: "GPT-5", reason: "Performance review templates and structured HR frameworks" },
+      { name: "Gemini 2.5 Pro", reason: "Compensation research and benefits benchmarking" },
+      { name: "DeepSeek R1", reason: "Complex org structure analysis and design tradeoffs" },
+      { name: "Claude 3.5 Haiku", reason: "Fast FAQ drafts, email replies, and candidate comms" },
+    ],
+    features: [
+      {
+        title: "Job descriptions that attract better candidates",
+        description:
+          "Claude writes inclusive, accurate job descriptions that attract top candidates. Input the role requirements and team context — it outputs a complete JD with responsibilities, qualifications, and inclusive language review built in.",
+      },
+      {
+        title: "Performance review frameworks",
+        description:
+          "Generate performance review templates, self-assessment prompts, and calibration guides. GPT-5 structures competency frameworks and review cycles so managers write better, more consistent evaluations.",
+      },
+      {
+        title: "HR policies that are clear and compliant",
+        description:
+          "Claude drafts employee handbooks, PTO policies, remote work guidelines, and compliance-adjacent documentation in plain language. Always have your legal team review, but start with a strong first draft.",
+      },
+      {
+        title: "Compensation and benefits benchmarking",
+        description:
+          "Gemini 2.5 Pro synthesizes compensation surveys, Levels.fyi data, and benefits benchmarks across your industry. Get market intelligence before setting salary bands or benefits packages.",
+      },
+      {
+        title: "Candidate communication at scale",
+        description:
+          "Draft rejection letters, interview scheduling emails, offer letter templates, and onboarding welcome messages that feel human — not like ATS-generated form letters.",
+      },
+      {
+        title: "Knowledge base for HR processes",
+        description:
+          "Upload your employee handbook, offer templates, and HR SOPs. Ask any model questions grounded in your actual policies — consistent, on-brand answers every time.",
+      },
+    ],
+    useCaseExamples: [
+      "Write a job description for a Senior Software Engineer with these requirements",
+      "Draft a remote work policy covering hours, communication, and equipment",
+      "Create a 360-degree performance review template for a product team",
+      "Write an inclusive offer letter for a Director-level hire at $180k base",
+      "Summarize the key themes from these 50 exit interview responses",
+      "Draft onboarding materials for a new SDR joining a 40-person startup",
+    ],
+    testimonials: [
+      {
+        quote:
+          "Job descriptions that used to take 3 revisions now go out right the first time. Claude understands inclusive language, tone, and what candidates actually care about.",
+        author: "Michelle T.",
+        role: "HR Director, Tech Startup",
+      },
+      {
+        quote:
+          "I used Gemini to synthesize Levels.fyi and Glassdoor data for our engineering comp bands. Saved us $8k on a compensation consulting engagement.",
+        author: "David R.",
+        role: "VP People Operations",
+      },
+      {
+        quote:
+          "We uploaded our entire employee handbook to bedda. Now any manager can ask questions about our policies and get accurate, consistent answers without emailing HR.",
+        author: "Aisha K.",
+        role: "Head of People",
+      },
+    ],
+    faq: [
+      {
+        q: "Which AI model is best for writing job descriptions?",
+        a: "Claude 4 Opus writes the most natural and inclusive job descriptions. It understands tone, structure, and how to balance requirements without deterring qualified candidates. For high-volume role descriptions, GPT-5 is faster and still produces strong output.",
+      },
+      {
+        q: "Can bedda help with employee handbook updates?",
+        a: "Yes. Claude is strong for policy and procedure documentation — clear, readable, and well-structured. Always have your employment attorney review any handbook language before publishing, but Claude dramatically reduces the time from first draft to review-ready.",
+      },
+      {
+        q: "Is bedda useful for DEI-aware hiring materials?",
+        a: "Yes. Claude is trained to flag and rewrite exclusionary language in job descriptions, evaluation criteria, and interview guides. You can explicitly ask it to audit a JD for bias and it will flag requirements that may unnecessarily narrow your candidate pool.",
+      },
+      {
+        q: "Can bedda help analyze exit interview data?",
+        a: "Yes. Upload exit interview transcripts or survey exports to bedda's knowledge base. Gemini 2.5 Pro can synthesize hundreds of responses and surface themes, patterns, and quotes — giving you the kind of analysis that usually requires an HR analytics team.",
+      },
+      {
+        q: "Does bedda have team plans for HR departments?",
+        a: "Yes. bedda Teams lets your entire people team share knowledge bases (your handbook, templates, processes), access all 36+ models, and collaborate in shared workspaces. Consistent output quality across your team, one monthly bill.",
+      },
+    ],
+    ctaHeadline: "Hire better. Write policies faster. Make your team more effective.",
+  },
 };
 
 type Params = Promise<{ slug: string }>;
