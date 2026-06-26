@@ -738,6 +738,42 @@ const posts = [
     readingTime: "8 min read",
     category: "Productivity",
   },
+  {
+    slug: "ai-for-photographers-2026",
+    title: "Best AI Tools for Photographers in 2026: Edit Faster, Shoot Smarter",
+    description:
+      "The AI tools professional photographers and serious hobbyists are using in 2026 — from automated culling and retouching to mood boards and client communication. What's worth paying for.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "AI for Business",
+  },
+  {
+    slug: "best-ai-for-job-seekers-2026",
+    title: "Best AI Tools for Job Seekers in 2026: Land Your Next Role Faster",
+    description:
+      "The AI tools that actually help with resume writing, cover letters, interview prep, and salary negotiation in 2026. An honest guide to what works and when to use each model.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Productivity",
+  },
+  {
+    slug: "ai-for-nonprofit-organizations",
+    title: "Best AI Tools for Nonprofits in 2026: Do More with Less",
+    description:
+      "How nonprofits are using AI in 2026 to amplify their impact — grant writing, donor communication, volunteer coordination, and content creation — all on a tight budget.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "AI for Business",
+  },
+  {
+    slug: "best-ai-for-creative-writing",
+    title: "Best AI for Creative Writing in 2026: Fiction, Screenplays & More",
+    description:
+      "The honest guide to AI tools for fiction writers, screenwriters, and storytellers in 2026. Which AI models help without homogenizing your voice — and which to avoid.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "AI for Writing",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
