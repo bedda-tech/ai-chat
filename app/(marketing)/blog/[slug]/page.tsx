@@ -12622,6 +12622,544 @@ const POSTS: Record<string, BlogPost> = {
       </article>
     ),
   },
+
+  "ai-for-language-learning-2026": {
+    slug: "ai-for-language-learning-2026",
+    title: "AI for Language Learning in 2026: The Complete Guide",
+    description:
+      "How AI is transforming language learning — from conversational practice to grammar correction. Compare AI tutors, Duolingo Max, and multi-model approaches.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "AI for Professionals",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          AI has fundamentally changed how people learn languages. You no longer need
+          a human tutor for conversational practice, grammar correction, or vocabulary
+          building. Here&apos;s how to use AI tools effectively for language learning
+          in 2026 — and which models excel at each task.
+        </p>
+
+        <h2>Why AI Language Tutors Work</h2>
+        <p>
+          Traditional language learning apps (Duolingo, Babbel) are gamified but limited
+          — they can&apos;t hold a real conversation, explain nuanced grammar rules, or
+          correct your writing with context. AI language models can do all three:
+        </p>
+        <ul>
+          <li>Hold free-form conversations in your target language at any level</li>
+          <li>Correct grammar and explain <em>why</em> something is wrong</li>
+          <li>Translate with cultural context, not just word-for-word</li>
+          <li>Generate vocabulary exercises tailored to your weak areas</li>
+          <li>Role-play scenarios (job interview in French, negotiation in Mandarin)</li>
+        </ul>
+
+        <h2>Best AI Models for Language Learning</h2>
+        <p>
+          Different models have different strengths for language learning:
+        </p>
+
+        <h3>Claude 4 (Best for Grammar and Writing)</h3>
+        <p>
+          Claude excels at detailed grammar explanations with context. When you make
+          an error, Claude explains the underlying rule, gives multiple examples, and
+          shows you the pattern. Its writing corrections are thorough without being
+          condescending — ideal for intermediate to advanced learners.
+        </p>
+
+        <h3>GPT-5 (Best for Conversation Practice)</h3>
+        <p>
+          GPT-5&apos;s natural conversation flow makes it excellent for immersive
+          practice. You can set a scenario (&quot;pretend I&apos;m ordering coffee in
+          Paris&quot;), specify your level, and have a realistic exchange. It adjusts
+          vocabulary complexity on request.
+        </p>
+
+        <h3>Gemini 2.5 Pro (Best for Pronunciation Guidance)</h3>
+        <p>
+          Google&apos;s multilingual training makes Gemini strong on pronunciation
+          phonetics, regional accents, and informal speech patterns. It&apos;s
+          particularly good for less common languages where training data is thinner.
+        </p>
+
+        <h3>DeepSeek (Best for Asian Languages)</h3>
+        <p>
+          For Mandarin, Japanese, and Korean learners, DeepSeek&apos;s Asian language
+          training gives it an edge. Character explanations, stroke order context,
+          and reading level assessment are more accurate than Western-trained models.
+        </p>
+
+        <h2>Duolingo Max vs AI Models</h2>
+        <p>
+          Duolingo Max ($14-17/mo) introduced &quot;Explain My Answer&quot; and
+          &quot;Roleplay&quot; features powered by GPT-4. These are good but constrained
+          — they work within Duolingo&apos;s lesson structure, not free conversation.
+        </p>
+        <p>
+          AI models (Claude, GPT-5, Gemini) are more flexible: you set the scenario,
+          difficulty, and focus area. The trade-off: Duolingo provides structured
+          curriculum progression; AI models require self-direction.
+        </p>
+        <p>
+          <strong>Best combination:</strong> Duolingo for daily vocabulary/grammar
+          structure + AI model for conversational practice and writing correction.
+          Multi-model subscriptions ($12/mo for 36+ models) cost less than Duolingo Max
+          and give you access to the best AI for each task.
+        </p>
+
+        <h2>Practical AI Language Learning Workflows</h2>
+
+        <h3>Daily Conversation Practice (20 min)</h3>
+        <p>
+          Open a chat, paste this prompt: &quot;You are a native [language] speaker.
+          I want to practice [level] conversation. Correct my mistakes after each
+          message and explain the correction briefly. Start with small talk about
+          [topic].&quot;
+        </p>
+
+        <h3>Writing Correction</h3>
+        <p>
+          Write a paragraph in your target language, then ask: &quot;Please correct my
+          [language] writing. Mark each error with [type], explain the rule, and
+          show the corrected version.&quot;
+        </p>
+
+        <h3>Vocabulary in Context</h3>
+        <p>
+          Instead of flashcards: &quot;Give me 10 [B2 level] [language] words related
+          to [topic]. For each word: definition, example sentence, common collocations,
+          and a memory tip.&quot;
+        </p>
+
+        <h2>Languages Where AI Tutors Excel</h2>
+        <p>
+          AI models are strongest for widely spoken languages with large training corpora:
+          Spanish, French, German, Japanese, Mandarin, Portuguese, Italian, Korean,
+          Arabic, and Russian. For less common languages (Swahili, Thai, Persian),
+          quality varies — test with a native speaker to validate accuracy.
+        </p>
+
+        <div className="rounded-lg border bg-muted/50 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            Practice in 36+ AI Models for $12/mo
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Switch between Claude 4, GPT-5, and Gemini for different language learning
+            tasks — all in one subscription. 7-day free trial.
+          </p>
+          <div className="flex justify-center gap-3">
+            <Button asChild>
+              <Link href="/register">Start Free Trial</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/models">Browse Models</Link>
+            </Button>
+          </div>
+        </div>
+      </article>
+    ),
+  },
+
+  "best-ai-note-taking-app-2026": {
+    slug: "best-ai-note-taking-app-2026",
+    title: "Best AI Note-Taking Apps in 2026: Ranked and Compared",
+    description:
+      "Compare the best AI note-taking apps — Notion AI, Mem.ai, Otter.ai, Obsidian, and more. Find the right AI for capturing, organizing, and retrieving your knowledge.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Productivity",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          AI has transformed note-taking from passive capture to active knowledge
+          management. The best AI note-taking tools don&apos;t just store notes —
+          they resurface connections, answer questions from your own knowledge base,
+          and help you think through complex problems using your own research.
+        </p>
+
+        <h2>The Best AI Note-Taking Apps in 2026</h2>
+
+        <h3>1. Notion AI ($10/mo add-on)</h3>
+        <p>
+          <strong>Best for:</strong> Teams with existing Notion workspaces.
+          Notion AI integrates directly into your Notion pages, databases, and wikis.
+          Ask questions across your workspace, summarize meeting notes, draft content
+          blocks, and auto-fill database properties.
+        </p>
+        <p>
+          <strong>Limitation:</strong> Requires a Notion subscription ($10-18/mo)
+          before the AI add-on. Works best if you&apos;re already deeply in the
+          Notion ecosystem.
+        </p>
+
+        <h3>2. Obsidian + AI Plugins (Free / $4-10/mo for plugins)</h3>
+        <p>
+          <strong>Best for:</strong> Power users who want full data ownership and
+          local-first storage. Obsidian is a markdown note app with a rich plugin
+          ecosystem. Plugins like Smart Connections and Text Generator add AI search
+          and generation — but require an OpenAI/Anthropic API key.
+        </p>
+
+        <h3>3. Mem.ai ($8.33/mo)</h3>
+        <p>
+          <strong>Best for:</strong> Personal knowledge management without manual
+          organization. Mem automatically links related notes and surfaces context
+          when you&apos;re writing. Its AI assistant searches your entire Mem space
+          and drafts content using your existing notes as context.
+        </p>
+
+        <h3>4. Otter.ai ($16.99/mo)</h3>
+        <p>
+          <strong>Best for:</strong> Meeting transcription and voice notes.
+          Otter automatically joins Zoom/Teams meetings, transcribes, and summarizes.
+          Its AI can answer questions about past meetings. Best for professionals
+          who need structured meeting records.
+        </p>
+
+        <h3>5. bedda.ai Knowledge Base ($12/mo)</h3>
+        <p>
+          <strong>Best for:</strong> Users who want AI-powered knowledge retrieval
+          alongside frontier AI models. bedda.ai&apos;s Knowledge Base lets you
+          upload documents (TXT, MD, CSV, JSON), then ask questions across your
+          knowledge base in any conversation — using Claude 4, GPT-5, or Gemini as
+          the retrieval AI. RAG (Retrieval-Augmented Generation) automatically injects
+          relevant excerpts.
+        </p>
+
+        <h2>Feature Comparison</h2>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b">
+                <th className="pb-2 text-left font-semibold">Feature</th>
+                <th className="pb-2 text-center font-semibold">Notion AI</th>
+                <th className="pb-2 text-center font-semibold">Mem.ai</th>
+                <th className="pb-2 text-center font-semibold">bedda.ai KB</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y">
+              <tr><td className="py-2">AI chat across notes</td><td className="py-2 text-center">✓</td><td className="py-2 text-center">✓</td><td className="py-2 text-center">✓</td></tr>
+              <tr><td className="py-2">Multiple frontier models</td><td className="py-2 text-center">✗</td><td className="py-2 text-center">✗</td><td className="py-2 text-center">✓ (36+)</td></tr>
+              <tr><td className="py-2">Meeting transcription</td><td className="py-2 text-center">✗</td><td className="py-2 text-center">✗</td><td className="py-2 text-center">✓ (upload)</td></tr>
+              <tr><td className="py-2">Auto-organization</td><td className="py-2 text-center">Partial</td><td className="py-2 text-center">✓</td><td className="py-2 text-center">Manual</td></tr>
+              <tr><td className="py-2">Monthly price</td><td className="py-2 text-center">$10 add-on</td><td className="py-2 text-center">$8.33</td><td className="py-2 text-center">$12</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>How to Choose</h2>
+        <p>
+          The right app depends on your primary use case:
+        </p>
+        <ul>
+          <li>
+            <strong>Already in Notion:</strong> Add Notion AI — it&apos;s the best
+            integration for existing Notion users.
+          </li>
+          <li>
+            <strong>Want AI across your personal notes:</strong> Mem.ai for automatic
+            organization, Obsidian + plugins for full control.
+          </li>
+          <li>
+            <strong>Meeting-heavy workflow:</strong> Otter.ai or Fireflies.ai for
+            transcription-first teams.
+          </li>
+          <li>
+            <strong>Need best AI quality AND knowledge base:</strong> bedda.ai gives
+            you Claude 4 and GPT-5 as your retrieval AI — the smartest models reading
+            your documents — alongside image generation, web search, and 36+ models
+            for $12/mo.
+          </li>
+        </ul>
+
+        <div className="rounded-lg border bg-muted/50 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            Knowledge Base + 36 AI Models for $12/mo
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Upload your documents and ask Claude 4, GPT-5, or Gemini questions across
+            your entire knowledge base. 7-day free trial.
+          </p>
+          <div className="flex justify-center gap-3">
+            <Button asChild>
+              <Link href="/register">Start Free Trial</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/pricing">See Pricing</Link>
+            </Button>
+          </div>
+        </div>
+      </article>
+    ),
+  },
+
+  "open-source-ai-models-2026": {
+    slug: "open-source-ai-models-2026",
+    title: "The Best Open-Source AI Models in 2026",
+    description:
+      "A guide to the best open-source AI models in 2026 — DeepSeek V3, Llama 4, Kimi K2, Qwen 3, and more. When to use open-source vs proprietary models.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "Model Comparisons",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          Open-source AI has narrowed the gap with proprietary models dramatically in
+          2026. DeepSeek V3, Llama 4, and Kimi K2 now match or beat GPT-4-class
+          performance on many benchmarks — at a fraction of the inference cost.
+          Here&apos;s a guide to the best open-source models and when to use them.
+        </p>
+
+        <h2>What &quot;Open-Source&quot; Means in 2026</h2>
+        <p>
+          Open-source AI exists on a spectrum. Some models release weights and code
+          under permissive licenses (truly open). Others release weights but restrict
+          commercial use (Meta&apos;s Llama license). Others publish research papers
+          but withhold weights. The term is loose — the key question is: can you
+          self-host it?
+        </p>
+
+        <h2>Top Open-Source AI Models in 2026</h2>
+
+        <h3>DeepSeek V3.1 (671B MoE)</h3>
+        <p>
+          <strong>Best for:</strong> General reasoning, coding, and long-context tasks.
+          DeepSeek V3.1 is a 671-billion parameter Mixture-of-Experts model with
+          effective activation of ~37B parameters per token. It performs comparably
+          to GPT-4o on most benchmarks at a fraction of the API cost.
+        </p>
+        <p>
+          <strong>License:</strong> MIT (weights publicly available, commercial use
+          permitted). Available via bedda.ai Plus at $12/mo.
+        </p>
+
+        <h3>Meta Llama 4 (405B)</h3>
+        <p>
+          <strong>Best for:</strong> Self-hosted enterprise deployments, research.
+          Meta&apos;s Llama 4 Scout and Maverick variants support up to 10M token
+          context windows. The license permits commercial use for companies under
+          700M monthly active users — permissive for most businesses.
+        </p>
+
+        <h3>Kimi K2 Turbo (MoE)</h3>
+        <p>
+          <strong>Best for:</strong> Agentic tasks, long-context document processing.
+          Moonshot AI&apos;s K2 is a frontier MoE model with exceptional performance
+          on multi-step reasoning and tool use — competitive with GPT-4o and Claude
+          3.7 Sonnet. Available via API and on bedda.ai.
+        </p>
+
+        <h3>Qwen 3 (235B MoE)</h3>
+        <p>
+          <strong>Best for:</strong> Multilingual tasks, especially Chinese-English.
+          Alibaba&apos;s Qwen 3 family includes a 235B MoE model that leads many
+          multilingual benchmarks. Strong on mathematics and coding.
+        </p>
+
+        <h3>Mistral Large 2 (123B)</h3>
+        <p>
+          <strong>Best for:</strong> European-language tasks, function calling.
+          Mistral is a French AI company producing high-quality European-origin models
+          with strong function calling and JSON output. Available on bedda.ai.
+        </p>
+
+        <h2>Open-Source vs Proprietary: When to Choose Each</h2>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b">
+                <th className="pb-2 text-left font-semibold">Use Case</th>
+                <th className="pb-2 text-center font-semibold">Open-Source</th>
+                <th className="pb-2 text-center font-semibold">Proprietary</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y">
+              <tr><td className="py-2">Frontier reasoning (law, medicine, research)</td><td className="py-2 text-center">✗</td><td className="py-2 text-center">✓ Claude 4, GPT-5</td></tr>
+              <tr><td className="py-2">Cost-sensitive high-volume inference</td><td className="py-2 text-center">✓</td><td className="py-2 text-center">Expensive</td></tr>
+              <tr><td className="py-2">Privacy-sensitive data (self-hosted)</td><td className="py-2 text-center">✓</td><td className="py-2 text-center">Cloud only</td></tr>
+              <tr><td className="py-2">Code generation and debugging</td><td className="py-2 text-center">✓ DeepSeek V3</td><td className="py-2 text-center">✓ GPT-5</td></tr>
+              <tr><td className="py-2">Creative writing</td><td className="py-2 text-center">Good</td><td className="py-2 text-center">✓ Claude 4</td></tr>
+              <tr><td className="py-2">Quick deployment (no infra)</td><td className="py-2 text-center">API only</td><td className="py-2 text-center">✓</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>The Easiest Way to Use Open-Source Models</h2>
+        <p>
+          Running open-source models locally requires GPU hardware (usually 80GB+
+          VRAM for 70B+ models). For most users, the practical options are:
+        </p>
+        <ul>
+          <li>
+            <strong>Groq:</strong> The fastest inference for Llama 3.3 70B —
+            free tier available, paid plans for higher limits.
+          </li>
+          <li>
+            <strong>Together AI / Fireworks AI:</strong> API access to Llama 4,
+            Qwen 3, and DeepSeek V3 at low per-token cost.
+          </li>
+          <li>
+            <strong>bedda.ai ($12/mo):</strong> Access to DeepSeek R1, DeepSeek V3,
+            Kimi K2 Turbo, Mistral Large, Groq Llama 3.3 70B, and Cerebras Llama
+            3.3 70B — plus all proprietary frontier models — in one subscription.
+          </li>
+        </ul>
+
+        <div className="rounded-lg border bg-muted/50 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            Access Open-Source + Proprietary AI for $12/mo
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            DeepSeek, Kimi K2, Mistral, Llama — plus Claude 4, GPT-5, and Gemini —
+            all in one subscription. 7-day free trial.
+          </p>
+          <div className="flex justify-center gap-3">
+            <Button asChild>
+              <Link href="/register">Start Free Trial</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/models">Browse Models</Link>
+            </Button>
+          </div>
+        </div>
+      </article>
+    ),
+  },
+
+  "best-ai-coding-assistant-2026": {
+    slug: "best-ai-coding-assistant-2026",
+    title: "Best AI Coding Assistants in 2026: GitHub Copilot vs Cursor vs More",
+    description:
+      "Compare the best AI coding assistants in 2026 — GitHub Copilot, Cursor, Windsurf, Replit AI, and more. Which one is worth paying for?",
+    date: "June 2026",
+    readingTime: "10 min read",
+    category: "AI for Developers",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          AI coding assistants have matured from autocomplete tools to genuine pair
+          programmers. In 2026, the right AI coding setup can double your output.
+          Here&apos;s a ranked comparison of the top tools — their strengths,
+          limitations, and who each is best for.
+        </p>
+
+        <h2>The Top AI Coding Assistants in 2026</h2>
+
+        <h3>1. Cursor ($20/mo)</h3>
+        <p>
+          <strong>Best overall for professional developers.</strong> Cursor is an
+          AI-native fork of VS Code that deeply integrates Claude 4 and GPT-5 into
+          your coding workflow. Its Composer feature can refactor multiple files,
+          understand your entire codebase, and generate features from a description.
+          Tab completion is context-aware in a way GitHub Copilot isn&apos;t.
+        </p>
+        <p>
+          <strong>Limitation:</strong> $20/mo for Pro. The free tier has limited
+          completions. Heavy users hit limits quickly.
+        </p>
+
+        <h3>2. GitHub Copilot ($10-19/mo)</h3>
+        <p>
+          <strong>Best for VS Code / JetBrains users who want IDE integration.</strong>
+          GitHub Copilot is the most widely adopted AI coding tool, with native
+          integration in VS Code, JetBrains, Neovim, and more. Copilot Chat lets you
+          ask questions about selected code. The $19/mo Business tier adds context
+          awareness across your entire repository.
+        </p>
+        <p>
+          <strong>Limitation:</strong> Less capable than Cursor for multi-file tasks.
+          Autocomplete quality is strong; agentic features are catching up.
+        </p>
+
+        <h3>3. Windsurf by Codeium ($15/mo)</h3>
+        <p>
+          <strong>Best free-to-start coding IDE.</strong> Windsurf (formerly Codeium)
+          is an AI-native IDE with a generous free tier and strong Cascade agentic
+          mode for multi-step tasks. Its per-action pricing model can be more
+          economical than Cursor for lighter users.
+        </p>
+
+        <h3>4. Replit AI ($20-40/mo)</h3>
+        <p>
+          <strong>Best for beginners and browser-based development.</strong>
+          Replit combines a cloud IDE with AI that can scaffold entire apps, fix
+          errors, and deploy. No local setup required. Ideal for learning, prototyping,
+          and teams that need an all-in-one cloud development environment.
+        </p>
+
+        <h3>5. bedda.ai + Claude/GPT-5 ($12/mo)</h3>
+        <p>
+          <strong>Best for code review, explanation, and architecture without IDE lock-in.</strong>
+          bedda.ai gives you Claude 4 and GPT-5 for pasting code, reviewing pull
+          requests, explaining complex systems, writing tests, and designing
+          architecture — for $12/mo. Not a replacement for IDE autocomplete, but
+          the best AI for code understanding and generation tasks you bring to a chat.
+        </p>
+
+        <h2>Comparison Table</h2>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b">
+                <th className="pb-2 text-left font-semibold">Tool</th>
+                <th className="pb-2 text-center font-semibold">Price</th>
+                <th className="pb-2 text-center font-semibold">IDE Integration</th>
+                <th className="pb-2 text-center font-semibold">Agentic Mode</th>
+                <th className="pb-2 text-center font-semibold">Models</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y">
+              <tr><td className="py-2">Cursor</td><td className="py-2 text-center">$20/mo</td><td className="py-2 text-center">VS Code fork</td><td className="py-2 text-center">Excellent</td><td className="py-2 text-center">Claude 4, GPT-5</td></tr>
+              <tr><td className="py-2">GitHub Copilot</td><td className="py-2 text-center">$10-19/mo</td><td className="py-2 text-center">All major IDEs</td><td className="py-2 text-center">Good</td><td className="py-2 text-center">GPT-4o, Claude</td></tr>
+              <tr><td className="py-2">Windsurf</td><td className="py-2 text-center">Free / $15</td><td className="py-2 text-center">Own IDE</td><td className="py-2 text-center">Good</td><td className="py-2 text-center">Claude 3.5, GPT-4</td></tr>
+              <tr><td className="py-2">Replit AI</td><td className="py-2 text-center">$20-40/mo</td><td className="py-2 text-center">Cloud IDE</td><td className="py-2 text-center">Good</td><td className="py-2 text-center">Claude 3.5</td></tr>
+              <tr><td className="py-2">bedda.ai</td><td className="py-2 text-center">$12/mo</td><td className="py-2 text-center">Chat + API</td><td className="py-2 text-center">Via agent mode</td><td className="py-2 text-center">36+ models</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Which AI Coding Assistant Should You Use?</h2>
+        <ul>
+          <li>
+            <strong>I want the best IDE experience:</strong> Cursor ($20/mo) — it&apos;s
+            the most capable AI coding environment available.
+          </li>
+          <li>
+            <strong>I want broad IDE compatibility:</strong> GitHub Copilot ($10/mo) —
+            works everywhere, great autocomplete.
+          </li>
+          <li>
+            <strong>I want free AI coding help:</strong> Windsurf&apos;s free tier or
+            bedda.ai&apos;s free plan (Claude Haiku and Gemini Flash).
+          </li>
+          <li>
+            <strong>I want the best models for code review and architecture:</strong>
+            bedda.ai ($12/mo) gives you Claude 4 Opus and GPT-5 — plus DeepSeek,
+            Gemini, and 33 more models — for code questions, design reviews, and
+            technical writing at a lower price than Cursor or Replit.
+          </li>
+        </ul>
+
+        <div className="rounded-lg border bg-muted/50 p-6 text-center">
+          <h3 className="mb-2 font-semibold text-lg">
+            Claude 4 + GPT-5 for Code Reviews — $12/mo
+          </h3>
+          <p className="mb-4 text-muted-foreground text-sm">
+            The best AI models for code review, architecture, and technical writing —
+            plus 34 more models. 7-day free trial, no credit card required.
+          </p>
+          <div className="flex justify-center gap-3">
+            <Button asChild>
+              <Link href="/register">Start Free Trial</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/for/developers">For Developers</Link>
+            </Button>
+          </div>
+        </div>
+      </article>
+    ),
+  },
 };
 
 export function generateStaticParams() {

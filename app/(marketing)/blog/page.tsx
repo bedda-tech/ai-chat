@@ -666,6 +666,42 @@ const posts = [
     readingTime: "10 min read",
     category: "Model Reviews",
   },
+  {
+    slug: "ai-for-language-learning-2026",
+    title: "AI for Language Learning in 2026: The Complete Guide",
+    description:
+      "How AI is transforming language learning — from conversational practice to grammar correction. Compare AI tutors, Duolingo Max, and multi-model approaches.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "Productivity",
+  },
+  {
+    slug: "best-ai-note-taking-app-2026",
+    title: "Best AI Note-Taking Apps in 2026: Ranked and Compared",
+    description:
+      "Compare the best AI note-taking apps — Notion AI, Mem.ai, Otter.ai, Obsidian, and more. Find the right AI for capturing, organizing, and retrieving your knowledge.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Productivity",
+  },
+  {
+    slug: "open-source-ai-models-2026",
+    title: "The Best Open-Source AI Models in 2026",
+    description:
+      "A guide to the best open-source AI models in 2026 — DeepSeek V3, Llama 4, Kimi K2, Qwen 3, and more. When to use open-source vs proprietary models.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "Model Comparisons",
+  },
+  {
+    slug: "best-ai-coding-assistant-2026",
+    title: "Best AI Coding Assistants in 2026: GitHub Copilot vs Cursor vs More",
+    description:
+      "Compare the best AI coding assistants in 2026 — GitHub Copilot, Cursor, Windsurf, Replit AI, and more. Which one is worth paying for?",
+    date: "June 2026",
+    readingTime: "10 min read",
+    category: "AI for Developers",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];

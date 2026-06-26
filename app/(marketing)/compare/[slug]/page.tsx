@@ -3246,6 +3246,229 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-zoom-ai": {
+    slug: "bedda-vs-zoom-ai",
+    competitor: "Zoom AI Companion",
+    competitorUrl: "https://www.zoom.com/en/ai-assistant/",
+    competitorPrice: "$5.99-16.99/mo add-on",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Zoom AI Companion",
+    metaTitle: "bedda.ai vs Zoom AI Companion (2026) — Full AI Suite vs Meeting AI",
+    metaDescription:
+      "Compare bedda.ai and Zoom AI Companion. Zoom AI is $5.99-16.99/mo for meeting summaries. bedda.ai gives you GPT-5, Claude 4, Gemini and 36+ AI models for $12/mo — everything Zoom AI does plus 33 more capabilities.",
+    ogTitle: "bedda.ai vs Zoom AI Companion — 36+ AI Models vs Meeting-Only AI",
+    ogDescription:
+      "Zoom AI Companion costs $5.99-16.99/mo for meeting summaries and transcripts. bedda.ai gives you the same post-meeting AI plus Claude 4, GPT-5, Gemini, image generation, code execution and 36+ models — all for $12/mo.",
+    heroHeadline: "Everything Zoom AI does — plus 36 frontier AI models",
+    heroSubtext:
+      "Zoom AI Companion is great for meeting summaries. bedda.ai gives you meeting-style AI (audio transcription, summaries, action items) plus Claude 4, GPT-5, Gemini 2.5 Pro, image generation, web search, and 36+ models — for one flat subscription.",
+    verdict:
+      "Zoom AI Companion is purpose-built for Zoom meetings and is included free with paid Zoom plans. If you need AI beyond meetings — for writing, research, coding, or creative work — bedda.ai's $12/mo gives you a full AI stack that Zoom's add-on can't match.",
+    switchReasons: [
+      "Get audio transcription and meeting summaries via Whisper — same capability as Zoom AI",
+      "Access Claude 4, GPT-5, and Gemini for everything outside of meetings",
+      "One subscription covers your entire AI workflow — not just Zoom calls",
+      "Image generation, code execution, web search, and knowledge base — all features Zoom AI lacks",
+      "Platform-agnostic — works for all your meetings, emails, projects, and research",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$5.99-16.99/mo add-on" },
+      { feature: "Meeting transcription", bedda: true, competitor: true },
+      { feature: "Meeting summaries", bedda: true, competitor: true },
+      { feature: "Action item extraction", bedda: true, competitor: true },
+      { feature: "Claude 4 access", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Works outside Zoom", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Meeting AI only" },
+    ],
+    faq: [
+      {
+        q: "Can bedda.ai replace Zoom AI Companion?",
+        a: "For the core use cases — meeting transcription and summaries — bedda.ai's audio transcription (powered by Whisper) covers most needs. Zoom AI's native integration with Zoom recordings is more seamless for heavy Zoom users, but bedda.ai covers the post-meeting AI plus every other AI capability you need.",
+      },
+      {
+        q: "Is Zoom AI Companion free?",
+        a: "Zoom AI Companion is included with paid Zoom plans at no extra charge. The add-on pricing ($5.99-16.99/mo) refers to Zoom Phone and advanced features. If you're already paying for Zoom and only need meeting AI, the built-in companion may be sufficient. If you need AI beyond meetings, bedda.ai's $12/mo adds Claude 4, GPT-5, and 36+ models.",
+      },
+      {
+        q: "Does bedda.ai integrate with Zoom?",
+        a: "Not directly — you'd upload meeting transcripts or audio files to bedda.ai for summarization or analysis. Native Zoom recording integration is a Zoom AI Companion exclusive.",
+      },
+    ],
+  },
+
+  "bedda-vs-stable-diffusion": {
+    slug: "bedda-vs-stable-diffusion",
+    competitor: "Stable Diffusion / DreamStudio",
+    competitorUrl: "https://stability.ai",
+    competitorPrice: "Free (local) / $10 credit packs",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Stable Diffusion",
+    metaTitle: "bedda.ai vs Stable Diffusion (2026) — Easy $12/mo vs Complex Free",
+    metaDescription:
+      "Compare bedda.ai and Stable Diffusion. SD is free but requires GPU, setup, and prompting expertise. bedda.ai gives you DALL-E 3, Imagen 3, and Flux in one click — plus Claude 4, GPT-5, and 36+ AI models for $12/mo.",
+    ogTitle: "bedda.ai vs Stable Diffusion — Instant AI vs DIY Setup",
+    ogDescription:
+      "Stable Diffusion is free but needs a GPU, complex setup, and ControlNet mastery. bedda.ai gives you DALL-E 3, Imagen 3 Fast, and Flux 1.1 Pro in one click — plus 36+ frontier AI models for $12/mo.",
+    heroHeadline: "Pro image generation without the GPU setup",
+    heroSubtext:
+      "Stable Diffusion is powerful and free — if you have a GPU and hours to spend on setup, ComfyUI workflows, and LoRA training. bedda.ai gives you DALL-E 3, Google Imagen 3, and Flux 1.1 Pro in one click, plus Claude 4, GPT-5, and 36 more AI models for $12/mo.",
+    verdict:
+      "Stable Diffusion is the right choice for power users who need fine-grained control, custom models, and are willing to manage the technical complexity. For everyone else, bedda.ai's instant access to DALL-E 3, Imagen 3, and Flux — alongside 36+ frontier AI models — at $12/mo is the faster, simpler path to great AI images.",
+    switchReasons: [
+      "Generate images instantly — no GPU, no ComfyUI, no installation required",
+      "Access DALL-E 3, Google Imagen 3 Fast, and Flux 1.1 Pro in one interface",
+      "Combine image generation with Claude 4, GPT-5, and writing/coding in one subscription",
+      "No VRAM limits, no waiting for local generation to finish",
+      "One flat price — no credit packs, no DreamStudio billing complexity",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "Free (local) / credits" },
+      { feature: "Setup required", bedda: "None", competitor: "GPU + hours of setup" },
+      { feature: "DALL-E 3 generation", bedda: true, competitor: false },
+      { feature: "Google Imagen 3 Fast", bedda: true, competitor: false },
+      { feature: "Flux 1.1 Pro", bedda: true, competitor: false },
+      { feature: "Stable Diffusion models", bedda: false, competitor: true },
+      { feature: "Custom LoRA models", bedda: false, competitor: true },
+      { feature: "Fine-grained ControlNet", bedda: false, competitor: true },
+      { feature: "Claude 4 text generation", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Image generation only" },
+    ],
+    faq: [
+      {
+        q: "Is bedda.ai better than Stable Diffusion for image quality?",
+        a: "It depends on the use case. bedda.ai offers DALL-E 3 (excellent for photorealism and instruction-following), Imagen 3 Fast (Google's model, strong on aesthetics), and Flux 1.1 Pro (one of the best open models). Stable Diffusion with the right model weights and ControlNet can produce exceptional results — but requires expertise to match these quality levels.",
+      },
+      {
+        q: "Can I run Stable Diffusion without a GPU?",
+        a: "Stable Diffusion runs slowly on CPU — 5-15 minutes per image vs 10-15 seconds on GPU. DreamStudio (Stability AI's cloud platform) offers a pay-per-credit cloud option. bedda.ai's Plus plan includes image generation at a flat $12/mo.",
+      },
+      {
+        q: "Does bedda.ai support img2img or inpainting?",
+        a: "Not currently — bedda.ai focuses on text-to-image generation via DALL-E 3, Imagen 3, and Flux. Advanced workflows like img2img, inpainting, and ControlNet remain Stable Diffusion's strong suit.",
+      },
+    ],
+  },
+
+  "bedda-vs-tome": {
+    slug: "bedda-vs-tome",
+    competitor: "Tome",
+    competitorUrl: "https://tome.app",
+    competitorPrice: "$16/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Tome",
+    metaTitle: "bedda.ai vs Tome AI (2026) — Full AI Suite vs Presentation-Only",
+    metaDescription:
+      "Compare bedda.ai and Tome. Tome AI costs $16/mo for AI presentations. bedda.ai gives you Claude 4, GPT-5, Gemini, AI slides, and 36+ models for $12/mo — $4 cheaper with 10x more capability.",
+    ogTitle: "bedda.ai vs Tome AI — 36+ AI Models vs Presentation Tool",
+    ogDescription:
+      "Tome costs $16/mo for AI-generated slide decks. bedda.ai gives you AI slides plus Claude 4, GPT-5, Gemini 2.5 Pro, image generation, code execution, and 36+ models — all for $12/mo.",
+    heroHeadline: "AI presentations + 36 AI models — for $4 less than Tome alone",
+    heroSubtext:
+      "Tome is a beautiful AI presentation tool at $16/mo. bedda.ai includes an AI slides artifact that generates Reveal.js presentations — plus Claude 4, GPT-5, Gemini, image generation, web search, and 36+ frontier models — for $12/mo.",
+    verdict:
+      "Tome is the right choice if AI-native, beautiful presentations are your primary daily use case — its presentation-specific design tools are best-in-class. For professionals who also need AI for writing, research, coding, and communication, bedda.ai's $12/mo covers presentations plus every other AI need at a lower price.",
+    switchReasons: [
+      "Save $4/mo — bedda.ai Plus is $12/mo vs Tome's $16/mo",
+      "Generate slide presentations via the AI slides artifact (Reveal.js format)",
+      "Access Claude 4, GPT-5, and Gemini for the research and writing that feeds your presentations",
+      "Add image generation, web search, and knowledge base to your workflow",
+      "One subscription for all your AI needs — not just slides",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$16/mo" },
+      { feature: "AI slide generation", bedda: true, competitor: true },
+      { feature: "Presentation design tools", bedda: "Basic (Reveal.js)", competitor: "Advanced" },
+      { feature: "Collaborative editing", bedda: "Team workspaces", competitor: true },
+      { feature: "Claude 4 access", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Presentation AI only" },
+    ],
+    faq: [
+      {
+        q: "Can bedda.ai create presentations like Tome?",
+        a: "Yes — bedda.ai's slides artifact generates Reveal.js presentations from a text prompt. The output includes multiple slides with content, structure, and formatting. Tome has a more design-focused UI for iterating on slide visuals, while bedda.ai's strength is rapid content generation backed by Claude 4 or GPT-5.",
+      },
+      {
+        q: "Is Tome worth $16/mo for presentations?",
+        a: "If presentations are your primary daily work output and you need polished design features, yes. If you also need Claude 4 for writing, GPT-5 for research, image generation, or code — bedda.ai's $12/mo covers all of that plus slides.",
+      },
+      {
+        q: "What's the difference between bedda.ai slides and Tome?",
+        a: "Tome is built specifically for presentations with drag-and-drop design, image embedding, and sharing workflows optimized for decks. bedda.ai's slides artifact uses Reveal.js to produce structured presentations quickly — it's better for content-first workflows where you need the AI to write and structure the deck, then you polish it.",
+      },
+    ],
+  },
+
+  "bedda-vs-writer": {
+    slug: "bedda-vs-writer",
+    competitor: "Writer",
+    competitorUrl: "https://writer.com",
+    competitorPrice: "$18+/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Writer",
+    metaTitle: "bedda.ai vs Writer AI (2026) — More Models, Lower Price",
+    metaDescription:
+      "Compare bedda.ai and Writer. Writer AI costs $18+/mo with enterprise writing tools. bedda.ai gives you Claude 4, GPT-5, Gemini and 36+ AI models for $12/mo — the best writing AI at lower cost.",
+    ogTitle: "bedda.ai vs Writer AI — 36+ Frontier Models vs Enterprise Writing Tool",
+    ogDescription:
+      "Writer costs $18+/mo and runs on their proprietary Palmyra model. bedda.ai gives you Claude 4 (the best writing AI), GPT-5, Gemini 2.5 Pro, and 36+ frontier models for $12/mo — better writing AI for less.",
+    heroHeadline: "Claude 4 + GPT-5 writing quality at $6 less than Writer",
+    heroSubtext:
+      "Writer runs on Palmyra, their proprietary LLM. bedda.ai gives you Claude 4 Opus (the leading writing AI), GPT-5, Gemini 2.5 Pro, and 36 more frontier models — all accessible in one interface for $12/mo.",
+    verdict:
+      "Writer's enterprise features (brand voice controls, content guardrails, compliance workflows) are valuable for large marketing teams. For individuals and small teams who just want the best AI writing quality, bedda.ai gives you Claude 4 and GPT-5 — the actual frontier writing models — for 33% less per month.",
+    switchReasons: [
+      "Access Claude 4 Opus — the leading AI for writing quality and nuanced prose",
+      "Save $6/mo vs Writer's $18/mo starting price",
+      "Switch between Claude 4, GPT-5, and Gemini for different writing tasks",
+      "Image generation, code execution, and web search alongside writing",
+      "No proprietary LLM — write with the world's best frontier models",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$18+/mo" },
+      { feature: "Claude 4 Opus (writing AI)", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Proprietary LLM (Palmyra)", bedda: false, competitor: true },
+      { feature: "Brand voice controls", bedda: false, competitor: true },
+      { feature: "Content guardrails", bedda: false, competitor: true },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "Palmyra + limited models" },
+    ],
+    faq: [
+      {
+        q: "Is Writer better than Claude 4 for writing?",
+        a: "No — Claude 4 Opus consistently outperforms Writer's Palmyra model on writing quality benchmarks, instruction following, and stylistic nuance. Writer's advantage is enterprise workflow features like brand voice enforcement and compliance controls, not raw writing quality.",
+      },
+      {
+        q: "What is Writer.com used for?",
+        a: "Writer is an enterprise AI writing platform used by marketing teams for on-brand content generation, compliance-aware drafting, and content governance. It's built for teams with strict brand guidelines, not individual users or small teams who just need great writing AI.",
+      },
+      {
+        q: "Does bedda.ai have brand voice controls?",
+        a: "Not natively — but you can upload your style guide or brand guidelines to bedda.ai's knowledge base, and Claude 4 will follow them precisely. For teams that need enforced brand guardrails with user permission controls, Writer's enterprise features are more appropriate.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
