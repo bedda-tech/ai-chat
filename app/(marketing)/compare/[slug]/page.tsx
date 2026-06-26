@@ -3469,6 +3469,228 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-notebooklm": {
+    slug: "bedda-vs-notebooklm",
+    competitor: "Google NotebookLM",
+    competitorUrl: "https://notebooklm.google.com",
+    competitorPrice: "Free",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Google NotebookLM",
+    metaTitle: "bedda.ai vs Google NotebookLM (2026) — Which Research AI is Better?",
+    metaDescription:
+      "Compare bedda.ai and Google NotebookLM. NotebookLM is free but limited to document Q&A. bedda.ai gives you 36+ AI models, web search, image gen, and full multi-model access for $12/mo.",
+    ogTitle: "bedda.ai vs NotebookLM — More Than Just Document Q&A",
+    ogDescription:
+      "NotebookLM is free and great for document analysis. bedda.ai is $12/mo and gives you the same capability plus Claude 4, GPT-5, Gemini, web search, image generation, and 32+ more models.",
+    heroHeadline: "NotebookLM answers questions about your documents. bedda does that — and everything else.",
+    heroSubtext:
+      "Google NotebookLM is excellent at Q&A over uploaded sources. bedda.ai includes that capability plus access to 36+ frontier AI models, web search, code execution, image generation, and more — for $12/mo.",
+    verdict:
+      "NotebookLM is the right choice if you only need to ask questions about your own documents and the free tier covers your needs. bedda.ai is the right choice if you need a full AI platform — document Q&A plus frontier models for writing, coding, research, and everything else.",
+    switchReasons: [
+      "Use frontier models (Claude 4, GPT-5, Gemini) not just document Q&A",
+      "Web search for current information beyond your uploaded documents",
+      "Image generation for visual content creation",
+      "Cross-conversation memory and knowledge base with custom documents",
+      "Code execution and multi-model comparison arena",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "Free" },
+      { feature: "Document Q&A (RAG)", bedda: true, competitor: true },
+      { feature: "Multiple source uploads", bedda: true, competitor: true },
+      { feature: "Audio overview / podcast", bedda: false, competitor: true },
+      { feature: "Claude 4 Opus access", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Web search / current info", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Gemini only" },
+    ],
+    faq: [
+      {
+        q: "Is NotebookLM better than bedda.ai for research?",
+        a: "NotebookLM's 'Audio Overview' podcast feature and deep citation tracking are unique and excellent for academic research workflows. bedda.ai's knowledge base supports document Q&A too, but with access to frontier models (Claude 4, GPT-5) for synthesizing your findings. They serve different use cases — NotebookLM for structured document analysis, bedda.ai for the full research and writing workflow.",
+      },
+      {
+        q: "Is NotebookLM free?",
+        a: "Yes, Google NotebookLM is free to use with a Google account. NotebookLM Plus (through Google One AI Premium) adds higher limits and features for $19.99/mo.",
+      },
+      {
+        q: "Can bedda.ai replace NotebookLM?",
+        a: "For most research use cases, yes. bedda.ai's knowledge base lets you upload documents and ask questions, similar to NotebookLM. The key difference: bedda.ai also gives you 36+ frontier AI models for writing, analysis, coding, and everything else. NotebookLM's unique features (audio overviews, deep citation mode) are not available in bedda.ai.",
+      },
+    ],
+  },
+
+  "bedda-vs-tabnine": {
+    slug: "bedda-vs-tabnine",
+    competitor: "Tabnine",
+    competitorUrl: "https://tabnine.com",
+    competitorPrice: "$9-39/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Tabnine",
+    metaTitle: "bedda.ai vs Tabnine (2026) — Best AI for Developers?",
+    metaDescription:
+      "Compare bedda.ai and Tabnine for developers. Tabnine is an IDE-integrated coding AI. bedda.ai gives you Claude 4, GPT-5, and 36+ AI models for chat-based coding plus everything else for $12/mo.",
+    ogTitle: "bedda.ai vs Tabnine — IDE Autocomplete vs Full AI Platform",
+    ogDescription:
+      "Tabnine is $9-39/mo for IDE autocomplete. bedda.ai is $12/mo for Claude 4 + GPT-5 + 36 models — code review, architecture, technical writing, and every AI task in one subscription.",
+    heroHeadline: "Tabnine completes your code. bedda helps you design, review, and understand it.",
+    heroSubtext:
+      "Tabnine is built for IDE autocomplete and inline code suggestions. bedda.ai gives you Claude 4 and GPT-5 for code review, architecture decisions, technical writing, and debugging — plus 34 other models — for $12/mo.",
+    verdict:
+      "Tabnine and bedda.ai solve different problems. Tabnine is an IDE extension optimized for autocomplete and inline suggestions. bedda.ai is a multi-model AI platform for the tasks you bring to a chat: code review, architecture, debugging complex issues, writing technical documentation. Many developers use both — Tabnine for inline help, bedda.ai for everything else.",
+    switchReasons: [
+      "Access Claude 4 Opus and GPT-5 for code review and architecture",
+      "Debug complex issues with context-aware AI chat",
+      "Generate and explain code in 50+ languages and frameworks",
+      "Technical writing, documentation, and system design alongside coding",
+      "Save money vs Tabnine Business ($39/mo) for a full AI platform at $12/mo",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$9-39/mo" },
+      { feature: "IDE autocomplete", bedda: false, competitor: true },
+      { feature: "Inline code suggestions", bedda: false, competitor: true },
+      { feature: "Multi-file context", bedda: false, competitor: true },
+      { feature: "Code review via chat", bedda: true, competitor: false },
+      { feature: "Claude 4 Opus", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Architecture and design help", bedda: true, competitor: false },
+      { feature: "Web search for docs", bedda: true, competitor: false },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Knowledge base", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1-2 models" },
+    ],
+    faq: [
+      {
+        q: "Is bedda.ai better than Tabnine?",
+        a: "They do different things. Tabnine is an IDE plugin for autocomplete and inline code suggestions — it works inside your editor as you type. bedda.ai is a multi-model AI chat platform for code review, architecture, debugging complex issues, and everything else you'd bring to a conversation. Many developers run both in parallel.",
+      },
+      {
+        q: "Does bedda.ai have IDE integration?",
+        a: "bedda.ai is a web-based AI chat platform without a native IDE plugin. For IDE-integrated autocomplete, GitHub Copilot, Cursor, or Tabnine are better choices. bedda.ai is the right tool for code-related tasks that benefit from a conversational interface: review, explanation, architecture planning, and debugging complex issues.",
+      },
+      {
+        q: "How much does Tabnine cost?",
+        a: "Tabnine Basic is free with limited completions. Tabnine Pro is $9/month per user. Tabnine Business (team features, custom model training) is $39/month per user. bedda.ai Plus ($12/mo) includes Claude 4 and GPT-5 — more capable than Tabnine's models for chat-based coding tasks.",
+      },
+    ],
+  },
+
+  "bedda-vs-suno": {
+    slug: "bedda-vs-suno",
+    competitor: "Suno AI",
+    competitorUrl: "https://suno.com",
+    competitorPrice: "$10-30/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Suno AI",
+    metaTitle: "bedda.ai vs Suno AI (2026) — AI Music vs Full AI Platform",
+    metaDescription:
+      "Compare bedda.ai and Suno AI. Suno generates music from text prompts. bedda.ai is a full AI platform with 36+ models for writing, coding, research, and more for $12/mo.",
+    ogTitle: "bedda.ai vs Suno AI — Specialized Music Gen vs Full AI Suite",
+    ogDescription:
+      "Suno AI generates music from text ($10-30/mo). bedda.ai is a full AI platform — Claude 4, GPT-5, Gemini, image generation, knowledge base, and 36+ models for $12/mo.",
+    heroHeadline: "Suno makes music. bedda makes everything else.",
+    heroSubtext:
+      "Suno AI is purpose-built for AI music generation — and it&apos;s excellent at it. bedda.ai is a full AI platform giving you 36+ frontier models for writing, research, coding, image generation, and more for $12/mo.",
+    verdict:
+      "Suno and bedda.ai don't overlap — they're different categories. Suno is best-in-class for AI music generation; if that's your primary use case, it's the right tool. bedda.ai covers every other AI task: writing, coding, research, image generation, video generation, data analysis. Most users who need AI music generation use Suno for that specific task and bedda.ai for everything else.",
+    switchReasons: [
+      "Access 36+ frontier models for writing, coding, and research",
+      "Image generation with DALL-E 3, Imagen 3, and Flux 1.1 Pro",
+      "Video generation alongside text and image AI",
+      "Claude 4 and GPT-5 for every task beyond music",
+      "Knowledge base, web search, code execution, and more",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$10-30/mo" },
+      { feature: "AI music generation", bedda: false, competitor: true },
+      { feature: "Lyrics writing", bedda: "Via Claude/GPT-5", competitor: true },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Claude 4 writing AI", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Music model only" },
+    ],
+    faq: [
+      {
+        q: "Does bedda.ai generate music?",
+        a: "No — bedda.ai doesn't include AI music generation. If you need AI-generated music tracks, Suno or Udio are the best specialized tools. bedda.ai covers writing, coding, research, image generation, video generation, and 36+ AI model access.",
+      },
+      {
+        q: "Can I use bedda.ai to write lyrics?",
+        a: "Yes — Claude 4 and GPT-5 are excellent at lyric writing, song structure, rhyme schemes, and creative writing. You can use bedda.ai to write lyrics, then use Suno to generate the music for them.",
+      },
+      {
+        q: "How much does Suno cost?",
+        a: "Suno Basic is free (10 credits/day). Suno Pro is $10/month (500 credits/month). Suno Premier is $30/month (2000 credits/month). Credits are used per generated track.",
+      },
+    ],
+  },
+
+  "bedda-vs-luma-ai": {
+    slug: "bedda-vs-luma-ai",
+    competitor: "Luma AI (Dream Machine)",
+    competitorUrl: "https://lumalabs.ai",
+    competitorPrice: "$29-299/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Luma AI (Dream Machine)",
+    metaTitle: "bedda.ai vs Luma AI (2026) — AI Video Generation Compared",
+    metaDescription:
+      "Compare bedda.ai and Luma AI Dream Machine. Luma specializes in high-quality AI video. bedda.ai includes video generation plus 36+ AI models for writing, coding, research and more — starting at $12/mo.",
+    ogTitle: "bedda.ai vs Luma AI — Video-Only vs Full AI Platform with Video",
+    ogDescription:
+      "Luma AI Dream Machine is $29-299/mo for AI video generation. bedda.ai includes Kling video generation plus Claude 4, GPT-5, image generation, and 36+ models starting at $12/mo.",
+    heroHeadline: "Luma AI is video-only. bedda gives you video plus 36+ AI models.",
+    heroSubtext:
+      "Luma AI Dream Machine is excellent for AI video generation. bedda.ai includes video generation (via Kling) plus Claude 4, GPT-5, Gemini 2.5 Pro, image generation, code execution, knowledge base, and 32+ more frontier models — starting at $12/mo.",
+    verdict:
+      "Luma AI Dream Machine produces exceptional quality video and is worth using if video generation is a core part of your workflow. bedda.ai's video generation (Kling) covers most video use cases at a fraction of the cost — and includes an entire AI platform alongside it. For intensive video production work, Luma's quality advantage may justify the premium. For users who need video occasionally plus everything else AI can do, bedda.ai is dramatically better value.",
+    switchReasons: [
+      "Video generation included alongside Claude 4, GPT-5, and 34 more models",
+      "Image generation (DALL-E 3, Imagen 3, Flux) in the same subscription",
+      "Save $17-287/mo vs Luma's pricing",
+      "Writing, coding, research, and knowledge base — not video only",
+      "7-day free trial with no credit card required",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$29-299/mo" },
+      { feature: "AI video generation", bedda: true, competitor: true },
+      { feature: "Text-to-video", bedda: true, competitor: true },
+      { feature: "Image-to-video", bedda: true, competitor: true },
+      { feature: "4K video quality", bedda: false, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Claude 4 writing AI", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Knowledge base", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Video model only" },
+    ],
+    faq: [
+      {
+        q: "How does bedda.ai's video generation compare to Luma AI?",
+        a: "bedda.ai uses Kling video generation (fal.ai hosted), which produces solid quality AI video at standard and pro quality tiers. Luma AI Dream Machine is optimized specifically for video and generally produces higher quality output — particularly for complex motion and photorealistic content. For professional video production, Luma's quality may justify the higher price. For everyday video content needs, bedda.ai's included video generation is more than sufficient.",
+      },
+      {
+        q: "Is Luma AI free?",
+        a: "Luma AI has a free tier with limited credits. Luma Standard is $29.99/month (120 generations/month). Luma Plus is $99.99/month. Luma Pro is $299.99/month. Credits vary by video length and quality settings.",
+      },
+      {
+        q: "What video AI is included with bedda.ai?",
+        a: "bedda.ai includes access to Kling video generation (text-to-video and image-to-video) via the /studio/video interface, with standard and pro quality options and 5-10 second duration clips. Image generation (DALL-E 3, Imagen 3, Flux 1.1 Pro) is also included via /studio.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {

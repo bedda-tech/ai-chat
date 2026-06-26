@@ -702,6 +702,42 @@ const posts = [
     readingTime: "10 min read",
     category: "AI for Developers",
   },
+  {
+    slug: "chatgpt-plus-review-2026",
+    title: "ChatGPT Plus Review 2026: Is It Worth $20/Month?",
+    description:
+      "An honest review of ChatGPT Plus in 2026. What you get, what you don't, and whether $20/month is good value — or whether you should be looking at alternatives.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Subscription Reviews",
+  },
+  {
+    slug: "ai-for-remote-teams-2026",
+    title: "Best AI Tools for Remote Teams in 2026",
+    description:
+      "The top AI tools remote teams are using in 2026 — from async communication to coding, writing, and collaboration. Which subscriptions are actually worth it?",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "AI for Business",
+  },
+  {
+    slug: "best-ai-tools-agencies-2026",
+    title: "Best AI Tools for Marketing Agencies in 2026",
+    description:
+      "The AI tools top marketing agencies are using in 2026 — from content creation to client reporting. What to buy, what to skip, and how to build an ROI-positive AI stack.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "AI for Business",
+  },
+  {
+    slug: "ai-for-solopreneurs-2026",
+    title: "Best AI Tools for Solopreneurs in 2026 (The Honest Guide)",
+    description:
+      "What AI tools solopreneurs and one-person businesses actually need in 2026. Skip the hype — here's what drives real leverage for solo operators.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Productivity",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
