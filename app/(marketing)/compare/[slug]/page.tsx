@@ -3691,6 +3691,256 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-frase": {
+    slug: "bedda-vs-frase",
+    competitor: "Frase.io",
+    competitorUrl: "https://frase.io",
+    competitorPrice: "$114-450/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Frase.io",
+    metaTitle: "bedda.ai vs Frase.io (2026) — AI Writing for 90% Less",
+    metaDescription:
+      "Compare bedda.ai and Frase.io. Frase charges $114-450/mo for AI content briefs and writing. bedda.ai gives you Claude 4, GPT-5, Gemini, and 36+ models for $12/mo. 7-day free trial.",
+    ogTitle: "bedda.ai vs Frase.io — Same Content AI, 90% Lower Price",
+    ogDescription:
+      "Frase.io is $114-450/mo for AI content briefs. bedda.ai gives you Claude 4 and GPT-5 for content writing at $12/mo — plus 34 more models, image gen, and more.",
+    heroHeadline:
+      "Frase charges $114/mo for AI content. bedda charges $12.",
+    heroSubtext:
+      "Frase.io is a solid SEO content tool — but at $114-450/month, you're paying a premium for a wrapper around the same AI models available directly on bedda.ai for $12/month, plus 35 other frontier models.",
+    verdict:
+      "Frase.io combines SEO keyword research with AI writing assistance, which has value for content strategists. But the $114-450/mo price is nearly 10-37x what bedda.ai charges. If you're using Frase primarily for its AI writing features (rather than keyword data), bedda.ai's Claude 4 and GPT-5 produce higher quality content at a fraction of the cost. Pair bedda with a cheaper SEO tool (Ahrefs, Semrush, or free alternatives) and you'll spend less and get better results.",
+    switchReasons: [
+      "Claude 4 and GPT-5 outperform Frase's AI writing quality at any price",
+      "Save $102-438/month vs Frase — $1,224-5,256/year",
+      "36+ models for every content type: long-form, social, email, scripts",
+      "Knowledge base for brand voice and style guide context",
+      "Web search for real-time research within the same interface",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$114-450/mo" },
+      { feature: "AI content writing", bedda: true, competitor: true },
+      { feature: "Claude 4 access", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "SEO keyword research", bedda: false, competitor: true },
+      { feature: "SERP analysis", bedda: false, competitor: true },
+      { feature: "Web search (real-time)", bedda: true, competitor: true },
+      { feature: "Knowledge base / brand context", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1 (GPT-based)" },
+    ],
+    faq: [
+      {
+        q: "What is Frase.io used for?",
+        a: "Frase.io is an AI content tool that combines SEO keyword research, SERP analysis, and AI-assisted writing to help content marketers create optimized blog posts and articles. It's popular in the content marketing space for its research-to-draft workflow.",
+      },
+      {
+        q: "Is bedda.ai a Frase alternative for writing?",
+        a: "Yes. Claude 4 and GPT-5 on bedda.ai are more capable writing models than what Frase uses internally, and bedda's knowledge base lets you inject brand voice and style guides. bedda doesn't include SEO keyword data — for that, you'd pair it with a dedicated SEO tool.",
+      },
+      {
+        q: "How much does Frase cost?",
+        a: "Frase Basic is $114.99/month for limited AI content. Frase Team starts at $$114.99/mo + $25/seat. The full Frase Pro plan is $450/month. bedda.ai Plus is $12/month with a 7-day free trial.",
+      },
+      {
+        q: "Can Claude write SEO content?",
+        a: "Yes — Claude 4 and GPT-5 both excel at writing SEO-optimized content when given target keywords and search intent context. The content quality is generally higher than Frase's output. Pair bedda with free keyword research (Google Search Console, Ubersuggest, AnswerThePublic) for a complete workflow at a fraction of Frase's cost.",
+      },
+    ],
+  },
+
+  "bedda-vs-surfer-seo": {
+    slug: "bedda-vs-surfer-seo",
+    competitor: "Surfer SEO",
+    competitorUrl: "https://surferseo.com",
+    competitorPrice: "$89-219/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Surfer SEO",
+    metaTitle: "bedda.ai vs Surfer SEO (2026) — AI Writing vs SEO Platform",
+    metaDescription:
+      "Compare bedda.ai and Surfer SEO. Surfer is $89-219/mo for SEO-optimized content writing. bedda.ai gives you Claude 4, GPT-5, Gemini, and 36+ models for $12/mo.",
+    ogTitle: "bedda.ai vs Surfer SEO — AI Content Without the $89+ Price Tag",
+    ogDescription:
+      "Surfer SEO charges $89-219/mo for AI content optimization. bedda.ai includes Claude 4, GPT-5, and 36+ frontier models for AI-assisted writing at $12/mo.",
+    heroHeadline:
+      "Surfer SEO is $89/mo. bedda gives you better AI writing for $12.",
+    heroSubtext:
+      "Surfer SEO helps content teams optimize articles for search rankings. bedda.ai gives you the frontier AI models (Claude 4, GPT-5, Gemini 2.5 Pro) that outwrite Surfer's AI — plus 33 more models, image generation, and more — starting at $12/month.",
+    verdict:
+      "Surfer SEO's content editor and SERP analyzer have real value for SEO-first content teams. But the AI writing component has been surpassed by Claude 4 and GPT-5. If you're using Surfer primarily for its AI writing features, bedda.ai is dramatically better quality at 85% lower cost. If you need Surfer's NLP keyword optimization and content scoring, pair bedda's AI writing with Surfer's data layer — you'll produce better content using the right tool for each job.",
+    switchReasons: [
+      "Claude 4 and GPT-5 produce higher quality, more natural content than Surfer's AI",
+      "Save $77-207/month — $924-2,484/year",
+      "36+ models for every content type beyond long-form articles",
+      "Knowledge base for brand guidelines and style consistency",
+      "No artificial word count limits or writing credits",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$89-219/mo" },
+      { feature: "AI content writing", bedda: true, competitor: true },
+      { feature: "Claude 4 (Opus, Sonnet)", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "SEO content scoring", bedda: false, competitor: true },
+      { feature: "SERP analysis", bedda: false, competitor: true },
+      { feature: "NLP keyword suggestions", bedda: false, competitor: true },
+      { feature: "Web search (real-time)", bedda: true, competitor: true },
+      { feature: "Knowledge base / brand context", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1 (GPT-based)" },
+    ],
+    faq: [
+      {
+        q: "What is Surfer SEO?",
+        a: "Surfer SEO is an AI-powered content optimization platform that analyzes top-ranking pages for a given keyword and provides recommendations (NLP terms, headings, word count, structure) to help your content rank higher. It includes an AI writing assistant that generates content within these SEO guidelines.",
+      },
+      {
+        q: "Is bedda.ai a replacement for Surfer SEO?",
+        a: "Partially. bedda.ai replaces Surfer's AI writing component with superior models (Claude 4, GPT-5) at lower cost. It does not replace Surfer's SEO data (SERP analysis, NLP keyword scoring, content grader). For SEO-focused content teams, the optimal stack is bedda for writing + Surfer for SEO data — or free alternatives like Google Search Console and AnswerThePublic.",
+      },
+      {
+        q: "How much does Surfer SEO cost?",
+        a: "Surfer Essential is $89/month (30 articles/month). Surfer Scale is $129/month (100 articles/month). Surfer Enterprise is $219/month. bedda.ai Plus is $12/month with no article limits.",
+      },
+      {
+        q: "Can I use Claude to write SEO articles?",
+        a: "Yes. Claude 4 and GPT-5 are both excellent for long-form SEO content. Give them the target keyword, search intent, and top competitor URLs (which web search can fetch) and they produce well-structured, naturally readable articles. The output quality typically exceeds Surfer's AI writing while requiring no content credit limits.",
+      },
+    ],
+  },
+
+  "bedda-vs-claude-teams": {
+    slug: "bedda-vs-claude-teams",
+    competitor: "Claude.ai Teams",
+    competitorUrl: "https://claude.ai",
+    competitorPrice: "$25-30/user/mo",
+    beddaPrice: "$12/user/mo",
+    title: "bedda.ai vs Claude.ai Teams",
+    metaTitle:
+      "bedda.ai vs Claude.ai Teams (2026) — Team AI for $12 vs $25/user",
+    metaDescription:
+      "Compare bedda.ai Teams and Claude.ai Teams. Claude Teams is $25-30/user/mo for Anthropic models only. bedda.ai gives teams Claude + GPT-5 + Gemini + 36+ models for $12/user/mo.",
+    ogTitle:
+      "bedda.ai vs Claude.ai Teams — More Models, Half the Price Per Seat",
+    ogDescription:
+      "Claude.ai Teams costs $25-30/user/mo for Anthropic models. bedda.ai gives teams Claude 4, GPT-5, Gemini 2.5, Grok, and 32+ more models for $12/user/mo — with team workspaces and shared knowledge bases.",
+    heroHeadline:
+      "Claude Teams is $25/user. bedda gives you Claude + 35 more models for $12.",
+    heroSubtext:
+      "Claude.ai Teams gives your organization Anthropic's models with admin controls. bedda.ai gives you Claude 4 PLUS GPT-5, Gemini 2.5, Grok 3, and 32+ more models — with team workspaces, shared knowledge bases, and real-time collaboration — at half the per-seat cost.",
+    verdict:
+      "Claude.ai Teams is a solid enterprise choice if your team exclusively uses Anthropic models. But at $25-30/user/month, you're paying a significant premium for a single-vendor AI platform. bedda.ai delivers the same Claude access alongside every other frontier model at $12/user/month — with additional team features like shared project workspaces, team knowledge bases, and model usage policies. For budget-conscious teams that want model flexibility, bedda.ai is the clear choice.",
+    switchReasons: [
+      "Keep full Claude 4 Opus, Sonnet, and Haiku access for your team",
+      "Add GPT-5, Gemini 2.5 Pro, Grok 3, and 32 more models to team workflows",
+      "Save $13-18/user/month — $156-216/user/year",
+      "Shared project workspaces and team knowledge bases included",
+      "Model usage policies to control which models team members can use",
+    ],
+    rows: [
+      {
+        feature: "Per-seat price",
+        bedda: "$12/user/mo",
+        competitor: "$25-30/user/mo",
+      },
+      { feature: "Claude 4 Opus access", bedda: true, competitor: true },
+      { feature: "Claude 4 Sonnet", bedda: true, competitor: true },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 3", bedda: true, competitor: false },
+      { feature: "DeepSeek R1", bedda: true, competitor: false },
+      { feature: "Admin controls", bedda: true, competitor: true },
+      { feature: "Team workspaces", bedda: true, competitor: true },
+      { feature: "Shared knowledge base", bedda: true, competitor: false },
+      { feature: "Model usage policies", bedda: true, competitor: false },
+      { feature: "Real-time collaboration", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Anthropic only" },
+    ],
+    faq: [
+      {
+        q: "Does bedda.ai have Claude for teams?",
+        a: "Yes. bedda.ai includes Claude 4 Opus, Sonnet, and Haiku for all team members via the Vercel AI Gateway. Teams also get shared project workspaces, team knowledge bases, and model usage policies — features that Claude.ai Teams doesn't offer.",
+      },
+      {
+        q: "How much does Claude.ai Teams cost?",
+        a: "Claude.ai Teams is $25/user/month (billed annually) or $30/user/month (billed monthly), with a minimum of 5 seats. bedda.ai Plus is $12/user/month with no minimum seat count.",
+      },
+      {
+        q: "What team features does bedda.ai have?",
+        a: "bedda.ai Teams includes: shared project workspaces with project-scoped knowledge bases, team chat sharing (share conversations with team members), model usage policies (allowlist/denylist models per team, set cost caps), real-time typing indicators for collaborative sessions, team member invites with role-based access, and audit logging.",
+      },
+      {
+        q: "Can our team use both Claude and GPT-5 on bedda.ai?",
+        a: "Yes — every team member can switch between Claude 4, GPT-5, Gemini 2.5 Pro, Grok 3, and 32+ other models within the same interface. Admins can configure model usage policies to restrict to approved models if needed.",
+      },
+    ],
+  },
+
+  "bedda-vs-venice-ai": {
+    slug: "bedda-vs-venice-ai",
+    competitor: "Venice AI",
+    competitorUrl: "https://venice.ai",
+    competitorPrice: "$8-50/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Venice AI",
+    metaTitle: "bedda.ai vs Venice AI (2026) — Privacy vs Full AI Platform",
+    metaDescription:
+      "Compare bedda.ai and Venice AI. Venice focuses on private, uncensored AI. bedda.ai gives you Claude 4, GPT-5, Gemini, and 36+ frontier models with a 7-day free trial for $12/mo.",
+    ogTitle: "bedda.ai vs Venice AI — Frontier Models vs Privacy-First AI",
+    ogDescription:
+      "Venice AI runs open-source models privately for $8-50/mo. bedda.ai gives you Claude 4, GPT-5, Gemini 2.5 Pro, and 36+ frontier models — the most capable AI available — for $12/mo.",
+    heroHeadline:
+      "Venice offers privacy. bedda offers the world's best AI models.",
+    heroSubtext:
+      "Venice AI runs open-source models (Llama, Mistral) without storing your data. bedda.ai routes to frontier AI (Claude 4, GPT-5, Gemini 2.5 Pro) with enterprise-grade infrastructure. The privacy trade-off is real — but so is the capability gap.",
+    verdict:
+      "Venice AI has a genuine value proposition for users who prioritize privacy above all else — no conversation logging, no training data use. But the models Venice runs (Llama, Mistral) lag significantly behind Claude 4, GPT-5, and Gemini 2.5 Pro on most tasks. bedda.ai uses enterprise API access to frontier models with Anthropic, OpenAI, and Google's standard data protection policies — your conversations are not used for training. If you need the best AI capabilities with standard enterprise privacy protections, bedda.ai is the stronger choice.",
+    switchReasons: [
+      "Claude 4 and GPT-5 dramatically outperform Llama and Mistral on complex tasks",
+      "Frontier models for writing, coding, and reasoning — not just chatting",
+      "Image and video generation Venice doesn't offer",
+      "36+ models including every major frontier AI in one subscription",
+      "Standard enterprise privacy (no training on your data via API)",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$8-50/mo" },
+      { feature: "Claude 4 (Opus, Sonnet)", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Open-source models (Llama)", bedda: true, competitor: true },
+      { feature: "Mistral models", bedda: true, competitor: true },
+      { feature: "No conversation logging", bedda: false, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: true },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "~10 (OSS only)" },
+    ],
+    faq: [
+      {
+        q: "Is Venice AI truly private?",
+        a: "Venice AI's privacy claims are based on running open-source models on their own infrastructure without logging conversations. This is meaningful for users who want to avoid any conversation data leaving the inference host. Note that model responses are still generated server-side — conversations travel over the network.",
+      },
+      {
+        q: "Does bedda.ai share my conversations with AI companies?",
+        a: "No — bedda.ai routes to AI models via enterprise APIs (Anthropic, OpenAI, Google). Per these providers' API policies, your conversations are not used for model training. This is the standard enterprise data protection arrangement, different from free consumer products like Claude.ai or ChatGPT free tier.",
+      },
+      {
+        q: "How much does Venice AI cost?",
+        a: "Venice AI Free has limited usage. Venice AI Pro is $8/month for standard access. Venice AI Pro+ is $50/month for more usage and features. bedda.ai Plus is $12/month with 36+ frontier models and a 7-day free trial.",
+      },
+      {
+        q: "Which AI models does Venice AI use?",
+        a: "Venice AI runs open-source models: Llama 3.3 70B, Mistral 7B, and similar OSS models. These models are significantly less capable than Claude 4, GPT-5, and Gemini 2.5 Pro on complex tasks, particularly coding, analysis, and nuanced writing.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {

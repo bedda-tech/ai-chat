@@ -774,6 +774,42 @@ const posts = [
     readingTime: "8 min read",
     category: "AI for Writing",
   },
+  {
+    slug: "best-ai-tools-2026",
+    title: "Best AI Tools in 2026: The Complete Guide (Ranked by Category)",
+    description:
+      "The definitive guide to the best AI tools in 2026 — by category, use case, and budget. What's actually worth paying for and what to skip.",
+    date: "June 2026",
+    readingTime: "12 min read",
+    category: "Guides",
+  },
+  {
+    slug: "ai-for-architects-2026",
+    title: "Best AI Tools for Architects in 2026",
+    description:
+      "How architects and architecture firms are using AI in 2026 — from design concept generation to project documentation, client presentations, and code compliance research.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "AI by Profession",
+  },
+  {
+    slug: "ai-for-executive-assistants-2026",
+    title: "Best AI Tools for Executive Assistants in 2026",
+    description:
+      "How executive assistants and administrative professionals are using AI in 2026 to multiply their impact — email drafting, meeting prep, research, and document management.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "AI by Profession",
+  },
+  {
+    slug: "how-to-use-ai-at-work-2026",
+    title: "How to Use AI at Work in 2026 (The Practical Guide)",
+    description:
+      "A no-nonsense guide to using AI productively at work in 2026 — which tools to use, which tasks AI handles well, and how to integrate AI into your daily workflow.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "Productivity",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
