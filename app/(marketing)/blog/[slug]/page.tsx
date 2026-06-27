@@ -17300,6 +17300,672 @@ Be specific about line numbers. Suggest fixes.
       </article>
     ),
   },
+
+  "best-ai-for-entrepreneurs-2026": {
+    slug: "best-ai-for-entrepreneurs-2026",
+    title: "Best AI Tools for Entrepreneurs in 2026",
+    description:
+      "The AI stack every entrepreneur needs in 2026 — from writing investor pitches to building MVPs, validating ideas, and running lean operations.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Use Cases",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          Entrepreneurs in 2026 have an unfair advantage: AI that would have cost
+          a 10-person team two years ago now costs $12/month. Here&apos;s how to
+          use it to move faster than competitors who haven&apos;t figured it out yet.
+        </p>
+
+        <h2>The Entrepreneur&apos;s AI Model Stack</h2>
+        <p>Different tasks need different models. Here&apos;s the breakdown:</p>
+        <div className="not-prose overflow-x-auto">
+          <table className="w-full border-collapse text-sm">
+            <thead>
+              <tr className="border-b bg-muted/50">
+                <th className="p-3 text-left">Task</th>
+                <th className="p-3 text-left">Best Model</th>
+                <th className="p-3 text-left">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b">
+                <td className="p-3">Investor pitch decks</td>
+                <td className="p-3 font-medium">Claude 4 Opus</td>
+                <td className="p-3 text-muted-foreground">Nuanced narrative, persuasive framing</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3">MVP code / prototyping</td>
+                <td className="p-3 font-medium">GPT-5</td>
+                <td className="p-3 text-muted-foreground">Best coding benchmarks, strong tool use</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3">Market research</td>
+                <td className="p-3 font-medium">Gemini 2.5 Pro</td>
+                <td className="p-3 text-muted-foreground">Largest context window, web search</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3">Customer interviews / analysis</td>
+                <td className="p-3 font-medium">Claude 4 Sonnet</td>
+                <td className="p-3 text-muted-foreground">Nuanced qualitative synthesis</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3">Financial modeling</td>
+                <td className="p-3 font-medium">GPT-5</td>
+                <td className="p-3 text-muted-foreground">Strong at structured data and Excel formulas</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3">Email / cold outreach</td>
+                <td className="p-3 font-medium">Claude 4 Sonnet</td>
+                <td className="p-3 text-muted-foreground">Natural-sounding, tone-perfect copy</td>
+              </tr>
+              <tr>
+                <td className="p-3">Quick tasks / drafts</td>
+                <td className="p-3 font-medium">GPT-5 Mini</td>
+                <td className="p-3 text-muted-foreground">Fast, cheap, good enough for most things</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Writing Investor Pitches</h2>
+        <p>
+          Claude 4 Opus is the best AI for investor materials. Its strength is
+          narrative — it understands how to structure a story arc that starts with
+          the problem, builds to the solution, and makes the opportunity feel inevitable.
+        </p>
+        <p>
+          Start by giving Claude your raw notes: market size data, problem you&apos;re
+          solving, how the product works, and who the target customer is. Ask it to
+          draft a 10-slide pitch structure. Then iterate slide by slide.
+        </p>
+        <p>
+          Use the knowledge base (RAG) feature: upload your market research documents
+          and competitor analysis, then ask Claude to reference specific data points
+          when drafting the market slide.
+        </p>
+
+        <h2>Building MVPs Faster</h2>
+        <p>
+          GPT-5 is the strongest coding model in 2026. For entrepreneurs who code
+          or work with technical co-founders, using GPT-5 for MVP development can
+          cut prototyping time by 40-60%.
+        </p>
+        <p>
+          Effective patterns for MVP development:
+        </p>
+        <ul>
+          <li>
+            <strong>Architecture first:</strong> Ask GPT-5 to design the data model
+            and API structure before writing code. Getting the schema right early
+            saves significant refactoring later.
+          </li>
+          <li>
+            <strong>Feature flags from the start:</strong> Ask it to implement
+            feature flags in every service. This lets you ship incomplete features
+            safely and run A/B tests later.
+          </li>
+          <li>
+            <strong>Boilerplate in seconds:</strong> Paste your stack (Next.js +
+            Supabase + Stripe) and ask for the auth + billing boilerplate. GPT-5
+            generates production-ready code that would take a developer half a day.
+          </li>
+        </ul>
+        <p>
+          Use the model comparison arena to run the same prompt through GPT-5 and
+          Claude 4 simultaneously. For complex code, you&apos;ll often find one model
+          handles the specific problem better.
+        </p>
+
+        <h2>Market Validation and Research</h2>
+        <p>
+          Gemini 2.5 Pro has the largest context window (1M+ tokens) and strong
+          web search integration. For market research, you can:
+        </p>
+        <ul>
+          <li>Paste entire competitor websites and ask for a feature gap analysis</li>
+          <li>Upload 50-page industry reports and ask for the 10 key insights</li>
+          <li>Ask for a job-to-be-done analysis of customer pain points from review sites</li>
+          <li>Generate survey questions for customer discovery interviews</li>
+        </ul>
+
+        <h2>Running Lean Operations</h2>
+        <p>
+          For a solo founder or small team, AI replaces the need for several
+          specialized contractors:
+        </p>
+        <ul>
+          <li><strong>Copywriter:</strong> Claude 4 for marketing copy, landing pages, email sequences</li>
+          <li><strong>Analyst:</strong> GPT-5 for financial models, data analysis, Excel formulas</li>
+          <li><strong>Designer (content):</strong> Image generation (DALL-E 3, Imagen 3) for social posts and mockups</li>
+          <li><strong>Researcher:</strong> Gemini 2.5 Pro for competitive analysis and industry deep-dives</li>
+          <li><strong>Engineer:</strong> GPT-5 for code, scripts, and automation</li>
+        </ul>
+        <p>
+          The key is having all of these in one tool. Switching between ChatGPT,
+          Claude.ai, and Gemini separately adds friction and cost. A multi-model
+          subscription gives you all of them in one interface.
+        </p>
+
+        <h2>What This Costs</h2>
+        <ul>
+          <li><strong>ChatGPT Plus + Claude Pro + Gemini Advanced:</strong> $60/month</li>
+          <li><strong>bedda.ai Plus:</strong> $12/month — all three models plus 33 more</li>
+        </ul>
+        <p>
+          For a bootstrapped founder watching every dollar, $48/month saved is
+          meaningful. That&apos;s $576/year back into product and growth.
+        </p>
+
+        <div className="not-prose my-8 rounded-xl border bg-primary/5 p-6">
+          <p className="mb-2 font-semibold text-lg">
+            The entrepreneur&apos;s AI stack — one subscription
+          </p>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Claude 4 for pitches and copy, GPT-5 for code, Gemini for research.
+            All 36+ models for $12/mo. 7-day free trial.
+          </p>
+          <div className="flex gap-3">
+            <Button asChild size="sm">
+              <Link href="/register">Start Free Trial</Link>
+            </Button>
+            <Button asChild size="sm" variant="outline">
+              <Link href="/pricing">See Plans</Link>
+            </Button>
+          </div>
+        </div>
+      </article>
+    ),
+  },
+
+  "ai-for-market-research-2026": {
+    slug: "ai-for-market-research-2026",
+    title: "How to Use AI for Market Research in 2026",
+    description:
+      "A practical guide to using AI models for competitive analysis, customer research, trend identification, and market sizing — with specific model recommendations for each task.",
+    date: "June 2026",
+    readingTime: "6 min read",
+    category: "Use Cases",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          AI has turned market research from a weeks-long project into a
+          days-long one. Here&apos;s how to use frontier models to run faster,
+          deeper competitive and customer research.
+        </p>
+
+        <h2>Competitive Analysis</h2>
+        <p>
+          For competitive analysis, Gemini 2.5 Pro is the best starting point.
+          Its web search integration lets it pull live information about competitors,
+          and its 1M+ token context window lets you paste multiple competitor
+          websites at once for side-by-side analysis.
+        </p>
+        <p>Effective prompts for competitive research:</p>
+        <ul>
+          <li>
+            &quot;Here are the feature pages for [Competitor A], [Competitor B], and
+            [Competitor C]. Identify the three biggest gaps in their offerings that
+            a new entrant could exploit.&quot;
+          </li>
+          <li>
+            &quot;Analyze their pricing pages. What pricing strategies are they using?
+            What assumptions about customer willingness-to-pay do those strategies reveal?&quot;
+          </li>
+          <li>
+            &quot;What are the most common complaints about [Competitor] on review sites?
+            Search for G2, Capterra, and Reddit mentions.&quot;
+          </li>
+        </ul>
+
+        <h2>Customer Discovery and Interview Analysis</h2>
+        <p>
+          Claude 4 Sonnet excels at qualitative analysis. If you&apos;ve conducted
+          customer discovery interviews, upload the transcripts to your knowledge
+          base and ask Claude to:
+        </p>
+        <ul>
+          <li>Identify the top 5 recurring pain points across all interviews</li>
+          <li>Group customers into distinct personas based on their needs</li>
+          <li>Extract the exact phrases customers use to describe the problem (for copywriting)</li>
+          <li>Identify which solutions customers have already tried and why they failed</li>
+        </ul>
+        <p>
+          The knowledge base feature (RAG) is essential here — upload all your
+          interview transcripts once, then ask follow-up questions across all of
+          them simultaneously.
+        </p>
+
+        <h2>Survey Design and Analysis</h2>
+        <p>
+          GPT-5 is strong at structured research tasks. For survey work:
+        </p>
+        <ul>
+          <li>
+            <strong>Design:</strong> &quot;Design a 10-question customer discovery survey for
+            [target audience]. Use a mix of Likert scale, multiple choice, and open-ended
+            questions. Prioritize questions that reveal willingness to pay.&quot;
+          </li>
+          <li>
+            <strong>Analysis:</strong> Paste raw survey responses and ask for thematic
+            coding — grouping similar open-ended responses into categories and calculating
+            approximate percentages for each theme.
+          </li>
+          <li>
+            <strong>Insight synthesis:</strong> &quot;Based on these survey results, what
+            are the 3 most actionable insights for product positioning?&quot;
+          </li>
+        </ul>
+
+        <h2>Market Sizing (TAM/SAM/SOM)</h2>
+        <p>
+          Market sizing with AI works best as a starting framework, not a final
+          answer. Use Gemini 2.5 Pro&apos;s web search to pull industry data:
+        </p>
+        <ul>
+          <li>&quot;What is the current TAM for [category]? Find recent industry reports.&quot;</li>
+          <li>&quot;What is the CAGR for [market] projected through 2028?&quot;</li>
+          <li>&quot;How many businesses in the US employ 10-50 people in [target SIC code]?&quot;</li>
+        </ul>
+        <p>
+          Then use Claude 4 to build the bottom-up model: &quot;Given [assumption about
+          penetration rate] and [average contract value], calculate our SAM and SAM
+          if we capture [X]% of addressable businesses.&quot;
+        </p>
+
+        <h2>Trend Identification</h2>
+        <p>
+          For identifying emerging trends in a market:
+        </p>
+        <ul>
+          <li>
+            Ask Gemini to search for &quot;fastest growing companies in [space] in 2025-2026&quot;
+            and identify common patterns in their growth strategies.
+          </li>
+          <li>
+            Upload a set of investor memos or pitch decks (if accessible) and ask
+            Claude to identify recurring investment themes.
+          </li>
+          <li>
+            Ask GPT-5 to analyze job posting data: &quot;What skills are companies in
+            [industry] hiring for most aggressively right now? What does that reveal
+            about where the industry is heading?&quot;
+          </li>
+        </ul>
+
+        <h2>Research Reports</h2>
+        <p>
+          Once you&apos;ve gathered insights, Claude 4 Opus is the best model for
+          turning raw research into a polished report. Give it your notes and ask
+          for a structured research report with executive summary, market overview,
+          competitive landscape, customer insights, and strategic recommendations.
+        </p>
+        <p>
+          Use the artifacts system to generate the report as a formatted document
+          you can share with stakeholders directly.
+        </p>
+
+        <div className="not-prose my-8 rounded-xl border bg-primary/5 p-6">
+          <p className="mb-2 font-semibold text-lg">
+            AI-powered market research — all models in one place
+          </p>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Gemini 2.5 Pro for web research, Claude 4 for analysis, GPT-5 for
+            structured data. Upload documents to your knowledge base. $12/mo.
+          </p>
+          <div className="flex gap-3">
+            <Button asChild size="sm">
+              <Link href="/register">Start Free Trial</Link>
+            </Button>
+            <Button asChild size="sm" variant="outline">
+              <Link href="/pricing">See Plans</Link>
+            </Button>
+          </div>
+        </div>
+      </article>
+    ),
+  },
+
+  "best-ai-for-operations-teams-2026": {
+    slug: "best-ai-for-operations-teams-2026",
+    title: "Best AI for Operations Teams in 2026",
+    description:
+      "How operations teams are using AI in 2026 to write SOPs, analyze processes, automate reporting, and optimize workflows — with specific model recommendations.",
+    date: "June 2026",
+    readingTime: "6 min read",
+    category: "Use Cases",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          Operations teams are quietly one of the biggest beneficiaries of AI in
+          2026. Process documentation, reporting, workflow analysis, and vendor
+          management — tasks that used to consume days — now take hours.
+        </p>
+
+        <h2>Writing SOPs and Process Documentation</h2>
+        <p>
+          Claude 4 Sonnet is the best model for SOP writing. Its instruction-following
+          is precise, and it produces well-structured, clear documentation that
+          doesn&apos;t require heavy editing.
+        </p>
+        <p>
+          Effective approach: record a Loom of the process, get a transcript, paste
+          it into Claude with the instruction: &quot;Turn this process walkthrough into a
+          structured SOP with numbered steps, decision points, and a checklist at the
+          end.&quot;
+        </p>
+        <p>
+          For existing SOPs that need updating, upload the current document to your
+          knowledge base, then ask Claude to identify gaps, outdated steps, or
+          ambiguous instructions.
+        </p>
+
+        <h2>Reporting and Data Analysis</h2>
+        <p>
+          GPT-5 handles structured data and reporting tasks well. Common use cases:
+        </p>
+        <ul>
+          <li>
+            <strong>Metrics narratives:</strong> Paste your monthly KPI data and ask
+            GPT-5 to write an executive summary explaining trends, anomalies, and
+            recommended actions.
+          </li>
+          <li>
+            <strong>Root cause analysis:</strong> &quot;Here is our incident data from
+            last quarter. Identify the top 3 root causes and suggest process changes
+            to prevent recurrence.&quot;
+          </li>
+          <li>
+            <strong>Excel / Sheets formulas:</strong> &quot;Write a formula to calculate
+            the 30-day rolling average of [metric] from column A, where column B is
+            the date.&quot;
+          </li>
+        </ul>
+
+        <h2>Vendor Management</h2>
+        <p>
+          Operations teams often need to evaluate vendors, draft RFPs, and negotiate
+          contracts. AI helps at each stage:
+        </p>
+        <ul>
+          <li>
+            <strong>RFP drafting:</strong> Claude 4 can generate a comprehensive RFP
+            from a brief description of your requirements. Give it your must-have
+            features, budget range, and evaluation criteria.
+          </li>
+          <li>
+            <strong>Contract review:</strong> Upload a vendor contract and ask Claude
+            to identify non-standard clauses, liability risks, and missing terms you
+            should negotiate.
+          </li>
+          <li>
+            <strong>Vendor comparison:</strong> After receiving proposals, paste all
+            vendor responses and ask Claude to create a side-by-side comparison matrix.
+          </li>
+        </ul>
+
+        <h2>Workflow Optimization</h2>
+        <p>
+          Describe your current workflow to Claude 4 Opus — including the tools used,
+          handoff points, and pain points — and ask: &quot;Identify bottlenecks in this
+          workflow and suggest three optimizations, ranked by expected impact.&quot;
+        </p>
+        <p>
+          Gemini 2.5 Pro works well for researching workflow automation tools. Ask
+          it to search for &quot;best [task type] automation tools in 2026&quot; and generate
+          a comparison table with pricing, pros/cons, and integration requirements.
+        </p>
+
+        <h2>Meeting Follow-Ups and Action Items</h2>
+        <p>
+          After meetings, paste the transcript (from Otter.ai, Fireflies, or any
+          transcription tool) into Claude and ask:
+        </p>
+        <ul>
+          <li>&quot;Extract all action items with owner and due date.&quot;</li>
+          <li>&quot;Write a 3-paragraph meeting summary for stakeholders who weren&apos;t present.&quot;</li>
+          <li>&quot;What decisions were made and what was left unresolved?&quot;</li>
+        </ul>
+
+        <h2>Model Recommendations for Ops Teams</h2>
+        <div className="not-prose overflow-x-auto">
+          <table className="w-full border-collapse text-sm">
+            <thead>
+              <tr className="border-b bg-muted/50">
+                <th className="p-3 text-left">Ops Task</th>
+                <th className="p-3 text-left">Best Model</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b">
+                <td className="p-3">SOP writing</td>
+                <td className="p-3 font-medium">Claude 4 Sonnet</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3">Data analysis / Excel</td>
+                <td className="p-3 font-medium">GPT-5</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3">Vendor research</td>
+                <td className="p-3 font-medium">Gemini 2.5 Pro</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3">Contract review</td>
+                <td className="p-3 font-medium">Claude 4 Opus</td>
+              </tr>
+              <tr>
+                <td className="p-3">Meeting summaries</td>
+                <td className="p-3 font-medium">Claude 4 Sonnet</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Team Setup</h2>
+        <p>
+          For ops teams, the Teams plan is the most efficient setup. You get shared
+          project workspaces (so all ops processes are in one place), a shared
+          knowledge base (upload your policy docs once, reference them in any
+          conversation), and audit logging for compliance.
+        </p>
+
+        <div className="not-prose my-8 rounded-xl border bg-primary/5 p-6">
+          <p className="mb-2 font-semibold text-lg">
+            AI for your operations team
+          </p>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Shared workspaces, knowledge base, and audit logging. Claude 4 for
+            SOPs, GPT-5 for data, Gemini for research. Teams plan available.
+          </p>
+          <div className="flex gap-3">
+            <Button asChild size="sm">
+              <Link href="/register">Start Free Trial</Link>
+            </Button>
+            <Button asChild size="sm" variant="outline">
+              <Link href="/teams">Teams Plan</Link>
+            </Button>
+          </div>
+        </div>
+      </article>
+    ),
+  },
+
+  "ai-for-business-writing-2026": {
+    slug: "ai-for-business-writing-2026",
+    title: "AI for Business Writing: The Complete Guide (2026)",
+    description:
+      "How to use AI models for business writing in 2026 — emails, proposals, executive reports, and presentations — with specific model recommendations and prompting strategies.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Guides",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          Business writing is one of the highest-leverage areas for AI in 2026.
+          The difference between mediocre and excellent business writing is often
+          the difference between winning and losing a deal — and AI can close that
+          gap in minutes.
+        </p>
+
+        <h2>Choosing the Right Model for Business Writing</h2>
+        <p>
+          Different business writing tasks benefit from different models:
+        </p>
+        <div className="not-prose overflow-x-auto">
+          <table className="w-full border-collapse text-sm">
+            <thead>
+              <tr className="border-b bg-muted/50">
+                <th className="p-3 text-left">Writing Type</th>
+                <th className="p-3 text-left">Best Model</th>
+                <th className="p-3 text-left">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b">
+                <td className="p-3">Executive communications</td>
+                <td className="p-3 font-medium">Claude 4 Opus</td>
+                <td className="p-3 text-muted-foreground">Nuanced tone, strategic framing</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3">Sales proposals</td>
+                <td className="p-3 font-medium">Claude 4 Sonnet</td>
+                <td className="p-3 text-muted-foreground">Persuasive structure, clear benefits</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3">Technical reports</td>
+                <td className="p-3 font-medium">GPT-5</td>
+                <td className="p-3 text-muted-foreground">Strong at structured data and analysis</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3">Email sequences</td>
+                <td className="p-3 font-medium">Claude 4 Sonnet</td>
+                <td className="p-3 text-muted-foreground">Natural-sounding, high open rates</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3">Research-based writing</td>
+                <td className="p-3 font-medium">Gemini 2.5 Pro</td>
+                <td className="p-3 text-muted-foreground">Web search, large document context</td>
+              </tr>
+              <tr>
+                <td className="p-3">Quick drafts / edits</td>
+                <td className="p-3 font-medium">Claude 4 Haiku</td>
+                <td className="p-3 text-muted-foreground">Fast, efficient for low-stakes writing</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Executive Communications</h2>
+        <p>
+          Writing to executives — board updates, investor communications, C-suite
+          emails — requires precision, confidence, and brevity. Claude 4 Opus
+          is the best model for this.
+        </p>
+        <p>
+          Key principles when prompting for executive writing:
+        </p>
+        <ul>
+          <li>
+            <strong>Lead with the ask:</strong> Tell Claude: &quot;This communication
+            should lead with the key decision needed, followed by supporting context.
+            The reader should know what you need from them in the first sentence.&quot;
+          </li>
+          <li>
+            <strong>Specify the tone:</strong> &quot;Write in a confident, direct tone.
+            Avoid hedging language. Every sentence should serve a purpose.&quot;
+          </li>
+          <li>
+            <strong>Constrain length:</strong> &quot;Maximum 150 words. Three paragraphs.&quot;
+            Executives value brevity over completeness.
+          </li>
+        </ul>
+
+        <h2>Sales Proposals</h2>
+        <p>
+          A well-structured proposal follows a specific arc: problem statement,
+          solution overview, proof/case studies, timeline, pricing, and next steps.
+          Claude 4 Sonnet handles this structure naturally.
+        </p>
+        <p>
+          Prompting approach: Give Claude a description of the prospect&apos;s business,
+          the pain they&apos;ve expressed, and your solution. Ask it to draft a proposal
+          that &quot;leads with their problem, not our product.&quot;
+        </p>
+        <p>
+          Use the artifacts feature to generate the proposal as a formatted document
+          you can send directly. For recurring proposal types, save your best draft
+          as a prompt in the Prompt Library.
+        </p>
+
+        <h2>Email Sequences</h2>
+        <p>
+          Claude 4 produces the most natural-sounding email copy of any frontier model.
+          For sequences — onboarding, sales, drip nurture — give it the full sequence
+          brief:
+        </p>
+        <ul>
+          <li>Who is receiving each email (role, company stage, pain point)</li>
+          <li>What the goal of each email is (educate, convert, re-engage)</li>
+          <li>Your brand voice (formal/casual, direct/educational)</li>
+          <li>How many emails and the spacing (Day 1, Day 3, Day 7...)</li>
+        </ul>
+        <p>
+          Ask for all emails in one output, clearly labeled, so you can review the
+          sequence arc before refining individual emails.
+        </p>
+
+        <h2>Business Reports</h2>
+        <p>
+          For data-heavy reports — financial analysis, market reports, performance
+          reviews — GPT-5 excels at turning structured data into readable narratives.
+        </p>
+        <p>
+          Upload your data to the knowledge base or paste it directly, then ask:
+          &quot;Write an executive summary (200 words) followed by a detailed analysis
+          with section headers. Use the data to support specific claims. End with
+          three actionable recommendations.&quot;
+        </p>
+
+        <h2>Improving Existing Writing</h2>
+        <p>
+          Sometimes you don&apos;t need a full draft — you need to improve what you have.
+          Effective editing prompts:
+        </p>
+        <ul>
+          <li>&quot;Tighten this by 30%. Remove any sentence that doesn&apos;t add new information.&quot;</li>
+          <li>&quot;Make this more assertive. Replace passive voice and hedging phrases.&quot;</li>
+          <li>&quot;Rewrite the opening to hook the reader immediately. The current opening buries the point.&quot;</li>
+          <li>&quot;This is written for an internal audience. Rewrite it for a customer-facing presentation.&quot;</li>
+        </ul>
+
+        <h2>Using Custom Instructions for Consistent Voice</h2>
+        <p>
+          In Settings, you can set custom instructions that apply to all conversations.
+          For business writing, include your brand voice guidelines, company name,
+          preferred terminology, and writing style preferences. Every AI output
+          will then automatically match your brand voice without repeated prompting.
+        </p>
+
+        <div className="not-prose my-8 rounded-xl border bg-primary/5 p-6">
+          <p className="mb-2 font-semibold text-lg">
+            AI business writing — all models in one place
+          </p>
+          <p className="mb-4 text-muted-foreground text-sm">
+            Claude 4 for proposals and emails, GPT-5 for reports, Gemini for
+            research-backed writing. Custom instructions for your brand voice. $12/mo.
+          </p>
+          <div className="flex gap-3">
+            <Button asChild size="sm">
+              <Link href="/register">Start Free Trial</Link>
+            </Button>
+            <Button asChild size="sm" variant="outline">
+              <Link href="/pricing">See Plans</Link>
+            </Button>
+          </div>
+        </div>
+      </article>
+    ),
+  },
 };
 
 export function generateStaticParams() {

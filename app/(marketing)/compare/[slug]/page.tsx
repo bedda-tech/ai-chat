@@ -4663,6 +4663,249 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-slack-ai": {
+    slug: "bedda-vs-slack-ai",
+    competitor: "Slack AI",
+    competitorUrl: "https://slack.com/intl/en-us/features/ai",
+    competitorPrice: "$10+/user/mo add-on",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Slack AI",
+    metaTitle: "bedda.ai vs Slack AI (2026) — Full AI Assistant vs Slack-Only AI",
+    metaDescription:
+      "Compare bedda.ai and Slack AI. Slack AI is a $10+/user/mo add-on that only works inside Slack. bedda.ai gives you GPT-5, Claude 4, Gemini and 36+ models for any task for $12/mo. 7-day free trial.",
+    ogTitle: "bedda.ai vs Slack AI — 36+ Models vs Slack-Only AI",
+    ogDescription:
+      "Slack AI costs $10+/user/mo on top of your Slack subscription and only works inside Slack. bedda.ai is $12/mo for a full AI assistant — Claude 4, GPT-5, Gemini, web search, image gen, and 36+ models.",
+    heroHeadline: "A full AI assistant for $12/mo — not just an AI for Slack",
+    heroSubtext:
+      "Slack AI is powerful for searching your Slack history and summarizing channels — but it only works inside Slack. bedda.ai gives you Claude 4, GPT-5, and Gemini 2.5 Pro for any task: writing, coding, research, image generation — for less than most Slack AI add-on plans.",
+    verdict:
+      "Slack AI is the right choice if your primary need is searching Slack history and summarizing conversations inside Slack. bedda.ai is the right choice when you need a general-purpose AI for drafting, coding, research, and analysis — everything outside Slack.",
+    switchReasons: [
+      "Claude 4 and GPT-5 for writing, coding, and analysis — not just Slack summaries",
+      "Works on any browser, any device — not locked to the Slack app",
+      "Web search, image generation, and code execution included at no extra cost",
+      "No per-seat add-on pricing — one flat $12/mo for everything",
+      "Knowledge base (RAG) to reference your own documents, not just Slack history",
+    ],
+    rows: [
+      { feature: "Monthly price (per user)", bedda: "$12/mo flat", competitor: "$10+/mo add-on" },
+      { feature: "Works outside Slack", bedda: true, competitor: false },
+      { feature: "Claude 4 (Opus, Sonnet)", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Slack channel summarization", bedda: false, competitor: true },
+      { feature: "Slack history search", bedda: false, competitor: true },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Slack-only features" },
+    ],
+    faq: [
+      {
+        q: "What is Slack AI?",
+        a: "Slack AI is an AI add-on for Slack Business+ and Enterprise Grid plans. It summarizes channel conversations and threads, answers questions by searching your Slack workspace history, and helps draft messages within Slack. It costs an additional $10/user/month on top of your existing Slack subscription.",
+      },
+      {
+        q: "Can Slack AI write code or generate images?",
+        a: "No — Slack AI is specifically designed for Slack-context tasks: summarizing conversations, searching Slack history, and drafting Slack messages. For general coding, writing, image generation, or research, you need a separate AI assistant like bedda.ai.",
+      },
+      {
+        q: "Does bedda.ai integrate with Slack?",
+        a: "Yes — bedda.ai has a Slack bot integration. Install the bedda Slack bot in any Slack workspace and mention @bedda to get Claude 4, GPT-5, or any other model directly in Slack threads. You get frontier model responses without paying per-seat Slack AI pricing.",
+      },
+      {
+        q: "Is Slack AI worth the extra cost?",
+        a: "Slack AI is worth it if your team spends significant time searching Slack history and needs conversation summaries. If you mainly want AI for writing, coding, or analysis, bedda.ai at $12/mo gives you far more capability for roughly the same price per seat.",
+      },
+    ],
+  },
+
+  "bedda-vs-hubspot-ai": {
+    slug: "bedda-vs-hubspot-ai",
+    competitor: "HubSpot Breeze AI",
+    competitorUrl: "https://www.hubspot.com/artificial-intelligence",
+    competitorPrice: "$800+/mo (requires HubSpot Professional)",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs HubSpot Breeze AI",
+    metaTitle: "bedda.ai vs HubSpot Breeze AI (2026) — $12/mo vs $800+/mo",
+    metaDescription:
+      "Compare bedda.ai and HubSpot Breeze AI. HubSpot AI requires a $800+/mo HubSpot Professional subscription. bedda.ai gives you GPT-5, Claude 4, Gemini and 36+ models for $12/mo. 7-day free trial.",
+    ogTitle: "bedda.ai vs HubSpot Breeze AI — Full AI for $12/mo vs $800/mo Platform",
+    ogDescription:
+      "HubSpot Breeze AI requires a HubSpot Professional subscription at $800+/mo per team. bedda.ai gives you Claude 4, GPT-5, Gemini 2.5 Pro and 36+ models as a standalone AI assistant for $12/mo.",
+    heroHeadline: "Full AI capability for $12/mo — not $800+/mo",
+    heroSubtext:
+      "HubSpot Breeze AI is excellent if you&apos;re already a HubSpot customer. But if you just need a powerful AI assistant for writing, research, and analysis, paying $800+/mo for HubSpot Professional to access AI features is a significant commitment. bedda.ai gives you Claude 4, GPT-5, and Gemini 2.5 Pro for $12/mo standalone.",
+    verdict:
+      "HubSpot Breeze AI wins for marketing and sales teams already using HubSpot CRM — the AI is tightly integrated with your contacts, deals, and email sequences. bedda.ai wins for individual contributors and small teams who need a powerful general-purpose AI without committing to a $800+/mo platform.",
+    switchReasons: [
+      "Standalone AI at $12/mo — no CRM subscription required",
+      "Claude 4 Opus for nuanced writing and GPT-5 for coding — not available in HubSpot AI",
+      "Image generation, video generation, and code execution included",
+      "Works for any industry or workflow, not just sales and marketing",
+      "Knowledge base (RAG) for any documents, not just HubSpot CRM data",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo standalone", competitor: "$800+/mo (requires HubSpot)" },
+      { feature: "Standalone AI (no platform required)", bedda: true, competitor: false },
+      { feature: "Claude 4 Opus", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "CRM data integration", bedda: false, competitor: true },
+      { feature: "Marketing email generation", bedda: true, competitor: true },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "HubSpot-specific features" },
+    ],
+    faq: [
+      {
+        q: "What is HubSpot Breeze AI?",
+        a: "HubSpot Breeze AI is HubSpot&apos;s suite of AI features built into the HubSpot CRM platform. It includes AI-assisted email writing, content generation, contact enrichment, conversation intelligence, and sales prediction. Full Breeze AI access requires a HubSpot Professional plan starting at $800/month for teams.",
+      },
+      {
+        q: "Can I use HubSpot AI without a HubSpot subscription?",
+        a: "No — HubSpot Breeze AI is embedded in the HubSpot platform and requires a HubSpot subscription. The Starter plan at $20/month has limited AI features. Full AI capabilities require Professional ($800/mo) or Enterprise ($3,600/mo) plans.",
+      },
+      {
+        q: "Does bedda.ai help with marketing and sales tasks?",
+        a: "Yes — Claude 4 and GPT-5 on bedda.ai are excellent for drafting email campaigns, writing landing page copy, creating sales scripts, and analyzing market research. Without the CRM integration, you&apos;ll need to paste your context manually — but the output quality from frontier models often exceeds HubSpot&apos;s built-in AI.",
+      },
+      {
+        q: "When should I choose HubSpot AI over bedda.ai?",
+        a: "Choose HubSpot Breeze AI if you&apos;re already a HubSpot CRM customer and want AI that automatically references your contacts, deal history, and email sequences. It&apos;s uniquely valuable for workflow automation within HubSpot. For general-purpose AI tasks outside your CRM, bedda.ai is significantly more capable and far cheaper.",
+      },
+    ],
+  },
+
+  "bedda-vs-salesforce-einstein": {
+    slug: "bedda-vs-salesforce-einstein",
+    competitor: "Salesforce Einstein",
+    competitorUrl: "https://www.salesforce.com/products/einstein/",
+    competitorPrice: "$75+/user/mo (requires Salesforce license)",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Salesforce Einstein AI",
+    metaTitle: "bedda.ai vs Salesforce Einstein (2026) — $12/mo vs $75+/user/mo",
+    metaDescription:
+      "Compare bedda.ai and Salesforce Einstein. Einstein requires a Salesforce license at $75+/user/mo. bedda.ai gives you GPT-5, Claude 4, Gemini and 36+ models for $12/mo standalone. 7-day free trial.",
+    ogTitle: "bedda.ai vs Salesforce Einstein — Full AI for $12/mo vs $75+/user",
+    ogDescription:
+      "Salesforce Einstein AI requires a Salesforce subscription at $75+/user/month. bedda.ai is $12/mo for Claude 4, GPT-5, Gemini 2.5 Pro and 36+ frontier models — no CRM required.",
+    heroHeadline: "Enterprise AI capability at $12/mo — not $75+ per user",
+    heroSubtext:
+      "Salesforce Einstein is exceptional for CRM-native AI: predicting deal close dates, auto-summarizing sales calls, and generating follow-up emails from your Salesforce data. But it costs $75-$150+/user/month and only works within Salesforce. bedda.ai gives you Claude 4, GPT-5, and Gemini for any AI task at $12/mo.",
+    verdict:
+      "Salesforce Einstein is best for enterprise sales and service teams deeply invested in the Salesforce ecosystem who need AI embedded in their CRM workflow. bedda.ai is best for individuals and teams who need frontier model AI for writing, coding, research, and analysis — at a fraction of the cost.",
+    switchReasons: [
+      "Claude 4 Opus and GPT-5 for writing, coding, and analysis — no Salesforce license needed",
+      "Flat $12/mo — not $75-150 per user per month",
+      "Works for any task, not just CRM-specific workflows",
+      "Image generation, code execution, and web search included",
+      "Teams plan for shared workspaces at $12/user/mo vs $75-300+/user",
+    ],
+    rows: [
+      { feature: "Monthly price (per user)", bedda: "$12/mo", competitor: "$75-150+/mo + Salesforce" },
+      { feature: "Standalone (no CRM required)", bedda: true, competitor: false },
+      { feature: "Claude 4 Opus", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "CRM data & deal intelligence", bedda: false, competitor: true },
+      { feature: "Sales call transcription / summary", bedda: false, competitor: true },
+      { feature: "Email draft generation", bedda: true, competitor: true },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Salesforce-specific features" },
+    ],
+    faq: [
+      {
+        q: "What is Salesforce Einstein?",
+        a: "Salesforce Einstein is Salesforce&apos;s AI layer, now branded as Agentforce and Einstein Copilot. It provides AI capabilities embedded in Sales Cloud, Service Cloud, and Marketing Cloud: predictive lead scoring, opportunity forecasting, automated case summarization, email generation from CRM data, and autonomous AI agents for sales workflows. It requires a Salesforce license.",
+      },
+      {
+        q: "How much does Salesforce Einstein actually cost?",
+        a: "Salesforce Einstein costs vary by product. Sales Cloud starts at $25/user/mo (Starter) to $300/user/mo (Einstein 1 Sales). Einstein Copilot (now Agentforce) adds $50-$150+/user/month on top. For a team of 10, expect $750-$4,500+/month just for Salesforce with AI features.",
+      },
+      {
+        q: "Can bedda.ai replace Salesforce Einstein?",
+        a: "Not for CRM-native workflows. Salesforce Einstein has unique value because it reads your CRM data — lead scores, pipeline history, customer records — to generate personalized outputs. bedda.ai can&apos;t access your Salesforce data unless you paste it manually. But for general writing, research, coding, and analysis, bedda.ai&apos;s frontier models outperform Salesforce Einstein.",
+      },
+      {
+        q: "What do Salesforce users use bedda.ai for?",
+        a: "Many Salesforce users combine both: Salesforce Einstein for CRM-native tasks (pipeline analysis, call summaries) and bedda.ai for everything else (writing proposals, competitive research, generating scripts, technical analysis). bedda.ai fills the gap where Salesforce AI doesn&apos;t reach.",
+      },
+    ],
+  },
+
+  "bedda-vs-monday-ai": {
+    slug: "bedda-vs-monday-ai",
+    competitor: "Monday.com AI",
+    competitorUrl: "https://monday.com/ai",
+    competitorPrice: "$16+/user/mo (Pro plan)",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Monday.com AI",
+    metaTitle: "bedda.ai vs Monday.com AI (2026) — Full AI Assistant vs Project AI",
+    metaDescription:
+      "Compare bedda.ai and Monday.com AI. Monday AI is built into work management plans at $16+/user/mo. bedda.ai gives you GPT-5, Claude 4, Gemini and 36+ models for $12/mo standalone. 7-day free trial.",
+    ogTitle: "bedda.ai vs Monday.com AI — 36+ Models vs Project Management AI",
+    ogDescription:
+      "Monday.com AI is built into work management plans at $16+/user/mo. bedda.ai is $12/mo for Claude 4, GPT-5, Gemini 2.5 Pro and 36+ frontier models — for any AI task, not just project management.",
+    heroHeadline: "General-purpose AI at $12/mo — not locked to project management",
+    heroSubtext:
+      "Monday.com AI is great for automating your Monday workflows: summarizing updates, generating subtasks, and predicting deadlines. But it only works inside Monday.com. bedda.ai gives you Claude 4, GPT-5, and Gemini 2.5 Pro for any AI task — at $4 less per month than Monday&apos;s Pro plan.",
+    verdict:
+      "Monday.com AI is the right choice if you&apos;re already a Monday user and want AI embedded in your project boards. bedda.ai is the right choice when you need a full AI assistant for writing, coding, research, and analysis — capabilities Monday AI doesn&apos;t offer.",
+    switchReasons: [
+      "Claude 4 and GPT-5 for writing, coding, and research — not just board summaries",
+      "Works on any device and any task, not locked to Monday boards",
+      "Image generation, web search, and code execution included",
+      "Flat $12/mo — $4 less than Monday Pro, with more AI capability",
+      "Knowledge base to upload your project documents for AI reference",
+    ],
+    rows: [
+      { feature: "Monthly price (per user)", bedda: "$12/mo", competitor: "$16+/mo (Pro)" },
+      { feature: "Standalone AI (no platform required)", bedda: true, competitor: false },
+      { feature: "Claude 4 (Opus, Sonnet)", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Project board AI (Monday-native)", bedda: false, competitor: true },
+      { feature: "Auto-generate subtasks", bedda: false, competitor: true },
+      { feature: "Writing & drafting (general)", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Monday-specific features" },
+    ],
+    faq: [
+      {
+        q: "What is Monday.com AI?",
+        a: "Monday.com AI is a set of AI features built into Monday.com&apos;s work management platform. On Pro ($16/user/mo) and Enterprise ($22+/user/mo) plans, you get AI-powered features like update summarization, automated subtask creation, AI-generated action items from meeting notes, and formula assistance in Monday boards.",
+      },
+      {
+        q: "Can Monday.com AI write content or generate images?",
+        a: "Monday AI is scoped to project management tasks within Monday.com. It can&apos;t generate images, write long-form content, run code, or perform web research. For those tasks, you need a separate AI assistant. bedda.ai at $12/mo covers all of this.",
+      },
+      {
+        q: "Does bedda.ai integrate with Monday.com?",
+        a: "Not natively — bedda.ai doesn&apos;t connect to Monday.com boards directly. However, you can paste Monday content into bedda.ai and use Claude 4 or GPT-5 to summarize, restructure, or generate content for your projects. Many teams use bedda.ai as their writing and research AI alongside Monday.com for project tracking.",
+      },
+      {
+        q: "Is Monday.com AI worth the Pro plan upgrade?",
+        a: "If Monday.com AI is your main reason to upgrade to Pro, consider whether a standalone AI assistant at $12/mo (bedda.ai) would serve you better. Monday AI is best when you&apos;re already a Monday user who wants AI embedded in existing workflows. For general AI capability, bedda.ai is more powerful and less expensive.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
