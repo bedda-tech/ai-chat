@@ -4178,6 +4178,243 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-chatpdf": {
+    slug: "bedda-vs-chatpdf",
+    competitor: "ChatPDF",
+    competitorUrl: "https://www.chatpdf.com",
+    competitorPrice: "$5-15/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs ChatPDF",
+    metaTitle: "bedda.ai vs ChatPDF (2026) — Full AI Suite vs PDF-Only Tool",
+    metaDescription:
+      "Compare bedda.ai and ChatPDF. bedda's knowledge base lets you chat with any document type — PDFs, Word files, CSVs — plus gives you Claude 4, GPT-5, and 36+ AI models. 7-day free trial.",
+    ogTitle: "bedda.ai vs ChatPDF — Chat with Docs + 36 AI Models vs PDF Only",
+    ogDescription:
+      "ChatPDF is a one-trick tool at $5-15/mo. bedda.ai gives you document chat (PDFs, Word, CSVs), web search, image generation, code execution, and 36+ frontier models for $12/mo.",
+    heroHeadline: "ChatPDF does one thing. bedda does everything — including that.",
+    heroSubtext:
+      "ChatPDF lets you chat with PDFs for $5-15/month. bedda.ai's knowledge base does the same with PDFs, Word docs, CSVs, and more — plus gives you Claude 4, GPT-5, Gemini, and 36+ AI models in the same subscription.",
+    verdict:
+      "If you're paying for ChatPDF to chat with documents, you're paying for a single feature. bedda.ai's knowledge base (RAG) handles the same use case — upload PDFs and ask questions — while also giving you the world's best AI models for every other task. At $12/mo vs $5-15/mo, it's a comparable price for dramatically more value.",
+    switchReasons: [
+      "Upload PDFs, Word files, CSVs, and text files to bedda's knowledge base",
+      "Chat with multiple documents at once and reference them in any conversation",
+      "Access Claude 4, GPT-5, and 36+ models — not just a single AI backend",
+      "Image generation, web search, and code execution included",
+      "No separate tool to manage — everything in one subscription",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$5-15/mo" },
+      { feature: "PDF chat (RAG)", bedda: true, competitor: true },
+      { feature: "Word/DOCX support", bedda: true, competitor: false },
+      { feature: "CSV/JSON support", bedda: true, competitor: false },
+      { feature: "Multi-document chat", bedda: true, competitor: false },
+      { feature: "Claude 4 access", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1" },
+    ],
+    faq: [
+      {
+        q: "Can bedda.ai replace ChatPDF?",
+        a: "Yes — bedda.ai's knowledge base feature lets you upload PDFs and any other document type, then ask questions about them in any conversation. It uses vector search (RAG) to retrieve relevant passages, the same approach as ChatPDF. Plus you get 36+ frontier AI models to use alongside it.",
+      },
+      {
+        q: "What file types can I upload to bedda.ai?",
+        a: "bedda.ai's knowledge base accepts PDFs, plain text files, Markdown, CSVs, and JSON files. The document is chunked, embedded, and indexed so you can reference it in any chat with any model.",
+      },
+      {
+        q: "How does bedda.ai compare to ChatPDF on accuracy?",
+        a: "bedda.ai uses Claude 4 or GPT-5 (your choice) to answer questions about uploaded documents — both are more capable models than the GPT-3.5 backend that most PDF chat tools use. You get more accurate summaries, better table interpretation, and more nuanced analysis.",
+      },
+      {
+        q: "Is ChatPDF free?",
+        a: "ChatPDF has a limited free plan (3 PDFs, 10 questions/day). Paid plans start at $5/month (50 PDFs) or $15/month (unlimited). bedda.ai is $12/month with full document chat plus 36+ AI models and a 7-day free trial.",
+      },
+    ],
+  },
+
+  "bedda-vs-invideo-ai": {
+    slug: "bedda-vs-invideo-ai",
+    competitor: "InVideo AI",
+    competitorUrl: "https://invideo.io",
+    competitorPrice: "$20-60/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs InVideo AI",
+    metaTitle: "bedda.ai vs InVideo AI (2026) — Full AI Suite vs Video-Only",
+    metaDescription:
+      "Compare bedda.ai and InVideo AI. bedda includes an AI video studio (Kling AI) plus Claude 4, GPT-5, image generation, and 36+ models for $12/mo — up to 80% cheaper than InVideo AI.",
+    ogTitle: "bedda.ai vs InVideo AI — Full AI Platform vs Video Creation Tool",
+    ogDescription:
+      "InVideo AI charges $20-60/mo for AI video creation. bedda.ai gives you AI video generation (5-10 second clips), chat AI with 36+ models, image generation, and web search — all for $12/mo.",
+    heroHeadline: "InVideo does video. bedda does video — plus everything else.",
+    heroSubtext:
+      "InVideo AI creates AI videos from text prompts for $20-60/month. bedda.ai's Video Studio generates AI clips via Kling AI, and you also get Claude 4, GPT-5, image generation, web search, and 36+ models — for up to 80% less.",
+    verdict:
+      "InVideo AI is built for users who need a polished video editor with AI features — templates, voiceovers, stock media. bedda.ai's Video Studio is for generating short AI video clips from prompts. If you want to create quick AI-generated video content and use frontier AI models for everything else, bedda.ai is the better value at $12/mo.",
+    switchReasons: [
+      "AI video generation (Kling AI, 5-10 second clips) for $12/mo vs $20-60/mo",
+      "Claude 4, GPT-5, and 36+ models for scripting, voiceover writing, and more",
+      "Image generation (DALL-E 3, Imagen 3, Flux) alongside video",
+      "Web search, code execution, and knowledge base included",
+      "Save up to $48/mo vs InVideo AI Pro",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$20-60/mo" },
+      { feature: "AI video generation", bedda: true, competitor: true },
+      { feature: "Video from text prompt", bedda: true, competitor: true },
+      { feature: "Video from image", bedda: true, competitor: true },
+      { feature: "Built-in video editor", bedda: false, competitor: true },
+      { feature: "Stock media library", bedda: false, competitor: true },
+      { feature: "AI voiceover generation", bedda: false, competitor: true },
+      { feature: "Claude 4 / GPT-5 chat", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1 (AI only)" },
+    ],
+    faq: [
+      {
+        q: "What video AI does bedda.ai use?",
+        a: "bedda.ai's Video Studio uses Kling AI (fal-ai/kling-video) for text-to-video and image-to-video generation. You can generate 5 or 10 second clips at standard or pro quality, in 16:9, 9:16, or 1:1 aspect ratios.",
+      },
+      {
+        q: "Can bedda.ai replace InVideo for content creators?",
+        a: "Partially. bedda.ai handles AI video generation from text or image prompts. InVideo has a built-in video editor, stock library, and voiceover tools that bedda doesn't. If you need a full video production suite, InVideo may still be relevant — but for AI-first video clips, bedda.ai works well at a fraction of the price.",
+      },
+      {
+        q: "How much does InVideo AI cost?",
+        a: "InVideo AI Free has limited exports with watermarks. InVideo AI Plus is $20/month (60 AI videos/month). InVideo AI Max is $60/month (unlimited AI videos). bedda.ai Plus is $12/month with video generation and the full AI model suite.",
+      },
+      {
+        q: "Does bedda.ai include a video editor?",
+        a: "No — bedda.ai generates short AI video clips (via Kling AI) but doesn't include a full video editor with timelines, transitions, or stock media. It's best used for quick AI-generated clips and script writing, not full video production workflows.",
+      },
+    ],
+  },
+
+  "bedda-vs-clickup-ai": {
+    slug: "bedda-vs-clickup-ai",
+    competitor: "ClickUp Brain",
+    competitorUrl: "https://clickup.com/ai",
+    competitorPrice: "$7-19/user/mo + $5/user AI",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs ClickUp Brain",
+    metaTitle: "bedda.ai vs ClickUp Brain (2026) — Full AI Chat vs PM AI Add-on",
+    metaDescription:
+      "Compare bedda.ai and ClickUp Brain. bedda gives you Claude 4, GPT-5, and 36+ AI models as a standalone chat platform for $12/mo flat — no per-user fees for AI.",
+    ogTitle: "bedda.ai vs ClickUp Brain — Standalone AI vs Project Management AI",
+    ogDescription:
+      "ClickUp Brain is a $5/user/mo add-on for project management AI. bedda.ai is a full AI chat platform with Claude 4, GPT-5, and 36+ models for $12/mo flat — no per-seat fees.",
+    heroHeadline: "Stop paying $5/user just to ask AI questions in your PM tool.",
+    heroSubtext:
+      "ClickUp Brain adds AI to ClickUp for $5 per user per month on top of your ClickUp subscription. bedda.ai is a standalone AI chat platform with Claude 4, GPT-5, Gemini, and 36+ models — for $12/month flat, no per-user fees.",
+    verdict:
+      "ClickUp Brain is genuinely useful for summarizing tasks and generating project docs inside ClickUp. But it's an AI add-on to a project management tool, not a frontier AI platform. If you need Claude 4 or GPT-5 for deep work — writing, coding, research, analysis — bedda.ai is the right tool. Use ClickUp for project management; use bedda.ai for real AI.",
+    switchReasons: [
+      "Flat $12/mo vs $5/user/mo AI add-on (team of 5 = $25/mo just for AI)",
+      "Claude 4 Opus, GPT-5, and Gemini 2.5 Pro — not a single AI backend",
+      "Web search, image generation, knowledge base, and code execution",
+      "Not locked into one tool's ecosystem — works for any task",
+      "36+ models to switch between based on what each task needs",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo flat", competitor: "$5/user/mo add-on" },
+      { feature: "Claude 4 access", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "AI task summarization", bedda: false, competitor: true },
+      { feature: "Project doc generation", bedda: false, competitor: true },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Works outside PM tool", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1" },
+    ],
+    faq: [
+      {
+        q: "What is ClickUp Brain?",
+        a: "ClickUp Brain is an AI add-on for ClickUp project management software. It costs $5/user/month (on top of your ClickUp plan) and lets you summarize tasks, generate docs, and ask AI questions within ClickUp. It uses a single AI backend, not frontier models like Claude 4 or GPT-5.",
+      },
+      {
+        q: "Can bedda.ai replace ClickUp Brain?",
+        a: "bedda.ai isn't a project management tool — it doesn't integrate with ClickUp tasks or generate docs in your ClickUp workspace. But for the general AI writing, research, and analysis use cases that ClickUp Brain handles, bedda.ai gives you better models (Claude 4, GPT-5) and more capability for a flat $12/mo fee.",
+      },
+      {
+        q: "How much does ClickUp cost with AI?",
+        a: "ClickUp Unlimited is $7/user/month. ClickUp Business is $12/user/month. Add ClickUp Brain (AI) for $5/user/month on top. A team of 5 on Business + Brain = $85/month. bedda.ai Plus for the same team is $12/month per person or can be shared with team workspaces.",
+      },
+      {
+        q: "Does bedda.ai integrate with ClickUp?",
+        a: "Not natively — bedda.ai is a standalone AI chat platform, not a ClickUp integration. You can copy content between the two. Bedda's team workspaces and knowledge base are separate from ClickUp's project management structure.",
+      },
+    ],
+  },
+
+  "bedda-vs-elicit": {
+    slug: "bedda-vs-elicit",
+    competitor: "Elicit",
+    competitorUrl: "https://elicit.com",
+    competitorPrice: "$10-50/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Elicit",
+    metaTitle: "bedda.ai vs Elicit (2026) — General AI vs Research AI Tool",
+    metaDescription:
+      "Compare bedda.ai and Elicit. Elicit searches academic papers. bedda.ai gives you Claude 4, GPT-5, web search, knowledge base, and 36+ models for deep research — for $12/mo.",
+    ogTitle: "bedda.ai vs Elicit — Full AI Platform vs Academic Research Tool",
+    ogDescription:
+      "Elicit searches academic papers for $10-50/mo. bedda.ai gives you web search, knowledge base RAG, Claude 4, GPT-5, and 36+ AI models for research and everything else — for $12/mo.",
+    heroHeadline: "Elicit finds papers. bedda helps you do everything with them.",
+    heroSubtext:
+      "Elicit is purpose-built for searching and summarizing academic literature. bedda.ai includes web search, knowledge base upload, and frontier AI models (Claude 4, GPT-5, Gemini) for research, writing, analysis, and every other task — for a comparable price.",
+    verdict:
+      "Elicit is excellent for systematic literature reviews and finding academic papers quickly — features bedda doesn't replicate exactly. But for most research workflows — reading papers, synthesizing information, writing research summaries, drafting content — bedda.ai's combination of web search, knowledge base, and frontier AI models covers the use case for $12/mo.",
+    switchReasons: [
+      "Web search finds research papers, articles, and online sources in real time",
+      "Upload papers to the knowledge base and chat with them directly",
+      "Claude 4 and GPT-5 synthesize complex research better than smaller AI models",
+      "Write research summaries, literature reviews, and reports in the same tool",
+      "36+ models to choose the best one for each research task",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$10-50/mo" },
+      { feature: "Academic paper search", bedda: false, competitor: true },
+      { feature: "Systematic lit review tools", bedda: false, competitor: true },
+      { feature: "Web search (general)", bedda: true, competitor: false },
+      { feature: "Upload & chat with PDFs", bedda: true, competitor: true },
+      { feature: "Claude 4 access", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "General AI chat", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1" },
+    ],
+    faq: [
+      {
+        q: "What is Elicit?",
+        a: "Elicit is an AI-powered research tool that searches academic papers, extracts key findings, and helps users conduct systematic literature reviews. It's popular with academics, researchers, and students who need to survey scientific literature. It costs $10/month (basic) to $50/month (unlimited).",
+      },
+      {
+        q: "Can bedda.ai replace Elicit for academic research?",
+        a: "bedda.ai doesn't have Elicit's purpose-built academic paper database or systematic review features. But for uploading and chatting with specific papers, synthesizing research findings, and writing research summaries, bedda.ai's knowledge base + Claude 4 or GPT-5 is a strong alternative at $12/mo.",
+      },
+      {
+        q: "How does bedda.ai handle research papers?",
+        a: "Upload PDF research papers to bedda.ai's knowledge base. They're chunked, embedded, and indexed for semantic search. When you ask questions in any chat, bedda injects relevant passages as context — so you get accurate, grounded answers based on your specific papers.",
+      },
+      {
+        q: "Which AI is best for research?",
+        a: "Claude 4 (Opus) is generally considered the strongest for deep analysis and synthesis of complex research. GPT-5 is strong for technical papers and coding-adjacent research. Gemini 2.5 Pro handles very long documents well. bedda.ai gives you all three so you can pick the right model for each research task.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
