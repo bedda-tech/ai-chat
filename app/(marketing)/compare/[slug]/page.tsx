@@ -4415,6 +4415,254 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-zoho-zia": {
+    slug: "bedda-vs-zoho-zia",
+    competitor: "Zoho Zia (Zoho AI)",
+    competitorUrl: "https://www.zoho.com/zia/",
+    competitorPrice: "Included in Zoho apps ($14-45/user/mo)",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Zoho Zia",
+    metaTitle: "bedda.ai vs Zoho Zia (2026) — Frontier AI vs CRM-Embedded AI",
+    metaDescription:
+      "Compare bedda.ai and Zoho Zia. Zoho Zia is embedded AI in Zoho apps. bedda.ai gives you GPT-5, Claude 4, Gemini and 36+ frontier models as a standalone AI interface for $12/mo.",
+    ogTitle: "bedda.ai vs Zoho Zia — 36+ Frontier Models vs CRM-Embedded AI",
+    ogDescription:
+      "Zoho Zia is embedded AI within Zoho CRM, Desk, and Analytics — useful but limited to Zoho's ecosystem. bedda.ai gives you GPT-5, Claude 4, Gemini 2.5 Pro, and 36+ frontier models as a dedicated AI workspace for $12/mo.",
+    heroHeadline: "Frontier AI for $12/mo — not locked to Zoho's ecosystem",
+    heroSubtext:
+      "Zoho Zia is a useful AI assistant if you're deep in the Zoho ecosystem — smart suggestions in CRM, anomaly detection in Analytics, and auto-tagging in Desk. For general AI work — writing, research, coding, image generation — bedda.ai gives you Claude 4 and GPT-5 at $12/mo, no Zoho subscription required.",
+    verdict:
+      "Zoho Zia is the right choice if you're already a Zoho customer and want AI integrated into your CRM and support workflows. bedda.ai is better if you need a dedicated AI workspace with frontier models for writing, research, coding, and creative work — independent of any business software suite.",
+    switchReasons: [
+      "Access Claude 4 Opus, GPT-5, and Gemini 2.5 Pro — models Zoho Zia doesn't offer",
+      "Works as a standalone tool — no Zoho subscription required",
+      "Knowledge base (RAG) to reference your own documents and company data",
+      "Image generation, video generation, code execution, and web search",
+      "Model comparison arena — test Claude vs GPT-5 on the same task",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo standalone", competitor: "Included in Zoho ($14-45/user/mo)" },
+      { feature: "Claude 4 (Opus, Sonnet)", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "CRM integration", bedda: false, competitor: true },
+      { feature: "Help desk AI", bedda: false, competitor: true },
+      { feature: "Anomaly detection (analytics)", bedda: false, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Zia (proprietary)" },
+    ],
+    faq: [
+      {
+        q: "What is Zoho Zia?",
+        a: "Zoho Zia is an AI assistant embedded across Zoho's software suite — Zoho CRM, Desk, Analytics, SalesIQ, and others. It provides smart suggestions, anomaly detection, sentiment analysis, and workflow automation within those apps. It's not a standalone AI — it only exists inside Zoho products.",
+      },
+      {
+        q: "Can bedda.ai integrate with Zoho?",
+        a: "bedda.ai doesn't have native Zoho integration. However, you can export data from Zoho apps and upload it to bedda.ai's knowledge base for AI analysis. For deep Zoho workflow automation, Zoho Zia (or Zoho Flow) is better suited.",
+      },
+      {
+        q: "Is Zoho Zia free?",
+        a: "Zoho Zia is included in paid Zoho subscriptions — it's not available as a standalone product. Zoho CRM starts at $14/user/month; higher tiers unlock more Zia features. If you're not a Zoho customer, you'd need to pay for a Zoho subscription to access Zia.",
+      },
+      {
+        q: "Which is better for small business AI?",
+        a: "If you're running your business on Zoho apps, Zia's embedded AI adds value to your existing investment. If you need a general-purpose AI workspace for writing, research, coding, and analysis — bedda.ai's $12/mo gives you Claude 4, GPT-5, and Gemini 2.5 Pro without committing to any business software suite.",
+      },
+    ],
+  },
+
+  "bedda-vs-apple-intelligence": {
+    slug: "bedda-vs-apple-intelligence",
+    competitor: "Apple Intelligence",
+    competitorUrl: "https://www.apple.com/apple-intelligence/",
+    competitorPrice: "Free (requires Apple hardware)",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Apple Intelligence",
+    metaTitle: "bedda.ai vs Apple Intelligence (2026) — Cross-Platform vs Apple-Only AI",
+    metaDescription:
+      "Compare bedda.ai and Apple Intelligence. Apple Intelligence is free but device-locked. bedda.ai gives you GPT-5, Claude 4, Gemini and 36+ models on any device for $12/mo. 7-day free trial.",
+    ogTitle: "bedda.ai vs Apple Intelligence — 36+ Models on Any Device",
+    ogDescription:
+      "Apple Intelligence is free but only runs on iPhone 16, M-series Macs, and iPad Pro — and is limited to on-device and OpenAI integration. bedda.ai gives you Claude 4, GPT-5, Gemini 2.5 Pro and 36+ models on any browser for $12/mo.",
+    heroHeadline: "36 frontier models on any device — not just Apple hardware",
+    heroSubtext:
+      "Apple Intelligence is powerful for iPhone and Mac users. But it's locked to Apple hardware, routes advanced requests to OpenAI only, and can't access Claude 4 or Gemini. bedda.ai gives you every frontier model on any browser — including Windows, Android, and Chromebook.",
+    verdict:
+      "Apple Intelligence is the best AI assistant for staying in the Apple ecosystem — system-level integration, on-device privacy, and it's free. bedda.ai is the better choice when you need the absolute best AI model for the task at hand — Claude 4 for writing, GPT-5 for code, Gemini for long docs — accessible from any device.",
+    switchReasons: [
+      "Works on Windows, Android, Chromebook, and any browser — not just Apple devices",
+      "Access Claude 4 Opus and Gemini 2.5 Pro — models Apple Intelligence doesn't offer",
+      "Model comparison arena to run the same prompt through multiple frontier models",
+      "Knowledge base (RAG) so AI references your uploaded documents",
+      "Image and video generation, code execution, and OpenAI-compatible API",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "Free (requires hardware)" },
+      { feature: "Works on Windows/Android", bedda: true, competitor: false },
+      { feature: "Works on iPhone/Mac", bedda: true, competitor: true },
+      { feature: "Claude 4 (Opus, Sonnet)", bedda: true, competitor: false },
+      { feature: "GPT-5 / ChatGPT integration", bedda: true, competitor: true },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 4", bedda: true, competitor: false },
+      { feature: "On-device processing", bedda: false, competitor: true },
+      { feature: "System-level integration", bedda: false, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: true },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1 (+ ChatGPT)" },
+    ],
+    faq: [
+      {
+        q: "What is Apple Intelligence?",
+        a: "Apple Intelligence is Apple's suite of AI features built into iOS 18, iPadOS 18, and macOS Sequoia. It runs many tasks on-device for privacy, and routes complex requests to ChatGPT (GPT-4o) via an optional integration. It requires iPhone 15 Pro/16, iPad Pro/Air (M-chip), or Mac with M1 chip or later.",
+      },
+      {
+        q: "Is Apple Intelligence free?",
+        a: "Yes — Apple Intelligence is free software for compatible Apple devices. However, it's not truly free since it requires recent Apple hardware (iPhone 16 starts at $799). The ChatGPT integration is free at a limited tier but doesn't include GPT-5.",
+      },
+      {
+        q: "Can bedda.ai work on iPhone?",
+        a: "Yes — bedda.ai works in any mobile browser (Safari, Chrome) on iPhone. You get full access to all 36+ models from your phone without any native iOS integration. An iOS app is on the product roadmap.",
+      },
+      {
+        q: "Does Apple Intelligence have Claude?",
+        a: "No — Apple Intelligence integrates with ChatGPT (OpenAI) for advanced requests, but does not include Claude, Gemini, Grok, or other frontier models. bedda.ai gives you Claude 4 Opus, GPT-5, Gemini 2.5 Pro, Grok 4, and 32+ more models in one place.",
+      },
+    ],
+  },
+
+  "bedda-vs-cody": {
+    slug: "bedda-vs-cody",
+    competitor: "Sourcegraph Cody",
+    competitorUrl: "https://sourcegraph.com/cody",
+    competitorPrice: "$9/mo (Pro)",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Sourcegraph Cody",
+    metaTitle: "bedda.ai vs Sourcegraph Cody (2026) — Full AI Suite vs Coding Assistant",
+    metaDescription:
+      "Compare bedda.ai and Sourcegraph Cody. Cody is $9/mo for coding AI. bedda.ai gives you Claude 4, GPT-5, Gemini and 36+ models for $12/mo — coding plus everything else. 7-day free trial.",
+    ogTitle: "bedda.ai vs Sourcegraph Cody — 36+ Models vs Coding-Only AI",
+    ogDescription:
+      "Sourcegraph Cody is $9/mo for AI coding assistance. bedda.ai gives you Claude 4, GPT-5, and Gemini for coding — PLUS web search, image generation, knowledge base, and 36+ models for $12/mo.",
+    heroHeadline: "Full AI stack for $3 more than Cody coding alone",
+    heroSubtext:
+      "Sourcegraph Cody is a strong coding assistant with deep IDE integration at $9/mo. bedda.ai gives you Claude 4 Sonnet and GPT-5 for coding PLUS web search, image generation, knowledge base RAG, and 33 more models — for $12/mo. Three dollars more, everything else included.",
+    verdict:
+      "Cody is the better choice if you want deep codebase-aware AI directly in your IDE (VS Code, JetBrains) with large repository context. bedda.ai is better if you want top frontier model coding help plus a full AI workflow for writing, research, image generation, and everything outside the IDE.",
+    switchReasons: [
+      "Claude 4 Sonnet and GPT-5 for coding — the same frontier models Cody uses",
+      "Web search so AI can look up current docs, APIs, and Stack Overflow answers",
+      "Knowledge base (RAG) to reference your project docs and code snippets",
+      "Image generation for UI mockups and technical diagrams",
+      "Full AI workflow beyond coding — writing, research, analysis — all in one $12/mo subscription",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$9/mo" },
+      { feature: "Claude 4 Sonnet (coding)", bedda: true, competitor: true },
+      { feature: "GPT-5 access", bedda: true, competitor: true },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "VS Code / JetBrains IDE plugin", bedda: false, competitor: true },
+      { feature: "Full codebase context", bedda: false, competitor: true },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Writing & research tools", bedda: true, competitor: false },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "5" },
+    ],
+    faq: [
+      {
+        q: "What is Sourcegraph Cody?",
+        a: "Sourcegraph Cody is an AI coding assistant that integrates deeply with VS Code, JetBrains, and the Sourcegraph web interface. It understands your entire codebase — not just open files — and can answer questions about code relationships, refactor across files, and generate context-aware completions. Pro plan is $9/mo.",
+      },
+      {
+        q: "Does bedda.ai have IDE integration like Cody?",
+        a: "bedda.ai doesn't have a dedicated IDE plugin. It works in the browser, which means you paste code in rather than getting inline completions. For codebase-aware AI within your editor, Cody (or GitHub Copilot) has an advantage. bedda.ai wins for frontier model choice and non-coding AI workflows.",
+      },
+      {
+        q: "Which is better for coding — Cody or bedda.ai?",
+        a: "Cody is better for IDE-integrated, codebase-aware workflows where you want AI aware of your whole repository. bedda.ai is better for choosing the right frontier model per task (Claude 4 for design and architecture, GPT-5 for debugging and tooling), getting web search for current docs, and combining coding with other AI work.",
+      },
+      {
+        q: "Is bedda.ai worth it for developers?",
+        a: "Yes — especially if you do more than just code. For $3 more than Cody, bedda.ai gives you Claude 4, GPT-5, Gemini 2.5 Pro, web search, code execution, knowledge base, image generation, and 36+ models. It's the better all-in-one AI investment if you also write, research, or use AI outside of coding.",
+      },
+    ],
+  },
+
+  "bedda-vs-cohere": {
+    slug: "bedda-vs-cohere",
+    competitor: "Cohere (Command R+)",
+    competitorUrl: "https://cohere.com",
+    competitorPrice: "$10/mo (individual) / enterprise",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Cohere",
+    metaTitle: "bedda.ai vs Cohere (2026) — Multi-Model vs Single-Provider Enterprise AI",
+    metaDescription:
+      "Compare bedda.ai and Cohere. Cohere's Command R+ is strong for RAG and enterprise. bedda.ai gives you GPT-5, Claude 4, Gemini and 36+ models for $12/mo — including the same RAG capabilities. 7-day free trial.",
+    ogTitle: "bedda.ai vs Cohere — 36+ Frontier Models vs Enterprise Single-Provider",
+    ogDescription:
+      "Cohere specializes in enterprise AI with Command R+ for RAG workflows. bedda.ai gives you the same RAG capability plus GPT-5, Claude 4 Opus, Gemini 2.5 Pro and 36+ frontier models — starting at $12/mo.",
+    heroHeadline: "Enterprise RAG + 36 frontier models for $12/mo",
+    heroSubtext:
+      "Cohere builds excellent enterprise AI infrastructure — Command R+ is a top RAG model, Embed is market-leading. But for individual users and teams who want a chat interface with the best frontier models, bedda.ai gives you Cohere-class RAG capabilities plus Claude 4, GPT-5, Gemini, and 33 more models.",
+    verdict:
+      "Cohere is the right choice for enterprise teams building production AI pipelines, needing fine-tuned models, or deploying on their own infrastructure. bedda.ai is better for teams and individuals who want the best frontier models (Claude 4, GPT-5, Gemini) in a multi-model chat interface with built-in RAG, at $12/mo.",
+    switchReasons: [
+      "Access Claude 4 Opus, GPT-5, and Gemini 2.5 Pro — models Cohere doesn't offer",
+      "Knowledge base (RAG) using OpenAI Embeddings — comparable retrieval quality to Command R+",
+      "One flat subscription for individual users — no enterprise contract or per-token pricing",
+      "Image generation, video generation, and web search Cohere's chat interface lacks",
+      "Model comparison arena — test Claude vs GPT-5 vs Gemini on the same prompt",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$10/mo (limited) / enterprise" },
+      { feature: "Claude 4 (Opus, Sonnet)", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Cohere Command R+", bedda: false, competitor: true },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: true },
+      { feature: "Fine-tuning / custom models", bedda: false, competitor: true },
+      { feature: "On-premise / private cloud", bedda: false, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "Command R / R+" },
+    ],
+    faq: [
+      {
+        q: "What is Cohere?",
+        a: "Cohere is an enterprise AI company that builds language models for business use. Their flagship models are Command R and Command R+ (optimized for retrieval-augmented generation), Embed (best-in-class text embeddings), and Rerank (improving RAG result quality). They offer an API, a chat interface (Coral), and enterprise deployment options.",
+      },
+      {
+        q: "Is Cohere better than OpenAI or Anthropic?",
+        a: "Cohere's Command R+ is competitive for enterprise RAG workflows and offers strong performance at lower API cost than GPT-4 or Claude 3. For general reasoning, writing, and coding, Claude 4 and GPT-5 outperform Command R+. bedda.ai gives you all the frontier models so you can use the best one for each task.",
+      },
+      {
+        q: "Does bedda.ai support RAG like Cohere?",
+        a: "Yes — bedda.ai has a built-in knowledge base (upload PDFs, text files, or import from Google Drive/Notion) that uses OpenAI Embeddings + hybrid BM25 search for retrieval. For most use cases, this matches Cohere's RAG quality at no extra cost. Cohere Rerank is better for extremely high-precision enterprise retrieval pipelines.",
+      },
+      {
+        q: "Can bedda.ai be used for enterprise AI?",
+        a: "bedda.ai is strong for teams: shared workspaces, SAML/SSO, audit logging, model access policies, and OpenAI-compatible API. For production AI infrastructure (fine-tuning, private cloud deployment, custom embeddings at scale), Cohere or Azure OpenAI is better suited. bedda.ai is ideal for teams of 2-50 who need frontier model access without building infrastructure.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
