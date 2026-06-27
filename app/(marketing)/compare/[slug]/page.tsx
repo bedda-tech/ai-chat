@@ -4906,6 +4906,237 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-udio": {
+    slug: "bedda-vs-udio",
+    competitor: "Udio",
+    competitorUrl: "https://udio.com",
+    competitorPrice: "$8.99–$24.99/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Udio",
+    metaTitle: "bedda.ai vs Udio (2026) — Full AI Suite vs AI Music Generator",
+    metaDescription:
+      "Compare bedda.ai and Udio. Udio generates AI music at $8.99–$24.99/mo. bedda.ai gives you GPT-5, Claude 4, Gemini and 36+ models for writing, coding, research and more — for $12/mo. 7-day free trial.",
+    ogTitle: "bedda.ai vs Udio — 36+ AI Models vs AI Music Generation",
+    ogDescription:
+      "Udio creates AI music at up to $24.99/mo. bedda.ai is $12/mo for Claude 4, GPT-5, Gemini 2.5 Pro and 36+ frontier models — text, code, images, video, research, and more.",
+    heroHeadline: "Full AI suite at $12/mo — not locked to music generation",
+    heroSubtext:
+      "Udio is excellent for generating AI music from text prompts. But at up to $24.99/mo, you&apos;re paying exclusively for music creation. bedda.ai gives you Claude 4, GPT-5, and Gemini 2.5 Pro for writing, coding, research, image and video generation, and more — all for $12/mo.",
+    verdict:
+      "If you&apos;re a musician or content creator who needs AI-generated music tracks, Udio is purpose-built for that. If you need a full AI assistant that handles writing, coding, research, and image generation — plus audio transcription for your recordings — bedda.ai delivers far more value at a lower price.",
+    switchReasons: [
+      "Claude 4 and GPT-5 for scripts, lyrics, and creative writing — not just music generation",
+      "Image generation included (DALL-E 3, Imagen 3) for album art and thumbnails",
+      "Audio transcription via Whisper — convert recordings to text",
+      "Flat $12/mo — up to half the price of Udio Pro with 10x more capabilities",
+      "Web search, code execution, and knowledge base all included",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$8.99–$24.99/mo" },
+      { feature: "AI music generation", bedda: false, competitor: true },
+      { feature: "Text & writing AI (Claude 4, GPT-5)", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Audio transcription (Whisper)", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1 (music only)" },
+    ],
+    faq: [
+      {
+        q: "What is Udio?",
+        a: "Udio is an AI music generation platform that creates original songs from text prompts. You describe the genre, mood, instrumentation, and lyrics, and Udio generates full tracks with vocals. It offers a Basic plan ($8.99/mo) and Pro plan ($24.99/mo), differentiated by monthly generation credits.",
+      },
+      {
+        q: "Can bedda.ai generate music like Udio?",
+        a: "No — bedda.ai doesn&apos;t generate audio music tracks. Udio is the specialist for that use case. bedda.ai is a text-first AI assistant with image generation, video generation, audio transcription, web search, and code execution. For original AI music, Udio is the better choice.",
+      },
+      {
+        q: "What does bedda.ai do that Udio doesn&apos;t?",
+        a: "bedda.ai gives you access to every major frontier AI model — Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, Grok 4 — for text, coding, research, image generation, video generation, and audio transcription. If you need to write lyrics, scripts, marketing copy, or research music industry trends alongside your music creation, bedda.ai handles all of that.",
+      },
+      {
+        q: "Can I use bedda.ai to help write lyrics for Udio?",
+        a: "Yes — many creators use bedda.ai to write lyrics, describe the style and mood, and then paste the results into Udio to generate the actual music. Claude Opus 4.8 and GPT-5 are both exceptional for creative writing tasks like lyrics and poetry.",
+      },
+    ],
+  },
+
+  "bedda-vs-mem-ai": {
+    slug: "bedda-vs-mem-ai",
+    competitor: "Mem.ai",
+    competitorUrl: "https://mem.ai",
+    competitorPrice: "$14.99/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Mem.ai",
+    metaTitle: "bedda.ai vs Mem.ai (2026) — 36+ AI Models vs AI Note-Taking",
+    metaDescription:
+      "Compare bedda.ai and Mem.ai. Mem is an AI note-taking app at $14.99/mo. bedda.ai gives you GPT-5, Claude 4, Gemini and 36+ models for writing, research, coding and more — for $12/mo. 7-day free trial.",
+    ogTitle: "bedda.ai vs Mem.ai — $12/mo AI Suite vs $14.99/mo AI Notes",
+    ogDescription:
+      "Mem.ai costs $14.99/mo for AI-powered note-taking. bedda.ai gives you Claude 4, GPT-5, Gemini 2.5 Pro and 36+ frontier models plus a built-in knowledge base — for $2.99 less per month.",
+    heroHeadline: "Knowledge base + 36 frontier models for $2.99 less per month",
+    heroSubtext:
+      "Mem.ai is a smart AI note-taking app that organizes your thoughts and lets you chat with your notes. At $14.99/mo, you pay a premium for note intelligence. bedda.ai includes a full knowledge base (RAG) for chatting with your documents — plus Claude 4, GPT-5, and 34 other frontier models — for $12/mo.",
+    verdict:
+      "Mem.ai is the right choice if you want an AI-native note-taking experience with automatic organization and smart capture. bedda.ai is the right choice when you want to chat with your knowledge base documents AND get full AI capabilities for writing, coding, and research — at $2.99 less per month.",
+    switchReasons: [
+      "Built-in knowledge base: upload documents and chat with them using Claude 4 or GPT-5",
+      "Save $2.99/mo ($35.88/year) over Mem.ai",
+      "36+ frontier models — not just one AI for notes",
+      "Web search, image generation, and code execution included",
+      "Cross-conversation AI memory to retain key facts across sessions",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$14.99/mo" },
+      { feature: "Chat with your documents (RAG)", bedda: true, competitor: true },
+      { feature: "Auto-organized note capture", bedda: false, competitor: true },
+      { feature: "Mobile note-taking app", bedda: false, competitor: true },
+      { feature: "Claude 4 / GPT-5 / Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Cross-conversation memory", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1 (proprietary)" },
+    ],
+    faq: [
+      {
+        q: "What is Mem.ai?",
+        a: "Mem is an AI-first note-taking app that automatically organizes your notes using AI. The Mem X subscription ($14.99/mo) adds AI chat over your notes, smart search, auto-tagging, and the ability to ask questions across your entire knowledge base. It&apos;s built for knowledge workers who want their notes to be queryable.",
+      },
+      {
+        q: "Can bedda.ai replace Mem.ai as a note-taking app?",
+        a: "Not as a note-taking app itself — Mem&apos;s capture, auto-organization, and mobile experience are purpose-built for personal knowledge management. bedda.ai&apos;s knowledge base lets you upload documents and chat with them using Claude 4 or GPT-5, but it&apos;s not a day-to-day note capture app. If you take lots of notes and want AI over them, Mem is better for that specific workflow.",
+      },
+      {
+        q: "Does bedda.ai have a knowledge base feature?",
+        a: "Yes — bedda.ai includes a built-in knowledge base where you can upload .txt, .md, .csv, and .json files. The RAG (retrieval-augmented generation) system embeds your documents and surfaces relevant passages automatically when you ask questions in chat. Available to all authenticated users.",
+      },
+      {
+        q: "Why is bedda.ai cheaper than Mem.ai?",
+        a: "Mem.ai charges $14.99/mo for its AI note layer (Mem X). bedda.ai charges $12/mo for access to 36+ frontier models plus knowledge base, web search, image generation, and more. Mem focuses deeply on one use case (notes); bedda.ai covers the full AI assistant spectrum at a lower price.",
+      },
+    ],
+  },
+
+  "bedda-vs-consensus": {
+    slug: "bedda-vs-consensus",
+    competitor: "Consensus",
+    competitorUrl: "https://consensus.app",
+    competitorPrice: "$11.99–$19.99/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Consensus",
+    metaTitle: "bedda.ai vs Consensus (2026) — Full AI Suite vs AI Research Search",
+    metaDescription:
+      "Compare bedda.ai and Consensus. Consensus searches academic papers at $11.99–$19.99/mo. bedda.ai gives you GPT-5, Claude 4, Gemini and 36+ models for research, writing, coding and more — for $12/mo. 7-day free trial.",
+    ogTitle: "bedda.ai vs Consensus — 36+ AI Models vs Academic Research Search",
+    ogDescription:
+      "Consensus searches 200M+ research papers with AI summaries at $11.99–$19.99/mo. bedda.ai gives you Claude 4, GPT-5, Gemini 2.5 Pro, real-time web search, and 36+ frontier models — for $12/mo.",
+    heroHeadline: "AI research + 35 other capabilities for $12/mo",
+    heroSubtext:
+      "Consensus is excellent for academic research — it searches 200 million papers and surfaces evidence-backed answers. But at $19.99/mo for full access, you&apos;re paying a premium for one use case. bedda.ai includes real-time web search (including academic sources), plus Claude 4, GPT-5, and Gemini for synthesizing research — all for $12/mo.",
+    verdict:
+      "Consensus is the specialist tool for academic research — ideal for students, researchers, and clinicians who need peer-reviewed citations. bedda.ai is the generalist: real-time web search, frontier model synthesis, writing, coding, and analysis — for $12/mo. Many researchers use both.",
+    switchReasons: [
+      "Real-time web search includes academic sources — no separate subscription needed",
+      "Claude Opus 4.8 for deep research synthesis and long-form writing",
+      "Up to $7.99/mo cheaper than Consensus Premium+",
+      "Web search, image generation, code execution, and model arena all included",
+      "Knowledge base for uploading and citing your own research documents",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$11.99–$19.99/mo" },
+      { feature: "Academic paper search (200M+ papers)", bedda: false, competitor: true },
+      { feature: "AI-generated research consensus", bedda: false, competitor: true },
+      { feature: "Real-time web search", bedda: true, competitor: false },
+      { feature: "Claude 4 / GPT-5 / Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Long-form writing & synthesis", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Knowledge base (upload your own docs)", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1 (research-focused)" },
+    ],
+    faq: [
+      {
+        q: "What is Consensus?",
+        a: "Consensus is an AI-powered academic search engine that indexes 200+ million research papers. You ask a question and it finds relevant papers, extracts key claims, and generates a consensus summary from the evidence. The free tier is limited; Premium ($11.99/mo) and Premium+ ($19.99/mo) unlock unlimited searches and advanced features.",
+      },
+      {
+        q: "Can bedda.ai search academic papers like Consensus?",
+        a: "bedda.ai&apos;s web search tool (powered by Brave Search) can find academic papers and research summaries on the open web, including Google Scholar-indexed content. It can&apos;t access the full Consensus index of 200M+ papers or provide the same structured evidence extraction. For systematic literature reviews, Consensus is the stronger specialist tool.",
+      },
+      {
+        q: "What&apos;s the best workflow for researchers?",
+        a: "Many researchers use Consensus for paper discovery and evidence gathering, then paste findings into bedda.ai (Claude Opus 4.8) for synthesis, writing, and analysis. bedda.ai&apos;s knowledge base also lets you upload PDFs of your collected papers for AI-powered Q&A. The two tools complement each other well.",
+      },
+      {
+        q: "Is bedda.ai good for academic writing?",
+        a: "Yes — Claude Opus 4.8 and GPT-5 are both excellent for academic writing: literature reviews, methodology sections, grant proposals, and paper editing. bedda.ai&apos;s knowledge base lets you upload your source PDFs and ask questions across them. For the writing stage of research, bedda.ai is very strong.",
+      },
+    ],
+  },
+
+  "bedda-vs-coda-ai": {
+    slug: "bedda-vs-coda-ai",
+    competitor: "Coda AI",
+    competitorUrl: "https://coda.io",
+    competitorPrice: "$25–$30/user/mo (with AI)",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Coda AI",
+    metaTitle: "bedda.ai vs Coda AI (2026) — Full AI Suite vs AI in Collaborative Docs",
+    metaDescription:
+      "Compare bedda.ai and Coda AI. Coda AI is embedded in collaborative docs at $25–$30/user/mo. bedda.ai gives you GPT-5, Claude 4, Gemini and 36+ models for $12/mo. 7-day free trial.",
+    ogTitle: "bedda.ai vs Coda AI — $12/mo AI Suite vs $25+/user/mo AI Docs",
+    ogDescription:
+      "Coda AI is embedded in collaborative documents at $25–$30/user/month. bedda.ai gives you Claude 4, GPT-5, Gemini 2.5 Pro and 36+ frontier models as a standalone AI assistant — for $12/mo flat.",
+    heroHeadline: "Frontier AI for $12/mo — not bundled with a doc platform",
+    heroSubtext:
+      "Coda AI is powerful when you&apos;re already using Coda for collaborative documents and databases. But at $25–$30/user/mo just to access AI features, you&apos;re paying for the whole Coda platform. bedda.ai gives you Claude 4, GPT-5, and Gemini 2.5 Pro as a standalone assistant for $12/mo — no document platform required.",
+    verdict:
+      "Coda AI is the right choice if your team lives in Coda docs and wants AI embedded in your existing workflows (generating content in docs, querying tables, automating actions). bedda.ai is the right choice when you need a powerful standalone AI assistant for writing, coding, research, and analysis — at less than half the per-user price.",
+    switchReasons: [
+      "Save $13–$18/user/mo — bedda.ai at $12/mo vs Coda&apos;s Pro/Team at $25–$30/user/mo",
+      "Claude Opus 4.8 and GPT-5 for complex research and long-form writing",
+      "Works standalone — no need to restructure your docs to use AI",
+      "Web search, image generation, code execution, and model arena included",
+      "Team workspaces with shared knowledge base for collaborative AI use",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo (flat)", competitor: "$25–$30/user/mo" },
+      { feature: "Standalone AI (no platform required)", bedda: true, competitor: false },
+      { feature: "AI inside collaborative docs", bedda: false, competitor: true },
+      { feature: "Database / table AI queries", bedda: false, competitor: true },
+      { feature: "Claude 4 / GPT-5 / Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1 (GPT-4-based)" },
+    ],
+    faq: [
+      {
+        q: "What is Coda AI?",
+        a: "Coda is a collaborative document platform that combines docs, spreadsheets, and databases in one tool. Coda AI adds AI writing assistance, table summarization, formula generation, and AI-powered automations directly inside Coda documents. It&apos;s available on the Pro ($25/user/mo) and Team ($30/user/mo) plans.",
+      },
+      {
+        q: "Can bedda.ai replace Coda for collaborative documents?",
+        a: "No — bedda.ai doesn&apos;t offer collaborative real-time document editing, database tables, or workflow automations inside a doc. Coda is purpose-built for that. bedda.ai is a standalone AI assistant for text generation, coding, research, and analysis. If you need AI embedded in structured collaborative documents, Coda AI is the right tool.",
+      },
+      {
+        q: "Does bedda.ai have team features?",
+        a: "Yes — bedda.ai includes team workspaces with shared chat threads, a shared knowledge base (RAG), role-based permissions, real-time collaboration indicators, and enterprise model policy controls. Teams pricing is per-seat. For AI collaboration without the full Coda platform, bedda.ai&apos;s team features are strong.",
+      },
+      {
+        q: "Which AI models does Coda AI use?",
+        a: "Coda AI is built on GPT-4-class models from OpenAI. It doesn&apos;t give users a choice of model. bedda.ai gives you 36+ models including Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and Grok 4 — you can choose the best model for each task.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
