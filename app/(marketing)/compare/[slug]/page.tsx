@@ -3881,6 +3881,243 @@ const COMPARISONS: Record<string, ComparisonData> = {
     ],
   },
 
+  "bedda-vs-forefront": {
+    slug: "bedda-vs-forefront",
+    competitor: "Forefront AI",
+    competitorUrl: "https://forefront.ai",
+    competitorPrice: "$29-79/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Forefront AI",
+    metaTitle: "bedda.ai vs Forefront AI (2026) — More Models, Lower Price",
+    metaDescription:
+      "Compare bedda.ai and Forefront AI. Both offer multi-model AI chat, but bedda.ai has 36+ frontier models at $12/mo — vs Forefront's $29-79/mo for fewer models.",
+    ogTitle: "bedda.ai vs Forefront AI — Same Idea, Better Value",
+    ogDescription:
+      "Forefront AI charges $29-79/mo for multi-model AI access. bedda.ai gives you Claude 4, GPT-5, Gemini 2.5 Pro, Grok 4, and 36+ models — for $12/mo with a 7-day free trial.",
+    heroHeadline: "Forefront wants $29/mo. bedda charges $12.",
+    heroSubtext:
+      "Forefront AI pioneered the multi-model AI chat concept. But bedda.ai has more models, a lower price, and features Forefront doesn't offer — knowledge base, video generation, team workspaces, and platform bots. The value gap is real.",
+    verdict:
+      "Forefront AI was an early innovator in multi-model AI access and deserves credit for the concept. But in 2026, bedda.ai offers a significantly better deal: more frontier models, more features (knowledge base, video studio, team workspaces, Slack/Discord/Teams bots), and a substantially lower price. Unless you're specifically on Forefront's platform for a feature bedda doesn't have, the switch is straightforward.",
+    switchReasons: [
+      "bedda.ai is 57-85% cheaper ($12/mo vs $29-79/mo) for comparable model access",
+      "36+ models vs Forefront's smaller selection",
+      "Knowledge base (RAG), video generation, team workspaces — Forefront lacks all three",
+      "Platform bot integrations: Slack, Discord, Teams, Telegram, WhatsApp",
+      "7-day free trial — no commitment to see if it works for you",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$29-79/mo" },
+      { feature: "Claude 4 (Opus, Sonnet)", bedda: true, competitor: true },
+      { feature: "GPT-5 access", bedda: true, competitor: true },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: true },
+      { feature: "Grok 4", bedda: true, competitor: false },
+      { feature: "DeepSeek R1", bedda: true, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "~10" },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "Slack/Teams/Discord bot", bedda: true, competitor: false },
+      { feature: "7-day free trial", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "Is Forefront AI still active in 2026?",
+        a: "Forefront AI operates as a multi-model AI chat platform with plans starting at $29/month. They offer access to several frontier models but have fewer features and higher pricing than bedda.ai.",
+      },
+      {
+        q: "Why is bedda.ai so much cheaper than Forefront?",
+        a: "bedda.ai uses Vercel AI Gateway for efficient model routing and has a lean infrastructure cost structure. The $12/mo price point reflects a deliberate strategy to compete on value — 36+ models at a fraction of competitors' prices.",
+      },
+      {
+        q: "Does bedda.ai have all the models Forefront offers?",
+        a: "Yes — bedda.ai has Claude 4, GPT-5, Gemini 2.5 Pro, Grok 4, DeepSeek R1, Mistral, and 30+ more. If Forefront offers it, bedda likely does too — often with more variety.",
+      },
+      {
+        q: "Can I switch from Forefront to bedda.ai easily?",
+        a: "Yes. bedda.ai has a 7-day free trial with no credit card required. Your chat history and preferences don't transfer, but starting fresh takes minutes. Cancel Forefront only after you've confirmed bedda works for your use case.",
+      },
+    ],
+  },
+  "bedda-vs-pika": {
+    slug: "bedda-vs-pika",
+    competitor: "Pika Labs",
+    competitorUrl: "https://pika.art",
+    competitorPrice: "$8-28/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Pika Labs",
+    metaTitle: "bedda.ai vs Pika Labs (2026) — Full AI Suite vs Video-Only",
+    metaDescription:
+      "Compare bedda.ai and Pika Labs. Pika specializes in AI video generation. bedda.ai includes video generation plus Claude 4, GPT-5, Gemini, image generation, and 36+ models for $12/mo.",
+    ogTitle: "bedda.ai vs Pika Labs — One Tool or All-in-One?",
+    ogDescription:
+      "Pika is great for AI video. But bedda.ai includes AI video generation (Kling) plus Claude 4, GPT-5, Gemini 2.5 Pro, image generation, and 36+ models — for $12/mo.",
+    heroHeadline: "Pika does one thing. bedda does everything.",
+    heroSubtext:
+      "Pika Labs makes excellent AI video generation software. But if you also need a writing assistant, coding help, image generation, or research — Pika can't help. bedda.ai includes AI video generation alongside 36+ frontier models, image generation (DALL-E 3, Imagen), and a full AI platform for $12/mo.",
+    verdict:
+      "If AI video generation is literally the only thing you need, Pika is a fine specialized tool. But most people who need video generation also need writing, research, coding, and image generation — tasks where Pika offers nothing. bedda.ai includes Kling video generation (same quality tier as Pika) plus the full frontier AI stack. For most users, bedda.ai at $12/mo beats paying $8-28/mo for Pika and additional subscriptions for everything else you need.",
+    switchReasons: [
+      "bedda.ai includes video generation AND 36+ frontier AI models — Pika does video only",
+      "Image generation (DALL-E 3, Imagen 3, Flux) included in bedda, separate cost from Pika",
+      "Claude 4, GPT-5, Gemini 2.5 Pro for writing, coding, research — not available on Pika",
+      "Knowledge base, web search, and team workspaces for professional workflows",
+      "Lower or comparable price for dramatically more capability",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$8-28/mo" },
+      { feature: "AI video generation", bedda: true, competitor: true },
+      { feature: "Text-to-video", bedda: true, competitor: true },
+      { feature: "Image-to-video", bedda: true, competitor: true },
+      { feature: "AI image generation", bedda: true, competitor: false },
+      { feature: "Claude 4 / GPT-5 / Gemini", bedda: true, competitor: false },
+      { feature: "Writing & coding assistant", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "Video quality", bedda: "Kling Pro", competitor: "Pika 2.2" },
+      { feature: "7-day free trial", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What video AI model does bedda.ai use?",
+        a: "bedda.ai uses Kling (via fal.ai) for video generation, available in Standard and Pro quality modes. Kling is a top-tier AI video model comparable to Pika, Runway, and Sora in output quality.",
+      },
+      {
+        q: "Is Pika better than bedda.ai for video generation specifically?",
+        a: "Pika is a dedicated video platform with a polished editing interface. bedda.ai's Video Studio is functional but less feature-rich than Pika's editing tools. If you need advanced video editing features like precise camera control or character consistency, Pika has more depth. For basic text-to-video and image-to-video, bedda.ai is comparable.",
+      },
+      {
+        q: "How much does Pika cost?",
+        a: "Pika has a free tier with watermarked output. Pika Basic is $8/month, Pika Standard is $28/month. These are video-only subscriptions — you'd need additional tools for writing, coding, and research.",
+      },
+      {
+        q: "Can I use bedda.ai for professional video projects?",
+        a: "bedda.ai's video generation is best for short-form content (5-10 second clips) and creative exploration. For professional film or broadcast work, dedicated video platforms or Runway Pro would be more appropriate.",
+      },
+    ],
+  },
+  "bedda-vs-stability-ai": {
+    slug: "bedda-vs-stability-ai",
+    competitor: "Stability AI",
+    competitorUrl: "https://stability.ai",
+    competitorPrice: "$10-50/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Stability AI",
+    metaTitle: "bedda.ai vs Stability AI (2026) — Image Generation vs Full AI Platform",
+    metaDescription:
+      "Compare bedda.ai and Stability AI. Stability AI focuses on image generation (Stable Diffusion). bedda.ai includes image generation plus 36+ frontier AI models for $12/mo.",
+    ogTitle: "bedda.ai vs Stability AI — One Niche vs Full AI Stack",
+    ogDescription:
+      "Stability AI is the maker of Stable Diffusion. bedda.ai includes image generation (DALL-E 3, Imagen 3, Flux 1.1 Pro) plus Claude 4, GPT-5, Gemini 2.5 Pro, and 36+ models — for $12/mo.",
+    heroHeadline:
+      "Stability AI gave the world Stable Diffusion. bedda gives you everything.",
+    heroSubtext:
+      "Stability AI pioneered open-source image generation and offers premium image API access through their platform. But if you need a writing assistant, coding help, or research tool alongside your image generation — Stability AI can't help. bedda.ai includes Flux 1.1 Pro and DALL-E 3 image generation alongside 36+ frontier models for $12/mo.",
+    verdict:
+      "Stability AI's DreamStudio and API products are excellent for high-volume image generation workflows, especially if you want control over Stable Diffusion parameters (steps, CFG, samplers). But for most users who want AI images as part of a broader AI workflow — also needing writing, coding, research, and analysis — bedda.ai offers significantly more value at a comparable price. The included Claude 4, GPT-5, and Gemini access alone is worth more than $12/mo on standalone subscriptions.",
+    switchReasons: [
+      "Claude 4, GPT-5, Gemini 2.5 Pro for writing, coding, research — not on Stability AI",
+      "Image generation included: DALL-E 3 (OpenAI) + Imagen 3 Fast (Google) + Flux 1.1 Pro",
+      "Video generation, knowledge base, team workspaces — none on Stability AI",
+      "36+ frontier models vs Stability AI's image-only focus",
+      "Flat $12/mo vs credits-based pricing that can be unpredictable",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$10-50/mo" },
+      { feature: "AI image generation", bedda: true, competitor: true },
+      { feature: "Stable Diffusion models", bedda: false, competitor: true },
+      { feature: "DALL-E 3", bedda: true, competitor: false },
+      { feature: "Flux 1.1 Pro", bedda: true, competitor: true },
+      { feature: "Imagen 3 Fast (Google)", bedda: true, competitor: false },
+      { feature: "Claude 4 / GPT-5 / Gemini", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Predictable flat pricing", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Image only" },
+    ],
+    faq: [
+      {
+        q: "Does bedda.ai use Stable Diffusion?",
+        a: "No — bedda.ai uses DALL-E 3 (OpenAI), Imagen 3 Fast (Google), and Flux 1.1 Pro (Black Forest Labs) for image generation. These are API-based models optimized for prompt-to-image quality. For Stable Diffusion-based models with fine-grained control (steps, CFG, LoRAs), DreamStudio or local Stable Diffusion is a better choice.",
+      },
+      {
+        q: "What is Stability AI's pricing?",
+        a: "Stability AI uses a credits system for DreamStudio. Credit packs start around $10. For API access, pricing is per-image. There's no flat monthly subscription — costs vary with usage, which can be unpredictable for heavy users. bedda.ai is flat $12/mo regardless of image generation usage.",
+      },
+      {
+        q: "Which image generation model is best in 2026?",
+        a: "For photorealism and prompt adherence: Flux 1.1 Pro and DALL-E 3 are top tier. For artistic control with open-source options: Stable Diffusion XL and SD3 give more customization. For quick, high-quality output: Imagen 3 Fast. bedda.ai includes all three commercial options in one subscription.",
+      },
+      {
+        q: "Can I use bedda.ai for commercial image projects?",
+        a: "Yes — DALL-E 3, Imagen 3, and Flux 1.1 Pro images generated through bedda.ai can be used commercially per the underlying model providers' terms. Check each provider's commercial use policy for your specific use case.",
+      },
+    ],
+  },
+  "bedda-vs-ideogram": {
+    slug: "bedda-vs-ideogram",
+    competitor: "Ideogram AI",
+    competitorUrl: "https://ideogram.ai",
+    competitorPrice: "$7-16/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Ideogram AI",
+    metaTitle: "bedda.ai vs Ideogram AI (2026) — Image-Only vs Full AI Platform",
+    metaDescription:
+      "Compare bedda.ai and Ideogram AI. Ideogram specializes in AI image generation with excellent text-in-image. bedda.ai includes image generation plus Claude 4, GPT-5, and 36+ models.",
+    ogTitle: "bedda.ai vs Ideogram — Specialized Images vs Full AI Suite",
+    ogDescription:
+      "Ideogram AI makes excellent images with text. bedda.ai includes DALL-E 3, Imagen 3, and Flux 1.1 Pro image generation alongside Claude 4, GPT-5, Gemini 2.5 Pro, and 36+ models — for $12/mo.",
+    heroHeadline:
+      "Ideogram makes great images. bedda makes great images AND everything else.",
+    heroSubtext:
+      "Ideogram AI is one of the best tools for generating images with text — logos, posters, social graphics. But for writing, research, coding, or anything beyond images, it offers nothing. bedda.ai includes Flux 1.1 Pro and DALL-E 3 image generation alongside 36+ frontier AI models at $12/mo — often cheaper than Ideogram's paid plans with far more capability.",
+    verdict:
+      "Ideogram AI has earned its reputation for text-in-image quality — if you need logos, poster designs, or graphics with accurate text rendering, Ideogram is genuinely excellent at that specific task. But for users who need a broader AI toolkit, bedda.ai's image generation (DALL-E 3 + Flux 1.1 Pro + Imagen 3) is high-quality, and you get Claude 4, GPT-5, Gemini 2.5 Pro, and 33 more models as part of the same subscription. If image-with-text work is your primary use case, Ideogram deserves serious consideration. For broader AI work with image generation as one tool among many, bedda.ai wins.",
+    switchReasons: [
+      "36+ frontier AI models (Claude 4, GPT-5, Gemini) for writing, coding, research — Ideogram is image-only",
+      "Three image generation models included: DALL-E 3, Imagen 3 Fast, Flux 1.1 Pro",
+      "Knowledge base, web search, video generation — none available on Ideogram",
+      "bedda.ai is often cheaper than Ideogram's paid plans with dramatically more capability",
+      "7-day free trial to test both image generation and the full AI suite",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$7-16/mo" },
+      { feature: "AI image generation", bedda: true, competitor: true },
+      { feature: "Text-in-image accuracy", bedda: "Good", competitor: "Best" },
+      { feature: "DALL-E 3", bedda: true, competitor: false },
+      { feature: "Flux 1.1 Pro", bedda: true, competitor: false },
+      { feature: "Ideogram model", bedda: false, competitor: true },
+      { feature: "Claude 4 / GPT-5 / Gemini", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Image editing tools", bedda: "Basic", competitor: "Advanced" },
+      { feature: "Total AI models", bedda: "36+", competitor: "Image only" },
+    ],
+    faq: [
+      {
+        q: "Is Ideogram better than bedda.ai for generating images with text?",
+        a: "Yes — Ideogram's native model is specifically optimized for text-in-image accuracy and is currently best-in-class for logos, posters, and designs where text must be legible. DALL-E 3 and Flux 1.1 Pro (bedda.ai's image models) are strong but not as reliable for precise text rendering in complex designs.",
+      },
+      {
+        q: "What is Ideogram's pricing?",
+        a: "Ideogram offers a free tier with limited generation. Ideogram Basic is $7/month and Ideogram Plus is $16/month. These are image-generation-only subscriptions — you'd need additional tools for any AI writing, coding, or research needs.",
+      },
+      {
+        q: "Can bedda.ai generate images with text?",
+        a: "Yes, via DALL-E 3 and Flux 1.1 Pro. Both handle straightforward text-in-image tasks (simple logos, basic poster text) reasonably well. For complex typographic designs with multiple text elements and specific fonts, Ideogram's specialized model performs better.",
+      },
+      {
+        q: "What kind of images is bedda.ai best for?",
+        a: "bedda.ai's image generation (DALL-E 3, Imagen 3, Flux 1.1 Pro) excels at photorealistic images, concept art, product shots, scene illustration, and social media graphics without complex text. For brand design work requiring precise typography, Ideogram or Adobe Firefly may be more appropriate.",
+      },
+    ],
+  },
   "bedda-vs-venice-ai": {
     slug: "bedda-vs-venice-ai",
     competitor: "Venice AI",
