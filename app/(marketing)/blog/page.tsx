@@ -810,6 +810,42 @@ const posts = [
     readingTime: "9 min read",
     category: "Productivity",
   },
+  {
+    slug: "best-ai-email-assistant-2026",
+    title: "Best AI Email Assistant in 2026: Write Better Emails Faster",
+    description:
+      "The best AI tools for writing, managing, and improving email in 2026 — from general-purpose models to specialized email AI. Includes model recommendations by use case.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Tools & Productivity",
+  },
+  {
+    slug: "is-grok-worth-it-2026",
+    title: "Is Grok Worth It in 2026? Honest Review of xAI Grok Premium",
+    description:
+      "An honest review of xAI Grok and Grok Premium in 2026 — what it does well, where it falls short, and whether it's worth $30/mo versus cheaper alternatives.",
+    date: "June 2026",
+    readingTime: "6 min read",
+    category: "AI Reviews",
+  },
+  {
+    slug: "ai-for-banking-2026",
+    title: "AI for Banking and Finance Professionals in 2026",
+    description:
+      "How bankers, analysts, and finance teams use AI in 2026 — from credit memos and pitch books to compliance documentation, client communications, and market analysis.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Industry Guides",
+  },
+  {
+    slug: "ai-pair-programming-guide-2026",
+    title: "AI Pair Programming in 2026: Best Models and Workflows for Developers",
+    description:
+      "How to use Claude, GPT-5, and Gemini as AI pair programmers in 2026 — including prompt templates, model strengths by language, and workflows for debugging, code review, and architecture decisions.",
+    date: "June 2026",
+    readingTime: "9 min read",
+    category: "Developer Guides",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];

@@ -5604,6 +5604,245 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-superhuman": {
+    slug: "bedda-vs-superhuman",
+    competitor: "Superhuman AI",
+    competitorUrl: "https://superhuman.com",
+    competitorPrice: "$30/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Superhuman AI",
+    metaTitle: "bedda.ai vs Superhuman AI (2026) — Better AI, Less Money",
+    metaDescription:
+      "Compare bedda.ai and Superhuman AI. Superhuman costs $30/mo for an email client with AI features. bedda.ai gives you Claude 4, GPT-5, Gemini and 36+ models for $12/mo. 7-day free trial.",
+    ogTitle: "bedda.ai vs Superhuman — 60% Cheaper, Better AI Models",
+    ogDescription:
+      "Superhuman charges $30/mo for an email client with AI auto-drafts. bedda.ai gives you Claude Opus, GPT-5, and 36+ frontier models for email writing and every other task — at $12/mo.",
+    heroHeadline: "Better email AI than Superhuman, for 60% less",
+    heroSubtext:
+      "Superhuman AI uses older models to auto-draft emails at $30/mo. bedda.ai gives you Claude Opus 4.8 and GPT-5 — the best writing AI available — for $12/mo, plus 34+ other models for every other task.",
+    verdict:
+      "Superhuman is a premium email client with AI features built on top. If you want the best AI for writing emails — and everything else — bedda.ai gives you superior models at less than half the price.",
+    switchReasons: [
+      "Claude Opus 4.8 writes more natural, nuanced emails than Superhuman&apos;s AI",
+      "Save $18/mo — $216/year — versus Superhuman",
+      "Access GPT-5, Gemini, Grok and 36+ models beyond just email writing",
+      "Use AI for every task: coding, analysis, research, image generation",
+      "No email client lock-in — works with your existing Gmail or Outlook",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$30/mo" },
+      { feature: "Claude Opus 4.8 (best writing AI)", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Email writing AI", bedda: true, competitor: true },
+      { feature: "Email summarization", bedda: true, competitor: true },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Multi-model comparison", bedda: true, competitor: false },
+      { feature: "Inbox integration", bedda: false, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "1" },
+    ],
+    faq: [
+      {
+        q: "Does bedda.ai integrate with Gmail or Outlook?",
+        a: "Not directly — bedda.ai is a standalone AI chat interface. You write your emails in bedda, then paste them into Gmail or Outlook. For inbox-integrated AI, Superhuman or Shortwave may be better fits. But bedda&apos;s underlying models (Claude, GPT-5) produce better email drafts than inbox-integrated tools.",
+      },
+      {
+        q: "Is Superhuman&apos;s AI based on GPT?",
+        a: "Superhuman uses OpenAI models for AI features, but not the latest GPT-5. bedda.ai gives you GPT-5 directly, plus Claude Opus 4.8, which produces more natural email writing than GPT-4-based tools.",
+      },
+      {
+        q: "Can bedda.ai help with email tone and rewriting?",
+        a: "Yes. Claude Opus 4.8 is particularly strong at tone adjustment — paste your draft and ask it to make it more assertive, softer, more formal, or shorter. It follows nuanced instructions precisely.",
+      },
+      {
+        q: "What about Superhuman&apos;s other features like keyboard shortcuts and split inbox?",
+        a: "Those are email client features that bedda.ai doesn&apos;t replicate. Superhuman is worth considering if those workflow features matter to you. If your primary reason for Superhuman is the AI writing, bedda gives you better AI at 60% less.",
+      },
+    ],
+  },
+
+  "bedda-vs-motion": {
+    slug: "bedda-vs-motion",
+    competitor: "Motion AI",
+    competitorUrl: "https://usemotion.com",
+    competitorPrice: "$19-34/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Motion AI",
+    metaTitle: "bedda.ai vs Motion AI (2026) — AI Productivity Comparison",
+    metaDescription:
+      "Compare bedda.ai and Motion AI. Motion is an AI scheduling and task manager ($19-34/mo). bedda.ai gives you Claude 4, GPT-5, and 36+ AI models for writing, analysis, and productivity — at $12/mo.",
+    ogTitle: "bedda.ai vs Motion — General AI vs AI Scheduling Tool",
+    ogDescription:
+      "Motion automates your calendar and tasks at $19-34/mo. bedda.ai gives you the world&apos;s best AI models for writing, research, and productivity at $12/mo.",
+    heroHeadline: "Full AI suite vs. AI scheduling — at a lower price",
+    heroSubtext:
+      "Motion AI schedules your calendar automatically. bedda.ai gives you Claude Opus 4.8, GPT-5, Gemini, and 36+ models for every cognitive task — for less per month.",
+    verdict:
+      "Motion and bedda.ai serve different needs. Motion is an AI scheduler; bedda.ai is a general-purpose AI assistant. If you need calendar automation, Motion is excellent. If you need AI for writing, analysis, coding, and research — bedda.ai gives you better underlying models at a lower price.",
+    switchReasons: [
+      "Access Claude Opus 4.8 and GPT-5 for drafting, analysis, and complex research",
+      "Save up to $22/mo versus Motion&apos;s Individual plan",
+      "Use AI for writing, coding, summarization, image generation, and more",
+      "Run model comparisons to find the best AI for each task",
+      "Works alongside your existing calendar app — no migration required",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$19-34/mo" },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "AI writing and analysis", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "AI calendar scheduling", bedda: false, competitor: true },
+      { feature: "AI task prioritization", bedda: false, competitor: true },
+      { feature: "Project management", bedda: false, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "1" },
+    ],
+    faq: [
+      {
+        q: "Can bedda.ai help with productivity and scheduling?",
+        a: "bedda.ai excels at cognitive productivity tasks — drafting plans, breaking down projects, writing emails, analyzing documents. It can&apos;t directly integrate with your calendar. For automated scheduling, Motion is the purpose-built tool.",
+      },
+      {
+        q: "Who should use both Motion and bedda.ai?",
+        a: "Many professionals use both. Motion handles calendar and task scheduling automatically; bedda.ai handles the thinking and writing work that fills those tasks. Together, they cover the full productivity stack.",
+      },
+      {
+        q: "Is bedda.ai good for project planning?",
+        a: "Yes. Ask Claude or GPT-5 to help break down a project into tasks, estimate timelines, identify dependencies, and draft stakeholder communications. It&apos;s a strong AI thinking partner for planning work, though it doesn&apos;t have calendar integration.",
+      },
+      {
+        q: "What makes bedda.ai different from other AI assistants?",
+        a: "Access to all frontier models in one interface. Instead of being locked into one company&apos;s AI, you can use Claude for writing, GPT-5 for coding, Gemini for long documents, and Grok for real-time info — switching based on the task.",
+      },
+    ],
+  },
+
+  "bedda-vs-tldv": {
+    slug: "bedda-vs-tldv",
+    competitor: "tl;dv",
+    competitorUrl: "https://tldv.io",
+    competitorPrice: "$18-59/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs tl;dv",
+    metaTitle: "bedda.ai vs tl;dv (2026) — AI Meeting Notes vs Full AI Suite",
+    metaDescription:
+      "Compare bedda.ai and tl;dv. tl;dv is AI meeting recording and notes ($18-59/mo). bedda.ai gives you Claude 4, GPT-5, audio transcription, and 36+ AI models for $12/mo.",
+    ogTitle: "bedda.ai vs tl;dv — Meeting AI vs Full AI Suite",
+    ogDescription:
+      "tl;dv charges $18-59/mo for AI meeting transcription and summaries. bedda.ai includes audio transcription plus Claude Opus, GPT-5, and 36+ frontier models — starting at $12/mo.",
+    heroHeadline: "Meeting notes and 36+ AI models — for less than tl;dv alone",
+    heroSubtext:
+      "tl;dv transcribes and summarizes your meetings. bedda.ai does that plus writing, research, coding, and analysis with Claude 4, GPT-5, Gemini, and 34 more models — starting at $12/mo.",
+    verdict:
+      "tl;dv is a purpose-built meeting assistant with calendar integrations and CRM sync. bedda.ai includes audio transcription as one of many features powered by 36+ frontier models. If you need deep meeting workflow integrations, tl;dv is excellent. If you need AI for everything from meeting notes to email drafting and analysis, bedda.ai is a better value.",
+    switchReasons: [
+      "bedda.ai includes Whisper-powered audio transcription for any recording",
+      "Save up to $47/mo versus tl;dv Pro at $59/mo",
+      "Claude Opus 4.8 produces more insightful meeting summaries than specialized tools",
+      "Use the same subscription for writing, research, coding, and image generation",
+      "No per-seat pricing — flat monthly subscription regardless of team size",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$18-59/mo" },
+      { feature: "Audio transcription (Whisper)", bedda: true, competitor: true },
+      { feature: "Meeting summarization", bedda: true, competitor: true },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "AI writing and analysis", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Zoom / Google Meet integration", bedda: false, competitor: true },
+      { feature: "CRM sync (Salesforce, HubSpot)", bedda: false, competitor: true },
+      { feature: "Calendar bot (auto-join)", bedda: false, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "1" },
+    ],
+    faq: [
+      {
+        q: "Does bedda.ai automatically join and record meetings?",
+        a: "No — bedda.ai doesn&apos;t have a meeting bot that auto-joins calls. You record locally and upload the audio file to bedda for transcription and summarization. For fully automated meeting capture, tl;dv or Otter.ai are better fits.",
+      },
+      {
+        q: "What audio formats does bedda.ai support?",
+        a: "bedda.ai uses OpenAI Whisper for transcription, which supports MP3, MP4, WAV, M4A, and other common formats. Upload via the file attachment button in the chat interface.",
+      },
+      {
+        q: "Can bedda.ai summarize meeting transcripts?",
+        a: "Yes. Paste or upload a transcript and ask Claude or Gemini to summarize key decisions, action items, open questions, and attendee commitments. Claude Opus 4.8 is particularly strong at extracting structured information from long transcripts.",
+      },
+      {
+        q: "Who would benefit from using both tl;dv and bedda.ai?",
+        a: "Sales teams and customer success managers benefit from tl;dv&apos;s CRM integration and auto-join for calls. Then use bedda.ai to draft follow-up emails, create proposals, and analyze deal patterns across multiple meetings — the models are much more capable than tl;dv&apos;s built-in AI.",
+      },
+    ],
+  },
+
+  "bedda-vs-hootsuite-ai": {
+    slug: "bedda-vs-hootsuite-ai",
+    competitor: "Hootsuite Breeze AI",
+    competitorUrl: "https://hootsuite.com",
+    competitorPrice: "$99+/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Hootsuite Breeze AI",
+    metaTitle: "bedda.ai vs Hootsuite Breeze AI (2026) — Better AI for Less",
+    metaDescription:
+      "Compare bedda.ai and Hootsuite Breeze AI. Hootsuite starts at $99/mo. bedda.ai gives you Claude 4, GPT-5, and 36+ AI models for social media writing and every other task — for $12/mo.",
+    ogTitle: "bedda.ai vs Hootsuite Breeze AI — Pay $12 Instead of $99",
+    ogDescription:
+      "Hootsuite charges $99+/mo and Breeze AI is limited to social captions. bedda.ai gives you Claude Opus, GPT-5, Gemini, and 36+ models for social content, copywriting, analysis and more — at $12/mo.",
+    heroHeadline: "Better social AI than Hootsuite Breeze — at $87/mo less",
+    heroSubtext:
+      "Hootsuite Breeze AI generates social captions at $99+/mo. bedda.ai gives you Claude Opus 4.8 and GPT-5 for social content, plus web search, image generation, and 34 more AI models — for $12/mo.",
+    verdict:
+      "Hootsuite is a full social media management platform — scheduling, analytics, listening. Breeze AI is a feature within it. If you need the full Hootsuite platform, the AI is a bonus. If you&apos;re paying $99+/mo primarily for AI-generated social content, bedda.ai delivers superior AI for 88% less.",
+    switchReasons: [
+      "Claude Opus 4.8 and GPT-5 write better social content than Hootsuite&apos;s Breeze AI",
+      "Save $87+/mo versus Hootsuite Professional plan",
+      "Generate images with DALL-E 3, Imagen 3, and Flux 1.1 for social posts",
+      "Web search keeps AI responses current with trending topics and news",
+      "Use the same subscription for email, blog, video scripts, and everything else",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$99+/mo" },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Social caption generation", bedda: true, competitor: true },
+      { feature: "Web search (real-time trends)", bedda: true, competitor: true },
+      { feature: "AI image generation", bedda: true, competitor: false },
+      { feature: "Multi-model comparison", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Social media scheduling", bedda: false, competitor: true },
+      { feature: "Social analytics", bedda: false, competitor: true },
+      { feature: "Social listening", bedda: false, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "1" },
+    ],
+    faq: [
+      {
+        q: "Can bedda.ai schedule social media posts?",
+        a: "No — bedda.ai doesn&apos;t have social scheduling or publishing features. It generates the content; you post it through your existing tool. For scheduling, Buffer (free plan for 3 channels) or a more affordable tool like Publer handles the distribution side.",
+      },
+      {
+        q: "How does bedda.ai help with social media content specifically?",
+        a: "Ask Claude or GPT-5 to write captions for multiple platforms with the right tone for each, generate hashtag sets, create a content calendar, repurpose long-form content into social posts, or write 10 variants of a CTA so you can A/B test. Claude is particularly strong at platform-specific tone calibration.",
+      },
+      {
+        q: "Is the AI in Hootsuite as good as Claude or GPT-5?",
+        a: "No. Hootsuite Breeze AI is powered by older OpenAI models (GPT-4-level). Claude Opus 4.8 and GPT-5 on bedda.ai are significantly more capable for nuanced writing tasks.",
+      },
+      {
+        q: "What&apos;s the most cost-effective social media + AI stack in 2026?",
+        a: "bedda.ai Plus ($12/mo) for AI content generation + Buffer free or Pro ($6-12/mo) for scheduling. Total: $12-24/mo vs $99+/mo for Hootsuite. Same or better output quality at 1/4 to 1/8 the price.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
