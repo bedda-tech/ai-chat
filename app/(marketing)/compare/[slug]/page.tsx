@@ -5373,6 +5373,237 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+  "bedda-vs-vertex-ai": {
+    slug: "bedda-vs-vertex-ai",
+    competitor: "Google Vertex AI",
+    competitorUrl: "https://cloud.google.com/vertex-ai",
+    competitorPrice: "Pay-per-token (cloud billing)",
+    beddaPrice: "$12/mo flat",
+    title: "bedda.ai vs Google Vertex AI",
+    metaTitle: "bedda.ai vs Google Vertex AI (2026) — Chat UI vs Cloud API",
+    metaDescription:
+      "Compare bedda.ai and Google Vertex AI. Vertex AI is a developer API for enterprise ML/AI on GCP. bedda.ai is a consumer chat interface with 36+ frontier models, no engineering required, and flat $12/mo pricing.",
+    ogTitle: "bedda.ai vs Google Vertex AI — Simple Chat vs Cloud Engineering",
+    ogDescription:
+      "Google Vertex AI is powerful cloud infrastructure — but it requires GCP expertise, per-token billing, and significant engineering overhead. bedda.ai gives you Claude, GPT-5, Gemini and 36+ models for $12/mo with no setup.",
+    heroHeadline: "Frontier AI models without the cloud engineering",
+    heroSubtext:
+      "Google Vertex AI is enterprise-grade AI infrastructure for engineering teams deploying ML pipelines on GCP. bedda.ai is a polished chat application with 36+ frontier models — including Gemini, Claude, and GPT-5 — at a flat $12/mo with no engineering required.",
+    verdict:
+      "Google Vertex AI is the right choice for engineering teams building production ML systems on GCP who need model hosting, fine-tuning, MLOps pipelines, and enterprise compliance features. bedda.ai is the right choice for individuals and knowledge worker teams who want access to the world&apos;s best AI models in a polished chat interface, without cloud infrastructure or per-token billing.",
+    switchReasons: [
+      "No GCP expertise required — chat with frontier models instantly",
+      "Flat $12/mo pricing — no surprise cloud bills",
+      "36+ models including Claude Opus 4.8, GPT-5, Grok 4, and more",
+      "Web search, image generation, code execution included out of the box",
+      "Built for knowledge workers, not just engineers",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo flat", competitor: "Pay-per-token (variable)" },
+      { feature: "Consumer chat interface", bedda: true, competitor: false },
+      { feature: "Claude / GPT-5 / Grok access", bedda: true, competitor: false },
+      { feature: "Gemini model access", bedda: true, competitor: true },
+      { feature: "No engineering required", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: true },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: true },
+      { feature: "Model fine-tuning", bedda: false, competitor: true },
+      { feature: "MLOps / pipeline support", bedda: false, competitor: true },
+      { feature: "Enterprise compliance (SOC2, HIPAA)", bedda: false, competitor: true },
+      { feature: "Predictable flat pricing", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Google Vertex AI?",
+        a: "Google Vertex AI is a managed machine learning platform on Google Cloud (GCP) that lets engineering teams train, deploy, and manage ML models at scale. It includes access to Gemini models via API, fine-tuning tools, vector databases, and MLOps infrastructure. It is not a consumer chat interface — it requires GCP accounts, API credentials, and engineering expertise.",
+      },
+      {
+        q: "Does bedda.ai include Gemini models?",
+        a: "Yes. bedda.ai includes Gemini 2.5 Pro and Gemini 2.5 Flash via API, alongside Claude Opus 4.8, GPT-5, Grok 4, DeepSeek R1, and 30+ other models — all in one chat interface at a flat $12/mo.",
+      },
+      {
+        q: "Who should use Vertex AI vs bedda.ai?",
+        a: "Vertex AI is designed for ML engineers and data scientists who need to build and deploy production AI systems on GCP — including model training, fine-tuning, and MLOps pipelines. bedda.ai is designed for knowledge workers, researchers, writers, and teams who want conversational access to frontier AI models without cloud infrastructure.",
+      },
+      {
+        q: "Is there an alternative to Vertex AI for non-engineers?",
+        a: "Yes. bedda.ai provides access to Gemini (and 35+ other frontier models) through a simple chat interface with no API setup, no GCP billing, and no engineering knowledge required. For knowledge workers who just want to use AI models conversationally, bedda.ai is a much simpler and more affordable option than Vertex AI.",
+      },
+    ],
+  },
+  "bedda-vs-azure-openai": {
+    slug: "bedda-vs-azure-openai",
+    competitor: "Azure OpenAI Service",
+    competitorUrl: "https://azure.microsoft.com/en-us/products/ai-services/openai-service",
+    competitorPrice: "Pay-per-token (Azure billing)",
+    beddaPrice: "$12/mo flat",
+    title: "bedda.ai vs Azure OpenAI Service",
+    metaTitle: "bedda.ai vs Azure OpenAI (2026) — Chat UI vs Enterprise API",
+    metaDescription:
+      "Compare bedda.ai and Azure OpenAI Service. Azure OpenAI is a developer API for enterprise GPT deployments on Microsoft Azure. bedda.ai is a consumer chat interface with 36+ models including Claude, Gemini, and Grok at $12/mo flat.",
+    ogTitle: "bedda.ai vs Azure OpenAI — Instant Chat vs Enterprise API Setup",
+    ogDescription:
+      "Azure OpenAI requires an Azure subscription, approved access, API setup, and per-token billing. bedda.ai gives you GPT-5, Claude, Gemini, Grok and 36+ models for $12/mo with zero setup. No cloud account required.",
+    heroHeadline: "GPT-5 and 35 more models — no Azure account needed",
+    heroSubtext:
+      "Azure OpenAI Service is Microsoft&apos;s enterprise API for deploying GPT models in managed Azure environments. bedda.ai gives individuals and teams instant chat access to GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, and 33+ more models — for $12/mo with no cloud setup.",
+    verdict:
+      "Azure OpenAI Service is the right choice for enterprise engineering teams that need GPT models deployed within Microsoft&apos;s compliance framework — SOC2, HIPAA, data residency controls, Azure Active Directory integration. bedda.ai is the right choice for knowledge workers and teams who want conversational access to GPT-5 and 35+ other frontier models without cloud infrastructure or per-token billing.",
+    switchReasons: [
+      "Instant access — no Azure subscription or waitlist required",
+      "36+ models including Claude, Gemini, Grok alongside GPT-5",
+      "Flat $12/mo pricing — no per-token Azure billing",
+      "Web search, image generation, code execution out of the box",
+      "Zero engineering overhead — chat immediately",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo flat", competitor: "Pay-per-token (variable)" },
+      { feature: "Consumer chat interface", bedda: true, competitor: false },
+      { feature: "GPT-5 access", bedda: true, competitor: true },
+      { feature: "Claude / Gemini / Grok access", bedda: true, competitor: false },
+      { feature: "No Azure account required", bedda: true, competitor: false },
+      { feature: "Instant access (no waitlist)", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: true },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: true },
+      { feature: "Data residency / compliance controls", bedda: false, competitor: true },
+      { feature: "Azure AD integration", bedda: false, competitor: true },
+      { feature: "Model fine-tuning", bedda: false, competitor: true },
+    ],
+    faq: [
+      {
+        q: "What is Azure OpenAI Service?",
+        a: "Azure OpenAI Service is Microsoft&apos;s enterprise offering that provides API access to OpenAI models (GPT-4, GPT-5, DALL-E, etc.) within Microsoft Azure&apos;s infrastructure. It requires an Azure subscription, approved access, API credentials, and Azure billing. It is designed for engineering teams building production applications with enterprise compliance requirements.",
+      },
+      {
+        q: "Can I use GPT-5 without Azure?",
+        a: "Yes. bedda.ai provides GPT-5 access via a simple chat interface at $12/mo — no Azure subscription required. You can also access Claude Opus 4.8, Gemini 2.5 Pro, Grok 4, and 32+ other frontier models in the same subscription.",
+      },
+      {
+        q: "Who should use Azure OpenAI vs bedda.ai?",
+        a: "Azure OpenAI is best for enterprise engineering teams that need GPT models deployed in a Microsoft-compliant environment with data residency controls, Azure AD authentication, and SOC2/HIPAA compliance. bedda.ai is best for individuals and teams who want conversational access to GPT-5 and other frontier models without enterprise cloud infrastructure.",
+      },
+      {
+        q: "How does bedda.ai pricing compare to Azure OpenAI?",
+        a: "Azure OpenAI bills per token based on Azure pricing — heavy usage can add up quickly for individual users. bedda.ai charges a flat $12/mo for Plus subscribers, with 300 messages per day across all 36+ models — no surprise bills.",
+      },
+    ],
+  },
+  "bedda-vs-aws-bedrock": {
+    slug: "bedda-vs-aws-bedrock",
+    competitor: "AWS Bedrock",
+    competitorUrl: "https://aws.amazon.com/bedrock/",
+    competitorPrice: "Pay-per-token (AWS billing)",
+    beddaPrice: "$12/mo flat",
+    title: "bedda.ai vs AWS Bedrock",
+    metaTitle: "bedda.ai vs AWS Bedrock (2026) — Chat App vs Cloud API",
+    metaDescription:
+      "Compare bedda.ai and AWS Bedrock. Bedrock is Amazon&apos;s enterprise API for foundation models on AWS. bedda.ai is a consumer chat interface with 36+ frontier models, no AWS setup required, and flat $12/mo pricing.",
+    ogTitle: "bedda.ai vs AWS Bedrock — Instant AI Chat vs Cloud Infrastructure",
+    ogDescription:
+      "AWS Bedrock requires an AWS account, IAM roles, per-token billing, and significant setup. bedda.ai gives you Claude, GPT-5, Gemini, Grok, and 36+ models in a polished chat interface for $12/mo. No cloud engineering required.",
+    heroHeadline: "All the foundation models — none of the AWS complexity",
+    heroSubtext:
+      "AWS Bedrock is Amazon&apos;s managed API for foundation models like Claude, Llama, and Titan within the AWS cloud. bedda.ai provides consumer chat access to Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and 33+ other models for $12/mo — no AWS account, IAM roles, or per-token billing needed.",
+    verdict:
+      "AWS Bedrock is the right choice for engineering teams building AI-powered applications within AWS infrastructure who need fine-tuning, compliance controls, VPC isolation, and pay-per-token billing at scale. bedda.ai is the right choice for individuals and knowledge worker teams who want conversational access to Claude and other frontier models without cloud infrastructure.",
+    switchReasons: [
+      "No AWS account or IAM setup required — start chatting in minutes",
+      "Claude Opus 4.8, GPT-5, Gemini, Grok — all in one interface",
+      "Flat $12/mo — no per-token AWS charges",
+      "Web search, image generation, knowledge base (RAG) included",
+      "Designed for knowledge workers, not just cloud engineers",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo flat", competitor: "Pay-per-token (variable)" },
+      { feature: "Consumer chat interface", bedda: true, competitor: false },
+      { feature: "Claude model access", bedda: true, competitor: true },
+      { feature: "GPT-5 / Grok access", bedda: true, competitor: false },
+      { feature: "No AWS account required", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: true },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: true },
+      { feature: "Model fine-tuning", bedda: false, competitor: true },
+      { feature: "VPC isolation / data residency", bedda: false, competitor: true },
+      { feature: "AWS compliance (HIPAA, SOC2)", bedda: false, competitor: true },
+      { feature: "Predictable flat pricing", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is AWS Bedrock?",
+        a: "AWS Bedrock is Amazon&apos;s managed AI service that provides API access to foundation models including Claude (from Anthropic), Llama, Amazon Titan, and others within the AWS cloud. It is designed for engineering teams building AI-powered applications who need fine-tuning, RAG pipelines, compliance controls, and AWS infrastructure integration.",
+      },
+      {
+        q: "Can I access Claude without AWS Bedrock?",
+        a: "Yes. bedda.ai provides Claude Opus 4.8, Claude Sonnet 4, and Claude Haiku 4 via a polished chat interface at $12/mo — no AWS account required. You also get GPT-5, Gemini 2.5 Pro, Grok 4, and 32+ other models in the same subscription.",
+      },
+      {
+        q: "Who should use AWS Bedrock vs bedda.ai?",
+        a: "AWS Bedrock is designed for engineering teams that need to integrate AI models into production applications within AWS infrastructure — including fine-tuning, compliance (HIPAA, SOC2), VPC isolation, and programmatic API access at scale. bedda.ai is designed for individuals, researchers, and teams who want conversational AI access without cloud engineering overhead.",
+      },
+      {
+        q: "How does the pricing compare?",
+        a: "AWS Bedrock charges per token — heavy usage can cost significantly more than a flat subscription for individual users. bedda.ai charges $12/mo flat for 300 messages per day across all 36+ models, making costs predictable for individual and team use.",
+      },
+    ],
+  },
+  "bedda-vs-glean": {
+    slug: "bedda-vs-glean",
+    competitor: "Glean",
+    competitorUrl: "https://www.glean.com",
+    competitorPrice: "$20+/user/mo (enterprise)",
+    beddaPrice: "$12/mo flat",
+    title: "bedda.ai vs Glean",
+    metaTitle: "bedda.ai vs Glean (2026) — Frontier AI Chat vs Enterprise Search",
+    metaDescription:
+      "Compare bedda.ai and Glean. Glean is an enterprise AI search platform that connects company data sources. bedda.ai is a consumer chat interface with 36+ frontier models including Claude, GPT-5, and Gemini at $12/mo flat.",
+    ogTitle: "bedda.ai vs Glean — Frontier Models vs Enterprise Search",
+    ogDescription:
+      "Glean indexes your company&apos;s internal data across Slack, Drive, Confluence, and more. bedda.ai gives you Claude, GPT-5, Gemini, Grok and 36+ frontier AI models for $12/mo. Different tools for different use cases.",
+    heroHeadline: "36+ frontier AI models — not just connected search",
+    heroSubtext:
+      "Glean is an enterprise AI search platform that connects and indexes company knowledge sources (Slack, Google Drive, Confluence, Jira, etc.) to answer internal questions. bedda.ai is a professional chat interface with 36+ frontier AI models — Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and more — at $12/mo flat.",
+    verdict:
+      "Glean is the right choice for large enterprises that need AI-powered search across their internal knowledge base — Slack, Confluence, Drive, Jira, email, and more — with enterprise SSO and compliance controls. bedda.ai is the right choice for individuals and teams who need frontier AI models (Claude, GPT-5, Gemini) for everyday tasks: writing, analysis, coding, research, and brainstorming.",
+    switchReasons: [
+      "Access Claude Opus 4.8, GPT-5, Gemini, Grok — not just search",
+      "Flat $12/mo — no enterprise contract or per-seat negotiation",
+      "Web search with citations included",
+      "Knowledge base (RAG) for your own documents",
+      "Image generation, code execution, audio transcription included",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo flat", competitor: "$20+/user/mo (enterprise)" },
+      { feature: "Frontier model access (Claude, GPT-5, Gemini)", bedda: true, competitor: false },
+      { feature: "Internal company data search", bedda: false, competitor: true },
+      { feature: "Slack / Drive / Confluence integration", bedda: false, competitor: true },
+      { feature: "Web search with citations", bedda: true, competitor: true },
+      { feature: "Document RAG / knowledge base", bedda: true, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "No enterprise contract required", bedda: true, competitor: false },
+      { feature: "Enterprise SSO / compliance", bedda: false, competitor: true },
+    ],
+    faq: [
+      {
+        q: "What is Glean?",
+        a: "Glean is an enterprise AI search platform that connects to company knowledge sources — Slack, Google Drive, Confluence, Jira, GitHub, email, and more — and lets employees ask questions across all of them using natural language. It is designed for large enterprises (typically 500+ employees) and requires IT integration and SSO setup.",
+      },
+      {
+        q: "Does bedda.ai connect to internal company data like Slack or Confluence?",
+        a: "bedda.ai includes a knowledge base feature where you can upload documents (PDFs, text files, CSVs) and chat with your own content using RAG. It does not have native connectors to Slack, Confluence, or other enterprise systems like Glean does. For enterprise-wide internal knowledge search, Glean is purpose-built for that use case.",
+      },
+      {
+        q: "Who should use Glean vs bedda.ai?",
+        a: "Glean is ideal for large enterprises that want AI-powered search across their internal knowledge base with enterprise compliance, SSO, and integrations with 100+ company tools. bedda.ai is ideal for individuals, teams, and professionals who need frontier AI models (Claude, GPT-5, Gemini, Grok) for general writing, analysis, coding, research, and productivity tasks.",
+      },
+      {
+        q: "Can I use bedda.ai alongside Glean?",
+        a: "Yes — many professionals use both. Glean excels at finding and surfacing internal company information. bedda.ai excels at reasoning, writing, analysis, and generation tasks using the world&apos;s best frontier models. They serve complementary use cases.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
