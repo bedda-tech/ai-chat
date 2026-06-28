@@ -5783,7 +5783,64 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
-
+  "bedda-vs-atlassian-intelligence": {
+    slug: "bedda-vs-atlassian-intelligence",
+    competitor: "Atlassian Intelligence",
+    competitorUrl: "https://www.atlassian.com/software/atlassian-intelligence",
+    competitorPrice: "$10+/user/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Atlassian Intelligence",
+    metaTitle: "bedda.ai vs Atlassian Intelligence (2026) — Platform AI vs Frontier Models",
+    metaDescription:
+      "Compare bedda.ai and Atlassian Intelligence. Atlassian AI is locked to Jira and Confluence. bedda.ai gives you Claude 4 and GPT-5 for $12/mo — without requiring an Atlassian subscription.",
+    ogTitle: "bedda.ai vs Atlassian Intelligence — Break Free from Platform Lock-In",
+    ogDescription:
+      "Atlassian Intelligence costs $10+/user/mo on top of your Jira/Confluence subscription. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ models for $12/mo — no Atlassian account required.",
+    heroHeadline: "Frontier AI without the Atlassian add-on fee",
+    heroSubtext:
+      "Atlassian Intelligence is an AI layer bolted onto Jira and Confluence — useful inside those tools, but priced as an add-on to an already expensive platform. bedda.ai gives you Claude Opus 4.8 and GPT-5 for Jira ticket writing, Confluence docs, sprint planning, and every other AI task — for $12/mo, no Atlassian subscription required.",
+    verdict:
+      "Atlassian Intelligence is most valuable if you live inside Jira and Confluence and want AI directly in your workflow — auto-summarizing tickets, suggesting sprint plans from your backlog, or generating Confluence pages from meeting notes. If you&apos;re already paying for Atlassian and want native integration, Atlassian Intelligence makes sense. If you want better underlying AI models for all your work tasks at a lower incremental cost, bedda.ai delivers more with Claude Opus 4.8 and GPT-5.",
+    switchReasons: [
+      "Claude Opus 4.8 and GPT-5 write better Jira tickets, acceptance criteria, and technical specs than Atlassian&apos;s AI",
+      "No Atlassian subscription required — works for any team&apos;s project management approach",
+      "Save per-user add-on costs when your team is large",
+      "Knowledge base lets you upload your own process docs, runbooks, and standards for AI to reference",
+      "Use the same subscription for code review, data analysis, customer emails, and every other work task",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo per user", competitor: "$10+/user/mo add-on" },
+      { feature: "Claude Opus 4.8 / GPT-5", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Jira ticket AI assistance", bedda: true, competitor: true },
+      { feature: "Native Jira/Confluence integration", bedda: false, competitor: true },
+      { feature: "Sprint planning suggestions", bedda: true, competitor: true },
+      { feature: "Confluence page generation", bedda: true, competitor: true },
+      { feature: "Web search (real-time)", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Requires Atlassian subscription", bedda: false, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "1 (Atlassian&apos;s model)" },
+    ],
+    faq: [
+      {
+        q: "Can bedda.ai write Jira tickets?",
+        a: "Yes — you describe the feature, bug, or task, and Claude Opus 4.8 or GPT-5 writes a properly formatted ticket with title, description, acceptance criteria, and story points estimate. You then paste it into Jira. It&apos;s one extra step vs native integration, but the output quality from frontier models is noticeably better.",
+      },
+      {
+        q: "How much does Atlassian Intelligence cost?",
+        a: "Atlassian Intelligence is an add-on to Jira Cloud Premium/Enterprise and Confluence Cloud Premium/Enterprise plans. As of 2026, it&apos;s included in Premium plans (which themselves cost $15.25+/user/mo for Jira). For teams already on Free or Standard plans, upgrading to Premium for AI access adds significant per-user cost.",
+      },
+      {
+        q: "Does bedda.ai integrate with Jira or Confluence?",
+        a: "Not natively — bedda.ai doesn&apos;t have a Jira or Confluence plugin. You use bedda.ai in a separate tab, generate content, and paste it in. For teams that primarily need AI for content generation rather than inline suggestions, this workflow is fast and effective.",
+      },
+      {
+        q: "Which AI is better for technical documentation — Atlassian Intelligence or Claude Opus 4.8?",
+        a: "Claude Opus 4.8 on bedda.ai produces significantly better technical documentation than Atlassian&apos;s AI layer. Atlassian Intelligence is built for convenience inside their platform; Claude is a frontier model purpose-built for nuanced, accurate, well-structured writing.",
+      },
+    ],
+  },
   "bedda-vs-hootsuite-ai": {
     slug: "bedda-vs-hootsuite-ai",
     competitor: "Hootsuite Breeze AI",

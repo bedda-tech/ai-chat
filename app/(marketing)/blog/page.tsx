@@ -846,6 +846,42 @@ const posts = [
     readingTime: "9 min read",
     category: "Developer Guides",
   },
+  {
+    slug: "ai-for-insurance-professionals-2026",
+    title: "AI for Insurance Professionals in 2026: Underwriting, Claims, and Client Outreach",
+    description:
+      "How insurance agents, underwriters, adjusters, and brokers use AI in 2026 — from policy writing and claims analysis to client communications and compliance documentation.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Industry Guides",
+  },
+  {
+    slug: "best-ai-for-personal-finance-2026",
+    title: "Best AI for Personal Finance in 2026: Budgeting, Investing, and Planning",
+    description:
+      "How to use AI models to manage personal finances in 2026 — from building budgets and analyzing investment options to planning for retirement and understanding tax implications.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Guides",
+  },
+  {
+    slug: "ai-for-nonprofit-organizations-2026",
+    title: "AI for Nonprofits in 2026: Grant Writing, Outreach, and Program Management",
+    description:
+      "How nonprofits use AI in 2026 to write grant proposals, create donor communications, manage programs, and stretch limited budgets further with affordable AI subscriptions.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Industry Guides",
+  },
+  {
+    slug: "ai-for-travel-industry-2026",
+    title: "AI for Travel and Hospitality in 2026: A Practical Guide",
+    description:
+      "How travel agents, tour operators, hotel staff, and travel bloggers use AI in 2026 — from itinerary building and guest communications to content creation and booking optimization.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Industry Guides",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
