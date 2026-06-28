@@ -5137,6 +5137,242 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-gemini-advanced": {
+    slug: "bedda-vs-gemini-advanced",
+    competitor: "Gemini Advanced",
+    competitorUrl: "https://gemini.google.com",
+    competitorPrice: "$19.99/mo (Google One AI Premium)",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Gemini Advanced",
+    metaTitle: "bedda.ai vs Gemini Advanced (2026) — 36+ Models vs One Google Model",
+    metaDescription:
+      "Compare bedda.ai and Gemini Advanced. Gemini Advanced gives you Gemini 2.5 Pro for $20/mo. bedda.ai gives you Gemini 2.5 Pro plus GPT-5, Claude Opus, Grok 4 and 33 more models for $12/mo.",
+    ogTitle: "bedda.ai vs Gemini Advanced — 36+ Models for $12 vs One Model for $20",
+    ogDescription:
+      "Gemini Advanced gives you one AI model. bedda.ai gives you 36+ — including Gemini 2.5 Pro itself, plus Claude Opus 4.8, GPT-5, Grok 4, and DeepSeek R1 — for $8 less per month.",
+    heroHeadline: "Get Gemini — plus 35 other models — for $8 less",
+    heroSubtext:
+      "Gemini Advanced locks you into Google&apos;s ecosystem at $20/mo. bedda.ai includes Gemini 2.5 Pro plus Claude Opus 4.8, GPT-5, Grok 4, and 33 more models — all for $12/mo. One subscription, every frontier model.",
+    verdict:
+      "Gemini Advanced is the right choice if you&apos;re deeply embedded in Google Workspace and want Gemini integrated into Gmail, Docs, and Drive. bedda.ai is the right choice when you want the best AI for each task — including Gemini 2.5 Pro — without being locked into a single provider, and for $8/mo less.",
+    switchReasons: [
+      "Save $8/mo — bedda.ai at $12/mo vs Gemini Advanced at $19.99/mo",
+      "Access 36+ models — not just Gemini, but also Claude Opus 4.8, GPT-5, and Grok 4",
+      "Switch between models mid-conversation for different tasks",
+      "Knowledge base (RAG), model arena, web search, and image generation included",
+      "Not locked into Google&apos;s ecosystem — works independently of Workspace",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$19.99/mo" },
+      { feature: "Gemini 2.5 Pro access", bedda: true, competitor: true },
+      { feature: "Claude Opus 4.8 / GPT-5 / Grok 4", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1 (Gemini 2.5 Pro)" },
+      { feature: "Google Workspace integration", bedda: false, competitor: true },
+      { feature: "Web search", bedda: true, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: true },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Code execution sandbox", bedda: true, competitor: true },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Gemini Advanced?",
+        a: "Gemini Advanced is Google&apos;s premium AI subscription ($19.99/mo) that provides access to Gemini 2.5 Pro — Google&apos;s most capable model. It&apos;s included in the Google One AI Premium plan, which also includes 2TB of Google storage and Gemini integration across Gmail, Docs, Drive, and other Workspace apps.",
+      },
+      {
+        q: "Does bedda.ai include Gemini 2.5 Pro?",
+        a: "Yes. bedda.ai includes Gemini 2.5 Pro (via the Vercel AI gateway) along with 35+ other models including Claude Opus 4.8, GPT-5, Grok 4, DeepSeek R1, Mistral Large, and more — all for $12/mo.",
+      },
+      {
+        q: "Should I choose Gemini Advanced or bedda.ai?",
+        a: "Choose Gemini Advanced if you rely heavily on Google Workspace (Gmail, Docs, Drive) and want AI embedded in those apps. Choose bedda.ai if you want the best AI for each task — including Gemini 2.5 Pro — without being locked to Google, and at a lower price.",
+      },
+      {
+        q: "Does bedda.ai integrate with Google Workspace?",
+        a: "bedda.ai includes Google Drive integration — you can connect your Drive and search or read files in your AI conversations. It doesn&apos;t embed directly into Gmail or Google Docs the way Gemini Advanced does.",
+      },
+    ],
+  },
+
+  "bedda-vs-claude-pro": {
+    slug: "bedda-vs-claude-pro",
+    competitor: "Claude.ai Pro",
+    competitorUrl: "https://claude.ai",
+    competitorPrice: "$20/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Claude.ai Pro",
+    metaTitle: "bedda.ai vs Claude.ai Pro (2026) — 36+ Models vs Claude Only",
+    metaDescription:
+      "Compare bedda.ai and Claude Pro. Claude Pro gives you Claude Opus 4.8 for $20/mo. bedda.ai gives you Claude Opus 4.8 plus GPT-5, Gemini 2.5 Pro, Grok 4 and 33 more models — for $12/mo.",
+    ogTitle: "bedda.ai vs Claude Pro — 36+ Models for $12 vs Claude Only for $20",
+    ogDescription:
+      "Claude Pro gives you Anthropic&apos;s models exclusively. bedda.ai includes Claude Opus 4.8 and Sonnet plus GPT-5, Gemini 2.5 Pro, Grok 4, and 32 more models — for $8 less per month.",
+    heroHeadline: "Get Claude — plus 35 other models — for $8 less",
+    heroSubtext:
+      "Claude Pro is $20/mo for Anthropic&apos;s models only. bedda.ai gives you Claude Opus 4.8 and Sonnet plus GPT-5, Gemini 2.5 Pro, Grok 4, DeepSeek R1, and 31 more models — all for $12/mo. The best AI isn&apos;t always the same model for every task.",
+    verdict:
+      "Claude Pro is the right choice if you use Claude exclusively and love Anthropic&apos;s artifacts, projects, and usage-based billing features. bedda.ai is the right choice when you want Claude plus the freedom to use GPT-5 for code generation, Gemini for long documents, and Grok for real-time search — at $8/mo less.",
+    switchReasons: [
+      "Save $8/mo — bedda.ai at $12/mo vs Claude Pro at $20/mo",
+      "Claude Opus 4.8 included — same model, plus 35 others",
+      "GPT-5 for code generation, Gemini 2.5 Pro for 1M token context tasks",
+      "Model comparison arena: generate with Claude and GPT-5 side-by-side",
+      "Knowledge base RAG, web search, image generation, and voice input included",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$20/mo" },
+      { feature: "Claude Opus 4.8 access", bedda: true, competitor: true },
+      { feature: "GPT-5 / Gemini 2.5 Pro / Grok 4", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "3 (Anthropic only)" },
+      { feature: "Web search", bedda: true, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Code execution sandbox", bedda: true, competitor: true },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Projects / custom system prompts", bedda: true, competitor: true },
+      { feature: "Team workspaces", bedda: true, competitor: true },
+    ],
+    faq: [
+      {
+        q: "What is Claude Pro?",
+        a: "Claude Pro is Anthropic&apos;s $20/mo subscription for claude.ai that provides priority access to Claude Opus 4.8 and Sonnet 4.6, along with higher usage limits, Projects (for persistent context), and artifacts for generating documents and code. It&apos;s limited to Anthropic&apos;s own model family.",
+      },
+      {
+        q: "Does bedda.ai include Claude Opus 4.8?",
+        a: "Yes. bedda.ai includes Claude Opus 4.8 and Claude Sonnet 4.6 (on Pro and Max tiers) along with GPT-5, Gemini 2.5 Pro, Grok 4, DeepSeek R1, Mistral, and 30+ more models — all for $12/mo on the Plus plan.",
+      },
+      {
+        q: "Is bedda.ai better than Claude Pro?",
+        a: "It depends on your needs. Claude Pro is better if you want Anthropic&apos;s native interface with its specific features (Projects, artifacts, usage-based billing). bedda.ai is better if you want access to multiple model providers and the ability to switch models by task — at a lower monthly price.",
+      },
+      {
+        q: "Can I use bedda.ai for the same tasks as Claude Pro?",
+        a: "Yes — writing, coding, research, document analysis, and conversation all work on bedda.ai. bedda.ai also adds features Claude Pro doesn&apos;t have: multi-model comparison, 36+ external models, a knowledge base (RAG), image generation via DALL-E and Imagen, and video generation.",
+      },
+    ],
+  },
+
+  "bedda-vs-chatgpt-team": {
+    slug: "bedda-vs-chatgpt-team",
+    competitor: "ChatGPT Team",
+    competitorUrl: "https://openai.com/chatgpt/team",
+    competitorPrice: "$25–$30/user/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs ChatGPT Team",
+    metaTitle: "bedda.ai vs ChatGPT Team (2026) — Full AI Suite vs OpenAI Team Plan",
+    metaDescription:
+      "Compare bedda.ai and ChatGPT Team. ChatGPT Team gives you GPT-5 for $25–$30/user/mo. bedda.ai gives you GPT-5, Claude Opus, Gemini and 33 more models plus team features — for $12/mo.",
+    ogTitle: "bedda.ai vs ChatGPT Team — 36+ Models for $12 vs OpenAI Only for $25–$30/user",
+    ogDescription:
+      "ChatGPT Team costs $25–$30/user/month and locks you into OpenAI. bedda.ai Teams gives your whole team Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and 33 more models — with a shared knowledge base and team workspaces — for a fraction of the cost.",
+    heroHeadline: "Team AI with every model — not just ChatGPT",
+    heroSubtext:
+      "ChatGPT Team is $25–$30/user/month and limited to OpenAI&apos;s models. bedda.ai Teams gives your team GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, Grok 4, and 32 more models — plus a shared knowledge base, team workspaces, and usage analytics — starting at $12/mo per user.",
+    verdict:
+      "ChatGPT Team is the right choice if your team is fully standardized on OpenAI and wants GPT-5 with data privacy guarantees and team-level admin controls within the OpenAI ecosystem. bedda.ai Teams is the right choice when you want multi-model access, a shared knowledge base, and team collaboration features — at roughly half the per-user price.",
+    switchReasons: [
+      "Save $13–$18/user/mo — bedda.ai at $12/mo vs ChatGPT Team at $25–$30/user",
+      "Not locked into OpenAI — use Claude, Gemini, Grok, and 33 more models",
+      "Shared team knowledge base (RAG) for consistent context across the team",
+      "Model arena to compare outputs from multiple models simultaneously",
+      "Team usage analytics and role-based model access controls",
+    ],
+    rows: [
+      { feature: "Monthly price per user", bedda: "$12/mo", competitor: "$25–$30/user" },
+      { feature: "GPT-5 access", bedda: true, competitor: true },
+      { feature: "Claude Opus 4.8 / Gemini 2.5 Pro / Grok 4", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "OpenAI models only" },
+      { feature: "Shared team knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Team chat sharing", bedda: true, competitor: true },
+      { feature: "Admin controls & usage analytics", bedda: true, competitor: true },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Image generation (DALL-E 3)", bedda: true, competitor: true },
+      { feature: "Web search", bedda: true, competitor: true },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: true },
+      { feature: "Custom GPTs / system prompts", bedda: true, competitor: true },
+    ],
+    faq: [
+      {
+        q: "What is ChatGPT Team?",
+        a: "ChatGPT Team is OpenAI&apos;s business plan at $25/user/month (annual) or $30/user/month (monthly). It provides GPT-5 access, higher message limits, data privacy (conversations not used for training), team workspaces, and admin controls. It&apos;s limited to OpenAI&apos;s own model family.",
+      },
+      {
+        q: "Does bedda.ai include GPT-5?",
+        a: "Yes. bedda.ai includes GPT-5 along with Claude Opus 4.8, Gemini 2.5 Pro, Grok 4, DeepSeek R1, Mistral Large, and 30+ more models. bedda.ai Teams adds shared workspaces, a team knowledge base, and usage analytics.",
+      },
+      {
+        q: "How do bedda.ai Teams features compare to ChatGPT Team?",
+        a: "Both offer team workspaces, admin controls, and shared resources. bedda.ai Teams adds a shared knowledge base (RAG) so your team&apos;s AI can reference your company documents, model comparison arena for side-by-side outputs, and access to 36+ models from multiple providers instead of just OpenAI.",
+      },
+      {
+        q: "Is my data private on bedda.ai?",
+        a: "bedda.ai passes requests directly to model providers (OpenAI, Anthropic, Google, etc.) via their API — API requests are not used to train any models. Your team&apos;s conversations are stored for chat history and are not used for AI training.",
+      },
+    ],
+  },
+
+  "bedda-vs-together-ai": {
+    slug: "bedda-vs-together-ai",
+    competitor: "Together AI",
+    competitorUrl: "https://together.ai",
+    competitorPrice: "Pay-per-token (API only)",
+    beddaPrice: "$12/mo flat",
+    title: "bedda.ai vs Together AI",
+    metaTitle: "bedda.ai vs Together AI (2026) — Chat Interface vs API Platform",
+    metaDescription:
+      "Compare bedda.ai and Together AI. Together AI is an API platform for developers running open-source models. bedda.ai is a consumer chat app with 36+ frontier models, a UI, and flat $12/mo pricing.",
+    ogTitle: "bedda.ai vs Together AI — Chat App vs API-Only Platform",
+    ogDescription:
+      "Together AI is a powerful API for running open-source LLMs — but there&apos;s no consumer UI, no flat pricing, and no Claude/GPT-5/Gemini. bedda.ai gives you 36+ frontier models with a polished chat interface for $12/mo flat.",
+    heroHeadline: "Frontier models with a UI — not just an API",
+    heroSubtext:
+      "Together AI is a developer-focused API platform for open-source models like Llama and Mixtral. bedda.ai is a consumer chat interface with 36+ frontier models (Claude, GPT-5, Gemini, Grok) — no engineering required, no per-token billing, just $12/mo flat.",
+    verdict:
+      "Together AI is the right choice for developers who need programmatic access to open-source models like Llama 3 or Mixtral at scale, with pay-per-token pricing and no usage caps. bedda.ai is the right choice for individuals and teams who want a polished chat interface with frontier models (Claude, GPT-5, Gemini) at a predictable flat monthly price.",
+    switchReasons: [
+      "Polished chat UI — no engineering required to access 36+ models",
+      "Frontier models included: Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, Grok 4",
+      "Flat $12/mo pricing — no surprise token bills",
+      "Knowledge base (RAG), web search, image generation included out of the box",
+      "Team workspaces and model comparison arena for collaborative AI use",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo flat", competitor: "Pay-per-token (variable)" },
+      { feature: "Consumer chat interface", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8 / GPT-5 / Gemini", bedda: true, competitor: false },
+      { feature: "Open-source models (Llama, Mixtral)", bedda: false, competitor: true },
+      { feature: "API access", bedda: true, competitor: true },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "No engineering required", bedda: true, competitor: false },
+      { feature: "Predictable flat pricing", bedda: true, competitor: false },
+      { feature: "Fine-tuning support", bedda: false, competitor: true },
+    ],
+    faq: [
+      {
+        q: "What is Together AI?",
+        a: "Together AI is a cloud platform that provides API access to open-source language models including Llama 3, Mixtral, Qwen, and others. It&apos;s designed for developers who want to run inference on open-source models at scale, with fine-tuning support and pay-per-token pricing. There is no consumer chat interface.",
+      },
+      {
+        q: "Does bedda.ai have API access?",
+        a: "Yes. bedda.ai provides an OpenAI-compatible API endpoint that lets you route to any of our 36+ models using standard SDK calls. It&apos;s available to Pro and Max subscribers. Unlike Together AI, bedda.ai also includes a full consumer chat interface.",
+      },
+      {
+        q: "Does bedda.ai include open-source models like Llama?",
+        a: "bedda.ai includes Llama 3.3 70B via Groq (for fast inference) and Cerebras. For access to a wide range of open-source models at the API level for fine-tuning or scale inference, Together AI is better suited.",
+      },
+      {
+        q: "Who should use Together AI vs bedda.ai?",
+        a: "Together AI is ideal for ML engineers and developers who need API access to open-source models for integration into products, fine-tuning, or high-volume inference. bedda.ai is ideal for knowledge workers, writers, developers, and teams who want the best frontier AI models in a chat interface without building infrastructure.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
