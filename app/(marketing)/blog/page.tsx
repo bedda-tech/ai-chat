@@ -882,6 +882,42 @@ const posts = [
     readingTime: "7 min read",
     category: "Industry Guides",
   },
+  {
+    slug: "best-ai-for-presentations-2026",
+    title: "Best AI for Presentations in 2026: Build Slides Faster",
+    description:
+      "The best AI tools for creating presentations and slideshows in 2026 — from outline generation and speaker notes to bedda.ai's built-in slides artifact.",
+    date: "June 2026",
+    readingTime: "6 min read",
+    category: "Productivity",
+  },
+  {
+    slug: "ai-for-graphic-design-2026",
+    title: "AI for Graphic Design in 2026: Tools, Workflows, and Best Models",
+    description:
+      "How professional designers use AI for concept briefs, copy, image generation, and client communication — and which AI models work best for creative design work.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Creative",
+  },
+  {
+    slug: "best-ai-for-recruiters-2026",
+    title: "Best AI for Recruiters in 2026: Source, Screen, and Hire Faster",
+    description:
+      "The AI tools and models helping recruiting teams write job descriptions, craft personalized outreach, screen candidates, and close positions faster in 2026.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "HR & Recruiting",
+  },
+  {
+    slug: "ai-for-construction-industry-2026",
+    title: "AI for the Construction Industry in 2026: Real Use Cases",
+    description:
+      "How construction project managers, estimators, and contractors use AI for estimates, contracts, RFIs, scheduling, and safety documentation in 2026.",
+    date: "June 2026",
+    readingTime: "6 min read",
+    category: "Industry Guides",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];

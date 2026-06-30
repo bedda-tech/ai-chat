@@ -5900,6 +5900,239 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+  "bedda-vs-devin": {
+    slug: "bedda-vs-devin",
+    competitor: "Devin by Cognition AI",
+    competitorUrl: "https://cognition.ai",
+    competitorPrice: "$500/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Devin (Cognition AI)",
+    metaTitle: "bedda.ai vs Devin AI (2026) — Get GPT-5 + Claude for $12 vs $500",
+    metaDescription:
+      "Compare bedda.ai and Devin by Cognition AI. Devin costs $500/mo for autonomous coding. bedda.ai gives you GPT-5, Claude 4, and 36+ frontier models for coding and everything else — for $12/mo.",
+    ogTitle: "bedda.ai vs Devin AI — Claude 4 + GPT-5 for $12 vs $500/mo",
+    ogDescription:
+      "Devin charges $500/mo for autonomous AI coding. bedda.ai gives you the frontier models that power Devin-like capabilities — Claude Opus 4.8, GPT-5, Gemini — for $12/mo.",
+    heroHeadline: "Get frontier coding AI for $12/mo instead of $500/mo",
+    heroSubtext:
+      "Devin by Cognition AI charges $500/month for autonomous software engineering. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ frontier models for coding, debugging, and everything else — for $12/mo.",
+    verdict:
+      "Devin is genuinely impressive for fully autonomous engineering tasks — if you need an AI that can independently set up environments, run long coding sessions, and ship working code without human input, it&apos;s in a category of its own. But at $500/mo, most developers and teams are better served by bedda.ai&apos;s frontier models (GPT-5 + Claude) for AI-assisted development at $12/mo.",
+    switchReasons: [
+      "Claude Opus 4.8 and GPT-5 handle code review, debugging, refactoring, and architecture — the tasks most developers actually need daily",
+      "Save $488/mo — nearly $6,000/year — compared to Devin Individual",
+      "Access 36+ models including DeepSeek R1, Gemini 2.5, and Grok 4 alongside the coding-focused ones",
+      "Agent mode in bedda lets you run multi-step reasoning tasks similar to Devin-style workflows",
+      "No commitment — 7-day free trial, cancel any time",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$500/mo" },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Fully autonomous coding agent", bedda: false, competitor: true },
+      { feature: "AI-assisted coding (chat)", bedda: true, competitor: true },
+      { feature: "Code review & debugging", bedda: true, competitor: true },
+      { feature: "Web search", bedda: true, competitor: true },
+      { feature: "Multi-step agent mode", bedda: true, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Non-coding tasks (writing, analysis)", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1" },
+    ],
+    faq: [
+      {
+        q: "Is Devin AI worth $500/month?",
+        a: "Devin is worth it for engineering teams that need a fully autonomous agent that can complete end-to-end tasks without human oversight — particularly for repetitive or well-defined engineering work. For individual developers who want AI to help them code faster, bedda.ai&apos;s Claude + GPT-5 at $12/mo delivers most of the value at 2% of the price.",
+      },
+      {
+        q: "Can bedda.ai replace Devin AI?",
+        a: "Not for fully autonomous tasks. Devin can independently browse the web, set up dev environments, write code, run tests, and push changes. bedda.ai&apos;s agent mode is powerful for multi-step reasoning but still requires a human in the loop for most real-world engineering workflows. For AI-assisted (not fully autonomous) coding, bedda is a strong alternative.",
+      },
+      {
+        q: "What coding tasks does bedda.ai handle well?",
+        a: "bedda.ai with Claude Opus 4.8 or GPT-5 excels at: code review and refactoring, debugging with stack traces, architecture design, writing tests, explaining complex codebases, converting between languages, and generating complete implementations from specs. These cover the majority of what most developers need AI for daily.",
+      },
+      {
+        q: "Does bedda.ai have an agent mode for coding?",
+        a: "Yes. bedda.ai has an agent mode (toggle in the input bar) that enables multi-step reasoning with up to 20 AI steps per conversation. This lets the AI plan, execute, and iterate on complex tasks rather than responding to single prompts.",
+      },
+    ],
+  },
+  "bedda-vs-v0": {
+    slug: "bedda-vs-v0",
+    competitor: "Vercel v0",
+    competitorUrl: "https://v0.dev",
+    competitorPrice: "$20/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Vercel v0",
+    metaTitle: "bedda.ai vs Vercel v0 (2026) — More AI for Less Than v0 Premium",
+    metaDescription:
+      "Compare bedda.ai and Vercel v0. v0 Premium costs $20/mo for UI code generation. bedda.ai gives you Claude 4, GPT-5, and 36+ models for coding plus image generation, analysis, and writing — for $12/mo.",
+    ogTitle: "bedda.ai vs v0 by Vercel — Full AI Stack for $12 vs $20/mo",
+    ogDescription:
+      "Vercel v0 generates React/Tailwind UI at $20/mo. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ models for UI generation, backend code, and everything else — for $12/mo.",
+    heroHeadline: "Full-stack AI coding for $12/mo — less than v0 Premium alone",
+    heroSubtext:
+      "Vercel v0 generates React UI components at $20/mo. bedda.ai gives you Claude Opus 4.8 and GPT-5 for UI code, backend logic, debugging, architecture, and 33 other use cases — for $8 less per month.",
+    verdict:
+      "v0 is excellent at its specific job: generating React/Tailwind/shadcn UI from screenshots or prompts. If UI component generation is 90% of your AI use case, v0 is well-suited. bedda.ai costs less and handles the full stack — frontend, backend, debugging, documentation, and 30+ other tasks.",
+    switchReasons: [
+      "Claude Opus 4.8 generates high-quality React, Vue, and vanilla JS — not just Next.js/shadcn",
+      "Save $8/mo ($96/year) versus v0 Premium",
+      "Handle backend, API, and database code in the same subscription",
+      "Web search keeps AI responses current with latest library versions",
+      "36+ models let you pick the best one for each coding task",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$20/mo" },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "React/Next.js UI generation", bedda: true, competitor: true },
+      { feature: "shadcn/Tailwind components", bedda: true, competitor: true },
+      { feature: "Screenshot to code", bedda: true, competitor: true },
+      { feature: "Backend / API code", bedda: true, competitor: false },
+      { feature: "Debugging and code review", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Non-coding tasks", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1" },
+    ],
+    faq: [
+      {
+        q: "Does bedda.ai generate React components like v0?",
+        a: "Yes. Claude Opus 4.8 and GPT-5 on bedda.ai generate React components, Next.js pages, Tailwind CSS layouts, and shadcn/ui compositions from text descriptions. You can also paste a screenshot or describe a UI and ask for the code. The output quality is comparable to v0 for most use cases.",
+      },
+      {
+        q: "What does v0 do better than bedda.ai?",
+        a: "v0 is purpose-built for Vercel&apos;s ecosystem — it has tight integration with Next.js, shadcn/ui, and Vercel deployment. If you&apos;re building in that specific stack and want the most streamlined UI generation experience, v0 has workflow advantages. bedda.ai&apos;s strength is breadth: it handles UI, backend, debugging, writing, and analysis in one subscription.",
+      },
+      {
+        q: "Can I use bedda.ai for the same screenshot-to-code workflow as v0?",
+        a: "Yes. Upload a screenshot of a UI to bedda.ai and ask Claude or GPT-5 to generate the React/Tailwind code for it. This works for both web screenshots and design mockups. The image understanding in both Claude and GPT-5 is strong enough for most UI replication tasks.",
+      },
+      {
+        q: "Is v0 free?",
+        a: "v0 has a free tier with limited generations per day. The Premium plan is $20/mo for higher limits and priority generation. bedda.ai Plus is $12/mo with a 7-day free trial.",
+      },
+    ],
+  },
+  "bedda-vs-manus": {
+    slug: "bedda-vs-manus",
+    competitor: "Manus AI",
+    competitorUrl: "https://manus.im",
+    competitorPrice: "$39+/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Manus AI",
+    metaTitle: "bedda.ai vs Manus AI (2026) — Frontier Models for $12 vs $39/mo",
+    metaDescription:
+      "Compare bedda.ai and Manus AI. Manus is an autonomous AI agent at $39+/mo. bedda.ai gives you Claude 4, GPT-5, and 36+ frontier models with agent mode — for $12/mo.",
+    ogTitle: "bedda.ai vs Manus AI — GPT-5 + Claude Agent Mode for $12/mo",
+    ogDescription:
+      "Manus AI charges $39+/mo for an autonomous agent. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ models with built-in agent mode for multi-step tasks — at $12/mo.",
+    heroHeadline: "36+ frontier models with agent mode — for $27/mo less than Manus",
+    heroSubtext:
+      "Manus AI charges $39+/month for an autonomous agent that browses the web and completes tasks. bedda.ai gives you Claude Opus 4.8, GPT-5, web search, and agent mode — for $12/mo.",
+    verdict:
+      "Manus is built for fully autonomous task completion — it can independently research, plan, execute multi-step workflows, and produce deliverables without ongoing human direction. bedda.ai&apos;s agent mode handles multi-step reasoning tasks and web search at a fraction of the cost, with access to a much wider range of frontier models for different task types.",
+    switchReasons: [
+      "Claude Opus 4.8 and GPT-5 with web search handle research, analysis, and content tasks at higher quality",
+      "Save $27/mo ($324/year) versus Manus AI",
+      "Agent mode in bedda enables multi-step task completion with up to 20 reasoning steps",
+      "36+ models let you match the right AI to each specific task",
+      "Built-in knowledge base (RAG) for context that persists across sessions",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$39+/mo" },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Fully autonomous task execution", bedda: false, competitor: true },
+      { feature: "Web search (real-time)", bedda: true, competitor: true },
+      { feature: "Multi-step agent mode", bedda: true, competitor: true },
+      { feature: "File / document analysis", bedda: true, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1" },
+    ],
+    faq: [
+      {
+        q: "What is Manus AI?",
+        a: "Manus AI (from Monica.im / Butterfly Effect) is an autonomous AI agent that went viral in early 2026. It can independently browse the web, create files, execute code, and complete complex multi-step tasks with minimal human direction — similar to Devin for general tasks rather than coding specifically.",
+      },
+      {
+        q: "Can bedda.ai do what Manus does?",
+        a: "Partially. bedda.ai&apos;s agent mode handles multi-step reasoning and web search, which covers many of the research and analysis tasks Manus targets. Where Manus differs is full autonomy — it can independently chain many actions over long sessions without human checkpoints. bedda.ai still keeps humans in the loop between major steps.",
+      },
+      {
+        q: "Is Manus AI worth $39/month?",
+        a: "For users who need a fully autonomous agent for specific recurring tasks (market research, competitive analysis, content research), Manus can be worthwhile. For users who want better AI models for chat, coding, writing, and analysis — bedda.ai at $12/mo delivers significantly more capability per dollar.",
+      },
+      {
+        q: "What tasks does bedda.ai handle that Manus doesn&apos;t?",
+        a: "bedda.ai offers image generation (DALL-E 3, Imagen 3, Flux), video generation, a model comparison arena, team workspaces, and 36+ distinct AI models. Manus is focused on autonomous task execution with a single AI.",
+      },
+    ],
+  },
+  "bedda-vs-gemini-workspace": {
+    slug: "bedda-vs-gemini-workspace",
+    competitor: "Gemini for Google Workspace",
+    competitorUrl: "https://workspace.google.com/intl/en/products/gemini",
+    competitorPrice: "$30/user/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Gemini for Google Workspace",
+    metaTitle: "bedda.ai vs Gemini for Google Workspace (2026) — $12 vs $30+/mo",
+    metaDescription:
+      "Compare bedda.ai and Gemini for Google Workspace. Google&apos;s Workspace AI add-on costs $20-30/user/mo on top of your Workspace subscription. bedda.ai gives you Gemini 2.5 Pro plus Claude 4, GPT-5, and 36+ models — for $12/mo.",
+    ogTitle: "bedda.ai vs Gemini Workspace — Same Gemini, 35 More Models, $18/mo Less",
+    ogDescription:
+      "Gemini for Google Workspace costs $30/user/mo as an add-on. bedda.ai gives you Gemini 2.5 Pro plus Claude Opus 4.8, GPT-5, and 34 more models — for $12/mo.",
+    heroHeadline: "Gemini 2.5 Pro plus 35 more AI models — for $18/mo less",
+    heroSubtext:
+      "Google Workspace AI costs $20-30/user/month added to your existing Workspace bill. bedda.ai gives you Gemini 2.5 Pro plus Claude Opus 4.8, GPT-5, Grok 4, DeepSeek R1 and 31 more models — for $12/mo standalone.",
+    verdict:
+      "Gemini for Workspace is valuable if you live in Google Docs, Gmail, and Sheets and want AI integrated directly into those tools — the in-context assistance is genuinely useful. But at $20-30/user/mo on top of your existing Workspace subscription, you&apos;re paying $32-48/mo total for AI that&apos;s limited to one model (Gemini) inside Google products. bedda.ai gives you Gemini 2.5 Pro plus 35 other frontier models for $12/mo.",
+    switchReasons: [
+      "Get Gemini 2.5 Pro on bedda.ai plus Claude Opus 4.8, GPT-5, Grok 4, and 32 more models",
+      "Save $18-28/mo per user vs the Workspace AI add-on",
+      "Use AI across all tasks — not just inside Google Docs and Gmail",
+      "Image generation, video generation, knowledge base, and model comparison arena — not available in Workspace AI",
+      "No per-seat pricing — one flat $12/mo for everything",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$30/user/mo add-on" },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: true },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Grok 4", bedda: true, competitor: false },
+      { feature: "In-Docs AI sidebar", bedda: false, competitor: true },
+      { feature: "Gmail smart compose", bedda: false, competitor: true },
+      { feature: "Sheets formula assist", bedda: false, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Web search (real-time)", bedda: true, competitor: true },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1" },
+    ],
+    faq: [
+      {
+        q: "Does bedda.ai include Gemini 2.5 Pro?",
+        a: "Yes. bedda.ai routes to Google Gemini 2.5 Pro via the Vercel AI Gateway. You get the same underlying Gemini model that powers Google Workspace AI — plus Claude Opus 4.8, GPT-5, Grok 4, and 32 more models.",
+      },
+      {
+        q: "Can bedda.ai replace Gemini for Google Workspace completely?",
+        a: "Not for in-product integrations. Gemini for Workspace works inside Gmail (Smart Reply, draft assist), Google Docs (AI sidebar), and Sheets (formula suggestions). bedda.ai is a standalone chat interface. If you rely on the embedded in-Docs or in-Gmail experience, you&apos;ll need both. If you primarily use AI in a chat window, bedda.ai is a much better deal.",
+      },
+      {
+        q: "How much does Gemini for Google Workspace actually cost?",
+        a: "Google Workspace Business Starter is $6/user/mo; Business Standard is $12/user/mo. The Gemini for Workspace add-on is $20-30/user/mo depending on tier (Gemini Business vs Gemini Enterprise). Total cost for a Business Standard user with Gemini Enterprise: $12 + $30 = $42/user/mo.",
+      },
+      {
+        q: "Does bedda.ai work for Google Workspace users?",
+        a: "Yes — bedda.ai works in any browser and is fully compatible with Google Workspace users. You&apos;d use bedda.ai in a separate tab for AI tasks while using Google Docs/Sheets/Gmail normally. Many users find this workflow faster than the embedded Workspace AI for complex tasks.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
