@@ -918,6 +918,42 @@ const posts = [
     readingTime: "6 min read",
     category: "Industry Guides",
   },
+  {
+    slug: "best-ai-for-pharma-2026",
+    title: "Best AI for Pharma and Biotech in 2026: Research, Writing, and Compliance",
+    description:
+      "How pharmaceutical researchers, regulatory writers, and biotech professionals use AI in 2026 — from literature reviews and protocol drafts to regulatory submissions and medical writing.",
+    date: "June 2026",
+    readingTime: "8 min read",
+    category: "Industry Guides",
+  },
+  {
+    slug: "ai-for-retail-2026",
+    title: "AI for Retail in 2026: How Retailers Are Using AI to Drive Sales",
+    description:
+      "How retailers — from independent shop owners to category managers at large chains — are using AI in 2026 for merchandising, customer communications, content, and operations.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Industry Guides",
+  },
+  {
+    slug: "best-ai-for-logistics-2026",
+    title: "Best AI for Logistics and Supply Chain in 2026",
+    description:
+      "How logistics managers, dispatchers, and supply chain professionals use AI in 2026 for route optimization, carrier communications, documentation, and demand planning.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Industry Guides",
+  },
+  {
+    slug: "ai-for-government-2026",
+    title: "AI for Government and Public Sector in 2026: A Practical Guide",
+    description:
+      "How government employees, policy analysts, grant writers, and public administrators use AI in 2026 — from policy research and report writing to public communications and procurement documentation.",
+    date: "June 2026",
+    readingTime: "7 min read",
+    category: "Industry Guides",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
