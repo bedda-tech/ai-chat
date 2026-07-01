@@ -7415,6 +7415,211 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+  "bedda-vs-runway-ml": {
+    slug: "bedda-vs-runway-ml",
+    competitor: "Runway ML",
+    competitorUrl: "https://runwayml.com",
+    competitorPrice: "$15-76/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Runway ML",
+    metaTitle: "bedda.ai vs Runway ML (2026) — Frontier AI Chat vs AI Video Generation",
+    metaDescription:
+      "Compare bedda.ai and Runway ML in 2026. Runway ML starts at $15/mo for AI video generation. bedda.ai gives you Claude Opus 4.8, GPT-5, video generation via fal.ai, and 36+ frontier models for $12/mo — full AI suite for $3-64/mo less.",
+    ogTitle: "bedda.ai vs Runway ML — Full AI Suite vs Video-Only Platform",
+    ogDescription:
+      "Runway ML charges $15-76/mo for AI video generation. bedda.ai includes video generation alongside Claude Opus 4.8, GPT-5, web search, image generation, and 33+ other frontier models for $12/mo.",
+    heroHeadline: "Video generation + 36 frontier models for $12/mo — less than Runway ML alone",
+    heroSubtext:
+      "Runway ML charges $15-76/mo for AI video generation only. bedda.ai includes AI video generation alongside Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, image generation, web search, and 33+ other frontier models for $12/mo — starting $3/mo less.",
+    verdict:
+      "Runway ML is a specialized AI video generation platform used by filmmakers, content creators, and VFX artists. It offers the best-in-class text-to-video and image-to-video generation at $15/mo (Basic, 625 credits) up to $76/mo (Pro, 2250 credits). If professional-grade AI video generation is your primary use case — and you need the specific Runway models (Gen-3 Alpha, Act One) — Runway is worth the price. But if you need AI video generation alongside frontier chat AI for writing, coding, research, and analysis, bedda.ai offers video generation via Kling (similar output quality to Runway for most tasks) plus access to the full frontier AI stack for $12/mo. For most content creators and marketers who want video generation as one tool among many, bedda.ai offers better overall value.",
+    switchReasons: [
+      "AI video generation included at $12/mo (standard and pro quality via Kling)",
+      "Claude Opus 4.8 and GPT-5 for writing scripts, storyboards, and creative concepts",
+      "Image generation (DALL-E 3, Imagen 3, Flux) alongside video generation",
+      "Web search for researching trends, references, and current content topics",
+      "36+ frontier models in a single subscription for $3-64/mo less than Runway",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$15-76/mo" },
+      { feature: "AI video generation", bedda: true, competitor: true },
+      { feature: "Runway Gen-3 Alpha / Act One", bedda: false, competitor: true },
+      { feature: "Text-to-video", bedda: true, competitor: true },
+      { feature: "Image-to-video", bedda: true, competitor: true },
+      { feature: "Claude Opus 4.8 / GPT-5", bedda: true, competitor: false },
+      { feature: "AI image generation", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "36+ frontier AI models", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Video only" },
+    ],
+    faq: [
+      {
+        q: "What is Runway ML?",
+        a: "Runway ML is an AI video generation platform used by filmmakers, content creators, and creative professionals. Its flagship models include Gen-3 Alpha (text-to-video), Act One (character performance transfer), and image-to-video tools. Plans range from $15/mo (Basic, 625 credits/mo) to $76/mo (Pro, 2250 credits/mo). Credits are consumed per generation, so heavy users need higher-tier plans. Runway is known for high-quality cinematic output and is widely used in professional film and advertising production.",
+      },
+      {
+        q: "Does bedda.ai have video generation?",
+        a: "Yes — bedda.ai includes AI video generation via the Video Studio feature, powered by Kling (text-to-video and image-to-video). Output quality is comparable to Runway for most social and content creation use cases. If you specifically need Runway's Gen-3 Alpha for cinematic-quality film production or Act One for performance transfer, Runway is the better specialized tool. For most content creators and marketers, bedda.ai's video generation covers the use case at a lower total cost.",
+      },
+      {
+        q: "When should I choose Runway ML vs bedda.ai?",
+        a: "Choose Runway ML if professional cinematic AI video generation is your primary workflow and you specifically need Gen-3 Alpha quality or Act One performance transfer. Choose bedda.ai if you want video generation alongside frontier chat AI (Claude Opus 4.8, GPT-5), image generation, and web search for a single flat subscription. For content creators who use AI for writing, scripting, and image creation in addition to video, bedda.ai offers better overall value.",
+      },
+    ],
+  },
+  "bedda-vs-codeium": {
+    slug: "bedda-vs-codeium",
+    competitor: "Codeium",
+    competitorUrl: "https://codeium.com",
+    competitorPrice: "$0-15/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Codeium",
+    metaTitle: "bedda.ai vs Codeium (2026) — Frontier AI Chat vs Free AI Code Completion",
+    metaDescription:
+      "Compare bedda.ai and Codeium in 2026. Codeium is a free AI code completion tool for IDEs. bedda.ai gives you Claude Opus 4.8, GPT-5, web search, and 36+ frontier models for $12/mo — frontier reasoning for architecture, code review, and complex problem-solving.",
+    ogTitle: "bedda.ai vs Codeium — Frontier AI Models vs Free Code Completion",
+    ogDescription:
+      "Codeium offers free AI code completion in your IDE. bedda.ai gives you Claude Opus 4.8 and GPT-5 for architectural reasoning, code review, and complex debugging that autocomplete can't handle.",
+    heroHeadline: "Frontier AI reasoning for $12/mo — what Codeium's autocomplete can't do",
+    heroSubtext:
+      "Codeium is a great free autocomplete tool for your IDE. But Claude Opus 4.8 and GPT-5 on bedda.ai handle the work that autocomplete can't — architecture design, complex debugging, code review, technical writing, and cross-system reasoning. Both tools serve different layers of the developer workflow.",
+    verdict:
+      "Codeium and bedda.ai aren't really competing products — they serve different parts of the developer workflow. Codeium is an IDE autocomplete tool (like GitHub Copilot) that completes lines and blocks as you type. It's free for individuals and excellent for its purpose. bedda.ai is a frontier AI chat platform where you can work through architecture decisions with Claude Opus 4.8, debug complex system issues with GPT-5, do large codebase analysis with Gemini 2.5 Pro, or ask DeepSeek R1 to reason through a complex algorithm. Many developers use both: Codeium for inline autocomplete while typing, and bedda.ai for the deeper reasoning work that requires actual conversation. At $12/mo, bedda.ai is a complement to your free code completion tool, not a replacement.",
+    switchReasons: [
+      "Claude Opus 4.8 for architectural reasoning and complex code review",
+      "GPT-5 for debugging multi-system issues and writing technical documentation",
+      "Gemini 2.5 Pro for large codebase analysis with 1M token context",
+      "DeepSeek R1 for algorithm design and mathematical reasoning in code",
+      "Frontier reasoning that goes beyond autocomplete — for the hard engineering problems",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "Free ($15/mo Pro)" },
+      { feature: "IDE autocomplete / inline completion", bedda: false, competitor: true },
+      { feature: "Claude Opus 4.8 / GPT-5", bedda: true, competitor: false },
+      { feature: "Architecture reasoning", bedda: true, competitor: false },
+      { feature: "Complex code review", bedda: true, competitor: false },
+      { feature: "Web search for current docs", bedda: true, competitor: false },
+      { feature: "Long context (1M tokens)", bedda: true, competitor: false },
+      { feature: "36+ frontier models", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1 (Codeium model)" },
+    ],
+    faq: [
+      {
+        q: "What is Codeium?",
+        a: "Codeium is a free AI code completion tool that integrates into IDEs (VS Code, JetBrains, Vim, etc.) and provides inline code suggestions as you type — similar to GitHub Copilot. It's free for individual developers; the Pro plan ($15/mo) adds context-aware completions and team features. Codeium is trained to complete code in 70+ languages and works well for boilerplate generation, repetitive patterns, and function completion. It does not have a chat interface for reasoning about complex problems.",
+      },
+      {
+        q: "Does bedda.ai replace Codeium?",
+        a: "No — they serve different purposes. Codeium provides inline autocomplete while you type in your IDE. bedda.ai provides frontier AI reasoning in a chat interface for complex architectural decisions, code review, debugging multi-system issues, and technical writing. Most developers who use bedda.ai also keep their autocomplete tool (Codeium, Copilot, or similar) — the tools work at different layers of the development workflow.",
+      },
+      {
+        q: "When should I use bedda.ai vs Codeium for coding?",
+        a: "Use Codeium for: completing functions as you type, generating repetitive boilerplate, quick one-line suggestions. Use bedda.ai for: architecture decisions, debugging complex issues, code review of full PRs, writing technical documentation, understanding large codebases, and any problem that requires actual reasoning rather than completion. If you're working on a hard problem that autocomplete can't solve, that's a bedda.ai task.",
+      },
+    ],
+  },
+  "bedda-vs-sourcegraph": {
+    slug: "bedda-vs-sourcegraph",
+    competitor: "Sourcegraph Cody",
+    competitorUrl: "https://sourcegraph.com/cody",
+    competitorPrice: "$19/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Sourcegraph Cody",
+    metaTitle: "bedda.ai vs Sourcegraph Cody (2026) — Frontier AI Chat vs Codebase-Aware AI",
+    metaDescription:
+      "Compare bedda.ai and Sourcegraph Cody in 2026. Cody is $19/mo for codebase-aware AI coding assistance. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ frontier models for $12/mo — $7/mo cheaper with broader AI capabilities.",
+    ogTitle: "bedda.ai vs Sourcegraph Cody — Frontier AI Models vs Codebase-Aware Coding AI",
+    ogDescription:
+      "Sourcegraph Cody charges $19/mo for codebase-aware AI coding assistance. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ frontier models for $12/mo — $7/mo cheaper with broader AI capabilities beyond coding.",
+    heroHeadline: "Frontier AI for $12/mo — $7/mo less than Sourcegraph Cody",
+    heroSubtext:
+      "Sourcegraph Cody charges $19/mo for codebase-aware AI coding assistance. bedda.ai gives you Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and 33+ other frontier models for $12/mo — better value for developers who need AI beyond code completion.",
+    verdict:
+      "Sourcegraph Cody is a codebase-aware AI coding assistant — its main differentiator is the ability to search and reference your entire codebase rather than just the current file. It uses multiple frontier models (including Claude Opus 4.8 and GPT-5) and integrates with popular IDEs. At $19/mo, it's $7/mo more expensive than bedda.ai. bedda.ai doesn't have a deep IDE integration or the ability to search across your entire codebase automatically — but it gives you access to the same underlying frontier models (Claude Opus 4.8, GPT-5, Gemini 2.5 Pro) for $12/mo, plus the full AI chat platform for writing, research, and analysis beyond coding. Developers who need codebase-aware context fetching across a large private repository may find Cody's integration valuable. Developers who primarily use AI for reasoning about code problems, architecture, and technical writing often find bedda.ai's broader model access and lower price more practical.",
+    switchReasons: [
+      "Claude Opus 4.8 and GPT-5 available at $12/mo — $7/mo less than Cody Pro",
+      "36+ frontier models including Gemini 2.5 Pro, DeepSeek R1, Grok 4, and Mistral",
+      "Web search for current documentation, library versions, and ecosystem news",
+      "Full AI platform for writing, research, and analysis beyond coding tasks",
+      "Knowledge base to store architecture docs, API specs, and coding standards",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$19/mo" },
+      { feature: "Codebase-wide context search", bedda: false, competitor: true },
+      { feature: "IDE inline completion", bedda: false, competitor: true },
+      { feature: "Claude Opus 4.8 / GPT-5", bedda: true, competitor: true },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "36+ frontier models", bedda: true, competitor: "~4 models" },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Full AI chat platform", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "~4 models" },
+    ],
+    faq: [
+      {
+        q: "What is Sourcegraph Cody?",
+        a: "Sourcegraph Cody is an AI coding assistant that uses your codebase as context. Unlike standard AI chat tools, Cody can search and reference your entire repository — not just the current file — making its code suggestions and explanations codebase-aware. It integrates with VS Code, JetBrains, and other editors. The Pro plan ($19/mo) provides access to multiple frontier models including Claude Opus 4.8 and GPT-5. Cody is built on top of Sourcegraph's code intelligence platform, which is used by many large engineering organizations.",
+      },
+      {
+        q: "Does bedda.ai have codebase-aware AI like Cody?",
+        a: "bedda.ai doesn't have deep IDE integration or automatic codebase indexing. However, you can store your architecture docs, API specs, and code standards in bedda.ai's knowledge base for AI that references your specific context. For codebase-wide search and automatic context fetching across a large private repository, Cody's IDE integration is more purpose-built. For most coding reasoning tasks — architecture decisions, code review, debugging, technical writing — bedda.ai's frontier models work effectively when you paste the relevant code or context.",
+      },
+      {
+        q: "Who should choose bedda.ai vs Sourcegraph Cody?",
+        a: "Choose Sourcegraph Cody if you work on a large codebase where automatic context fetching across the entire repository is valuable, and you want IDE-integrated completions alongside chat. Choose bedda.ai if you want the broadest model selection ($12/mo) and need AI beyond coding — writing, research, analysis, image generation, and the full frontier AI stack. Many developers who don't work at large Sourcegraph-dependent organizations find bedda.ai's $7/mo savings and broader model access more practical.",
+      },
+    ],
+  },
+  "bedda-vs-hix-ai": {
+    slug: "bedda-vs-hix-ai",
+    competitor: "HIX.AI",
+    competitorUrl: "https://hix.ai",
+    competitorPrice: "$19.99/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs HIX.AI",
+    metaTitle: "bedda.ai vs HIX.AI (2026) — Frontier AI Chat vs AI Writing Platform",
+    metaDescription:
+      "Compare bedda.ai and HIX.AI in 2026. HIX.AI is $19.99/mo for AI writing with SEO tools, article generation, and 120+ writing tools. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ frontier models for $12/mo — better AI writing quality for $8/mo less.",
+    ogTitle: "bedda.ai vs HIX.AI — Frontier AI Models vs AI Writing Platform",
+    ogDescription:
+      "HIX.AI charges $19.99/mo for AI writing with 120+ writing templates and SEO tools. bedda.ai gives you Claude Opus 4.8 and GPT-5 for $12/mo — frontier writing quality for $8/mo less.",
+    heroHeadline: "Better AI writing for $12/mo — $8/mo less than HIX.AI",
+    heroSubtext:
+      "HIX.AI charges $19.99/mo for AI writing powered by older GPT-4-tier models. bedda.ai gives you Claude Opus 4.8 and GPT-5 — the best writing AI available — for $12/mo. Frontier writing quality for $7.99/mo less.",
+    verdict:
+      "HIX.AI is an AI writing platform with 120+ pre-built templates for blog posts, ad copy, email, social media, SEO content, and more. Its templates and workflows are useful for marketers and content teams who want structured AI writing without configuring prompts themselves. The underlying AI is GPT-4-tier models, which are increasingly outclassed by Claude Opus 4.8 and GPT-5 in writing quality, nuance, and instruction-following. bedda.ai at $12/mo gives you Claude Opus 4.8 and GPT-5 for $7.99/mo less than HIX.AI's base paid plan. You don't get HIX.AI's 120+ pre-built templates, but you get significantly better underlying AI for writing, research, analysis, and tasks beyond content creation. For content marketers who value the template structure, HIX.AI's UI might be worth the premium. For writers who want the best writing AI at the lowest price, bedda.ai offers a clear advantage.",
+    switchReasons: [
+      "Claude Opus 4.8 and GPT-5 write better than HIX.AI's GPT-4-tier models",
+      "bedda.ai is $7.99/mo cheaper than HIX.AI's base paid plan",
+      "Web search for researching current topics, statistics, and sources",
+      "36+ frontier models including DeepSeek R1, Gemini 2.5 Pro, and Grok 4",
+      "Knowledge base for storing brand voice, style guides, and content frameworks",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$19.99/mo" },
+      { feature: "120+ pre-built writing templates", bedda: false, competitor: true },
+      { feature: "Built-in SEO tools", bedda: false, competitor: true },
+      { feature: "Claude Opus 4.8 (frontier writing)", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Web search for research", bedda: true, competitor: false },
+      { feature: "36+ frontier models", bedda: true, competitor: false },
+      { feature: "Knowledge base / RAG", bedda: true, competitor: false },
+      { feature: "AI model", bedda: "Claude Opus 4.8 / GPT-5", competitor: "GPT-4 tier" },
+    ],
+    faq: [
+      {
+        q: "What is HIX.AI?",
+        a: "HIX.AI is an AI writing platform with 120+ pre-built writing templates covering blog posts, ad copy, email campaigns, social media content, product descriptions, SEO content, and more. It includes a long-form editor, AI document editor, and integrations with Chrome extension. The platform is aimed at content marketers, bloggers, and copywriters who want structured AI writing workflows. Paid plans start at $19.99/mo. The underlying AI is GPT-4-tier models.",
+      },
+      {
+        q: "Does bedda.ai have writing templates like HIX.AI?",
+        a: "bedda.ai doesn't have 120+ pre-built template categories like HIX.AI does. Instead, it gives you direct access to Claude Opus 4.8 and GPT-5 — which are significantly better writers than the models HIX.AI uses — through a flexible chat interface. You can store your own prompt templates and writing workflows in custom instructions. For writers who want the best underlying AI rather than a template library, bedda.ai is the stronger choice. If you specifically need a template-driven workflow with SEO tools built in, HIX.AI's platform structure may be worth the extra $8/mo.",
+      },
+      {
+        q: "Which produces better writing — HIX.AI or bedda.ai?",
+        a: "bedda.ai produces better writing quality because it uses Claude Opus 4.8 and GPT-5 — the current frontier models — rather than the older GPT-4-tier models that HIX.AI is built on. For complex writing tasks (long-form articles, technical content, nuanced copy), the quality difference between frontier models and older models is substantial. For simple template-driven tasks (short ad copy, social posts, email subject lines), the gap is smaller. If writing quality is the priority, bedda.ai wins. If template structure and UI workflow matter more than model quality, HIX.AI's platform may fit better.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {

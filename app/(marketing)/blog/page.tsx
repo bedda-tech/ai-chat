@@ -1062,6 +1062,42 @@ const posts = [
     readingTime: "8 min read",
     category: "Industry Guides",
   },
+  {
+    slug: "best-ai-for-engineering-teams-2026",
+    title: "Best AI for Engineering Teams in 2026: Code Review, Docs, and Architecture",
+    description:
+      "How software engineering teams use AI in 2026 for code review, technical documentation, architecture decisions, debugging, and developer productivity. Model recommendations by task.",
+    date: "July 2026",
+    readingTime: "9 min read",
+    category: "Team Guides",
+  },
+  {
+    slug: "how-to-use-deepseek-2026",
+    title: "How to Use DeepSeek AI in 2026: R1, V3, and Best Use Cases",
+    description:
+      "A practical guide to DeepSeek R1 and V3 in 2026 — when to use them, what they're best at, pricing, and how they compare to GPT-5 and Claude Opus 4.8 for different tasks.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Model Guides",
+  },
+  {
+    slug: "ai-for-creative-writing-2026",
+    title: "AI for Creative Writing in 2026: Fiction, Screenwriting, and Storytelling",
+    description:
+      "How novelists, screenwriters, poets, and game writers use AI in 2026. Best models for different creative writing tasks, prompting strategies, and how to keep your voice while using AI as a collaborator.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "How-To Guides",
+  },
+  {
+    slug: "best-ai-for-investment-research-2026",
+    title: "Best AI for Investment Research in 2026: Equity Analysis and Financial Modeling",
+    description:
+      "How equity analysts, portfolio managers, and individual investors use AI in 2026 for company research, earnings analysis, financial modeling, and investment thesis development.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Industry Guides",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
