@@ -7620,6 +7620,210 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+  "bedda-vs-qwen": {
+    slug: "bedda-vs-qwen",
+    competitor: "Qwen (Alibaba)",
+    competitorUrl: "https://chat.qwen.ai",
+    competitorPrice: "Free / API pricing",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Qwen",
+    metaTitle: "bedda.ai vs Qwen (Alibaba) 2026 — Multi-Model Chat vs Single Free Model",
+    metaDescription:
+      "Compare bedda.ai and Alibaba Qwen in 2026. Qwen is a free AI model from Alibaba, strong at coding and math. bedda.ai gives you Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, Qwen, and 33+ other frontier models for $12/mo — one subscription, every major model.",
+    ogTitle: "bedda.ai vs Qwen — Access All Models vs One Free Model",
+    ogDescription:
+      "Qwen is a free frontier AI model from Alibaba. bedda.ai gives you Qwen plus Claude Opus 4.8, GPT-5, Gemini, Grok, DeepSeek, and 30+ more for $12/mo.",
+    heroHeadline: "Qwen is free — bedda.ai gives you Qwen plus 35 more models for $12/mo",
+    heroSubtext:
+      "Qwen is Alibaba's strong open-source AI model, especially good at coding and math. bedda.ai includes Qwen alongside Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and 33 other frontier models — one subscription, every major model, $12/mo.",
+    verdict:
+      "Qwen is a genuinely capable AI model from Alibaba — competitive with frontier models on coding, math, and multilingual tasks, and free to use via chat.qwen.ai. For users who primarily want one free model, Qwen is a solid choice. The limitation is that no single model is best at everything: Qwen is strong at coding but Claude Opus 4.8 is better at nuanced writing, GPT-5 is better at structured tasks, and Gemini 2.5 Pro handles longer documents better. bedda.ai gives you Qwen plus all of those models in a single subscription for $12/mo. If you find yourself switching between Qwen, ChatGPT, and Claude depending on the task, bedda.ai consolidates that into one interface with one subscription that's less than a single ChatGPT Plus or Claude Pro plan.",
+    switchReasons: [
+      "Access Qwen alongside Claude Opus 4.8, GPT-5, and Gemini 2.5 Pro in one app",
+      "Different models excel at different tasks — no single model wins everything",
+      "Knowledge base, web search, image generation, and platform bots",
+      "$12/mo is less than ChatGPT Plus or Claude Pro individually",
+      "Model comparison arena to test the same prompt across multiple models at once",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "Free (API charges)" },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Qwen access", bedda: true, competitor: true },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "36+ frontier models", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Knowledge base / RAG", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Qwen AI?",
+        a: "Qwen (full name: Tongyi Qianwen) is a large language model series developed by Alibaba Cloud. It's available for free via chat.qwen.ai and as an open-weight model that developers can run locally or via API. Qwen models are particularly strong at coding, mathematics, and multilingual tasks (especially Chinese-English). The latest Qwen 2.5 and Qwen 3 models are competitive with frontier models on many benchmarks. For users who want a capable free AI, Qwen is a strong option.",
+      },
+      {
+        q: "Is Qwen available on bedda.ai?",
+        a: "bedda.ai provides access to Qwen models alongside Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, Grok 4, DeepSeek R1, Mistral, and 30+ other frontier models — all in one subscription for $12/mo. Rather than using separate apps for different models, bedda.ai gives you one interface to switch between the best model for each task.",
+      },
+      {
+        q: "When should I use Qwen vs Claude or GPT-5?",
+        a: "Qwen excels at coding tasks (especially Python and algorithms), mathematical reasoning, and multilingual work (particularly Chinese). Claude Opus 4.8 is stronger at nuanced long-form writing, document analysis, and complex instruction-following. GPT-5 is better at structured multi-step tasks and tool use. Gemini 2.5 Pro handles very long documents (up to 1M tokens). The right answer is to use all of them: bedda.ai's model comparison arena lets you run the same prompt across multiple models simultaneously to see which produces the best output for your specific task.",
+      },
+    ],
+  },
+  "bedda-vs-ai-writer": {
+    slug: "bedda-vs-ai-writer",
+    competitor: "AI-Writer",
+    competitorUrl: "https://ai-writer.com",
+    competitorPrice: "$29/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs AI-Writer",
+    metaTitle: "bedda.ai vs AI-Writer (2026) — Frontier AI Chat vs AI Content Tool",
+    metaDescription:
+      "Compare bedda.ai and AI-Writer in 2026. AI-Writer is $29/mo for article drafting with citations. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ frontier models for $12/mo — better writing quality at $17/mo less.",
+    ogTitle: "bedda.ai vs AI-Writer — Frontier Models vs AI Article Tool",
+    ogDescription:
+      "AI-Writer charges $29/mo for AI-generated article drafts with source citations. bedda.ai gives you Claude Opus 4.8 and GPT-5 for $12/mo — better writing quality for $17/mo less.",
+    heroHeadline: "Better AI writing for $12/mo — $17/mo less than AI-Writer",
+    heroSubtext:
+      "AI-Writer charges $29/mo for article drafts powered by older AI models with source citation features. bedda.ai gives you Claude Opus 4.8 and GPT-5 — the best writing AI available — for $12/mo. Frontier writing quality for $17/mo less.",
+    verdict:
+      "AI-Writer is a content generation tool focused specifically on article and blog post drafting with automatic source citation. Its SEO-oriented workflow includes topic research, article drafting, and citation linking, which is useful for content teams that produce high volumes of SEO articles. The limitation is that AI-Writer runs on older AI models, and at $29/mo (up to $59/mo for higher plans), it's significantly more expensive than bedda.ai at $12/mo. bedda.ai gives you Claude Opus 4.8 and GPT-5 — dramatically better writers than the models AI-Writer uses — plus web search for citing current sources, knowledge base for storing your brand voice and content guidelines, and 34+ other frontier models. For writers who want the best underlying AI for content quality rather than an automated workflow tool, bedda.ai is the stronger value at nearly half the price.",
+    switchReasons: [
+      "Claude Opus 4.8 and GPT-5 produce significantly better writing than AI-Writer's older models",
+      "bedda.ai is $17/mo cheaper than AI-Writer's basic plan",
+      "Web search for citing current sources and statistics in articles",
+      "Knowledge base to store brand voice, style guides, and content templates",
+      "36+ models including DeepSeek R1 for research-intensive content",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$29/mo" },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Automatic source citation", bedda: false, competitor: true },
+      { feature: "Web search for research", bedda: true, competitor: true },
+      { feature: "36+ frontier models", bedda: true, competitor: false },
+      { feature: "Knowledge base / brand voice", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "AI model quality", bedda: "Claude Opus 4.8 / GPT-5", competitor: "Older GPT-4 tier" },
+    ],
+    faq: [
+      {
+        q: "What is AI-Writer?",
+        a: "AI-Writer is a content generation platform focused on SEO article and blog post creation. It drafts articles based on a topic or keyword, automatically includes citations from web sources, and is designed for high-volume content production. Pricing starts at $29/mo for the basic plan, with higher tiers up to $375/mo for teams. It's built around older GPT-4-tier models. AI-Writer is targeted at content marketers, bloggers, and SEO teams who need a structured workflow for article production at scale.",
+      },
+      {
+        q: "Does bedda.ai cite sources like AI-Writer does?",
+        a: "bedda.ai's web search tool finds and references current sources within AI responses, which covers most research and citation needs. It doesn't have AI-Writer's specific \"automatic citation\" workflow that formats references for SEO articles. If you need a tool specifically optimized for bulk SEO article production with automatic citation formatting, AI-Writer's workflow may fit that use case. If you want the best underlying AI model quality for writing, plus web search, knowledge base, and 36+ models, bedda.ai at $12/mo gives you significantly better writing AI for $17/mo less.",
+      },
+      {
+        q: "Which produces better article quality — AI-Writer or bedda.ai?",
+        a: "bedda.ai produces higher quality articles because it uses Claude Opus 4.8 and GPT-5 — the current frontier models — rather than the older models AI-Writer is built on. For long-form articles requiring nuanced argumentation, original insight, and natural writing style, the quality difference is substantial. AI-Writer's strength is its structured citation workflow and SEO optimization features, not the underlying writing quality. If writing quality matters more than automated citation formatting, bedda.ai at $12/mo is the better choice.",
+      },
+    ],
+  },
+  "bedda-vs-sudowrite": {
+    slug: "bedda-vs-sudowrite",
+    competitor: "Sudowrite",
+    competitorUrl: "https://www.sudowrite.com",
+    competitorPrice: "$19/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Sudowrite",
+    metaTitle: "bedda.ai vs Sudowrite (2026) — Multi-Model AI vs Creative Fiction Writing Tool",
+    metaDescription:
+      "Compare bedda.ai and Sudowrite in 2026. Sudowrite is $19-$59/mo for AI-assisted fiction writing. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ frontier models for $12/mo — better creative AI at a lower price.",
+    ogTitle: "bedda.ai vs Sudowrite — Frontier AI Models vs AI Fiction Writing Tool",
+    ogDescription:
+      "Sudowrite charges $19-$59/mo for AI fiction writing features. bedda.ai gives you Claude Opus 4.8 and GPT-5 for $12/mo — better creative writing AI for less.",
+    heroHeadline: "Better creative AI for $12/mo — up to $47/mo less than Sudowrite",
+    heroSubtext:
+      "Sudowrite is a dedicated fiction writing tool with AI-powered features like Story Engine, Brainstorm, and Rewrite. bedda.ai gives you Claude Opus 4.8 and GPT-5 — among the best creative writing AI available — for $12/mo with general-purpose capability beyond just fiction.",
+    verdict:
+      "Sudowrite is a purpose-built fiction writing tool designed specifically for novelists and creative writers. Its unique features — Story Engine for structured novel outlining, Brainstorm for generating plot ideas, Describe for adding sensory detail, and Rewrite for stylistic variation — are specifically designed around the fiction writing process. These specialized tools add value that a general-purpose AI chat interface doesn't replicate out of the box. The tradeoff is cost: Sudowrite starts at $19/mo for 30,000 AI words per month and goes to $59/mo for unlimited words, while bedda.ai at $12/mo gives you Claude Opus 4.8 and GPT-5 with no word limits. Claude Opus 4.8 is an excellent creative fiction writer — many novelists use it directly via bedda.ai for everything from plot brainstorming to prose drafting to character development. For fiction writers who want dedicated workflow tools (Story Engine, chapter-by-chapter planning), Sudowrite's UI is worth considering. For fiction writers who want the best underlying AI model at the lowest cost, bedda.ai is the better value.",
+    switchReasons: [
+      "Claude Opus 4.8 is among the best creative fiction writers available",
+      "bedda.ai is $7/mo cheaper than Sudowrite's entry plan, up to $47/mo cheaper than Pro",
+      "No word limits — unlimited messages across 36+ frontier models",
+      "Web search for research while writing (settings, historical detail, current events)",
+      "General-purpose capability beyond fiction: research, outlining, marketing, query letters",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$19–$59/mo" },
+      { feature: "Claude Opus 4.8 (top creative AI)", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Story Engine (novel workflow)", bedda: false, competitor: true },
+      { feature: "Brainstorm / Describe tools", bedda: false, competitor: true },
+      { feature: "Word limits", bedda: "None", competitor: "30k–unlimited words/mo" },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "36+ frontier models", bedda: true, competitor: false },
+      { feature: "Knowledge base for series bibles", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Sudowrite?",
+        a: "Sudowrite is an AI writing tool designed specifically for fiction writers — novelists, short story writers, and creative writers. It's built around the fiction writing workflow with features like Story Engine (structured novel planning and chapter drafting), Brainstorm (plot idea generation), Describe (sensory and atmospheric detail generation), and Rewrite (stylistic variation). Plans start at $19/mo for 30,000 AI words per month and go up to $59/mo for unlimited words. The AI models powering it are GPT-4-class models, not the latest frontier models like Claude Opus 4.8 or GPT-5.",
+      },
+      {
+        q: "Can bedda.ai replace Sudowrite for fiction writing?",
+        a: "For most fiction writing tasks, yes. Claude Opus 4.8 is an exceptional creative fiction writer — capable of brainstorming plots, developing characters, drafting scenes, providing stylistic feedback, and generating atmospheric prose. You won't have Sudowrite's dedicated Story Engine UI with its chapter-by-chapter structured workflow, but you get significantly better underlying AI and no word limits for $7/mo less. Many fiction writers prefer the flexibility of prompting Claude Opus 4.8 directly rather than working within Sudowrite's specific workflow. If Sudowrite's structured fiction workflow is something you specifically need, it has real value. If the underlying AI quality and flexibility matter more, bedda.ai is the better choice.",
+      },
+      {
+        q: "Does bedda.ai have word or usage limits like Sudowrite?",
+        a: "No. bedda.ai gives you unlimited messages across 36+ frontier models for $12/mo — there are no word limits, character limits, or AI word credits to manage. Sudowrite's entry-level $19/mo plan limits you to 30,000 AI-generated words per month, which can run out mid-project for prolific writers. Sudowrite's $59/mo Pro plan removes the word limit but is nearly 5x bedda.ai's price.",
+      },
+    ],
+  },
+  "bedda-vs-type-ai": {
+    slug: "bedda-vs-type-ai",
+    competitor: "Type.ai",
+    competitorUrl: "https://type.ai",
+    competitorPrice: "$25/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Type.ai",
+    metaTitle: "bedda.ai vs Type.ai (2026) — Multi-Model AI Chat vs AI Document Editor",
+    metaDescription:
+      "Compare bedda.ai and Type.ai in 2026. Type.ai is $25/mo for an AI-native document editor. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ frontier models for $12/mo — broader AI capability at $13/mo less.",
+    ogTitle: "bedda.ai vs Type.ai — Frontier AI Models vs AI Writing Editor",
+    ogDescription:
+      "Type.ai charges $25/mo for an AI document editor with integrated AI writing assistance. bedda.ai gives you Claude Opus 4.8 and GPT-5 for $12/mo — $13/mo less with 36+ frontier models.",
+    heroHeadline: "36+ frontier models for $12/mo — $13/mo less than Type.ai",
+    heroSubtext:
+      "Type.ai is an AI-native document editor at $25/mo. bedda.ai gives you Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and 33 other frontier models for $12/mo — full multi-model AI capability for less than a single competitor's price.",
+    verdict:
+      "Type.ai is an AI-native document editor — think Google Docs with AI writing assistance deeply integrated into the editing interface. It supports generating content inline, rewriting selections, expanding ideas, and maintaining document context throughout the editing session. For writers who spend most of their time in a document editor and want AI assistance embedded in that workflow, Type.ai's integrated experience has appeal. The limitation is cost ($25/mo) and scope: it's primarily an AI document editor, not a general-purpose AI assistant. bedda.ai at $12/mo gives you Claude Opus 4.8 and GPT-5 in a chat-based interface, web search for research, knowledge base for referencing your existing documents and brand voice, and 34+ additional frontier models — for $13/mo less. For writers who want the best AI writing quality across all tasks (documents, emails, research, analysis), bedda.ai offers more capability at a lower price.",
+    switchReasons: [
+      "bedda.ai is $13/mo cheaper than Type.ai",
+      "Claude Opus 4.8 and GPT-5 are stronger writers than Type.ai's underlying models",
+      "36+ frontier models for different task types",
+      "Web search, image generation, knowledge base — beyond document editing",
+      "Model comparison to test multiple AI writers on the same content piece",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$25/mo" },
+      { feature: "Inline document editor", bedda: false, competitor: true },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "36+ frontier models", bedda: true, competitor: false },
+      { feature: "Knowledge base / RAG", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Type.ai?",
+        a: "Type.ai is an AI-native document editor — a writing tool with AI assistance deeply embedded in the document editing interface. It lets you generate content inline, rewrite selections, expand ideas, and work with AI throughout the writing process without switching to a separate chat window. It's positioned as an alternative to Notion AI or Google Docs with Gemini, but with deeper AI integration. Pricing starts at approximately $25/mo. The tool is aimed at writers, content creators, and knowledge workers who want AI embedded in their document workflow.",
+      },
+      {
+        q: "Does bedda.ai have a document editor like Type.ai?",
+        a: "bedda.ai's Canvas mode provides a document/artifact workspace where you can create and edit long-form content, code, spreadsheets, and presentations with AI assistance — it's similar in concept to an AI document editor. The primary interface is a chat-based workflow rather than a traditional inline document editor. For writers who want a traditional word processor with AI embedded, Type.ai's UI is more familiar. For writers who want the best underlying AI models (Claude Opus 4.8 and GPT-5) with document capability plus research, knowledge base, and 34+ other models, bedda.ai offers more total capability at $13/mo less.",
+      },
+      {
+        q: "Which is better for long-form writing — Type.ai or bedda.ai?",
+        a: "For the underlying writing AI quality, bedda.ai wins — Claude Opus 4.8 and GPT-5 produce better long-form prose than Type.ai's models. Type.ai's advantage is the inline editing workflow: AI assistance is embedded in the document editing experience rather than in a separate chat interface. If the integrated UI matters most, Type.ai may fit your workflow better. If writing quality and total AI capability matter most, bedda.ai gives you better models for $13/mo less.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {

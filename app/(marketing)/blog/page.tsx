@@ -1098,6 +1098,42 @@ const posts = [
     readingTime: "8 min read",
     category: "Industry Guides",
   },
+  {
+    slug: "ai-for-compliance-teams-2026",
+    title: "AI for Compliance Teams in 2026: Regulatory Risk, Policy Review, and Audit Support",
+    description:
+      "How compliance officers, GRC teams, and legal risk professionals use AI in 2026 to accelerate policy review, regulatory mapping, audit prep, and risk documentation.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Industry Guides",
+  },
+  {
+    slug: "best-ai-for-customer-success-2026",
+    title: "Best AI for Customer Success Teams in 2026: Retention, Onboarding, and QBRs",
+    description:
+      "How customer success managers and teams use AI in 2026 to improve onboarding, draft QBR decks, identify churn risk, and scale personalized communication.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Industry Guides",
+  },
+  {
+    slug: "how-to-write-better-ai-prompts-2026",
+    title: "How to Write Better AI Prompts in 2026: Prompt Engineering That Actually Works",
+    description:
+      "A practical guide to writing better prompts for Claude, GPT-5, and Gemini. Techniques that improve output quality, reduce hallucinations, and get consistent results.",
+    date: "July 2026",
+    readingTime: "9 min read",
+    category: "How-To Guides",
+  },
+  {
+    slug: "ai-for-learning-and-development-2026",
+    title: "AI for Learning and Development in 2026: Training, Coaching, and Skill Building",
+    description:
+      "How L&D professionals, instructional designers, and training teams use AI to build courses, create assessments, personalize learning paths, and scale employee development.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Industry Guides",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
