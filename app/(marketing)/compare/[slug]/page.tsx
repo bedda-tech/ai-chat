@@ -7199,6 +7199,222 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-fliki": {
+    slug: "bedda-vs-fliki",
+    competitor: "Fliki",
+    competitorUrl: "https://fliki.ai",
+    competitorPrice: "$28/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Fliki",
+    metaTitle: "bedda.ai vs Fliki (2026) — Full AI Suite vs Text-to-Video",
+    metaDescription:
+      "Compare bedda.ai and Fliki in 2026. Fliki is $28/mo for AI text-to-video with voiceover. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ frontier models for $12/mo — broader AI for writing, research, image generation, and more.",
+    ogTitle: "bedda.ai vs Fliki — Frontier AI Models vs AI Text-to-Video",
+    ogDescription:
+      "Fliki is $14-88/mo for AI text-to-video — converting scripts into videos with AI voiceover and stock footage. bedda.ai is $12/mo for Claude Opus 4.8, GPT-5, and 34+ frontier models — full AI suite for writing, research, and content creation.",
+    heroHeadline: "Full AI suite for $12/mo — vs Fliki's text-to-video at $28/mo",
+    heroSubtext:
+      "Fliki charges $14-88/mo to convert text scripts into AI-narrated videos with stock footage. bedda.ai gives you Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and 33+ frontier models for $12/mo — covering the scripting, research, and content strategy that power your videos.",
+    verdict:
+      "Fliki and bedda.ai serve different parts of the content creation workflow. Fliki is a specialized AI text-to-video tool — you paste a script or article, it converts it to a video with AI voiceover (900+ voices in 75+ languages) and royalty-free stock footage or AI-generated visuals. It's a time-saver for creators who need to produce video content at scale from existing written material. bedda.ai is a full AI chat platform for knowledge work. Use Claude Opus 4.8 to write and refine the scripts that go into Fliki. Use GPT-5 for research, content outlines, and social media strategy. Use web search to find current information. For content creators who use both tools, the combination is compelling: bedda.ai writes and researches at $12/mo, Fliki produces the video at $14-28/mo — together that's $26-40/mo for a full AI-powered video production workflow. That's still less than most professional video tools alone.",
+    switchReasons: [
+      "bedda.ai is $12/mo vs Fliki's $28/mo for the Standard plan — saving $16/mo",
+      "Claude Opus 4.8 and GPT-5 write better video scripts than Fliki's built-in AI writing",
+      "36+ models for research, analysis, and content strategy beyond video production",
+      "Web search for finding current trends, statistics, and sources to inform video content",
+      "Image generation for thumbnails, social graphics, and visual assets alongside video",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$14-88/mo" },
+      { feature: "AI text-to-video", bedda: false, competitor: true },
+      { feature: "AI voiceover (900+ voices)", bedda: false, competitor: true },
+      { feature: "Stock footage library", bedda: false, competitor: true },
+      { feature: "AI chat (general purpose)", bedda: true, competitor: false },
+      { feature: "Script writing (Claude/GPT-5)", bedda: true, competitor: "basic" },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Web search for research", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Video AI" },
+    ],
+    faq: [
+      {
+        q: "What is Fliki?",
+        a: "Fliki is an AI text-to-video platform that converts scripts, blog posts, and articles into videos with AI voiceover. It offers 900+ voices in 75+ languages, a library of stock footage and images, and AI-generated visuals. You paste your text, choose a voice, and Fliki automatically segments the content and pairs each segment with relevant footage. Plans start at Free (5 mins/mo), Basic $14/mo (30 mins), Standard $28/mo (120 mins), and Pro $88/mo (unlimited). Popular with social media content creators, YouTubers, podcasters, and marketing teams repurposing blog content into video.",
+      },
+      {
+        q: "Can bedda.ai create videos?",
+        a: "bedda.ai doesn't generate videos directly. It excels at the knowledge work around video production: writing scripts with Claude Opus 4.8, researching topics with web search, generating social media captions with GPT-5, creating content calendars, and producing thumbnail concepts. For actual text-to-video conversion, Fliki is the specialized tool. Many creators use bedda.ai for scripting and Fliki for production — both tools are complementary.",
+      },
+      {
+        q: "Which is more cost-effective for content creators?",
+        a: "For pure video production, Fliki is the right dedicated tool. For everything surrounding video content — scripting, research, social strategy, written repurposing — bedda.ai at $12/mo provides Claude Opus 4.8 and GPT-5, which are significantly more capable than the AI writing features built into Fliki. Many content creators use both: bedda.ai for the knowledge work, Fliki for the video output. The combined cost ($26-40/mo) is still less than most professional video subscription tools.",
+      },
+    ],
+  },
+
+  "bedda-vs-scalenut": {
+    slug: "bedda-vs-scalenut",
+    competitor: "Scalenut",
+    competitorUrl: "https://www.scalenut.com",
+    competitorPrice: "$39/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Scalenut",
+    metaTitle: "bedda.ai vs Scalenut (2026) — Frontier AI vs SEO Content Tool",
+    metaDescription:
+      "Compare bedda.ai and Scalenut in 2026. Scalenut is $39-149/mo for AI SEO content creation. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ frontier models for $12/mo — better AI writing for $27-137/mo less.",
+    ogTitle: "bedda.ai vs Scalenut — Save $27/mo with Better AI Writing",
+    ogDescription:
+      "Scalenut charges $39-149/mo for AI-powered SEO content: keyword research, content briefs, AI writing, and NLP optimization. bedda.ai gives you Claude Opus 4.8 and GPT-5 for $12/mo — frontier models that outwrite Scalenut's AI at a fraction of the price.",
+    heroHeadline: "Better AI writing for $12/mo — vs Scalenut's $39-149/mo",
+    heroSubtext:
+      "Scalenut charges $39-149/mo for AI SEO content tools. bedda.ai gives you Claude Opus 4.8 and GPT-5 for $12/mo — frontier models that produce better long-form content, more nuanced analysis, and higher-quality writing than Scalenut's AI at 70-92% less cost.",
+    verdict:
+      "Scalenut is an AI SEO content platform aimed at content marketers — it combines keyword research (SERP analysis, topic clustering), content briefs (NLP-based recommendations), AI writing, and content optimization scoring. For SEO teams managing content at scale with workflow integration, Scalenut provides useful infrastructure. However, the core AI writing quality is no longer Scalenut's competitive advantage. Claude Opus 4.8 and GPT-5 (available in bedda.ai at $12/mo) write more naturally, follow instructions more precisely, and produce content that readers prefer. An SEO team using bedda.ai with web search and the knowledge base feature can replicate most of Scalenut's content research workflow while spending $27-137/mo less. The primary reason to choose Scalenut over bedda.ai is if you specifically need the SEO workflow integration, automated content briefs, and team collaboration features that Scalenut wraps around the AI — not for superior AI writing quality.",
+    switchReasons: [
+      "bedda.ai is $27-137/mo cheaper than Scalenut ($12 vs $39-149)",
+      "Claude Opus 4.8 and GPT-5 produce higher-quality long-form content than Scalenut's AI",
+      "Web search + knowledge base replicate most of Scalenut's topic research capabilities",
+      "36+ frontier models including DeepSeek R1 for analytical depth in content",
+      "No per-article limits or credit systems — flat $12/mo for unlimited AI usage",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$39-149/mo" },
+      { feature: "SERP analysis & keyword research", bedda: false, competitor: true },
+      { feature: "Automated content briefs", bedda: false, competitor: true },
+      { feature: "NLP content optimization scoring", bedda: false, competitor: true },
+      { feature: "AI writing quality (frontier models)", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Web search for research", bedda: true, competitor: "limited" },
+      { feature: "Knowledge base / RAG", bedda: true, competitor: false },
+      { feature: "Unlimited usage (flat rate)", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1" },
+    ],
+    faq: [
+      {
+        q: "What is Scalenut?",
+        a: "Scalenut is an AI-powered SEO and content marketing platform. It combines keyword research with SERP analysis, automated content briefs based on top-ranking pages, AI content writing, and NLP optimization scoring to help content marketers create search-optimized content at scale. Plans: Essential $39/mo (5 articles), Growth $79/mo (30 articles), Pro $149/mo (unlimited). Features include a 'Cruise Mode' that generates full articles from a keyword in minutes, topic cluster mapping, and content audit tools. Popular with SEO agencies, content marketing teams, and B2B companies building organic search traffic.",
+      },
+      {
+        q: "Can bedda.ai replace Scalenut for SEO content?",
+        a: "bedda.ai can replace Scalenut for AI writing quality — Claude Opus 4.8 and GPT-5 produce better content than Scalenut's AI writer. For the full SEO workflow (keyword research, SERP analysis, automated content briefs), you'd need to pair bedda.ai with a dedicated SEO tool like Ahrefs or Semrush. The combination of bedda.ai ($12/mo) + a basic Ahrefs plan ($99/mo) often costs less than Scalenut Pro ($149/mo) and gives you better AI writing plus a more comprehensive SEO data platform.",
+      },
+      {
+        q: "Does bedda.ai have article generation limits like Scalenut?",
+        a: "No. bedda.ai charges a flat $12/mo for Plus with no per-article or per-credit limits. Scalenut's Essential plan ($39/mo) limits you to 5 articles per month; Growth is 30 articles. With bedda.ai, you can write as many articles as you need — only the model message rate limits apply, which are generous enough for professional content teams.",
+      },
+    ],
+  },
+
+  "bedda-vs-d-id": {
+    slug: "bedda-vs-d-id",
+    competitor: "D-ID",
+    competitorUrl: "https://www.d-id.com",
+    competitorPrice: "$49/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs D-ID",
+    metaTitle: "bedda.ai vs D-ID (2026) — Full AI Suite vs AI Avatar Videos",
+    metaDescription:
+      "Compare bedda.ai and D-ID in 2026. D-ID is $49/mo for AI avatar video creation. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ frontier models for $12/mo — broader AI for writing, research, and content strategy.",
+    ogTitle: "bedda.ai vs D-ID — Frontier AI Models vs AI Avatar Video",
+    ogDescription:
+      "D-ID creates AI presenter videos from text — realistic talking avatars at $5.9-299/mo. bedda.ai is $12/mo for Claude Opus 4.8, GPT-5, and 34+ frontier models — full AI suite for writing, research, and the content strategy behind your videos.",
+    heroHeadline: "Frontier AI for $12/mo — vs D-ID AI avatar videos at $49/mo",
+    heroSubtext:
+      "D-ID specializes in AI-generated talking avatar videos for training content, marketing, and e-learning. bedda.ai gives you Claude Opus 4.8, GPT-5, and 33+ frontier models for $12/mo — covering the scripting, research, and strategy that make your video content effective.",
+    verdict:
+      "D-ID and bedda.ai are specialized for completely different tasks. D-ID creates AI presenter videos — you provide a text script, choose from realistic AI avatar presenters or upload a photo, and D-ID generates a video of the avatar speaking your script with synchronized lip movements. It's widely used for corporate training videos, e-learning courses, marketing explainers, and multilingual content localization (80+ languages). bedda.ai is a full AI chat platform — use Claude Opus 4.8 to write scripts that go into D-ID, use GPT-5 to research content, use web search for current information. Many teams use both: bedda.ai for the knowledge work at $12/mo, D-ID for the video output. Together they cost $61/mo (Basic + D-ID Advance) — less than Synthesia's comparable plan, and you get significantly more capable AI for the scripting work.",
+    switchReasons: [
+      "bedda.ai gives you Claude Opus 4.8 and GPT-5 for scripting — better than D-ID's basic text tools",
+      "36+ frontier models for research, content strategy, and multilingual script writing",
+      "Web search for finding current statistics, examples, and topic research",
+      "Image generation for thumbnails, supporting graphics, and visual assets",
+      "bedda.ai at $12/mo covers all AI knowledge work outside video — better value for the non-video portions",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$5.9-299/mo" },
+      { feature: "AI avatar video generation", bedda: false, competitor: true },
+      { feature: "Talking head from photo", bedda: false, competitor: true },
+      { feature: "80+ language dubbing", bedda: false, competitor: true },
+      { feature: "AI chat (general purpose)", bedda: true, competitor: false },
+      { feature: "Script writing (Claude/GPT-5)", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Web search for research", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Video AI" },
+    ],
+    faq: [
+      {
+        q: "What is D-ID?",
+        a: "D-ID is an AI video generation platform that creates realistic talking avatar videos from text and images. You write a script, select an AI presenter (or upload a photo to animate), and D-ID generates a high-quality video of the avatar speaking the script with synchronized lip movement and natural expressions. It supports 80+ languages with native accents. Pricing: Lite free (20 credits), Basic $5.9/mo (10 credits), Advanced $49/mo (100 credits), Enterprise custom. Popular for corporate training videos, product demos, e-learning courses, and social media content at scale.",
+      },
+      {
+        q: "Can bedda.ai create talking avatar videos like D-ID?",
+        a: "No — bedda.ai doesn't generate talking avatar videos. It handles the knowledge work that surrounds video production: writing and refining scripts with Claude Opus 4.8, researching topics with web search, translating content with GPT-5 (for multilingual versions), and planning content strategy. The combination of bedda.ai for scripting and D-ID for video production creates a powerful workflow for teams creating training or marketing video content.",
+      },
+      {
+        q: "How do bedda.ai and D-ID work together?",
+        a: "A common workflow: use bedda.ai with Claude Opus 4.8 to research the topic and write a polished script — including adjusting tone, length, and terminology for your target audience. Then paste that script into D-ID, select your presenter and language, and generate the video. bedda.ai can also help with downstream tasks: writing captions and thumbnails for YouTube, creating social media copy promoting the video, and summarizing the video into a blog post. The two tools are complementary rather than competing.",
+      },
+    ],
+  },
+
+  "bedda-vs-simplified": {
+    slug: "bedda-vs-simplified",
+    competitor: "Simplified",
+    competitorUrl: "https://simplified.com",
+    competitorPrice: "$18/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Simplified",
+    metaTitle: "bedda.ai vs Simplified (2026) — Frontier AI vs All-in-One Content Platform",
+    metaDescription:
+      "Compare bedda.ai and Simplified in 2026. Simplified is $18-36/mo for AI writing, design, and social media tools. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ frontier models for $12/mo — better AI for $6-24/mo less.",
+    ogTitle: "bedda.ai vs Simplified — Frontier AI Models vs AI Content Suite",
+    ogDescription:
+      "Simplified bundles AI writing, graphic design, video, and social media scheduling into one platform at $18-36/mo. bedda.ai gives you Claude Opus 4.8, GPT-5, and 34+ frontier models for $12/mo — frontier AI writing quality at a lower price.",
+    heroHeadline: "Frontier AI writing for $12/mo — $6-24/mo less than Simplified",
+    heroSubtext:
+      "Simplified charges $18-36/mo for AI writing, design, and social scheduling bundled together. bedda.ai gives you Claude Opus 4.8 and GPT-5 for $12/mo — frontier models that dramatically outperform Simplified's AI on writing quality, nuance, and complex task handling.",
+    verdict:
+      "Simplified is an all-in-one content creation platform — AI writing, graphic design (Canva-style editor), short-form video editing, and social media scheduling all in one subscription. Its appeal is consolidation: one login for the whole content workflow. The AI writing in Simplified is powered by older GPT-4-tier models, which is increasingly outclassed by Claude Opus 4.8 and GPT-5. bedda.ai at $12/mo gives you access to the best writing AI available for $6-24/mo less than Simplified's paid plans. If you need graphic design and social scheduling alongside AI writing, Simplified may still be worth comparing. But if your primary need is exceptional AI writing, research, and analysis — especially for complex documents, long-form content, or technical work — bedda.ai's frontier models provide a significant quality advantage at a lower price point.",
+    switchReasons: [
+      "Claude Opus 4.8 and GPT-5 are significantly better writers than Simplified's GPT-4-based AI",
+      "bedda.ai is $6-24/mo cheaper than Simplified's paid plans",
+      "36+ frontier models including DeepSeek R1, Gemini 2.5 Pro, and Grok 4",
+      "Web search for researching current events, statistics, and sources for content",
+      "Knowledge base for storing brand guidelines, style guides, and reference documents",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$18-36/mo" },
+      { feature: "AI graphic design editor", bedda: false, competitor: true },
+      { feature: "Social media scheduling", bedda: false, competitor: true },
+      { feature: "Short-form video editing", bedda: false, competitor: true },
+      { feature: "Frontier AI writing (Claude/GPT-5)", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Web search for research", bedda: true, competitor: false },
+      { feature: "36+ AI models", bedda: true, competitor: false },
+      { feature: "Knowledge base / RAG", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "GPT-4 tier" },
+    ],
+    faq: [
+      {
+        q: "What is Simplified?",
+        a: "Simplified is an all-in-one content creation platform that bundles AI writing, a graphic design editor (similar to Canva), short-form video editing, and social media scheduling into a single subscription. It's aimed at small businesses, marketing teams, and social media managers who want to consolidate multiple tools. Free plan available with limited features; paid plans at $18/mo (Small Team) and $36/mo (Business). The AI writing feature generates social posts, ad copy, blog intros, and product descriptions — powered by GPT-4-tier models.",
+      },
+      {
+        q: "Does bedda.ai have design tools like Simplified?",
+        a: "No — bedda.ai doesn't include graphic design tools or social media scheduling. It's focused entirely on AI chat and productivity: Claude Opus 4.8 and GPT-5 for writing and analysis, web search for research, image generation for visual concepts, and knowledge base for storing brand context. If you need design + scheduling, Simplified or Canva fills that gap. If you need the best AI writing quality, bedda.ai is the stronger choice for that specific task.",
+      },
+      {
+        q: "Who should choose Simplified vs bedda.ai?",
+        a: "Choose Simplified if you need an all-in-one platform and value the design editor + social scheduling alongside AI writing — and if the consolidated billing matters more than AI writing quality. Choose bedda.ai if your primary use case is writing, research, and analysis — especially complex, long-form, or technical work where Claude Opus 4.8 and GPT-5's quality advantage over older AI models makes a meaningful difference in the output.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {

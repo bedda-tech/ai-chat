@@ -1026,6 +1026,42 @@ const posts = [
     readingTime: "8 min read",
     category: "AI Models",
   },
+  {
+    slug: "how-to-use-grok-ai-2026",
+    title: "How to Use Grok AI in 2026: Complete Guide to xAI's Grok 4",
+    description:
+      "Everything you need to know about using Grok AI in 2026 — Grok 4 capabilities, SuperGrok pricing, best use cases, real-time X data, and how Grok compares to ChatGPT and Claude.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "AI Models",
+  },
+  {
+    slug: "best-ai-for-financial-advisors-2026",
+    title: "Best AI for Financial Advisors in 2026: Research, Client Comms, and Planning",
+    description:
+      "How independent financial advisors, wealth managers, and financial planners use AI in 2026 for client communication, financial plan writing, market research, compliance documentation, and business development.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Industry Guides",
+  },
+  {
+    slug: "ai-for-fashion-industry-2026",
+    title: "AI for the Fashion Industry in 2026: Design, Marketing, and Retail",
+    description:
+      "How fashion designers, retailers, stylists, and fashion marketers use AI in 2026 for trend forecasting, product descriptions, visual merchandising, social media content, and customer engagement.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Industry Guides",
+  },
+  {
+    slug: "ai-for-agriculture-2026",
+    title: "AI for Agriculture in 2026: Farming, Agtech, and Food Production",
+    description:
+      "How farmers, agronomists, agtech companies, and food producers use AI in 2026 for crop planning, pest identification, market analysis, grant writing, equipment documentation, and precision agriculture.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Industry Guides",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
