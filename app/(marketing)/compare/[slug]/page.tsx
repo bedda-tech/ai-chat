@@ -6374,6 +6374,235 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+  "bedda-vs-zapier": {
+    slug: "bedda-vs-zapier",
+    competitor: "Zapier",
+    competitorUrl: "https://zapier.com",
+    competitorPrice: "$19.99–$149/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Zapier",
+    metaTitle: "bedda.ai vs Zapier (2026) — AI Chat vs Automation Platform",
+    metaDescription:
+      "Compare bedda.ai and Zapier for AI-powered work in 2026. Zapier automates workflows between apps. bedda.ai gives you 36+ frontier AI models in a chat interface for $12/mo — less than Zapier&apos;s starter plan.",
+    ogTitle: "bedda.ai vs Zapier — Frontier AI Chat vs Workflow Automation",
+    ogDescription:
+      "Zapier is a workflow automation platform; bedda.ai is a multi-model AI chat subscription. They&apos;re mostly complementary — but if you&apos;re paying for Zapier&apos;s AI features, bedda.ai at $12/mo is more powerful for knowledge work.",
+    heroHeadline: "36+ frontier AI models for less than Zapier&apos;s starter plan",
+    heroSubtext:
+      "Zapier starts at $19.99/mo for automation workflows with basic AI features. bedda.ai gives you Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, Grok 4, and 32 more frontier models in a fast chat interface — for $12/mo flat.",
+    verdict:
+      "Zapier and bedda.ai serve different primary purposes. Zapier is a workflow automation platform that connects apps and automates repetitive processes — it&apos;s excellent at what it does and has an irreplaceable role in many tech stacks. bedda.ai is an AI chat subscription that gives you direct access to the world&apos;s best AI models for knowledge work. Where they overlap: Zapier has added AI steps to its workflows using GPT and Claude, but at a significant premium. If you&apos;re paying for Zapier primarily to use AI in your work, bedda.ai at $12/mo gives you far more capable AI at a lower price. Most power users benefit from having both — Zapier for automation, bedda.ai for AI chat and reasoning.",
+    switchReasons: [
+      "bedda.ai is $7.99/mo cheaper than Zapier&apos;s starter and provides far more capable AI models",
+      "Claude Opus 4.8, GPT-5, and Gemini 2.5 Pro outperform the GPT-3.5/4 tiers Zapier uses in AI steps",
+      "36+ models vs one or two AI providers in Zapier workflows",
+      "Web search, knowledge base, image generation, and code execution built in",
+      "No per-task charges — unlimited AI conversations on bedda.ai vs Zapier&apos;s task-limited plans",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$19.99–$149/mo" },
+      { feature: "AI chat interface", bedda: true, competitor: false },
+      { feature: "Workflow automation", bedda: false, competitor: true },
+      { feature: "App integrations (5,000+)", bedda: false, competitor: true },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1–2 (via AI steps)" },
+      { feature: "Unlimited AI usage", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Zapier used for?",
+        a: "Zapier is a no-code workflow automation platform that connects thousands of apps — automatically moving data between Gmail, Slack, Salesforce, HubSpot, Google Sheets, and thousands of others when trigger events occur. It&apos;s the market leader in SaaS automation. Zapier also offers AI-powered steps in workflows (Zapier AI Actions) that can call GPT or Claude to process text as part of a multi-step Zap.",
+      },
+      {
+        q: "Does bedda.ai replace Zapier?",
+        a: "No — bedda.ai and Zapier are complementary tools for different jobs. Zapier automates repetitive workflows between apps; bedda.ai provides frontier AI chat for knowledge work. Where they potentially overlap is in AI text-processing tasks: if you&apos;re using a Zapier AI step to summarize or rewrite text, you could do that work directly in bedda.ai at lower cost with better models. But if you need true multi-step workflow automation triggered by app events, Zapier is irreplaceable.",
+      },
+      {
+        q: "Is Zapier worth it in 2026?",
+        a: "Zapier is worth it if you have genuine automation needs — connecting apps, triggering multi-step workflows, moving data between SaaS tools without code. It&apos;s less compelling as a pure AI tool, where you pay $19.99/mo+ but get limited access to older GPT/Claude models. For AI-first work, bedda.ai at $12/mo gives you significantly more powerful models at a lower price. Many professionals use both.",
+      },
+      {
+        q: "Can bedda.ai and Zapier work together?",
+        a: "Yes. You can use bedda.ai&apos;s OpenAI-compatible API (available to Plus subscribers) as an AI endpoint inside Zapier workflows via the Zapier webhook or HTTP action. This lets you use bedda.ai&apos;s models (including Claude Opus 4.8 and GPT-5) within your Zapier automation at bedda.ai&apos;s flat rate.",
+      },
+    ],
+  },
+  "bedda-vs-textcortex": {
+    slug: "bedda-vs-textcortex",
+    competitor: "TextCortex",
+    competitorUrl: "https://textcortex.com",
+    competitorPrice: "$19.99–$49.99/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs TextCortex",
+    metaTitle: "bedda.ai vs TextCortex (2026) — Which AI Writing Tool Is Better?",
+    metaDescription:
+      "Compare bedda.ai and TextCortex for AI writing in 2026. TextCortex is an AI writing assistant at $19.99-$49.99/mo. bedda.ai gives you Claude 4, GPT-5, and 34+ more models for $12/mo — more powerful and cheaper.",
+    ogTitle: "bedda.ai vs TextCortex — Multi-Model AI vs Specialized Writing Tool",
+    ogDescription:
+      "TextCortex charges up to $49.99/mo for AI writing built on GPT. bedda.ai gives you GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, and 33+ more frontier models for $12/mo — with web search, knowledge base, and image generation included.",
+    heroHeadline: "More powerful AI writing for $37.99/mo less",
+    heroSubtext:
+      "TextCortex charges up to $49.99/mo for AI writing assistance powered by GPT. bedda.ai gives you access to GPT-5 PLUS Claude Opus 4.8, Gemini 2.5 Pro, Grok 4, and 32 more models — all for $12/mo flat.",
+    verdict:
+      "TextCortex is an AI writing assistant built primarily for content creation and marketing copy, with templates, a browser extension, and workflow features. It&apos;s priced at $19.99–$49.99/mo. bedda.ai gives you direct access to frontier models including GPT-5 and Claude Opus 4.8 — the actual AI engines that power tools like TextCortex — for $12/mo. For professional writers, researchers, and marketers who want maximum AI capability, bedda.ai is significantly more powerful at a lower price. TextCortex has an edge in template management and browser extension convenience; bedda.ai wins on model quality, breadth, and value.",
+    switchReasons: [
+      "bedda.ai is $7.99–$37.99/mo cheaper than TextCortex",
+      "GPT-5 and Claude Opus 4.8 outperform the underlying models TextCortex uses",
+      "36+ models vs one primary model — switch by task for best results",
+      "Web search, knowledge base RAG, and image generation built in",
+      "No word credit limits — unlimited writing on bedda.ai",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$19.99–$49.99/mo" },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Browser extension", bedda: false, competitor: true },
+      { feature: "Writing templates", bedda: false, competitor: true },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Word/credit limits", bedda: "Unlimited", competitor: "Credit-based" },
+      { feature: "Total AI models", bedda: "36+", competitor: "1–2" },
+    ],
+    faq: [
+      {
+        q: "What is TextCortex?",
+        a: "TextCortex is an AI writing assistant designed for content creators, marketers, and business writers. It offers 60+ writing templates, a browser extension that works across websites, a document editor, and integrations with tools like Notion and Google Docs. It&apos;s built on GPT and positioned as an all-in-one AI writing platform. Pricing starts at $19.99/mo (Lite) and goes up to $49.99/mo (Unlimited).",
+      },
+      {
+        q: "Is TextCortex better than ChatGPT or Claude?",
+        a: "TextCortex is built on top of GPT and Claude models — it&apos;s a product layer on top of the underlying AI. For most writing tasks, using the underlying models directly (via bedda.ai or directly through OpenAI/Anthropic) gives you the same or better output with more control. TextCortex&apos;s value-add is the template library and browser extension convenience, not model superiority.",
+      },
+      {
+        q: "Does bedda.ai have writing templates?",
+        a: "bedda.ai doesn&apos;t have a traditional template library, but it has a prompt library where you can save and reuse your own prompts. For most professional writers, custom prompts tuned to their specific voice and use case outperform generic templates. You can also save custom instructions to your profile that persist across all conversations.",
+      },
+      {
+        q: "Can bedda.ai replace TextCortex?",
+        a: "For most writing tasks, yes — bedda.ai&apos;s frontier models (GPT-5, Claude Opus 4.8) produce higher-quality output than TextCortex at a lower price. The main reason to keep TextCortex is the browser extension (for in-context AI assistance across websites) and the template management interface if you rely on those specific features. For chat-based AI writing, bedda.ai is the stronger choice.",
+      },
+    ],
+  },
+  "bedda-vs-hyperwrite": {
+    slug: "bedda-vs-hyperwrite",
+    competitor: "HyperWrite",
+    competitorUrl: "https://www.hyperwriteai.com",
+    competitorPrice: "$16.99–$39.99/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs HyperWrite",
+    metaTitle: "bedda.ai vs HyperWrite (2026) — AI Assistant Comparison",
+    metaDescription:
+      "Compare bedda.ai and HyperWrite AI in 2026. HyperWrite is an AI writing assistant at $16.99-$39.99/mo. bedda.ai gives you 36+ frontier models including GPT-5 and Claude 4 for $12/mo — more powerful and cheaper.",
+    ogTitle: "bedda.ai vs HyperWrite — 36+ Frontier Models vs Specialized AI Assistant",
+    ogDescription:
+      "HyperWrite charges $16.99-$39.99/mo for its AI writing assistant. bedda.ai gives you GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, and 33 more models in one subscription for $12/mo — with web search and image generation included.",
+    heroHeadline: "More capable AI assistant for less than HyperWrite&apos;s starter plan",
+    heroSubtext:
+      "HyperWrite&apos;s Premium plan costs $16.99/mo for an AI assistant built on GPT-4-class models. bedda.ai gives you GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, and 33 more frontier models for $12/mo — with web search, image generation, and knowledge base included.",
+    verdict:
+      "HyperWrite is an AI writing assistant with a browser extension, autocomplete feature, and specialized writing tools for emails, essays, and content. It&apos;s priced at $16.99–$39.99/mo. bedda.ai gives you direct access to the frontier models that power tools like HyperWrite — plus many others — for $12/mo. The key trade-off: HyperWrite offers in-browser autocomplete and convenience features; bedda.ai offers significantly more powerful models, broader capability (web search, images, RAG), and a lower price. If you want the best AI capability for the least money, bedda.ai wins by a wide margin.",
+    switchReasons: [
+      "bedda.ai costs $4.99–$27.99/mo less than HyperWrite",
+      "GPT-5 and Claude Opus 4.8 significantly outperform HyperWrite&apos;s underlying models",
+      "36+ models let you choose the best AI for each task",
+      "Web search, knowledge base, image generation, and video generation included",
+      "No autocomplete limits or generation caps",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$16.99–$39.99/mo" },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Browser autocomplete", bedda: false, competitor: true },
+      { feature: "Chrome extension", bedda: false, competitor: true },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1–2" },
+      { feature: "Unlimited generations", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is HyperWrite?",
+        a: "HyperWrite is an AI writing assistant that offers a Chrome browser extension with in-context autocomplete, a web app for writing tasks, and specialized tools for emails, cover letters, essays, and content. It&apos;s designed to help people write faster by predicting and completing text as they type. Premium starts at $16.99/mo, and the Pro plan is $39.99/mo.",
+      },
+      {
+        q: "Is HyperWrite worth it?",
+        a: "HyperWrite&apos;s browser autocomplete is genuinely useful if you do a lot of writing in web forms, Gmail, or Google Docs. However, for most AI writing tasks — drafting from scratch, research, summarization, content creation — bedda.ai&apos;s frontier models (GPT-5, Claude Opus 4.8) are significantly more capable at a lower price. HyperWrite is worth it specifically for the inline autocomplete feature; for everything else, bedda.ai is the better value.",
+      },
+      {
+        q: "Can bedda.ai do what HyperWrite does?",
+        a: "bedda.ai covers all of HyperWrite&apos;s text generation use cases — emails, essays, content, cover letters, summaries — with more powerful models. The one thing bedda.ai doesn&apos;t have is HyperWrite&apos;s inline browser autocomplete (which types text into whatever web form you have open). If you specifically need that inline experience, HyperWrite has an edge. For chat-based AI writing, bedda.ai is stronger.",
+      },
+      {
+        q: "Which AI models does HyperWrite use?",
+        a: "HyperWrite uses GPT-4 class models from OpenAI as its primary backend. This means HyperWrite&apos;s output quality is bounded by GPT-4 capabilities. bedda.ai gives you GPT-5 (newer and more capable), Claude Opus 4.8, Gemini 2.5 Pro, and 33 more models — so you can choose the best model for each task rather than being locked into one.",
+      },
+    ],
+  },
+  "bedda-vs-adobe-creative-cloud": {
+    slug: "bedda-vs-adobe-creative-cloud",
+    competitor: "Adobe Creative Cloud + AI",
+    competitorUrl: "https://www.adobe.com/creativecloud.html",
+    competitorPrice: "$54.99/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Adobe Creative Cloud",
+    metaTitle: "bedda.ai vs Adobe Creative Cloud (2026) — AI Features Compared",
+    metaDescription:
+      "Compare bedda.ai and Adobe Creative Cloud&apos;s AI features in 2026. Adobe CC costs $54.99/mo and includes Firefly AI for creatives. bedda.ai gives you 36+ frontier AI models including image generation for $12/mo.",
+    ogTitle: "bedda.ai vs Adobe Creative Cloud — Frontier AI Models vs Creative Suite",
+    ogDescription:
+      "Adobe CC is $54.99/mo for the full creative suite with Firefly AI. bedda.ai is $12/mo for Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, DALL-E 3, and 32 more frontier models. Different tools, different use cases — and often complementary.",
+    heroHeadline: "Frontier AI for knowledge work — $42.99/mo less than Adobe CC",
+    heroSubtext:
+      "Adobe Creative Cloud&apos;s all-apps plan costs $54.99/mo and includes Firefly AI for image generation within Adobe apps. bedda.ai gives you Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, DALL-E 3, and 32 more models for $12/mo — for the writing, research, and strategy work that Adobe wasn&apos;t built for.",
+    verdict:
+      "Adobe Creative Cloud and bedda.ai are largely complementary — they serve different jobs. Adobe CC is the industry standard for design, video, photography, and motion graphics; Firefly AI is excellent for generative image work within the Adobe ecosystem. bedda.ai is for knowledge work — writing, research, analysis, coding, and AI chat. Where they compete: Adobe CC includes Firefly AI for image generation; bedda.ai includes DALL-E 3, Imagen 3, and Flux for image generation plus the full frontier language model stack. Most creative professionals need both: Adobe for their primary design workflow, bedda.ai for the writing and strategy work that surrounds creative projects.",
+    switchReasons: [
+      "bedda.ai is $42.99/mo cheaper than Adobe Creative Cloud all-apps",
+      "Claude Opus 4.8 and GPT-5 for creative briefs, copy, scripts, and pitches",
+      "DALL-E 3, Imagen 3, and Flux image generation for rapid concept visualization",
+      "Web search, knowledge base, and code execution for research-heavy creative work",
+      "No creative suite required — bedda.ai is browser-based, no software installation",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$54.99/mo" },
+      { feature: "AI chat interface", bedda: true, competitor: false },
+      { feature: "Photoshop / Illustrator", bedda: false, competitor: true },
+      { feature: "Premiere Pro / After Effects", bedda: false, competitor: true },
+      { feature: "Firefly AI (Adobe-native)", bedda: false, competitor: true },
+      { feature: "DALL-E 3 image generation", bedda: true, competitor: false },
+      { feature: "GPT-5 for copywriting", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Firefly only" },
+    ],
+    faq: [
+      {
+        q: "What AI features are included in Adobe Creative Cloud?",
+        a: "Adobe Creative Cloud includes Adobe Firefly, a generative AI model trained on Adobe Stock images. Firefly is integrated into Photoshop (Generative Fill, Generative Expand), Illustrator (Generative Recolor, Text to Vector), Express, and other apps. Adobe also has Sensei AI features throughout their apps for auto-masking, content-aware fill, and smart selection. The AI is tightly integrated into the creative workflow but doesn&apos;t include language model chat capabilities.",
+      },
+      {
+        q: "Does bedda.ai work with Adobe files?",
+        a: "bedda.ai can&apos;t directly open .psd, .ai, or .indd files. However, creatives use bedda.ai alongside Adobe CC for the surrounding knowledge work: writing creative briefs, generating copy for designs, drafting client proposals and presentations, researching trends, and scripting video content. Export from Adobe as PNG/JPEG and you can use bedda.ai&apos;s image analysis capabilities on the result.",
+      },
+      {
+        q: "Is Adobe Firefly as good as DALL-E 3 or Imagen 3?",
+        a: "Adobe Firefly is optimized for commercial safety (trained on licensed images) and tight integration with Adobe tools — it&apos;s excellent for generative fill and in-context design work within Photoshop. DALL-E 3 and Imagen 3 (available in bedda.ai) tend to produce more photorealistic and versatile results but aren&apos;t integrated into a design app. For standalone image generation, DALL-E 3 and Imagen 3 are generally more capable; for in-app creative workflow, Firefly wins on integration.",
+      },
+      {
+        q: "Should I use bedda.ai if I already have Adobe CC?",
+        a: "Many creative professionals use both. Adobe CC handles the actual design and media production work. bedda.ai handles the surrounding knowledge work: writing briefs, generating copy options, creating presentations, drafting scripts, researching competitors, and having strategy conversations. At $12/mo, bedda.ai is an easy addition to an existing Adobe CC subscription.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {

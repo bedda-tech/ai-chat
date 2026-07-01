@@ -954,6 +954,42 @@ const posts = [
     readingTime: "7 min read",
     category: "Industry Guides",
   },
+  {
+    slug: "ai-for-medical-professionals-2026",
+    title: "AI for Medical Professionals in 2026: Doctors, Nurses, and Clinical Staff",
+    description:
+      "How physicians, nurses, PA/NPs, and clinical administrators use AI in 2026 — from clinical documentation and patient education to research literature reviews and medical writing.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Industry Guides",
+  },
+  {
+    slug: "best-ai-for-event-planners-2026",
+    title: "Best AI for Event Planners in 2026: Plan, Promote, and Execute Faster",
+    description:
+      "How corporate event managers, wedding planners, conference organizers, and freelance event professionals use AI in 2026 to plan events, write proposals, manage vendors, and promote their work.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Productivity",
+  },
+  {
+    slug: "ai-for-public-relations-2026",
+    title: "AI for Public Relations in 2026: PR Professionals' Guide to Faster, Smarter Work",
+    description:
+      "How PR professionals, communications directors, and agency teams use AI in 2026 to write press releases, pitch media, manage crises, and produce content at scale.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Marketing",
+  },
+  {
+    slug: "best-ai-for-scientists-2026",
+    title: "Best AI for Scientists in 2026: Research, Writing, and Analysis",
+    description:
+      "How research scientists, postdocs, and academic faculty use AI in 2026 for literature reviews, grant writing, data analysis interpretation, paper drafting, and scientific communication.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Research",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
