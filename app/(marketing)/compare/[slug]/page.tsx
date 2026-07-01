@@ -6821,6 +6821,222 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-figma-ai": {
+    slug: "bedda-vs-figma-ai",
+    competitor: "Figma + AI Features",
+    competitorUrl: "https://www.figma.com/pricing/",
+    competitorPrice: "$15/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Figma AI Features",
+    metaTitle: "bedda.ai vs Figma AI (2026) — Design AI vs Frontier AI Models",
+    metaDescription:
+      "Compare bedda.ai and Figma's AI features in 2026. Figma Professional costs $15/mo and includes AI design tools. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ frontier models for $12/mo — better AI for the knowledge work around design.",
+    ogTitle: "bedda.ai vs Figma AI — Frontier AI Models vs In-App Design AI",
+    ogDescription:
+      "Figma Professional is $15/mo with AI features for design work. bedda.ai is $12/mo for Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and 33+ frontier models. Complementary tools — Figma for design, bedda.ai for the writing, research, and strategy that surrounds it.",
+    heroHeadline: "Frontier AI for design knowledge work — $3/mo less than Figma Pro",
+    heroSubtext:
+      "Figma&apos;s AI features help you design faster inside Figma. bedda.ai&apos;s Claude Opus 4.8 and GPT-5 help you with the briefs, copy, research, and strategy that surround every design project — for $3/mo less than Figma Professional.",
+    verdict:
+      "Figma and bedda.ai serve very different purposes and are largely complementary. Figma Professional gives you the industry-standard design tool with AI features like auto-layout suggestions, component generation, and design-to-code — all tightly integrated into the design workflow. bedda.ai gives you frontier AI models for the knowledge work around design: writing creative briefs, generating UX copy options, researching design trends, drafting client presentations, and having strategy conversations. Most professional designers need both: Figma for actual design work, bedda.ai for everything else. At $12/mo, bedda.ai is even cheaper than Figma Pro and covers all your non-design AI needs with access to Claude Opus 4.8, GPT-5, and 34 other frontier models.",
+    switchReasons: [
+      "bedda.ai is $3/mo cheaper than Figma Professional ($12 vs $15)",
+      "Claude Opus 4.8 and GPT-5 for design briefs, UX copy, and client proposals",
+      "Web search for design research, trend analysis, and competitor UX review",
+      "Image generation (DALL-E 3, Imagen 3) for concept visuals and mood boards",
+      "36+ models cover writing, research, coding, and analysis beyond design tasks",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$15/mo" },
+      { feature: "Design tool (Figma editor)", bedda: false, competitor: true },
+      { feature: "Prototyping", bedda: false, competitor: true },
+      { feature: "Design-to-code export", bedda: false, competitor: true },
+      { feature: "AI design suggestions", bedda: false, competitor: true },
+      { feature: "AI chat (general purpose)", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8 for copy/briefs", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "AI design features" },
+    ],
+    faq: [
+      {
+        q: "What AI features does Figma include?",
+        a: "Figma has been expanding its AI features significantly. Current AI capabilities include AI-powered design suggestions, auto-layout improvements, component generation from text descriptions, design system search improvements, and dev mode AI features for code generation. These features are focused on accelerating design work within Figma — they don't provide general-purpose AI chat or language model access.",
+      },
+      {
+        q: "Can bedda.ai help with design work?",
+        a: "bedda.ai helps with the knowledge work around design — not the design itself. Use Claude Opus 4.8 to write detailed UX research reports, creative briefs, and project proposals. Use GPT-5 for competitive UX analysis and structured reports. Use DALL-E 3 or Imagen 3 for generating concept images and mood board visuals. Use web search to research design trends, accessibility standards, and competitor products. bedda.ai complements Figma for everything outside the actual design tool.",
+      },
+      {
+        q: "Should designers pay for both Figma and bedda.ai?",
+        a: "Many professional designers do use both. Figma is the core design tool — there's no equivalent. bedda.ai at $12/mo handles the surrounding knowledge work that Figma's AI doesn't address: client communications, brief writing, UX copy generation, research synthesis, and strategy. Together they cost $27/mo — less than a single ChatGPT Plus subscription ($20) plus Figma Professional ($15) if you're using ChatGPT as your AI chat tool.",
+      },
+    ],
+  },
+
+  "bedda-vs-duolingo-max": {
+    slug: "bedda-vs-duolingo-max",
+    competitor: "Duolingo Max",
+    competitorUrl: "https://www.duolingo.com/plus",
+    competitorPrice: "$13.99/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Duolingo Max",
+    metaTitle: "bedda.ai vs Duolingo Max (2026) — AI Language Learning Compared",
+    metaDescription:
+      "Compare bedda.ai and Duolingo Max for AI-powered language learning in 2026. Duolingo Max costs $13.99/mo and uses GPT-4 for AI conversation practice. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ models for $12/mo — better AI models for self-directed language learning.",
+    ogTitle: "bedda.ai vs Duolingo Max — Frontier AI Models vs Gamified Language App",
+    ogDescription:
+      "Duolingo Max is $13.99/mo with GPT-4 AI conversation roleplay and lesson explanation. bedda.ai is $12/mo for Claude Opus 4.8, GPT-5, and 34+ frontier models — better AI for language learning conversations, grammar questions, and writing practice.",
+    heroHeadline: "Better AI for language learning — $1.99/mo less than Duolingo Max",
+    heroSubtext:
+      "Duolingo Max uses GPT-4 to power its Roleplay and Explain My Answer AI features. bedda.ai gives you GPT-5, Claude Opus 4.8, and 34 more frontier models for $12/mo — more capable AI for language conversations, grammar explanations, and writing practice without the gamification lock-in.",
+    verdict:
+      "Duolingo Max and bedda.ai are genuinely different products that serve different language learning needs. Duolingo Max is a structured, gamified curriculum — daily lessons, streaks, skill trees, and bite-sized exercises with AI features (Roleplay, Explain My Answer) powered by GPT-4 added on top. It&apos;s excellent for building consistent habits and covering grammar and vocabulary systematically. bedda.ai is a frontier AI chat platform — Claude Opus 4.8 and GPT-5 are far more capable conversation partners than Duolingo&apos;s AI features, can explain any grammar question in depth, review and correct your writing in the target language, and adapt to any learning level or style. bedda.ai is better for intermediate to advanced learners who want deep AI conversation practice and explanations. Duolingo Max is better for beginners and casual learners who want a structured curriculum with gamification.",
+    switchReasons: [
+      "bedda.ai is $1.99/mo cheaper than Duolingo Max ($12 vs $13.99)",
+      "GPT-5 and Claude Opus 4.8 are more capable language tutors than Duolingo's GPT-4 implementation",
+      "No curriculum lock-in — have conversations about any topic in your target language",
+      "Better grammar explanations — ask detailed questions and get comprehensive answers",
+      "36+ models for all your other AI tasks beyond language learning",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$13.99/mo" },
+      { feature: "AI conversation practice", bedda: true, competitor: true },
+      { feature: "Grammar explanations", bedda: true, competitor: true },
+      { feature: "Gamified lessons & streaks", bedda: false, competitor: true },
+      { feature: "Structured curriculum", bedda: false, competitor: true },
+      { feature: "50+ languages", bedda: true, competitor: true },
+      { feature: "GPT-5 (newest model)", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "Writing review & correction", bedda: true, competitor: false },
+      { feature: "General purpose AI chat", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "GPT-4 features" },
+    ],
+    faq: [
+      {
+        q: "What is Duolingo Max?",
+        a: "Duolingo Max is Duolingo's premium subscription tier at $13.99/mo. It includes all Duolingo Super features (no ads, unlimited hearts, streak repair) plus two AI-powered features: Roleplay (practice conversations with AI in real-world scenarios) and Explain My Answer (AI explains why your answer was wrong or right in detail). Both features are powered by GPT-4. Duolingo Max is particularly popular for learning Spanish, French, and other widely-studied languages.",
+      },
+      {
+        q: "Can bedda.ai teach me a language?",
+        a: "bedda.ai with Claude Opus 4.8 or GPT-5 can be an excellent language learning partner — especially for intermediate to advanced learners. You can have open-ended conversations in your target language, ask for corrections and explanations, get grammar questions answered in depth, practice writing and get detailed feedback, translate and explain nuances, and create custom vocabulary practice. What bedda.ai doesn't have is a structured curriculum, gamification, or the beginner-friendly lesson format that Duolingo excels at.",
+      },
+      {
+        q: "Is Duolingo Max worth $13.99/mo?",
+        a: "Duolingo Max is worth it if you value Duolingo's gamified learning structure and want the AI Roleplay and Explain My Answer features. The gamification and curriculum are genuinely effective for building consistent daily habits, especially for beginners. If you're an intermediate or advanced learner who primarily wants high-quality AI conversation practice and doesn't need a structured curriculum, bedda.ai at $12/mo gives you better AI models for $1.99/mo less.",
+      },
+    ],
+  },
+
+  "bedda-vs-brilliant": {
+    slug: "bedda-vs-brilliant",
+    competitor: "Brilliant.org",
+    competitorUrl: "https://brilliant.org/premium/",
+    competitorPrice: "$24.99/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Brilliant.org",
+    metaTitle: "bedda.ai vs Brilliant (2026) — AI Learning Platform Compared",
+    metaDescription:
+      "Compare bedda.ai and Brilliant.org for AI-powered learning in 2026. Brilliant Premium costs $24.99/mo for STEM courses with interactive problem-solving. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ frontier models for $12/mo — a more flexible AI learning companion.",
+    ogTitle: "bedda.ai vs Brilliant — Frontier AI Models vs Interactive STEM Learning",
+    ogDescription:
+      "Brilliant Premium is $24.99/mo for interactive STEM courses in math, science, and CS. bedda.ai is $12/mo for Claude Opus 4.8, GPT-5, and 34+ frontier models — more flexible AI tutoring at less than half the price.",
+    heroHeadline: "Frontier AI tutoring — less than half the price of Brilliant Premium",
+    heroSubtext:
+      "Brilliant Premium charges $24.99/mo for structured STEM courses with guided problem-solving. bedda.ai gives you Claude Opus 4.8 and GPT-5 for math explanations, coding help, science concepts, and custom problem walkthroughs — for $12/mo, 52% less.",
+    verdict:
+      "Brilliant and bedda.ai are complementary learning tools with different strengths. Brilliant is a structured STEM learning platform — beautifully designed interactive courses in math, science, computer science, and data analysis with its own problem sets, visual explanations, and guided learning paths. It's excellent for people who want a curated curriculum with built-in accountability and progression. bedda.ai with Claude Opus 4.8 and GPT-5 is a more flexible AI tutor — you can ask any math or science question at any depth, get step-by-step problem walkthroughs, request explanations from multiple angles, and work through concepts that aren't on Brilliant's curriculum. bedda.ai is better for university-level and professional learners who need flexible, on-demand explanations. Brilliant is better for self-paced learners who want a structured, visual curriculum. At $12/mo vs $24.99/mo, bedda.ai is substantially cheaper — though they serve different enough purposes that serious learners might use both.",
+    switchReasons: [
+      "bedda.ai is $12.99/mo cheaper than Brilliant Premium — 52% savings",
+      "Claude Opus 4.8 explains any concept at any depth — not limited to Brilliant's course catalog",
+      "Math, science, coding, and analysis help across all topics including graduate-level",
+      "Web search for current research, recent papers, and real-world examples",
+      "36+ models for all your other AI tasks beyond learning",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$24.99/mo" },
+      { feature: "Structured STEM curriculum", bedda: false, competitor: true },
+      { feature: "Interactive visual problems", bedda: false, competitor: true },
+      { feature: "Progress tracking", bedda: false, competitor: true },
+      { feature: "Learning paths", bedda: false, competitor: true },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Any topic at any depth", bedda: true, competitor: false },
+      { feature: "Step-by-step problem walkthroughs", bedda: true, competitor: true },
+      { feature: "Web search for research", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Course AI" },
+    ],
+    faq: [
+      {
+        q: "What is Brilliant.org?",
+        a: "Brilliant is an interactive STEM learning platform focused on math, science, computer science, and data analysis. It uses visual, hands-on problem solving rather than passive video watching — you learn by doing guided interactive problems that build intuition from first principles. Brilliant Premium ($24.99/mo or $149.99/yr) gives you access to all courses. It's particularly popular for learning calculus, probability, linear algebra, physics, CS fundamentals, and data analysis in a structured, engaging way.",
+      },
+      {
+        q: "Can bedda.ai replace Brilliant for STEM learning?",
+        a: "bedda.ai with Claude Opus 4.8 or GPT-5 can serve as a flexible STEM tutor — explaining any concept in depth, walking through problems step-by-step, and adapting to your level. What it doesn't have is Brilliant's structured curriculum, beautiful visual interactive problems, or learning path progression. For self-directed learners who know what they need help with, bedda.ai is often more useful. For people who want a curated curriculum that builds foundational knowledge systematically, Brilliant's structure adds real value.",
+      },
+      {
+        q: "Is Brilliant worth $24.99/mo?",
+        a: "Brilliant is worth $24.99/mo if you're committed to working through its structured courses and appreciate the interactive visual learning format. Many users find the course quality genuinely excellent. However, it's expensive for what you get compared to alternatives. bedda.ai at $12/mo gives you more flexible AI tutoring capability at less than half the price. The annual plan ($149.99/yr = $12.50/mo) makes Brilliant more competitive — but bedda.ai still covers a much broader range of AI tasks beyond STEM learning.",
+      },
+    ],
+  },
+
+  "bedda-vs-khanmigo": {
+    slug: "bedda-vs-khanmigo",
+    competitor: "Khanmigo",
+    competitorUrl: "https://www.khanacademy.org/khan-labs",
+    competitorPrice: "$9/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Khanmigo",
+    metaTitle: "bedda.ai vs Khanmigo (2026) — AI Tutor Compared",
+    metaDescription:
+      "Compare bedda.ai and Khan Academy's Khanmigo AI tutor in 2026. Khanmigo costs $9/mo for structured K-12 tutoring powered by GPT-4. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ frontier models for $12/mo — broader AI learning support for students and educators.",
+    ogTitle: "bedda.ai vs Khanmigo — Frontier AI Models vs Structured AI Tutoring",
+    ogDescription:
+      "Khanmigo is $9/mo for Khan Academy's AI tutor with Socratic questioning, curriculum alignment, and teacher tools. bedda.ai is $12/mo for Claude Opus 4.8, GPT-5, and 34+ frontier models — more flexible AI learning support for self-directed students.",
+    heroHeadline: "Frontier AI for self-directed learning — vs Khanmigo's structured tutoring",
+    heroSubtext:
+      "Khanmigo uses GPT-4 to provide structured, curriculum-aligned tutoring for K-12 students. bedda.ai gives you Claude Opus 4.8 and GPT-5 for $12/mo — more capable models for homework help, essay writing, concept explanations, and research across any subject.",
+    verdict:
+      "Khanmigo and bedda.ai serve different student needs. Khanmigo is Khan Academy's AI tutor — it uses Socratic questioning rather than just giving answers, aligns to Khan Academy's K-12 curriculum, tracks student progress, includes teacher-facing tools and parent oversight, and is designed for safe, educationally appropriate use by younger students. It's the right choice for K-12 students who benefit from structured, curriculum-guided tutoring with safety guardrails and teacher/parent visibility. bedda.ai with Claude Opus 4.8 and GPT-5 is a more powerful but less structured AI learning tool. It's better for high school and college students who need help with complex essay writing, research synthesis, coding assignments, exam prep across any subject, and concept explanations at any depth. At $12/mo vs $9/mo, bedda.ai costs slightly more but offers substantially more capability and flexibility for self-directed learning.",
+    switchReasons: [
+      "Claude Opus 4.8 and GPT-5 provide deeper explanations than Khanmigo's GPT-4 implementation",
+      "No curriculum constraints — get help with any subject at any level, including college and graduate school",
+      "Essay writing, research synthesis, and citation help beyond K-12 scope",
+      "36+ models for research, coding, and analysis beyond tutoring use cases",
+      "Web search for current events, recent research, and real-world examples",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$9/mo" },
+      { feature: "K-12 curriculum alignment", bedda: false, competitor: true },
+      { feature: "Socratic questioning mode", bedda: false, competitor: true },
+      { feature: "Teacher/parent dashboard", bedda: false, competitor: true },
+      { feature: "Progress tracking", bedda: false, competitor: true },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Essay writing help", bedda: true, competitor: "limited" },
+      { feature: "College/grad level help", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "GPT-4" },
+    ],
+    faq: [
+      {
+        q: "What is Khanmigo?",
+        a: "Khanmigo is Khan Academy's AI tutor powered by GPT-4. It's designed specifically for educational use — using Socratic questioning (guiding students to answers rather than giving them directly), aligning to Khan Academy's K-12 curriculum, tracking student progress, and providing teachers with oversight tools. Khanmigo can help with math, science, humanities, coding, and test prep. It's $9/mo per student ($99/yr for the annual plan). Khan Academy also offers Khanmigo free for teachers. It's one of the most thoughtfully designed AI educational tools, especially for younger students who need guardrails.",
+      },
+      {
+        q: "Is bedda.ai appropriate for students?",
+        a: "bedda.ai is best suited for high school students, college students, and adult learners. It provides Claude Opus 4.8 and GPT-5 for homework help, essay writing assistance, concept explanations, research support, and exam preparation at any academic level. Unlike Khanmigo, it doesn't have built-in Socratic guardrails — it will give direct answers, which can be less pedagogically ideal for younger students still building foundational skills but is more useful for advanced students who need complete information quickly.",
+      },
+      {
+        q: "Which is better for college students?",
+        a: "bedda.ai is better for college students. Khanmigo is focused on K-12 and doesn't extend well to college-level complexity. Claude Opus 4.8 and GPT-5 can handle advanced coursework — graduate-level math, research paper writing, complex coding projects, literature analysis, and any college subject. The web search tool lets students research current topics. At $12/mo, bedda.ai is the stronger choice for college and graduate students.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
