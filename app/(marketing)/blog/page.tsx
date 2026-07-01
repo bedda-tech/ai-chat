@@ -990,6 +990,42 @@ const posts = [
     readingTime: "8 min read",
     category: "Research",
   },
+  {
+    slug: "ai-for-hospitality-industry-2026",
+    title: "AI for the Hospitality Industry in 2026: Hotels, Restaurants, and Travel",
+    description:
+      "How hotels, restaurants, travel agencies, and hospitality professionals use AI in 2026 for guest communications, menu design, review responses, operations management, and marketing.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Industry",
+  },
+  {
+    slug: "best-ai-for-photographers-2026",
+    title: "Best AI for Photographers in 2026: Editing, Writing, and Business",
+    description:
+      "How professional photographers and photography businesses use AI in 2026 for client proposals, gallery descriptions, social media content, contracts, and business management.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Creative",
+  },
+  {
+    slug: "ai-for-game-developers-2026",
+    title: "AI for Game Developers in 2026: Design, Writing, and Code",
+    description:
+      "How indie and professional game developers use AI in 2026 for game design documents, narrative writing, code assistance, asset descriptions, and marketing copy.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Technology",
+  },
+  {
+    slug: "how-to-use-chatgpt-2026",
+    title: "How to Use ChatGPT in 2026: Complete Guide (And Why Power Users Switch)",
+    description:
+      "Everything you need to know about using ChatGPT in 2026 — GPT-5, ChatGPT Plus, ChatGPT o3, best use cases, tips, and why many power users now prefer multi-model platforms like bedda.ai.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "AI Models",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];

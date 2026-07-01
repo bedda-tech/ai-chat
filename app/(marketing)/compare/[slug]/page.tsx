@@ -6984,6 +6984,168 @@ const COMPARISONS: Record<string, ComparisonData> = {
     ],
   },
 
+  "bedda-vs-make": {
+    slug: "bedda-vs-make",
+    competitor: "Make.com",
+    competitorUrl: "https://www.make.com/en/pricing",
+    competitorPrice: "$9-16/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Make.com",
+    metaTitle: "bedda.ai vs Make.com (2026) — AI Chat vs Workflow Automation",
+    metaDescription:
+      "Compare bedda.ai and Make.com in 2026. Make.com starts at $9/mo for workflow automation (formerly Integromat). bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ AI models for $12/mo — different tools serving different needs.",
+    ogTitle: "bedda.ai vs Make.com — AI Models vs Visual Workflow Automation",
+    ogDescription:
+      "Make.com is $9-16/mo for no-code workflow automation across 1,000+ apps. bedda.ai is $12/mo for Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and 33+ frontier AI models. Complementary tools — Make.com automates your workflows, bedda.ai powers the AI reasoning inside them.",
+    heroHeadline: "Frontier AI models for your work — complementary to Make.com automation",
+    heroSubtext:
+      "Make.com automates repetitive workflows between apps. bedda.ai gives you Claude Opus 4.8 and GPT-5 for the AI reasoning, writing, and analysis that workflows can&apos;t do on their own. Many power users use both.",
+    verdict:
+      "Make.com and bedda.ai are complementary tools that serve fundamentally different purposes. Make.com is a visual no-code workflow automation platform — it connects 1,000+ apps (Gmail, Slack, Airtable, Shopify, etc.) via triggers and actions, automating repetitive multi-step processes without code. It's excellent for automating data flows, sending notifications, syncing records between systems, and building complex multi-step automations visually. bedda.ai is an AI chat platform — Claude Opus 4.8 and GPT-5 for writing, analysis, research, coding, and complex reasoning tasks. The two tools don't overlap: you use Make.com to automate workflows, and you use bedda.ai to do AI-powered work that requires judgment, creativity, or complex language understanding. Many power users run Make.com to orchestrate their tools and bedda.ai for the AI-heavy steps. At $12/mo, bedda.ai is comparable in price to Make.com's Core plan ($9/mo) — both are affordable additions to a productivity stack.",
+    switchReasons: [
+      "bedda.ai is for AI reasoning and writing, not workflow automation — they serve different needs",
+      "Claude Opus 4.8 and GPT-5 for drafting, analysis, and research that automation can't do",
+      "Web search for real-time information retrieval in your AI workflows",
+      "36+ models for every AI task — coding, writing, image generation, document analysis",
+      "Knowledge base RAG lets you query your own documents in AI conversations",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$9-16/mo" },
+      { feature: "Visual workflow automation", bedda: false, competitor: true },
+      { feature: "1,000+ app integrations", bedda: false, competitor: true },
+      { feature: "No-code automation builder", bedda: false, competitor: true },
+      { feature: "AI chat (general purpose)", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Document analysis (RAG)", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Automation modules" },
+    ],
+    faq: [
+      {
+        q: "What is Make.com?",
+        a: "Make.com (formerly Integromat) is a visual no-code workflow automation platform that connects over 1,000 apps via drag-and-drop scenarios. You build automations by connecting triggers and actions — for example, when a new row is added to Google Sheets, create a card in Trello and send a Slack message. Make.com handles data transformation, conditional logic, iteration, and error handling visually. The Core plan starts at $9/mo with 10,000 operations per month; the Pro plan is $16/mo with 10,000 operations and more advanced features.",
+      },
+      {
+        q: "Can bedda.ai replace Make.com?",
+        a: "No — they do completely different things. Make.com automates repetitive app-to-app workflows without code. bedda.ai provides AI models (Claude Opus 4.8, GPT-5, Gemini 2.5 Pro) for AI-powered tasks like writing, analysis, research, and coding assistance. If you need to automatically sync data between Shopify and your CRM when an order is placed, that's Make.com. If you need to write product descriptions, analyze customer feedback, or debug code, that's bedda.ai. Many users benefit from both.",
+      },
+      {
+        q: "Can I use AI inside Make.com automations?",
+        a: "Yes — Make.com has modules for OpenAI, Anthropic, and other AI providers that you can use inside automations. However, API costs for these integrations are billed separately (per token) on top of Make.com's subscription. bedda.ai's flat-rate subscription is better suited for interactive AI work where you're having conversations and iterating on outputs. The two are complementary: Make.com for automation orchestration, bedda.ai for hands-on AI reasoning and writing.",
+      },
+    ],
+  },
+
+  "bedda-vs-merlin-ai": {
+    slug: "bedda-vs-merlin-ai",
+    competitor: "Merlin AI",
+    competitorUrl: "https://getmerlin.in/pricing",
+    competitorPrice: "$19/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Merlin AI",
+    metaTitle: "bedda.ai vs Merlin AI (2026) — Multi-Model AI Compared",
+    metaDescription:
+      "Compare bedda.ai and Merlin AI browser extension in 2026. Merlin AI Pro costs $19/mo for in-browser AI access to GPT-4, Claude, and Gemini. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ frontier models for $12/mo — better models, lower price.",
+    ogTitle: "bedda.ai vs Merlin AI — Frontier AI at a Lower Price",
+    ogDescription:
+      "Merlin AI is $19/mo for a browser extension with multi-model AI access. bedda.ai is $12/mo for Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and 33+ frontier models — same multi-model concept, $7/mo less.",
+    heroHeadline: "More models, newer AI, $7/mo less than Merlin AI",
+    heroSubtext:
+      "Merlin AI charges $19/mo for browser-based multi-model access. bedda.ai gives you Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and 33+ frontier models in a polished web app for $12/mo — same idea, better execution, lower price.",
+    verdict:
+      "Merlin AI and bedda.ai share the same core concept — giving users access to multiple AI models in one subscription — but bedda.ai executes it at a lower price with more models and a better-maintained interface. Merlin AI is a browser extension that lets you use GPT-4, Claude, and Gemini from within any webpage, including a sidebar mode for using AI alongside content you're reading. At $19/mo, it's more expensive than bedda.ai's $12/mo for similar multi-model access. bedda.ai has Claude Opus 4.8 (newer than what Merlin typically includes), GPT-5 (OpenAI's latest), and 34+ additional models in a full web app with web search, image generation, knowledge base RAG, and team features. If you primarily want AI in a browser sidebar while reading webpages, Merlin has an edge there. For comprehensive AI productivity work, bedda.ai offers more capability at $7/mo less.",
+    switchReasons: [
+      "bedda.ai is $7/mo cheaper than Merlin AI Pro ($12 vs $19)",
+      "Claude Opus 4.8 and GPT-5 — newer models than typically available in Merlin",
+      "36+ frontier models vs Merlin's smaller selection",
+      "Web search, image generation, and knowledge base RAG included",
+      "Team features, API access, and custom instructions at no extra cost",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$19/mo" },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: true },
+      { feature: "GPT-5 (newest OpenAI model)", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: true },
+      { feature: "Browser extension / sidebar", bedda: false, competitor: true },
+      { feature: "Full web app", bedda: true, competitor: "limited" },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Knowledge base RAG", bedda: true, competitor: false },
+      { feature: "Team sharing", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "~10" },
+    ],
+    faq: [
+      {
+        q: "What is Merlin AI?",
+        a: "Merlin AI is a browser extension (Chrome, Firefox, Edge, Safari) that gives you access to multiple AI models — GPT-4, Claude, Gemini — from a sidebar or popup while browsing the web. You can highlight text on any webpage and ask Merlin to summarize, explain, or respond to it. Merlin Pro ($19/mo) gives unlimited queries across supported models. It's popular for reading-heavy workflows where you want AI assistance without switching tabs. The extension has millions of users and good reviews for its sidebar integration with web content.",
+      },
+      {
+        q: "What does bedda.ai have that Merlin AI doesn't?",
+        a: "bedda.ai includes features Merlin doesn't: web search (real-time information retrieval during conversations), image generation via DALL-E 3 and Imagen 3, knowledge base RAG (upload your own documents and query them), team workspaces with shared chats and real-time collaboration, API access for developers, and a video generation studio. bedda.ai also has 36+ models including GPT-5 (OpenAI's newest), Grok 4, DeepSeek R1, Mistral Large, and many others not typically in Merlin's lineup. At $7/mo less, bedda.ai delivers more comprehensive AI capabilities.",
+      },
+      {
+        q: "Does bedda.ai have a browser extension?",
+        a: "bedda.ai is a web app (bedda.ai) rather than a browser extension. While it doesn't have a sidebar mode for reading alongside web content like Merlin does, it has a full-featured chat interface with web search that can pull information from URLs you provide. If you primarily want to highlight text on webpages and ask quick questions, Merlin's browser extension is genuinely useful for that specific workflow. For comprehensive AI productivity — longer conversations, document analysis, image generation, team collaboration — bedda.ai's web app is more capable.",
+      },
+    ],
+  },
+
+  "bedda-vs-opus-clip": {
+    slug: "bedda-vs-opus-clip",
+    competitor: "Opus Clip",
+    competitorUrl: "https://www.opus.pro/pricing",
+    competitorPrice: "$19-39/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Opus Clip",
+    metaTitle: "bedda.ai vs Opus Clip (2026) — AI Video Repurposing vs Full AI Suite",
+    metaDescription:
+      "Compare bedda.ai and Opus Clip in 2026. Opus Clip starts at $19/mo for AI video repurposing — turning long videos into short clips. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ frontier models for $12/mo — broader AI for all your content creation needs.",
+    ogTitle: "bedda.ai vs Opus Clip — AI Video Clipping vs Frontier AI Models",
+    ogDescription:
+      "Opus Clip is $19-39/mo for AI-powered video repurposing — automatically finding the best moments and creating short clips with captions. bedda.ai is $12/mo for Claude Opus 4.8, GPT-5, and 34+ frontier models — broader AI for writing, research, and content strategy.",
+    heroHeadline: "Frontier AI for all your content needs — $7-27/mo less than Opus Clip",
+    heroSubtext:
+      "Opus Clip charges $19-39/mo specifically for AI video repurposing. bedda.ai gives you Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and 33+ frontier models for $12/mo — covering the writing, research, scripting, and strategy that surround your video content.",
+    verdict:
+      "Opus Clip and bedda.ai are genuinely complementary tools for content creators. Opus Clip is a specialized AI video repurposing tool — it analyzes long-form videos (podcasts, YouTube videos, webinars) and automatically identifies the most engaging moments, extracts short clips with captions, and reframes for vertical social media. For creators who regularly repurpose video content, Opus Clip is a time-saver that does something bedda.ai doesn't do. bedda.ai handles the knowledge work around content creation: scripting videos and podcasts with Claude Opus 4.8, researching topics with web search, generating social media copy, writing blog post summaries of video content, and creating show notes. At $12/mo, bedda.ai covers a much broader range of AI use cases than Opus Clip's single-purpose video tool at $19-39/mo. Most serious content creators would benefit from both — Opus Clip to repurpose video, bedda.ai for everything else.",
+    switchReasons: [
+      "bedda.ai is $7-27/mo cheaper than Opus Clip ($12 vs $19-39)",
+      "Claude Opus 4.8 for scripting, show notes, and repurposed written content from your videos",
+      "Web search for topic research, trend analysis, and content strategy",
+      "GPT-5 for structured content plans, content calendars, and social media copy",
+      "36+ models for writing, research, image generation, and analysis beyond video clipping",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$19-39/mo" },
+      { feature: "AI video clip extraction", bedda: false, competitor: true },
+      { feature: "Auto-caption generation", bedda: false, competitor: true },
+      { feature: "Vertical video reframing", bedda: false, competitor: true },
+      { feature: "AI chat (general purpose)", bedda: true, competitor: false },
+      { feature: "Script and show notes writing", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Web search for research", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Video AI" },
+    ],
+    faq: [
+      {
+        q: "What is Opus Clip?",
+        a: "Opus Clip is an AI-powered video repurposing tool that automatically converts long-form videos into short, engaging clips for social media. You upload a podcast episode, YouTube video, or webinar recording, and Opus Clip uses AI to identify the most engaging moments, extract them as short clips (15 seconds to 3 minutes), add dynamic captions, reframe for vertical video (9:16 for TikTok/Reels/Shorts), and even give each clip a 'virality score'. Starter plan is $19/mo for 60 minutes of video/mo; Pro is $39/mo for 250 minutes. Popular with podcasters, YouTubers, and B2B content marketers.",
+      },
+      {
+        q: "Can bedda.ai help with video content creation?",
+        a: "bedda.ai helps with the writing and strategy around video content — not video processing itself. Use Claude Opus 4.8 to write video scripts, podcast outlines, and episode show notes. Use GPT-5 for content calendars, repurposing strategies, and converting video transcripts into blog posts or newsletters. Use web search to research trending topics in your niche. bedda.ai with video transcription (Whisper) can even transcribe audio to text for you to repurpose. For the actual video clipping and captioning, Opus Clip is the specialized tool.",
+      },
+      {
+        q: "Do content creators need both Opus Clip and bedda.ai?",
+        a: "Many professional content creators use both. Opus Clip handles the technical video work — identifying clips, adding captions, reframing. bedda.ai handles the surrounding knowledge work — scripting, research, writing, social copy, and strategy. Together they cost $31-51/mo (bedda.ai $12 + Opus Clip $19-39), which is less than a ChatGPT Team subscription alone for the writing AI portion. The combination gives you a complete AI content creation stack at a reasonable price.",
+      },
+    ],
+  },
+
   "bedda-vs-khanmigo": {
     slug: "bedda-vs-khanmigo",
     competitor: "Khanmigo",
