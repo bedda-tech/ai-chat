@@ -1134,6 +1134,33 @@ const posts = [
     readingTime: "8 min read",
     category: "Industry Guides",
   },
+  {
+    slug: "best-ai-for-technical-writers-2026",
+    title: "Best AI Tools for Technical Writers in 2026: Docs, APIs, and Developer Content",
+    description:
+      "How technical writers use Claude Opus 4.8, GPT-5, and other frontier models to write API docs, developer guides, release notes, and structured technical content faster without sacrificing accuracy.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Industry Guides",
+  },
+  {
+    slug: "how-to-use-perplexity-ai-2026",
+    title: "How to Use Perplexity AI in 2026: Tips, Prompts, and Alternatives",
+    description:
+      "A practical guide to using Perplexity AI for research and web search in 2026 — what it does well, where it falls short, and when a multi-model alternative like bedda.ai makes more sense.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "How-To Guides",
+  },
+  {
+    slug: "ai-for-nonprofit-fundraising-2026",
+    title: "AI for Nonprofit Fundraising in 2026: Grant Writing, Donor Outreach, and Impact Reporting",
+    description:
+      "How nonprofits and development teams use AI to write grant proposals, personalize donor communications, create annual reports, and scale fundraising without additional headcount.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Industry Guides",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];

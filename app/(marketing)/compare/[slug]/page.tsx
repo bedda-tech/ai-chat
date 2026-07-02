@@ -7824,6 +7824,206 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+  "bedda-vs-chatsonic": {
+    slug: "bedda-vs-chatsonic",
+    competitor: "ChatSonic",
+    competitorUrl: "https://writesonic.com/chat",
+    competitorPrice: "$19.99/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs ChatSonic",
+    metaTitle: "bedda.ai vs ChatSonic (2026) — Multi-Model AI Chat vs AI Writing Assistant",
+    metaDescription:
+      "Compare bedda.ai and ChatSonic in 2026. ChatSonic by Writesonic is $19.99/mo for an AI writing assistant. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ frontier models for $12/mo — better models at $7.99/mo less.",
+    ogTitle: "bedda.ai vs ChatSonic — 36+ Frontier Models vs Single AI Writing Tool",
+    ogDescription:
+      "ChatSonic charges $19.99/mo for an AI chatbot with image generation. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ frontier models for $12/mo — $7.99/mo less with far more model variety.",
+    heroHeadline: "36+ frontier models for $12/mo — $7.99/mo less than ChatSonic",
+    heroSubtext:
+      "ChatSonic is Writesonic's AI chat assistant at $19.99/mo. bedda.ai gives you Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, Grok 4, and 32 other frontier models for $12/mo — broader AI capability at a lower price.",
+    verdict:
+      "ChatSonic is Writesonic's AI chatbot — positioned as a ChatGPT alternative with web search and image generation. It's powered by GPT-4 and Google Search integration, and is aimed primarily at content writers and marketers already in the Writesonic ecosystem. The tool is functional for quick content drafts and web-connected research. The main limitation for power users is model variety: ChatSonic relies on a single underlying model (GPT-4 class) without access to Claude Opus 4.8, Grok 4, DeepSeek R1, or Gemini 2.5 Pro. bedda.ai at $12/mo — $7.99/mo less — gives you 36+ frontier models, web search, image generation, knowledge base, and team features. For users already paying for Writesonic's content generation suite, the bundle may make sense. For users who primarily want the best AI chat assistant with multi-model access, bedda.ai offers more capability at a lower standalone price.",
+    switchReasons: [
+      "bedda.ai is $7.99/mo cheaper than ChatSonic",
+      "36+ frontier models including Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and Grok 4",
+      "Web search, image generation, knowledge base, and video studio included",
+      "Model comparison arena to test multiple models on the same prompt",
+      "Team workspaces and platform bots (Slack, Discord, Telegram) not in ChatSonic",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$19.99/mo" },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "36+ frontier models", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: true },
+      { feature: "Knowledge base / RAG", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is ChatSonic?",
+        a: "ChatSonic is Writesonic's AI chat assistant — a ChatGPT alternative with web search and AI image generation built in. It's powered by GPT-4 class models with Google Search integration, and is primarily aimed at content marketers and writers who use other Writesonic products. Plans start at approximately $19.99/mo as a standalone product, or are bundled within Writesonic's broader content generation subscriptions.",
+      },
+      {
+        q: "Does bedda.ai have web search like ChatSonic?",
+        a: "Yes. bedda.ai includes integrated web search (powered by Brave Search) across all plans including Plus ($12/mo). Like ChatSonic, you can ask questions that require current information and get web-sourced answers. bedda.ai adds 36+ frontier models on top of this — Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and more — that you can switch between depending on the task.",
+      },
+      {
+        q: "Is bedda.ai cheaper than ChatSonic?",
+        a: "Yes. bedda.ai Plus is $12/mo versus ChatSonic's approximately $19.99/mo — a saving of nearly $8/mo. bedda.ai also gives you 36+ frontier models instead of a single GPT-4 class model, integrated web search, image generation, knowledge base RAG, and team features at that lower price.",
+      },
+    ],
+  },
+  "bedda-vs-moonbeam": {
+    slug: "bedda-vs-moonbeam",
+    competitor: "Moonbeam",
+    competitorUrl: "https://www.gomoonbeam.com",
+    competitorPrice: "$49/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Moonbeam",
+    metaTitle: "bedda.ai vs Moonbeam (2026) — Multi-Model AI Chat vs Long-Form AI Writer",
+    metaDescription:
+      "Compare bedda.ai and Moonbeam in 2026. Moonbeam is $49/mo for an AI long-form writing tool. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ frontier models for $12/mo — better writing AI at $37/mo less.",
+    ogTitle: "bedda.ai vs Moonbeam — Frontier AI Models vs AI Long-Form Writing Tool",
+    ogDescription:
+      "Moonbeam charges $49/mo for an AI long-form writing assistant. bedda.ai gives you Claude Opus 4.8 and GPT-5 — the best writing models — for $12/mo. Same writing quality, $37/mo less.",
+    heroHeadline: "Better writing AI for $12/mo — save $37/mo vs Moonbeam",
+    heroSubtext:
+      "Moonbeam is an AI long-form writing tool at $49/mo. bedda.ai gives you Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and 33 other frontier models for $12/mo — the best writing models available at a fraction of the price.",
+    verdict:
+      "Moonbeam is an AI writing tool specifically designed for long-form content — blog posts, essays, books, and marketing copy. It offers templates, an outline builder, and a writing workflow designed around producing long documents. For writers who want a structured, template-driven workflow for blog posts, it's a reasonable specialist tool. The limitation is value: at $49/mo, you're paying for workflow templates built around GPT-class models. bedda.ai at $12/mo gives you Claude Opus 4.8 and GPT-5 — substantially better underlying writing models — in a flexible chat interface with knowledge base RAG for brand voice consistency. You can write long-form content in bedda.ai's Canvas artifact mode with the same AI-assisted iterative workflow, using better models for $37/mo less. For writers who need the absolute best prose quality (not just templates), the underlying model matters more than the writing workflow tool.",
+    switchReasons: [
+      "bedda.ai is $37/mo cheaper than Moonbeam",
+      "Claude Opus 4.8 and GPT-5 produce better prose than Moonbeam's underlying models",
+      "Canvas artifact mode for long-form document editing",
+      "Knowledge base stores brand voice, style guides, and existing content for consistent AI output",
+      "36+ frontier models — switch between models for different content types",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$49/mo" },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "36+ frontier models", bedda: true, competitor: false },
+      { feature: "Long-form writing templates", bedda: false, competitor: true },
+      { feature: "Knowledge base / RAG", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Moonbeam?",
+        a: "Moonbeam is an AI writing tool built for long-form content — blog posts, essays, newsletters, and marketing copy. It includes an AI outline builder, smart editor with writing templates, and workflows designed around producing longer documents. It targets content creators, marketers, and writers who regularly produce long-form written content. Pricing is approximately $49/mo for the paid plan.",
+      },
+      {
+        q: "Can bedda.ai write long-form content like Moonbeam?",
+        a: "Yes. bedda.ai's Canvas artifact mode provides a document workspace where you can create and iteratively refine long-form content with AI assistance. You can use Claude Opus 4.8 or GPT-5 — the best available writing models — to draft, outline, and expand long-form pieces. While bedda.ai doesn't have Moonbeam's structured template library, the underlying model quality for prose generation is superior, and you have access to 34+ other frontier models for different tasks.",
+      },
+      {
+        q: "Is Moonbeam worth $49/month?",
+        a: "For writers who specifically want template-driven long-form writing workflows, Moonbeam's structured approach has appeal. However, at $49/mo, you're paying a significant premium over tools like bedda.ai ($12/mo) that give you access to substantially better underlying models (Claude Opus 4.8, GPT-5). For most writers, the quality of the underlying model matters more than the workflow templates — and the best models are available for far less via bedda.ai.",
+      },
+    ],
+  },
+  "bedda-vs-cohesive": {
+    slug: "bedda-vs-cohesive",
+    competitor: "Cohesive AI",
+    competitorUrl: "https://cohesive.so",
+    competitorPrice: "$25/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Cohesive AI",
+    metaTitle: "bedda.ai vs Cohesive AI (2026) — Multi-Model AI Chat vs AI Content Creator",
+    metaDescription:
+      "Compare bedda.ai and Cohesive AI in 2026. Cohesive is $25/mo for an AI content creation platform. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ frontier models for $12/mo — better AI content capability at $13/mo less.",
+    ogTitle: "bedda.ai vs Cohesive AI — Frontier Models vs AI Content Templates",
+    ogDescription:
+      "Cohesive AI charges $25/mo for an AI content creation platform with 200+ templates. bedda.ai gives you Claude Opus 4.8 and GPT-5 for $12/mo — better underlying models at $13/mo less.",
+    heroHeadline: "36+ frontier models for $12/mo — $13/mo less than Cohesive AI",
+    heroSubtext:
+      "Cohesive AI is an AI content creation platform at $25/mo with 200+ templates. bedda.ai gives you Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and 33 other frontier models for $12/mo — broader AI capability at a lower price.",
+    verdict:
+      "Cohesive AI is a content creation platform with 200+ pre-built templates for marketing copy, social media posts, blog content, email campaigns, and other common content types. It's positioned as a productivity tool for content teams who need to produce high volumes of templated content quickly. The strength is the template library and the structured output workflows. The limitation is that it's built on GPT-4 class models without access to the latest frontier models (Claude Opus 4.8, GPT-5, Gemini 2.5 Pro), and at $25/mo it's $13/mo more expensive than bedda.ai. For content teams who need specific workflow templates and structured outputs across multiple content types, Cohesive's approach is productized around that use case. For individuals or teams who primarily want the best underlying writing models with knowledge base context, bedda.ai gives better AI output at a lower price.",
+    switchReasons: [
+      "bedda.ai is $13/mo cheaper than Cohesive AI",
+      "Claude Opus 4.8 and GPT-5 produce better content than Cohesive's underlying models",
+      "Knowledge base stores brand guidelines, tone of voice, and existing content",
+      "36+ frontier models — switch between models for different content types",
+      "Web search for content that requires current information",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$25/mo" },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "36+ frontier models", bedda: true, competitor: false },
+      { feature: "200+ content templates", bedda: false, competitor: true },
+      { feature: "Knowledge base / RAG", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Cohesive AI?",
+        a: "Cohesive AI is an AI content creation platform with 200+ pre-built templates for marketing copy, social media posts, blog content, email campaigns, product descriptions, and other common content types. It's designed to help content teams and marketers produce high volumes of content quickly using structured workflows and AI-assisted editing. Pricing is approximately $25/mo for the individual plan.",
+      },
+      {
+        q: "Does bedda.ai have content templates like Cohesive?",
+        a: "bedda.ai doesn't have a library of pre-built templates, but its Prompt Library feature lets you save and reuse your own prompts for recurring content tasks. More importantly, bedda.ai's underlying models — Claude Opus 4.8 and GPT-5 — generate higher quality content output than Cohesive's template-based GPT-4 class approach. The knowledge base also lets you store brand guidelines and existing content so all AI output stays on-brand.",
+      },
+      {
+        q: "Which is better for marketing content — Cohesive or bedda.ai?",
+        a: "For teams that need structured, templated workflows across many content types at scale, Cohesive's template library provides organized productivity. For teams that prioritize content quality (the underlying model matters enormously for marketing copy), bedda.ai gives access to Claude Opus 4.8 and GPT-5 — the strongest available writing models — for $13/mo less. The best setup for professional marketers is often a combination: use templates for process structure, but run your actual content through the best available model.",
+      },
+    ],
+  },
+  "bedda-vs-krea-ai": {
+    slug: "bedda-vs-krea-ai",
+    competitor: "Krea AI",
+    competitorUrl: "https://www.krea.ai",
+    competitorPrice: "$24/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Krea AI",
+    metaTitle: "bedda.ai vs Krea AI (2026) — Multi-Model AI Suite vs AI Image Generation",
+    metaDescription:
+      "Compare bedda.ai and Krea AI in 2026. Krea AI is $24/mo for AI image and video generation. bedda.ai gives you Claude Opus 4.8, GPT-5, image generation, and 36+ models for $12/mo — more AI capability at $12/mo less.",
+    ogTitle: "bedda.ai vs Krea AI — Full AI Suite vs Image Generation Specialist",
+    ogDescription:
+      "Krea AI charges $24/mo for AI image and video generation with real-time canvas tools. bedda.ai gives you image generation plus Claude Opus 4.8 and GPT-5 for $12/mo — image AI plus the best language models at $12/mo less.",
+    heroHeadline: "Image generation + 36+ AI models for $12/mo — $12/mo less than Krea AI",
+    heroSubtext:
+      "Krea AI specializes in AI image and video generation at $24/mo. bedda.ai gives you image generation (DALL-E 3, Imagen 3, Flux), Claude Opus 4.8, GPT-5, and 33 other frontier models for $12/mo — the full AI suite at half the price.",
+    verdict:
+      "Krea AI is a specialized AI image and video generation platform with a real-time canvas, upscaling tools, and a creative workflow built around visual content creation. Its real-time generation canvas (where images update as you adjust parameters) is genuinely differentiated from standard text-to-image tools. For designers and visual creators who spend the majority of their AI time on image generation and want a dedicated creative canvas, Krea AI's specialized interface has appeal. The limitation is scope and price: at $24/mo, you're paying more than bedda.ai ($12/mo) for image-only capability, without access to Claude Opus 4.8 for copywriting, GPT-5 for analysis, or any of the 34 other frontier language models. bedda.ai's Image Studio gives you DALL-E 3, Imagen 3, and Flux 1.1 Pro for image generation, plus the full model suite for language tasks, all for $12/mo. For users who need both image generation and language AI — the majority of creative professionals — bedda.ai provides more total capability at a lower price.",
+    switchReasons: [
+      "bedda.ai is $12/mo cheaper than Krea AI",
+      "Image generation included (DALL-E 3, Imagen 3, Flux 1.1 Pro) via Image Studio",
+      "Claude Opus 4.8 and GPT-5 for copywriting, briefs, and creative writing alongside images",
+      "36+ frontier models for all creative and analytical tasks",
+      "Web search, knowledge base, video generation also included",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$24/mo" },
+      { feature: "AI image generation", bedda: true, competitor: true },
+      { feature: "Real-time generation canvas", bedda: false, competitor: true },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "36+ language models", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: true },
+      { feature: "Web search", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Krea AI?",
+        a: "Krea AI is an AI-powered creative platform focused on image and video generation. Its standout feature is a real-time generation canvas where images update live as you adjust prompts and parameters — useful for iterative creative workflows. It also includes image upscaling, style training, and video generation tools. Pricing starts at approximately $24/mo for the paid plan. The tool is aimed at designers, illustrators, and creative professionals who spend most of their AI time on visual content.",
+      },
+      {
+        q: "Does bedda.ai have AI image generation like Krea?",
+        a: "Yes. bedda.ai's Image Studio provides access to DALL-E 3, Google Imagen 3, and Black Forest Labs Flux 1.1 Pro for image generation — three of the leading image generation models. bedda.ai doesn't have Krea's real-time canvas interface, but it provides multiple best-in-class image models alongside 36+ language models (Claude Opus 4.8, GPT-5, etc.) in one subscription for $12/mo.",
+      },
+      {
+        q: "When should I use Krea AI instead of bedda.ai?",
+        a: "Krea AI's real-time canvas is genuinely unique — if your workflow requires rapidly iterating on image generation parameters in real time and seeing results update live, Krea's specialized interface delivers an experience that bedda.ai's Image Studio doesn't replicate. For creative professionals whose primary AI use is high-volume, iterative image generation, Krea may justify the $24/mo for that specialized workflow. For users who also need language AI (writing, analysis, coding) alongside image generation, bedda.ai provides the full suite at $12/mo.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
