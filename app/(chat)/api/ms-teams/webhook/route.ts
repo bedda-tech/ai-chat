@@ -11,15 +11,19 @@ const MODEL_ALIASES: Record<string, string> = {
   "claude-opus": "anthropic/claude-opus-4-8",
   "claude-sonnet": "anthropic/claude-sonnet-4-6",
   "claude-haiku": "anthropic/claude-haiku-4.5",
-  gpt: "openai/gpt-4o",
+  gpt: "openai/gpt-5",
+  "gpt-5": "openai/gpt-5",
+  "gpt-5-mini": "openai/gpt-5-mini",
   "gpt-4o": "openai/gpt-4o",
   "gpt-4o-mini": "openai/gpt-4o-mini",
   gemini: "google/gemini-2.5-flash",
   "gemini-pro": "google/gemini-2.5-pro",
-  grok: "xai/grok-3-mini",
-  "grok-3": "xai/grok-3",
+  grok: "xai/grok-4",
+  "grok-4": "xai/grok-4",
   mistral: "mistral/mistral-large-latest",
   deepseek: "deepseek/deepseek-r1",
+  "deepseek-v3": "deepseek/deepseek-v3.1",
+  kimi: "moonshotai/kimi-k2-turbo",
 };
 
 // Verify Teams Outgoing Webhook HMAC-SHA256 signature.
@@ -110,7 +114,7 @@ export async function POST(req: Request) {
   if (!cleanText) {
     return Response.json({
       type: "message",
-      text: "Hi! I'm **Bedda** — an AI assistant with access to Claude, GPT-4o, Gemini, Grok, and 36+ models. Just send me a message!\n\nPrefix with `[model]` to pick a model: `[claude-opus]`, `[gpt-4o]`, `[gemini-pro]`, `[grok-3]`, etc.",
+      text: "Hi! I'm **Bedda** — an AI assistant with access to Claude, GPT-5, Gemini, Grok, and 36+ models. Just send me a message!\n\nPrefix with `[model]` to pick a model: `[claude-opus]`, `[gpt-5]`, `[gemini-pro]`, `[grok-4]`, `[kimi]`, etc.",
     });
   }
 
@@ -120,7 +124,7 @@ export async function POST(req: Request) {
     const { text: aiResponse } = await generateText({
       model: gateway.languageModel(model),
       system:
-        "You are Bedda, a multi-model AI assistant inside Microsoft Teams with access to Claude, GPT, Gemini, Grok, and 36+ AI models. Be helpful and concise. Teams supports basic Markdown. Users can prefix messages with [model-alias] to choose a model, e.g. [claude-opus], [gpt-4o], [gemini-pro]. Visit bedda.ai for the full web experience.",
+        "You are Bedda, a multi-model AI assistant inside Microsoft Teams with access to Claude, GPT, Gemini, Grok, and 36+ AI models. Be helpful and concise. Teams supports basic Markdown. Users can prefix messages with [model-alias] to choose a model, e.g. [claude-opus], [gpt-5], [grok-4], [gemini-pro]. Visit bedda.ai for the full web experience.",
       messages: [{ role: "user", content: userText }],
       maxOutputTokens: 1200,
     });

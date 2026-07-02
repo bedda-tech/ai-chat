@@ -13,15 +13,19 @@ const MODEL_ALIASES: Record<string, string> = {
   "claude-opus": "anthropic/claude-opus-4-8",
   "claude-sonnet": "anthropic/claude-sonnet-4-6",
   "claude-haiku": "anthropic/claude-haiku-4.5",
-  gpt: "openai/gpt-4o",
+  gpt: "openai/gpt-5",
+  "gpt-5": "openai/gpt-5",
+  "gpt-5-mini": "openai/gpt-5-mini",
   "gpt-4o": "openai/gpt-4o",
   "gpt-4o-mini": "openai/gpt-4o-mini",
   gemini: "google/gemini-2.5-flash",
   "gemini-pro": "google/gemini-2.5-pro",
-  grok: "xai/grok-3-mini",
-  "grok-3": "xai/grok-3",
+  grok: "xai/grok-4",
+  "grok-4": "xai/grok-4",
   mistral: "mistral/mistral-large-latest",
   deepseek: "deepseek/deepseek-r1",
+  "deepseek-v3": "deepseek/deepseek-v3.1",
+  kimi: "moonshotai/kimi-k2-turbo",
 };
 
 function parseModelAndText(raw: string): { model: string; text: string } {
@@ -135,7 +139,7 @@ export async function POST(req: Request) {
     after(async () => {
       await sendMessage(
         chatId,
-        "👋 Hi! I'm *Bedda* — an AI assistant with access to Claude, GPT-4o, Gemini, Grok, and 36+ models.\n\nJust send me a message! To pick a specific model, prefix with \\[alias\\]:\n• `[claude-opus]` — Claude Opus 4.8\n• `[gpt-4o]` — GPT-4o\n• `[gemini-pro]` — Gemini 2.5 Pro\n• `[grok-3]` — Grok 3\n\nOr use `--model=alias` syntax.\n\nVisit bedda.ai for the full web experience.",
+        "👋 Hi! I'm *Bedda* — an AI assistant with access to Claude, GPT-5, Gemini, Grok, and 36+ models.\n\nJust send me a message! To pick a specific model, prefix with \\[alias\\]:\n• `[claude-opus]` — Claude Opus 4.8\n• `[gpt-5]` — GPT-5\n• `[gemini-pro]` — Gemini 2.5 Pro\n• `[grok-4]` — Grok 4\n\nOr use `--model=alias` syntax.\n\nVisit bedda.ai for the full web experience.",
         undefined
       );
     });
@@ -149,7 +153,7 @@ export async function POST(req: Request) {
       const { text: aiResponse } = await generateText({
         model: gateway.languageModel(model),
         system:
-          "You are Bedda, an AI assistant on Telegram with access to Claude, GPT, Gemini, Grok, and 36+ AI models. Be helpful and concise — Telegram supports basic Markdown. Users can prefix messages with [model-alias] to choose a model, e.g. [gpt-4o], [claude-opus], [gemini-pro].",
+          "You are Bedda, an AI assistant on Telegram with access to Claude, GPT, Gemini, Grok, and 36+ AI models. Be helpful and concise — Telegram supports basic Markdown. Users can prefix messages with [model-alias] to choose a model, e.g. [gpt-5], [claude-opus], [grok-4], [gemini-pro].",
         messages: [{ role: "user", content: userText }],
         maxOutputTokens: 1500,
       });

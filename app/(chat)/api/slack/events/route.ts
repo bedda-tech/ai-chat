@@ -14,15 +14,19 @@ const MODEL_ALIASES: Record<string, string> = {
   "claude-opus": "anthropic/claude-opus-4-8",
   "claude-sonnet": "anthropic/claude-sonnet-4-6",
   "claude-haiku": "anthropic/claude-haiku-4.5",
-  gpt: "openai/gpt-4o",
+  gpt: "openai/gpt-5",
+  "gpt-5": "openai/gpt-5",
+  "gpt-5-mini": "openai/gpt-5-mini",
   "gpt-4o": "openai/gpt-4o",
   "gpt-4o-mini": "openai/gpt-4o-mini",
   gemini: "google/gemini-2.5-flash",
   "gemini-pro": "google/gemini-2.5-pro",
-  grok: "xai/grok-3-mini",
-  "grok-3": "xai/grok-3",
+  grok: "xai/grok-4",
+  "grok-4": "xai/grok-4",
   mistral: "mistral/mistral-large-latest",
   deepseek: "deepseek/deepseek-r1",
+  "deepseek-v3": "deepseek/deepseek-v3.1",
+  kimi: "moonshotai/kimi-k2-turbo",
 };
 
 // Parse optional model prefix at start of text: [alias] text  or  --model=alias text
@@ -208,7 +212,7 @@ export async function POST(req: Request) {
       const { text: aiResponse } = await generateText({
         model: gateway.languageModel(model),
         system:
-          "You are Bedda, an AI assistant inside Slack with access to Claude, GPT, Gemini, Grok, and 36+ AI models. Be helpful and concise — Slack is not a document editor. Use plain text; avoid markdown headers. Users can prefix messages with [model-alias] to choose a model, e.g. [gpt-4o], [claude-opus], [gemini-pro].",
+          "You are Bedda, an AI assistant inside Slack with access to Claude, GPT, Gemini, Grok, and 36+ AI models. Be helpful and concise — Slack is not a document editor. Use plain text; avoid markdown headers. Users can prefix messages with [model-alias] to choose a model, e.g. [gpt-5], [claude-opus], [grok-4], [gemini-pro].",
         messages,
         maxOutputTokens: 1500,
       });
