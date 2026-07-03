@@ -1647,6 +1647,42 @@ const posts = [
     readingTime: "8 min read",
     category: "Developer Tools",
   },
+  {
+    slug: "ai-for-grant-writers-2026",
+    title: "AI for Grant Writers in 2026: Win More Funding with Smarter Proposals",
+    description:
+      "How grant writers use AI in 2026 — for needs assessments, narrative drafting, budget justifications, funder research, and submission management across nonprofit, academic, and government grants.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Writing & Content",
+  },
+  {
+    slug: "ai-for-film-production-2026",
+    title: "AI for Film Production in 2026: From Script to Screen",
+    description:
+      "How filmmakers, producers, and production teams use AI in 2026 — for script coverage, scheduling, budget breakdowns, location scouting, visual development, and post-production workflows.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Creative",
+  },
+  {
+    slug: "ai-for-culinary-professionals-2026",
+    title: "AI for Culinary Professionals in 2026: Chefs, Food Writers, and Restaurant Operators",
+    description:
+      "How culinary professionals use AI in 2026 — for recipe development, menu engineering, nutritional analysis, food writing, supplier research, and restaurant marketing.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Industry",
+  },
+  {
+    slug: "ai-for-urban-planners-2026",
+    title: "AI for Urban Planners in 2026: Smarter Cities, Better Communities",
+    description:
+      "How urban planners and city officials use AI in 2026 — for zoning analysis, community engagement, transportation modeling, environmental impact assessment, and policy documentation.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Industry",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];

@@ -8397,6 +8397,230 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+  "bedda-vs-you-com": {
+    slug: "bedda-vs-you-com",
+    competitor: "You.com",
+    competitorUrl: "https://you.com",
+    competitorPrice: "Free–$20/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs You.com",
+    metaTitle: "bedda.ai vs You.com (2026) — Multi-Model AI Chat vs AI Search Engine",
+    metaDescription:
+      "Compare bedda.ai and You.com. bedda.ai gives you 36+ frontier AI models for chat, coding, and creation at $12/mo. You.com is an AI-powered search engine with a built-in assistant. Different tools for different needs.",
+    ogTitle: "bedda.ai vs You.com — 36+ AI Models vs AI Search Engine",
+    ogDescription:
+      "You.com combines web search with an AI assistant. bedda.ai gives direct access to Claude Opus 4.8, GPT-5, Gemini, and 36+ frontier models for $12/mo — no search required.",
+    heroHeadline: "AI search vs frontier AI access",
+    heroSubtext:
+      "You.com is an AI-powered search engine that summarizes web results and answers questions with citations. bedda.ai is a multi-model AI subscription giving you direct, unrestricted access to Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and 36+ frontier models for writing, coding, research, and analysis — no search layer in the way.",
+    verdict:
+      "You.com and bedda.ai serve different primary use cases. You.com is best when you need web-aware AI answers with citations and up-to-date information from the internet. bedda.ai is best when you want direct, high-quality AI assistance for writing, coding, analysis, and creative work — with the ability to switch between 36+ models to find the best for each task. Many power users use both: You.com for quick web lookups and bedda.ai for serious AI work.",
+    switchReasons: [
+      "Access Claude Opus 4.8, GPT-5, and 36+ frontier models — not just one AI assistant",
+      "Native web search built in via web search tool (no separate search app needed)",
+      "Knowledge base RAG — upload your own documents and query them with AI",
+      "Image and video generation in the same workspace",
+      "Model comparison arena to test multiple AIs side-by-side",
+    ],
+    rows: [
+      { feature: "Monthly price (entry)", bedda: "$12/mo", competitor: "Free (limited)" },
+      { feature: "36+ frontier AI models", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8 / GPT-5 / Gemini", bedda: true, competitor: "Single AI assistant" },
+      { feature: "Web search with citations", bedda: true, competitor: true },
+      { feature: "Real-time web results", bedda: true, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Knowledge base RAG", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Custom instructions / memory", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Agent mode (multi-step)", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is You.com?",
+        a: "You.com is an AI-powered search engine that combines traditional web search with an AI assistant. It answers questions by synthesizing information from web results and providing citations. The free tier includes basic AI search; the YouPro plan ($20/mo) unlocks more powerful AI models and unlimited use. It's designed as an alternative to Google for people who want AI-summarized answers alongside search results.",
+      },
+      {
+        q: "Does bedda.ai include web search?",
+        a: "Yes. bedda.ai includes a built-in web search tool that any of the 36+ models can use during a conversation. When you ask a question that benefits from current information, the AI can search the web and cite sources — similar to You.com's core feature. The difference is that bedda.ai also gives you full-featured AI assistance beyond just search, with 36+ models to choose from.",
+      },
+      {
+        q: "When should I use You.com vs bedda.ai?",
+        a: "Use You.com when you primarily want a search engine with AI summaries and citations — quick fact-checking, news lookups, or research with source links. Use bedda.ai when you want serious AI assistance for writing, coding, analysis, creative projects, or multi-step tasks — with access to the world's best AI models and a full productivity suite. For many users, bedda.ai's built-in web search makes You.com redundant.",
+      },
+    ],
+  },
+  "bedda-vs-fireworks-ai": {
+    slug: "bedda-vs-fireworks-ai",
+    competitor: "Fireworks AI",
+    competitorUrl: "https://fireworks.ai",
+    competitorPrice: "Pay-per-token",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Fireworks AI",
+    metaTitle: "bedda.ai vs Fireworks AI (2026) — AI Chat Subscription vs Developer API",
+    metaDescription:
+      "Compare bedda.ai and Fireworks AI. bedda.ai is a multi-model AI subscription at $12/mo for end users and teams. Fireworks AI is a fast-inference API platform for developers building AI applications.",
+    ogTitle: "bedda.ai vs Fireworks AI — $12/mo AI Subscription vs Developer Inference API",
+    ogDescription:
+      "Fireworks AI is a developer API for fast LLM inference. bedda.ai gives individuals and teams 36+ frontier models in a full-featured chat interface for $12/mo — no API keys or coding required.",
+    heroHeadline: "End-user AI access vs developer inference platform",
+    heroSubtext:
+      "Fireworks AI is a high-performance inference API platform for developers who want to run open-source and frontier models at speed in their applications. bedda.ai is a multi-model AI subscription for individuals and teams who want direct, ready-to-use access to Claude Opus 4.8, GPT-5, Gemini, and 36+ models without writing code.",
+    verdict:
+      "Fireworks AI and bedda.ai are built for different audiences. Fireworks AI is excellent for developers who need fast, cost-effective inference API access to power AI features in their applications — particularly with open-source models like Llama and Mixtral. bedda.ai is for individuals and teams who want to use AI productively for writing, coding, research, and analysis — through a polished interface, not an API. If you're building an AI product, consider Fireworks AI for the backend; if you're using AI for your own work, bedda.ai is more appropriate.",
+    switchReasons: [
+      "No API keys, rate limits, or tokens to manage — just use AI directly",
+      "36+ models including Claude Opus 4.8, GPT-5, and Gemini — beyond open-source",
+      "Full AI workspace: image generation, knowledge base, web search, memory",
+      "Flat $12/mo vs unpredictable per-token costs that spike with heavy usage",
+      "Instant setup — start chatting in 30 seconds with no integration required",
+    ],
+    rows: [
+      { feature: "Monthly price (entry)", bedda: "$12/mo flat", competitor: "Pay-per-token" },
+      { feature: "For end users (no coding)", bedda: true, competitor: false },
+      { feature: "Developer API access", bedda: true, competitor: true },
+      { feature: "Claude Opus 4.8 / GPT-5", bedda: true, competitor: false },
+      { feature: "Open-source models (Llama, Mixtral)", bedda: true, competitor: true },
+      { feature: "Ultra-low latency inference", bedda: false, competitor: true },
+      { feature: "Batch inference", bedda: false, competitor: true },
+      { feature: "Fine-tuning support", bedda: false, competitor: true },
+      { feature: "Knowledge base RAG", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "Predictable flat pricing", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Fireworks AI?",
+        a: "Fireworks AI is a fast-inference API platform for developers. It lets you run open-source models like Llama 3, Mixtral, Gemma, and others at high speed and low cost via a standard REST API. It also supports some frontier models. Fireworks is known for its speed (competitive with or faster than OpenAI on some models) and cost-efficiency. It's designed for developers building AI features into products, not for end users who want a chat interface.",
+      },
+      {
+        q: "Does bedda.ai offer an API?",
+        a: "Yes. bedda.ai includes an OpenAI-compatible API that paid subscribers can use to access all 36+ models programmatically. This isn't as low-level as Fireworks AI (no fine-tuning or batch inference) but it lets developers integrate bedda.ai's model access into their own tools. For production AI applications at scale, Fireworks AI offers better pricing and control. For personal productivity and team AI access, bedda.ai's subscription is simpler and more cost-effective.",
+      },
+      {
+        q: "When should I use Fireworks AI vs bedda.ai?",
+        a: "Use Fireworks AI when you're building an AI product or feature and need fast, cost-effective inference API access to open-source models at scale. Use bedda.ai when you want to use AI for your own work — writing, coding, research, content creation — without managing APIs or infrastructure. Many AI developers use Fireworks AI for their products and bedda.ai for their personal AI productivity.",
+      },
+    ],
+  },
+  "bedda-vs-lm-studio": {
+    slug: "bedda-vs-lm-studio",
+    competitor: "LM Studio",
+    competitorUrl: "https://lmstudio.ai",
+    competitorPrice: "Free (local)",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs LM Studio",
+    metaTitle: "bedda.ai vs LM Studio (2026) — Cloud AI Subscription vs Local LLM Runner",
+    metaDescription:
+      "Compare bedda.ai and LM Studio. bedda.ai is a $12/mo subscription for 36+ frontier AI models in the cloud. LM Studio lets you run open-source AI models locally on your own hardware. Privacy vs capability.",
+    ogTitle: "bedda.ai vs LM Studio — $12/mo Cloud AI vs Free Local LLM Runner",
+    ogDescription:
+      "LM Studio runs open-source models locally — no cloud, no cost, full privacy. bedda.ai gives you Claude Opus 4.8, GPT-5, and 36+ frontier models via cloud for $12/mo. Two fundamentally different approaches.",
+    heroHeadline: "Local AI privacy vs frontier model power",
+    heroSubtext:
+      "LM Studio is a free desktop application that lets you download and run open-source LLMs locally on your Mac or PC — completely offline, with full data privacy. bedda.ai is a cloud subscription giving you access to Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and 36+ frontier models — far more capable than any model you can run locally today.",
+    verdict:
+      "LM Studio and bedda.ai represent two fundamentally different philosophies for AI access. LM Studio gives you complete data privacy and zero recurring cost, but you're limited by the capabilities of open-source models and your local hardware. bedda.ai gives you the world's most capable frontier models at $12/mo, with cloud infrastructure handling all compute. For sensitive work where data cannot leave your machine, LM Studio is the right choice. For the best AI capability available today, bedda.ai delivers results that local models simply cannot match.",
+    switchReasons: [
+      "Claude Opus 4.8, GPT-5, and Gemini 2.5 Pro — far beyond what runs locally",
+      "No GPU required — works on any device, including low-end laptops",
+      "Web search, image generation, video generation — not possible locally",
+      "Knowledge base RAG, team workspaces, and memory built in",
+      "Instant responses vs minutes of local inference on complex tasks",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "Free" },
+      { feature: "Frontier models (Claude, GPT-5, Gemini)", bedda: true, competitor: false },
+      { feature: "Open-source models (Llama, Mistral)", bedda: true, competitor: true },
+      { feature: "Runs 100% locally / offline", bedda: false, competitor: true },
+      { feature: "Full data privacy (no cloud)", bedda: false, competitor: true },
+      { feature: "No GPU required", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Knowledge base RAG", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: true },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Always up-to-date models", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is LM Studio?",
+        a: "LM Studio is a free desktop application for macOS, Windows, and Linux that lets you download and run open-source large language models locally on your own hardware. It supports models like Llama 3, Mistral, Phi, and hundreds of others from Hugging Face. Everything runs on your machine — no data leaves your computer, there are no API calls, and there's no cost beyond your hardware. It also provides a local server with an OpenAI-compatible API so you can use local models in other apps.",
+      },
+      {
+        q: "Is LM Studio better than bedda.ai for privacy?",
+        a: "Yes, unambiguously. LM Studio runs entirely locally — your prompts and data never leave your machine. bedda.ai is a cloud service, so your conversations pass through cloud infrastructure (though bedda.ai doesn't use your conversations to train models). If you're working with highly sensitive data (legal, medical, financial, confidential business information) that genuinely cannot touch any external server, LM Studio is the right choice. For most users, the capability gap between frontier models (bedda.ai) and local models (LM Studio) is more important than the privacy difference.",
+      },
+      {
+        q: "Can I use both LM Studio and bedda.ai?",
+        a: "Absolutely. Many AI power users run LM Studio for sensitive or offline tasks and use bedda.ai for work that benefits from frontier model capability. LM Studio's local server even works with bedda.ai's OpenAI-compatible API format, though pointing bedda.ai at a local model defeats the purpose of the cloud subscription. Use LM Studio for private tasks and bedda.ai when you need Claude, GPT-5, or Gemini-level quality.",
+      },
+    ],
+  },
+  "bedda-vs-aider": {
+    slug: "bedda-vs-aider",
+    competitor: "Aider",
+    competitorUrl: "https://aider.chat",
+    competitorPrice: "Free (open source)",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Aider",
+    metaTitle: "bedda.ai vs Aider (2026) — AI Chat for Everyone vs AI Pair Programmer CLI",
+    metaDescription:
+      "Compare bedda.ai and Aider. bedda.ai is a multi-model AI subscription for writing, coding, and research at $12/mo. Aider is a free open-source AI pair programmer that runs in the terminal and edits code files directly.",
+    ogTitle: "bedda.ai vs Aider — $12/mo Multi-Model AI vs Free Open-Source Coding CLI",
+    ogDescription:
+      "Aider is the leading open-source AI coding assistant for the terminal — it edits files, manages git, and supports multiple AI backends. bedda.ai is a browser-based subscription with 36+ models for coding and everything else.",
+    heroHeadline: "AI coding in the terminal vs AI for everything in the browser",
+    heroSubtext:
+      "Aider is a powerful open-source AI pair programmer designed for developers who live in the terminal. It can read your codebase, edit multiple files at once, manage git commits, and work with any AI backend including Claude, GPT-5, and local models. bedda.ai gives developers access to 36+ frontier models in a polished browser interface — for coding, research, documentation, and all other AI work.",
+    verdict:
+      "Aider and bedda.ai serve overlapping but distinct audiences. Aider is the best choice for developers who want deep terminal-integrated AI coding assistance — automatic file editing, git integration, and codebase awareness. It's free and works with the models of your choice (though you pay the model API costs separately). bedda.ai is better when you need AI for more than just coding — writing, research, image generation, team collaboration — and want a polished interface without managing API keys or terminal tooling. Many developers use Aider for focused coding sessions and bedda.ai for the rest of their AI work.",
+    switchReasons: [
+      "One $12/mo subscription covers coding, writing, research, and creation — not just coding",
+      "No terminal setup, API key management, or model configuration required",
+      "Web search, image generation, and knowledge base RAG built in",
+      "Team workspaces for sharing AI work with colleagues",
+      "36+ models in a UI — compare Claude vs GPT-5 on the same task side-by-side",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "Free (API costs extra)" },
+      { feature: "Browser-based interface", bedda: true, competitor: false },
+      { feature: "Terminal / CLI interface", bedda: false, competitor: true },
+      { feature: "Direct file editing", bedda: false, competitor: true },
+      { feature: "Git integration", bedda: false, competitor: true },
+      { feature: "Codebase-wide context", bedda: false, competitor: true },
+      { feature: "Multi-file edits", bedda: false, competitor: true },
+      { feature: "Coding assistance (chat)", bedda: true, competitor: true },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Knowledge base RAG", bedda: true, competitor: false },
+      { feature: "36+ models in one subscription", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Aider?",
+        a: "Aider is an open-source AI pair programmer that runs in the terminal. You add files to its context with /add commands, then ask it to make changes — it edits the files directly and creates git commits. Aider supports Claude, GPT-5, local models via Ollama, and many other backends through a configurable API key system. It's particularly powerful for refactoring, adding features across multiple files, and fixing bugs with full codebase context. It's free to use, but you pay the underlying AI provider's API costs (typically $0.01–0.10 per session).",
+      },
+      {
+        q: "Does bedda.ai have any coding features like Aider?",
+        a: "bedda.ai's coding assistance works through conversation — you share code in the chat, ask for changes, and get modified code back. It doesn't edit files directly or integrate with git the way Aider does. For developers who want to apply AI changes directly to their local codebase with version control, Aider is more powerful for that specific workflow. For developers who want AI assistance for coding plus writing, research, and other tasks in one subscription, bedda.ai's breadth is more valuable.",
+      },
+      {
+        q: "Can I use Aider with bedda.ai's models?",
+        a: "Aider can be configured to use Claude and other models via direct API access, not through bedda.ai's subscription. bedda.ai does offer an OpenAI-compatible API that could theoretically work with Aider's --openai-api-base flag, but this is an advanced workaround. If you want to use Claude with Aider, the standard approach is to get a direct Anthropic API key. If you want Claude for general AI work without the terminal setup, bedda.ai's subscription is simpler.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
