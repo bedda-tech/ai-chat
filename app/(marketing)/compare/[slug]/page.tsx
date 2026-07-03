@@ -9204,6 +9204,246 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-framer-ai": {
+    slug: "bedda-vs-framer-ai",
+    competitor: "Framer AI",
+    competitorUrl: "https://www.framer.com",
+    competitorPrice: "$0-36/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Framer AI",
+    metaTitle: "bedda.ai vs Framer AI (2026) — Multi-Model AI vs AI Website Builder",
+    metaDescription:
+      "Compare bedda.ai and Framer AI. Framer is an AI-powered website builder. bedda.ai is a $12/mo multi-model AI platform with 36+ models for writing, research, image generation, and more.",
+    ogTitle: "bedda.ai vs Framer AI — AI for Everything vs AI Website Builder",
+    ogDescription:
+      "Framer AI generates websites from text prompts. bedda.ai gives you Claude, GPT-5, Gemini, and 36+ frontier models for writing, research, image generation, and every other AI task — starting at $12/mo.",
+    heroHeadline: "AI website builder vs AI for every task in your workflow",
+    heroSubtext:
+      "Framer is an excellent AI-powered website builder — it generates professional sites from text prompts and handles design, hosting, and CMS in one tool. bedda.ai is a different kind of product: 36+ frontier AI models for writing, research, coding, image generation, video generation, and the hundred other tasks that don't involve building a website.",
+    verdict:
+      "Framer AI and bedda.ai don't compete directly — they serve very different needs. If you need to build a website with AI assistance, Framer is purpose-built and excellent. If you need AI for writing copy, doing research, generating images, analyzing data, or any of the other tasks that fill your workday, bedda.ai gives you the world's best models at $12/mo. Many Framer users also subscribe to bedda.ai for the copy writing and content tasks that Framer doesn't handle.",
+    switchReasons: [
+      "36+ frontier models for writing, research, and every other AI task",
+      "Web search, code execution, image generation, and video generation",
+      "Claude Opus 4.8 for copy writing — better than any AI builder's built-in writing",
+      "Knowledge base RAG to ground AI in your brand voice and product docs",
+      "Team workspaces for sharing AI work across your team",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$0-36/mo" },
+      { feature: "AI website generation", bedda: false, competitor: true },
+      { feature: "Website hosting included", bedda: false, competitor: true },
+      { feature: "CMS and content management", bedda: false, competitor: true },
+      { feature: "Custom domain support", bedda: false, competitor: true },
+      { feature: "36+ AI language models", bedda: true, competitor: false },
+      { feature: "GPT-5 and Claude 4", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation (DALL-E, Imagen)", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Knowledge base RAG", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Framer AI?",
+        a: "Framer is a professional website builder that uses AI to generate site layouts, copy, and design from text prompts. You describe your business or project and Framer creates a complete, responsive site that you can customize and publish. Plans start at free (with Framer branding), $5/mo for basic, and up to $36/mo for pro and CMS features. It's popular with designers, agencies, and startups for building portfolio and marketing sites quickly.",
+      },
+      {
+        q: "Does bedda.ai build websites?",
+        a: "No — bedda.ai is a multi-model AI chat platform, not a website builder. It's best for writing, research, coding, image generation, and other AI tasks. If you need to build a website, Framer, Webflow, or Squarespace are purpose-built for that. If you need AI assistance for the content, copy, and strategy that goes into a website, bedda.ai is a good complement.",
+      },
+      {
+        q: "Can bedda.ai write copy for my Framer website?",
+        a: "Yes — this is a common combination. Use bedda.ai (Claude Opus 4.8 or GPT-5) to write your homepage copy, about page, product descriptions, and blog posts, then paste the content into Framer. Claude is particularly good at following brand voice guidelines and writing conversion-focused web copy.",
+      },
+      {
+        q: "Which is better value for an agency?",
+        a: "It depends on what you need. Framer is better value if your primary output is websites. bedda.ai is better value if your team spends significant time on writing, research, content creation, and other AI tasks. Many agencies use both: Framer for client site builds, bedda.ai for the writing and ideation work that fills the rest of the week.",
+      },
+    ],
+  },
+
+  "bedda-vs-durable": {
+    slug: "bedda-vs-durable",
+    competitor: "Durable AI",
+    competitorUrl: "https://durable.co",
+    competitorPrice: "$12-14/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Durable AI",
+    metaTitle: "bedda.ai vs Durable AI (2026) — Same Price, Very Different Tools",
+    metaDescription:
+      "Compare bedda.ai and Durable AI. Both start at $12/mo but serve completely different needs. Durable builds websites in 30 seconds. bedda.ai gives you 36+ frontier AI models for every other AI task.",
+    ogTitle: "bedda.ai vs Durable AI — $12/mo AI Website Builder vs $12/mo Multi-Model AI",
+    ogDescription:
+      "Durable builds a website for your business in 30 seconds for $12/mo. bedda.ai gives you Claude, GPT-5, Gemini, and 36+ frontier models for writing, research, and every AI task — also $12/mo.",
+    heroHeadline: "Same price — completely different tools",
+    heroSubtext:
+      "Durable and bedda.ai both start at $12/mo but they do completely different things. Durable builds a business website with AI in 30 seconds — website, invoicing, CRM, and basic marketing tools included. bedda.ai gives you 36+ frontier AI models for writing, research, coding, image generation, and every other AI task that fills your workday.",
+    verdict:
+      "Durable is a website + business toolkit for small business owners who need an online presence fast. bedda.ai is a frontier AI subscription for anyone who needs the world's best AI models for knowledge work. They don't compete — they're complementary. If you need both a website and AI for your business communications and writing, you can subscribe to both for $24/mo total.",
+    switchReasons: [
+      "36+ frontier AI models for writing, research, and content creation",
+      "GPT-5, Claude Opus 4.8, and Gemini 2.5 Pro — the strongest AI models available",
+      "Web search to ground AI responses in current information",
+      "Image and video generation for marketing content",
+      "Knowledge base to train AI on your business documents and brand voice",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$12-14/mo" },
+      { feature: "AI website generation", bedda: false, competitor: true },
+      { feature: "Website hosting", bedda: false, competitor: true },
+      { feature: "Invoicing and payments", bedda: false, competitor: true },
+      { feature: "CRM (basic)", bedda: false, competitor: true },
+      { feature: "36+ frontier AI models", bedda: true, competitor: false },
+      { feature: "GPT-5 and Claude 4", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Knowledge base RAG", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Durable AI?",
+        a: "Durable is an AI-powered small business platform that builds a complete website for your business in about 30 seconds. You describe your business, and Durable generates a professional multi-page site, populates it with relevant copy and images, and hosts it on their platform. Beyond the website, Durable includes basic invoicing, CRM, and marketing tools — it's positioned as an all-in-one toolkit for freelancers and small business owners who don't want to manage separate tools. Plans start at $12/mo for the Starter tier.",
+      },
+      {
+        q: "Does bedda.ai build websites?",
+        a: "No. bedda.ai is a multi-model AI chat platform. It's for writing, research, coding, image generation, and the AI tasks that fill your knowledge work — not website creation. For AI website building, Durable, Framer, and Wix are all purpose-built tools.",
+      },
+      {
+        q: "Can I use bedda.ai to write copy for my Durable website?",
+        a: "Yes — this is a natural combination for small business owners. Use bedda.ai (Claude Opus 4.8 or GPT-5) to write better homepage copy, service descriptions, and blog posts, then paste the content into your Durable site editor. AI writing models produce significantly higher-quality copy than the auto-generated placeholder content Durable starts with.",
+      },
+      {
+        q: "Which should a freelancer subscribe to first?",
+        a: "If you don't have a website yet and need one, Durable is the faster win — a professional online presence in 30 seconds. If you already have a website and need AI for proposals, client emails, content, and research, bedda.ai is more immediately useful for knowledge work.",
+      },
+    ],
+  },
+
+  "bedda-vs-hypotenuse-ai": {
+    slug: "bedda-vs-hypotenuse-ai",
+    competitor: "Hypotenuse AI",
+    competitorUrl: "https://hypotenuse.ai",
+    competitorPrice: "$29-59/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Hypotenuse AI",
+    metaTitle: "bedda.ai vs Hypotenuse AI (2026) — Save $17-47/mo on AI Content",
+    metaDescription:
+      "Compare bedda.ai and Hypotenuse AI. Hypotenuse charges $29-59/mo for AI content generation. bedda.ai gives you GPT-5, Claude, Gemini, and 36+ frontier models for $12/mo — up to 75% less.",
+    ogTitle: "bedda.ai vs Hypotenuse AI — $12/mo vs $29-59/mo for AI Writing",
+    ogDescription:
+      "Hypotenuse AI charges $29-59/mo for e-commerce and blog content. bedda.ai gives you 36+ frontier models including GPT-5 and Claude Opus 4.8 for $12/mo — better models, less money.",
+    heroHeadline: "Better AI models, 59–80% cheaper",
+    heroSubtext:
+      "Hypotenuse AI is a content generation platform designed for e-commerce and marketing teams — product descriptions, blog posts, ad copy, and bulk content workflows. bedda.ai gives you the frontier models that power the best AI writing (GPT-5, Claude Opus 4.8, Gemini) for $12/mo — up to 75% less than Hypotenuse's entry price.",
+    verdict:
+      "Hypotenuse AI is a workflow tool designed for e-commerce teams producing high volumes of product descriptions and SEO content with templates and bulk generation. bedda.ai is a general-purpose AI subscription with better underlying models for a fraction of the price. If you need bulk product description generation with SKU-level workflows and PIM integrations, Hypotenuse's specialized tooling has value. If you need high-quality AI writing for varied content tasks, bedda.ai's frontier models will outperform Hypotenuse's outputs at $12/mo.",
+    switchReasons: [
+      "GPT-5 and Claude Opus 4.8 outperform any specialized content AI on writing quality",
+      "Save $17-47/mo — $204-564/year back in your budget",
+      "Web search for up-to-date, researched content — Hypotenuse has no search grounding",
+      "Image generation, video generation, and research all in one subscription",
+      "No word count caps or generation limits on bedda.ai Plus",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$29-59/mo" },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "AI blog post generation", bedda: true, competitor: true },
+      { feature: "AI product descriptions", bedda: true, competitor: true },
+      { feature: "Bulk generation workflows", bedda: false, competitor: true },
+      { feature: "PIM / Shopify integration", bedda: false, competitor: true },
+      { feature: "Web search grounding", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "36+ AI models", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Hypotenuse AI?",
+        a: "Hypotenuse AI is an AI content generation platform focused on e-commerce and marketing use cases. It specializes in product descriptions, blog posts, ad copy, and social media content — with batch/bulk generation workflows that can produce hundreds of product descriptions from a spreadsheet. Plans start at $29/mo (Starter, ~25k words/mo) and go up to $59/mo (Growth, ~100k words/mo) and custom enterprise pricing. It's used by e-commerce brands and marketing agencies that need high-volume content production.",
+      },
+      {
+        q: "Why is bedda.ai cheaper if it has better models?",
+        a: "Hypotenuse AI charges a premium for its specialized e-commerce workflows, templates, and bulk generation features. bedda.ai is a general-purpose multi-model platform — it uses the same underlying AI models (OpenAI, Anthropic, Google) but wraps them in a chat interface rather than a content production workflow. If you need the bulk workflow tooling, Hypotenuse has unique value. If you're writing content one piece at a time with high quality requirements, bedda.ai's frontier models are better and cheaper.",
+      },
+      {
+        q: "Does bedda.ai have word count limits?",
+        a: "bedda.ai Plus plans have generous message limits (hundreds per day) rather than word count caps. For most individual users and small teams, you won't hit a wall. Hypotenuse Starter limits you to ~25,000 words/mo at $29/mo — a blogging workflow can burn through that quickly.",
+      },
+      {
+        q: "Can bedda.ai write product descriptions?",
+        a: "Yes. Claude Opus 4.8 and GPT-5 are excellent at product description writing when given the right prompts — product attributes, target audience, tone, and length. You won't get the bulk spreadsheet import workflow that Hypotenuse offers, but for 1-50 products at a time, bedda.ai produces higher quality output at a much lower price.",
+      },
+    ],
+  },
+
+  "bedda-vs-reclaim-ai": {
+    slug: "bedda-vs-reclaim-ai",
+    competitor: "Reclaim.ai",
+    competitorUrl: "https://reclaim.ai",
+    competitorPrice: "$8-40/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Reclaim.ai",
+    metaTitle: "bedda.ai vs Reclaim.ai (2026) — AI Calendar Tool vs AI Chat Platform",
+    metaDescription:
+      "Compare bedda.ai and Reclaim.ai. Reclaim is an AI calendar scheduling tool. bedda.ai is a $12/mo multi-model AI subscription with 36+ models for writing, research, and every AI task.",
+    ogTitle: "bedda.ai vs Reclaim.ai — AI That Schedules vs AI That Writes, Researches, and Codes",
+    ogDescription:
+      "Reclaim.ai uses AI to optimize your Google Calendar and protect focus time. bedda.ai gives you Claude, GPT-5, Gemini, and 36+ frontier models for writing, research, and every knowledge work task.",
+    heroHeadline: "AI that manages your calendar vs AI that handles your knowledge work",
+    heroSubtext:
+      "Reclaim.ai and bedda.ai are completely different categories of AI tool. Reclaim integrates with Google Calendar to automatically schedule tasks, habits, and focus time. bedda.ai gives you 36+ frontier AI models for writing, research, coding, analysis, and the hundreds of knowledge work tasks that don't involve calendar management.",
+    verdict:
+      "Reclaim.ai and bedda.ai don't compete — they solve completely different problems. Reclaim is purpose-built for calendar optimization: protecting focus time, scheduling around meetings, integrating task lists into your calendar. bedda.ai is for knowledge work: writing emails, doing research, coding, generating images, and using the world's best AI models for whatever you're working on. Many professionals who care about time management use both.",
+    switchReasons: [
+      "36+ frontier AI models for every knowledge work task",
+      "Write better emails, proposals, and documents with Claude Opus 4.8",
+      "Web search for researched, up-to-date AI responses",
+      "Image and video generation for creative and marketing work",
+      "Reclaim doesn't write, research, or generate — bedda.ai does",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$8-40/mo" },
+      { feature: "Google Calendar integration", bedda: false, competitor: true },
+      { feature: "Automatic task scheduling", bedda: false, competitor: true },
+      { feature: "Focus time protection", bedda: false, competitor: true },
+      { feature: "Habit scheduling", bedda: false, competitor: true },
+      { feature: "Slack calendar sync", bedda: false, competitor: true },
+      { feature: "36+ AI language models", bedda: true, competitor: false },
+      { feature: "Writing and research assistance", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code execution and debugging", bedda: true, competitor: false },
+      { feature: "Knowledge base RAG", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Reclaim.ai?",
+        a: "Reclaim.ai is an AI-powered calendar management tool for Google Calendar users. It automatically finds optimal times to schedule your tasks, habits, and focus blocks around your meetings — and reschedules them automatically when your calendar changes. Key features include Smart Scheduling (tasks scheduled into open calendar slots), Habits (recurring daily/weekly blocks like exercise or learning), and Sync (for users with multiple Google Calendars). Plans range from free (limited features) to $8/mo (Starter) up to $40/mo (Team). It's popular with remote workers and teams who want to protect deep work time.",
+      },
+      {
+        q: "Does bedda.ai have calendar features?",
+        a: "No. bedda.ai is a multi-model AI chat platform — it doesn't integrate with Google Calendar or manage your schedule. For AI calendar management, Reclaim, Motion, and Clockwise are purpose-built tools. bedda.ai is for the knowledge work you do during those protected focus blocks.",
+      },
+      {
+        q: "Can I use both Reclaim and bedda.ai?",
+        a: "Yes — they complement each other well. Reclaim protects your focus time and ensures tasks get scheduled. bedda.ai gives you the best AI tools to work efficiently during that focus time. A common workflow: Reclaim schedules 2 hours of deep work each morning, and during that block you use bedda.ai for writing, research, and the AI-assisted tasks that require concentration.",
+      },
+      {
+        q: "Is bedda.ai good for time management?",
+        a: "bedda.ai can help with time management adjacent tasks — writing better emails faster, summarizing documents, organizing project notes, and drafting schedules or agendas. But it doesn't integrate with your calendar or automatically reschedule your day the way Reclaim does.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {

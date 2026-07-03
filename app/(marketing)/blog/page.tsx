@@ -1791,6 +1791,42 @@ const posts = [
     readingTime: "7 min read",
     category: "Industry",
   },
+  {
+    slug: "ai-for-animators-2026",
+    title: "AI for Animators and Motion Designers in 2026: Tools, Workflows, and Model Recommendations",
+    description:
+      "How animators, motion designers, and VFX artists use AI in 2026 — from scriptwriting and storyboarding to reference generation, style lookbooks, and client communication. The best AI models for creative production.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Creative",
+  },
+  {
+    slug: "ai-for-paralegals-2026",
+    title: "AI for Paralegals in 2026: Document Review, Legal Research, and Client Communication",
+    description:
+      "How paralegals and legal assistants use AI in 2026 to speed up document review, draft correspondence, summarize case files, and support attorneys more effectively. Best AI models for legal support work.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Legal",
+  },
+  {
+    slug: "best-ai-for-restaurateurs-2026",
+    title: "Best AI for Restaurant Owners and Managers in 2026",
+    description:
+      "How restaurant owners, GMs, and F&B managers use AI in 2026 — menu development, staff scheduling copy, supplier emails, social media content, and guest complaint handling. Which AI models work best.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Industry",
+  },
+  {
+    slug: "ai-for-civil-engineers-2026",
+    title: "AI for Civil Engineers in 2026: Reports, Specs, and Project Documentation",
+    description:
+      "How civil engineers use AI in 2026 for technical report writing, specification drafting, RFI responses, meeting summaries, environmental impact sections, and client presentations. Best AI models for engineering documentation.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Engineering",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
