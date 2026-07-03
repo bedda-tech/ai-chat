@@ -1683,6 +1683,42 @@ const posts = [
     readingTime: "8 min read",
     category: "Industry",
   },
+  {
+    slug: "ai-for-wedding-planners-2026",
+    title: "AI for Wedding Planners in 2026: Plan Smarter, Stress Less",
+    description:
+      "How wedding planners use AI in 2026 — for vendor research, timeline building, budget tracking, client communications, day-of coordination scripts, and social media content creation.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Creative",
+  },
+  {
+    slug: "best-ai-for-language-learning-2026",
+    title: "Best AI for Language Learning in 2026: Practice, Grammar, and Fluency",
+    description:
+      "How to use AI for language learning in 2026 — practice conversations with native-level feedback, get clear grammar explanations, build vocabulary faster, and accelerate fluency in any language.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Education",
+  },
+  {
+    slug: "ai-for-electricians-and-tradespeople-2026",
+    title: "AI for Electricians and Tradespeople in 2026: Code Lookups, Estimates, and Client Comms",
+    description:
+      "How electricians, plumbers, HVAC technicians, and other tradespeople use AI in 2026 — for NEC code lookups, job estimates, permit applications, client communications, and growing their business.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Industry",
+  },
+  {
+    slug: "best-ai-for-tutors-2026",
+    title: "Best AI for Tutors in 2026: Lesson Plans, Explanations, and Practice Materials",
+    description:
+      "How private tutors and instructors use AI in 2026 — to build customized lesson plans, generate practice problems, explain difficult concepts multiple ways, and scale their teaching capacity.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Education",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
