@@ -1755,6 +1755,42 @@ const posts = [
     readingTime: "7 min read",
     category: "Industry",
   },
+  {
+    slug: "ai-for-social-workers-2026",
+    title: "AI for Social Workers in 2026: Case Notes, Documentation, and Client Support",
+    description:
+      "How social workers and caseworkers use AI in 2026 — for case documentation, intake assessments, progress notes, resource identification, and managing high caseloads without sacrificing client care quality.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Industry",
+  },
+  {
+    slug: "ai-for-fitness-professionals-2026",
+    title: "AI for Fitness Professionals in 2026: Training Plans, Client Communication, and Business Growth",
+    description:
+      "How personal trainers, gym owners, and fitness coaches use AI in 2026 — for custom training programs, nutrition guidance, client check-in messaging, content creation, and scaling their coaching business.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Industry",
+  },
+  {
+    slug: "best-ai-for-tax-professionals-2026",
+    title: "Best AI for Tax Professionals in 2026: CPAs, Tax Preparers, and Accountants",
+    description:
+      "The best AI tools for tax professionals in 2026 — how CPAs, enrolled agents, and tax preparers use AI for client communication, research, documentation, and navigating complex tax situations efficiently.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Finance",
+  },
+  {
+    slug: "ai-for-manufacturing-teams-2026",
+    title: "AI for Manufacturing Teams in 2026: Operations, Quality Control, and Process Documentation",
+    description:
+      "How manufacturing operations managers, quality engineers, and plant teams use AI in 2026 — for process documentation, SOP writing, quality reporting, supplier communication, and continuous improvement initiatives.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Industry",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];

@@ -8911,6 +8911,240 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+  "bedda-vs-maxai": {
+    slug: "bedda-vs-maxai",
+    competitor: "MaxAI.me",
+    competitorUrl: "https://maxai.me",
+    competitorPrice: "$19.9/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs MaxAI.me",
+    metaTitle: "bedda.ai vs MaxAI.me (2026) — Multi-Model Platform vs AI Browser Extension",
+    metaDescription:
+      "Compare bedda.ai and MaxAI.me. bedda.ai is a $12/mo multi-model AI subscription with 36+ models in a dedicated chat app. MaxAI.me ($19.9/mo) is a browser extension that brings AI to any webpage — different approaches to multi-model AI access.",
+    ogTitle: "bedda.ai vs MaxAI.me — $12/mo Platform vs $19.9/mo Browser Extension",
+    ogDescription:
+      "MaxAI.me is a browser extension that overlays AI assistance on any webpage. bedda.ai is a dedicated multi-model AI platform with 36+ models, web search, knowledge base, and team workspaces — at $7.9/mo less.",
+    heroHeadline: "AI built into your browser vs AI built as a dedicated workspace",
+    heroSubtext:
+      "MaxAI.me is a popular browser extension that adds AI capabilities to any webpage — summarizing articles, helping with email replies, generating text inline, and switching between models like Claude, GPT-5, and Gemini. bedda.ai is a dedicated multi-model AI platform with the same frontier models, plus web search, knowledge base RAG, image and video generation, team workspaces, and more — for $7.9/mo less.",
+    verdict:
+      "MaxAI.me and bedda.ai both give you access to multiple frontier AI models, but they serve different primary use cases. MaxAI.me excels when you want AI embedded in your browsing workflow — summarizing the page you&apos;re on, rewriting selected text inline, and generating content without switching tabs. bedda.ai is better when you want a full AI workspace — longer conversations, knowledge base context, image generation, team collaboration, and model comparison. If most of your AI use happens while browsing, MaxAI.me&apos;s overlay approach is genuinely convenient. If you want depth of capability at a lower price, bedda.ai gives you more.",
+    switchReasons: [
+      "36+ frontier models including Claude Opus 4.8, GPT-5, and Gemini 2.5 Pro",
+      "$12/mo vs $19.9/mo — $7.9/mo less for more capability",
+      "Knowledge base RAG — upload documents for AI-grounded responses",
+      "Image and video generation built in",
+      "Team workspaces for collaborative AI work",
+      "No browser extension required — works on any device",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$19.9/mo" },
+      { feature: "36+ frontier AI models", bedda: true, competitor: true },
+      { feature: "Claude Opus 4.8 / GPT-5 / Gemini 2.5 Pro", bedda: true, competitor: true },
+      { feature: "Browser extension / sidebar", bedda: false, competitor: true },
+      { feature: "Inline page summarization", bedda: false, competitor: true },
+      { feature: "Knowledge base RAG", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: true },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Mobile / any device", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is MaxAI.me?",
+        a: "MaxAI.me is an AI browser extension that adds a sidebar or overlay to any webpage, letting you summarize content, rewrite text, draft replies, and chat with AI models including Claude, GPT-5, Gemini, and others without leaving your current tab. It&apos;s designed for users who want AI assistance embedded in their browsing workflow rather than in a separate app. Plans start at $19.9/mo for full access to premium models.",
+      },
+      {
+        q: "What does bedda.ai offer that MaxAI.me doesn&apos;t?",
+        a: "bedda.ai is a dedicated multi-model AI platform rather than a browser extension. It offers knowledge base RAG (upload your own documents for AI context), image generation via DALL-E 3 and Imagen 3, video generation via Kling, team workspaces with real-time collaboration, project organization, an OpenAI-compatible API, and custom system instructions — none of which are available in MaxAI.me. bedda.ai also costs $7.9/mo less ($12 vs $19.9).",
+      },
+      {
+        q: "Is MaxAI.me better than bedda.ai for browsing?",
+        a: "Yes — if your primary use case is getting AI help while browsing the web, MaxAI.me&apos;s browser extension approach is more convenient. You can highlight text and ask AI to explain or rewrite it, summarize the article you&apos;re reading, or draft an email reply without switching tabs. bedda.ai doesn&apos;t have a browser extension, so for inline browser tasks, MaxAI.me has a workflow advantage. For everything else — longer sessions, knowledge base, image generation, team use — bedda.ai is more capable.",
+      },
+      {
+        q: "Can I use bedda.ai without a browser extension?",
+        a: "Yes — bedda.ai is a web app that works in any browser on any device. You open a tab to bedda.ai and use it directly. There&apos;s no extension to install, maintain, or worry about browser compatibility with. This also means bedda.ai works equally well on mobile, tablet, or any computer, whereas browser extensions like MaxAI.me require the specific browser they support.",
+      },
+    ],
+  },
+  "bedda-vs-sider-ai": {
+    slug: "bedda-vs-sider-ai",
+    competitor: "Sider AI",
+    competitorUrl: "https://sider.ai",
+    competitorPrice: "$8.33-19.99/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Sider AI",
+    metaTitle: "bedda.ai vs Sider AI (2026) — Multi-Model Platform vs ChatGPT Sidebar",
+    metaDescription:
+      "Compare bedda.ai and Sider AI. bedda.ai is a $12/mo multi-model AI subscription with 36+ models, knowledge base, and team features. Sider AI ($8.33-19.99/mo) is a browser sidebar bringing ChatGPT and other AI models to any website.",
+    ogTitle: "bedda.ai vs Sider AI — Dedicated AI Platform vs Browser Sidebar",
+    ogDescription:
+      "Sider AI adds ChatGPT, Claude, and Gemini as a browser sidebar to any website. bedda.ai gives you 36+ frontier models in a dedicated AI workspace with web search, knowledge base, image generation, and team workspaces.",
+    heroHeadline: "AI embedded in your browser sidebar vs AI as a dedicated multi-model workspace",
+    heroSubtext:
+      "Sider AI is a popular browser sidebar that lets you chat with AI models like GPT-5, Claude, and Gemini while browsing — summarizing pages, translating text, and helping with writing inline. bedda.ai is a dedicated AI platform with the same frontier models, plus knowledge base RAG, image generation, video generation, and team collaboration features.",
+    verdict:
+      "Sider AI and bedda.ai both provide multi-model AI access but in very different forms. Sider AI&apos;s browser sidebar is excellent for users who want AI assistance contextually while reading articles, doing research, or working in web apps — the convenience of having AI one click away without switching tabs is real. bedda.ai is the better choice when you need a full AI workspace: longer document analysis, knowledge base context, image and video generation, team collaboration, or API access. At similar price points, the decision comes down to whether you want AI woven into your browsing workflow or a dedicated AI environment with more depth.",
+    switchReasons: [
+      "36+ frontier models in a dedicated workspace — not limited to browser context",
+      "Knowledge base RAG — upload documents for grounded AI responses",
+      "Image and video generation alongside chat",
+      "Team workspaces and real-time collaboration",
+      "OpenAI-compatible API for developers",
+      "Works on any device without browser extension installation",
+    ],
+    rows: [
+      { feature: "Monthly price (entry)", bedda: "$12/mo", competitor: "$8.33-19.99/mo" },
+      { feature: "36+ frontier AI models", bedda: true, competitor: true },
+      { feature: "Browser sidebar / extension", bedda: false, competitor: true },
+      { feature: "Web page summarization", bedda: false, competitor: true },
+      { feature: "Translation overlay", bedda: false, competitor: true },
+      { feature: "Knowledge base RAG", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: true },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Sider AI?",
+        a: "Sider AI is a browser extension that adds an AI sidebar to any webpage — letting you chat with GPT-5, Claude, Gemini, and other AI models while browsing without switching tabs. Key features include page summarization, text translation, writing assistance, and the ability to ask questions about the content of the page you&apos;re reading. Plans range from a free tier to $8.33-19.99/mo for premium model access.",
+      },
+      {
+        q: "What can bedda.ai do that Sider AI can&apos;t?",
+        a: "bedda.ai offers knowledge base RAG (upload your documents for AI to reference), image generation via DALL-E 3 and Imagen 3, video generation via Kling AI, team workspaces with shared chats and real-time collaboration, project organization, custom system instructions, and an OpenAI-compatible API. These features make bedda.ai a full AI platform rather than a browsing enhancement tool.",
+      },
+      {
+        q: "Is Sider AI better for browsing research?",
+        a: "Yes — if you frequently want AI help while reading articles, doing web research, or working in web applications, Sider AI&apos;s browser sidebar is more convenient. You can highlight text, summarize pages, and ask contextual questions without leaving your current tab. For research workflows centered around reading and annotating web content, the sidebar approach saves meaningful time. bedda.ai is better for longer-form AI work, document analysis with your own uploaded content, and collaborative AI tasks.",
+      },
+      {
+        q: "Which is cheaper — Sider AI or bedda.ai?",
+        a: "It depends on the plan. Sider AI has a free tier with limited usage and paid plans starting around $8.33/mo (billed annually). bedda.ai starts at $12/mo with a 7-day free trial. At the entry premium tier, Sider AI is cheaper — but bedda.ai offers significantly more capability at $12/mo (knowledge base, image generation, video generation, team features) that Sider AI doesn&apos;t offer at any price tier.",
+      },
+    ],
+  },
+  "bedda-vs-monica-ai": {
+    slug: "bedda-vs-monica-ai",
+    competitor: "Monica AI",
+    competitorUrl: "https://monica.im",
+    competitorPrice: "$8.3-19.9/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Monica AI",
+    metaTitle: "bedda.ai vs Monica AI (2026) — Multi-Model Platform vs AI Assistant Extension",
+    metaDescription:
+      "Compare bedda.ai and Monica AI. bedda.ai is a $12/mo multi-model AI subscription with 36+ models, knowledge base, and team workspaces. Monica AI ($8.3-19.9/mo) is an AI assistant browser extension with multi-model support and content creation tools.",
+    ogTitle: "bedda.ai vs Monica AI — Dedicated AI Workspace vs Multi-Purpose AI Extension",
+    ogDescription:
+      "Monica AI is a browser extension combining ChatGPT, Claude, Gemini, and other AI models with content creation tools. bedda.ai gives you 36+ models in a dedicated workspace with knowledge base RAG, image generation, and team collaboration at a competitive price.",
+    heroHeadline: "AI assistant extension vs dedicated multi-model AI workspace",
+    heroSubtext:
+      "Monica AI is a popular all-in-one AI assistant browser extension — it brings multiple AI models, content creation tools, image generation, and search capabilities into a sidebar or popup accessible from any webpage. bedda.ai is a dedicated multi-model AI platform with the same frontier models plus knowledge base RAG, video generation, team workspaces, and an OpenAI-compatible API, without the browser extension dependency.",
+    verdict:
+      "Monica AI and bedda.ai overlap significantly in their multi-model AI access, but they differ in form factor and depth. Monica AI&apos;s browser extension approach makes it convenient for users who want AI help while browsing — writing assistance, page summarization, translation, and content creation accessible from any site. bedda.ai is better as a dedicated AI workspace for longer sessions, document knowledge base use, team collaboration, and developer API access. If you want AI integrated into your browser workflow at a lower entry price, Monica AI is a reasonable choice. If you want a full AI platform with more depth and team features, bedda.ai offers more capability.",
+    switchReasons: [
+      "36+ frontier models without browser extension dependency",
+      "$12/mo vs up to $19.9/mo for Monica AI Pro",
+      "Knowledge base RAG — grounded responses from your own documents",
+      "Video generation via Kling AI",
+      "Team workspaces and real-time collaborative AI",
+      "OpenAI-compatible API for developer integration",
+    ],
+    rows: [
+      { feature: "Monthly price (Pro)", bedda: "$12/mo", competitor: "$8.3-19.9/mo" },
+      { feature: "36+ frontier AI models", bedda: true, competitor: true },
+      { feature: "Browser extension", bedda: false, competitor: true },
+      { feature: "Page summarization / translation", bedda: false, competitor: true },
+      { feature: "AI image generation", bedda: true, competitor: true },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Knowledge base RAG", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: true },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Works without browser extension", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Monica AI?",
+        a: "Monica AI is an all-in-one AI assistant browser extension that brings multiple AI models — including Claude, GPT-5, Gemini, Grok, and others — into a browser sidebar accessible from any webpage. It combines AI chat, content creation tools, AI image generation, web search, page summarization, and translation in one extension. Plans range from a free tier to $8.3-19.9/mo for Pro access with premium models and unlimited usage.",
+      },
+      {
+        q: "What makes bedda.ai different from Monica AI?",
+        a: "bedda.ai is a dedicated web app rather than a browser extension, making it accessible on any device without installation. Key differences: bedda.ai offers knowledge base RAG (upload your own documents for AI context), video generation via Kling AI, team workspaces with real-time collaboration, project organization, and an OpenAI-compatible API — none of which Monica AI currently offers. bedda.ai also offers a 7-day free trial so you can evaluate before subscribing.",
+      },
+      {
+        q: "Does Monica AI have image generation?",
+        a: "Yes — Monica AI Pro includes AI image generation. bedda.ai also offers image generation via DALL-E 3 and Google Imagen 3. bedda.ai additionally offers video generation via Kling AI, which Monica AI does not currently provide.",
+      },
+      {
+        q: "Which is better for a team?",
+        a: "bedda.ai is significantly better for team use. It offers team workspaces where members can share chats, collaborate in real-time, create shared knowledge bases, and manage team model access policies. Monica AI is primarily a personal productivity tool — team features are limited. If you&apos;re evaluating AI tools for a team or organization, bedda.ai&apos;s team workspace features make it the more practical choice.",
+      },
+    ],
+  },
+  "bedda-vs-harpa-ai": {
+    slug: "bedda-vs-harpa-ai",
+    competitor: "Harpa AI",
+    competitorUrl: "https://harpa.ai",
+    competitorPrice: "$14-39/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Harpa AI",
+    metaTitle: "bedda.ai vs Harpa AI (2026) — Multi-Model AI Platform vs AI Web Automation Extension",
+    metaDescription:
+      "Compare bedda.ai and Harpa AI. bedda.ai is a $12/mo multi-model AI subscription with 36+ models, knowledge base, and team features. Harpa AI ($14-39/mo) is a browser extension combining AI chat with web automation, page monitoring, and workflow automation.",
+    ogTitle: "bedda.ai vs Harpa AI — Frontier AI Platform vs AI Web Automation Tool",
+    ogDescription:
+      "Harpa AI is a browser extension combining AI chat with web automation — monitoring price changes, extracting web data, and automating repetitive browser tasks. bedda.ai offers 36+ frontier models for AI chat, image generation, and team collaboration at a lower price.",
+    heroHeadline: "AI web automation and monitoring vs multi-model AI for chat, research, and creation",
+    heroSubtext:
+      "Harpa AI is a unique browser extension that combines AI chat with web automation capabilities — monitoring websites for changes, extracting structured data, automating browser workflows, and summarizing web content. bedda.ai is a dedicated multi-model AI platform focused on AI chat, research, writing, image generation, and team collaboration with 36+ frontier models starting at $12/mo.",
+    verdict:
+      "Harpa AI and bedda.ai serve meaningfully different use cases. Harpa AI&apos;s web automation capabilities — price monitoring, data extraction, page change alerts, and browser workflow automation — are unique features not offered by bedda.ai. If you need AI-powered web automation alongside chat, Harpa AI is purpose-built for that. bedda.ai is the better choice for users who primarily want advanced AI chat with frontier models, knowledge base context, image and video generation, team collaboration, and more comprehensive multi-model access — at a lower price than Harpa AI Pro.",
+    switchReasons: [
+      "36+ frontier models at $12/mo vs $14-39/mo for Harpa AI",
+      "Knowledge base RAG for grounded responses from your own documents",
+      "Image generation (DALL-E 3, Imagen 3) and video generation (Kling)",
+      "Team workspaces and real-time collaborative AI",
+      "OpenAI-compatible API for developers",
+      "Works without a browser extension on any device",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$14-39/mo" },
+      { feature: "36+ frontier AI models", bedda: true, competitor: true },
+      { feature: "Browser extension", bedda: false, competitor: true },
+      { feature: "Web automation / workflows", bedda: false, competitor: true },
+      { feature: "Website change monitoring", bedda: false, competitor: true },
+      { feature: "Web data extraction", bedda: false, competitor: true },
+      { feature: "Knowledge base RAG", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Web search in chat", bedda: true, competitor: true },
+    ],
+    faq: [
+      {
+        q: "What is Harpa AI?",
+        a: "Harpa AI is a browser extension that combines AI chat with web automation capabilities. Beyond chatting with AI models like Claude and GPT-5, Harpa AI can monitor websites for price changes or content updates, extract structured data from web pages, automate browser workflows, and summarize any webpage you&apos;re viewing. It&apos;s built for power users who want AI capabilities woven into web research and automation workflows. Plans range from free to $14-39/mo for Pro and Business tiers.",
+      },
+      {
+        q: "Does bedda.ai have web automation like Harpa AI?",
+        a: "No — bedda.ai doesn&apos;t offer browser workflow automation, website monitoring, or web data extraction. These are Harpa AI&apos;s unique capabilities. bedda.ai has web search built in (using AI to search the web during a conversation), but that&apos;s different from Harpa AI&apos;s automation and monitoring features. If web automation is a core need, Harpa AI is purpose-built for it.",
+      },
+      {
+        q: "Which has better AI chat capabilities?",
+        a: "bedda.ai offers significantly more frontier models — 36+ including Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, Grok 4, Mistral Large, DeepSeek R1, and more. bedda.ai also offers knowledge base RAG (chat grounded in your uploaded documents), image and video generation, team workspaces, and an OpenAI-compatible API. For depth of AI chat capability, bedda.ai is more comprehensive. For AI chat integrated with browser automation, Harpa AI combines both in one extension.",
+      },
+      {
+        q: "Is bedda.ai cheaper than Harpa AI?",
+        a: "Yes — bedda.ai starts at $12/mo with a 7-day free trial. Harpa AI Pro starts at $14/mo and goes to $39/mo for Business. For users who primarily want advanced AI chat rather than web automation, bedda.ai offers more AI capability at a lower price. If you need web automation alongside AI chat, Harpa AI&apos;s premium features justify the higher price.",
+      },
+    ],
+  },
   "bedda-vs-adobe-express": {
     slug: "bedda-vs-adobe-express",
     competitor: "Adobe Express",
