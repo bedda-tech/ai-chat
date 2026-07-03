@@ -8174,6 +8174,229 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+  "bedda-vs-bardeen": {
+    slug: "bedda-vs-bardeen",
+    competitor: "Bardeen",
+    competitorUrl: "https://www.bardeen.ai",
+    competitorPrice: "$10–49/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Bardeen",
+    metaTitle: "bedda.ai vs Bardeen (2026) — AI Chat vs Browser Automation",
+    metaDescription:
+      "Compare bedda.ai and Bardeen. bedda gives you Claude 4, GPT-5, Gemini and 36+ models for $12/mo. Bardeen automates browser workflows. Different tools for different jobs — or combine both.",
+    ogTitle: "bedda.ai vs Bardeen — 36+ AI Models vs Browser Automation",
+    ogDescription:
+      "Bardeen automates repetitive browser tasks. bedda.ai gives you 36+ frontier AI models for research, writing, and analysis at $12/mo. Often complementary, not competing.",
+    heroHeadline: "AI for thinking vs AI for clicking",
+    heroSubtext:
+      "Bardeen automates browser workflows and web scraping. bedda.ai gives you Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and 36+ frontier models for research, writing, and analysis. Many power users subscribe to both.",
+    verdict:
+      "bedda.ai and Bardeen serve different primary use cases. Bardeen excels at automating repetitive browser tasks, CRM updates, and web scraping. bedda.ai excels at AI-assisted thinking, writing, coding, and analysis with 36+ frontier models. If your workflow needs both automation and deep AI reasoning, they complement rather than replace each other — and both together cost less than a ChatGPT Plus subscription.",
+    switchReasons: [
+      "Get Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and 36+ models in one subscription",
+      "Deep research, long-form writing, and complex analysis beyond workflow automation",
+      "Knowledge base RAG — ground AI responses in your own documents",
+      "Multi-model comparison to find the best AI for each task",
+      "Team workspaces and collaborative AI workflows",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$10–49/mo" },
+      { feature: "Frontier AI models (GPT-5, Claude 4, Gemini)", bedda: true, competitor: false },
+      { feature: "36+ model access", bedda: true, competitor: false },
+      { feature: "Browser automation", bedda: false, competitor: true },
+      { feature: "Web scraping", bedda: false, competitor: true },
+      { feature: "CRM workflow automation", bedda: false, competitor: true },
+      { feature: "Long-form writing & analysis", bedda: true, competitor: false },
+      { feature: "Code generation & debugging", bedda: true, competitor: false },
+      { feature: "Web search (AI-powered)", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Bardeen?",
+        a: "Bardeen is a browser automation tool that lets you automate repetitive web tasks without code — scraping data from websites, updating CRMs, sending Slack messages based on triggers, and creating multi-step browser workflows. It's particularly popular for sales teams and ops professionals who do a lot of repetitive data entry or web research. Plans range from $10/mo (Starter) to $49/mo (Professional) with a free tier for limited automations.",
+      },
+      {
+        q: "Are bedda.ai and Bardeen competing products?",
+        a: "They largely serve different needs. Bardeen automates what you'd do manually in a browser. bedda.ai provides AI reasoning, writing, coding, and analysis across 36+ frontier models. Many professionals use both: Bardeen to scrape and organize data, bedda.ai to analyze and act on that data with Claude or GPT-5. The combined cost ($10 + $12/mo) is still less than a single ChatGPT Plus subscription.",
+      },
+      {
+        q: "Does bedda.ai do any automation?",
+        a: "bedda.ai includes MCP (Model Context Protocol) server integration and plugin tools that allow AI-driven actions via API calls. However, it's not a browser automation tool in the same sense as Bardeen — it doesn't interact with browser DOM or automate visual browser workflows. For browser automation specifically, Bardeen or a similar tool is the right choice.",
+      },
+    ],
+  },
+  "bedda-vs-intercom": {
+    slug: "bedda-vs-intercom",
+    competitor: "Intercom",
+    competitorUrl: "https://www.intercom.com",
+    competitorPrice: "$39–139+/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Intercom",
+    metaTitle: "bedda.ai vs Intercom (2026) — General AI vs Customer Support Platform",
+    metaDescription:
+      "Compare bedda.ai and Intercom. bedda.ai gives you 36+ frontier AI models for $12/mo. Intercom is a customer support platform with AI features at $39–139+/mo. Different tools for different needs.",
+    ogTitle: "bedda.ai vs Intercom — Frontier AI vs Customer Support Platform",
+    ogDescription:
+      "Intercom is a customer support platform with AI-powered chat. bedda.ai is a multi-model AI subscription with Claude 4, GPT-5, Gemini, and 36+ models for $12/mo. Different tools for different jobs.",
+    heroHeadline: "Customer support infrastructure vs frontier AI access",
+    heroSubtext:
+      "Intercom provides customer-facing chat infrastructure with AI-powered Fin chatbot. bedda.ai gives your team access to Claude Opus 4.8, GPT-5, and 36+ models for internal work — writing support content, drafting responses, training materials, and analysis.",
+    verdict:
+      "Intercom and bedda.ai aren't direct competitors — Intercom is customer-facing support infrastructure while bedda.ai is a frontier AI workspace for your internal team. If you're paying for both and looking to cut costs, bedda.ai can help write your Intercom knowledge base articles, draft support response templates, and train your support team — but it doesn't replace Intercom's live chat, ticketing, and customer data platform features.",
+    switchReasons: [
+      "Access Claude Opus 4.8 and GPT-5 for drafting support content at $12/mo",
+      "Write knowledge base articles, email templates, and support macros faster",
+      "Research and summarize product feedback with frontier AI models",
+      "Team workspaces for coordinated support content creation",
+      "36+ models lets you match the best AI to each writing or analysis task",
+    ],
+    rows: [
+      { feature: "Monthly price (entry)", bedda: "$12/mo", competitor: "$39+/mo" },
+      { feature: "Frontier AI (GPT-5, Claude 4, Gemini)", bedda: true, competitor: false },
+      { feature: "36+ AI models", bedda: true, competitor: false },
+      { feature: "Customer-facing live chat", bedda: false, competitor: true },
+      { feature: "AI chatbot (Fin)", bedda: false, competitor: true },
+      { feature: "Ticketing & inbox management", bedda: false, competitor: true },
+      { feature: "Customer data platform (CDP)", bedda: false, competitor: true },
+      { feature: "Knowledge base hosting", bedda: false, competitor: true },
+      { feature: "Internal AI writing & drafting", bedda: true, competitor: "Limited" },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code generation & analysis", bedda: true, competitor: false },
+      { feature: "Knowledge base RAG (internal)", bedda: true, competitor: false },
+      { feature: "Team AI workspaces", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Intercom?",
+        a: "Intercom is a customer communications platform that provides AI-powered customer support chat, ticketing, a knowledge base (Help Center), customer data management, and outbound messaging. Its AI feature, Fin, is an AI chatbot that can resolve customer queries automatically using your knowledge base content. Intercom is priced per seat starting at $39/mo (Starter) to $139+/mo per seat for larger teams, making it a significant budget line for growing companies.",
+      },
+      {
+        q: "Can bedda.ai replace Intercom for customer support?",
+        a: "No — bedda.ai doesn't provide customer-facing chat infrastructure, ticketing, or inbox management. It's a frontier AI workspace for internal team use. What it can do is help your support team work faster: drafting knowledge base articles with Claude Opus 4.8, writing email response templates with GPT-5, analyzing support ticket patterns from exported data, and creating training materials. These are complementary workflows.",
+      },
+      {
+        q: "Which bedda.ai models are best for support content writing?",
+        a: "Claude Opus 4.8 for long-form knowledge base articles and empathetic response copy. GPT-5 for structured help documentation and troubleshooting guides. Claude Sonnet 4.6 for fast first-draft response templates. Gemini 2.5 Pro for research on technical topics that need to be explained to non-technical customers.",
+      },
+    ],
+  },
+  "bedda-vs-zendesk-ai": {
+    slug: "bedda-vs-zendesk-ai",
+    competitor: "Zendesk AI",
+    competitorUrl: "https://www.zendesk.com",
+    competitorPrice: "$55–115+/agent/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Zendesk AI",
+    metaTitle: "bedda.ai vs Zendesk AI (2026) — Frontier AI vs Enterprise Support Suite",
+    metaDescription:
+      "Compare bedda.ai and Zendesk AI. bedda.ai gives you 36+ frontier models for $12/mo. Zendesk AI adds AI features to a $55–115+/agent/mo support suite. Very different products for different roles.",
+    ogTitle: "bedda.ai vs Zendesk AI — $12/mo Frontier AI vs $55+/agent Enterprise Support",
+    ogDescription:
+      "Zendesk AI adds AI triage and suggestions to Zendesk's support suite. bedda.ai gives your team 36+ frontier models — Claude 4, GPT-5, Gemini — for $12/mo per person.",
+    heroHeadline: "Frontier AI for your team vs enterprise support infrastructure",
+    heroSubtext:
+      "Zendesk AI augments a full customer support platform. bedda.ai gives every team member access to Claude Opus 4.8, GPT-5, and 36+ frontier models for $12/mo — for writing, research, analysis, and internal AI work that makes your Zendesk agents faster.",
+    verdict:
+      "Zendesk and bedda.ai operate at different layers of a support organization. Zendesk AI is embedded in ticket triage, macros, and customer-facing workflows. bedda.ai is the frontier AI workspace where your agents draft responses, write knowledge articles, analyze ticket trends, and upskill — all for $12/mo per person, a fraction of Zendesk's per-agent cost.",
+    switchReasons: [
+      "Give every agent access to Claude Opus 4.8 and GPT-5 for $12/mo vs $55+ for Zendesk per agent",
+      "Write Zendesk macros, knowledge articles, and canned responses faster with frontier AI",
+      "Analyze exported ticket data with GPT-5 to identify support patterns and FAQ gaps",
+      "Train agents with AI-generated role-play scenarios and response coaching",
+      "36+ models means you use the best AI for each task type",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo/user", competitor: "$55–115+/agent/mo" },
+      { feature: "Frontier AI (GPT-5, Claude 4, Gemini)", bedda: true, competitor: false },
+      { feature: "36+ AI models", bedda: true, competitor: false },
+      { feature: "Ticket management & routing", bedda: false, competitor: true },
+      { feature: "AI ticket triage & intent detection", bedda: false, competitor: true },
+      { feature: "AI suggested macros (in-ticket)", bedda: false, competitor: true },
+      { feature: "Customer-facing AI chat", bedda: false, competitor: true },
+      { feature: "Help Center hosting", bedda: false, competitor: true },
+      { feature: "Internal AI writing & drafting", bedda: true, competitor: "Limited" },
+      { feature: "Knowledge base RAG (internal)", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code generation & API analysis", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Zendesk AI?",
+        a: "Zendesk AI is a set of AI features embedded in the Zendesk customer support platform — including AI-powered ticket triage, intent detection, suggested macros, agent copilot suggestions, and AI-generated knowledge base articles. It's built on top of Zendesk's base platform pricing, which starts at $55/agent/mo (Suite Team) and goes to $115+/agent/mo (Suite Professional). Zendesk AI capabilities are add-ons or included in higher tiers. For large support teams, it's a significant cost.",
+      },
+      {
+        q: "How does bedda.ai complement Zendesk?",
+        a: "bedda.ai works alongside Zendesk as the frontier AI workspace for your team. Support agents use bedda.ai to: draft detailed knowledge base articles with Claude Opus 4.8, write canned response macros with GPT-5, analyze CSV exports of ticket data for pattern identification, create agent training materials and playbooks, and answer complex product questions before writing formal support content. These tasks happen outside the Zendesk ticket — in a flexible AI workspace.",
+      },
+      {
+        q: "Can bedda.ai's AI be integrated with Zendesk?",
+        a: "bedda.ai provides an OpenAI-compatible API (available on Plus and above tiers) that can be integrated into custom workflows. While it doesn't have a native Zendesk app, a developer could use the API to route specific queries through bedda.ai's frontier models. For most teams, the workflow is simpler: use bedda.ai in a browser tab alongside Zendesk to accelerate the writing and analysis tasks that Zendesk's built-in AI doesn't handle as well.",
+      },
+    ],
+  },
+  "bedda-vs-stack-ai": {
+    slug: "bedda-vs-stack-ai",
+    competitor: "Stack AI",
+    competitorUrl: "https://www.stack-ai.com",
+    competitorPrice: "$49–199/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Stack AI",
+    metaTitle: "bedda.ai vs Stack AI (2026) — AI Chat vs No-Code AI Builder",
+    metaDescription:
+      "Compare bedda.ai and Stack AI. bedda.ai is a multi-model AI subscription at $12/mo. Stack AI is a no-code platform for building AI workflows at $49–199/mo. Different tools for different builders.",
+    ogTitle: "bedda.ai vs Stack AI — $12/mo Multi-Model Chat vs $49+ No-Code AI Builder",
+    ogDescription:
+      "Stack AI lets teams build no-code AI workflows and internal tools. bedda.ai gives individuals and teams 36+ frontier models for $12/mo. Often complementary for AI-forward teams.",
+    heroHeadline: "Building AI apps vs using frontier AI directly",
+    heroSubtext:
+      "Stack AI is a no-code platform for building AI-powered internal tools and workflows. bedda.ai gives your team direct access to Claude Opus 4.8, GPT-5, and 36+ frontier models at $12/mo per person — for research, writing, coding, and analysis without building anything.",
+    verdict:
+      "Stack AI and bedda.ai serve different ends of the AI-adoption spectrum. Stack AI is for teams that want to build AI workflows and internal tools without code. bedda.ai is for individuals and teams who want immediate access to frontier models for daily work. Many AI-forward teams use both: bedda.ai for personal AI productivity and Stack AI for deploying AI workflows to non-technical colleagues.",
+    switchReasons: [
+      "Instant access to Claude Opus 4.8, GPT-5, Gemini, and 36+ models without building anything",
+      "Start in 30 seconds vs hours of workflow design and configuration",
+      "Knowledge base RAG already built-in — upload documents and query immediately",
+      "36+ models lets you compare AI outputs to find the best for each task",
+      "$12/mo per person vs $49–199/mo for Stack AI team plans",
+    ],
+    rows: [
+      { feature: "Monthly price (entry)", bedda: "$12/mo", competitor: "$49/mo" },
+      { feature: "Frontier AI (GPT-5, Claude 4, Gemini)", bedda: true, competitor: "Via integrations" },
+      { feature: "36+ AI models in one interface", bedda: true, competitor: false },
+      { feature: "No-code AI workflow builder", bedda: false, competitor: true },
+      { feature: "Custom AI app deployment", bedda: false, competitor: true },
+      { feature: "API endpoint creation (no-code)", bedda: false, competitor: true },
+      { feature: "Vector database (built-in)", bedda: false, competitor: true },
+      { feature: "Knowledge base RAG (personal)", bedda: true, competitor: true },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: true },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: true },
+      { feature: "Instant use (no setup)", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Stack AI?",
+        a: "Stack AI is a no-code platform for building AI-powered applications, workflows, and internal tools. You can connect LLMs (OpenAI, Anthropic, etc.), document stores, databases, and external APIs using a visual drag-and-drop interface, then deploy the resulting AI app as an internal tool or API endpoint. It's popular with ops teams, product teams, and technical non-coders who want to build AI-powered workflows for colleagues. Plans range from $49/mo (Starter) to $199/mo (Business) plus enterprise tiers.",
+      },
+      {
+        q: "Who should use bedda.ai vs Stack AI?",
+        a: "Use bedda.ai if you want direct, immediate access to the best AI models for your personal productivity — writing, research, coding, analysis. No setup, no workflow design, just 36+ frontier models available immediately. Use Stack AI if you want to build AI workflows for your team or organization — automating repetitive processes, creating internal tools, or deploying AI capabilities to colleagues who aren't technical. Many AI-forward teams use both.",
+      },
+      {
+        q: "Does bedda.ai have any workflow or automation features?",
+        a: "bedda.ai includes MCP (Model Context Protocol) server integration and plugin tools that allow AI-driven API actions, along with Projects for organizing AI work with shared context. It's not a no-code workflow builder like Stack AI, but it provides significant workflow value through features like Agent Mode (multi-step reasoning), knowledge base RAG, and team-shared projects. For deploying AI workflows to non-technical users, Stack AI is more appropriate.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {

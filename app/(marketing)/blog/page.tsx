@@ -1611,6 +1611,42 @@ const posts = [
     readingTime: "7 min read",
     category: "Industry Guides",
   },
+  {
+    slug: "ai-for-interior-designers-2026",
+    title: "AI for Interior Designers in 2026: Design Concepts, Client Proposals, and Sourcing",
+    description:
+      "How interior designers use AI in 2026 — for concept development, mood board descriptions, client presentation copy, space planning briefs, and product sourcing narratives.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Industry Guides",
+  },
+  {
+    slug: "best-ai-for-screenwriters-2026",
+    title: "Best AI for Screenwriters in 2026: Script Development, Story Structure, and Dialogue",
+    description:
+      "The best AI models for screenwriters in 2026 — for story development, beat sheets, character arcs, dialogue polish, pitch documents, and coverage responses.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Industry Guides",
+  },
+  {
+    slug: "ai-for-physical-therapists-2026",
+    title: "AI for Physical Therapists in 2026: Documentation, Exercise Plans, and Patient Education",
+    description:
+      "How physical therapists use AI in 2026 — for SOAP note drafting, home exercise program creation, patient education handouts, insurance documentation, and clinical research.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Industry Guides",
+  },
+  {
+    slug: "ai-for-blockchain-developers-2026",
+    title: "AI for Blockchain Developers in 2026: Smart Contracts, Auditing, and Web3 Building",
+    description:
+      "How blockchain and Web3 developers use AI in 2026 — for smart contract development, security auditing, Solidity code review, documentation, and DeFi protocol design.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Developer Tools",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];

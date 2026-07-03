@@ -24943,6 +24943,466 @@ Be specific about line numbers. Suggest fixes.
       </article>
     ),
   },
+  "ai-for-interior-designers-2026": {
+    slug: "ai-for-interior-designers-2026",
+    title: "AI for Interior Designers in 2026: Design Concepts, Client Proposals, and Sourcing",
+    description:
+      "How interior designers use AI in 2026 — for concept development, mood board descriptions, client presentation copy, space planning briefs, and product sourcing narratives.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Industry Guides",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          Interior designers spend a surprising amount of time on written work — client briefs,
+          concept narratives, sourcing descriptions, proposal copy, and presentation text. AI
+          in 2026 handles most of that writing, freeing designers to spend more time on the
+          creative and spatial work that actually requires their expertise.
+        </p>
+
+        <h2>What AI Does Well for Interior Design</h2>
+        <p>
+          AI won&apos;t replace the design eye, space planning intuition, or client relationship
+          skills that define great interior design. But it dramatically accelerates the written
+          work that surrounds those skills:
+        </p>
+        <ul>
+          <li>Concept narrative development from mood board keywords</li>
+          <li>Client proposal and presentation copy</li>
+          <li>Product sourcing descriptions and specification sheets</li>
+          <li>Scope of work documents and contract language</li>
+          <li>Social media captions and portfolio descriptions</li>
+          <li>RFP responses and new business pitches</li>
+          <li>Style guides and design rationale documents</li>
+        </ul>
+
+        <h2>Concept Development and Design Narratives</h2>
+        <p>
+          The design narrative — the story behind why a space looks and feels the way it does —
+          is one of the most important deliverables in residential and commercial design. AI helps
+          you develop, refine, and articulate it:
+        </p>
+        <ul>
+          <li>Describe a mood board in 3–4 adjectives; ask AI to expand into a 300-word concept narrative</li>
+          <li>Generate alternative concept directions from the same client brief to present multiple options</li>
+          <li>Articulate the design rationale for specific material, color, or furniture choices</li>
+          <li>Write the &ldquo;design philosophy&rdquo; section of a project presentation deck</li>
+          <li>Develop the narrative for a specific room or space within a larger project</li>
+        </ul>
+        <p>
+          Claude Opus 4.8 produces the most evocative, atmospheric design copy — it understands
+          aesthetic vocabulary (biophilic, wabi-sabi, tactile contrast, spatial rhythm) without
+          defaulting to generic real estate language.
+        </p>
+
+        <h2>Client Proposals and Presentations</h2>
+        <ul>
+          <li>Write the executive summary and project overview for a design proposal</li>
+          <li>Draft the &ldquo;about our process&rdquo; section tailored to a specific project scope</li>
+          <li>Generate client-facing descriptions of each design phase (schematic, design development, procurement, installation)</li>
+          <li>Write the rationale slides for a presentation deck — why each material was selected, why the layout serves the client&apos;s brief</li>
+          <li>Create a narrative-driven project schedule from a list of milestones</li>
+          <li>Draft follow-up emails after discovery calls that capture the brief accurately</li>
+        </ul>
+
+        <h2>Product Sourcing and Specification Writing</h2>
+        <ul>
+          <li>Write product descriptions for custom furniture pieces and spec sheets</li>
+          <li>Draft vendor briefs for custom upholstery, millwork, or drapery fabricators</li>
+          <li>Generate sourcing alternatives when a specified item is discontinued or out of budget</li>
+          <li>Write installation instructions and sequencing notes for contractors</li>
+          <li>Create a product and materials narrative for a client-facing procurement update</li>
+        </ul>
+
+        <h2>Business Development and Marketing</h2>
+        <ul>
+          <li>Write portfolio project descriptions that tell the design story without technical jargon</li>
+          <li>Generate Instagram and Houzz captions from a list of project details and keywords</li>
+          <li>Draft responses to RFPs for commercial or hospitality projects</li>
+          <li>Write bio and credentials copy for awards submissions or press inquiries</li>
+          <li>Create blog posts on design trends, sustainability topics, or client guides</li>
+          <li>Draft award submissions and press release copy for completed projects</li>
+        </ul>
+
+        <h2>Client Communication</h2>
+        <ul>
+          <li>Draft meeting summaries after design review sessions with clear next steps</li>
+          <li>Write client update emails at each project phase that are clear and non-technical</li>
+          <li>Generate responses to difficult client feedback in a professional, constructive tone</li>
+          <li>Create FAQ documents for clients on procurement timelines, lead times, and delivery</li>
+          <li>Draft scope change communications that explain additional costs clearly</li>
+        </ul>
+
+        <h2>Best Models for Interior Design Work</h2>
+        <ul>
+          <li><strong>Claude Opus 4.8:</strong> Concept narratives, client-facing copy, design rationale, atmospheric descriptions — the best model for aesthetic writing</li>
+          <li><strong>GPT-5:</strong> Structured documents, specification sheets, contract language, SOW drafting, organized proposal sections</li>
+          <li><strong>Gemini 2.5 Pro:</strong> Research on design trends, sustainable materials, building codes, and competitor portfolio analysis</li>
+          <li><strong>Claude Sonnet 4.6:</strong> Faster drafts for routine client emails, sourcing descriptions, and social captions</li>
+        </ul>
+
+        <h2>Getting Started</h2>
+        <p>
+          bedda.ai gives interior design professionals access to Claude Opus 4.8, GPT-5, Gemini 2.5 Pro,
+          and 33+ models for $12/mo. Use the knowledge base to upload your brand guidelines, standard
+          scope of work templates, and project brief formats — AI responses will match your firm&apos;s
+          voice and document structure. Start with a 7-day free trial.
+        </p>
+      </article>
+    ),
+  },
+  "best-ai-for-screenwriters-2026": {
+    slug: "best-ai-for-screenwriters-2026",
+    title: "Best AI for Screenwriters in 2026: Script Development, Story Structure, and Dialogue",
+    description:
+      "The best AI models for screenwriters in 2026 — for story development, beat sheets, character arcs, dialogue polish, pitch documents, and coverage responses.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Industry Guides",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          AI has become a genuine development partner for screenwriters in 2026. It won&apos;t
+          write your script for you — great screenwriting is still deeply personal and
+          craft-driven — but it dramatically accelerates the development, research, structural
+          analysis, and business writing that surrounds the actual script.
+        </p>
+
+        <h2>What AI Does Well for Screenwriters</h2>
+        <ul>
+          <li>Story development: generating premise variations, plot alternatives, and thematic angles</li>
+          <li>Structural analysis: identifying act breaks, beat sheet problems, and pacing issues</li>
+          <li>Character development: backstory, arc mapping, contradiction/contradiction analysis</li>
+          <li>Dialogue polish: identifying on-the-nose dialogue, suggesting subtext alternatives</li>
+          <li>Research: genre precedents, historical details, technical accuracy</li>
+          <li>Pitch materials: loglines, treatments, one-pagers, TV bibles</li>
+          <li>Coverage response: understanding and addressing script notes</li>
+        </ul>
+
+        <h2>Story Development</h2>
+        <p>
+          The most valuable AI use in screenwriting is early development — the messy,
+          iterative process of figuring out what your story is:
+        </p>
+        <ul>
+          <li>Generate 10 premise variations from a single concept seed</li>
+          <li>Explore alternative genre framings for the same core story</li>
+          <li>Identify the central dramatic question and test whether your premise supports it</li>
+          <li>Generate 5-7 possible endings and analyze which best serves the theme</li>
+          <li>Brainstorm act-two complications from a given premise and character set</li>
+          <li>Identify the &ldquo;B story&rdquo; thematic mirror and generate options that reinforce the A story</li>
+        </ul>
+        <p>
+          Claude Opus 4.8 is the best model for story development — it understands narrative
+          structure, character psychology, and genre conventions at a sophisticated level. Ask it
+          to analyze your premise against Save the Cat beats, the Hero&apos;s Journey, or the Contour
+          template — it can work fluently with any structural framework.
+        </p>
+
+        <h2>Beat Sheets and Structural Analysis</h2>
+        <ul>
+          <li>Generate a beat sheet from a short premise description</li>
+          <li>Analyze your existing beat sheet for structural problems (missing midpoint shift, unclear dark night of the soul, etc.)</li>
+          <li>Identify where your act breaks currently fall and whether they land at the right page counts for your format (feature vs. pilot vs. limited series)</li>
+          <li>Generate alternative act-two sequences when you&apos;re stuck in the muddle of the middle</li>
+          <li>Map your current story against a comparable produced script in your genre</li>
+        </ul>
+
+        <h2>Character Development</h2>
+        <ul>
+          <li>Generate detailed character backstories that inform present-day behavior without necessarily appearing in the script</li>
+          <li>Identify contradictions in character behavior across your current draft</li>
+          <li>Map each character&apos;s emotional arc from want to need across all three acts</li>
+          <li>Write character bibles for TV pilots that establish consistent voice, history, and behavioral patterns</li>
+          <li>Generate ensemble relationship maps (who wants what from whom in each scene)</li>
+          <li>Develop antagonist motivation — find the villain who believes they&apos;re the hero</li>
+        </ul>
+
+        <h2>Dialogue and Scene Work</h2>
+        <ul>
+          <li>Identify on-the-nose dialogue and generate subtext alternatives</li>
+          <li>Suggest how a scene could run entirely without dialogue using action and visual storytelling</li>
+          <li>Analyze a scene for dramatic function — does it advance plot, reveal character, or set up future pay-off?</li>
+          <li>Generate 5 different ways a character could deliver the same information with different subtext</li>
+          <li>Polish a specific scene&apos;s pacing — tighten exchanges, cut exposition, sharpen tension</li>
+        </ul>
+        <p>
+          Important: AI dialogue suggestions are a starting point, not a finish line. The specific
+          voice of each character needs to come from you — AI can identify problems and suggest
+          directions, but the actual line that belongs to YOUR character in YOUR script requires
+          your judgment.
+        </p>
+
+        <h2>Pitch Materials</h2>
+        <ul>
+          <li>Write 3-5 logline variations from a premise description (test which formulation is strongest)</li>
+          <li>Draft a one-page treatment from a beat sheet</li>
+          <li>Write the &ldquo;comparable titles&rdquo; section of a pitch deck with analytical framing</li>
+          <li>Draft a TV series bible overview including world, tone, character pillars, and season arc</li>
+          <li>Write the &ldquo;why now&rdquo; thematic relevance section for a pitch document</li>
+          <li>Generate the &ldquo;about the writer&rdquo; section for a pitch packet</li>
+        </ul>
+
+        <h2>Research</h2>
+        <ul>
+          <li>Research genre precedents — what other scripts have explored this premise, and how?</li>
+          <li>Verify historical accuracy of period details, dialogue anachronisms, or setting descriptions</li>
+          <li>Understand technical domains — medicine, law, military, science — well enough to write authentically</li>
+          <li>Explore cultural context and sensitivity considerations for characters and settings outside your own experience</li>
+        </ul>
+        <p>
+          Gemini 2.5 Pro and GPT-5 are strong for research tasks — they synthesize large bodies
+          of information quickly and accurately.
+        </p>
+
+        <h2>Best Models for Screenwriters</h2>
+        <ul>
+          <li><strong>Claude Opus 4.8:</strong> Story development, character work, dialogue analysis, structural critique — the best creative thinking partner</li>
+          <li><strong>GPT-5:</strong> Research, beat sheet generation, structured pitch documents, comparative genre analysis</li>
+          <li><strong>Gemini 2.5 Pro:</strong> Deep research, processing long documents (existing drafts for analysis), cultural context research</li>
+          <li><strong>Claude Sonnet 4.6:</strong> Faster iteration on scene-level work, logline variations, quick structural checks</li>
+        </ul>
+
+        <h2>Getting Started</h2>
+        <p>
+          bedda.ai gives screenwriters access to Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and
+          33+ models for $12/mo. Use the knowledge base to upload your script drafts, beat sheets,
+          and comparable scripts — AI can then analyze your work against your specific materials.
+          Start with a 7-day free trial.
+        </p>
+      </article>
+    ),
+  },
+  "ai-for-physical-therapists-2026": {
+    slug: "ai-for-physical-therapists-2026",
+    title: "AI for Physical Therapists in 2026: Documentation, Exercise Plans, and Patient Education",
+    description:
+      "How physical therapists use AI in 2026 — for SOAP note drafting, home exercise program creation, patient education handouts, insurance documentation, and clinical research.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Industry Guides",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          Physical therapists spend an estimated 30–40% of their clinical time on documentation,
+          insurance paperwork, and administrative tasks. AI in 2026 dramatically reduces this
+          burden — letting PTs focus on hands-on care, patient assessment, and clinical decision
+          making rather than writing.
+        </p>
+
+        <h2>Where AI Helps Physical Therapists</h2>
+        <ul>
+          <li>SOAP note drafting from clinical observations</li>
+          <li>Home exercise program (HEP) creation and instructions</li>
+          <li>Patient education handouts and discharge instructions</li>
+          <li>Insurance prior authorization letters and functional limitation documentation</li>
+          <li>Progress note summaries for referring physicians</li>
+          <li>Clinical research and evidence-based practice summaries</li>
+          <li>Continuing education content and study materials</li>
+        </ul>
+
+        <h2>Clinical Documentation</h2>
+        <p>
+          Documentation is the highest-volume writing task for most PTs. AI accelerates every
+          stage of the documentation workflow:
+        </p>
+
+        <h3>SOAP Notes</h3>
+        <ul>
+          <li>Provide bullet-point observations (ROM measurements, strength grades, functional tests, patient report); AI drafts the full SOAP note in correct clinical format</li>
+          <li>Generate the Assessment section from objective findings and diagnosis codes</li>
+          <li>Draft the Plan section including treatment frequency, modalities, and short/long-term goals with target dates</li>
+          <li>Reformat informal voice memo observations into formal clinical documentation</li>
+        </ul>
+        <p>
+          Critical: all AI-assisted documentation must be reviewed and signed by the treating
+          PT. AI cannot assess the patient — it formats and structures information you provide.
+          Never enter identifiable patient information into external AI systems without a valid BAA.
+        </p>
+
+        <h3>Progress Notes and Discharge Summaries</h3>
+        <ul>
+          <li>Generate a progress summary comparing initial evaluation findings to current status</li>
+          <li>Draft a discharge summary from a series of weekly objective measurements</li>
+          <li>Write a physician progress letter summarizing functional gains and ongoing limitations</li>
+          <li>Create a re-evaluation summary for insurance payer review</li>
+        </ul>
+
+        <h2>Home Exercise Programs</h2>
+        <p>
+          HEP compliance is a major driver of patient outcomes. AI helps create clearer,
+          more motivating exercise instructions:
+        </p>
+        <ul>
+          <li>Generate a complete HEP for a specific diagnosis (rotator cuff tendinopathy, ACL post-op, low back pain) at a given rehab phase</li>
+          <li>Write exercise descriptions in plain language at a 6th-8th grade reading level</li>
+          <li>Create HEP progressions — initial phase, intermediate, advanced — for a specific condition and surgical protocol</li>
+          <li>Write modifications for exercises that accommodate patient limitations (age, comorbidities, equipment availability)</li>
+          <li>Generate FAQ handouts answering common patient questions about their HEP (pain during exercise, frequency, when to stop)</li>
+        </ul>
+
+        <h2>Insurance Documentation</h2>
+        <p>
+          Insurance prior authorization and medical necessity letters are among the most
+          time-consuming PT tasks. AI helps significantly:
+        </p>
+        <ul>
+          <li>Draft prior authorization letters arguing medical necessity for continued skilled PT</li>
+          <li>Write functional limitation documentation that aligns with payer terminology</li>
+          <li>Generate appeals letters for denied claims with clinical evidence framing</li>
+          <li>Draft letters of medical necessity for durable medical equipment (DME) orders</li>
+          <li>Summarize clinical rationale for specific CPT code combinations that require justification</li>
+        </ul>
+
+        <h2>Patient Education</h2>
+        <ul>
+          <li>Create condition-specific education handouts (what is rotator cuff impingement, ACL anatomy and healing timeline, lumbar disc pathology explained)</li>
+          <li>Write post-procedure precautions handouts for common surgeries (TKR, THR, rotator cuff repair, ACDF)</li>
+          <li>Develop posture and ergonomics guides for office workers, manual laborers, or specific job functions</li>
+          <li>Write activity restriction explanations in plain language</li>
+          <li>Create return-to-sport or return-to-work readiness checklists for specific conditions</li>
+        </ul>
+
+        <h2>Clinical Research and Evidence-Based Practice</h2>
+        <ul>
+          <li>Summarize recent systematic reviews and RCTs on treatment approaches for specific conditions</li>
+          <li>Explain clinical guidelines from organizations like APTA, Cochrane, or JOSPT in accessible language</li>
+          <li>Generate quick-reference summaries of outcome measures (DASH, LEFS, NPRS, OPTIMAL) including scoring interpretation</li>
+          <li>Research evidence base for manual therapy techniques, exercise protocols, or modalities for clinical decision-making</li>
+          <li>Generate study questions and case scenarios for mentoring new grads or PT students</li>
+        </ul>
+
+        <h2>Best Models for Physical Therapy</h2>
+        <ul>
+          <li><strong>Claude Opus 4.8:</strong> SOAP notes, insurance letters, patient education — best for clinical writing quality and appropriate professional tone</li>
+          <li><strong>GPT-5:</strong> Structured documentation formats, HEP creation, evidence summaries with specific protocol details</li>
+          <li><strong>Gemini 2.5 Pro:</strong> Processing long clinical guidelines documents, synthesizing multiple research papers simultaneously</li>
+          <li><strong>Claude Haiku 4.5:</strong> Fast, inexpensive responses for quick reference questions during busy clinical schedules</li>
+        </ul>
+
+        <h2>Getting Started</h2>
+        <p>
+          bedda.ai gives physical therapy professionals access to Claude Opus 4.8, GPT-5, Gemini
+          2.5 Pro, and 33+ models for $12/mo. Upload your clinic&apos;s standard protocols, common
+          surgical protocols, and documentation templates to the knowledge base — AI responses
+          will align with your specific clinical workflows. Start with a 7-day free trial.
+        </p>
+      </article>
+    ),
+  },
+  "ai-for-blockchain-developers-2026": {
+    slug: "ai-for-blockchain-developers-2026",
+    title: "AI for Blockchain Developers in 2026: Smart Contracts, Auditing, and Web3 Building",
+    description:
+      "How blockchain and Web3 developers use AI in 2026 — for smart contract development, security auditing, Solidity code review, documentation, and DeFi protocol design.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Developer Tools",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          Blockchain development has a brutal complexity curve — Solidity&apos;s security pitfalls,
+          EVM quirks, gas optimization constraints, and the rapidly evolving L2 ecosystem make
+          every new project a research challenge. AI in 2026 acts as a knowledgeable pair
+          programmer who&apos;s read every EIP, audit report, and protocol documentation so you
+          don&apos;t have to start from scratch.
+        </p>
+
+        <h2>Smart Contract Development</h2>
+        <p>
+          AI accelerates Solidity development across the full stack — from initial contract
+          design through gas optimization:
+        </p>
+        <ul>
+          <li>Generate boilerplate for ERC-20, ERC-721, ERC-1155, and ERC-4626 contracts with OpenZeppelin integration</li>
+          <li>Draft complex DeFi contract logic: AMMs, lending pools, staking, vesting schedules, governance modules</li>
+          <li>Implement specific interfaces (IERC20, IERC721Receiver, EIP-2612 permit) with correct function signatures</li>
+          <li>Write Hardhat and Foundry test suites including fuzz tests and invariant tests</li>
+          <li>Generate deployment scripts with verification for Etherscan, Polygonscan, Arbiscan</li>
+          <li>Write upgrade patterns — UUPS, Transparent Proxy, Diamond (EIP-2535) with correct storage layout</li>
+        </ul>
+        <p>
+          GPT-5 is the strongest model for Solidity code generation — it handles complex contract
+          logic accurately and suggests idiomatic patterns from the current OpenZeppelin and Uniswap
+          codebases. Always review and audit AI-generated contract code before deployment.
+        </p>
+
+        <h2>Security Auditing and Vulnerability Detection</h2>
+        <p>
+          Smart contract vulnerabilities can result in irreversible fund loss. AI provides a
+          useful first pass before professional audit:
+        </p>
+        <ul>
+          <li>Analyze contract code for common vulnerability classes: reentrancy, integer overflow/underflow, access control issues, front-running exposure</li>
+          <li>Review storage layout for proxy upgrade compatibility and slot collision risks</li>
+          <li>Identify unchecked external calls, incorrect use of tx.origin, and unsafe delegatecall patterns</li>
+          <li>Analyze flash loan attack surfaces in DeFi protocols</li>
+          <li>Review oracle manipulation risks and suggest TWAP or circuit breaker mitigations</li>
+          <li>Generate a first-pass audit report with severity classifications for findings</li>
+        </ul>
+        <p>
+          AI security review is a complement to, not a replacement for, professional audit by
+          firms like Trail of Bits, Spearbit, or Code4rena. For any protocol handling significant
+          value, formal audit is essential.
+        </p>
+
+        <h2>Gas Optimization</h2>
+        <ul>
+          <li>Identify gas-expensive patterns in contract code and suggest cheaper alternatives</li>
+          <li>Compare storage layout strategies for gas efficiency (packing structs, using mappings vs arrays)</li>
+          <li>Analyze function selector optimization and suggest ordering for frequently called functions</li>
+          <li>Review event vs state variable usage for cost efficiency</li>
+          <li>Suggest calldata vs memory vs storage parameter locations for specific use cases</li>
+          <li>Evaluate SLOAD/SSTORE patterns and suggest caching strategies</li>
+        </ul>
+
+        <h2>Protocol Architecture and Design</h2>
+        <ul>
+          <li>Design tokenomics models — emission schedules, staking reward curves, buyback-and-burn mechanics</li>
+          <li>Architect multi-sig and governance structures appropriate for your protocol&apos;s stage</li>
+          <li>Evaluate L2 deployment considerations: Optimism vs Arbitrum vs Base vs zkSync differences for your use case</li>
+          <li>Design cross-chain bridge architecture and identify bridge security tradeoffs</li>
+          <li>Draft EIP proposals for new standards or protocol improvements</li>
+          <li>Analyze existing protocol code from Compound, Aave, Uniswap, or Curve as design references</li>
+        </ul>
+
+        <h2>Documentation and Technical Writing</h2>
+        <ul>
+          <li>Generate NatSpec documentation for all public functions from code</li>
+          <li>Write developer-facing documentation for protocol integration</li>
+          <li>Draft technical whitepapers explaining protocol mechanics to a technical audience</li>
+          <li>Create integration guides for dApps connecting to your protocol</li>
+          <li>Write post-mortem reports for incidents or security issues</li>
+          <li>Generate changelog entries from commit history and PR descriptions</li>
+        </ul>
+
+        <h2>Web3 Frontend and Integration</h2>
+        <ul>
+          <li>Generate ethers.js and viem integration code for contract interactions</li>
+          <li>Write wagmi hooks for common Web3 patterns: connect wallet, read/write contract, watch events</li>
+          <li>Implement WalletConnect and RainbowKit integration patterns</li>
+          <li>Write The Graph subgraph schema and mapping files for indexing contract events</li>
+          <li>Generate transaction simulation and event decoding utilities</li>
+        </ul>
+
+        <h2>Best Models for Blockchain Development</h2>
+        <ul>
+          <li><strong>GPT-5:</strong> Solidity code generation, contract architecture, gas optimization, security analysis — strongest on technical blockchain code</li>
+          <li><strong>Claude Opus 4.8:</strong> Protocol design reasoning, security analysis explanations, technical documentation, EIP drafting — best for complex analysis</li>
+          <li><strong>Gemini 2.5 Pro:</strong> Research on protocol specs, EIP analysis, processing long audit reports and codebases</li>
+          <li><strong>DeepSeek R1:</strong> Open-source reasoning model; strong for step-by-step vulnerability analysis and gas calculation verification</li>
+        </ul>
+
+        <h2>Getting Started</h2>
+        <p>
+          bedda.ai gives blockchain developers access to GPT-5, Claude Opus 4.8, DeepSeek R1,
+          and 33+ models for $12/mo. Use the knowledge base to upload protocol specifications,
+          existing contract codebases, and audit reports — AI responses will be grounded in your
+          specific protocol context. Start with a 7-day free trial.
+        </p>
+      </article>
+    ),
+  },
 };
 
 export function generateStaticParams() {
