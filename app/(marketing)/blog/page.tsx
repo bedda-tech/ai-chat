@@ -1719,6 +1719,42 @@ const posts = [
     readingTime: "7 min read",
     category: "Education",
   },
+  {
+    slug: "how-to-use-gpt-5-2026",
+    title: "How to Use GPT-5 in 2026: Features, Tips, and Best Practices",
+    description:
+      "A practical guide to getting the most out of GPT-5 — OpenAI's most capable model. Covers prompting strategies, best use cases, limitations, and how to access it for $12/mo via bedda.ai instead of $20/mo via ChatGPT Plus.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Model Guide",
+  },
+  {
+    slug: "ai-for-dentists-2026",
+    title: "AI for Dentists in 2026: Patient Education, Clinical Notes, and Practice Growth",
+    description:
+      "How dental professionals use AI in 2026 — for patient education materials, treatment explanations, clinical documentation, billing code lookups, staff training, and marketing their practice.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Healthcare",
+  },
+  {
+    slug: "best-ai-for-illustrators-2026",
+    title: "Best AI for Illustrators in 2026: Concept Art, Client Work, and Creative Process",
+    description:
+      "How illustrators use AI in 2026 — for concept ideation, reference generation, client proposals, style exploration, and speeding up the creative process without replacing their artistic voice.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Creative",
+  },
+  {
+    slug: "ai-for-sports-coaches-2026",
+    title: "AI for Sports Coaches in 2026: Game Plans, Player Analysis, and Team Communication",
+    description:
+      "How sports coaches at every level use AI in 2026 — for game planning, scouting reports, practice design, player development plans, performance analysis, and communicating with athletes and parents.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Industry",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];

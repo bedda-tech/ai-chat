@@ -8679,6 +8679,238 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+  "bedda-vs-typingmind": {
+    slug: "bedda-vs-typingmind",
+    competitor: "TypingMind",
+    competitorUrl: "https://typingmind.com",
+    competitorPrice: "$9-39/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs TypingMind",
+    metaTitle: "bedda.ai vs TypingMind (2026) — Multi-Model AI Platform vs ChatGPT UI Wrapper",
+    metaDescription:
+      "Compare bedda.ai and TypingMind. bedda.ai is a $12/mo multi-model AI subscription with 36+ models, billing included. TypingMind ($9-39/mo) is a ChatGPT interface that requires your own OpenAI API key on top of the subscription fee.",
+    ogTitle: "bedda.ai vs TypingMind — $12/mo All-Inclusive vs $9-39/mo + Your Own API Key",
+    ogDescription:
+      "TypingMind is a polished ChatGPT interface — but you need to supply your own OpenAI API key, so you pay TypingMind PLUS your OpenAI usage costs. bedda.ai includes 36+ models in the $12/mo subscription with no API keys needed.",
+    heroHeadline: "All-inclusive multi-model subscription vs a UI wrapper that requires your own API key",
+    heroSubtext:
+      "TypingMind is a well-designed ChatGPT and Claude interface — great UI, personas, chat organization, and prompt templates. But it&apos;s a bring-your-own-API-key product, which means you pay the TypingMind subscription fee AND your OpenAI or Anthropic API usage costs separately. bedda.ai includes 36+ models in the $12/mo price — no API keys, no per-token billing, no surprise invoices.",
+    verdict:
+      "TypingMind is a good product for power users who already have API keys and want a better interface than ChatGPT.com. But the total cost of TypingMind + API usage often exceeds bedda.ai&apos;s $12/mo flat rate — especially for heavy users. bedda.ai also includes models TypingMind doesn&apos;t support natively (Grok 4, Cerebras, Groq) and features like image generation, video generation, knowledge base RAG, and team workspaces. For most users who want to simply pay one price and use frontier AI, bedda.ai is the cleaner, lower-cost choice.",
+    switchReasons: [
+      "No API key required — all 36+ models included in the $12/mo subscription",
+      "No per-token API costs on top of your subscription fee",
+      "Grok 4, Cerebras, Groq, and image/video generation not available in TypingMind",
+      "Knowledge base RAG, team workspaces, and platform bots (Slack, Discord, etc.)",
+      "Total cost is lower for heavy users vs TypingMind + API bill",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo all-in", competitor: "$9-39/mo + API costs" },
+      { feature: "API key required", bedda: false, competitor: true },
+      { feature: "36+ AI models included", bedda: true, competitor: false },
+      { feature: "GPT-5 / Claude / Gemini access", bedda: true, competitor: "BYOK only" },
+      { feature: "Grok 4 / Groq / Cerebras", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Knowledge base RAG", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: true },
+      { feature: "Prompt library", bedda: true, competitor: true },
+      { feature: "Persona / character mode", bedda: false, competitor: true },
+      { feature: "Platform bots (Slack, Discord)", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is TypingMind?",
+        a: "TypingMind is a third-party web interface for ChatGPT and other AI models. It provides a more organized and feature-rich chat experience than ChatGPT.com — with folders, personas, prompt templates, and better chat history management. TypingMind requires you to bring your own OpenAI, Anthropic, or other API key. You pay TypingMind a monthly subscription ($9-39/mo) AND your API provider for actual usage (OpenAI charges per token). The two costs are separate.",
+      },
+      {
+        q: "Is TypingMind cheaper than bedda.ai?",
+        a: "At face value, TypingMind Personal ($9/mo) looks cheaper than bedda.ai ($12/mo). But TypingMind doesn't include any AI usage — you need to pay OpenAI or Anthropic separately for every message you send. A moderate ChatGPT user spending ~$10-15/mo on API costs is actually paying $19-24/mo total for TypingMind + API. bedda.ai's $12/mo includes all AI usage with no per-token billing.",
+      },
+      {
+        q: "Does TypingMind include Grok or other models besides OpenAI and Anthropic?",
+        a: "TypingMind supports any OpenAI-compatible API endpoint, so you can connect it to various providers. However, you need API access and keys for each provider separately. bedda.ai includes Grok 4, Groq Llama, Cerebras, Mistral, DeepSeek, Google Gemini, and more natively — no separate API accounts required.",
+      },
+      {
+        q: "What does bedda.ai have that TypingMind doesn't?",
+        a: "bedda.ai includes image generation (DALL-E 3, Imagen 3), video generation (Kling), knowledge base RAG for uploading documents, cross-conversation memory, team workspaces with shared projects, platform bots for Slack, Discord, GitHub, and Telegram, and an Image Studio and Video Studio. TypingMind focuses on chat organization and personas but doesn't include these adjacent AI capabilities.",
+      },
+    ],
+  },
+  "bedda-vs-jan-ai": {
+    slug: "bedda-vs-jan-ai",
+    competitor: "Jan.ai",
+    competitorUrl: "https://jan.ai",
+    competitorPrice: "Free (local)",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Jan.ai",
+    metaTitle: "bedda.ai vs Jan.ai (2026) — Cloud Multi-Model AI vs Free Local AI",
+    metaDescription:
+      "Compare bedda.ai and Jan.ai. bedda.ai is a $12/mo cloud multi-model subscription with 36+ frontier models. Jan.ai is a free open-source app for running AI models locally on your own hardware — private but requires a capable GPU.",
+    ogTitle: "bedda.ai vs Jan.ai — $12/mo Frontier Models vs Free Local AI (Privacy-First)",
+    ogDescription:
+      "Jan.ai is free and runs entirely on your device with no data leaving your computer. bedda.ai is $12/mo and gives you GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, and 33 more frontier models in the cloud. Different tools for different priorities.",
+    heroHeadline: "Cloud frontier models vs private local AI — very different priorities, very different tools",
+    heroSubtext:
+      "Jan.ai is an excellent choice if privacy is your absolute top priority and you have a capable GPU — all processing happens locally, nothing leaves your machine, it&apos;s completely free. bedda.ai is the choice if you want GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, and the latest frontier models without needing a high-end GPU — at $12/mo with no local setup required.",
+    verdict:
+      "Jan.ai and bedda.ai serve fundamentally different user needs. Jan.ai is ideal for privacy-first users, developers experimenting with local models, or anyone who wants a completely offline AI setup and has appropriate hardware. bedda.ai is ideal for users who want the best frontier model quality (GPT-5, Claude Opus 4.8, Gemini 2.5 Pro) without hardware constraints, plus image generation, video generation, team features, and platform integrations. The choice is really about whether privacy-first local inference outweighs frontier model quality — for most professionals and teams, bedda.ai&apos;s frontier model access is the better tradeoff.",
+    switchReasons: [
+      "GPT-5, Claude Opus 4.8, and Gemini 2.5 Pro — not available in any local model",
+      "No GPU required — frontier model quality on any device",
+      "Image generation, video generation, and Image Studio not available locally",
+      "Team workspaces, shared projects, and knowledge base RAG",
+      "Platform bots for Slack, Discord, GitHub, and Telegram",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "Free" },
+      { feature: "GPT-5 / Claude Opus 4.8 / Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Frontier model quality", bedda: true, competitor: false },
+      { feature: "Local / offline processing", bedda: false, competitor: true },
+      { feature: "Complete data privacy (no cloud)", bedda: false, competitor: true },
+      { feature: "No GPU required", bedda: true, competitor: false },
+      { feature: "Open source", bedda: false, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Knowledge base RAG", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "Platform bots", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Jan.ai?",
+        a: "Jan.ai is a free, open-source desktop application for running large language models locally on your computer. It downloads and runs open-weight models (Llama 4, Mistral, Phi, Gemma, etc.) entirely on your hardware — no internet connection needed, no data sent to any server. Jan.ai is popular with privacy-conscious users, developers, and researchers who want complete control over their AI setup.",
+      },
+      {
+        q: "How does Jan.ai model quality compare to bedda.ai?",
+        a: "The models available in Jan.ai are open-weight models (Llama 4, Mistral, Phi-4, Gemma, etc.) which are excellent but meaningfully below the quality of GPT-5, Claude Opus 4.8, and Gemini 2.5 Pro. For complex reasoning, nuanced writing, and advanced analysis, the frontier models available in bedda.ai produce substantially better results. If model quality is your top priority, bedda.ai has a clear advantage.",
+      },
+      {
+        q: "Do I need a powerful computer to use Jan.ai?",
+        a: "Yes — running local AI models requires significant hardware. Smaller models (7B parameters) can run on 8-16GB of RAM, but larger, higher-quality models require 24-64GB+ of RAM or a capable NVIDIA GPU with sufficient VRAM. bedda.ai requires no local GPU — frontier models run in the cloud, accessible from any device including phones and older computers.",
+      },
+      {
+        q: "Can I use Jan.ai and bedda.ai together?",
+        a: "Yes — some users use Jan.ai for highly sensitive work they want to keep completely offline (internal documents, private research) and bedda.ai for tasks where frontier model quality matters (client deliverables, complex analysis, creative work). The two tools are complementary if you have strong privacy requirements for some tasks but need frontier model capability for others.",
+      },
+    ],
+  },
+  "bedda-vs-brainly": {
+    slug: "bedda-vs-brainly",
+    competitor: "Brainly",
+    competitorUrl: "https://brainly.com",
+    competitorPrice: "$24/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Brainly",
+    metaTitle: "bedda.ai vs Brainly (2026) — Multi-Model AI vs Student Q&A Platform",
+    metaDescription:
+      "Compare bedda.ai and Brainly. bedda.ai is a $12/mo multi-model AI subscription with 36+ frontier models for any AI task. Brainly ($24/mo) is a student homework help platform with AI features and a community Q&A network.",
+    ogTitle: "bedda.ai vs Brainly — $12/mo Frontier AI vs $24/mo Student Homework Help",
+    ogDescription:
+      "Brainly is a student community homework help platform with AI features. bedda.ai gives students access to GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, and 33+ frontier models for half the price of Brainly Plus — for homework help AND any other AI task.",
+    heroHeadline: "Specialized student Q&A platform vs frontier AI models at half the price",
+    heroSubtext:
+      "Brainly built its reputation as a peer-to-peer homework help community, and its AI features help students get quick answers across subjects. bedda.ai gives students access to GPT-5, Claude Opus 4.8, and 34 other frontier models for $12/mo — half Brainly&apos;s $24/mo price — with the ability to use AI for far more than homework: writing, research, coding, and professional tasks.",
+    verdict:
+      "For students specifically focused on quick homework answers and problem explanations, Brainly has a dedicated product experience. But at $24/mo, it&apos;s twice the price of bedda.ai, which gives students access to GPT-5 and Claude Opus 4.8 — models that can explain any concept in multiple ways, work through math step-by-step, help with essay writing, and handle college-level subjects with more depth than Brainly&apos;s AI. For students who want the best AI for academic work at the lowest cost, bedda.ai is the stronger value — especially with the 7-day free trial.",
+    switchReasons: [
+      "$12/mo vs $24/mo — half the price for frontier model quality",
+      "GPT-5 and Claude Opus 4.8 explain complex concepts better than specialized homework tools",
+      "Use AI for essays, research, coding, and professional tasks beyond homework",
+      "36+ models for any subject — not limited to K-12 curriculum",
+      "Knowledge base RAG to upload study materials and course documents",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$24/mo" },
+      { feature: "GPT-5 / Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "36+ frontier models", bedda: true, competitor: false },
+      { feature: "Math problem solving", bedda: true, competitor: true },
+      { feature: "Essay writing assistance", bedda: true, competitor: true },
+      { feature: "Peer homework community", bedda: false, competitor: true },
+      { feature: "Step-by-step explanations", bedda: true, competitor: true },
+      { feature: "College-level subject depth", bedda: true, competitor: false },
+      { feature: "Coding assistance", bedda: true, competitor: false },
+      { feature: "Knowledge base (upload notes)", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Team / study group workspaces", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Brainly?",
+        a: "Brainly is a student-focused homework help platform that started as a peer Q&A community where students could post questions and get answers from other students. It has since added AI features (Brainly Tutor) that provide instant AI-generated explanations and step-by-step solutions. Brainly Plus costs $24/mo and gives unlimited AI tutor access across subjects including math, science, history, English, and foreign languages.",
+      },
+      {
+        q: "Can bedda.ai help with homework as well as Brainly?",
+        a: "Yes — GPT-5 and Claude Opus 4.8 via bedda.ai can explain concepts, work through math problems step-by-step, help with essay structure, and provide detailed explanations across all K-12 and college subjects. For complex math, Claude and GPT-5 actually have stronger reasoning capabilities than purpose-built homework tools. The key difference is that bedda.ai also covers professional and adult use cases — it's an AI for life, not just an academic tool.",
+      },
+      {
+        q: "Is bedda.ai appropriate for high school and college students?",
+        a: "Yes — bedda.ai works well for students at all levels. For high school students, Claude and GPT-5 can explain chemistry, physics, calculus, history, and literature at the appropriate level. For college students, Gemini 2.5 Pro's large context window is useful for processing long academic papers, and Claude Opus 4.8 produces strong academic writing and analysis. The knowledge base feature lets students upload course materials and ask AI questions grounded in their specific curriculum.",
+      },
+      {
+        q: "Does Brainly have a free tier?",
+        a: "Brainly has a free tier with limited AI tutor access and community answers. Brainly Plus ($24/mo) removes limits and provides unlimited AI tutor access. bedda.ai also has a free tier with 500 messages/mo. bedda.ai Plus at $12/mo gives unlimited usage and full access to all 36+ frontier models — at exactly half Brainly Plus's price.",
+      },
+    ],
+  },
+  "bedda-vs-miro-ai": {
+    slug: "bedda-vs-miro-ai",
+    competitor: "Miro AI",
+    competitorUrl: "https://miro.com",
+    competitorPrice: "$20-24/user/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Miro AI",
+    metaTitle: "bedda.ai vs Miro AI (2026) — Multi-Model AI Chat vs AI Visual Collaboration",
+    metaDescription:
+      "Compare bedda.ai and Miro AI. bedda.ai is a $12/mo multi-model AI subscription with 36+ models for writing, research, and creation. Miro AI ($20-24/user/mo) adds AI features to Miro's visual collaboration whiteboard platform.",
+    ogTitle: "bedda.ai vs Miro AI — $12/mo AI for Everything vs $20-24/mo Visual Collaboration + AI",
+    ogDescription:
+      "Miro AI adds AI-powered sticky note clustering, diagram generation, and content summarization to Miro's visual whiteboard. bedda.ai gives you 36+ frontier models for writing, research, image generation, and any AI task — at $8-12/mo less per user than Miro.",
+    heroHeadline: "AI embedded in a visual collaboration tool vs a dedicated multi-model AI platform",
+    heroSubtext:
+      "Miro AI is a set of AI features built into Miro&apos;s whiteboard platform — useful for teams already working in Miro. bedda.ai is a dedicated AI platform with 36+ frontier models, knowledge base RAG, team workspaces, and platform integrations. If your team needs visual collaboration, Miro is the right tool; if your team needs AI for writing, research, and creative work, bedda.ai delivers far more capability per dollar.",
+    verdict:
+      "Miro is an excellent visual collaboration platform, and its AI features (sticky note clustering, diagram generation, content summarization within boards) add genuine value to teams already working in Miro. But at $20-24/user/mo, Miro AI is expensive as an AI subscription. bedda.ai gives teams access to GPT-5, Claude Opus 4.8, and 34 other frontier models in team workspaces for $12/mo per seat — with stronger AI capabilities for writing, research, and creation. For teams who need visual collaboration, Miro makes sense. For teams who primarily need AI for knowledge work, bedda.ai is a more cost-effective choice.",
+    switchReasons: [
+      "$12/mo vs $20-24/user/mo — 40-50% lower cost per seat",
+      "GPT-5, Claude Opus 4.8, and 34 more frontier models — not just whiteboard AI",
+      "Team workspaces, shared knowledge base, and project organization",
+      "Image and video generation, web search, code execution in one subscription",
+      "Platform bots for Slack, Discord, GitHub — not available in Miro AI",
+    ],
+    rows: [
+      { feature: "Monthly price per user", bedda: "$12/mo", competitor: "$20-24/mo" },
+      { feature: "36+ frontier AI models", bedda: true, competitor: false },
+      { feature: "Visual whiteboard", bedda: false, competitor: true },
+      { feature: "Sticky note clustering / synthesis", bedda: false, competitor: true },
+      { feature: "Diagram and flowchart generation", bedda: false, competitor: true },
+      { feature: "AI writing and research (frontier models)", bedda: true, competitor: false },
+      { feature: "Knowledge base RAG", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: true },
+      { feature: "Slack / Discord / GitHub bots", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Miro AI?",
+        a: "Miro AI is a set of AI features built into the Miro visual collaboration platform. Key features include: AI-powered sticky note clustering (groups related notes automatically), diagram and flowchart generation from text descriptions, content summarization within boards, and a 'mind map from topic' generator. Miro AI is included in Miro's Business and Enterprise plans ($20-24/user/mo) and is not available as a standalone AI subscription.",
+      },
+      {
+        q: "Can bedda.ai replace Miro for visual collaboration?",
+        a: "No — bedda.ai doesn't have a visual whiteboard, sticky note boards, or real-time collaborative drawing canvas. If your team's primary workflow involves visual brainstorming, journey mapping, or whiteboard-style collaboration, Miro is the right tool. bedda.ai is for AI writing, research, image generation, and knowledge work — it doesn't replicate Miro's visual collaboration features.",
+      },
+      {
+        q: "Why would a team use bedda.ai instead of Miro AI?",
+        a: "Teams switch to bedda.ai when they need frontier AI model quality for writing, research, and content creation — not just AI features embedded in a visual tool. bedda.ai gives teams GPT-5, Claude Opus 4.8, and Gemini 2.5 Pro for research briefs, long-form content, code review, and complex analysis, plus image and video generation, platform bots, and team knowledge bases. These capabilities go well beyond what Miro AI provides.",
+      },
+      {
+        q: "Can teams use bedda.ai and Miro together?",
+        a: "Yes — many teams use Miro for visual collaboration sessions (workshops, journey mapping, sprint planning) and bedda.ai for AI writing, research, and content generation. The outputs from a Miro brainstorming session can be pasted into bedda.ai for synthesis, drafting, and development. The bedda.ai Slack bot also means teams can invoke AI directly in Slack without switching to another tool.",
+      },
+    ],
+  },
   "bedda-vs-adobe-express": {
     slug: "bedda-vs-adobe-express",
     competitor: "Adobe Express",

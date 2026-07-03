@@ -25797,6 +25797,386 @@ Be specific about line numbers. Suggest fixes.
       </article>
     ),
   },
+  "how-to-use-gpt-5-2026": {
+    slug: "how-to-use-gpt-5-2026",
+    title: "How to Use GPT-5 in 2026: Features, Tips, and Best Practices",
+    description:
+      "A practical guide to getting the most out of GPT-5 — OpenAI's most capable model. Covers prompting strategies, best use cases, limitations, and how to access it for $12/mo via bedda.ai instead of $20/mo via ChatGPT Plus.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Model Guide",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          GPT-5 is OpenAI&apos;s most capable model and a significant leap over GPT-4o — with
+          stronger reasoning, better instruction following, higher-quality writing, and more
+          reliable tool use. If you&apos;ve been using ChatGPT and wondering whether GPT-5
+          is worth upgrading for, or if you&apos;re new to AI and want a practical guide to
+          getting real results, this is it.
+        </p>
+
+        <h2>What GPT-5 Is Good At</h2>
+        <ul>
+          <li><strong>Long-form writing:</strong> Essays, reports, articles, and structured documents with consistent voice and argument flow</li>
+          <li><strong>Coding:</strong> Writing, debugging, and explaining code across all major languages — stronger at large codebases than GPT-4o</li>
+          <li><strong>Instruction following:</strong> GPT-5 is significantly better at following complex, multi-step instructions precisely</li>
+          <li><strong>Reasoning tasks:</strong> Multi-step math, logic puzzles, and analytical problems where GPT-4o would sometimes go astray</li>
+          <li><strong>Summarization:</strong> Condensing long documents, reports, or research papers while preserving key details</li>
+          <li><strong>Structured output:</strong> Generating well-formatted JSON, tables, outlines, and other structured formats reliably</li>
+        </ul>
+
+        <h2>Prompting Strategies That Work</h2>
+        <h3>Be specific about format and length</h3>
+        <p>
+          GPT-5 responds well to explicit format instructions. Instead of &quot;write a blog post about AI&quot;,
+          say &quot;write a 700-word blog post about AI trends in healthcare for a non-technical audience,
+          with 3 subheadings and a call to action at the end.&quot; The more specific you are, the closer
+          the first draft is to what you need.
+        </p>
+
+        <h3>Give context and role</h3>
+        <p>
+          GPT-5 performs better when you establish context. &quot;You are a senior product manager reviewing
+          a competitor&apos;s feature announcement. Analyze this for strategic implications&quot; produces better
+          output than &quot;analyze this announcement.&quot; The role helps the model calibrate tone, depth, and
+          the type of insights to surface.
+        </p>
+
+        <h3>Use iterative refinement</h3>
+        <p>
+          Don&apos;t expect perfection in one shot on complex tasks. Generate a first draft, then follow
+          up with specific refinements: &quot;Make the introduction more compelling&quot;, &quot;Add a section on
+          implementation challenges&quot;, or &quot;Rewrite the conclusion to be less generic.&quot; GPT-5 handles
+          iterative editing very well.
+        </p>
+
+        <h3>Break complex tasks into steps</h3>
+        <p>
+          For multi-stage tasks (e.g., research → outline → write → edit), get better results by
+          doing each stage in a separate prompt rather than asking for everything at once. This keeps
+          the model focused and lets you course-correct between stages.
+        </p>
+
+        <h2>Best Use Cases for GPT-5</h2>
+        <ul>
+          <li><strong>Content creation:</strong> Blog posts, social media content, email copy, landing pages</li>
+          <li><strong>Code assistance:</strong> Writing functions, debugging errors, explaining complex code</li>
+          <li><strong>Data analysis:</strong> Interpreting datasets, writing Python/SQL for analysis, explaining results</li>
+          <li><strong>Document processing:</strong> Summarizing reports, extracting key points, creating briefings</li>
+          <li><strong>Research assistance:</strong> Synthesizing information, comparing options, creating structured summaries</li>
+          <li><strong>Customer communication:</strong> Drafting emails, support responses, proposals, and follow-ups</li>
+        </ul>
+
+        <h2>GPT-5 vs Claude Opus 4.8 vs Gemini 2.5 Pro</h2>
+        <p>
+          GPT-5 is the best general-purpose model for coding and structured tasks. Claude Opus 4.8 produces
+          the best long-form writing quality and nuanced analysis — many professionals prefer it for
+          anything requiring judgment or tone. Gemini 2.5 Pro leads on very long documents (up to 1M
+          token context) and technical reasoning. In practice, different tasks benefit from different
+          models — which is why having access to all three matters.
+        </p>
+
+        <h2>How to Access GPT-5</h2>
+        <p>
+          GPT-5 is available via ChatGPT Plus ($20/mo, OpenAI only) or via bedda.ai ($12/mo),
+          which gives you GPT-5 alongside Claude Opus 4.8, Gemini 2.5 Pro, Grok 4, and 32+ other
+          models in a single subscription. If you use multiple AI models or want to compare outputs
+          across providers, bedda.ai is the more cost-effective option — you get GPT-5 plus
+          33 other frontier models for $8/mo less than ChatGPT Plus alone.
+        </p>
+
+        <h2>Common Mistakes to Avoid</h2>
+        <ul>
+          <li><strong>Vague prompts:</strong> &quot;Write something about X&quot; gives generic output — specify audience, length, format, and goal</li>
+          <li><strong>Accepting the first draft:</strong> GPT-5 is iterative — use follow-up prompts to refine</li>
+          <li><strong>Not checking facts:</strong> GPT-5 can confidently state incorrect information — always verify claims for anything published</li>
+          <li><strong>Using GPT-5 for everything:</strong> Claude Opus 4.8 often produces better creative writing; Gemini 2.5 Pro handles very long documents better</li>
+          <li><strong>Single-model dependency:</strong> Different tasks benefit from different models — use model comparison to find what works best for your workflow</li>
+        </ul>
+
+        <h2>Getting Started</h2>
+        <p>
+          bedda.ai gives you access to GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, and 33+ other
+          frontier models for $12/mo. Start with a 7-day free trial — no credit card required.
+          The model comparison arena lets you send the same prompt to multiple models side-by-side
+          so you can see which one produces the best output for your specific use case.
+        </p>
+      </article>
+    ),
+  },
+  "ai-for-dentists-2026": {
+    slug: "ai-for-dentists-2026",
+    title: "AI for Dentists in 2026: Patient Education, Clinical Notes, and Practice Growth",
+    description:
+      "How dental professionals use AI in 2026 — for patient education materials, treatment explanations, clinical documentation, billing code lookups, staff training, and marketing their practice.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Healthcare",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          Dental practices run on two tracks simultaneously: delivering excellent clinical care and
+          operating a successful business. AI in 2026 helps with both — reducing the administrative
+          burden on dentists and staff while improving patient communication and education. Here&apos;s
+          how dental professionals are putting AI to work in their practices.
+        </p>
+
+        <h2>Patient Education Materials</h2>
+        <ul>
+          <li>Write clear, jargon-free explanations of diagnoses (e.g., periodontal disease, tooth decay stages, malocclusion) for patients to take home</li>
+          <li>Create procedure explainers for common treatments — root canals, implants, Invisalign, crowns — in patient-friendly language</li>
+          <li>Generate FAQ documents addressing common patient concerns before major procedures</li>
+          <li>Create post-procedure care instructions with specific timelines (what to avoid for 24 hours, 48 hours, 1 week)</li>
+          <li>Write pediatric-appropriate explanations and scripts for child patients at different age levels</li>
+          <li>Translate patient materials into Spanish, Mandarin, or other languages spoken by your patient population</li>
+        </ul>
+
+        <h2>Clinical Documentation</h2>
+        <ul>
+          <li>Draft SOAP notes from bullet-point exam findings — AI formats them into structured clinical records</li>
+          <li>Write treatment plans with rationale for insurance documentation and patient records</li>
+          <li>Generate referral letters to specialists (periodontists, oral surgeons, orthodontists) with relevant clinical history</li>
+          <li>Create perio charting summaries and periodontal assessment narratives for records</li>
+          <li>Draft informed consent forms for specific procedures that your attorney can then review</li>
+          <li>Write clinical descriptions for radiograph findings to include in patient records</li>
+        </ul>
+
+        <h2>Coding and Insurance</h2>
+        <ul>
+          <li>Look up CDT (Current Dental Terminology) codes for procedures and confirm billing accuracy</li>
+          <li>Write narratives for insurance pre-authorization requests — AI can draft the clinical justification for implants, crowns, and periodontal treatment</li>
+          <li>Generate appeal letters for denied claims with clinical justification language</li>
+          <li>Check coverage coordination for dual-insurance patients by describing the situation and asking AI to explain typical COB rules</li>
+          <li>Draft documentation to support medical cross-coding for procedures like sleep apnea appliances that have medical billing pathways</li>
+        </ul>
+
+        <h2>Staff Training and Protocols</h2>
+        <ul>
+          <li>Write infection control protocols and OSHA compliance checklists for training materials</li>
+          <li>Create onboarding guides for new dental assistants or front desk staff covering practice-specific workflows</li>
+          <li>Generate scripts for front desk staff on handling common patient calls — new patient inquiries, emergency appointments, insurance questions</li>
+          <li>Draft sterilization and instrument processing protocols in step-by-step format</li>
+          <li>Create continuing education summaries for staff after they complete CE courses</li>
+          <li>Write performance review templates and training plans for specific staff development goals</li>
+        </ul>
+
+        <h2>Practice Marketing</h2>
+        <ul>
+          <li>Write blog posts targeting local SEO keywords (&quot;dentist near me&quot;, &quot;teeth whitening [city]&quot;, &quot;dental implants cost&quot;)</li>
+          <li>Draft Google Business Profile posts announcing new services, seasonal promotions, or patient education content</li>
+          <li>Create before/after case description templates that comply with patient privacy requirements</li>
+          <li>Write email newsletter content for patient re-activation campaigns</li>
+          <li>Generate social media content series (oral hygiene tips, smile makeover facts, myth-busting posts)</li>
+          <li>Draft responses to Google and Yelp reviews — both positive acknowledgments and diplomatic responses to negative reviews</li>
+        </ul>
+
+        <h2>Patient Communication</h2>
+        <ul>
+          <li>Write overdue-recall reminder sequences (email + text variations for different delay intervals)</li>
+          <li>Draft treatment acceptance follow-up emails for patients who didn&apos;t schedule recommended procedures</li>
+          <li>Create new patient welcome communications including what to expect at their first visit</li>
+          <li>Write financial arrangement explanation emails for patients on payment plans</li>
+          <li>Generate birthday and milestone communication templates for patient retention</li>
+        </ul>
+
+        <h2>Best Models for Dental Professionals</h2>
+        <ul>
+          <li><strong>Claude Opus 4.8:</strong> Clinical documentation, insurance narratives, and patient communication — nuanced writing quality</li>
+          <li><strong>GPT-5:</strong> Structured forms, coding lookups, and marketing content with consistent formatting</li>
+          <li><strong>Gemini 2.5 Pro:</strong> Research on new materials, techniques, or clinical literature (large context window)</li>
+          <li><strong>Claude Haiku 4.5:</strong> Quick in-office lookups and rapid draft generation between patients</li>
+        </ul>
+
+        <h2>Getting Started</h2>
+        <p>
+          bedda.ai gives dental practices access to Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and 33+
+          models for $12/mo. You can upload your practice&apos;s standard forms, fee schedules, and
+          protocol documents to the knowledge base so AI-generated content aligns with your specific
+          practice style and offerings. Start with a 7-day free trial.
+        </p>
+      </article>
+    ),
+  },
+  "best-ai-for-illustrators-2026": {
+    slug: "best-ai-for-illustrators-2026",
+    title: "Best AI for Illustrators in 2026: Concept Art, Client Work, and Creative Process",
+    description:
+      "How illustrators use AI in 2026 — for concept ideation, reference generation, client proposals, style exploration, and speeding up the creative process without replacing their artistic voice.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Creative",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          The relationship between illustrators and AI in 2026 is more nuanced than the early &quot;AI will
+          replace artists&quot; narrative. Professional illustrators are using AI as a sophisticated tool
+          for parts of their workflow — concept exploration, client communication, reference generation,
+          and business management — while the actual illustration work remains distinctly human. Here&apos;s
+          how working illustrators are integrating AI into their practice.
+        </p>
+
+        <h2>Concept Development and Ideation</h2>
+        <ul>
+          <li>Generate multiple concept directions for a brief — describe the project constraints and ask for 8-10 distinct conceptual approaches to sketch from</li>
+          <li>Use image generation to create mood boards and visual references before committing to a final direction</li>
+          <li>Explore color palette options by describing the emotional tone you want and getting specific hex code recommendations with rationale</li>
+          <li>Ask AI to describe how different art history movements would interpret a given subject — Art Nouveau, Constructivism, mid-century modernism — as inspiration for stylistic exploration</li>
+          <li>Generate thumbnail-level composition ideas quickly to narrow down which directions are worth developing</li>
+          <li>Use AI to research the visual language of specific genres (editorial, children&apos;s book, technical, scientific) you&apos;re working in</li>
+        </ul>
+
+        <h2>Client Communication and Proposals</h2>
+        <ul>
+          <li>Write creative briefs that translate vague client requests into specific, actionable direction</li>
+          <li>Draft project proposals with scope, timeline, revision rounds, and usage rights clearly defined</li>
+          <li>Write follow-up questions to ask clients who give unclear direction (&quot;We want something fun and fresh&quot;) to get actionable specifics</li>
+          <li>Create revision feedback response templates that set boundaries professionally while remaining collaborative</li>
+          <li>Draft licensing agreement language for different usage rights (editorial vs commercial, print vs digital, exclusive vs non-exclusive)</li>
+          <li>Write art direction documents that communicate your visual intent to clients for feedback before starting detailed work</li>
+        </ul>
+
+        <h2>Research and Reference</h2>
+        <ul>
+          <li>Ask AI for detailed descriptions of how objects, environments, or figures would look from specific angles — useful when reference photos don&apos;t exist for what you need</li>
+          <li>Get anatomical detail descriptions for hands, faces, or figures in specific poses</li>
+          <li>Research historical accuracy for period pieces — what clothing, objects, and environments looked like in specific eras</li>
+          <li>Get descriptions of how light behaves in specific conditions (golden hour in an industrial setting, underwater light rays, overcast diffuse lighting)</li>
+          <li>Research the symbolic meaning of visual elements across different cultures to avoid unintentional misuse</li>
+          <li>Ask about technical printing or production requirements for illustration formats you&apos;re less familiar with</li>
+        </ul>
+
+        <h2>Business and Professional Development</h2>
+        <ul>
+          <li>Write artist statements for gallery submissions, portfolio websites, and grant applications</li>
+          <li>Draft cold pitch emails to art directors, publishers, and agencies with your illustration style and target market</li>
+          <li>Create pricing calculators by describing your hourly rate, typical project scope, and overhead to get project rate recommendations</li>
+          <li>Write blog posts about your illustration process for portfolio SEO and thought leadership</li>
+          <li>Generate social media captions for work-in-progress posts that explain your process without over-explaining</li>
+          <li>Draft contracts and kill fees with usage rights language that protects your work</li>
+        </ul>
+
+        <h2>Style Exploration and Experimentation</h2>
+        <ul>
+          <li>Use image generation to quickly visualize how a style direction might look before committing hours to it — useful for pitching style options to clients</li>
+          <li>Ask AI to describe the technical characteristics of illustration styles you admire (line weight, color handling, texture approach, composition rules)</li>
+          <li>Generate text descriptions of experimental visual concepts that you can then interpret through your own hand and style</li>
+          <li>Use AI to push beyond your comfort zone by asking for unexpected conceptual combinations you wouldn&apos;t reach on your own</li>
+        </ul>
+
+        <h2>Best Models for Illustrators</h2>
+        <ul>
+          <li><strong>Claude Opus 4.8:</strong> Creative concept development, client proposals, and nuanced writing tasks — the best model for creative work</li>
+          <li><strong>DALL-E 3 (via bedda.ai Image Studio):</strong> Quick concept visualization and mood board reference generation</li>
+          <li><strong>Gemini 2.5 Pro:</strong> Research-heavy tasks — art history, cultural reference, technical production requirements</li>
+          <li><strong>GPT-5:</strong> Business writing — contracts, proposals, pricing analysis, pitch emails</li>
+          <li><strong>Imagen 3 Fast:</strong> Fast reference image generation for composition and lighting exploration</li>
+        </ul>
+
+        <h2>Getting Started</h2>
+        <p>
+          bedda.ai gives illustrators access to Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, DALL-E 3,
+          Imagen 3, and 31+ other models for $12/mo. The knowledge base lets you upload your client
+          contracts, pricing guides, and brand voice documents so AI outputs are already calibrated
+          to your practice. Start with a 7-day free trial.
+        </p>
+      </article>
+    ),
+  },
+  "ai-for-sports-coaches-2026": {
+    slug: "ai-for-sports-coaches-2026",
+    title: "AI for Sports Coaches in 2026: Game Plans, Player Analysis, and Team Communication",
+    description:
+      "How sports coaches at every level use AI in 2026 — for game planning, scouting reports, practice design, player development plans, performance analysis, and communicating with athletes and parents.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Industry",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          Coaching at any level — youth rec league, high school varsity, college, or professional —
+          involves far more off-field work than most people realize. Game preparation, practice planning,
+          player development, parent communication, and administrative tasks consume dozens of hours per
+          week. AI in 2026 is helping coaches reclaim that time and make better decisions for their athletes.
+        </p>
+
+        <h2>Game Planning and Scouting</h2>
+        <ul>
+          <li>Write game plans based on your team&apos;s strengths and the opponent&apos;s tendencies — describe both and ask AI to suggest strategic adjustments</li>
+          <li>Create scouting report templates that structure your observations into actionable insights</li>
+          <li>Draft play diagrams descriptions that can be used with animation tools or whiteboard sessions</li>
+          <li>Analyze statistics from past games — paste in box scores or performance data and ask AI to identify patterns, weaknesses, and opportunities</li>
+          <li>Write opponent tendency summaries from your own scouting notes, organized by situation (third down, red zone, two-minute drill, etc.)</li>
+          <li>Generate scenario-planning content: &quot;If their QB is injured, how should our defensive adjustments change?&quot;</li>
+        </ul>
+
+        <h2>Practice Design</h2>
+        <ul>
+          <li>Create structured practice plans with time allocations, drill sequences, and teaching points for each activity</li>
+          <li>Generate drill progressions that build from fundamental skills to game-speed application</li>
+          <li>Write rep-distribution plans that ensure every player gets meaningful practice time</li>
+          <li>Create conditioning programs calibrated to your sport, season phase (preseason/in-season/postseason), and athlete fitness levels</li>
+          <li>Design position-specific breakout sessions with distinct objectives for different groups</li>
+          <li>Write practice evaluation checklists so you can assess which elements are working and which need adjustment</li>
+        </ul>
+
+        <h2>Player Development</h2>
+        <ul>
+          <li>Create individualized development plans for players with specific skill gaps (e.g., a player who needs to improve their footwork, reading defense, or weak-hand dribbling)</li>
+          <li>Write player evaluation frameworks that assess both technical skills and coachability, effort, and teamwork</li>
+          <li>Generate off-season training plans for players who want to improve their conditioning or skill set</li>
+          <li>Draft player feedback after games or practices that is specific, constructive, and motivating</li>
+          <li>Create film study guides that teach players what to look for when reviewing their own performance</li>
+          <li>Write goal-setting frameworks for player meetings — short-term (next game), medium-term (end of season), and long-term (next year or beyond)</li>
+        </ul>
+
+        <h2>Team Communication</h2>
+        <ul>
+          <li>Write team emails covering practice schedules, game logistics, equipment requirements, and expectations</li>
+          <li>Create parent communication templates for tryout policies, playing time philosophy, injury protocols, and code of conduct</li>
+          <li>Draft pre-game motivational messages calibrated to your team&apos;s mindset and the specific challenge ahead</li>
+          <li>Write post-game messages that acknowledge the result (win or loss) and reinforce team culture</li>
+          <li>Generate season-opening letters that set expectations for athletes and families</li>
+          <li>Create handbook content covering team rules, commitment expectations, and program values</li>
+        </ul>
+
+        <h2>Performance Analysis</h2>
+        <ul>
+          <li>Analyze game statistics by pasting in box scores, player stats, or performance data and asking AI to identify trends</li>
+          <li>Compare current-season performance to historical data to assess whether the team is improving, plateauing, or declining in specific areas</li>
+          <li>Create performance dashboards by asking AI to help you design a simple tracking system for key metrics</li>
+          <li>Write post-game analysis reports that document what worked, what didn&apos;t, and specific adjustments for the next game</li>
+          <li>Generate injury tracking and recovery logs to monitor player health over a season</li>
+          <li>Analyze opponent statistics from publicly available box scores to identify tendencies before games</li>
+        </ul>
+
+        <h2>Administrative and Program Management</h2>
+        <ul>
+          <li>Write scholarship recommendation letters for college-bound athletes with specific examples of their development and character</li>
+          <li>Draft budget requests and equipment justifications for athletic directors or booster clubs</li>
+          <li>Create season schedules and travel logistics documents</li>
+          <li>Write grant applications for youth sports programs (many national organizations offer coaching grants)</li>
+          <li>Generate sponsorship proposals for local businesses to support your team&apos;s equipment or travel needs</li>
+          <li>Draft fundraiser planning content and outreach materials</li>
+        </ul>
+
+        <h2>Best Models for Coaches</h2>
+        <ul>
+          <li><strong>Claude Opus 4.8:</strong> Player development plans, feedback writing, and motivational communication — best for nuanced human-focused content</li>
+          <li><strong>GPT-5:</strong> Structured practice plans, statistical analysis, and game planning with precise formatting</li>
+          <li><strong>Gemini 2.5 Pro:</strong> Research on sports science, training methodologies, and coaching literature</li>
+          <li><strong>Claude Haiku 4.5:</strong> Quick lookups and rapid draft generation during busy game weeks</li>
+        </ul>
+
+        <h2>Getting Started</h2>
+        <p>
+          bedda.ai gives coaches access to Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and 33+ models
+          for $12/mo. Upload your team roster, season schedule, and opponent scouting templates to the
+          knowledge base — AI outputs will be grounded in your specific team context. Start with
+          a 7-day free trial.
+        </p>
+      </article>
+    ),
+  },
 };
 
 export function generateStaticParams() {
