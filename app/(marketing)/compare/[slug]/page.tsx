@@ -9444,6 +9444,246 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-rewind-ai": {
+    slug: "bedda-vs-rewind-ai",
+    competitor: "Rewind AI",
+    competitorUrl: "https://rewind.ai",
+    competitorPrice: "$20/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Rewind AI",
+    metaTitle: "bedda.ai vs Rewind AI (2026) — AI Memory Tool vs AI Chat Platform",
+    metaDescription:
+      "Compare bedda.ai and Rewind AI. Rewind records your screen and builds a searchable memory of everything you've seen. bedda.ai is a $12/mo multi-model AI subscription with 36+ models for writing, research, and every AI task.",
+    ogTitle: "bedda.ai vs Rewind AI — AI That Records Everything vs AI That Does Everything",
+    ogDescription:
+      "Rewind AI captures and searches your screen history. bedda.ai gives you Claude, GPT-5, Gemini, and 36+ frontier models for writing, research, coding, and every knowledge work task.",
+    heroHeadline: "AI that captures your past vs AI that helps you create your future",
+    heroSubtext:
+      "Rewind AI and bedda.ai are fundamentally different products. Rewind records everything on your Mac screen and lets you search it later — it's a memory and recall tool. bedda.ai is a multi-model AI platform for active knowledge work: writing, researching, coding, generating images, and thinking through problems with the world's best AI models.",
+    verdict:
+      "Rewind AI and bedda.ai solve different problems. Rewind is for recall: finding that email, recovering that conversation, searching through past meetings. bedda.ai is for creation: writing the next email, researching the next project, generating content with the best AI available. Many professionals use both — Rewind to surface context from the past, bedda.ai to act on it in the present.",
+    switchReasons: [
+      "36+ frontier AI models including Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and Grok 4",
+      "Active AI assistance: writing, research, code, and image generation — not just search",
+      "$8 less per month than Rewind AI Personal plan",
+      "Cross-platform: works on any device with a browser, not Mac-only",
+      "Web search for real-time research grounded in current information",
+      "Knowledge base RAG: upload your own documents for AI-powered search",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$20/mo" },
+      { feature: "Mac screen recording", bedda: false, competitor: true },
+      { feature: "Searchable screen history", bedda: false, competitor: true },
+      { feature: "Meeting recall and transcripts", bedda: false, competitor: true },
+      { feature: "36+ AI language models", bedda: true, competitor: false },
+      { feature: "Writing and content creation", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Knowledge base RAG", bedda: true, competitor: false },
+      { feature: "Cross-platform (Windows, Linux)", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Rewind AI?",
+        a: "Rewind AI is a Mac application that continuously records your screen, mic, and system audio in the background, compresses it heavily, and stores it locally on your device. You can then search through everything you've seen, read, said, or heard — finding past emails, Slack messages, Zoom calls, websites, and documents using natural language. It's essentially a photographic memory for your computer. The Personal plan is $20/mo. Rewind also offers a meeting notes tool (Rewind Meeting) that records and transcribes calls.",
+      },
+      {
+        q: "Does bedda.ai record my screen?",
+        a: "No. bedda.ai is a multi-model AI chat platform — it doesn't record your screen, microphone, or any background activity. You interact with bedda.ai actively: you bring context to the conversation (paste text, upload files, ask questions) and the AI responds. bedda.ai is for doing knowledge work in the moment, not for capturing a record of past activity.",
+      },
+      {
+        q: "Is Rewind AI worth the $20/month?",
+        a: "Rewind is worth it if you frequently need to recall specific information from past computer sessions — a detail from a Zoom call you didn't note, a website you visited weeks ago, a Slack thread you can't find. It's most valuable for people with high meeting volume, complex multi-project work, or those who struggle with information management. If you mainly need AI to help with active tasks (writing, research, coding), bedda.ai at $12/mo delivers more value.",
+      },
+      {
+        q: "Can I use bedda.ai and Rewind AI together?",
+        a: "Yes — they're complementary. Rewind surfaces past information; bedda.ai helps you act on it. A common workflow: search Rewind to recall a client's requirements from a past meeting, then paste those requirements into bedda.ai to draft a proposal. Together they cover both memory (Rewind) and creation (bedda.ai).",
+      },
+    ],
+  },
+
+  "bedda-vs-read-ai": {
+    slug: "bedda-vs-read-ai",
+    competitor: "Read.ai",
+    competitorUrl: "https://read.ai",
+    competitorPrice: "$19.75/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Read.ai",
+    metaTitle: "bedda.ai vs Read.ai (2026) — Meeting Intelligence vs AI Chat Platform",
+    metaDescription:
+      "Compare bedda.ai and Read.ai. Read.ai records, transcribes, and analyzes your meetings. bedda.ai is a $12/mo multi-model AI subscription with 36+ models for writing, research, and every AI task.",
+    ogTitle: "bedda.ai vs Read.ai — Meeting AI vs General-Purpose AI",
+    ogDescription:
+      "Read.ai gives you AI-powered meeting transcripts, summaries, and engagement metrics. bedda.ai gives you Claude, GPT-5, Gemini, and 36+ frontier models for writing, research, and every knowledge work task.",
+    heroHeadline: "AI built for meetings vs AI built for every knowledge work task",
+    heroSubtext:
+      "Read.ai and bedda.ai serve different primary needs. Read.ai is a meeting intelligence platform: it joins your Zoom, Teams, and Meet calls, transcribes them in real-time, generates summaries, tracks engagement, and surfaces action items automatically. bedda.ai is a multi-model AI subscription for general knowledge work — writing, research, coding, analysis — across all the time you spend away from meetings.",
+    verdict:
+      "Read.ai and bedda.ai address different parts of your workday. Read.ai captures and organizes what happens in your meetings. bedda.ai helps you do the work that happens between meetings. Professionals who have a heavy meeting load and struggle to capture action items get significant value from Read.ai. Those who primarily need AI for writing, research, and content creation will find bedda.ai delivers more value at a lower price.",
+    switchReasons: [
+      "36+ frontier AI models for all knowledge work — not limited to meeting summaries",
+      "$7.75 less per month than Read.ai Pro",
+      "Web search for research-backed AI responses",
+      "Image and video generation for creative projects",
+      "Knowledge base RAG for document-grounded AI chat",
+      "Works across all tasks: writing, coding, analysis, image generation",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$19.75/mo" },
+      { feature: "Meeting recording and transcription", bedda: false, competitor: true },
+      { feature: "Real-time meeting summaries", bedda: false, competitor: true },
+      { feature: "Action item extraction", bedda: false, competitor: true },
+      { feature: "Meeting engagement metrics", bedda: false, competitor: true },
+      { feature: "Zoom / Teams / Meet integration", bedda: false, competitor: true },
+      { feature: "36+ AI language models", bedda: true, competitor: false },
+      { feature: "Writing and content creation", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code execution and debugging", bedda: true, competitor: false },
+      { feature: "Knowledge base RAG", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Read.ai?",
+        a: "Read.ai is a meeting intelligence platform that joins video calls (Zoom, Microsoft Teams, Google Meet, Webex) as a bot participant. It provides real-time transcription, generates AI meeting summaries, extracts action items and decisions, and tracks meeting engagement metrics like attention scores and speaking time per participant. The Pro plan is $19.75/mo per user. It integrates with tools like Notion, HubSpot, Salesforce, and Slack to push meeting notes into your existing workflow.",
+      },
+      {
+        q: "Does bedda.ai transcribe meetings?",
+        a: "bedda.ai doesn't join meetings as a bot or auto-record calls. However, you can upload audio recordings (up to 25MB) to bedda.ai and use AI to transcribe and summarize them. For automatic, always-on meeting capture with bot-style attendance and CRM integration, Read.ai, Otter.ai, or Fireflies.ai are purpose-built alternatives.",
+      },
+      {
+        q: "Is Read.ai worth $19.75/month?",
+        a: "Read.ai pays for itself quickly if you spend 3+ hours per day in meetings and find action item capture to be a consistent pain point. The automatic CRM integration (pushing call summaries to HubSpot or Salesforce without manual entry) alone saves significant time for sales teams. If you have fewer meetings or primarily need AI for writing and research rather than meeting intelligence, bedda.ai at $12/mo delivers more general-purpose value.",
+      },
+      {
+        q: "Can I use bedda.ai and Read.ai together?",
+        a: "Yes — they're highly complementary. Read.ai captures meeting transcripts and action items automatically. bedda.ai then helps you act on those outputs: drafting follow-up emails from meeting summaries, turning action items into project documentation, using Claude or GPT-5 to write the deliverables that came out of the meeting.",
+      },
+    ],
+  },
+
+  "bedda-vs-meetgeek": {
+    slug: "bedda-vs-meetgeek",
+    competitor: "MeetGeek",
+    competitorUrl: "https://meetgeek.ai",
+    competitorPrice: "$15/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs MeetGeek",
+    metaTitle: "bedda.ai vs MeetGeek (2026) — Meeting Transcription vs AI Chat Platform",
+    metaDescription:
+      "Compare bedda.ai and MeetGeek. MeetGeek records and transcribes your video meetings automatically. bedda.ai is a $12/mo multi-model AI subscription with 36+ models for writing, research, and every AI task.",
+    ogTitle: "bedda.ai vs MeetGeek — Automated Meeting Notes vs General-Purpose AI",
+    ogDescription:
+      "MeetGeek auto-records, transcribes, and summarizes your video meetings. bedda.ai gives you Claude, GPT-5, Gemini, and 36+ frontier models for writing, research, and every knowledge work task.",
+    heroHeadline: "AI that takes your meeting notes vs AI that helps with everything else",
+    heroSubtext:
+      "MeetGeek and bedda.ai solve different problems. MeetGeek automatically joins your Zoom and Google Meet calls, records them, generates transcripts, extracts highlights, and shares searchable summaries to your team. bedda.ai is a multi-model AI platform for the knowledge work you do between meetings: writing, research, coding, content creation, and analysis.",
+    verdict:
+      "MeetGeek is a dedicated meeting intelligence tool; bedda.ai is a general-purpose AI platform. If automated meeting notes and searchable call history are your primary need, MeetGeek delivers excellent value at $15/mo. If you need frontier AI models for daily writing, research, and content tasks — including some basic meeting follow-up work — bedda.ai gives you more versatility at a lower price. Many teams use both for complete meeting-to-action workflow coverage.",
+    switchReasons: [
+      "36+ frontier AI models for all knowledge work beyond meetings",
+      "$3 less per month than MeetGeek Pro",
+      "Writing, research, coding, and image generation in one subscription",
+      "Web search for real-time research grounded in current information",
+      "Knowledge base RAG for document-grounded AI conversations",
+      "Platform bots for Slack, Discord, Teams, and WhatsApp",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$15/mo" },
+      { feature: "Auto-join video meetings", bedda: false, competitor: true },
+      { feature: "Meeting recording and transcription", bedda: false, competitor: true },
+      { feature: "AI meeting summaries", bedda: false, competitor: true },
+      { feature: "Highlight extraction", bedda: false, competitor: true },
+      { feature: "Searchable meeting history", bedda: false, competitor: true },
+      { feature: "36+ AI language models", bedda: true, competitor: false },
+      { feature: "Writing and content creation", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code execution and debugging", bedda: true, competitor: false },
+      { feature: "Knowledge base RAG", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is MeetGeek?",
+        a: "MeetGeek is a meeting intelligence platform that automatically records, transcribes, and summarizes video meetings on Zoom, Google Meet, and Microsoft Teams. It attends as a bot, generates searchable transcripts, pulls out key highlights and action items, and shares summaries to Slack, Notion, HubSpot, and other integrations. The Basic plan is free (5 hours/month recording), the Pro plan is $15/user/mo (unlimited recording), and the Business plan is $29/user/mo with advanced team features. It's popular with remote sales teams, customer success managers, and any team that needs a reliable record of their calls.",
+      },
+      {
+        q: "Does bedda.ai record meetings?",
+        a: "No. bedda.ai is a conversational AI platform — you bring text, files, and questions to it and get AI assistance in return. It doesn't join video calls, record audio, or generate automatic meeting notes. For hands-free meeting capture, MeetGeek, Otter.ai, and Fireflies.ai are purpose-built alternatives. bedda.ai's strength is in active AI work: writing, research, code, and content generation.",
+      },
+      {
+        q: "Is MeetGeek free?",
+        a: "MeetGeek has a free tier that allows up to 5 hours of meeting recording per month, with basic transcription and summarization. The Pro plan at $15/mo removes recording limits and adds integrations. The Business plan at $29/mo adds team analytics, custom vocabulary, and advanced workspace features. For teams with heavy meeting volume who need unlimited recording and CRM integration, the Pro plan typically pays for itself quickly.",
+      },
+      {
+        q: "Can I use MeetGeek and bedda.ai together?",
+        a: "Yes — they're a natural pairing. MeetGeek generates meeting transcripts and action item lists automatically. You can paste those outputs into bedda.ai to draft follow-up emails, convert action items into project briefs, generate meeting recap posts for Slack, or use Claude or GPT-5 to turn a discussion into a formal proposal. Together they cover meeting capture (MeetGeek) and post-meeting knowledge work (bedda.ai).",
+      },
+    ],
+  },
+
+  "bedda-vs-krisp": {
+    slug: "bedda-vs-krisp",
+    competitor: "Krisp",
+    competitorUrl: "https://krisp.ai",
+    competitorPrice: "$16/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Krisp",
+    metaTitle: "bedda.ai vs Krisp (2026) — AI Noise Cancellation vs AI Chat Platform",
+    metaDescription:
+      "Compare bedda.ai and Krisp. Krisp uses AI to cancel background noise on calls and provides meeting transcription. bedda.ai is a $12/mo multi-model AI subscription with 36+ models for writing, research, and every AI task.",
+    ogTitle: "bedda.ai vs Krisp — Call Quality AI vs General-Purpose AI",
+    ogDescription:
+      "Krisp removes background noise from calls and transcribes meetings. bedda.ai gives you Claude, GPT-5, Gemini, and 36+ frontier models for writing, research, and every knowledge work task.",
+    heroHeadline: "AI that cleans up your calls vs AI that powers your knowledge work",
+    heroSubtext:
+      "Krisp and bedda.ai are different categories of AI tool. Krisp works at the audio layer of your computer — removing background noise, echoes, and voice cross-talk in real time on any call app (Zoom, Teams, Google Meet, Slack Huddles). bedda.ai works at the knowledge layer — helping you write, research, code, and create with the world's best AI models.",
+    verdict:
+      "Krisp and bedda.ai are complementary, not competing. Krisp makes your calls sound professional regardless of your environment. bedda.ai makes your work more productive regardless of your task. Remote workers in noisy homes or public spaces get real value from Krisp's noise cancellation — it's an infrastructure tool for call quality. bedda.ai is a productivity tool for knowledge work. At $12/mo vs $16/mo, both are competitively priced for what they deliver.",
+    switchReasons: [
+      "36+ frontier AI models including Claude Opus 4.8, GPT-5, and Grok 4",
+      "$4 less per month than Krisp Pro",
+      "AI assistance for writing, research, and content — not just call audio",
+      "Web search for real-time research and up-to-date AI responses",
+      "Image and video generation for creative work",
+      "Works across all devices and browsers — no desktop app required",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$16/mo" },
+      { feature: "AI noise cancellation", bedda: false, competitor: true },
+      { feature: "Echo and voice removal", bedda: false, competitor: true },
+      { feature: "Works with any call app", bedda: false, competitor: true },
+      { feature: "Meeting transcription", bedda: false, competitor: true },
+      { feature: "36+ AI language models", bedda: true, competitor: false },
+      { feature: "Writing and content creation", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code execution and debugging", bedda: true, competitor: false },
+      { feature: "Knowledge base RAG", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Krisp?",
+        a: "Krisp is an AI-powered noise cancellation desktop app for Windows and Mac. It uses machine learning to remove background noise (traffic, keyboard clicks, barking dogs, HVAC) from your microphone in real time — and removes noise and echoes from the other participants on the call. It works at the system audio driver level, so it's compatible with any app: Zoom, Teams, Google Meet, Slack, Discord, phone calls. The free plan allows 60 minutes of noise cancellation per day; the Pro plan at $16/mo removes all limits. Krisp also offers meeting transcription (separate from noise cancellation).",
+      },
+      {
+        q: "Does bedda.ai have noise cancellation?",
+        a: "No. bedda.ai is a multi-model AI chat platform for writing, research, and knowledge work — it doesn't operate at the audio level and doesn't modify call quality. For background noise removal on calls, Krisp, NVIDIA RTX Voice (for NVIDIA GPU users), or your headset's built-in noise cancellation are the right tools. bedda.ai's strength is AI-powered knowledge work, not call infrastructure.",
+      },
+      {
+        q: "Is Krisp worth $16/month?",
+        a: "Krisp is worth $16/mo for anyone who works from home or noisy environments and makes frequent video or voice calls. The noise cancellation works in both directions — your background noise doesn't distract others, and their background noise doesn't distract you. For remote workers with kids, pets, open offices, or street noise, the call quality improvement is immediately noticeable. If you only make a few calls per week, the free plan's 60 minutes per day may be sufficient.",
+      },
+      {
+        q: "Can I use bedda.ai and Krisp together?",
+        a: "Yes. Krisp handles the audio quality of your calls; bedda.ai handles the knowledge work that follows. A typical workflow: use Krisp during a client call for clean audio, then use bedda.ai afterward to draft the follow-up email, write the project proposal, or create a summary of the conversation to share with your team. They're complementary tools for different parts of the work-from-anywhere experience.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {

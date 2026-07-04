@@ -1863,6 +1863,46 @@ const posts = [
     readingTime: "7 min read",
     category: "Creative",
   },
+  {
+    slug: "ai-for-therapists-2026",
+    title:
+      "AI for Therapists and Counselors in 2026: Session Notes, Documentation, and Psychoeducation",
+    description:
+      "How therapists, psychologists, and counselors use AI in 2026 for clinical documentation, session notes, treatment plans, psychoeducational materials, and client communication — without compromising confidentiality.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Healthcare",
+  },
+  {
+    slug: "ai-for-founders-and-ceos-2026",
+    title:
+      "AI for Founders and CEOs in 2026: Strategy, Investor Decks, and Executive Communication",
+    description:
+      "How startup founders and chief executives use AI in 2026 for fundraising decks, board communications, strategic planning documents, hiring, and the constant stream of high-stakes writing that defines executive life.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Business",
+  },
+  {
+    slug: "best-ai-for-business-intelligence-2026",
+    title:
+      "Best AI for Business Intelligence in 2026: BI Reports, Dashboard Insights, and Data Storytelling",
+    description:
+      "How BI analysts and data teams use AI in 2026 to write dashboard documentation, translate metrics into business narratives, automate report commentary, and communicate insights to non-technical stakeholders.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Data & Analytics",
+  },
+  {
+    slug: "ai-writing-assistant-comparison-2026",
+    title:
+      "AI Writing Assistant Comparison 2026: Claude vs GPT-5 vs Gemini for Writing Tasks",
+    description:
+      "A practical comparison of the best AI writing assistants in 2026. Which model is best for long-form content, emails, creative writing, technical documentation, and marketing copy — with examples.",
+    date: "July 2026",
+    readingTime: "9 min read",
+    category: "AI Models",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
