@@ -1827,6 +1827,42 @@ const posts = [
     readingTime: "7 min read",
     category: "Engineering",
   },
+  {
+    slug: "ai-for-insurance-agents-2026",
+    title: "AI for Insurance Agents and Brokers in 2026: Proposals, Emails, and Client Communication",
+    description:
+      "How insurance agents and brokers use AI in 2026 for proposal summaries, client onboarding emails, coverage explanations, renewal communications, and cross-sell scripts. Best AI models for insurance professionals.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Finance",
+  },
+  {
+    slug: "best-ai-for-real-estate-agents-2026",
+    title: "Best AI for Real Estate Agents in 2026: Listings, Emails, and Market Reports",
+    description:
+      "How real estate agents and brokers use AI in 2026 for listing descriptions, buyer and seller emails, offer letters, market analysis reports, and social media content. Which AI models work best for real estate.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Industry",
+  },
+  {
+    slug: "ai-for-supply-chain-managers-2026",
+    title: "AI for Supply Chain Managers in 2026: Procurement, Reports, and Vendor Communication",
+    description:
+      "How supply chain managers and operations leaders use AI in 2026 for RFQ drafting, supplier communication, inventory analysis summaries, risk assessment documentation, and S&OP reporting.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Business",
+  },
+  {
+    slug: "ai-for-graphic-designers-2026",
+    title: "AI for Graphic Designers in 2026: Creative Briefs, Client Decks, and Copy",
+    description:
+      "How graphic designers and visual communicators use AI in 2026 for creative brief writing, client presentation decks, project proposals, social media copy, and client emails. The best AI models for design professionals.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Creative",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
