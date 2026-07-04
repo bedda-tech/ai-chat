@@ -28274,6 +28274,7 @@ Be specific about line numbers. Suggest fixes.
   },
 
   "ai-writing-assistant-comparison-2026": {
+    slug: "ai-writing-assistant-comparison-2026",
     title:
       "AI Writing Assistant Comparison 2026: Claude vs GPT-5 vs Gemini for Writing Tasks",
     description:
