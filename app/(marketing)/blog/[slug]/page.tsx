@@ -28418,6 +28418,569 @@ Be specific about line numbers. Suggest fixes.
       </article>
     ),
   },
+  "best-ai-for-excel-2026": {
+    slug: "best-ai-for-excel-2026",
+    title: "Best AI for Excel and Spreadsheets in 2026",
+    description:
+      "How to use AI to automate Excel formulas, clean data, write VBA macros, and analyze spreadsheets — and which AI models work best for each task.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Productivity Guides",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          AI has become the most useful Excel co-pilot available in 2026. Whether
+          you need a VLOOKUP explained, a complex nested formula built from scratch,
+          or a VBA macro written in 60 seconds, the right AI model handles it faster
+          than any tutorial or Stack Overflow search.
+        </p>
+
+        <h2>What AI Can Do for Excel Users</h2>
+        <ul>
+          <li>Write and debug formulas (INDEX/MATCH, XLOOKUP, nested IFs)</li>
+          <li>Generate VBA macros and Power Query M code</li>
+          <li>Explain what an unfamiliar formula does, step by step</li>
+          <li>Convert natural language to formula: &quot;sum all values in column B where column A is &gt; 100&quot;</li>
+          <li>Identify errors in formula logic and suggest fixes</li>
+          <li>Generate pivot table structures and data model designs</li>
+          <li>Write Python scripts for Excel data processing (openpyxl, pandas)</li>
+          <li>Analyze data trends and summarize findings in plain English</li>
+        </ul>
+
+        <h2>Best AI Models for Excel Tasks</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Best Model</th>
+              <th>Why</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Complex formula writing</td>
+              <td>GPT-5 or Claude Opus 4.8</td>
+              <td>Best at multi-condition logic and long formula chains</td>
+            </tr>
+            <tr>
+              <td>VBA macro generation</td>
+              <td>GPT-5</td>
+              <td>Strongest on code generation and debugging</td>
+            </tr>
+            <tr>
+              <td>Formula explanation</td>
+              <td>Claude Sonnet 4.6</td>
+              <td>Clear, step-by-step prose explanations</td>
+            </tr>
+            <tr>
+              <td>Data cleaning scripts (Python/pandas)</td>
+              <td>GPT-5 or DeepSeek R1</td>
+              <td>Strong coding ability, pandas expertise</td>
+            </tr>
+            <tr>
+              <td>Quick formula lookup</td>
+              <td>Gemini 2.5 Flash</td>
+              <td>Fast, accurate for common patterns</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Writing Excel Formulas with AI</h2>
+        <p>
+          The most common Excel AI use case is formula generation. Instead of
+          searching documentation or forums, describe what you want in plain English:
+        </p>
+        <ul>
+          <li>&quot;Write a formula that looks up the value in A2 in column E and returns the corresponding value from column F&quot;</li>
+          <li>&quot;Create a formula that counts rows where column B is &apos;Active&apos; and column C is greater than 1000&quot;</li>
+          <li>&quot;Build a dynamic array formula that extracts all unique values from column A&quot;</li>
+        </ul>
+        <p>
+          GPT-5 and Claude Opus 4.8 handle even complex nested formulas
+          reliably — ARRAYFORMULA, LAMBDA, LET, and SEQUENCE functions included.
+        </p>
+
+        <h2>VBA Macros: GPT-5 Is the Leader</h2>
+        <p>
+          For VBA automation, GPT-5 consistently produces the most accurate,
+          runnable code. Describe what you want the macro to do:
+        </p>
+        <ul>
+          <li>&quot;Write a VBA macro that loops through all sheets, finds cells with the value &apos;Error&apos;, and highlights them red&quot;</li>
+          <li>&quot;Create a macro that copies data from Sheet1 to Sheet2 only if column C is not empty&quot;</li>
+          <li>&quot;Write a VBA sub that exports each worksheet as a separate CSV file&quot;</li>
+        </ul>
+        <p>
+          Always test generated macros on a copy of your workbook before running
+          them on production data.
+        </p>
+
+        <h2>Data Analysis: Paste and Ask</h2>
+        <p>
+          For data analysis, paste a sample of your data (rows and column headers,
+          not the full dataset) and ask for insights:
+        </p>
+        <ul>
+          <li>&quot;Here&apos;s a sample of my sales data. What trends do you see? What pivot table structure would you recommend?&quot;</li>
+          <li>&quot;Which columns would be most useful for a dashboard? Suggest 5 KPIs I should track.&quot;</li>
+          <li>&quot;Write a Python pandas script to clean this data: remove duplicates, fill blank cells with 0, and sort by date.&quot;</li>
+        </ul>
+
+        <h2>Power Query M Code</h2>
+        <p>
+          Power Query transformations can be written in M code — a functional
+          language that most Excel users rarely touch manually. AI makes it approachable:
+        </p>
+        <ul>
+          <li>&quot;Write Power Query M code to combine all tables that start with &apos;Monthly&apos; in my workbook&quot;</li>
+          <li>&quot;Create M code to split a full name column into first name and last name&quot;</li>
+          <li>&quot;Write a transformation that unpivots columns B through F into rows&quot;</li>
+        </ul>
+
+        <h2>Tips for Better AI Formula Results</h2>
+        <ul>
+          <li><strong>Include column context:</strong> Tell the AI which columns contain which data</li>
+          <li><strong>Specify the Excel version:</strong> XLOOKUP is Excel 365+; older formulas use VLOOKUP</li>
+          <li><strong>Paste the error message:</strong> If a formula returns #REF! or #VALUE!, paste the error and formula together for accurate debugging</li>
+          <li><strong>Ask for an explanation:</strong> Don&apos;t just copy-paste formulas — ask AI to explain each part</li>
+        </ul>
+
+        <h2>The Multi-Model Advantage</h2>
+        <p>
+          Different Excel tasks genuinely benefit from different models. bedda.ai
+          gives you GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, DeepSeek R1, and
+          32+ more models for $12/month — switch between them for different parts
+          of your Excel work.
+        </p>
+
+        <div className="not-prose my-8 rounded-xl border bg-muted/30 p-6 text-center">
+          <p className="mb-4 font-semibold text-lg">
+            GPT-5, Claude, Gemini — every AI model for Excel — $12/month
+          </p>
+          <Link
+            href="/register"
+            className="inline-block rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground hover:bg-primary/90"
+          >
+            Start Free Trial
+          </Link>
+        </div>
+      </article>
+    ),
+  },
+  "ai-for-pharmacists-2026": {
+    slug: "ai-for-pharmacists-2026",
+    title: "AI for Pharmacists: Tools and Use Cases in 2026",
+    description:
+      "How pharmacists are using AI to write patient counseling notes, review drug information, stay current on clinical literature, and reduce documentation time.",
+    date: "July 2026",
+    readingTime: "6 min read",
+    category: "Professional Guides",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          Pharmacists operate at the intersection of clinical knowledge, patient
+          communication, and regulatory compliance — exactly the areas where AI
+          assistance delivers measurable time savings without replacing professional
+          judgment.
+        </p>
+
+        <h2>Important Disclaimer</h2>
+        <p>
+          AI tools are not a substitute for clinical pharmacist judgment, verified
+          drug interaction databases (Lexicomp, Micromedex), or regulatory guidance.
+          Use AI to draft, research, and communicate — not to replace clinical
+          decision support systems.
+        </p>
+
+        <h2>Patient Counseling Notes</h2>
+        <p>
+          Writing clear, patient-appropriate counseling notes is time-consuming.
+          AI dramatically speeds up this process:
+        </p>
+        <ul>
+          <li>&quot;Write a counseling note explaining how to take lisinopril — when to take it, common side effects, and what to avoid&quot;</li>
+          <li>&quot;Create a 3-point medication adherence reminder for a patient with type 2 diabetes starting metformin&quot;</li>
+          <li>&quot;Write a patient-friendly explanation of why we&apos;re substituting Brand X with the generic equivalent&quot;</li>
+          <li>&quot;Draft a letter explaining warfarin dietary restrictions and INR monitoring&quot;</li>
+        </ul>
+        <p>
+          Claude Opus 4.8 consistently produces the clearest, most empathetic
+          patient communication — important for medication adherence and patient trust.
+        </p>
+
+        <h2>Drug Information Requests</h2>
+        <p>
+          Responding to drug information requests quickly and accurately is a core
+          pharmacist task. AI helps structure the response:
+        </p>
+        <ul>
+          <li>&quot;What is the evidence for [drug] in [indication]? Summarize the key trials.&quot;</li>
+          <li>&quot;What are the renally-adjusted dosing guidelines for [drug] in patients with CrCl &lt; 30?&quot;</li>
+          <li>&quot;Summarize the black box warning for [drug] and when it applies&quot;</li>
+        </ul>
+        <p>
+          Gemini 2.5 Pro is useful for literature questions because of its real-time
+          web access — it can reference current prescribing information and recent
+          guideline updates.
+        </p>
+
+        <h2>MTM Documentation Templates</h2>
+        <p>
+          MTM sessions require structured documentation — comprehensive medication
+          review (CMR), medication action plan (MAP), and personal medication list.
+          AI can generate templates:
+        </p>
+        <ul>
+          <li>&quot;Create a CMR documentation template for a patient on 8+ chronic medications&quot;</li>
+          <li>&quot;Generate a medication action plan format for a hypertension patient&quot;</li>
+          <li>&quot;Write a medication-related problem documentation framework&quot;</li>
+        </ul>
+
+        <h2>Formulary and P&amp;T Committee Support</h2>
+        <p>
+          Pharmacy &amp; Therapeutics committee support involves comparative drug
+          analyses and formulary justifications. AI accelerates these:
+        </p>
+        <ul>
+          <li>&quot;Compare the clinical efficacy of Drug A vs Drug B for [indication] based on published trials&quot;</li>
+          <li>&quot;Write a drug monograph summary for [drug] including mechanism, indications, dosing, adverse effects, and monitoring&quot;</li>
+          <li>&quot;Draft a formulary exception justification template for a specialty medication&quot;</li>
+        </ul>
+
+        <h2>Continuing Education</h2>
+        <p>
+          With CE requirements per biennial renewal, pharmacists benefit from AI that helps them:
+        </p>
+        <ul>
+          <li>Summarize new FDA approvals and safety communications</li>
+          <li>Explain recent guideline changes in practical terms</li>
+          <li>Generate study questions on specific therapeutic areas</li>
+        </ul>
+
+        <h2>Best Models for Pharmacy Work</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Best Model</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Patient counseling notes</td>
+              <td>Claude Opus 4.8</td>
+            </tr>
+            <tr>
+              <td>Drug information summaries</td>
+              <td>GPT-5 or Claude Opus 4.8</td>
+            </tr>
+            <tr>
+              <td>Literature updates</td>
+              <td>Gemini 2.5 Pro (real-time web)</td>
+            </tr>
+            <tr>
+              <td>Documentation templates</td>
+              <td>Claude Sonnet 4.6</td>
+            </tr>
+            <tr>
+              <td>Regulatory writing</td>
+              <td>Claude Opus 4.8</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div className="not-prose my-8 rounded-xl border bg-muted/30 p-6 text-center">
+          <p className="mb-4 font-semibold text-lg">
+            Every AI model pharmacists need — $12/month
+          </p>
+          <Link
+            href="/register"
+            className="inline-block rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground hover:bg-primary/90"
+          >
+            Start Free Trial
+          </Link>
+        </div>
+      </article>
+    ),
+  },
+  "gpt-5-mini-review": {
+    slug: "gpt-5-mini-review",
+    title: "GPT-5 Mini Review (2026): Fast, Cheap, and Surprisingly Good",
+    description:
+      "An honest review of OpenAI&apos;s GPT-5 mini — benchmarks, real-world performance, pricing, and how it compares to Claude Haiku 4.5, Gemini 2.5 Flash, and the full GPT-5.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Model Reviews",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          GPT-5 mini is OpenAI&apos;s fast, low-cost model — and it&apos;s
+          remarkably capable for its price. At a fraction of the cost of GPT-5 full,
+          it handles most everyday AI tasks without noticeable quality degradation.
+        </p>
+
+        <h2>What Is GPT-5 Mini?</h2>
+        <p>
+          GPT-5 mini is OpenAI&apos;s successor to GPT-4o mini — a fast, efficient
+          model designed for tasks where speed and cost matter more than maximum
+          reasoning depth: answering questions, drafting emails, summarizing
+          documents, writing code, and conversational back-and-forth.
+        </p>
+        <p>
+          The quality gap between mini and full is narrower in 2026 than in previous
+          generations — which is the main reason it&apos;s worth reviewing separately.
+        </p>
+
+        <h2>Benchmark Performance</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Benchmark</th>
+              <th>GPT-5 mini</th>
+              <th>GPT-5 (full)</th>
+              <th>Claude Haiku 4.5</th>
+              <th>Gemini 2.5 Flash</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>MMLU (knowledge)</td>
+              <td>88%</td>
+              <td>94%</td>
+              <td>86%</td>
+              <td>87%</td>
+            </tr>
+            <tr>
+              <td>HumanEval (coding)</td>
+              <td>82%</td>
+              <td>92%</td>
+              <td>79%</td>
+              <td>80%</td>
+            </tr>
+            <tr>
+              <td>MATH (reasoning)</td>
+              <td>75%</td>
+              <td>90%</td>
+              <td>71%</td>
+              <td>74%</td>
+            </tr>
+            <tr>
+              <td>Speed</td>
+              <td>Very fast</td>
+              <td>Fast</td>
+              <td>Very fast</td>
+              <td>Very fast</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Where GPT-5 Mini Shines</h2>
+        <p>GPT-5 mini performs at or near full GPT-5 quality on:</p>
+        <ul>
+          <li>Email writing and editing</li>
+          <li>Summarization (articles, documents, meeting notes)</li>
+          <li>Simple coding tasks (single functions, bug fixes, explanations)</li>
+          <li>Question answering on common knowledge topics</li>
+          <li>Classification and categorization tasks</li>
+          <li>Data extraction from structured text</li>
+          <li>Customer service conversation drafts</li>
+        </ul>
+
+        <h2>Where the Full Model Wins</h2>
+        <ul>
+          <li><strong>Complex multi-step reasoning:</strong> Long logic chains, advanced math, complex algorithmic problems</li>
+          <li><strong>Large codebase work:</strong> Understanding and refactoring multi-file codebases</li>
+          <li><strong>Nuanced long-form writing:</strong> Maintaining voice and argument consistency over many pages</li>
+          <li><strong>Ambiguous instructions:</strong> Full GPT-5 handles underspecified requests better</li>
+        </ul>
+
+        <h2>GPT-5 Mini vs Claude Haiku 4.5</h2>
+        <ul>
+          <li><strong>Coding:</strong> GPT-5 mini edges ahead on coding accuracy</li>
+          <li><strong>Writing:</strong> Claude Haiku produces slightly more natural prose for longer content</li>
+          <li><strong>Speed:</strong> Both are very fast; Claude Haiku has lower latency on short requests</li>
+          <li><strong>Safety:</strong> Claude Haiku is more conservative on borderline requests</li>
+        </ul>
+
+        <h2>GPT-5 Mini vs Gemini 2.5 Flash</h2>
+        <p>
+          Gemini 2.5 Flash has one major differentiator: real-time web search.
+          For tasks requiring current information, Gemini Flash has a structural
+          advantage. For offline knowledge tasks, GPT-5 mini&apos;s benchmark
+          numbers are slightly stronger.
+        </p>
+
+        <h2>Verdict</h2>
+        <p>
+          Yes — for everyday tasks. If you&apos;re writing emails, summarizing
+          documents, handling queries, or building chatbots, GPT-5 mini delivers
+          near-frontier quality at fast speeds and lower cost. Use the full GPT-5
+          for genuinely complex reasoning, large codebase work, and long-form
+          creative projects.
+        </p>
+
+        <div className="not-prose my-8 rounded-xl border bg-muted/30 p-6 text-center">
+          <p className="mb-4 font-semibold text-lg">
+            GPT-5 mini, GPT-5, Claude Haiku, Gemini Flash — all in one — $12/month
+          </p>
+          <Link
+            href="/register"
+            className="inline-block rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground hover:bg-primary/90"
+          >
+            Start Free Trial
+          </Link>
+        </div>
+      </article>
+    ),
+  },
+  "best-ai-for-resume-writing-2026": {
+    slug: "best-ai-for-resume-writing-2026",
+    title: "Best AI for Resume Writing in 2026",
+    description:
+      "The best AI tools to write, tailor, and optimize your resume — which models produce the most ATS-friendly output, and how to get results worth actually submitting.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Career Guides",
+    content: (
+      <article className="prose prose-gray dark:prose-invert max-w-none">
+        <p className="lead text-xl text-muted-foreground">
+          AI can write a resume in minutes — but most AI-generated resumes are
+          generic, easy to spot, and poor at the ATS (Applicant Tracking System)
+          game. Here&apos;s how to use AI to write a resume that actually works.
+        </p>
+
+        <h2>What AI Is Good At (and Not Good At)</h2>
+        <p>AI excels at:</p>
+        <ul>
+          <li>Turning bullet point notes into polished, impact-focused statements</li>
+          <li>Rewriting bullet points with stronger action verbs and quantified outcomes</li>
+          <li>Tailoring your resume to a specific job description (ATS keyword matching)</li>
+          <li>Writing a professional summary that matches the role</li>
+          <li>Generating a skills section based on the job description</li>
+        </ul>
+        <p>AI is not good at:</p>
+        <ul>
+          <li>Inventing achievements you don&apos;t have (never ask it to)</li>
+          <li>Knowing your industry&apos;s resume norms without guidance</li>
+          <li>Automatically matching your resume to multiple jobs simultaneously</li>
+        </ul>
+
+        <h2>Best AI Models for Resume Writing</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Best Model</th>
+              <th>Why</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Polishing bullet points</td>
+              <td>Claude Opus 4.8</td>
+              <td>Best prose quality, strong action-verb variety</td>
+            </tr>
+            <tr>
+              <td>ATS keyword tailoring</td>
+              <td>GPT-5</td>
+              <td>Better at systematic keyword extraction from job descriptions</td>
+            </tr>
+            <tr>
+              <td>Professional summary</td>
+              <td>Claude Sonnet 4.6</td>
+              <td>Natural, engaging first-person writing</td>
+            </tr>
+            <tr>
+              <td>Cover letter</td>
+              <td>Claude Opus 4.8</td>
+              <td>Most persuasive, tailored prose</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Step 1: Feed the AI Your Raw Materials</h2>
+        <p>
+          Don&apos;t ask AI to &quot;write my resume&quot; from scratch — give it raw materials:
+        </p>
+        <ul>
+          <li>Paste your current resume (even if it&apos;s rough)</li>
+          <li>Paste the job description you&apos;re targeting</li>
+          <li>List achievements you&apos;re proud of but haven&apos;t written up well</li>
+          <li>Mention your years of experience, industry, and seniority level</li>
+        </ul>
+        <p>
+          Then ask: &quot;Rewrite my resume to better match this job description.
+          Improve the bullet points to be more impact-focused with quantified
+          achievements where possible. Keep the content truthful.&quot;
+        </p>
+
+        <h2>Step 2: ATS Optimization</h2>
+        <p>
+          Most large companies screen resumes with ATS software before a human
+          reads them. Use AI to close the keyword gap:
+        </p>
+        <ul>
+          <li>&quot;Extract the top 20 keywords from this job description that should appear in my resume&quot;</li>
+          <li>&quot;Compare my resume against this job description. What important keywords am I missing?&quot;</li>
+          <li>&quot;Rewrite my skills section to match the technical stack listed in this job description&quot;</li>
+        </ul>
+
+        <h2>Step 3: Bullet Point Rewrites</h2>
+        <p>
+          The most powerful resume AI use case. Give AI a weak bullet and ask for improvements:
+        </p>
+        <ul>
+          <li>Weak: &quot;Managed the social media accounts&quot;</li>
+          <li>Ask AI: &quot;Rewrite this bullet more impact-focused. I grew followers by 40% in 6 months and managed a $5k/month ad budget.&quot;</li>
+          <li>Strong: &quot;Grew social media audience 40% in 6 months managing a $5K/month paid ad budget across Instagram and LinkedIn&quot;</li>
+        </ul>
+        <p>
+          The rule: always give AI the numbers and context. It doesn&apos;t know your
+          achievements — you do. AI&apos;s job is to frame them effectively.
+        </p>
+
+        <h2>Step 4: Professional Summary</h2>
+        <p>
+          AI is excellent at writing these from your experience:
+        </p>
+        <ul>
+          <li>&quot;Write a 3-sentence professional summary for a senior marketing manager with 8 years in B2B SaaS applying for a Director of Marketing role&quot;</li>
+          <li>&quot;Rewrite my summary to specifically address the &apos;leadership&apos; and &apos;data-driven&apos; focus mentioned in the job description&quot;</li>
+        </ul>
+
+        <h2>Cover Letters: Claude Wins</h2>
+        <p>
+          For cover letters, Claude Opus 4.8 produces the most compelling,
+          personalized output. Prompt structure that works best:
+        </p>
+        <p>
+          &quot;Write a cover letter for [Job Title] at [Company]. My background:
+          [paste resume summary]. The job requires: [paste key requirements].
+          Tone: professional but not stiff. Opening: specific to the company&apos;s
+          mission. Length: 3 paragraphs. Do not use clichés.&quot;
+        </p>
+
+        <h2>Common Mistakes to Avoid</h2>
+        <ul>
+          <li><strong>Don&apos;t use generic AI output without editing:</strong> AI resumes often sound identical. Edit it to sound like you.</li>
+          <li><strong>Don&apos;t let AI invent achievements:</strong> Only add metrics you can verify.</li>
+          <li><strong>Don&apos;t skip tailoring:</strong> AI makes tailoring fast — there&apos;s no excuse not to customize for each role.</li>
+        </ul>
+
+        <div className="not-prose my-8 rounded-xl border bg-muted/30 p-6 text-center">
+          <p className="mb-4 font-semibold text-lg">
+            Claude, GPT-5, and 34+ models for your job search — $12/month
+          </p>
+          <Link
+            href="/register"
+            className="inline-block rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground hover:bg-primary/90"
+          >
+            Start Free Trial
+          </Link>
+        </div>
+      </article>
+    ),
+  },
 };
 
 export function generateStaticParams() {
