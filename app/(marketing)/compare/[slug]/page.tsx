@@ -10108,6 +10108,243 @@ const COMPARISONS: Record<string, ComparisonData> = {
     ],
   },
 
+  "bedda-vs-le-chat": {
+    slug: "bedda-vs-le-chat",
+    competitor: "Le Chat (Mistral)",
+    competitorUrl: "https://chat.mistral.ai",
+    competitorPrice: "$14.99/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Le Chat",
+    metaTitle: "bedda.ai vs Le Chat by Mistral (2026) — 36+ Models vs Mistral-Only",
+    metaDescription:
+      "Compare bedda.ai and Le Chat Pro. Le Chat is Mistral's consumer product at $14.99/mo — Mistral models only. bedda.ai gives you Mistral PLUS GPT-5, Claude, Gemini, and 36+ models for $12/mo.",
+    ogTitle: "bedda.ai vs Le Chat — 36+ Models for $12 vs Mistral-Only for $15",
+    ogDescription:
+      "Le Chat Pro costs $14.99/mo and locks you into Mistral models only. bedda.ai is $12/mo with Mistral Large, Mistral Small, PLUS GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, Grok 4, and 32+ more.",
+    heroHeadline: "36+ frontier models for $12/mo vs Mistral-only subscription for $14.99/mo",
+    heroSubtext:
+      "Le Chat Pro is Mistral AI's official consumer product — a polished interface for Mistral Large, Mistral Small, and Pixtral models. At $14.99/mo, it's a solid option if you only need Mistral models. bedda.ai is $12/mo and gives you Mistral Large and Mistral Small alongside GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, Grok 4, DeepSeek R1, and 30+ other frontier models.",
+    verdict:
+      "Le Chat Pro is the right choice if you're a committed Mistral user who prefers Mistral's European AI principles and privacy approach. bedda.ai is the better value if you want Mistral PLUS the best models from every other provider — at $2.99/mo less.",
+    switchReasons: [
+      "$12/mo vs $14.99/mo — save $36/year",
+      "Mistral Large + Small included, PLUS 34+ other models",
+      "GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, Grok 4 in one subscription",
+      "Web search, image generation, code execution, and knowledge base RAG",
+      "Model comparison arena to benchmark Mistral vs GPT-5 vs Claude",
+      "7-day free trial, no credit card required",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$14.99/mo" },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Mistral Large", bedda: true, competitor: true },
+      { feature: "Mistral Small", bedda: true, competitor: true },
+      { feature: "36+ total models", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: true },
+      { feature: "Image generation", bedda: true, competitor: true },
+      { feature: "Knowledge base RAG", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "7-day free trial", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Le Chat?",
+        a: "Le Chat is Mistral AI's official consumer-facing chat product. Le Chat Pro ($14.99/mo) gives unlimited access to Mistral's models — Mistral Large 2, Mistral Small, Pixtral (vision), and Codestral (coding). It also includes web search and image generation via Black Forest Labs' Flux model. Le Chat is popular in Europe and appeals to users who value Mistral's EU-based AI principles.",
+      },
+      {
+        q: "Does bedda.ai include Mistral models?",
+        a: "Yes. bedda.ai includes Mistral Large and Mistral Small — the same flagship models you get in Le Chat Pro — alongside GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, Grok 4, and 30+ other frontier models. bedda.ai is $2.99/mo cheaper than Le Chat Pro while giving you access to every major provider.",
+      },
+      {
+        q: "Is Le Chat or bedda.ai better for European privacy?",
+        a: "Le Chat processes data on Mistral's EU-based infrastructure, which appeals to users with EU data residency requirements. bedda.ai routes requests through Vercel's AI Gateway with Anthropic, OpenAI, and Google as providers — data handling varies by model provider. If strict EU data residency is a legal requirement for your organization, Le Chat's EU-first infrastructure is a meaningful differentiator.",
+      },
+      {
+        q: "Which has better image generation?",
+        a: "Both platforms offer image generation. bedda.ai provides DALL-E 3 (OpenAI), Imagen 3 (Google), and Flux 1.1 Pro (Black Forest Labs). Le Chat Pro uses Flux for image generation. bedda.ai gives you more model options for image generation.",
+      },
+    ],
+  },
+
+  "bedda-vs-julius-ai": {
+    slug: "bedda-vs-julius-ai",
+    competitor: "Julius AI",
+    competitorUrl: "https://julius.ai",
+    competitorPrice: "$25/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Julius AI",
+    metaTitle: "bedda.ai vs Julius AI (2026) — General AI Platform vs Data Analysis Tool",
+    metaDescription:
+      "Compare bedda.ai and Julius AI. Julius AI is a $25/mo specialized data analysis tool for CSV and Python. bedda.ai is $12/mo with GPT-5, Claude, and 36+ models — including full code execution for data work.",
+    ogTitle: "bedda.ai vs Julius AI — 36+ Frontier Models for $12 vs Data-Only AI for $25",
+    ogDescription:
+      "Julius AI charges $25/mo for specialized data analysis. bedda.ai is $12/mo with GPT-5, Claude Opus 4.8, and 36+ models — handles data analysis, writing, research, and more. Twice as cheap, 5x more versatile.",
+    heroHeadline: "36+ frontier models for $12/mo vs specialized data analysis tool for $25/mo",
+    heroSubtext:
+      "Julius AI is a specialized AI tool for data analysts — it reads CSV files, generates Python/R code, creates charts, and explains statistical results. At $25/mo, it's a premium-priced niche tool. bedda.ai is $12/mo and handles data analysis alongside writing, coding, research, and any other professional task using GPT-5, Claude Opus 4.8, and 36+ frontier models.",
+    verdict:
+      "Julius AI is a polished data analysis tool if your entire workflow revolves around CSV analysis and you want a highly optimized interface for that specific use case. bedda.ai is the better value for professionals who need data analysis plus everything else — writing, research, coding, ideation — at half the price.",
+    switchReasons: [
+      "$12/mo vs $25/mo — save $156/year",
+      "GPT-5, Claude Opus 4.8, and Gemini 2.5 Pro for data analysis",
+      "Code execution sandbox for Python and JavaScript",
+      "Knowledge base for uploading and querying datasets",
+      "Web search for live data alongside local file analysis",
+      "Model comparison arena to get the best analytical output",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$25/mo" },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "36+ frontier models", bedda: true, competitor: false },
+      { feature: "CSV / data file upload", bedda: true, competitor: true },
+      { feature: "Python code execution", bedda: true, competitor: true },
+      { feature: "Chart generation", bedda: true, competitor: true },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Knowledge base RAG", bedda: true, competitor: false },
+      { feature: "Writing & research tasks", bedda: true, competitor: false },
+      { feature: "7-day free trial", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Julius AI?",
+        a: "Julius AI is a specialized AI assistant for data analysis. You upload CSV, Excel, or database files, and Julius uses AI (primarily GPT-4 class models) to generate Python or R code, answer questions about the data, create charts, and explain statistical insights in plain English. It's designed for data analysts, researchers, and business users who work with structured data regularly. Julius AI Pro costs $25/mo.",
+      },
+      {
+        q: "Can bedda.ai analyze data like Julius AI?",
+        a: "Yes. GPT-5 and Claude Opus 4.8 on bedda.ai are both excellent at data analysis — they can read uploaded CSV files, generate Python/R code, explain statistical patterns, and create analysis plans. bedda.ai's code execution sandbox runs Python directly. The key difference: Julius AI has a highly optimized interface specifically for the data analysis workflow, while bedda.ai is a general-purpose platform that handles data analysis alongside any other task.",
+      },
+      {
+        q: "Which is better for data visualization?",
+        a: "Julius AI has a more polished native charting interface with direct data visualization rendering. On bedda.ai, you can generate Python matplotlib/seaborn/plotly code and view it through the code execution sandbox. For ad-hoc analysis where you also write reports and communicate findings, bedda.ai is more versatile. For dedicated charting workflows, Julius AI's UI is more specialized.",
+      },
+      {
+        q: "Is Julius AI worth $25/mo?",
+        a: "Julius AI is worth it if your primary use case is structured data analysis and you do it daily — the specialized interface saves significant setup time. If you also write, research, or do other AI-assisted work, bedda.ai at $12/mo gives you comparable data analysis capabilities plus 36+ frontier models for everything else.",
+      },
+    ],
+  },
+
+  "bedda-vs-chatdoc": {
+    slug: "bedda-vs-chatdoc",
+    competitor: "ChatDOC",
+    competitorUrl: "https://chatdoc.com",
+    competitorPrice: "$8-16/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs ChatDOC",
+    metaTitle: "bedda.ai vs ChatDOC (2026) — 36+ AI Models vs PDF Chat Tool",
+    metaDescription:
+      "Compare bedda.ai and ChatDOC. ChatDOC is an $8-16/mo PDF chat and document analysis tool. bedda.ai is $12/mo with GPT-5, Claude, and 36+ models — including built-in knowledge base RAG for document chat.",
+    ogTitle: "bedda.ai vs ChatDOC — Frontier AI + Document RAG for $12 vs PDF-Only Tool",
+    ogDescription:
+      "ChatDOC charges $8-16/mo for PDF and document chat. bedda.ai is $12/mo with GPT-5, Claude Opus 4.8, and 36+ models PLUS a built-in knowledge base for document Q&A, web search, and code execution.",
+    heroHeadline: "36+ frontier models + document RAG for $12/mo vs PDF-only tool at $8-16/mo",
+    heroSubtext:
+      "ChatDOC is a specialized tool for uploading PDFs and asking questions about them — useful for academic papers, legal documents, financial reports, and technical manuals. bedda.ai's Plus plan ($12/mo) includes a built-in knowledge base with RAG search for the same document Q&A functionality, plus access to GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, and 33+ other frontier models for every other task.",
+    verdict:
+      "ChatDOC's free tier is useful for occasional PDF chat. At $8-16/mo for the paid plan, bedda.ai's $12/mo subscription is a better value — you get comparable document Q&A capabilities via the knowledge base, plus the world's best AI models for writing, research, coding, and anything else.",
+    switchReasons: [
+      "Same document chat capability via built-in knowledge base RAG",
+      "GPT-5, Claude Opus 4.8, Gemini — the most capable models for document analysis",
+      "Web search to supplement document research with live data",
+      "Chat history, projects, and team workspaces",
+      "Code execution, image generation, and model comparison arena",
+      "7-day free trial, cancel anytime",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$8-16/mo" },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "PDF / document upload", bedda: true, competitor: true },
+      { feature: "Document Q&A (RAG)", bedda: true, competitor: true },
+      { feature: "Knowledge base for multiple docs", bedda: true, competitor: true },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "7-day free trial", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is ChatDOC?",
+        a: "ChatDOC is a specialized AI tool for chatting with PDF documents. You upload one or more PDFs and ask questions — ChatDOC uses RAG (retrieval-augmented generation) to locate relevant sections and answer your questions. It's popular with students, researchers, lawyers, and financial analysts who need to extract insights from large documents. ChatDOC Premium starts at $7.99/mo with higher limits on pages and file sizes.",
+      },
+      {
+        q: "Does bedda.ai support PDF document chat?",
+        a: "Yes. bedda.ai's knowledge base (available on Plus and above) supports uploading text documents including PDFs, and uses vector search to retrieve relevant passages when answering your questions. This gives you the same core RAG functionality as ChatDOC, powered by GPT-5 or Claude Opus 4.8 instead of ChatDOC's underlying model. For the latest large PDFs, Claude Opus 4.8's 200k context window can often process entire documents directly.",
+      },
+      {
+        q: "Is ChatDOC or bedda.ai better for academic papers?",
+        a: "Both work well for academic papers. Claude Opus 4.8 on bedda.ai is particularly strong at interpreting technical and scientific language, summarizing methodology, and explaining statistical results. For very large paper collections (50+ papers), ChatDOC's interface is optimized for multi-document navigation. For analysis quality and writing up findings, bedda.ai with Claude or Gemini 2.5 Pro outperforms ChatDOC's underlying model.",
+      },
+      {
+        q: "Can I use bedda.ai for legal document review?",
+        a: "Yes. Claude Opus 4.8 is widely regarded as the best AI for legal document analysis — it handles long contracts, understands legal language, identifies obligations and risks, and flags unusual clauses. Upload your documents to bedda.ai's knowledge base and query them with Claude for detailed analysis. This workflow is comparable to ChatDOC but with significantly more capable underlying models.",
+      },
+    ],
+  },
+
+  "bedda-vs-taplio": {
+    slug: "bedda-vs-taplio",
+    competitor: "Taplio",
+    competitorUrl: "https://taplio.com",
+    competitorPrice: "$39/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Taplio",
+    metaTitle: "bedda.ai vs Taplio (2026) — 36+ AI Models for $12 vs LinkedIn Tool for $39",
+    metaDescription:
+      "Compare bedda.ai and Taplio. Taplio is a $39/mo LinkedIn content creation and scheduling tool. bedda.ai is $12/mo with GPT-5, Claude, and 36+ frontier models — creates better LinkedIn content at 70% less cost.",
+    ogTitle: "bedda.ai vs Taplio — Write Better LinkedIn Content for $12 vs $39",
+    ogDescription:
+      "Taplio charges $39/mo for AI-assisted LinkedIn content creation. bedda.ai is $12/mo with GPT-5 and Claude Opus 4.8 — creates superior LinkedIn posts, carousels, and thought leadership content at 70% less cost.",
+    heroHeadline: "GPT-5 + Claude for $12/mo vs LinkedIn-specific AI tool for $39/mo",
+    heroSubtext:
+      "Taplio is a LinkedIn-specific AI platform for content creation, scheduling, and analytics — it generates LinkedIn posts, carousels, and engagement content using AI trained on high-performing LinkedIn content. At $39/mo, it's premium-priced. bedda.ai at $12/mo gives you GPT-5, Claude Opus 4.8, and Gemini 2.5 Pro — frontier models that write excellent LinkedIn content plus every other type of professional writing.",
+    verdict:
+      "Taplio is worth it if you need LinkedIn scheduling, analytics, and a feed-monitoring interface alongside AI content generation — the platform features justify the premium for dedicated LinkedIn creators. If you just need great AI assistance for writing LinkedIn posts and other professional content, bedda.ai at $12/mo produces higher-quality output with frontier models at 70% less cost.",
+    switchReasons: [
+      "$12/mo vs $39/mo — save $324/year",
+      "GPT-5 and Claude Opus 4.8 write more nuanced, higher-quality LinkedIn content",
+      "Works for LinkedIn posts, emails, proposals, reports — not just LinkedIn",
+      "Web search to incorporate real-time news and trends into posts",
+      "Model comparison arena to test multiple writing styles at once",
+      "Knowledge base to ground posts in your own expertise and content",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$39/mo" },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "LinkedIn post writing", bedda: true, competitor: true },
+      { feature: "LinkedIn carousel creation", bedda: true, competitor: true },
+      { feature: "LinkedIn post scheduling", bedda: false, competitor: true },
+      { feature: "LinkedIn analytics", bedda: false, competitor: true },
+      { feature: "Web search for trends", bedda: true, competitor: false },
+      { feature: "General writing tasks", bedda: true, competitor: false },
+      { feature: "Knowledge base RAG", bedda: true, competitor: false },
+      { feature: "7-day free trial", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Taplio?",
+        a: "Taplio is a LinkedIn-specific AI platform designed for content creators, founders, and marketers who want to grow their LinkedIn presence. It includes AI post generation, carousel creation, post scheduling, engagement analytics, and a content inspiration feed. Taplio's AI is trained on high-performing LinkedIn content and optimized for the LinkedIn format. Taplio costs $39/mo (personal) to $79/mo (team).",
+      },
+      {
+        q: "Can bedda.ai write LinkedIn content?",
+        a: "Yes. GPT-5 and Claude Opus 4.8 are both excellent at LinkedIn content — thought leadership posts, carousel outlines, personal stories, and industry commentary. The key advantage: frontier models produce more original, nuanced content than tools trained to replicate the 'LinkedIn style.' Many users find that bedda.ai with a good prompt produces more authentic-sounding posts than LinkedIn-specific tools that default to the same familiar format.",
+      },
+      {
+        q: "Does bedda.ai do LinkedIn post scheduling?",
+        a: "No. bedda.ai is an AI content generation platform, not a social media management tool. It doesn't have native LinkedIn scheduling or analytics. For those features, you'd pair bedda.ai with a free or cheap scheduling tool (Buffer's free tier, LinkedIn's native scheduler, etc.). The content generation quality from bedda.ai's frontier models makes up for the missing scheduling layer — and you save $27+/mo vs Taplio.",
+      },
+      {
+        q: "Which AI is best for LinkedIn content in 2026?",
+        a: "Claude Opus 4.8 consistently produces the most natural-sounding LinkedIn thought leadership content — it avoids the generic AI phrasing that makes LinkedIn posts feel templated. GPT-5 is excellent for data-backed posts and industry analysis. Use bedda.ai's model comparison arena to generate the same post with multiple models and pick the best one. Both outperform the dedicated LinkedIn AI tools for pure writing quality.",
+      },
+    ],
+  },
+
   "bedda-vs-openai-playground": {
     slug: "bedda-vs-openai-playground",
     competitor: "OpenAI Playground",
