@@ -124,6 +124,7 @@ export const FREE_TIER_MODEL_IDS: readonly string[] = [
   "anthropic-claude-3-5-haiku-latest",
   // OpenAI mini / nano models
   "openai-gpt-5-nano",
+  "openai-gpt-5-mini",
   "openai-gpt-4o-mini",
   "openai-gpt-4.1-mini",
   // Google Flash / Flash Lite

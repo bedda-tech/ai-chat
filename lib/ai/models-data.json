@@ -960,6 +960,68 @@
           "quick Q&A"
         ]
       }
+    },
+    {
+      "id": "openai-o3",
+      "gatewayId": "openai/o3",
+      "provider": "openai",
+      "name": "o3",
+      "description": "OpenAI's most capable reasoning model — extended thinking for the hardest problems in math, science, and coding",
+      "contextWindow": 200000,
+      "pricing": {
+        "input": 10.0,
+        "output": 40.0,
+        "cachedInput": 2.5,
+        "cachedOutput": null
+      },
+      "capabilities": {
+        "vision": true,
+        "toolCalling": true,
+        "reasoning": true,
+        "imageGeneration": false
+      },
+      "config": {
+        "maxSteps": 5,
+        "temperature": 1.0,
+        "idealFor": [
+          "complex reasoning",
+          "advanced math",
+          "hard coding problems",
+          "science",
+          "agentic tasks"
+        ]
+      }
+    },
+    {
+      "id": "openai-o4-mini",
+      "gatewayId": "openai/o4-mini",
+      "provider": "openai",
+      "name": "o4-mini",
+      "description": "Fast and efficient OpenAI reasoning model — o-series intelligence at lower cost with multimodal support",
+      "contextWindow": 200000,
+      "pricing": {
+        "input": 1.1,
+        "output": 4.4,
+        "cachedInput": 0.275,
+        "cachedOutput": null
+      },
+      "capabilities": {
+        "vision": true,
+        "toolCalling": true,
+        "reasoning": true,
+        "imageGeneration": false
+      },
+      "config": {
+        "maxSteps": 5,
+        "temperature": 1.0,
+        "idealFor": [
+          "reasoning",
+          "math",
+          "coding",
+          "multimodal analysis",
+          "efficient thinking"
+        ]
+      }
     }
   ]
 }
