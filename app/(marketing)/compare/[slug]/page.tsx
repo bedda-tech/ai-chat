@@ -9868,6 +9868,246 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+  "bedda-vs-typeface-ai": {
+    slug: "bedda-vs-typeface-ai",
+    competitor: "Typeface AI",
+    competitorUrl: "https://www.typeface.ai",
+    competitorPrice: "$120+/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Typeface AI",
+    metaTitle: "bedda.ai vs Typeface AI (2026) — $12/mo vs $120+/mo for AI Content",
+    metaDescription:
+      "Compare bedda.ai and Typeface AI. Typeface is an enterprise AI content platform starting at $120+/mo per seat. bedda.ai gives you GPT-5, Claude, Gemini, and 36+ frontier models for $12/mo.",
+    ogTitle: "bedda.ai vs Typeface AI — 10x More Capable, 10x Less Expensive",
+    ogDescription:
+      "Typeface AI is an enterprise content platform with brand guardrails. bedda.ai is $12/mo with GPT-5, Claude Opus 4.8, Gemini, and 36+ models — no enterprise contracts required.",
+    heroHeadline: "Enterprise AI content at $12/mo vs $120+/mo per seat",
+    heroSubtext:
+      "Typeface AI is an enterprise AI content platform built for large marketing teams — it includes brand voice customization, approval workflows, and team collaboration at enterprise pricing. bedda.ai gives individual professionals and small teams access to GPT-5, Claude Opus 4.8, and 36+ frontier models for $12/mo with no enterprise contracts.",
+    verdict:
+      "Typeface AI is the right choice for large enterprise marketing teams that need brand guardrails, approval workflows, and deep integration with existing martech stacks — and have the budget to match. bedda.ai is the right choice for individual marketers, freelancers, and small teams who want access to the most capable AI models (GPT-5, Claude Opus 4.8, Gemini) for a flat $12/mo.",
+    switchReasons: [
+      "Flat $12/mo vs $120+ per seat per month",
+      "GPT-5, Claude Opus 4.8, Gemini, Grok — all in one place",
+      "No enterprise contracts or procurement process",
+      "Web search, image generation, code execution included",
+      "Model comparison arena to find the best output",
+      "Knowledge base RAG for brand context without enterprise overhead",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$120+/seat/mo" },
+      { feature: "GPT-5 access", bedda: true, competitor: true },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "36+ frontier models", bedda: true, competitor: false },
+      { feature: "Brand voice customization", bedda: false, competitor: true },
+      { feature: "Approval workflows", bedda: false, competitor: true },
+      { feature: "Knowledge base RAG", bedda: true, competitor: true },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: true },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "No enterprise contract", bedda: true, competitor: false },
+      { feature: "7-day free trial", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Typeface AI?",
+        a: "Typeface AI is an enterprise AI content platform designed for large marketing teams. It offers brand voice customization, multi-model content generation, team collaboration features, and approval workflows. It integrates with enterprise martech stacks and is priced for corporate procurement budgets — typically $120+/seat/month.",
+      },
+      {
+        q: "Does bedda.ai have brand voice features?",
+        a: "bedda.ai's knowledge base RAG lets you upload brand guidelines, tone of voice documents, and style guides — the AI then references them when generating content. This covers most individual and small team use cases. bedda.ai doesn't have enterprise approval workflows, which Typeface is designed around.",
+      },
+      {
+        q: "Who should use Typeface vs bedda.ai?",
+        a: "Use Typeface AI if you're an enterprise marketing team (100+ people) that needs brand guardrails, multi-step approval workflows, and deep integration with Salesforce, HubSpot, or Adobe. Use bedda.ai if you're an individual marketer, freelancer, or small team who wants the best AI models available for $12/mo.",
+      },
+      {
+        q: "Does bedda.ai have GPT-5 and Claude Opus 4.8?",
+        a: "Yes. bedda.ai's Plus plan ($12/mo) includes GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, Grok 4, and 32+ other frontier models. You can switch between them in the same chat to compare outputs.",
+      },
+    ],
+  },
+
+  "bedda-vs-voiceflow": {
+    slug: "bedda-vs-voiceflow",
+    competitor: "Voiceflow",
+    competitorUrl: "https://www.voiceflow.com",
+    competitorPrice: "$50+/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Voiceflow",
+    metaTitle: "bedda.ai vs Voiceflow (2026) — AI Chat vs Chatbot Builder",
+    metaDescription:
+      "Compare bedda.ai and Voiceflow. Voiceflow is a no-code chatbot and AI agent builder starting at $50+/mo. bedda.ai is a $12/mo AI chat platform with GPT-5, Claude, Gemini, and 36+ models.",
+    ogTitle: "bedda.ai vs Voiceflow — Personal AI Chat vs Chatbot Builder",
+    ogDescription:
+      "Voiceflow builds AI agents and chatbots for products. bedda.ai is $12/mo with GPT-5, Claude Opus 4.8, Gemini, and 36+ models for your personal and professional AI chat needs.",
+    heroHeadline: "Personal AI assistant at $12/mo vs chatbot builder platform at $50+/mo",
+    heroSubtext:
+      "Voiceflow is a no-code platform for building AI agents, chatbots, and conversational flows to deploy in your product or website — it's a developer/designer tool for creating AI experiences. bedda.ai is a multi-model AI chat platform for using AI yourself — GPT-5, Claude, Gemini, and 36+ models for personal and professional work at $12/mo.",
+    verdict:
+      "Voiceflow is the right tool if you're building a chatbot, AI assistant, or conversational flow to deploy inside your application, website, or customer support system. bedda.ai is the right tool if you want to use AI for your own work — writing, research, coding, analysis — with access to 36+ frontier models at a flat $12/mo.",
+    switchReasons: [
+      "Flat $12/mo vs $50+ for a tool that requires development work to use",
+      "Ready to use immediately — no chatbot design required",
+      "GPT-5, Claude Opus 4.8, Gemini, Grok — all accessible directly",
+      "Web search, image generation, code execution out of the box",
+      "Knowledge base RAG without building an agent pipeline",
+      "Multi-model comparison to get the best output",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$50+/mo" },
+      { feature: "GPT-5 access", bedda: true, competitor: true },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: true },
+      { feature: "36+ frontier models", bedda: true, competitor: false },
+      { feature: "Ready-to-use chat interface", bedda: true, competitor: false },
+      { feature: "Build AI agents/chatbots", bedda: false, competitor: true },
+      { feature: "No-code flow builder", bedda: false, competitor: true },
+      { feature: "Knowledge base RAG", bedda: true, competitor: true },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "7-day free trial", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Voiceflow?",
+        a: "Voiceflow is a no-code platform for designing, prototyping, and deploying AI agents and conversational chatbots. Teams use it to build customer support bots, product onboarding flows, and AI assistants that get embedded in apps and websites. It supports multiple LLM providers including OpenAI and Anthropic.",
+      },
+      {
+        q: "Are Voiceflow and bedda.ai competitors?",
+        a: "Not really — they serve different use cases. Voiceflow is a tool for building AI experiences for others (your customers, your product). bedda.ai is a tool for using AI yourself — personal productivity, writing, research, coding. Many professionals could use both: Voiceflow to build products, bedda.ai for their own daily work.",
+      },
+      {
+        q: "Can bedda.ai replace Voiceflow?",
+        a: "No. bedda.ai doesn't have chatbot flow builders, conversation design tools, or deployment infrastructure for embedding in products. If you need to build a customer-facing AI chatbot, Voiceflow is the right tool. bedda.ai is for personal and team AI use, not building AI products.",
+      },
+      {
+        q: "Does bedda.ai have API access like Voiceflow?",
+        a: "Yes. bedda.ai's Plus plan includes an OpenAI-compatible API that developers can use to integrate bedda's multi-model access into their own applications. This is different from Voiceflow's no-code builder but gives developers programmatic access.",
+      },
+    ],
+  },
+
+  "bedda-vs-replika": {
+    slug: "bedda-vs-replika",
+    competitor: "Replika",
+    competitorUrl: "https://replika.com",
+    competitorPrice: "$20/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Replika",
+    metaTitle: "bedda.ai vs Replika (2026) — Frontier AI vs AI Companion App",
+    metaDescription:
+      "Compare bedda.ai and Replika. Replika is a $20/mo AI companion app focused on emotional connection. bedda.ai is $12/mo with GPT-5, Claude, Gemini, and 36+ frontier models for productive work.",
+    ogTitle: "bedda.ai vs Replika — 36+ Frontier Models for $12 vs AI Companion for $20",
+    ogDescription:
+      "Replika is an AI companion app for emotional connection and conversation. bedda.ai gives you GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, and 36+ models for real work at $12/mo.",
+    heroHeadline: "GPT-5, Claude, and 36+ models for $12/mo vs AI companion app at $20/mo",
+    heroSubtext:
+      "Replika is an AI companion app designed around emotional connection and conversation — it maintains a persistent persona and is optimized for emotional support and friendly chat. bedda.ai is a multi-model AI platform with GPT-5, Claude Opus 4.8, Gemini, and 36+ frontier models for writing, research, coding, and professional productivity at $12/mo.",
+    verdict:
+      "Replika serves a specific emotional companionship use case that bedda.ai doesn't target. bedda.ai is the better choice for professionals who want access to the most capable AI models for their work — writing, research, coding, analysis — at a lower price than Replika.",
+    switchReasons: [
+      "$12/mo vs $20/mo — 40% cheaper",
+      "GPT-5, Claude Opus 4.8, Gemini — the most capable frontier models",
+      "Web search, image generation, code execution included",
+      "Knowledge base for work documents and research",
+      "Model comparison arena to get the best output",
+      "Team workspaces for professional collaboration",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$20/mo" },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "36+ frontier models", bedda: true, competitor: false },
+      { feature: "Persistent AI persona", bedda: false, competitor: true },
+      { feature: "Emotional companionship focus", bedda: false, competitor: true },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Code execution", bedda: true, competitor: false },
+      { feature: "Knowledge base RAG", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "7-day free trial", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is Replika?",
+        a: "Replika is an AI companion app that creates a persistent AI persona for emotional support, friendly conversation, and companionship. It has a large user base who value its consistent personality and emotional responsiveness. Replika Pro costs $19.99/mo and unlocks additional conversation modes. It does not use GPT-5, Claude, or other frontier models — it uses a proprietary model optimized for emotional conversation.",
+      },
+      {
+        q: "Is bedda.ai a good Replika alternative for productivity?",
+        a: "Yes. If you use Replika primarily for conversation, creative writing, or getting advice, bedda.ai's frontier models (GPT-5, Claude Opus 4.8) will give you significantly more capable and knowledgeable responses for $8/mo less. bedda.ai is not designed for emotional companionship — it's designed for productive work — but it's far more capable for writing, research, and problem-solving.",
+      },
+      {
+        q: "Does bedda.ai have a persistent personality?",
+        a: "bedda.ai supports custom system instructions that persist across chats — you can set a consistent tone, style, and persona for the AI. It doesn't maintain a separate 'character' the way Replika does, but you can create a consistent interaction style.",
+      },
+      {
+        q: "Can bedda.ai do creative writing and roleplay?",
+        a: "Yes. Claude Opus 4.8 and GPT-5 are both excellent for creative writing, fiction, and interactive storytelling. Claude in particular handles nuanced character writing and narrative voice exceptionally well.",
+      },
+    ],
+  },
+
+  "bedda-vs-langchain": {
+    slug: "bedda-vs-langchain",
+    competitor: "LangChain / LangSmith",
+    competitorUrl: "https://www.langchain.com",
+    competitorPrice: "Free/$39+/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs LangChain",
+    metaTitle: "bedda.ai vs LangChain (2026) — Consumer AI Chat vs Developer Framework",
+    metaDescription:
+      "Compare bedda.ai and LangChain. LangChain is an open-source developer framework for building LLM applications. bedda.ai is a $12/mo finished AI chat product with GPT-5, Claude, and 36+ models.",
+    ogTitle: "bedda.ai vs LangChain — Use AI Now vs Build AI Applications",
+    ogDescription:
+      "LangChain is a developer framework for building LLM-powered applications — not a finished chat product. bedda.ai gives you GPT-5, Claude Opus 4.8, and 36+ models in a ready-to-use interface for $12/mo.",
+    heroHeadline: "Finished AI chat product at $12/mo vs developer framework for building AI apps",
+    heroSubtext:
+      "LangChain is an open-source Python and JavaScript framework for building LLM-powered applications — chains, agents, RAG pipelines, and tool integrations. It requires significant development work to use. bedda.ai is a finished multi-model AI chat platform — GPT-5, Claude, Gemini, and 36+ models — ready to use immediately for $12/mo.",
+    verdict:
+      "LangChain is the right tool if you're a developer building a custom LLM-powered application and need orchestration, memory management, and tool calling infrastructure. bedda.ai is the right tool if you want to use frontier AI for your own work — writing, research, coding, analysis — without writing any code.",
+    switchReasons: [
+      "Ready to use immediately — no code required",
+      "GPT-5, Claude Opus 4.8, Gemini in one interface",
+      "Web search, image generation, code execution already built in",
+      "Knowledge base RAG without building a pipeline",
+      "Flat $12/mo vs building, hosting, and paying API costs",
+      "Model comparison to find the best output without engineering",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "Free (+ API costs)" },
+      { feature: "GPT-5 access", bedda: true, competitor: true },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: true },
+      { feature: "36+ models in one place", bedda: true, competitor: false },
+      { feature: "Ready-to-use chat interface", bedda: true, competitor: false },
+      { feature: "Agent/chain orchestration", bedda: false, competitor: true },
+      { feature: "Custom LLM pipeline building", bedda: false, competitor: true },
+      { feature: "Knowledge base RAG", bedda: true, competitor: true },
+      { feature: "Web search (no code)", bedda: true, competitor: false },
+      { feature: "Image generation (no code)", bedda: true, competitor: false },
+      { feature: "Flat monthly pricing", bedda: true, competitor: false },
+      { feature: "7-day free trial", bedda: true, competitor: false },
+    ],
+    faq: [
+      {
+        q: "What is LangChain?",
+        a: "LangChain is an open-source framework (Python and JavaScript) for building applications powered by large language models. It provides abstractions for chains, agents, memory, RAG pipelines, and tool integrations — essentially the scaffolding for building complex LLM-powered applications. LangSmith is LangChain's paid observability and testing platform starting at $39/mo.",
+      },
+      {
+        q: "Are LangChain and bedda.ai competitors?",
+        a: "Not directly. LangChain is for building AI applications; bedda.ai is for using AI. Many developers use LangChain to build products at work and bedda.ai for their own productivity. They serve fundamentally different jobs.",
+      },
+      {
+        q: "Can bedda.ai replace LangChain for RAG?",
+        a: "For personal and team knowledge bases, yes. bedda.ai has built-in RAG — you upload documents and the AI retrieves relevant context automatically. For building production RAG systems for your customers or applications, LangChain gives you much more control.",
+      },
+      {
+        q: "Does bedda.ai have an API like LangChain?",
+        a: "Yes. bedda.ai's Plus plan includes an OpenAI-compatible API endpoint. You can use it as a model provider in LangChain itself — access bedda's 36+ models through the OpenAI SDK interface. This makes bedda a potential complement to LangChain for developers who want multi-model access without managing multiple provider keys.",
+      },
+    ],
+  },
+
   "bedda-vs-openai-playground": {
     slug: "bedda-vs-openai-playground",
     competitor: "OpenAI Playground",

@@ -1903,6 +1903,96 @@ const posts = [
     readingTime: "9 min read",
     category: "AI Models",
   },
+  {
+    slug: "best-ai-for-excel-2026",
+    title: "Best AI for Excel and Spreadsheets in 2026",
+    description:
+      "How to use AI to automate Excel formulas, clean data, write VBA macros, and analyze spreadsheets — and which AI models work best for each task.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Productivity Guides",
+  },
+  {
+    slug: "ai-for-pharmacists-2026",
+    title: "AI for Pharmacists: Tools and Use Cases in 2026",
+    description:
+      "How pharmacists are using AI to write patient counseling notes, review drug information, stay current on clinical literature, and reduce documentation time.",
+    date: "July 2026",
+    readingTime: "6 min read",
+    category: "Professional Guides",
+  },
+  {
+    slug: "gpt-5-mini-review",
+    title: "GPT-5 Mini Review (2026): Fast, Cheap, and Surprisingly Good",
+    description:
+      "An honest review of OpenAI's GPT-5 mini — benchmarks, real-world performance, pricing, and how it compares to Claude Haiku 4.5, Gemini 2.5 Flash, and the full GPT-5.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Model Reviews",
+  },
+  {
+    slug: "best-ai-for-resume-writing-2026",
+    title: "Best AI for Resume Writing in 2026",
+    description:
+      "The best AI tools to write, tailor, and optimize your resume — which models produce the most ATS-friendly output, and how to get results worth actually submitting.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Career Guides",
+  },
+  {
+    slug: "ai-for-hr-professionals-2026",
+    title: "AI for HR Professionals in 2026: Job Descriptions, Reviews, and Policy Docs",
+    description:
+      "How HR teams use AI in 2026 to write better job descriptions, streamline performance reviews, draft employee communications, and maintain compliant HR documentation.",
+    date: "July 2026",
+    readingTime: "6 min read",
+    category: "Professional Guides",
+  },
+  {
+    slug: "ai-for-data-analysts-2026",
+    title: "AI for Data Analysts in 2026: SQL, Reports, and Insight Communication",
+    description:
+      "How data analysts use AI in 2026 for SQL query writing, data interpretation, report drafting, dashboard documentation, and communicating insights to non-technical stakeholders.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Professional Guides",
+  },
+  {
+    slug: "ai-for-web3-and-crypto-2026",
+    title: "AI for Web3 and Crypto Professionals in 2026",
+    description:
+      "How blockchain developers, DeFi analysts, and Web3 founders use AI for smart contract auditing, tokenomics modeling, whitepaper writing, and crypto research.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Professional Guides",
+  },
+  {
+    slug: "best-ai-for-saas-founders-2026",
+    title: "Best AI for SaaS Founders in 2026",
+    description:
+      "How SaaS startup founders use AI for product roadmap planning, user research synthesis, investor updates, and go-to-market execution — with model recommendations for each.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Business",
+  },
+  {
+    slug: "ai-for-sports-analytics-2026",
+    title: "AI for Sports Analytics in 2026: Performance Data, Scouting, and Fan Engagement",
+    description:
+      "How sports analysts, coaches, and teams use AI to process performance data, generate scouting reports, build predictive models, and create engaging fan content.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Professional Guides",
+  },
+  {
+    slug: "ai-for-digital-nomads-2026",
+    title: "AI for Digital Nomads and Remote Freelancers in 2026",
+    description:
+      "How location-independent workers use AI to run their businesses from anywhere — client communication, project management, tax compliance across countries, and maintaining productivity on the road.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Professional Guides",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
