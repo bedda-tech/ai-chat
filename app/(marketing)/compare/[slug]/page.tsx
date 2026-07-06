@@ -10663,6 +10663,257 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-deepseek": {
+    slug: "bedda-vs-deepseek",
+    competitor: "DeepSeek",
+    competitorUrl: "https://chat.deepseek.com",
+    competitorPrice: "Free",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs DeepSeek",
+    metaTitle: "bedda.ai vs DeepSeek (2026) — Multi-Model Platform vs Single Model Chat",
+    metaDescription:
+      "DeepSeek Chat is free but limited to one model. bedda.ai is $12/mo for 36+ frontier models including GPT-5, Claude Opus, Gemini 2.5 Pro, Grok 4, and DeepSeek itself.",
+    ogTitle: "bedda.ai vs DeepSeek — One Model vs 36+ Frontier Models",
+    ogDescription:
+      "DeepSeek offers a free chat interface for its own models. bedda.ai gives you DeepSeek R1, DeepSeek V3, GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, and 30+ more — all in one subscription for $12/mo.",
+    heroHeadline: "One model for free vs every top model for $12/mo",
+    heroSubtext:
+      "DeepSeek Chat is impressive and free — but it only gives you DeepSeek's models. bedda.ai includes DeepSeek R1, DeepSeek V3, plus GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, and 30+ frontier models in one $12/month subscription.",
+    verdict:
+      "DeepSeek is a great free option if you only need DeepSeek's models. But for serious work, you'll quickly find yourself needing Claude's nuance for writing, GPT-5's coding ability, or Gemini's multimodal power. bedda.ai at $12/mo gives you all of them — including both DeepSeek R1 and V3 — in one place. For anyone who bounces between AI tools, bedda.ai pays for itself in convenience alone.",
+    switchReasons: [
+      "Access DeepSeek R1 and V3 alongside GPT-5, Claude, Gemini, and Grok — all in one tab",
+      "36+ frontier models — not locked into one provider's lineup",
+      "Web search, knowledge base, and code execution built in",
+      "Team workspaces and chat history across all models",
+      "Model comparison arena — run the same prompt across 4 models side by side",
+      "No data sent to a single provider — route sensitive prompts to your preferred model",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "Free" },
+      { feature: "DeepSeek R1", bedda: true, competitor: true },
+      { feature: "DeepSeek V3", bedda: true, competitor: true },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 4", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: true },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "File uploads and analysis", bedda: true, competitor: true },
+      { feature: "API access", bedda: true, competitor: "Via DeepSeek API" },
+      { feature: "Total AI models", bedda: "36+", competitor: "2 (DeepSeek only)" },
+    ],
+    faq: [
+      {
+        q: "Is DeepSeek Chat really free?",
+        a: "Yes. DeepSeek Chat at chat.deepseek.com is free to use with generous daily limits. It provides access to DeepSeek R1 (reasoning) and DeepSeek V3 (general) models. Heavy users may hit rate limits during peak hours due to high demand from the global user base.",
+      },
+      {
+        q: "Does bedda.ai include DeepSeek models?",
+        a: "Yes. bedda.ai Plus includes both DeepSeek R1 and DeepSeek V3 alongside GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, Grok 4, and 30+ other frontier models. You get DeepSeek plus everything else for $12/mo.",
+      },
+      {
+        q: "Why pay for bedda.ai when DeepSeek is free?",
+        a: "DeepSeek Chat is excellent for DeepSeek-specific tasks. But most people need multiple AI models for different tasks — Claude for writing, GPT-5 for coding, Gemini for multimodal work. bedda.ai consolidates everything at $12/mo so you're not switching between 5 different AI tabs. If you only ever use DeepSeek, the free tier works great.",
+      },
+      {
+        q: "Which is better for coding — DeepSeek or bedda.ai?",
+        a: "DeepSeek R1 is one of the best open-weight coding models available. On bedda.ai you can access DeepSeek R1 alongside GPT-5, Claude Sonnet 4.6, and o3 — letting you pick the right model for each coding task. For complex architecture questions, Claude Opus; for fast debugging, DeepSeek R1 or GPT-5 Mini; for reasoning-heavy algorithms, o3.",
+      },
+    ],
+  },
+
+  "bedda-vs-groq": {
+    slug: "bedda-vs-groq",
+    competitor: "Groq",
+    competitorUrl: "https://groq.com",
+    competitorPrice: "Free / $20+",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Groq",
+    metaTitle: "bedda.ai vs Groq (2026) — Multi-Model AI vs Ultra-Fast Inference",
+    metaDescription:
+      "Groq is the fastest AI inference platform but limited to open-source models. bedda.ai gives you Groq's speed plus GPT-5, Claude, Gemini, and 30+ frontier models for $12/mo.",
+    ogTitle: "bedda.ai vs Groq — Speed-Focused Inference vs Full AI Platform",
+    ogDescription:
+      "Groq offers blazing-fast inference for Llama and Mixtral models. bedda.ai includes Groq-hosted Llama 3.3 70B alongside GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, and 30+ models — everything in one $12/mo subscription.",
+    heroHeadline: "Ultra-fast open models vs every frontier model — at $12/mo",
+    heroSubtext:
+      "Groq delivers the fastest AI inference available, but only for open-source models like Llama. bedda.ai includes Groq-hosted Llama 3.3 70B plus GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, Grok 4, and 30+ more — all in one subscription.",
+    verdict:
+      "Groq is the go-to platform when you need maximum speed for open-source models — great for prototyping and high-throughput developer workflows. bedda.ai includes Groq-hosted Llama alongside all the closed frontier models (GPT-5, Claude, Gemini, Grok) that Groq doesn't offer. For most users who need both speed and capability, bedda.ai at $12/mo covers both.",
+    switchReasons: [
+      "Access Groq-hosted Llama 3.3 70B plus GPT-5, Claude, Gemini, and Grok in one subscription",
+      "36+ models including frontier closed models Groq can't host",
+      "Web search, knowledge base, and code execution — not just raw chat",
+      "Team workspaces and persistent chat history",
+      "Model comparison arena — run prompts across multiple models simultaneously",
+      "No rate limits from a single provider's infrastructure",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "Free / $20+" },
+      { feature: "Llama 3.3 70B (Groq-hosted)", bedda: true, competitor: true },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 4", bedda: true, competitor: false },
+      { feature: "DeepSeek R1", bedda: true, competitor: false },
+      { feature: "Inference speed", bedda: "Fast", competitor: "Fastest (LPU hardware)" },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "Open-source only" },
+    ],
+    faq: [
+      {
+        q: "What is Groq?",
+        a: "Groq (groq.com) is an AI inference company that built custom LPU (Language Processing Unit) hardware specifically for running large language models. Their GroqCloud platform offers API access to open-source models like Llama 3.3 70B at exceptionally fast speeds — often 10-20x faster than GPU-based providers. They also have a free consumer chat interface at groq.com.",
+      },
+      {
+        q: "Does bedda.ai use Groq infrastructure?",
+        a: "bedda.ai includes Llama 3.3 70B hosted on Groq infrastructure, so you get Groq's fast inference for that model. For other models (GPT-5, Claude, Gemini, etc.), bedda.ai routes through their respective provider APIs. bedda.ai is a multi-model platform, not a single-infrastructure service.",
+      },
+      {
+        q: "Why use bedda.ai instead of Groq directly?",
+        a: "Groq excels at raw inference speed for open-source models, but doesn't offer GPT-5, Claude, or Gemini. Most work requires different models for different tasks — Claude for nuanced writing, GPT-5 for complex coding, Gemini for multimodal analysis. bedda.ai gives you Groq-speed Llama plus all frontier models in one subscription.",
+      },
+      {
+        q: "Is Groq free?",
+        a: "Groq's consumer chat interface at groq.com is free with rate limits. The GroqCloud API has a free tier for developers with limited requests per minute, and paid tiers starting at usage-based pricing. bedda.ai offers a 7-day free trial of Plus ($12/mo) which includes Groq-hosted Llama 3.3 70B plus 35+ other models.",
+      },
+    ],
+  },
+
+  "bedda-vs-brave-leo": {
+    slug: "bedda-vs-brave-leo",
+    competitor: "Brave Leo",
+    competitorUrl: "https://brave.com/leo",
+    competitorPrice: "Free / $14.99/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Brave Leo",
+    metaTitle: "bedda.ai vs Brave Leo (2026) — Full AI Platform vs Browser AI",
+    metaDescription:
+      "Brave Leo is a built-in browser AI with privacy features. bedda.ai is $12/mo for 36+ frontier models with web search, knowledge base, and team workspaces.",
+    ogTitle: "bedda.ai vs Brave Leo — Browser-Integrated AI vs Multi-Model Platform",
+    ogDescription:
+      "Brave Leo is free and privacy-focused, built into the Brave browser. bedda.ai at $12/mo gives you 36+ frontier models including GPT-5, Claude Opus, and Gemini 2.5 Pro — more capable for serious AI work.",
+    heroHeadline: "Browser-built-in AI vs every frontier model — at $12/mo",
+    heroSubtext:
+      "Brave Leo is a convenient privacy-first AI built into the Brave browser. bedda.ai gives you GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, Grok 4, and 30+ frontier models — far beyond what any single browser AI can offer.",
+    verdict:
+      "Brave Leo is a smart choice if you value privacy and want a quick AI assistant without leaving your browser. It's genuinely useful for summarizing pages and answering questions in context. But for serious AI work — long documents, complex coding, image generation, team collaboration — you'll quickly hit Leo's limits. bedda.ai at $12/mo is actually cheaper than Brave Leo Premium ($14.99/mo) and gives you dramatically more capability.",
+    switchReasons: [
+      "36+ frontier models including GPT-5, Claude Opus, Gemini 2.5 Pro — vs Leo's limited lineup",
+      "$12/mo vs $14.99/mo for Leo Premium — cheaper and more capable",
+      "Web search, code execution, and knowledge base not available in Leo",
+      "Team workspaces and persistent chat history across devices",
+      "Model comparison arena — test 4 models on the same prompt",
+      "Works in any browser — not tied to Brave",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "Free / $14.99/mo" },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 4", bedda: true, competitor: false },
+      { feature: "Llama 3 (built-in)", bedda: "Via Groq", competitor: true },
+      { feature: "Browser integration", bedda: "Extension available", competitor: true },
+      { feature: "Page summarization", bedda: "Via paste", competitor: true },
+      { feature: "Privacy-first (no tracking)", bedda: true, competitor: true },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "Works on all browsers", bedda: true, competitor: "Brave only" },
+      { feature: "Total AI models", bedda: "36+", competitor: "3–5" },
+    ],
+    faq: [
+      {
+        q: "What is Brave Leo?",
+        a: "Brave Leo is an AI assistant built directly into the Brave browser. The free tier uses Llama-based models with rate limits. Leo Premium at $14.99/mo adds access to more capable models (Claude Haiku, Mixtral) and higher usage limits. Leo can read the current webpage in context — useful for summarizing articles or asking questions about what you're viewing.",
+      },
+      {
+        q: "Is Brave Leo private?",
+        a: "Brave positions Leo as privacy-first: conversations aren't stored or used for training by default, and requests are proxied to avoid linking your IP to AI queries. bedda.ai also has a strong privacy stance — conversations are tied to your account but not used for training. Both are solid choices for privacy-conscious users.",
+      },
+      {
+        q: "Can bedda.ai read web pages like Leo?",
+        a: "bedda.ai doesn't have direct browser integration to auto-read the current page. You can copy-paste content from a webpage into bedda.ai or use the web search feature. For seamless in-browser page summarization, Brave Leo has a UX advantage. For deeper analysis with frontier models, bedda.ai is more capable.",
+      },
+      {
+        q: "Why is bedda.ai cheaper than Brave Leo Premium?",
+        a: "Brave Leo Premium is $14.99/mo; bedda.ai Plus is $12/mo. bedda.ai is cheaper and includes GPT-5, Claude Opus, Gemini 2.5 Pro, and 33 more models — while Leo Premium offers a handful of models. The price difference reflects bedda.ai's focus on AI capability over browser integration.",
+      },
+    ],
+  },
+
+  "bedda-vs-github-models": {
+    slug: "bedda-vs-github-models",
+    competitor: "GitHub Models",
+    competitorUrl: "https://github.com/marketplace/models",
+    competitorPrice: "Free (GitHub account)",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs GitHub Models",
+    metaTitle: "bedda.ai vs GitHub Models (2026) — AI Chat Platform vs Developer Playground",
+    metaDescription:
+      "GitHub Models is a free playground for testing AI models. bedda.ai is $12/mo for a full AI platform with 36+ models, knowledge base, team workspaces, and production-ready features.",
+    ogTitle: "bedda.ai vs GitHub Models — Production AI Platform vs Free Playground",
+    ogDescription:
+      "GitHub Models offers free access to AI models for developers. bedda.ai gives you 36+ frontier models plus web search, knowledge base, code execution, and team collaboration — all in one $12/mo subscription.",
+    heroHeadline: "Developer playground vs full AI platform — for $12/mo",
+    heroSubtext:
+      "GitHub Models lets developers experiment with AI models for free. bedda.ai includes GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, DeepSeek R1, and 30+ more — plus team workspaces, knowledge base, and web search for production use.",
+    verdict:
+      "GitHub Models is an excellent free resource for developers who want to test and compare AI models in a sandbox environment. But it's not designed for daily AI work — no persistent history, no team collaboration, no knowledge base. bedda.ai at $12/mo takes you from playground to production: all the same frontier models, plus everything you need to get real work done.",
+    switchReasons: [
+      "36+ frontier models for daily work, not just playground testing",
+      "Persistent chat history and knowledge base across sessions",
+      "Team workspaces and shared context for collaborative projects",
+      "Web search, code execution sandbox, and file analysis",
+      "Production-ready — not rate-limited like free API playground tiers",
+      "Model comparison arena — run the same prompt across 4 models simultaneously",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "Free" },
+      { feature: "GPT-5", bedda: true, competitor: true },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: "Some Claude models" },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: "Some Gemini models" },
+      { feature: "Grok 4", bedda: true, competitor: false },
+      { feature: "DeepSeek R1", bedda: true, competitor: false },
+      { feature: "Persistent chat history", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "API access for developers", bedda: true, competitor: true },
+      { feature: "Production rate limits", bedda: "High limits", competitor: "Low (free tier)" },
+      { feature: "Total AI models", bedda: "36+", competitor: "~20 (rotating)" },
+    ],
+    faq: [
+      {
+        q: "What is GitHub Models?",
+        a: "GitHub Models (github.com/marketplace/models) is a free AI playground built into GitHub that lets developers experiment with frontier AI models from OpenAI, Anthropic, Meta, Mistral, and others. It's designed for developers to test models, compare outputs, and prototype prompts — not for daily production AI use. It's free with a GitHub account but has low rate limits.",
+      },
+      {
+        q: "Can I use GitHub Models for daily work?",
+        a: "GitHub Models' free tier is rate-limited and lacks persistent history, team collaboration, and production features. It's optimized for exploration and prototyping. For daily AI work — writing, coding, analysis, team collaboration — a dedicated platform like bedda.ai is better suited at $12/mo.",
+      },
+      {
+        q: "Does bedda.ai work with GitHub?",
+        a: "bedda.ai doesn't have direct GitHub integration like GitHub Copilot or GitHub Models. You can paste code, diffs, or documentation into bedda.ai for analysis and assistance. For automated PR review with GitHub integration, tools like CodeRabbit are purpose-built. bedda.ai excels at deep conversational code review and AI-assisted development work.",
+      },
+      {
+        q: "Which AI models are on GitHub Models?",
+        a: "GitHub Models includes models from OpenAI (GPT-4o, o3-mini), Anthropic (Claude 3.5 Sonnet), Meta (Llama 3), Mistral, Cohere, and others. The lineup rotates as Microsoft adds new models. bedda.ai's 36+ model lineup is fixed and includes the latest frontier models including GPT-5, Claude Opus 4.8, and Gemini 2.5 Pro — not all available on GitHub Models.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
