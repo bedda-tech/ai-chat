@@ -1,4 +1,5 @@
 import Stripe from "stripe";
+import { TIER_DISPLAY_NAMES as _TIER_DISPLAY_NAMES } from "@/lib/plans";
 
 /**
  * Stripe client instance.
@@ -89,13 +90,8 @@ export type PlanName = "plus" | "pro" | "max";
 export type BillingPeriod = "monthly" | "annual";
 export type DbTier = "free" | "pro" | "premium" | "enterprise";
 
-/** Human-readable display names for DB tier values */
-export const TIER_DISPLAY_NAMES: Record<DbTier, string> = {
-  free: "Free",
-  pro: "Plus",
-  premium: "Pro",
-  enterprise: "Max",
-};
+/** Human-readable display names for DB tier values (sourced from lib/plans.ts) */
+export const TIER_DISPLAY_NAMES: Record<DbTier, string> = _TIER_DISPLAY_NAMES;
 
 /**
  * Map a Stripe price ID to the internal DB tier.

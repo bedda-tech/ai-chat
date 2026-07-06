@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
+import { TIER_DISPLAY_NAMES } from "@/lib/plans";
 import {
   Card,
   CardContent,
@@ -77,12 +78,7 @@ export function UsageDisplay() {
     );
   }
 
-  const TIER_DISPLAY: Record<string, string> = {
-    free: "Free",
-    pro: "Plus",
-    premium: "Pro",
-    enterprise: "Max",
-  };
+  const TIER_DISPLAY = TIER_DISPLAY_NAMES;
 
   const getTierColor = (tier: string) => {
     switch (tier) {

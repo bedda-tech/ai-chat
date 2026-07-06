@@ -20,10 +20,14 @@
 #### Stripe Configuration
 - [ ] `STRIPE_SECRET_KEY` - Production secret key (starts with `sk_live_`)
 - [ ] `STRIPE_PUBLISHABLE_KEY` - Production publishable key (starts with `pk_live_`)
-- [ ] `STRIPE_PRO_PRICE_ID` - Production Pro plan price ID
-- [ ] `STRIPE_PREMIUM_PRICE_ID` - Production Premium plan price ID
-- [ ] `STRIPE_WEBHOOK_SECRET` - Production webhook signing secret
+- [ ] `STRIPE_PLUS_PRICE_ID` - Plus plan monthly price ID ($12/mo)
+- [ ] `STRIPE_PRO_PRICE_ID` - Pro plan monthly price ID ($25/mo)
+- [ ] `STRIPE_MAX_PRICE_ID` - Max plan monthly price ID ($50/mo)
+- [ ] `STRIPE_PLUS_ANNUAL_PRICE_ID` - Plus plan annual price ID ($115.20/yr)
+- [ ] `STRIPE_PRO_ANNUAL_PRICE_ID` - Pro plan annual price ID ($240/yr)
+- [ ] `STRIPE_MAX_ANNUAL_PRICE_ID` - Max plan annual price ID ($480/yr)
 - [ ] `STRIPE_TEAM_SEAT_PRICE_ID` - Per-seat price ID for team subscriptions (recurring, per-seat billing)
+- [ ] `STRIPE_WEBHOOK_SECRET` - Production webhook signing secret
 
 #### Social Login (OAuth)
 - [ ] `GOOGLE_CLIENT_ID` - Google OAuth client ID
@@ -42,23 +46,28 @@
 ### Stripe Setup
 
 #### 1. Create Production Products
-- [ ] Create "Pro" product in Stripe Dashboard
-  - Price: $20/month
-  - Recurring billing
-  - Copy price ID to `STRIPE_PRO_PRICE_ID`
-- [ ] Create "Premium" product in Stripe Dashboard
-  - Price: $50/month
-  - Recurring billing
-  - Copy price ID to `STRIPE_PREMIUM_PRICE_ID`
+
+Run the setup script (fastest path — creates all 3 products with monthly + annual prices):
+```bash
+STRIPE_SECRET_KEY=sk_live_... npx tsx scripts/setup-stripe.ts
+```
+Copy the output price IDs into Vercel environment variables.
+
+Or create manually in Stripe Dashboard:
+- [ ] Create "Bedda Plus" product — $12/month + $115.20/year → set `STRIPE_PLUS_PRICE_ID` / `STRIPE_PLUS_ANNUAL_PRICE_ID`
+- [ ] Create "Bedda Pro" product — $25/month + $240/year → set `STRIPE_PRO_PRICE_ID` / `STRIPE_PRO_ANNUAL_PRICE_ID`
+- [ ] Create "Bedda Max" product — $50/month + $480/year → set `STRIPE_MAX_PRICE_ID` / `STRIPE_MAX_ANNUAL_PRICE_ID`
 
 #### 2. Configure Webhook Endpoint
 - [ ] Go to https://dashboard.stripe.com/webhooks
 - [ ] Add endpoint: `https://yourdomain.com/api/webhooks/stripe`
 - [ ] Select events:
   - `checkout.session.completed`
+  - `checkout.session.expired`
   - `customer.subscription.created`
   - `customer.subscription.updated`
   - `customer.subscription.deleted`
+  - `customer.subscription.trial_will_end`
   - `invoice.payment_succeeded`
   - `invoice.payment_failed`
 - [ ] Copy webhook signing secret to `STRIPE_WEBHOOK_SECRET`
