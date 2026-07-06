@@ -1022,6 +1022,36 @@
           "efficient thinking"
         ]
       }
+    },
+    {
+      "id": "krain-gemma",
+      "gatewayId": "krain/gemma-2-9b-it",
+      "provider": "krain",
+      "name": "KRAIN Gemma 4 (Self-Hosted)",
+      "description": "Gemma 4 12B on Bedda's self-hosted KRAIN inference cluster — private, zero cloud dependency, $KRAIN-powered compute",
+      "contextWindow": 8192,
+      "pricing": {
+        "input": 0.0,
+        "output": 0.0,
+        "cachedInput": null,
+        "cachedOutput": null
+      },
+      "capabilities": {
+        "vision": false,
+        "toolCalling": false,
+        "reasoning": false,
+        "imageGeneration": false
+      },
+      "config": {
+        "maxSteps": 6,
+        "temperature": 0.7,
+        "idealFor": [
+          "private conversations",
+          "data-sensitive tasks",
+          "KRAIN ecosystem",
+          "self-hosted AI"
+        ]
+      }
     }
   ]
 }
