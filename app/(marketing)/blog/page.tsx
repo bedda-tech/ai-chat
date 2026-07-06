@@ -1993,6 +1993,42 @@ const posts = [
     readingTime: "7 min read",
     category: "Professional Guides",
   },
+  {
+    slug: "ai-for-ios-developers-2026",
+    title: "AI for iOS Developers in 2026: Swift, Xcode, and App Store Growth",
+    description:
+      "How iOS engineers use AI to write Swift code faster, debug Xcode errors, generate App Store copy, and maintain large codebases — with model recommendations for each task.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Developer Guides",
+  },
+  {
+    slug: "best-ai-for-image-editing-2026",
+    title: "Best AI for Image Editing in 2026: Tools, Models, and Workflows",
+    description:
+      "The best AI tools for image editing in 2026 — from background removal and object inpainting to style transfer and generative fill. What to use and when.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "AI Tools",
+  },
+  {
+    slug: "ai-for-data-engineers-2026",
+    title: "AI for Data Engineers in 2026: Pipelines, dbt, and Data Quality",
+    description:
+      "How data engineers use AI to write faster dbt models, debug pipeline failures, document data lineage, and accelerate infrastructure work — with model picks for each task.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Developer Guides",
+  },
+  {
+    slug: "ai-for-security-engineers-2026",
+    title: "AI for Security Engineers in 2026: AppSec, Threat Modeling, and Incident Response",
+    description:
+      "How application security engineers and SecOps teams use AI for code review, threat modeling, vulnerability research, and incident response in 2026.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Developer Guides",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];

@@ -10406,6 +10406,263 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-magai": {
+    slug: "bedda-vs-magai",
+    competitor: "Magai",
+    competitorUrl: "https://magai.co",
+    competitorPrice: "$9–$25/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Magai",
+    metaTitle: "bedda.ai vs Magai (2026) — More Models, Better Tools, Same Price Range",
+    metaDescription:
+      "Compare bedda.ai and Magai — both offer multi-model AI chat. bedda adds code execution, video generation, team workspaces, and a knowledge base at $12/mo. 7-day free trial.",
+    ogTitle: "bedda.ai vs Magai — Flat-Rate Multi-Model AI Compared",
+    ogDescription:
+      "Magai is $9-25/mo for multi-model AI chat. bedda.ai is $12/mo with 36+ models, code execution, image & video generation, knowledge base RAG, and team workspaces.",
+    heroHeadline: "Both are flat-rate multi-model chat — bedda has more tools",
+    heroSubtext:
+      "Magai and bedda.ai both offer flat-rate access to multiple frontier models. bedda adds code execution, video generation, a knowledge base, team workspaces, and platform bots (Slack, Discord, Telegram) — all for $12/mo.",
+    verdict:
+      "Magai is a solid multi-model chat interface, especially if you want persona management and a personal assistant feel. bedda.ai has more frontier models, more tools (code execution, video gen, RAG), and team collaboration features — at a similar price point. If you need more than chat, bedda wins clearly.",
+    switchReasons: [
+      "36+ frontier models including Grok 4, o3, Gemini 2.5 Pro, and DeepSeek R1",
+      "Real code execution sandbox (Python and JavaScript via E2B)",
+      "Image generation (DALL-E 3, Imagen 3, Flux) and video generation (Kling)",
+      "Knowledge base — upload and search documents across all chats",
+      "Team workspaces with real-time collaboration and shared threads",
+      "Platform bots — Slack, Discord, Telegram, GitHub, Microsoft Teams, WhatsApp",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$9–$25/mo" },
+      { feature: "Claude 4 (Opus, Sonnet)", bedda: true, competitor: true },
+      { feature: "GPT-5 / GPT-4o", bedda: true, competitor: true },
+      { feature: "Gemini 2.5 Pro (1M context)", bedda: true, competitor: "Limited" },
+      { feature: "Grok 4", bedda: true, competitor: false },
+      { feature: "o3 reasoning model", bedda: true, competitor: false },
+      { feature: "DeepSeek R1", bedda: true, competitor: false },
+      { feature: "Mistral Large", bedda: true, competitor: true },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: true },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Cross-conversation memory", bedda: true, competitor: true },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "Platform bots (Slack, Discord, etc.)", bedda: true, competitor: false },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "~20" },
+    ],
+    faq: [
+      {
+        q: "What is Magai?",
+        a: "Magai (magai.co) is a multi-model AI chat platform that offers access to models from OpenAI, Anthropic, Google, and others via a single subscription. It's known for its persona management system (creating named AI assistants with custom system prompts) and a clean chat interface. Plans start at $9/mo.",
+      },
+      {
+        q: "Is Magai cheaper than bedda.ai?",
+        a: "Magai's entry plan starts at $9/mo versus bedda.ai's $12/mo. However, Magai's $9 plan has usage limits and fewer models. bedda.ai's $12/mo plan includes all 36+ models with no per-message caps, plus tools (code execution, image gen, video gen, knowledge base) that Magai doesn't offer.",
+      },
+      {
+        q: "Does bedda.ai have the same models as Magai?",
+        a: "bedda.ai includes all the major models Magai offers (Claude 4, GPT-5, Gemini) plus additional ones: Grok 4, OpenAI o3, DeepSeek R1, Cerebras, Groq, and more. bedda's 36+ model count is broader than Magai's lineup.",
+      },
+      {
+        q: "Which is better for teams — Magai or bedda.ai?",
+        a: "bedda.ai is better for teams. It has dedicated team workspaces, real-time collaborative editing, shared knowledge bases, model access policies, and platform bots for Slack, Discord, and Microsoft Teams. Magai is primarily designed for individual users.",
+      },
+    ],
+  },
+
+  "bedda-vs-raycast-ai": {
+    slug: "bedda-vs-raycast-ai",
+    competitor: "Raycast AI",
+    competitorUrl: "https://raycast.com",
+    competitorPrice: "$8/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Raycast AI",
+    metaTitle: "bedda.ai vs Raycast AI (2026) — Full AI Suite vs Developer Launcher",
+    metaDescription:
+      "Raycast AI is a $8/mo launcher with AI for Mac power users. bedda.ai is a full multi-model AI chat platform with 36+ models, code execution, image gen, and team workspaces — $12/mo.",
+    ogTitle: "bedda.ai vs Raycast AI — When You Need More Than a Launcher",
+    ogDescription:
+      "Raycast AI is excellent for quick commands, snippets, and shortcuts on Mac. bedda.ai is the choice when you need deep AI chat, 36+ frontier models, code execution, knowledge base, and team collaboration.",
+    heroHeadline: "Raycast AI is a launcher. bedda.ai is a full AI platform.",
+    heroSubtext:
+      "Raycast AI excels at quick lookups, command shortcuts, and AI snippets for Mac developers. bedda.ai handles deep AI work — long conversations, knowledge base retrieval, code execution, team collaboration, and 36+ frontier models in one interface.",
+    verdict:
+      "Raycast AI and bedda.ai serve different primary needs. Raycast AI is ideal if you want AI embedded in your Mac workflow as a quick launcher assistant. bedda.ai is better when you need serious AI capability: multiple frontier models, code execution, document RAG, and team collaboration. Many developers use both.",
+    switchReasons: [
+      "36+ frontier models (Claude 4 Opus, GPT-5, Gemini 2.5 Pro, Grok 4, o3, DeepSeek R1)",
+      "Real code execution sandbox — not just code generation",
+      "Knowledge base with RAG — upload documents and reference across conversations",
+      "Multi-model comparison arena for important decisions",
+      "Team workspaces with shared threads and real-time collaboration",
+      "Available on all platforms — not Mac-only",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$8/mo" },
+      { feature: "Claude 4 Sonnet / Opus", bedda: true, competitor: "Sonnet only" },
+      { feature: "GPT-5 / GPT-4o", bedda: true, competitor: "GPT-4o mini" },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 4", bedda: true, competitor: false },
+      { feature: "OpenAI o3", bedda: true, competitor: false },
+      { feature: "DeepSeek R1", bedda: true, competitor: false },
+      { feature: "Persistent chat history", bedda: true, competitor: "Limited" },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: true },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "Mac launcher / shortcuts", bedda: false, competitor: true },
+      { feature: "Works on Windows / Linux", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "~5" },
+    ],
+    faq: [
+      {
+        q: "What is Raycast AI?",
+        a: "Raycast is a Mac application launcher (like Spotlight, but more powerful) with an AI feature set. Raycast Pro ($8/mo) adds AI chat powered by Claude and GPT models, AI commands for selected text, custom AI snippets, and browser history search. It's designed for developers and power users who want AI embedded in their keyboard-driven workflow.",
+      },
+      {
+        q: "Can Raycast AI replace ChatGPT?",
+        a: "Raycast AI is great for quick lookups, text transformations, and short queries within your Mac workflow. For longer conversations, document analysis, code execution, or team collaboration, a dedicated AI platform like bedda.ai is better. Many developers use Raycast for quick tasks and bedda.ai for deeper work.",
+      },
+      {
+        q: "Does bedda.ai work on Mac?",
+        a: "Yes. bedda.ai is a web app that works in any browser on Mac, Windows, and Linux. It doesn't have native OS integration like Raycast (no keyboard shortcut launcher), but it has a significantly deeper AI feature set including 36+ models, code execution, knowledge base, and team workspaces.",
+      },
+      {
+        q: "Is $4/mo worth the difference?",
+        a: "If you primarily need quick AI snippets in your Mac launcher, Raycast AI at $8/mo is excellent value. If you need access to frontier models like Claude 4 Opus, GPT-5, Gemini 2.5 Pro, Grok 4, and o3 — plus real code execution, knowledge base, and team features — bedda.ai's $12/mo pays for itself quickly.",
+      },
+    ],
+  },
+
+  "bedda-vs-coderabbit": {
+    slug: "bedda-vs-coderabbit",
+    competitor: "CodeRabbit",
+    competitorUrl: "https://coderabbit.ai",
+    competitorPrice: "$12–$19/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs CodeRabbit",
+    metaTitle: "bedda.ai vs CodeRabbit (2026) — AI Code Review vs Full AI Platform",
+    metaDescription:
+      "CodeRabbit is $12-19/mo for automated AI code reviews on PRs. bedda.ai is $12/mo for 36+ frontier models, code execution, and full-stack AI work including manual code review.",
+    ogTitle: "bedda.ai vs CodeRabbit — Automated PR Review vs Full AI Suite",
+    ogDescription:
+      "CodeRabbit automates GitHub PR reviews at $12-19/mo per user. bedda.ai gives you 36+ frontier models for $12/mo — do your own thorough code reviews, plus write code, debug, and build documentation.",
+    heroHeadline: "Automated PR summaries vs deep AI engineering assistance",
+    heroSubtext:
+      "CodeRabbit automatically comments on your GitHub pull requests with AI review feedback. bedda.ai lets you do deeper, more contextual code review through conversation — plus it handles all your other engineering work: architecture, debugging, documentation, and code generation.",
+    verdict:
+      "CodeRabbit is genuinely useful for catching obvious issues on PRs automatically, especially for teams with high PR volume. bedda.ai is better when you want deep, context-aware code review through conversation — and a full AI platform for everything else. The $12/mo is the same; the question is automated summaries vs. full AI capability.",
+    switchReasons: [
+      "Deep code review through conversation — explain the full PR context and get thorough analysis",
+      "36+ frontier models including Claude Opus 4.8 and GPT-5 for high-stakes reviews",
+      "Code execution sandbox — run code samples to verify fixes before merging",
+      "Architecture discussions, refactoring plans, and technical documentation",
+      "Knowledge base — reference your codebase standards and past decisions",
+      "Works without GitHub integration — no PR required",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$12–$19/mo" },
+      { feature: "Automated PR comments", bedda: "Via GitHub bot", competitor: true },
+      { feature: "Conversational code review", bedda: true, competitor: "Limited" },
+      { feature: "Claude 4 Opus", bedda: true, competitor: false },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Architecture + design help", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "GitHub PR integration", bedda: "Bot available", competitor: true },
+      { feature: "GitLab / Bitbucket support", bedda: false, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "1 (internal)" },
+    ],
+    faq: [
+      {
+        q: "What is CodeRabbit?",
+        a: "CodeRabbit (coderabbit.ai) is an AI code review tool that automatically analyzes pull requests on GitHub and GitLab, leaving inline comments with suggestions, summaries, and issue flags. It integrates as a GitHub App and reviews PRs without manual triggering. Pricing is $12/mo (Pro) or $19/mo (Enterprise) per developer seat.",
+      },
+      {
+        q: "Can bedda.ai replace CodeRabbit?",
+        a: "Partially. bedda.ai's GitHub bot can comment on PRs automatically (similar to CodeRabbit), but bedda's strength is conversational review — paste the PR diff and discuss it in depth. For teams that want completely automated, zero-touch PR review comments, CodeRabbit remains purpose-built for that workflow.",
+      },
+      {
+        q: "Is CodeRabbit worth it?",
+        a: "CodeRabbit is worth it for teams with high PR volume who want consistent automated review baseline — it catches obvious issues before human review. At $12/mo per developer, it's cost-effective. If you want deeper AI assistance beyond PR comments, bedda.ai at $12/mo gives you 36+ frontier models for all engineering tasks.",
+      },
+      {
+        q: "Can I use both CodeRabbit and bedda.ai?",
+        a: "Yes. Many engineering teams use CodeRabbit for automated PR commenting and bedda.ai for deeper code review conversations, architecture planning, and documentation. The $12/mo combined cost is $24/mo — comparable to one ChatGPT Enterprise seat.",
+      },
+    ],
+  },
+
+  "bedda-vs-warp": {
+    slug: "bedda-vs-warp",
+    competitor: "Warp AI",
+    competitorUrl: "https://warp.dev",
+    competitorPrice: "$23/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Warp AI",
+    metaTitle: "bedda.ai vs Warp AI (2026) — Full AI Platform vs AI Terminal",
+    metaDescription:
+      "Warp is $23/mo for an AI-powered terminal. bedda.ai is $12/mo for 36+ frontier models, code execution, knowledge base, and team workspaces — more capability for less money.",
+    ogTitle: "bedda.ai vs Warp AI — AI Terminal vs Full AI Chat Platform",
+    ogDescription:
+      "Warp Pro costs $23/mo for an AI-powered terminal with command suggestions and documentation. bedda.ai gives you 36+ frontier models, code execution, RAG, and team workspaces for $12/mo — 48% less.",
+    heroHeadline: "AI in your terminal vs AI for everything — at 48% less",
+    heroSubtext:
+      "Warp is a beautifully designed AI terminal for Mac and Linux developers. bedda.ai is a full AI platform with 36+ frontier models, code execution, knowledge base, and team workspaces — for $11 less per month.",
+    verdict:
+      "Warp is a genuinely excellent terminal with useful AI features for command suggestions and documentation. At $23/mo, it's priced for power users who spend their days in the terminal. bedda.ai at $12/mo covers the AI chat and code assistance use case with 36+ models and more tools. Many developers use a free terminal + bedda.ai instead of paying $23/mo for Warp Pro.",
+    switchReasons: [
+      "36+ frontier models — not limited to what Warp's AI uses internally",
+      "$12/mo vs $23/mo — same AI capability for less",
+      "Code execution sandbox (E2B) for running code safely outside your local environment",
+      "Knowledge base — reference documentation and past conversations across chats",
+      "Team workspaces with shared context and real-time collaboration",
+      "Works on any device — browser-based, no OS restriction",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$23/mo" },
+      { feature: "Claude 4 Opus / Sonnet", bedda: true, competitor: "Used internally" },
+      { feature: "GPT-5", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 4", bedda: true, competitor: false },
+      { feature: "DeepSeek R1", bedda: true, competitor: false },
+      { feature: "Terminal / shell integration", bedda: false, competitor: true },
+      { feature: "AI command suggestions", bedda: "Via chat", competitor: true },
+      { feature: "Code execution sandbox", bedda: true, competitor: "Local only" },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: false },
+      { feature: "Works on Windows", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1 (internal)" },
+    ],
+    faq: [
+      {
+        q: "What is Warp?",
+        a: "Warp (warp.dev) is an AI-powered terminal application for Mac and Linux. Its free tier includes basic AI features; Warp Pro at $23/mo adds more AI interactions, team collaboration, shared configurations, and priority support. It's popular with developers for its modern interface, command search, and AI command generation.",
+      },
+      {
+        q: "Does bedda.ai integrate with the terminal?",
+        a: "bedda.ai doesn't have direct shell integration like Warp. You can paste terminal errors into bedda.ai for explanation and fixes, run code in bedda's E2B sandbox, and use bedda to write shell scripts. For a native terminal AI experience with direct shell integration, Warp remains purpose-built for that.",
+      },
+      {
+        q: "Why is Warp more expensive than bedda.ai?",
+        a: "Warp Pro ($23/mo) combines a specialized terminal application with AI features. bedda.ai ($12/mo) is a web-based AI platform without terminal integration. If you primarily want AI for coding and engineering work and don't need a new terminal, bedda.ai covers the AI use case for $11 less per month.",
+      },
+      {
+        q: "Is there a free version of Warp?",
+        a: "Yes. Warp has a generous free tier with basic AI features, unlimited command history, and core terminal functionality. Warp Pro adds AI usage beyond the free tier limits, team features, and shared configurations at $23/mo. bedda.ai offers a 7-day free trial of its Plus plan.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {
