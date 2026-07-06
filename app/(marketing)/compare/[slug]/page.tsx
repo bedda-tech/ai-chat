@@ -10914,6 +10914,255 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
+
+  "bedda-vs-airtable-ai": {
+    slug: "bedda-vs-airtable-ai",
+    competitor: "Airtable AI",
+    competitorUrl: "https://airtable.com",
+    competitorPrice: "$20–$45/seat/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Airtable AI",
+    metaTitle: "bedda.ai vs Airtable AI (2026) — Full AI Suite vs Database AI Add-On",
+    metaDescription:
+      "Airtable AI adds AI features to your database at $20-45/seat/mo. bedda.ai gives you GPT-5, Claude 4, Gemini, Grok, and 36+ AI models for $12/mo — no per-seat pricing.",
+    ogTitle: "bedda.ai vs Airtable AI — 36+ Models vs Database AI Add-On",
+    ogDescription:
+      "Airtable AI is bolt-on AI for spreadsheet users at $20-45/seat. bedda.ai is a dedicated multi-model AI platform with GPT-5, Claude Opus 4.8, and 36+ models — starting at $12/mo.",
+    heroHeadline: "36+ frontier AI models for less than one Airtable seat",
+    heroSubtext:
+      "Airtable AI adds basic AI to your database at $20-45/seat/mo. bedda.ai gives you every frontier AI model — GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, Grok 4, and 32+ more — for $12/mo flat.",
+    verdict:
+      "Airtable AI is useful if you live in Airtable and want AI assistance within your existing database workflows. But it's expensive per seat, limited to Airtable-specific tasks, and doesn't give you access to frontier models for general AI work. bedda.ai at $12/mo is a better choice if you need a versatile AI platform for writing, coding, research, and analysis alongside your database tools.",
+    switchReasons: [
+      "Access every frontier AI model — GPT-5, Claude Opus 4.8, Gemini, Grok — for $12/mo flat",
+      "No per-seat pricing — one subscription covers all your AI work",
+      "Use AI for writing, coding, research, and analysis — not just database automation",
+      "Model comparison arena to find the best model for each task",
+      "Knowledge base and web search built-in",
+      "Team workspaces and collaboration without extra seat costs",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo flat", competitor: "$20–$45/seat/mo" },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "Gemini 2.5 Pro", bedda: true, competitor: false },
+      { feature: "Grok 4", bedda: true, competitor: false },
+      { feature: "General-purpose AI chat", bedda: true, competitor: "Limited (in-field only)" },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "Video generation", bedda: true, competitor: false },
+      { feature: "Database/spreadsheet AI", bedda: false, competitor: true },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "OpenAI-compatible API", bedda: true, competitor: false },
+      { feature: "Total AI models", bedda: "36+", competitor: "1–2 (GPT-based)" },
+    ],
+    faq: [
+      {
+        q: "What does Airtable AI actually do?",
+        a: "Airtable AI adds AI-powered features inside Airtable bases: field summarization, data categorization, auto-filling fields, and basic content generation within records. It uses GPT-4 class models under the hood and is designed for database-centric workflows — not general-purpose AI work.",
+      },
+      {
+        q: "Can bedda.ai replace Airtable?",
+        a: "No — bedda.ai is an AI chat and productivity platform, not a database or project management tool. You'd use bedda.ai alongside Airtable for your AI work: research, writing, analysis, and code generation. Airtable handles the structured data layer; bedda handles your AI assistant needs.",
+      },
+      {
+        q: "Is Airtable AI worth the extra cost?",
+        a: "Airtable AI costs $20-45/seat/month — on top of any Airtable plan you already pay for. For most users, the AI capabilities are limited to in-field automation. If you need real AI productivity, a dedicated platform like bedda.ai ($12/mo for 36+ models) gives far more value.",
+      },
+      {
+        q: "Does bedda.ai work with Airtable?",
+        a: "bedda.ai doesn't have a native Airtable integration, but you can export data from Airtable and upload it to bedda's knowledge base for analysis, or paste records directly into chat for AI-assisted work. Plugin tools in bedda.ai can also be configured to connect to Airtable's API.",
+      },
+    ],
+  },
+
+  "bedda-vs-tome-ai": {
+    slug: "bedda-vs-tome-ai",
+    competitor: "Tome AI",
+    competitorUrl: "https://tome.app",
+    competitorPrice: "$8–$16/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Tome AI",
+    metaTitle: "bedda.ai vs Tome AI (2026) — Full AI Suite vs AI Presentation Tool",
+    metaDescription:
+      "Tome AI creates presentations for $8-16/mo. bedda.ai gives you GPT-5, Claude 4, Gemini, and 36+ AI models for $12/mo — including a slides artifact for presentations plus every other AI capability.",
+    ogTitle: "bedda.ai vs Tome AI — 36+ Models vs Presentation-Only AI",
+    ogDescription:
+      "Tome specializes in AI-generated presentations at $8-16/mo. bedda.ai at $12/mo gives you 36+ frontier AI models plus a built-in slides artifact — so you get Tome's core capability plus everything else.",
+    heroHeadline: "AI presentations — and 36 other AI capabilities — for $12/mo",
+    heroSubtext:
+      "Tome is a presentation-focused AI tool at $8-16/mo. bedda.ai includes a slides artifact powered by Claude or GPT-5, plus web search, knowledge base, code execution, and 36+ models — all in one subscription.",
+    verdict:
+      "Tome is a polished tool if AI presentation generation is your only need. But at $8-16/mo, you're paying a significant portion of bedda.ai's cost for a single capability. bedda.ai at $12/mo includes slide generation via the canvas artifact system alongside every other frontier AI capability. For most users, bedda.ai is the smarter choice.",
+    switchReasons: [
+      "Generate presentations using Claude or GPT-5 with bedda's slides artifact",
+      "Access 36+ frontier models for all your AI work beyond slides",
+      "Web search, knowledge base, and code execution — not just slides",
+      "Save money: $12/mo for the full AI suite vs $16/mo for presentations only",
+      "Use Reveal.js-powered slides that export to HTML",
+      "Model comparison arena and team workspaces included",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$8–$16/mo" },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "AI presentation generation", bedda: true, competitor: true },
+      { feature: "Slides artifact / canvas mode", bedda: true, competitor: true },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: "Limited" },
+      { feature: "General-purpose AI chat", bedda: true, competitor: "Limited" },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Custom slide themes", bedda: false, competitor: true },
+      { feature: "Presentation sharing/export", bedda: "HTML export", competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "1 (proprietary)" },
+    ],
+    faq: [
+      {
+        q: "Can bedda.ai generate presentations like Tome?",
+        a: "Yes. bedda.ai has a slides artifact built into the canvas system — you can ask Claude Opus 4.8, GPT-5, or any model to create a presentation on a topic, and it generates a Reveal.js-powered slide deck that renders in-app and exports as HTML. The experience is conversational: you describe the presentation and iterate with the AI.",
+      },
+      {
+        q: "What makes Tome better than bedda for presentations?",
+        a: "Tome has a dedicated presentation editor with custom themes, image placement controls, and polished templates. If you need full presentation design control with branded themes and export to PowerPoint, Tome's interface is more purpose-built. bedda's slides artifact is powerful for content generation but less focused on design customization.",
+      },
+      {
+        q: "Is Tome AI free?",
+        a: "Tome offers a free tier with limited generations per month. Paid plans start at $8/mo (Pro) and $16/mo (Pro+). bedda.ai's free trial gives you 7 days of full access before any billing.",
+      },
+      {
+        q: "What AI models does Tome use?",
+        a: "Tome uses proprietary AI for presentation generation — it doesn't expose which underlying models power its features. bedda.ai gives you direct access to 36+ frontier models including GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, and Grok 4 — you can see and choose exactly which model generates your content.",
+      },
+    ],
+  },
+
+  "bedda-vs-adobe-acrobat-ai": {
+    slug: "bedda-vs-adobe-acrobat-ai",
+    competitor: "Adobe Acrobat AI",
+    competitorUrl: "https://acrobat.adobe.com",
+    competitorPrice: "$19.99–$29.99/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Adobe Acrobat AI",
+    metaTitle: "bedda.ai vs Adobe Acrobat AI (2026) — Full AI Suite vs PDF AI Tool",
+    metaDescription:
+      "Adobe Acrobat AI Assistant adds AI to PDFs at $19.99-29.99/mo. bedda.ai gives you GPT-5, Claude 4, and 36+ AI models for $12/mo — including PDF analysis, without the Adobe price tag.",
+    ogTitle: "bedda.ai vs Adobe Acrobat AI — 36+ Models for Less vs PDF-Only AI",
+    ogDescription:
+      "Adobe Acrobat AI Assistant is $19.99-29.99/mo for PDF-specific AI. bedda.ai is $12/mo for 36+ frontier AI models including PDF analysis, web search, code execution, and team workspaces.",
+    heroHeadline: "Read and analyze PDFs — with 36+ AI models — for less than Acrobat",
+    heroSubtext:
+      "Adobe Acrobat AI costs $19.99-29.99/mo to add AI to your PDF reader. bedda.ai gives you PDF uploads and analysis via GPT-5, Claude Opus 4.8, and 36+ frontier models — for $12/mo.",
+    verdict:
+      "Adobe Acrobat AI is useful if you need AI built into the native Adobe PDF editing workflow — especially for enterprise document management. But for most users who want to ask questions about PDFs and extract information, bedda.ai is significantly cheaper ($12/mo vs $19.99-29.99/mo), gives access to better AI models, and handles far more than just PDFs.",
+    switchReasons: [
+      "Upload PDFs and ask any frontier model (GPT-5, Claude Opus 4.8) to analyze them",
+      "Pay less — $12/mo vs $19.99-29.99/mo for Adobe",
+      "Access 36+ AI models, not just one AI assistant",
+      "Web search, image generation, code execution — beyond document AI",
+      "Knowledge base: upload multiple documents and search across them",
+      "Team workspaces for shared document analysis",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$19.99–$29.99/mo" },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "PDF upload and analysis", bedda: true, competitor: true },
+      { feature: "Multi-document search", bedda: true, competitor: "Limited" },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Code execution sandbox", bedda: true, competitor: false },
+      { feature: "Image generation", bedda: true, competitor: false },
+      { feature: "PDF editing and signing", bedda: false, competitor: true },
+      { feature: "PDF OCR and annotation", bedda: false, competitor: true },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: "Enterprise only" },
+      { feature: "Total AI models", bedda: "36+", competitor: "1 (Adobe AI)" },
+    ],
+    faq: [
+      {
+        q: "Can bedda.ai read and analyze PDFs?",
+        a: "Yes. You can upload PDF files directly to bedda.ai and ask any model — GPT-5, Claude Opus 4.8, Gemini 2.5 Pro — to summarize, extract information, answer questions, or analyze the document. bedda also has a knowledge base feature where you can upload multiple documents and search across them in future conversations.",
+      },
+      {
+        q: "What can Adobe Acrobat AI do that bedda can't?",
+        a: "Adobe Acrobat AI integrates directly with the PDF editing workflow — it can add annotations, fill forms, sign documents, and work with the native Adobe format. If you need to edit, sign, or manage PDFs as documents (not just read them), Adobe is the better tool. bedda.ai is for analysis and conversation, not document editing.",
+      },
+      {
+        q: "How much does Adobe Acrobat AI cost?",
+        a: "Adobe Acrobat Standard with AI Assistant costs $19.99/mo; Acrobat Pro runs $29.99/mo. The AI Assistant add-on can also be added to existing Acrobat plans for around $4.99/mo. By comparison, bedda.ai's Plus plan is $12/mo and includes PDF analysis via multiple frontier models plus all other AI capabilities.",
+      },
+      {
+        q: "Which AI model does Adobe Acrobat AI use?",
+        a: "Adobe doesn't publicly disclose which underlying AI models power its AI Assistant feature. bedda.ai gives you full transparency: you can see exactly which model (GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, etc.) is responding to your queries, and switch between models to compare their outputs on the same document.",
+      },
+    ],
+  },
+
+  "bedda-vs-replit-ai": {
+    slug: "bedda-vs-replit-ai",
+    competitor: "Replit AI",
+    competitorUrl: "https://replit.com",
+    competitorPrice: "$7–$25/mo",
+    beddaPrice: "$12/mo",
+    title: "bedda.ai vs Replit AI",
+    metaTitle: "bedda.ai vs Replit AI (2026) — Full AI Suite vs In-Browser IDE AI",
+    metaDescription:
+      "Replit AI is an in-browser coding assistant for $7-25/mo. bedda.ai gives you GPT-5, Claude Opus 4.8, o3, and 36+ AI models for $12/mo — including a powerful code execution environment.",
+    ogTitle: "bedda.ai vs Replit AI — 36+ Models vs In-Browser Coding AI",
+    ogDescription:
+      "Replit AI gives you an AI-powered browser IDE at $7-25/mo. bedda.ai gives you GPT-5, Claude Opus 4.8, o3, DeepSeek R1, and 36+ frontier models for $12/mo — plus web search, knowledge base, and team workspaces.",
+    heroHeadline: "Code with every frontier AI model — for the same price as Replit",
+    heroSubtext:
+      "Replit AI is a coding-focused in-browser IDE with AI features at $7-25/mo. bedda.ai gives you GPT-5, Claude Opus 4.8, o3, DeepSeek R1, and 36+ frontier coding models — plus web search, knowledge base, and team workspaces — for $12/mo.",
+    verdict:
+      "Replit is an excellent choice if you want an in-browser development environment with AI integrated into the editor and code execution. bedda.ai is the better choice if you want access to every frontier AI model for coding, architecture reviews, debugging, and technical writing — without being tied to one browser IDE. Many developers use both: Replit for quick prototypes and coding environments, bedda for research, architecture, and complex problem-solving.",
+    switchReasons: [
+      "Access o3, Claude Opus 4.8, DeepSeek R1, and 33+ more coding models in one app",
+      "Switch models mid-conversation to compare responses on the same code problem",
+      "Knowledge base for storing project docs, codebases, and technical references",
+      "Web search for up-to-date library docs and Stack Overflow answers",
+      "Model comparison arena — run the same coding question across 4 models at once",
+      "Team workspaces for shared coding context and project instructions",
+    ],
+    rows: [
+      { feature: "Monthly price", bedda: "$12/mo", competitor: "$7–$25/mo" },
+      { feature: "GPT-5 access", bedda: true, competitor: false },
+      { feature: "Claude Opus 4.8", bedda: true, competitor: false },
+      { feature: "OpenAI o3 (reasoning)", bedda: true, competitor: false },
+      { feature: "DeepSeek R1", bedda: true, competitor: false },
+      { feature: "In-browser code editor", bedda: false, competitor: true },
+      { feature: "Live code execution", bedda: "Sandbox (E2B)", competitor: "Full environment" },
+      { feature: "Web search", bedda: true, competitor: false },
+      { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
+      { feature: "Model comparison arena", bedda: true, competitor: false },
+      { feature: "Team workspaces", bedda: true, competitor: "Teams plan" },
+      { feature: "Deploy from IDE", bedda: false, competitor: true },
+      { feature: "Multiplayer coding", bedda: false, competitor: true },
+      { feature: "Total AI models", bedda: "36+", competitor: "1–2 (Replit AI, GPT)" },
+    ],
+    faq: [
+      {
+        q: "What is Replit AI?",
+        a: "Replit is an in-browser development environment that includes AI features: code completion, an AI chat assistant, and the ability to generate entire applications from prompts (Replit Agent). The AI is integrated directly into the editor and code execution environment. Paid plans range from $7/mo (Replit Core) to $25/mo (Teams).",
+      },
+      {
+        q: "Does bedda.ai have code execution like Replit?",
+        a: "bedda.ai has a code execution sandbox powered by E2B for running Python and JavaScript securely. It's designed for testing code snippets and small scripts — not for hosting full applications or development environments. For live, persistent coding environments with deployment, Replit is better suited.",
+      },
+      {
+        q: "Which AI models does Replit use?",
+        a: "Replit Agent uses a mix of OpenAI models and their own fine-tuned models for code completion. The experience is optimized for building apps quickly in Replit's browser environment. bedda.ai gives you direct access to 36+ named frontier models — GPT-5, o3, Claude Opus 4.8, DeepSeek R1, and more — so you can choose the best model for each coding task.",
+      },
+      {
+        q: "Is bedda.ai or Replit better for learning to code?",
+        a: "Replit has a stronger learning environment — it has free courses, built-in execution, and a community of learners. bedda.ai is better for developers who already know how to code and want AI assistance for complex problems, architecture decisions, and multi-model research. Many learners use both: Replit to run and submit code, bedda for tutoring and explanation.",
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {

@@ -2029,6 +2029,42 @@ const posts = [
     readingTime: "8 min read",
     category: "Developer Guides",
   },
+  {
+    slug: "ai-for-machine-learning-engineers-2026",
+    title: "AI for Machine Learning Engineers in 2026: Models, Tools, and Workflows",
+    description:
+      "How ML engineers and data scientists use AI assistants for model development, experiment tracking, feature engineering, and production ML systems in 2026.",
+    date: "July 2026",
+    readingTime: "9 min read",
+    category: "Developer Guides",
+  },
+  {
+    slug: "ai-for-content-marketing-2026",
+    title: "AI for Content Marketing in 2026: Strategy, Creation, and Distribution",
+    description:
+      "How content marketers use AI to build editorial calendars, write SEO content, repurpose assets across channels, and measure content performance in 2026.",
+    date: "July 2026",
+    readingTime: "8 min read",
+    category: "Marketing Guides",
+  },
+  {
+    slug: "how-to-use-ai-for-seo-2026",
+    title: "How to Use AI for SEO in 2026: A Complete Playbook",
+    description:
+      "The definitive guide to using AI for keyword research, content briefs, on-page optimization, technical audits, and link building in 2026.",
+    date: "July 2026",
+    readingTime: "10 min read",
+    category: "Marketing Guides",
+  },
+  {
+    slug: "ai-for-executive-productivity-2026",
+    title: "AI for Executives and C-Suite Leaders in 2026: Decision-Making at Scale",
+    description:
+      "How CEOs, CTOs, and other executives use AI to synthesize information faster, prepare for board meetings, communicate strategically, and lead more effectively.",
+    date: "July 2026",
+    readingTime: "7 min read",
+    category: "Business Guides",
+  },
 ];
 
 const categories = [...new Set(posts.map((p) => p.category))];
