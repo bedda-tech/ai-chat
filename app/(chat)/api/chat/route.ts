@@ -149,6 +149,7 @@ export async function POST(request: Request) {
       selectedChatModel,
       selectedVisibilityType,
       agentMode,
+      webSearchEnabled,
       projectId: requestProjectId,
     }: {
       id: string;
@@ -156,6 +157,7 @@ export async function POST(request: Request) {
       selectedChatModel: ChatModel["id"];
       selectedVisibilityType: VisibilityType;
       agentMode?: boolean;
+      webSearchEnabled?: boolean;
       projectId?: string | null;
     } = requestBody;
 
@@ -344,7 +346,7 @@ export async function POST(request: Request) {
 
     const allTools = [
       "getWeather",
-      "webSearch",
+      ...(webSearchEnabled !== false ? ["webSearch"] : []),
       "createDocument",
       "updateDocument",
       "requestSuggestions",

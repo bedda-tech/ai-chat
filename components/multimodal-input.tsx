@@ -46,6 +46,7 @@ import {
   ArrowUpIcon,
   BotIcon,
   CpuIcon,
+  GlobeIcon,
   PaperclipIcon,
   SparklesIcon,
   StopIcon,
@@ -110,6 +111,10 @@ function PureMultimodalInput({
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { width } = useWindowSize();
   const [agentMode, setAgentMode] = useLocalStorage("agent-mode", false);
+  const [webSearchEnabled, setWebSearchEnabled] = useLocalStorage(
+    "web-search-enabled",
+    true
+  );
 
   const adjustHeight = useCallback(() => {
     if (textareaRef.current) {
@@ -177,7 +182,12 @@ function PureMultimodalInput({
           },
         ],
       },
-      { body: { agentMode: agentMode || undefined } }
+      {
+        body: {
+          agentMode: agentMode || undefined,
+          webSearchEnabled: webSearchEnabled || undefined,
+        },
+      }
     );
 
     setAttachments([]);
@@ -199,6 +209,7 @@ function PureMultimodalInput({
     chatId,
     resetHeight,
     agentMode,
+    webSearchEnabled,
   ]);
 
   const uploadFile = useCallback(async (file: File) => {
@@ -356,6 +367,11 @@ function PureMultimodalInput({
               chatId={chatId}
               selectedVisibilityType={_selectedVisibilityType}
             />
+            <WebSearchButton
+              setWebSearchEnabled={setWebSearchEnabled}
+              status={status}
+              webSearchEnabled={webSearchEnabled}
+            />
             <AgentModeButton
               agentMode={agentMode}
               setAgentMode={setAgentMode}
@@ -451,6 +467,44 @@ function PureAgentModeButton({
 }
 
 const AgentModeButton = memo(PureAgentModeButton);
+
+function PureWebSearchButton({
+  webSearchEnabled,
+  setWebSearchEnabled,
+  status,
+}: {
+  webSearchEnabled: boolean;
+  setWebSearchEnabled: (value: boolean) => void;
+  status: UseChatHelpers<ChatMessage>["status"];
+}) {
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button
+          className={cn(
+            "aspect-square h-8 rounded-lg p-1 transition-colors",
+            webSearchEnabled
+              ? "bg-primary/10 text-primary hover:bg-primary/20"
+              : "hover:bg-accent"
+          )}
+          data-testid="web-search-button"
+          disabled={status !== "ready"}
+          onClick={() => setWebSearchEnabled(!webSearchEnabled)}
+          type="button"
+          variant="ghost"
+        >
+          <GlobeIcon />
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent side="top">
+        {webSearchEnabled ? "Web Search: ON" : "Web Search: OFF"} — AI can
+        search the web for current information
+      </TooltipContent>
+    </Tooltip>
+  );
+}
+
+const WebSearchButton = memo(PureWebSearchButton);
 
 function PureCanvasModeButton({
   chatId,
