@@ -89,6 +89,7 @@ export function Chat({
   });
   const [currentModelId, setCurrentModelId] = useState(initialChatModel);
   const currentModelIdRef = useRef(currentModelId);
+  const streamingModelRef = useRef<string | null>(null);
 
   const { typingUsers, sendTyping } = useTeamRealtime(id, isTeamShared);
   const { track } = useAnalytics();
@@ -128,6 +129,9 @@ export function Chat({
     }),
     onData: (dataPart) => {
       setDataStream((ds) => (ds ? [...ds, dataPart] : []));
+      if ((dataPart.type as string) === "data-active-model") {
+        streamingModelRef.current = dataPart.data as string;
+      }
       if (dataPart.type === "data-usage") {
         setUsage(dataPart.data);
         const lastMsg = messagesRef.current.at(-1);
@@ -202,6 +206,35 @@ export function Chat({
     messagesRef.current = messages;
   }, [messages]);
 
+  const prevStatusRef = useRef(status);
+  useEffect(() => {
+    const prevStatus = prevStatusRef.current;
+    prevStatusRef.current = status;
+    if (
+      (prevStatus === "streaming" || prevStatus === "submitted") &&
+      status === "ready" &&
+      streamingModelRef.current
+    ) {
+      const modelId = streamingModelRef.current;
+      streamingModelRef.current = null;
+      setMessages((prev) => {
+        const last = prev.at(-1);
+        if (!last || last.role !== "assistant" || last.metadata?.modelId)
+          return prev;
+        return [
+          ...prev.slice(0, -1),
+          {
+            ...last,
+            metadata: {
+              createdAt: last.metadata?.createdAt ?? new Date().toISOString(),
+              modelId,
+            },
+          },
+        ];
+      });
+    }
+  }, [status, setMessages]);
+
   const searchParams = useSearchParams();
   const query = searchParams.get("query");
 
@@ -253,7 +286,7 @@ export function Chat({
           messages={messages}
           onModelChange={setCurrentModelId}
           regenerate={regenerate}
-          selectedModelId={initialChatModel}
+          selectedModelId={currentModelId}
           selectedVisibilityType={visibilityType}
           sendMessage={sendMessage}
           setInput={setInput}

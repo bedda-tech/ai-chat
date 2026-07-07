@@ -512,6 +512,9 @@ export async function POST(request: Request) {
           });
         }
 
+        // Notify client which model is handling this turn (enables real-time model badge)
+        dataStream.write({ type: "data-active-model" as any, data: selectedChatModel });
+
         const requestStart = Date.now();
         const result = streamText({
           model: wrapLanguageModel({
