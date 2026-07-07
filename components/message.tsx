@@ -30,7 +30,7 @@ import { MessageReasoning } from "./message-reasoning";
 import { PreviewAttachment } from "./preview-attachment";
 import { Weather } from "./weather";
 
-const PROVIDER_COLORS: Record<string, string> = {
+export const PROVIDER_COLORS: Record<string, string> = {
   anthropic: "bg-orange-500",
   openai: "bg-green-500",
   google: "bg-blue-500",
@@ -43,7 +43,7 @@ const PROVIDER_COLORS: Record<string, string> = {
   zai: "bg-purple-400",
 };
 
-function getProviderColor(modelId: string): string {
+export function getProviderColor(modelId: string): string {
   const provider = modelId.split("-")[0];
   return PROVIDER_COLORS[provider] ?? "bg-zinc-400";
 }
