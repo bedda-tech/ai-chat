@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 
 interface Memory {
   id: string;
@@ -28,14 +30,39 @@ export function MemoryManagement() {
   const [loading, setLoading] = useState(true);
   const [deleting, setDeleting] = useState<string | null>(null);
   const [clearingAll, setClearingAll] = useState(false);
+  const [memoryEnabled, setMemoryEnabled] = useState(true);
+  const [togglingMemory, setTogglingMemory] = useState(false);
 
   useEffect(() => {
-    fetch("/api/memory")
-      .then((r) => r.json())
-      .then((data) => setMemories(data.memories ?? []))
-      .catch(() => toast.error("Failed to load memories"))
+    Promise.all([
+      fetch("/api/memory")
+        .then((r) => r.json())
+        .then((data) => setMemories(data.memories ?? [])),
+      fetch("/api/user/preferences")
+        .then((r) => r.json())
+        .then((data) => setMemoryEnabled(data.memoryEnabled ?? true)),
+    ])
+      .catch(() => toast.error("Failed to load memory settings"))
       .finally(() => setLoading(false));
   }, []);
+
+  async function toggleMemory(enabled: boolean) {
+    setTogglingMemory(true);
+    try {
+      const res = await fetch("/api/user/preferences", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ memoryEnabled: enabled }),
+      });
+      if (!res.ok) throw new Error("Failed to save");
+      setMemoryEnabled(enabled);
+      toast.success(enabled ? "Memory enabled" : "Memory disabled");
+    } catch {
+      toast.error("Failed to update memory setting");
+    } finally {
+      setTogglingMemory(false);
+    }
+  }
 
   async function deleteMemory(id: string) {
     setDeleting(id);
@@ -95,6 +122,20 @@ export function MemoryManagement() {
             {clearingAll ? "Clearing..." : "Clear all"}
           </Button>
         )}
+      </div>
+
+      <div className="flex items-center gap-3 rounded-lg border px-3 py-2">
+        <Switch
+          checked={memoryEnabled}
+          disabled={togglingMemory || loading}
+          id="memory-toggle"
+          onCheckedChange={toggleMemory}
+        />
+        <Label className="cursor-pointer text-sm" htmlFor="memory-toggle">
+          {memoryEnabled
+            ? "Memory enabled — AI learns from your conversations"
+            : "Memory disabled — AI will not remember anything (incognito)"}
+        </Label>
       </div>
 
       {loading ? (

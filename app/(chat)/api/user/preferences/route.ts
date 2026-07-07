@@ -10,6 +10,7 @@ export async function GET() {
   const prefs = await getUserPreferences(session.user.id);
   return Response.json({
     customInstructions: prefs?.customInstructions ?? "",
+    memoryEnabled: prefs?.memoryEnabled ?? true,
   });
 }
 
@@ -20,11 +21,15 @@ export async function POST(request: Request) {
   }
 
   const body = await request.json();
-  const customInstructions =
-    typeof body.customInstructions === "string"
-      ? body.customInstructions.slice(0, 2000)
-      : "";
+  const data: { customInstructions?: string; memoryEnabled?: boolean } = {};
 
-  await upsertUserPreferences(session.user.id, { customInstructions });
+  if (typeof body.customInstructions === "string") {
+    data.customInstructions = body.customInstructions.slice(0, 2000);
+  }
+  if (typeof body.memoryEnabled === "boolean") {
+    data.memoryEnabled = body.memoryEnabled;
+  }
+
+  await upsertUserPreferences(session.user.id, data);
   return Response.json({ success: true });
 }

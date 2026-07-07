@@ -1068,20 +1068,27 @@ export async function getUserPreferences(
 
 export async function upsertUserPreferences(
   userId: string,
-  data: { customInstructions?: string }
+  data: { customInstructions?: string; memoryEnabled?: boolean }
 ): Promise<UserPreferences> {
+  const now = new Date();
   const [prefs] = await db
     .insert(userPreferences)
     .values({
       userId,
       customInstructions: data.customInstructions ?? null,
-      updatedAt: new Date(),
+      ...(data.memoryEnabled !== undefined && {
+        memoryEnabled: data.memoryEnabled,
+      }),
+      updatedAt: now,
     })
     .onConflictDoUpdate({
       target: userPreferences.userId,
       set: {
         customInstructions: data.customInstructions ?? null,
-        updatedAt: new Date(),
+        ...(data.memoryEnabled !== undefined && {
+          memoryEnabled: data.memoryEnabled,
+        }),
+        updatedAt: now,
       },
     })
     .returning();

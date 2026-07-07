@@ -376,13 +376,14 @@ export const account = pgTable(
 
 export type Account = InferSelectModel<typeof account>;
 
-// User preferences (custom instructions)
+// User preferences (custom instructions, memory toggle)
 export const userPreferences = pgTable("UserPreferences", {
   userId: uuid("userId")
     .primaryKey()
     .notNull()
     .references(() => user.id, { onDelete: "cascade" }),
   customInstructions: text("customInstructions"),
+  memoryEnabled: boolean("memoryEnabled").notNull().default(true),
   updatedAt: timestamp("updatedAt").notNull().defaultNow(),
 });
 

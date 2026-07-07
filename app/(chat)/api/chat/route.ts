@@ -222,10 +222,13 @@ export async function POST(request: Request) {
       userPrefsPromise,
       userMemoriesPromise,
     ]);
-    const userMemories = userMemoriesRaw.map((m) => ({
-      content: m.content,
-      category: m.category,
-    }));
+    const userMemories =
+      userPrefs?.memoryEnabled !== false
+        ? userMemoriesRaw.map((m) => ({
+            content: m.content,
+            category: m.category,
+          }))
+        : [];
 
     // Fetch project instructions if chat belongs to a project
     let projectInstructions: string | undefined;
