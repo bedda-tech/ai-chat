@@ -589,7 +589,7 @@ export async function POST(request: Request) {
               // Extract provider metadata from response
               const providerMetadata =
                 response.headers?.["x-vercel-ai-provider-metadata"];
-              let gatewayMetadata: any = null;
+              let gatewayMetadata: { cost?: number; routing?: Record<string, unknown> } | null = null;
 
               if (providerMetadata) {
                 try {
