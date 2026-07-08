@@ -17,9 +17,15 @@ function extractPlainText(richText: Array<{ plain_text: string }>): string {
   return richText?.map((t) => t.plain_text).join("") ?? "";
 }
 
-function blockToText(block: any): string {
+type NotionBlockData = {
+  rich_text?: Array<{ plain_text: string }>;
+  checked?: boolean;
+  language?: string;
+};
+
+function blockToText(block: { type: string; [key: string]: unknown }): string {
   const type = block.type;
-  const data = block[type];
+  const data = block[type] as NotionBlockData | undefined;
   if (!data) return "";
 
   const textContent = data.rich_text ? extractPlainText(data.rich_text) : "";
