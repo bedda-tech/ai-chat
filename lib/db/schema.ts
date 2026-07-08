@@ -9,6 +9,7 @@ import {
   primaryKey,
   text,
   timestamp,
+  unique,
   uuid,
   varchar,
   vector,
@@ -507,6 +508,30 @@ export const apiKey = pgTable("ApiKey", {
 });
 
 export type ApiKey = InferSelectModel<typeof apiKey>;
+
+// BYOK — user-supplied provider API keys (encrypted at rest)
+export const userProviderKey = pgTable(
+  "UserProviderKey",
+  {
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    userId: uuid("userId")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    provider: varchar("provider", { length: 32 }).notNull(), // e.g. "openai"
+    encryptedKey: text("encryptedKey").notNull(),
+    keyPrefix: varchar("keyPrefix", { length: 16 }).notNull(), // first 8 chars for display
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+  },
+  (table) => ({
+    userProviderUnique: unique("UserProviderKey_userId_provider_unique").on(
+      table.userId,
+      table.provider
+    ),
+  })
+);
+
+export type UserProviderKey = InferSelectModel<typeof userProviderKey>;
 
 // Teams
 export const team = pgTable("Team", {

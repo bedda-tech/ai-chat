@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/app/(auth)/auth";
 import { ApiKeysManagement } from "@/components/api-keys-management";
+import { ByokForm } from "@/components/byok-form";
 import { CustomInstructionsForm } from "@/components/custom-instructions-form";
 import { McpServersForm } from "@/components/mcp-servers-form";
 import { MemoryManagement } from "@/components/memory-management";
@@ -87,6 +88,11 @@ export default async function SettingsPage() {
       <div className="mt-6 rounded-lg border p-6">
         <h2 className="mb-4 font-semibold text-lg">API Keys</h2>
         <ApiKeysManagement />
+      </div>
+
+      <div className="mt-6 rounded-lg border p-6">
+        <h2 className="mb-4 font-semibold text-lg">Bring Your Own Key</h2>
+        <ByokForm />
       </div>
 
       <div className="mt-6 rounded-lg border p-6">

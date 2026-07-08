@@ -1,5 +1,5 @@
 import { createMCPClient } from "@ai-sdk/mcp";
-import { openai } from "@ai-sdk/openai";
+import { createOpenAI, openai } from "@ai-sdk/openai";
 import * as Sentry from "@sentry/nextjs";
 import { geolocation } from "@vercel/functions";
 import {
@@ -68,12 +68,14 @@ import {
   getProjectById,
   getUserMemories,
   getUserPreferences,
+  getUserProviderKey,
   hasKBDocuments,
   saveChat,
   saveMessages,
   searchKBChunks,
   updateChatLastContextById,
 } from "@/lib/db/queries";
+import { decryptValue } from "@/lib/ai/plugin-encrypt";
 import { getOrgModelPolicyForUser } from "@/lib/db/team-queries";
 import { ChatSDKError } from "@/lib/errors";
 import {
@@ -176,6 +178,10 @@ export async function POST(request: Request) {
     // Fetch user preferences and memories in parallel with model access check
     const userPrefsPromise = getUserPreferences(session.user.id);
     const userMemoriesPromise = getUserMemories(session.user.id);
+    // BYOK: fetch user's own OpenAI key if they've stored one (only for OpenAI models)
+    const byokKeyPromise = selectedChatModel.startsWith("openai-")
+      ? getUserProviderKey(session.user.id, "openai")
+      : Promise.resolve(null);
 
     // Enforce model access by subscription tier.
     // rateLimitResult.tier comes from the same DB call — no extra round-trip.
@@ -217,11 +223,25 @@ export async function POST(request: Request) {
 
     const _userType: UserType = session.user.type;
 
-    const [chat, userPrefs, userMemoriesRaw] = await Promise.all([
+    const [chat, userPrefs, userMemoriesRaw, byokKeyRow] = await Promise.all([
       getChatById({ id }),
       userPrefsPromise,
       userMemoriesPromise,
+      byokKeyPromise,
     ]);
+
+    // Resolve the language model — use the user's own OpenAI key if stored
+    const byokDecryptedKey = byokKeyRow
+      ? decryptValue(byokKeyRow.encryptedKey)
+      : null;
+    function resolveLanguageModel(modelId: string) {
+      if (byokDecryptedKey && modelId.startsWith("openai-")) {
+        const openaiModelName = modelId.slice("openai-".length);
+        const byokOpenAI = createOpenAI({ apiKey: byokDecryptedKey });
+        return byokOpenAI(openaiModelName);
+      }
+      return myProvider.languageModel(modelId);
+    }
     const userMemories =
       userPrefs?.memoryEnabled !== false
         ? userMemoriesRaw.map((m) => ({
@@ -521,7 +541,7 @@ export async function POST(request: Request) {
         const requestStart = Date.now();
         const result = streamText({
           model: wrapLanguageModel({
-            model: myProvider.languageModel(selectedChatModel),
+            model: resolveLanguageModel(selectedChatModel),
             middleware: ragMiddleware,
           }),
           system: getCacheableSystemPrompt({

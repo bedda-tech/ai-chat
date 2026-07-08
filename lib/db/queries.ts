@@ -58,7 +58,9 @@ import {
   user,
   userMemory,
   userPreferences,
+  type UserProviderKey,
   type VideoJob,
+  userProviderKey,
   videoJob,
   vote,
 } from "./schema";
@@ -1607,4 +1609,53 @@ export async function isValidReferralCode(code: string): Promise<boolean> {
     .where(eq(user.referralCode, code))
     .limit(1);
   return !!found;
+}
+
+// BYOK — user-supplied provider API keys
+export async function getUserProviderKey(
+  userId: string,
+  provider: string
+): Promise<UserProviderKey | null> {
+  const [row] = await db
+    .select()
+    .from(userProviderKey)
+    .where(
+      and(
+        eq(userProviderKey.userId, userId),
+        eq(userProviderKey.provider, provider)
+      )
+    )
+    .limit(1);
+  return row ?? null;
+}
+
+export async function upsertUserProviderKey(
+  userId: string,
+  provider: string,
+  encryptedKey: string,
+  keyPrefix: string
+): Promise<UserProviderKey> {
+  const [row] = await db
+    .insert(userProviderKey)
+    .values({ userId, provider, encryptedKey, keyPrefix })
+    .onConflictDoUpdate({
+      target: [userProviderKey.userId, userProviderKey.provider],
+      set: { encryptedKey, keyPrefix, updatedAt: new Date() },
+    })
+    .returning();
+  return row;
+}
+
+export async function deleteUserProviderKey(
+  userId: string,
+  provider: string
+): Promise<void> {
+  await db
+    .delete(userProviderKey)
+    .where(
+      and(
+        eq(userProviderKey.userId, userId),
+        eq(userProviderKey.provider, provider)
+      )
+    );
 }
