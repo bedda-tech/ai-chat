@@ -23,6 +23,18 @@ type NotionBlockData = {
   language?: string;
 };
 
+type NotionRichTextProp = {
+  title?: Array<{ plain_text: string }>;
+  rich_text?: Array<{ plain_text: string }>;
+};
+
+type NotionSearchPage = {
+  id: string;
+  last_edited_time: string;
+  url: string;
+  properties?: Record<string, NotionRichTextProp>;
+};
+
 function blockToText(block: { type: string; [key: string]: unknown }): string {
   const type = block.type;
   const data = block[type] as NotionBlockData | undefined;
@@ -110,7 +122,7 @@ export const notionTool = (userId: string) =>
         }
 
         const data = await res.json();
-        const pages = (data.results ?? []).map((page: any) => {
+        const pages = (data.results ?? []).map((page: NotionSearchPage) => {
           const titleProp =
             page.properties?.title ??
             page.properties?.Name ??
