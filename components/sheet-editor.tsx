@@ -73,7 +73,7 @@ const PureSpreadsheetEditor = ({ content, saveContent }: SheetEditorProps) => {
   const initialRows = useMemo(
     () =>
       parseData.map((row, rowIndex) => {
-        const rowData: any = {
+        const rowData: Record<string, string | number> = {
           id: rowIndex,
           rowNumber: rowIndex + 1,
         };
