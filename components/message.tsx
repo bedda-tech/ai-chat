@@ -622,7 +622,7 @@ const PurePreviewMessage = ({
                             {/* Rich results (charts, tables, etc.) */}
                             {results &&
                               results.length > 0 &&
-                              results.map((r: any, i: number) => (
+                              results.map((r: { png?: string; svg?: string; html?: string; json?: unknown; text?: string }, i: number) => (
                                 <div key={i}>
                                   {r.png && (
                                     <img
