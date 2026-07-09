@@ -1080,7 +1080,7 @@ const PurePreviewMessage = ({
                             )}
                             <div className="space-y-2">
                               {toolPart.output.comparisons?.map(
-                                (c: any, i: number) => (
+                                (c: { isSimilar: boolean; similarity: number; text1: string; text2: string }, i: number) => (
                                   <div
                                     className="rounded-lg border border-border bg-muted/30 p-3"
                                     key={i}
