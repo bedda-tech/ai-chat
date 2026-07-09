@@ -476,7 +476,7 @@ const PurePreviewMessage = ({
                                     Key Findings
                                   </div>
                                   {toolPart.output.analysis.findings.map(
-                                    (finding: any) => (
+                                    (finding: { title: string; confidence: number; description: string }) => (
                                       <div
                                         className="rounded-lg border border-border bg-muted/30 p-3"
                                         key={`${finding.title}-${finding.confidence}`}
