@@ -59,7 +59,8 @@ export const {
     }),
     Credentials({
       credentials: {},
-      async authorize({ email, password }: any) {
+      async authorize({ email, password }: { email?: string; password?: string }) {
+        if (!email || !password) return null;
         const users = await getUser(email);
 
         if (users.length === 0) {
