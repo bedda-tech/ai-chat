@@ -4,6 +4,7 @@ import type { UseChatHelpers } from "@ai-sdk/react";
 import type { UIMessage } from "ai";
 import equal from "fast-deep-equal";
 import { nanoid } from "nanoid";
+import useSWR from "swr";
 import {
   type ChangeEvent,
   type Dispatch,
@@ -715,6 +716,18 @@ function PureModelSelectorCompact({
     setOptimisticModelId(selectedModelId);
   }, [selectedModelId]);
 
+  const { data: subData } = useSWR(
+    "/api/subscription/status",
+    async (url: string) => {
+      const r = await fetch(url);
+      if (!r.ok) return null;
+      return r.json() as Promise<{ tier: string }>;
+    },
+    { revalidateOnFocus: false, dedupingInterval: 300_000, shouldRetryOnError: false }
+  );
+  const userTier = subData?.tier ?? "free";
+  const isFreeTier = userTier === "free";
+
   const allModels = useMemo(() => {
     if (dynamicModels.length === 0) return chatModels;
     const merged = [
@@ -722,6 +735,9 @@ function PureModelSelectorCompact({
         id: m.id,
         name: m.name,
         description: m.description,
+        disabled: m.disabled,
+        tags: m.tags,
+        warning: m.warning,
       })),
       ...chatModels,
     ];
@@ -872,19 +888,30 @@ function PureModelSelectorCompact({
                 {filteredModels.map((model) => {
                   const modelTools = getModelTools(model.id);
                   const isPremium = !FREE_TIER_MODEL_IDS.includes(model.id);
+                  const isModelDisabled = (model as any).disabled === true;
+                  const modelTags = (model as any).tags as string[] | undefined;
+                  const isExperimental = modelTags?.includes("experimental");
+                  const modelWarning = (model as any).warning as
+                    | string
+                    | undefined;
+                  const isAccessRestricted = isFreeTier && isPremium;
+                  const isBlocked = isModelDisabled || isAccessRestricted;
+                  const isActive =
+                    model.id === optimisticModelId && !isBlocked;
 
                   return (
                     <button
                       className={cn(
-                        "flex w-full flex-col gap-2 rounded-lg p-3 text-left transition-colors hover:bg-accent hover:text-accent-foreground",
-                        model.id === optimisticModelId &&
-                          "bg-accent text-accent-foreground"
+                        "flex w-full flex-col gap-2 rounded-lg p-3 text-left transition-colors",
+                        isBlocked
+                          ? "cursor-not-allowed opacity-60"
+                          : "hover:bg-accent hover:text-accent-foreground",
+                        isActive && "bg-accent text-accent-foreground"
                       )}
+                      disabled={isBlocked}
                       key={model.id}
-                      onClick={() => handleModelSelect(model.id)}
-                      ref={
-                        model.id === optimisticModelId ? selectedModelRef : null
-                      }
+                      onClick={() => !isBlocked && handleModelSelect(model.id)}
+                      ref={isActive ? selectedModelRef : null}
                       type="button"
                     >
                       <div className="flex items-center justify-between gap-2">
@@ -892,7 +919,15 @@ function PureModelSelectorCompact({
                           <span className="truncate font-medium text-sm">
                             {model.name}
                           </span>
-                          {isPremium && (
+                          {isExperimental && (
+                            <Badge
+                              className="h-4 shrink-0 border-amber-400 px-1 font-semibold text-[9px] uppercase tracking-wide text-amber-600 dark:text-amber-400"
+                              variant="outline"
+                            >
+                              experimental
+                            </Badge>
+                          )}
+                          {isPremium && !isExperimental && !isModelDisabled && (
                             <Badge
                               className="h-4 shrink-0 px-1 font-semibold text-[9px] uppercase tracking-wide"
                               variant="secondary"
@@ -900,28 +935,55 @@ function PureModelSelectorCompact({
                               Plus
                             </Badge>
                           )}
+                          {isModelDisabled && (
+                            <Badge
+                              className="h-4 shrink-0 px-1 font-semibold text-[9px] uppercase tracking-wide"
+                              variant="outline"
+                            >
+                              unavailable
+                            </Badge>
+                          )}
                         </div>
-                        {model.id === optimisticModelId && (
+                        {isActive && (
                           <div className="size-2 shrink-0 rounded-full bg-accent-foreground" />
                         )}
                       </div>
+                      {modelWarning && !isModelDisabled && (
+                        <div className="text-[10px] text-amber-600 dark:text-amber-400">
+                          ⚠ {modelWarning}
+                        </div>
+                      )}
                       <div
                         className={cn(
                           "text-xs leading-tight",
-                          model.id === optimisticModelId
+                          isActive
                             ? "text-accent-foreground/80"
                             : "text-foreground/60"
                         )}
                       >
                         {model.description}
                       </div>
-                      {modelTools.length > 0 && (
+                      {isAccessRestricted && !isModelDisabled && (
+                        <a
+                          className="text-[10px] text-primary underline"
+                          href="/upgrade"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          Upgrade to Pro to use this model →
+                        </a>
+                      )}
+                      {isModelDisabled && (
+                        <div className="text-[10px] text-muted-foreground">
+                          Requires KRAIN environment configuration
+                        </div>
+                      )}
+                      {modelTools.length > 0 && !isBlocked && (
                         <div className="flex flex-wrap gap-1">
                           {modelTools.map((tool) => (
                             <Badge
                               className={cn(
                                 "h-5 px-1.5 text-[10px]",
-                                model.id === optimisticModelId
+                                isActive
                                   ? "bg-accent-foreground/20 text-accent-foreground"
                                   : "bg-muted text-muted-foreground"
                               )}

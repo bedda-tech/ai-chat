@@ -1027,8 +1027,10 @@
       "id": "krain-gemma",
       "gatewayId": "krain/gemma-2-9b-it",
       "provider": "krain",
-      "name": "KRAIN Gemma 4 (Self-Hosted)",
-      "description": "Gemma 4 12B on Bedda's self-hosted KRAIN inference cluster — private, zero cloud dependency, $KRAIN-powered compute",
+      "name": "Bedda Local (KRAIN)",
+      "description": "Privacy-forward local inference on Bedda's self-hosted KRAIN cluster — zero cloud data exposure, self-hosted Gemma",
+      "tags": ["experimental"],
+      "warning": "~20-40s response time, local inference",
       "contextWindow": 8192,
       "pricing": {
         "input": 0.0,

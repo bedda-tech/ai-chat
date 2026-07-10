@@ -47,6 +47,9 @@ interface EnrichedModel {
     temperature?: number;
     idealFor: string[];
   };
+  disabled?: boolean;
+  tags?: string[];
+  warning?: string;
 }
 
 let cache: CachedModels | null = null;
@@ -161,6 +164,34 @@ function inferConfig(modelId: string): EnrichedModel["config"] {
 }
 
 /**
+ * Inject krain-gemma into the model list with environment-aware disabled state.
+ * Evaluated at request time so KRAIN_BASE_URL changes take effect within one cache cycle.
+ */
+function injectKrainModel(models: EnrichedModel[]): EnrichedModel[] {
+  const krainStatic = (modelsData.models as any[]).find(
+    (m) => m.id === "krain-gemma"
+  );
+  if (!krainStatic) return models;
+
+  const krainEntry: EnrichedModel = {
+    id: krainStatic.id,
+    gatewayId: krainStatic.gatewayId,
+    name: krainStatic.name,
+    description: krainStatic.description,
+    provider: krainStatic.provider,
+    contextWindow: krainStatic.contextWindow,
+    pricing: krainStatic.pricing,
+    capabilities: krainStatic.capabilities,
+    config: krainStatic.config,
+    disabled: !process.env.KRAIN_BASE_URL,
+    tags: krainStatic.tags ?? [],
+    warning: krainStatic.warning,
+  };
+
+  return [...models.filter((m) => m.id !== "krain-gemma"), krainEntry];
+}
+
+/**
  * Get available models with caching
  */
 export async function getAvailableModels(
@@ -171,7 +202,7 @@ export async function getAvailableModels(
   // Return cached if still valid and not forcing refresh
   if (!forceRefresh && cache && now - cache.timestamp < CACHE_DURATION) {
     console.log("✅ Returning cached models from server-side cache");
-    return transformToEnrichedModels(cache.models);
+    return injectKrainModel(transformToEnrichedModels(cache.models));
   }
 
   try {
@@ -186,19 +217,19 @@ export async function getAvailableModels(
     };
 
     console.log(`✅ Fetched ${models.length} models from AI Gateway`);
-    return transformToEnrichedModels(models);
+    return injectKrainModel(transformToEnrichedModels(models));
   } catch (error) {
     console.error("❌ Failed to fetch dynamic models:", error);
 
     // If cache exists but is stale, return it anyway
     if (cache) {
       console.warn("⚠️ Returning stale cached models");
-      return transformToEnrichedModels(cache.models);
+      return injectKrainModel(transformToEnrichedModels(cache.models));
     }
 
     // Ultimate fallback to static JSON
     console.warn("⚠️ Falling back to static models configuration");
-    return modelsData.models as EnrichedModel[];
+    return injectKrainModel(modelsData.models as EnrichedModel[]);
   }
 }
 

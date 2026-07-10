@@ -27,6 +27,15 @@ import {
 } from "@/lib/ai/model-tools";
 import { chatModels } from "@/lib/ai/models";
 
+function useUserTier() {
+  const { data } = useSWR<{ tier: string }>(
+    "/api/subscription/status",
+    (url: string) => fetch(url).then((r) => r.json()),
+    { revalidateOnFocus: false, dedupingInterval: 60_000 }
+  );
+  return data?.tier ?? "free";
+}
+
 interface OrgPolicy {
   allowedModelIds?: string[] | null;
   deniedModelIds?: string[] | null;
@@ -66,6 +75,9 @@ export function ModelSelector({
 
   const userType = session.user.type;
   const isGuest = userType === "guest";
+  const userTier = useUserTier();
+  const isPaidUser =
+    userTier === "pro" || userTier === "premium" || userTier === "enterprise";
 
   // Use dynamic models if available, fallback to static models
   const availableChatModels = useMemo(() => {
@@ -77,6 +89,9 @@ export function ModelSelector({
               id: m.id,
               name: m.name,
               description: m.description,
+              warning: m.warning,
+              disabled: m.disabled,
+              tags: m.tags,
             })),
             ...chatModels, // Keep legacy models
           ]
@@ -271,6 +286,18 @@ export function ModelSelector({
             const modelTools = getModelTools(id);
             const idealUse = getModelIdealUse(id);
             const isPremiumModel = !FREE_TIER_MODEL_IDS.includes(id);
+            const isEnvDisabled =
+              "disabled" in chatModel && chatModel.disabled === true;
+            const isFreeTierLocked = !isGuest && !isPaidUser && isPremiumModel;
+            const isLocked = isEnvDisabled || isFreeTierLocked;
+            const warning =
+              "warning" in chatModel
+                ? (chatModel as { warning?: string }).warning
+                : undefined;
+            const tags =
+              "tags" in chatModel
+                ? (chatModel as { tags?: string[] }).tags
+                : undefined;
 
             return (
               <DropdownMenuItem
@@ -278,24 +305,40 @@ export function ModelSelector({
                 data-active={id === optimisticModelId}
                 data-testid={`model-selector-item-${id}`}
                 key={id}
-                onSelect={() => {
-                  setOpen(false);
-                  setSearchQuery("");
-                  setSelectedToolFilters(new Set());
+                onSelect={
+                  isLocked
+                    ? (e) => e.preventDefault()
+                    : () => {
+                        setOpen(false);
+                        setSearchQuery("");
+                        setSelectedToolFilters(new Set());
 
-                  startTransition(() => {
-                    setOptimisticModelId(id);
-                    saveChatModelAsCookie(id);
-                  });
-                }}
+                        startTransition(() => {
+                          setOptimisticModelId(id);
+                          saveChatModelAsCookie(id);
+                        });
+                      }
+                }
               >
                 <button
-                  className="group/item flex w-full flex-row items-center justify-between gap-2 sm:gap-4"
+                  className={cn(
+                    "group/item flex w-full flex-row items-center justify-between gap-2 sm:gap-4",
+                    isLocked && "cursor-not-allowed opacity-50"
+                  )}
+                  disabled={isLocked}
                   type="button"
                 >
                   <div className="flex min-w-0 flex-1 flex-col items-start gap-1.5">
                     <div className="flex items-center gap-1.5 text-sm sm:text-base">
                       {chatModel.name}
+                      {tags?.includes("experimental") && (
+                        <Badge
+                          className="h-4 px-1 font-semibold text-[9px] uppercase tracking-wide"
+                          variant="outline"
+                        >
+                          Experimental
+                        </Badge>
+                      )}
                       {isPremiumModel && (
                         <Badge
                           className="h-4 px-1 font-semibold text-[9px] uppercase tracking-wide"
@@ -304,10 +347,28 @@ export function ModelSelector({
                           Plus
                         </Badge>
                       )}
+                      {isEnvDisabled && (
+                        <Badge
+                          className="h-4 px-1 font-semibold text-[9px] uppercase tracking-wide"
+                          variant="outline"
+                        >
+                          Unavailable
+                        </Badge>
+                      )}
                     </div>
                     <div className="line-clamp-2 text-muted-foreground text-xs">
                       {chatModel.description}
                     </div>
+                    {warning && (
+                      <div className="text-[10px] text-yellow-600 dark:text-yellow-400">
+                        ⚠ {warning}
+                      </div>
+                    )}
+                    {isFreeTierLocked && !isEnvDisabled && (
+                      <div className="text-[10px] text-primary">
+                        Upgrade to Plus to unlock
+                      </div>
+                    )}
                     {idealUse && (
                       <div className="text-[10px] text-muted-foreground/70 italic">
                         Best for: {idealUse}

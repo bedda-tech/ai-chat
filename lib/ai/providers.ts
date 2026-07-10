@@ -16,17 +16,15 @@ import {
 import modelsData from "./models-data.json" with { type: "json" };
 
 /**
- * KRAIN protocol inference source (HIDDEN / experimental — 2026-07-06).
+ * KRAIN protocol inference source (experimental — 2026-07-10).
  *
  * Routes to the KRAIN/axon `inference-router`, an OpenAI-compatible endpoint that
- * serves self-hosted Gemma on our GB10 / Strix Halo nodes. This makes bedda-ai the
- * protocol's first real inference consumer (see memory: bedda-ai-krain-convergence).
+ * serves self-hosted Gemma on our GB10 / Strix Halo nodes.
  *
- * Deliberately NOT added to models-data.json or entitlements, so it does NOT appear
- * in the model picker for ANY tier (guest/free/paid) — it exists only as a routable
- * model id. To EXPOSE it later: add a models-data.json entry + list its id in
- * entitlements. Until KRAIN_BASE_URL is set it is inert (created lazily; only fails
- * at request time, which cannot happen while it is unlisted).
+ * Visible to Pro+ users in the model picker as "Bedda Local (KRAIN)".
+ * Disabled in the UI when KRAIN_BASE_URL is unset (checked at API request time).
+ * The explicit override below ensures gateway.languageModel("krain/…") is never
+ * called — the local krain() client is always used for this model ID.
  */
 const krain = createOpenAI({
   baseURL: process.env.KRAIN_BASE_URL ?? "http://localhost:4000/v1",

@@ -29,6 +29,9 @@ interface Model {
     temperature?: number;
     idealFor: string[];
   };
+  disabled?: boolean;
+  tags?: string[];
+  warning?: string;
 }
 
 interface ModelsResponse {
