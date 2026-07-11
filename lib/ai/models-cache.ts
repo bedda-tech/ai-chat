@@ -168,7 +168,7 @@ function inferConfig(modelId: string): EnrichedModel["config"] {
  * Evaluated at request time so KRAIN_BASE_URL changes take effect within one cache cycle.
  */
 function injectKrainModel(models: EnrichedModel[]): EnrichedModel[] {
-  const krainStatic = (modelsData.models as any[]).find(
+  const krainStatic = (modelsData.models as EnrichedModel[]).find(
     (m) => m.id === "krain-gemma"
   );
   if (!krainStatic) return models;
