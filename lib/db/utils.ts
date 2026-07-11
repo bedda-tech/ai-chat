@@ -8,6 +8,7 @@ export function generateHashedPassword(password: string) {
   return hash;
 }
 
+/** Generates a random bcrypt-hashed password for OAuth users who have no real password. */
 export function generateDummyPassword() {
   const password = generateId();
   const hashedPassword = generateHashedPassword(password);
