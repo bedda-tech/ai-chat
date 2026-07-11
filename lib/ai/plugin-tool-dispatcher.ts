@@ -34,11 +34,11 @@ export async function dispatchPluginTool(
       return await res.json();
     }
     return { result: await res.text() };
-  } catch (err: any) {
+  } catch (err: unknown) {
     clearTimeout(timeout);
-    if (err?.name === "AbortError") {
+    if (err instanceof Error && err.name === "AbortError") {
       return { error: "Webhook timed out after 5 seconds" };
     }
-    return { error: `Webhook error: ${err?.message ?? "unknown"}` };
+    return { error: `Webhook error: ${err instanceof Error ? err.message : "unknown"}` };
   }
 }
