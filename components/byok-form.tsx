@@ -44,8 +44,8 @@ export function ByokForm() {
       setKeyPrefix(data.keyPrefix);
       setKey("");
       toast.success("OpenAI key saved — your requests will now use it");
-    } catch (err: any) {
-      toast.error(err.message ?? "Failed to save key");
+    } catch (err: unknown) {
+      toast.error(err instanceof Error ? err.message : "Failed to save key");
     } finally {
       setSaving(false);
     }
