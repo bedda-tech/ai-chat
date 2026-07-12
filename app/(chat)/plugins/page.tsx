@@ -104,8 +104,8 @@ function InstallDrawer({
       );
       setParamValues({});
       onClose();
-    } catch (e: any) {
-      toast.error(e.message ?? "Failed to install plugin");
+    } catch (e: unknown) {
+      toast.error(e instanceof Error ? e.message : "Failed to install plugin");
     } finally {
       setSaving(false);
     }

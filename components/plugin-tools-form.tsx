@@ -95,8 +95,8 @@ export function PluginToolsForm() {
       setTools((prev) => [...prev, data.tool]);
       resetForm();
       toast.success("Plugin tool added");
-    } catch (e: any) {
-      toast.error(e.message ?? "Failed to add plugin tool");
+    } catch (e: unknown) {
+      toast.error(e instanceof Error ? e.message : "Failed to add plugin tool");
     } finally {
       setAdding(false);
     }
