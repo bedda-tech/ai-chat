@@ -62,8 +62,8 @@ export function McpServersForm() {
       setNewUrl("");
       setShowForm(false);
       toast.success("MCP server added");
-    } catch (e: any) {
-      toast.error(e.message ?? "Failed to add MCP server");
+    } catch (e: unknown) {
+      toast.error(e instanceof Error ? e.message : "Failed to add MCP server");
     } finally {
       setAdding(false);
     }
