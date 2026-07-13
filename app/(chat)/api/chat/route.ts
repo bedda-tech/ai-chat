@@ -652,7 +652,7 @@ export async function POST(request: Request) {
                 // Extract cache information from AI SDK usage object
                 // Anthropic models return cacheReadInputTokens, cacheCreationInputTokens
                 // OpenAI models have automatic caching (no explicit fields)
-                const cachedTokens = (usage as any).cacheReadInputTokens || 0;
+                const cachedTokens = (usage as { cacheReadInputTokens?: number }).cacheReadInputTokens ?? 0;
                 const cacheHit = cachedTokens > 0;
 
                 await recordUsage({
