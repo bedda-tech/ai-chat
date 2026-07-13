@@ -1,6 +1,7 @@
 import type { PluginTool } from "@/lib/db/schema";
 import { decryptValue } from "./plugin-encrypt";
 
+/** POST args to a plugin tool's webhook URL with a 5-second timeout; returns parsed JSON or `{ result: text }`. */
 export async function dispatchPluginTool(
   pt: PluginTool,
   args: Record<string, unknown>
