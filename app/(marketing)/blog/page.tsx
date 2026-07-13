@@ -370,15 +370,6 @@ const posts = [
     category: "Professional Guides",
   },
   {
-    slug: "ai-for-hr-professionals",
-    title: "Best AI for HR Professionals in 2026: Hiring, Onboarding & HR Tasks",
-    description:
-      "How HR teams are using AI in 2026 — writing job descriptions, screening guidance, employee onboarding, policy creation, and performance reviews. Best models and workflows.",
-    date: "June 2026",
-    readingTime: "8 min read",
-    category: "Professional Guides",
-  },
-  {
     slug: "best-ai-for-teachers-2026",
     title: "Best AI for Teachers in 2026: Lesson Plans, Rubrics & Student Feedback",
     description:
@@ -386,15 +377,6 @@ const posts = [
     date: "June 2026",
     readingTime: "8 min read",
     category: "Professional Guides",
-  },
-  {
-    slug: "chatgpt-teams-vs-bedda",
-    title: "ChatGPT Teams vs Bedda: Which AI Platform Is Better for Teams in 2026?",
-    description:
-      "ChatGPT Teams is $30/user/month for GPT models only. Bedda gives your whole team 36+ models (GPT-5, Claude, Gemini, Grok) for less. A complete comparison.",
-    date: "June 2026",
-    readingTime: "7 min read",
-    category: "Model Comparisons",
   },
   {
     slug: "best-ai-for-startups-2026",
@@ -431,24 +413,6 @@ const posts = [
     date: "June 2026",
     readingTime: "8 min read",
     category: "Model Comparisons",
-  },
-  {
-    slug: "best-ai-for-freelancers",
-    title: "Best AI Tools for Freelancers in 2026: The Complete Guide",
-    description:
-      "The best AI models for freelancers in 2026 — for writing, coding, design, client communication, and more. Which AI subscriptions are actually worth it when you're self-employed?",
-    date: "June 2026",
-    readingTime: "9 min read",
-    category: "Professional Guides",
-  },
-  {
-    slug: "ai-writing-assistant-2026",
-    title: "Best AI Writing Assistant in 2026: Ranked and Reviewed",
-    description:
-      "The best AI writing assistants in 2026 — ranked by writing quality, instruction-following, pricing, and use case. From Claude and GPT-5 to Jasper, Grammarly, and Copy.ai.",
-    date: "June 2026",
-    readingTime: "9 min read",
-    category: "Guides",
   },
   {
     slug: "microsoft-copilot-vs-chatgpt",
@@ -496,15 +460,6 @@ const posts = [
     category: "Professional Guides",
   },
   {
-    slug: "anthropic-vs-openai-vs-google",
-    title: "Anthropic vs OpenAI vs Google: Which AI Company Wins in 2026?",
-    description:
-      "Claude vs ChatGPT vs Gemini — a deep look at the companies, their models, safety philosophies, pricing, and which AI lab is ahead in 2026.",
-    date: "June 2026",
-    readingTime: "9 min read",
-    category: "AI Guides",
-  },
-  {
     slug: "best-ai-for-designers-2026",
     title: "Best AI Tools for Designers in 2026: UI, Branding & Creative Workflows",
     description:
@@ -512,15 +467,6 @@ const posts = [
     date: "June 2026",
     readingTime: "8 min read",
     category: "Professional Guides",
-  },
-  {
-    slug: "chatgpt-vs-google-gemini-vs-claude",
-    title: "ChatGPT vs Google Gemini vs Claude: Full Comparison 2026",
-    description:
-      "An honest head-to-head comparison of ChatGPT Plus, Google Gemini Advanced, and Claude Pro — pricing, capability, context window, and which to choose.",
-    date: "June 2026",
-    readingTime: "9 min read",
-    category: "Model Comparisons",
   },
   {
     slug: "is-midjourney-worth-it-2026",
@@ -538,15 +484,6 @@ const posts = [
       "How sales professionals are using AI in 2026 — cold email, proposals, CRM notes, objection handling, and research. The best models for each task, and how to stop paying $40-60/mo for multiple subscriptions.",
     date: "June 2026",
     readingTime: "9 min read",
-    category: "Professional Guides",
-  },
-  {
-    slug: "ai-for-real-estate-agents",
-    title: "AI for Real Estate Agents in 2026: Listings, Emails & Market Analysis",
-    description:
-      "How real estate agents are using AI to write better listings, faster client emails, and sharper market reports — without paying $40-60/month for multiple AI subscriptions.",
-    date: "June 2026",
-    readingTime: "8 min read",
     category: "Professional Guides",
   },
   {
@@ -667,15 +604,6 @@ const posts = [
     category: "Model Reviews",
   },
   {
-    slug: "ai-for-language-learning-2026",
-    title: "AI for Language Learning in 2026: The Complete Guide",
-    description:
-      "How AI is transforming language learning — from conversational practice to grammar correction. Compare AI tutors, Duolingo Max, and multi-model approaches.",
-    date: "June 2026",
-    readingTime: "9 min read",
-    category: "Productivity",
-  },
-  {
     slug: "best-ai-note-taking-app-2026",
     title: "Best AI Note-Taking Apps in 2026: Ranked and Compared",
     description:
@@ -739,15 +667,6 @@ const posts = [
     category: "Productivity",
   },
   {
-    slug: "ai-for-photographers-2026",
-    title: "Best AI Tools for Photographers in 2026: Edit Faster, Shoot Smarter",
-    description:
-      "The AI tools professional photographers and serious hobbyists are using in 2026 — from automated culling and retouching to mood boards and client communication. What's worth paying for.",
-    date: "June 2026",
-    readingTime: "7 min read",
-    category: "AI for Business",
-  },
-  {
     slug: "best-ai-for-job-seekers-2026",
     title: "Best AI Tools for Job Seekers in 2026: Land Your Next Role Faster",
     description:
@@ -755,15 +674,6 @@ const posts = [
     date: "June 2026",
     readingTime: "8 min read",
     category: "Productivity",
-  },
-  {
-    slug: "ai-for-nonprofit-organizations",
-    title: "Best AI Tools for Nonprofits in 2026: Do More with Less",
-    description:
-      "How nonprofits are using AI in 2026 to amplify their impact — grant writing, donor communication, volunteer coordination, and content creation — all on a tight budget.",
-    date: "June 2026",
-    readingTime: "7 min read",
-    category: "AI for Business",
   },
   {
     slug: "best-ai-for-creative-writing",
@@ -865,24 +775,6 @@ const posts = [
     category: "Guides",
   },
   {
-    slug: "ai-for-nonprofit-organizations-2026",
-    title: "AI for Nonprofits in 2026: Grant Writing, Outreach, and Program Management",
-    description:
-      "How nonprofits use AI in 2026 to write grant proposals, create donor communications, manage programs, and stretch limited budgets further with affordable AI subscriptions.",
-    date: "June 2026",
-    readingTime: "8 min read",
-    category: "Industry Guides",
-  },
-  {
-    slug: "ai-for-travel-industry-2026",
-    title: "AI for Travel and Hospitality in 2026: A Practical Guide",
-    description:
-      "How travel agents, tour operators, hotel staff, and travel bloggers use AI in 2026 — from itinerary building and guest communications to content creation and booking optimization.",
-    date: "June 2026",
-    readingTime: "7 min read",
-    category: "Industry Guides",
-  },
-  {
     slug: "best-ai-for-presentations-2026",
     title: "Best AI for Presentations in 2026: Build Slides Faster",
     description:
@@ -890,15 +782,6 @@ const posts = [
     date: "June 2026",
     readingTime: "6 min read",
     category: "Productivity",
-  },
-  {
-    slug: "ai-for-graphic-design-2026",
-    title: "AI for Graphic Design in 2026: Tools, Workflows, and Best Models",
-    description:
-      "How professional designers use AI for concept briefs, copy, image generation, and client communication — and which AI models work best for creative design work.",
-    date: "June 2026",
-    readingTime: "7 min read",
-    category: "Creative",
   },
   {
     slug: "best-ai-for-recruiters-2026",
@@ -989,15 +872,6 @@ const posts = [
     date: "July 2026",
     readingTime: "8 min read",
     category: "Research",
-  },
-  {
-    slug: "ai-for-hospitality-industry-2026",
-    title: "AI for the Hospitality Industry in 2026: Hotels, Restaurants, and Travel",
-    description:
-      "How hotels, restaurants, travel agencies, and hospitality professionals use AI in 2026 for guest communications, menu design, review responses, operations management, and marketing.",
-    date: "July 2026",
-    readingTime: "8 min read",
-    category: "Industry",
   },
   {
     slug: "best-ai-for-photographers-2026",
@@ -1270,37 +1144,10 @@ const posts = [
     category: "Guides",
   },
   {
-    slug: "ai-for-project-management",
-    title: "AI for Project Management in 2026: Status Reports, Planning & Stakeholder Comms",
-    description:
-      "How project managers are using AI to write status reports, build project plans, manage stakeholder communications, and track risks — saving 5-10 hours per week.",
-    date: "June 2026",
-    readingTime: "7 min read",
-    category: "Professional Guides",
-  },
-  {
     slug: "ai-for-project-management-2026",
     title: "How to Use AI for Project Management in 2026",
     description:
       "Practical AI workflows for project managers in 2026 — project planning, status reports, risk identification, stakeholder communication, and retrospectives.",
-    date: "June 2026",
-    readingTime: "7 min read",
-    category: "AI for Professionals",
-  },
-  {
-    slug: "ai-for-sports-2026",
-    title: "AI for Sports in 2026: Analytics, Scouting, Fan Engagement, and More",
-    description:
-      "How AI is transforming sports in 2026 — from performance analytics and injury prediction to fan engagement, betting, and sports journalism.",
-    date: "June 2026",
-    readingTime: "7 min read",
-    category: "Industry Guides",
-  },
-  {
-    slug: "ai-for-supply-chain-2026",
-    title: "How to Use AI for Supply Chain Management in 2026",
-    description:
-      "Practical AI workflows for supply chain professionals — demand forecasting analysis, vendor risk assessment, disruption planning, procurement drafts, and S&OP preparation.",
     date: "June 2026",
     readingTime: "7 min read",
     category: "AI for Professionals",
@@ -1322,15 +1169,6 @@ const posts = [
     date: "July 2026",
     readingTime: "7 min read",
     category: "Guides",
-  },
-  {
-    slug: "ai-for-veterinary-professionals-2026",
-    title: "AI for Veterinary Professionals in 2026: Clinical Notes, Research, and Practice Management",
-    description:
-      "How veterinarians, vet technicians, and veterinary practice managers use AI in 2026 for SOAP note drafting, discharge instructions, client communications, drug dosage references, and practice operations.",
-    date: "July 2026",
-    readingTime: "7 min read",
-    category: "Healthcare",
   },
   {
     slug: "ai-prompt-engineering-guide-2026",
@@ -1448,15 +1286,6 @@ const posts = [
     date: "June 2026",
     readingTime: "7 min read",
     category: "AI for Creators",
-  },
-  {
-    slug: "best-ai-for-real-estate-2026",
-    title: "Best AI Tools for Real Estate Agents in 2026",
-    description:
-      "How real estate agents use AI in 2026 — property descriptions, client emails, market analysis, contract summaries, and lead follow-up. Practical prompts included.",
-    date: "June 2026",
-    readingTime: "7 min read",
-    category: "AI for Professionals",
   },
   {
     slug: "best-ai-for-seo-content-2026",
@@ -1585,15 +1414,6 @@ const posts = [
     category: "Industry Guides",
   },
   {
-    slug: "best-ai-for-video-editing-2026",
-    title: "Best AI for Video Editing in 2026: Tools for Creators and Pros",
-    description:
-      "The best AI video editing tools in 2026 — from AI-powered cut detection and auto-captions to text-based editing, B-roll matching, and AI video generation from text prompts.",
-    date: "July 2026",
-    readingTime: "8 min read",
-    category: "Tools & Reviews",
-  },
-  {
     slug: "ai-for-copywriters-2026",
     title: "AI for Copywriters in 2026: Write Better Copy Faster",
     description:
@@ -1612,15 +1432,6 @@ const posts = [
     category: "Industry Guides",
   },
   {
-    slug: "ai-for-interior-designers-2026",
-    title: "AI for Interior Designers in 2026: Design Concepts, Client Proposals, and Sourcing",
-    description:
-      "How interior designers use AI in 2026 — for concept development, mood board descriptions, client presentation copy, space planning briefs, and product sourcing narratives.",
-    date: "July 2026",
-    readingTime: "7 min read",
-    category: "Industry Guides",
-  },
-  {
     slug: "best-ai-for-screenwriters-2026",
     title: "Best AI for Screenwriters in 2026: Script Development, Story Structure, and Dialogue",
     description:
@@ -1630,69 +1441,6 @@ const posts = [
     category: "Industry Guides",
   },
   {
-    slug: "ai-for-physical-therapists-2026",
-    title: "AI for Physical Therapists in 2026: Documentation, Exercise Plans, and Patient Education",
-    description:
-      "How physical therapists use AI in 2026 — for SOAP note drafting, home exercise program creation, patient education handouts, insurance documentation, and clinical research.",
-    date: "July 2026",
-    readingTime: "7 min read",
-    category: "Industry Guides",
-  },
-  {
-    slug: "ai-for-blockchain-developers-2026",
-    title: "AI for Blockchain Developers in 2026: Smart Contracts, Auditing, and Web3 Building",
-    description:
-      "How blockchain and Web3 developers use AI in 2026 — for smart contract development, security auditing, Solidity code review, documentation, and DeFi protocol design.",
-    date: "July 2026",
-    readingTime: "8 min read",
-    category: "Developer Tools",
-  },
-  {
-    slug: "ai-for-grant-writers-2026",
-    title: "AI for Grant Writers in 2026: Win More Funding with Smarter Proposals",
-    description:
-      "How grant writers use AI in 2026 — for needs assessments, narrative drafting, budget justifications, funder research, and submission management across nonprofit, academic, and government grants.",
-    date: "July 2026",
-    readingTime: "8 min read",
-    category: "Writing & Content",
-  },
-  {
-    slug: "ai-for-film-production-2026",
-    title: "AI for Film Production in 2026: From Script to Screen",
-    description:
-      "How filmmakers, producers, and production teams use AI in 2026 — for script coverage, scheduling, budget breakdowns, location scouting, visual development, and post-production workflows.",
-    date: "July 2026",
-    readingTime: "8 min read",
-    category: "Creative",
-  },
-  {
-    slug: "ai-for-culinary-professionals-2026",
-    title: "AI for Culinary Professionals in 2026: Chefs, Food Writers, and Restaurant Operators",
-    description:
-      "How culinary professionals use AI in 2026 — for recipe development, menu engineering, nutritional analysis, food writing, supplier research, and restaurant marketing.",
-    date: "July 2026",
-    readingTime: "7 min read",
-    category: "Industry",
-  },
-  {
-    slug: "ai-for-urban-planners-2026",
-    title: "AI for Urban Planners in 2026: Smarter Cities, Better Communities",
-    description:
-      "How urban planners and city officials use AI in 2026 — for zoning analysis, community engagement, transportation modeling, environmental impact assessment, and policy documentation.",
-    date: "July 2026",
-    readingTime: "8 min read",
-    category: "Industry",
-  },
-  {
-    slug: "ai-for-wedding-planners-2026",
-    title: "AI for Wedding Planners in 2026: Plan Smarter, Stress Less",
-    description:
-      "How wedding planners use AI in 2026 — for vendor research, timeline building, budget tracking, client communications, day-of coordination scripts, and social media content creation.",
-    date: "July 2026",
-    readingTime: "7 min read",
-    category: "Creative",
-  },
-  {
     slug: "best-ai-for-language-learning-2026",
     title: "Best AI for Language Learning in 2026: Practice, Grammar, and Fluency",
     description:
@@ -1700,15 +1448,6 @@ const posts = [
     date: "July 2026",
     readingTime: "8 min read",
     category: "Education",
-  },
-  {
-    slug: "ai-for-electricians-and-tradespeople-2026",
-    title: "AI for Electricians and Tradespeople in 2026: Code Lookups, Estimates, and Client Comms",
-    description:
-      "How electricians, plumbers, HVAC technicians, and other tradespeople use AI in 2026 — for NEC code lookups, job estimates, permit applications, client communications, and growing their business.",
-    date: "July 2026",
-    readingTime: "7 min read",
-    category: "Industry",
   },
   {
     slug: "best-ai-for-tutors-2026",
@@ -1729,51 +1468,6 @@ const posts = [
     category: "Model Guide",
   },
   {
-    slug: "ai-for-dentists-2026",
-    title: "AI for Dentists in 2026: Patient Education, Clinical Notes, and Practice Growth",
-    description:
-      "How dental professionals use AI in 2026 — for patient education materials, treatment explanations, clinical documentation, billing code lookups, staff training, and marketing their practice.",
-    date: "July 2026",
-    readingTime: "7 min read",
-    category: "Healthcare",
-  },
-  {
-    slug: "best-ai-for-illustrators-2026",
-    title: "Best AI for Illustrators in 2026: Concept Art, Client Work, and Creative Process",
-    description:
-      "How illustrators use AI in 2026 — for concept ideation, reference generation, client proposals, style exploration, and speeding up the creative process without replacing their artistic voice.",
-    date: "July 2026",
-    readingTime: "7 min read",
-    category: "Creative",
-  },
-  {
-    slug: "ai-for-sports-coaches-2026",
-    title: "AI for Sports Coaches in 2026: Game Plans, Player Analysis, and Team Communication",
-    description:
-      "How sports coaches at every level use AI in 2026 — for game planning, scouting reports, practice design, player development plans, performance analysis, and communicating with athletes and parents.",
-    date: "July 2026",
-    readingTime: "7 min read",
-    category: "Industry",
-  },
-  {
-    slug: "ai-for-social-workers-2026",
-    title: "AI for Social Workers in 2026: Case Notes, Documentation, and Client Support",
-    description:
-      "How social workers and caseworkers use AI in 2026 — for case documentation, intake assessments, progress notes, resource identification, and managing high caseloads without sacrificing client care quality.",
-    date: "July 2026",
-    readingTime: "7 min read",
-    category: "Industry",
-  },
-  {
-    slug: "ai-for-fitness-professionals-2026",
-    title: "AI for Fitness Professionals in 2026: Training Plans, Client Communication, and Business Growth",
-    description:
-      "How personal trainers, gym owners, and fitness coaches use AI in 2026 — for custom training programs, nutrition guidance, client check-in messaging, content creation, and scaling their coaching business.",
-    date: "July 2026",
-    readingTime: "7 min read",
-    category: "Industry",
-  },
-  {
     slug: "best-ai-for-tax-professionals-2026",
     title: "Best AI for Tax Professionals in 2026: CPAs, Tax Preparers, and Accountants",
     description:
@@ -1781,51 +1475,6 @@ const posts = [
     date: "July 2026",
     readingTime: "7 min read",
     category: "Finance",
-  },
-  {
-    slug: "ai-for-manufacturing-teams-2026",
-    title: "AI for Manufacturing Teams in 2026: Operations, Quality Control, and Process Documentation",
-    description:
-      "How manufacturing operations managers, quality engineers, and plant teams use AI in 2026 — for process documentation, SOP writing, quality reporting, supplier communication, and continuous improvement initiatives.",
-    date: "July 2026",
-    readingTime: "7 min read",
-    category: "Industry",
-  },
-  {
-    slug: "ai-for-animators-2026",
-    title: "AI for Animators and Motion Designers in 2026: Tools, Workflows, and Model Recommendations",
-    description:
-      "How animators, motion designers, and VFX artists use AI in 2026 — from scriptwriting and storyboarding to reference generation, style lookbooks, and client communication. The best AI models for creative production.",
-    date: "July 2026",
-    readingTime: "7 min read",
-    category: "Creative",
-  },
-  {
-    slug: "ai-for-paralegals-2026",
-    title: "AI for Paralegals in 2026: Document Review, Legal Research, and Client Communication",
-    description:
-      "How paralegals and legal assistants use AI in 2026 to speed up document review, draft correspondence, summarize case files, and support attorneys more effectively. Best AI models for legal support work.",
-    date: "July 2026",
-    readingTime: "7 min read",
-    category: "Legal",
-  },
-  {
-    slug: "best-ai-for-restaurateurs-2026",
-    title: "Best AI for Restaurant Owners and Managers in 2026",
-    description:
-      "How restaurant owners, GMs, and F&B managers use AI in 2026 — menu development, staff scheduling copy, supplier emails, social media content, and guest complaint handling. Which AI models work best.",
-    date: "July 2026",
-    readingTime: "7 min read",
-    category: "Industry",
-  },
-  {
-    slug: "ai-for-civil-engineers-2026",
-    title: "AI for Civil Engineers in 2026: Reports, Specs, and Project Documentation",
-    description:
-      "How civil engineers use AI in 2026 for technical report writing, specification drafting, RFI responses, meeting summaries, environmental impact sections, and client presentations. Best AI models for engineering documentation.",
-    date: "July 2026",
-    readingTime: "7 min read",
-    category: "Engineering",
   },
   {
     slug: "ai-for-insurance-agents-2026",
@@ -1862,16 +1511,6 @@ const posts = [
     date: "July 2026",
     readingTime: "7 min read",
     category: "Creative",
-  },
-  {
-    slug: "ai-for-therapists-2026",
-    title:
-      "AI for Therapists and Counselors in 2026: Session Notes, Documentation, and Psychoeducation",
-    description:
-      "How therapists, psychologists, and counselors use AI in 2026 for clinical documentation, session notes, treatment plans, psychoeducational materials, and client communication — without compromising confidentiality.",
-    date: "July 2026",
-    readingTime: "8 min read",
-    category: "Healthcare",
   },
   {
     slug: "ai-for-founders-and-ceos-2026",
@@ -1911,15 +1550,6 @@ const posts = [
     date: "July 2026",
     readingTime: "7 min read",
     category: "Productivity Guides",
-  },
-  {
-    slug: "ai-for-pharmacists-2026",
-    title: "AI for Pharmacists: Tools and Use Cases in 2026",
-    description:
-      "How pharmacists are using AI to write patient counseling notes, review drug information, stay current on clinical literature, and reduce documentation time.",
-    date: "July 2026",
-    readingTime: "6 min read",
-    category: "Professional Guides",
   },
   {
     slug: "gpt-5-mini-review",
