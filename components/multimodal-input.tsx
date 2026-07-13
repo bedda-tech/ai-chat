@@ -888,12 +888,10 @@ function PureModelSelectorCompact({
                 {filteredModels.map((model) => {
                   const modelTools = getModelTools(model.id);
                   const isPremium = !FREE_TIER_MODEL_IDS.includes(model.id);
-                  const isModelDisabled = (model as any).disabled === true;
-                  const modelTags = (model as any).tags as string[] | undefined;
+                  const isModelDisabled = model.disabled === true;
+                  const modelTags = model.tags;
                   const isExperimental = modelTags?.includes("experimental");
-                  const modelWarning = (model as any).warning as
-                    | string
-                    | undefined;
+                  const modelWarning = model.warning;
                   const isAccessRestricted = isFreeTier && isPremium;
                   const isBlocked = isModelDisabled || isAccessRestricted;
                   const isActive =

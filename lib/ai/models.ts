@@ -6,6 +6,9 @@ export type ChatModel = {
   id: string;
   name: string;
   description: string;
+  disabled?: boolean;
+  tags?: string[];
+  warning?: string;
 };
 
 // Import models from centralized JSON and map to ChatModel format
