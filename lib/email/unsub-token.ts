@@ -6,6 +6,7 @@ export function generateUnsubToken(userId: string): string {
   return createHmac("sha256", secret).update(`unsub:${userId}`).digest("hex");
 }
 
+/** Returns true if `token` is a valid unsubscribe token for `userId`. */
 export function verifyUnsubToken(userId: string, token: string): boolean {
   return generateUnsubToken(userId) === token;
 }
