@@ -15,6 +15,7 @@ export type AuditAction =
   | "team.member_invited"
   | "team.member_removed";
 
+/** Records a structured audit event to the database; silently swallows errors so callers are never disrupted. */
 export async function logAuditEvent(
   userId: string | null | undefined,
   action: AuditAction,
