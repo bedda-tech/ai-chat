@@ -3,7 +3,7 @@
  * Run with: npx tsx lib/ai/cross-provider-context.test.ts
  */
 import assert from "node:assert/strict";
-import type { ModelMessage } from "ai";
+import type { AssistantModelMessage, ModelMessage, UserModelMessage } from "ai";
 import { sanitizeMessagesForProvider } from "./cross-provider-context";
 
 let passed = 0;
@@ -191,12 +191,12 @@ test("handles full cross-provider switch: Anthropic→OpenAI with reasoning and 
     3,
     "no turns dropped — gpt-5 is vision-capable"
   );
-  const asst = messages[1] as any;
-  assert.equal(asst.content.length, 1, "reasoning stripped from assistant");
-  assert.equal(asst.content[0].type, "text");
+  const asst = messages[1] as AssistantModelMessage;
+  assert.equal((asst.content as Array<{ type: string }>).length, 1, "reasoning stripped from assistant");
+  assert.equal((asst.content as Array<{ type: string }>)[0].type, "text");
   // image survives for GPT-5 (vision model)
-  const user2 = messages[2] as any;
-  const types = user2.content.map((p: any) => p.type);
+  const user2 = messages[2] as UserModelMessage;
+  const types = (user2.content as Array<{ type: string }>).map((p) => p.type);
   assert(types.includes("image"), "image kept for vision model");
   assert.equal(warnings.length, 1, "only reasoning warning, no image warning");
 });
