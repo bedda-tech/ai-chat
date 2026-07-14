@@ -420,7 +420,9 @@
       "gatewayId": "google/gemini-2.5-flash",
       "provider": "google",
       "name": "Gemini 2.5 Flash",
-      "description": "Fast Gemini model with enhanced speed and Google Search grounding",
+      "description": "Fast Gemini model with enhanced speed and Google Search grounding — available on the free plan",
+      "tags": ["free"],
+      "warning": "Free plan model — may be slower during peak hours",
       "contextWindow": 1000000,
       "pricing": {
         "input": 0.3,
@@ -887,7 +889,9 @@
       "gatewayId": "deepseek/deepseek-r1",
       "provider": "deepseek",
       "name": "DeepSeek R1",
-      "description": "DeepSeek's reasoning model — step-by-step thinking for math, science, and complex problems",
+      "description": "DeepSeek's reasoning model — step-by-step thinking for math, science, and complex problems, available on the free plan",
+      "tags": ["free"],
+      "warning": "Free plan model — may be slower / subject to availability during peak hours",
       "contextWindow": 128000,
       "pricing": {
         "input": 0.55,
@@ -912,7 +916,9 @@
       "gatewayId": "groq/llama-3.3-70b-versatile",
       "provider": "groq",
       "name": "Llama 3.3 70B (Groq)",
-      "description": "Meta's Llama 3.3 70B served on Groq — ultra-fast inference at near-zero latency",
+      "description": "Meta's Llama 3.3 70B served on Groq — ultra-fast inference at near-zero latency, available on the free plan",
+      "tags": ["free"],
+      "warning": "Free plan model — may be slower / subject to availability during peak hours",
       "contextWindow": 128000,
       "pricing": {
         "input": 0.59,

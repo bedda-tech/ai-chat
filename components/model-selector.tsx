@@ -339,6 +339,14 @@ export function ModelSelector({
                           Experimental
                         </Badge>
                       )}
+                      {tags?.includes("free") && !isPremiumModel && (
+                        <Badge
+                          className="h-4 px-1 font-semibold text-[9px] uppercase tracking-wide bg-emerald-100 text-emerald-700 border-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-400 dark:border-emerald-800"
+                          variant="outline"
+                        >
+                          Free
+                        </Badge>
+                      )}
                       {isPremiumModel && (
                         <Badge
                           className="h-4 px-1 font-semibold text-[9px] uppercase tracking-wide"

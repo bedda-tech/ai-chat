@@ -105,6 +105,19 @@ export const entitlementsByUserType: Record<UserType, Entitlements> = {
 };
 
 /**
+ * Anchor models from providers with free public APIs (Google AI Studio, Groq, DeepSeek).
+ * These are the showcase models that demonstrate multi-model value to free/guest users.
+ * Tagged with "free" in models-data.json and shown with a "Free" badge in the model selector.
+ * Rate limits are governed by Bedda's own free-tier caps (50 msg/day), which are well
+ * within each provider's free quota.
+ */
+export const FREE_PROVIDER_MODEL_IDS: readonly string[] = [
+  "google-gemini-2.5-flash",      // Google AI Studio — 1,500 req/day free
+  "groq-llama-3.3-70b-versatile", // Groq — very generous free tier
+  "deepseek-deepseek-r1",         // DeepSeek — free API tier
+];
+
+/**
  * Models available to free registered users (DB tier: "free").
  * Matches the pricing page "Standard AI models" description:
  * Haiku, Flash, GPT-5 Nano, DeepSeek + fast inference providers.
