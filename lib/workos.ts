@@ -8,6 +8,7 @@ export interface WorkOSUser {
   profile_picture_url: string | null;
 }
 
+/** Builds the WorkOS SSO authorization URL for initiating an OAuth flow. */
 export function getWorkOSAuthorizationUrl({
   organizationId,
   connectionId,
