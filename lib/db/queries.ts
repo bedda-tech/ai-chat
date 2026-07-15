@@ -197,6 +197,7 @@ export async function updateUserPassword(userId: string, newPassword: string) {
   }
 }
 
+/** Creates an ephemeral user with a timestamp-based synthetic email (no real email address). Used for unauthenticated browser sessions. */
 export async function createGuestUser() {
   const email = `guest-${Date.now()}`;
   const password = generateHashedPassword(generateUUID());
