@@ -361,6 +361,7 @@ export async function sendDripEmailDay30(email: string, userId: string): Promise
   });
 }
 
+/** Sends a warning email when a user approaches their monthly message limit (`used`/`total` are message counts). */
 export async function sendNearLimitEmail(
   email: string,
   userId: string,
