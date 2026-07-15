@@ -11,6 +11,7 @@ export function verifyUnsubToken(userId: string, token: string): boolean {
   return generateUnsubToken(userId) === token;
 }
 
+/** Builds the full unsubscribe URL embedding the user's HMAC token so recipients can opt out without logging in. */
 export function unsubscribeUrl(userId: string): string {
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://www.bedda.tech";
   const token = generateUnsubToken(userId);
