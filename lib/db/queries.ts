@@ -670,6 +670,7 @@ export async function updateChatLastContextById({
   }
 }
 
+/** Counts user-role messages sent by `id` within the last `differenceInHours` hours. Used for rate-limit checks. */
 export async function getMessageCountByUserId({
   id,
   differenceInHours,
