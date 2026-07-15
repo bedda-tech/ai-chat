@@ -138,6 +138,7 @@ export const performanceMiddleware: LanguageModelMiddleware = {
 /**
  * Returns per-model performance metrics snapshot.
  */
+/** Return per-model call counts, token totals, error counts, and derived avg/p95 latency from the in-memory metrics store. */
 export function getModelMetrics(): Record<
   string,
   ModelMetrics & { avgLatencyMs: number; p95LatencyMs: number | null }
