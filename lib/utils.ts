@@ -24,6 +24,12 @@ export const fetcher = async (url: string) => {
   return response.json();
 };
 
+/**
+ * Wraps fetch with structured error handling. On a non-OK response, parses
+ * `{ code, cause, upgrade, upgradeUrl }` from the JSON body and throws a
+ * ChatSDKError. On any network failure, detects offline state via
+ * `navigator.onLine` and throws `offline:chat` instead of the raw error.
+ */
 export async function fetchWithErrorHandlers(
   input: RequestInfo | URL,
   init?: RequestInit,
