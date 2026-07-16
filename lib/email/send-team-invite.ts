@@ -1,5 +1,6 @@
 import { Resend } from "resend";
 
+/** Sends a team invitation email via Resend; the invite link expires in 7 days and lets the recipient join without an existing account. */
 export async function sendTeamInviteEmail(
   email: string,
   teamName: string,
