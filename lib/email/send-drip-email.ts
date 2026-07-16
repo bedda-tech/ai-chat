@@ -15,6 +15,7 @@ function unsubFooter(userId: string): string {
   `;
 }
 
+/** Day-1 onboarding drip: "5 things worth trying on Bedda" — sent ~24 h after sign-up. */
 export async function sendDripEmailDay1(email: string, userId: string): Promise<void> {
   const resend = new Resend(process.env.RESEND_API_KEY);
   await resend.emails.send({
