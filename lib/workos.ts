@@ -31,6 +31,7 @@ export function getWorkOSAuthorizationUrl({
   return `${WORKOS_API_BASE}/user_management/authorize?${params}`;
 }
 
+/** Exchanges a WorkOS authorization code for an authenticated user object. */
 export async function authenticateWithCode(
   code: string
 ): Promise<{ user: WorkOSUser }> {
