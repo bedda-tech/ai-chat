@@ -1100,6 +1100,7 @@ export async function upsertUserPreferences(
 }
 
 // MCP servers
+/** Returns all MCP servers configured by the given user, ordered by creation date. */
 export async function getMcpServers(userId: string): Promise<McpServer[]> {
   return db
     .select()
