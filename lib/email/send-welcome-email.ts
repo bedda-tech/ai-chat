@@ -1,5 +1,6 @@
 import { Resend } from "resend";
 
+/** Sends the post-registration welcome email via Resend. */
 export async function sendWelcomeEmail(email: string): Promise<void> {
   const resend = new Resend(process.env.RESEND_API_KEY);
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://www.bedda.tech";
