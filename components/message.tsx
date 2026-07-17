@@ -1,5 +1,7 @@
 "use client";
 import type { UseChatHelpers } from "@ai-sdk/react";
+import { isFileUIPart } from "ai";
+import type { FileUIPart } from "ai";
 import equal from "fast-deep-equal";
 import { motion } from "framer-motion";
 import { memo, useState } from "react";
@@ -75,8 +77,8 @@ const PurePreviewMessage = ({
 
   // Only show attachment previews for user uploads, not AI-generated images
   const attachmentsFromMessage = message.parts.filter(
-    (part) =>
-      part.type === "file" &&
+    (part): part is FileUIPart =>
+      isFileUIPart(part) &&
       (message.role === "user" || !part.mediaType?.startsWith("image/"))
   );
 
@@ -142,19 +144,16 @@ const PurePreviewMessage = ({
               className="flex flex-row justify-end gap-2"
               data-testid={"message-attachments"}
             >
-              {attachmentsFromMessage.map((attachment) => {
-                const filePart = attachment as any;
-                return (
-                  <PreviewAttachment
-                    attachment={{
-                      name: filePart.filename ?? "file",
-                      contentType: filePart.mediaType,
-                      url: filePart.url,
-                    }}
-                    key={filePart.url}
-                  />
-                );
-              })}
+              {attachmentsFromMessage.map((attachment) => (
+                <PreviewAttachment
+                  attachment={{
+                    name: attachment.filename ?? "file",
+                    contentType: attachment.mediaType,
+                    url: attachment.url,
+                  }}
+                  key={attachment.url}
+                />
+              ))}
             </div>
           )}
 

@@ -5,7 +5,7 @@
       "gatewayId": "anthropic/claude-opus-4-8",
       "provider": "anthropic",
       "name": "Claude Opus 4.8",
-      "description": "Anthropic's most capable model — top-tier intelligence for the most complex tasks, deep research, and agentic workflows",
+      "description": "Anthropic's most capable model \u2014 top-tier intelligence for the most complex tasks, deep research, and agentic workflows",
       "contextWindow": 200000,
       "pricing": {
         "input": 15.0,
@@ -36,7 +36,7 @@
       "gatewayId": "anthropic/claude-sonnet-4-6",
       "provider": "anthropic",
       "name": "Claude Sonnet 4.6",
-      "description": "Anthropic's best balance of intelligence and speed — exceptional reasoning, coding, and analysis",
+      "description": "Anthropic's best balance of intelligence and speed \u2014 exceptional reasoning, coding, and analysis",
       "contextWindow": 200000,
       "pricing": {
         "input": 3.0,
@@ -67,7 +67,7 @@
       "gatewayId": "anthropic/claude-opus-4.5",
       "provider": "anthropic",
       "name": "Claude Opus 4.5",
-      "description": "Anthropic's most capable model — exceptional at complex tasks, coding, and deep research",
+      "description": "Anthropic's most capable model \u2014 exceptional at complex tasks, coding, and deep research",
       "contextWindow": 200000,
       "pricing": {
         "input": 15.0,
@@ -174,7 +174,11 @@
       "config": {
         "maxSteps": 5,
         "temperature": 0.7,
-        "idealFor": ["efficient processing", "everyday tasks", "multimodal"]
+        "idealFor": [
+          "efficient processing",
+          "everyday tasks",
+          "multimodal"
+        ]
       }
     },
     {
@@ -229,7 +233,11 @@
       "config": {
         "maxSteps": 8,
         "temperature": 0.7,
-        "idealFor": ["complex tasks", "advanced reasoning", "multimodal"]
+        "idealFor": [
+          "complex tasks",
+          "advanced reasoning",
+          "multimodal"
+        ]
       }
     },
     {
@@ -254,7 +262,11 @@
       "config": {
         "maxSteps": 4,
         "temperature": 0.7,
-        "idealFor": ["ultra-fast responses", "simple tasks", "high throughput"]
+        "idealFor": [
+          "ultra-fast responses",
+          "simple tasks",
+          "high throughput"
+        ]
       }
     },
     {
@@ -279,7 +291,11 @@
       "config": {
         "maxSteps": 6,
         "temperature": 0.7,
-        "idealFor": ["fast responses", "efficient processing", "multimodal"]
+        "idealFor": [
+          "fast responses",
+          "efficient processing",
+          "multimodal"
+        ]
       }
     },
     {
@@ -304,7 +320,11 @@
       "config": {
         "maxSteps": 7,
         "temperature": 0.7,
-        "idealFor": ["advanced reasoning", "complex tasks", "multimodal"]
+        "idealFor": [
+          "advanced reasoning",
+          "complex tasks",
+          "multimodal"
+        ]
       }
     },
     {
@@ -387,7 +407,11 @@
       "config": {
         "maxSteps": 6,
         "temperature": 0.7,
-        "idealFor": ["fast responses", "thinking capabilities", "multimodal"]
+        "idealFor": [
+          "fast responses",
+          "thinking capabilities",
+          "multimodal"
+        ]
       }
     },
     {
@@ -412,7 +436,11 @@
       "config": {
         "maxSteps": 5,
         "temperature": 0.7,
-        "idealFor": ["fast responses", "lightweight processing", "multimodal"]
+        "idealFor": [
+          "fast responses",
+          "lightweight processing",
+          "multimodal"
+        ]
       }
     },
     {
@@ -420,9 +448,11 @@
       "gatewayId": "google/gemini-2.5-flash",
       "provider": "google",
       "name": "Gemini 2.5 Flash",
-      "description": "Fast Gemini model with enhanced speed and Google Search grounding — available on the free plan",
-      "tags": ["free"],
-      "warning": "Free plan model — may be slower during peak hours",
+      "description": "Fast Gemini model with enhanced speed and Google Search grounding \u2014 available on the free plan",
+      "tags": [
+        "free"
+      ],
+      "warning": "Free plan model \u2014 may be slower during peak hours",
       "contextWindow": 1000000,
       "pricing": {
         "input": 0.3,
@@ -439,7 +469,11 @@
       "config": {
         "maxSteps": 6,
         "temperature": 0.7,
-        "idealFor": ["fast responses", "Google Search grounding", "multimodal"]
+        "idealFor": [
+          "fast responses",
+          "Google Search grounding",
+          "multimodal"
+        ]
       }
     },
     {
@@ -464,7 +498,11 @@
       "config": {
         "maxSteps": 4,
         "temperature": 0.6,
-        "idealFor": ["quick responses", "simple tasks", "high throughput"]
+        "idealFor": [
+          "quick responses",
+          "simple tasks",
+          "high throughput"
+        ]
       }
     },
     {
@@ -548,7 +586,11 @@
       "config": {
         "maxSteps": 7,
         "temperature": 0.7,
-        "idealFor": ["fast reasoning", "chain-of-thought", "analysis"]
+        "idealFor": [
+          "fast reasoning",
+          "chain-of-thought",
+          "analysis"
+        ]
       }
     },
     {
@@ -573,7 +615,11 @@
       "config": {
         "maxSteps": 5,
         "temperature": 0.7,
-        "idealFor": ["web search", "browser integration", "open source"]
+        "idealFor": [
+          "web search",
+          "browser integration",
+          "open source"
+        ]
       }
     },
     {
@@ -598,7 +644,11 @@
       "config": {
         "maxSteps": 5,
         "temperature": 0.7,
-        "idealFor": ["fast responses", "conversational", "general purpose"]
+        "idealFor": [
+          "fast responses",
+          "conversational",
+          "general purpose"
+        ]
       }
     },
     {
@@ -623,7 +673,11 @@
       "config": {
         "maxSteps": 5,
         "temperature": 0.6,
-        "idealFor": ["fast responses", "everyday tasks", "efficient processing"]
+        "idealFor": [
+          "fast responses",
+          "everyday tasks",
+          "efficient processing"
+        ]
       }
     },
     {
@@ -648,7 +702,11 @@
       "config": {
         "maxSteps": 7,
         "temperature": 0.7,
-        "idealFor": ["multimodal tasks", "vision", "structured outputs"]
+        "idealFor": [
+          "multimodal tasks",
+          "vision",
+          "structured outputs"
+        ]
       }
     },
     {
@@ -673,7 +731,11 @@
       "config": {
         "maxSteps": 7,
         "temperature": 0.7,
-        "idealFor": ["advanced reasoning", "complex tasks", "multimodal"]
+        "idealFor": [
+          "advanced reasoning",
+          "complex tasks",
+          "multimodal"
+        ]
       }
     },
     {
@@ -698,7 +760,12 @@
       "config": {
         "maxSteps": 7,
         "temperature": 0.7,
-        "idealFor": ["complex reasoning", "STEM", "coding", "analysis"]
+        "idealFor": [
+          "complex reasoning",
+          "STEM",
+          "coding",
+          "analysis"
+        ]
       }
     },
     {
@@ -723,7 +790,11 @@
       "config": {
         "maxSteps": 6,
         "temperature": 0.3,
-        "idealFor": ["code generation", "programming", "fast coding"]
+        "idealFor": [
+          "code generation",
+          "programming",
+          "fast coding"
+        ]
       }
     },
     {
@@ -777,14 +848,19 @@
       "config": {
         "maxSteps": 7,
         "temperature": 0.7,
-        "idealFor": ["complex reasoning", "STEM", "coding", "analysis"]
+        "idealFor": [
+          "complex reasoning",
+          "STEM",
+          "coding",
+          "analysis"
+        ]
       }
     },
     {
       "id": "google-gemini-2.5-flash-image-preview",
       "gatewayId": "google/gemini-2.5-flash-image-preview",
       "provider": "google",
-      "name": "Gemini 2.5 Flash Image ⭐",
+      "name": "Gemini 2.5 Flash Image \u2b50",
       "description": "Image generation support! Multimodal with text and image generation",
       "contextWindow": 33000,
       "pricing": {
@@ -831,7 +907,11 @@
       "config": {
         "maxSteps": 6,
         "temperature": 0.7,
-        "idealFor": ["general purpose", "Chinese language", "multimodal"]
+        "idealFor": [
+          "general purpose",
+          "Chinese language",
+          "multimodal"
+        ]
       }
     },
     {
@@ -839,7 +919,7 @@
       "gatewayId": "mistral/mistral-large-latest",
       "provider": "mistral",
       "name": "Mistral Large",
-      "description": "Mistral's flagship model — excellent at coding, reasoning, and instruction following",
+      "description": "Mistral's flagship model \u2014 excellent at coding, reasoning, and instruction following",
       "contextWindow": 128000,
       "pricing": {
         "input": 2.0,
@@ -856,7 +936,11 @@
       "config": {
         "maxSteps": 8,
         "temperature": 0.7,
-        "idealFor": ["coding", "instruction following", "multilingual tasks"]
+        "idealFor": [
+          "coding",
+          "instruction following",
+          "multilingual tasks"
+        ]
       }
     },
     {
@@ -864,7 +948,7 @@
       "gatewayId": "mistral/mistral-small-latest",
       "provider": "mistral",
       "name": "Mistral Small",
-      "description": "Fast and affordable Mistral model — great for everyday tasks and high-volume use",
+      "description": "Fast and affordable Mistral model \u2014 great for everyday tasks and high-volume use",
       "contextWindow": 32000,
       "pricing": {
         "input": 0.1,
@@ -881,7 +965,11 @@
       "config": {
         "maxSteps": 6,
         "temperature": 0.7,
-        "idealFor": ["quick tasks", "summarization", "classification"]
+        "idealFor": [
+          "quick tasks",
+          "summarization",
+          "classification"
+        ]
       }
     },
     {
@@ -889,9 +977,11 @@
       "gatewayId": "deepseek/deepseek-r1",
       "provider": "deepseek",
       "name": "DeepSeek R1",
-      "description": "DeepSeek's reasoning model — step-by-step thinking for math, science, and complex problems, available on the free plan",
-      "tags": ["free"],
-      "warning": "Free plan model — may be slower / subject to availability during peak hours",
+      "description": "DeepSeek's reasoning model \u2014 step-by-step thinking for math, science, and complex problems, available on the free plan",
+      "tags": [
+        "free"
+      ],
+      "warning": "Free plan model \u2014 may be slower / subject to availability during peak hours",
       "contextWindow": 128000,
       "pricing": {
         "input": 0.55,
@@ -908,7 +998,12 @@
       "config": {
         "maxSteps": 1,
         "temperature": 0.6,
-        "idealFor": ["math", "science", "logical reasoning", "complex analysis"]
+        "idealFor": [
+          "math",
+          "science",
+          "logical reasoning",
+          "complex analysis"
+        ]
       }
     },
     {
@@ -916,9 +1011,11 @@
       "gatewayId": "groq/llama-3.3-70b-versatile",
       "provider": "groq",
       "name": "Llama 3.3 70B (Groq)",
-      "description": "Meta's Llama 3.3 70B served on Groq — ultra-fast inference at near-zero latency, available on the free plan",
-      "tags": ["free"],
-      "warning": "Free plan model — may be slower / subject to availability during peak hours",
+      "description": "Meta's Llama 3.3 70B served on Groq \u2014 ultra-fast inference at near-zero latency, available on the free plan",
+      "tags": [
+        "free"
+      ],
+      "warning": "Free plan model \u2014 may be slower / subject to availability during peak hours",
       "contextWindow": 128000,
       "pricing": {
         "input": 0.59,
@@ -935,7 +1032,45 @@
       "config": {
         "maxSteps": 6,
         "temperature": 0.7,
-        "idealFor": ["fast responses", "general chat", "coding assistance"]
+        "idealFor": [
+          "fast responses",
+          "general chat",
+          "coding assistance"
+        ]
+      }
+    },
+    {
+      "id": "groq-llama-4-scout-17b-16e-instruct",
+      "gatewayId": "groq/llama-4-scout-17b-16e-instruct",
+      "provider": "groq",
+      "name": "Llama 4 Scout (Groq)",
+      "description": "Meta's Llama 4 Scout served on Groq \u2014 next-generation multimodal model at ultra-fast inference speed, available on the free plan",
+      "tags": [
+        "free"
+      ],
+      "warning": "Free plan model \u2014 may be slower / subject to availability during peak hours",
+      "contextWindow": 131072,
+      "pricing": {
+        "input": 0.11,
+        "output": 0.34,
+        "cachedInput": null,
+        "cachedOutput": null
+      },
+      "capabilities": {
+        "vision": true,
+        "toolCalling": true,
+        "reasoning": false,
+        "imageGeneration": false
+      },
+      "config": {
+        "maxSteps": 6,
+        "temperature": 0.7,
+        "idealFor": [
+          "fast responses",
+          "general chat",
+          "coding assistance",
+          "multimodal"
+        ]
       }
     },
     {
@@ -943,7 +1078,7 @@
       "gatewayId": "cerebras/llama3.3-70b",
       "provider": "cerebras",
       "name": "Llama 3.3 70B (Cerebras)",
-      "description": "Meta's Llama 3.3 70B on Cerebras wafer-scale chips — world's fastest AI inference",
+      "description": "Meta's Llama 3.3 70B on Cerebras wafer-scale chips \u2014 world's fastest AI inference",
       "contextWindow": 8192,
       "pricing": {
         "input": 0.6,
@@ -972,7 +1107,7 @@
       "gatewayId": "openai/o3",
       "provider": "openai",
       "name": "o3",
-      "description": "OpenAI's most capable reasoning model — extended thinking for the hardest problems in math, science, and coding",
+      "description": "OpenAI's most capable reasoning model \u2014 extended thinking for the hardest problems in math, science, and coding",
       "contextWindow": 200000,
       "pricing": {
         "input": 10.0,
@@ -1003,7 +1138,7 @@
       "gatewayId": "openai/o4-mini",
       "provider": "openai",
       "name": "o4-mini",
-      "description": "Fast and efficient OpenAI reasoning model — o-series intelligence at lower cost with multimodal support",
+      "description": "Fast and efficient OpenAI reasoning model \u2014 o-series intelligence at lower cost with multimodal support",
       "contextWindow": 200000,
       "pricing": {
         "input": 1.1,
@@ -1034,8 +1169,10 @@
       "gatewayId": "krain/gemma-2-9b-it",
       "provider": "krain",
       "name": "Bedda Local (KRAIN)",
-      "description": "Privacy-forward local inference on Bedda's self-hosted KRAIN cluster — zero cloud data exposure, self-hosted Gemma",
-      "tags": ["experimental"],
+      "description": "Privacy-forward local inference on Bedda's self-hosted KRAIN cluster \u2014 zero cloud data exposure, self-hosted Gemma",
+      "tags": [
+        "experimental"
+      ],
       "warning": "~20-40s response time, local inference",
       "contextWindow": 8192,
       "pricing": {

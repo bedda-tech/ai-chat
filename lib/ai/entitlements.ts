@@ -34,6 +34,7 @@ export const entitlementsByUserType: Record<UserType, Entitlements> = {
       "deepseek-deepseek-v3",
       "deepseek-deepseek-r1",
       // Fast inference providers (Groq + Cerebras)
+      "groq-llama-4-scout-17b-16e-instruct",
       "groq-llama-3.3-70b-versatile",
       "cerebras-llama3.3-70b",
     ],
@@ -112,9 +113,10 @@ export const entitlementsByUserType: Record<UserType, Entitlements> = {
  * within each provider's free quota.
  */
 export const FREE_PROVIDER_MODEL_IDS: readonly string[] = [
-  "google-gemini-2.5-flash",      // Google AI Studio — 1,500 req/day free
-  "groq-llama-3.3-70b-versatile", // Groq — very generous free tier
-  "deepseek-deepseek-r1",         // DeepSeek — free API tier
+  "google-gemini-2.5-flash",                // Google AI Studio — 1,500 req/day free
+  "groq-llama-4-scout-17b-16e-instruct",    // Groq Llama 4 Scout — generous free tier
+  "groq-llama-3.3-70b-versatile",           // Groq Llama 3.3 — very generous free tier
+  "deepseek-deepseek-r1",                   // DeepSeek — free API tier
 ];
 
 /**
@@ -150,6 +152,7 @@ export const FREE_TIER_MODEL_IDS: readonly string[] = [
   "deepseek-deepseek-v3.1",
   "deepseek-deepseek-r1",
   // Groq (fast inference, very cheap)
+  "groq-llama-4-scout-17b-16e-instruct",
   "groq-llama-3.3-70b-versatile",
   // Cerebras (fast inference, very cheap)
   "cerebras-llama3.3-70b",

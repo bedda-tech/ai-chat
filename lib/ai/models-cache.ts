@@ -276,6 +276,8 @@ function transformToEnrichedModels(
       },
       capabilities,
       config,
+      tags: staticModel?.tags,
+      warning: staticModel?.warning,
     };
   });
 }
