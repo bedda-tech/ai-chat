@@ -34,6 +34,7 @@ function formatDate(date: Date): string {
   });
 }
 
+/** Sends the subscription-activated confirmation email; when `trialEndDate` is provided, the email includes trial-period messaging instead of immediate-access copy. */
 export async function sendSubscriptionActivatedEmail(
   email: string,
   planName: string,
