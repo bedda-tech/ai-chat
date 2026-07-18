@@ -40,6 +40,7 @@ export type DocumentHandler<T = ArtifactKind> = {
   onUpdateDocument: (args: UpdateDocumentCallbackProps) => Promise<void>;
 };
 
+/** Wraps artifact-kind-specific create/update callbacks with shared DB persistence and dataStream wiring. */
 export function createDocumentHandler<T extends ArtifactKind>(config: {
   kind: T;
   onCreateDocument: (params: CreateDocumentCallbackProps) => Promise<string>;
