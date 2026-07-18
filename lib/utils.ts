@@ -59,6 +59,7 @@ export function getLocalStorage(key: string) {
   return [];
 }
 
+/** Generates a random RFC 4122 v4 UUID without relying on `crypto.randomUUID` (SSR/browser compatibility). */
 export function generateUUID(): string {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
     const r = (Math.random() * 16) | 0;
