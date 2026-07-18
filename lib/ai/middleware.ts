@@ -329,6 +329,7 @@ export async function getCacheStats(): Promise<{
   }
 }
 
+/** Deletes all Redis-backed AI response cache entries (keys matching the cache prefix). */
 export async function clearCache(): Promise<void> {
   const redis = await getRedis().catch(() => null);
   if (!redis) return;
