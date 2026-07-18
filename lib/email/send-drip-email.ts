@@ -80,6 +80,7 @@ export async function sendDripEmailDay1(email: string, userId: string): Promise<
   });
 }
 
+/** Sends the day-3 drip email highlighting lesser-known Bedda features. */
 export async function sendDripEmailDay3(email: string, userId: string): Promise<void> {
   const resend = new Resend(process.env.RESEND_API_KEY);
   await resend.emails.send({
