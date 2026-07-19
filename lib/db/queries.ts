@@ -1606,6 +1606,7 @@ export async function deleteSsoConfig(id: string): Promise<void> {
     .where(eq(organizationSsoConfig.id, id));
 }
 
+/** Returns true if the given referral code belongs to an existing user. */
 export async function isValidReferralCode(code: string): Promise<boolean> {
   const [found] = await db
     .select({ id: user.id })
