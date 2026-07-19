@@ -70,6 +70,7 @@ export function generateUUID(): string {
 
 type ResponseMessage = { id: string; role: string };
 
+/** Returns the last message in the array where `role === 'user'`, or `undefined` if none exists. */
 export function getMostRecentUserMessage(messages: UIMessage[]) {
   const userMessages = messages.filter((message) => message.role === 'user');
   return userMessages.at(-1);
