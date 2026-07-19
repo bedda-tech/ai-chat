@@ -74,6 +74,7 @@ import { generateHashedPassword } from "./utils";
 const client = postgres(process.env.POSTGRES_URL!);
 const db = drizzle(client);
 
+/** Fetch all user records matching the given email address. */
 export async function getUser(email: string): Promise<User[]> {
   try {
     return await db.select().from(user).where(eq(user.email, email));
@@ -311,14 +312,14 @@ export async function getChatsByUserId({
       ? ilike(chat.title, `%${searchQuery}%`)
       : undefined;
 
-    const buildWhere = (cursorCondition?: SQL<any>) => {
+    const buildWhere = (cursorCondition?: SQL<unknown>) => {
       const conditions = [eq(chat.userId, id)];
       if (titleFilter) conditions.push(titleFilter);
       if (cursorCondition) conditions.push(cursorCondition);
       return conditions.length === 1 ? conditions[0] : and(...conditions);
     };
 
-    const queryFn = (cursorCondition?: SQL<any>) =>
+    const queryFn = (cursorCondition?: SQL<unknown>) =>
       db
         .select()
         .from(chat)
