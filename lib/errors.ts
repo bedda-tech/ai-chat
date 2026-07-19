@@ -84,6 +84,7 @@ export class ChatSDKError extends Error {
   }
 }
 
+/** Returns a human-readable error message string for a given ErrorCode. */
 export function getMessageByErrorCode(errorCode: ErrorCode): string {
   if (errorCode.includes("database")) {
     return "An error occurred while executing a database query.";
