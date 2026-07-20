@@ -13,6 +13,7 @@ export const documentSchema = new Schema({
   marks: schema.spec.marks,
 });
 
+/** Returns a ProseMirror input rule that converts `# ` … `###### ` markdown syntax into a heading node at the given level. */
 export function headingRule(level: number) {
   return textblockTypeInputRule(
     new RegExp(`^(#{1,${level}})\\s$`),
