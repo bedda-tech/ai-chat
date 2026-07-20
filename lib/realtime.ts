@@ -31,6 +31,7 @@ export type RealtimeEvent =
   | { type: "new_message" }
   | { type: "typing"; userId: string; userName: string };
 
+/** Publishes a realtime event to the Redis pub/sub channel for `chatId`; no-ops silently if Redis is unavailable. */
 export async function publishChatEvent(
   chatId: string,
   event: RealtimeEvent
