@@ -45,6 +45,7 @@ export async function publishChatEvent(
   }
 }
 
+/** Creates a dedicated Redis subscriber client for receiving pub/sub events; returns null if REDIS_URL is unset or connection fails. */
 export async function createSubscriber(): Promise<RedisClient | null> {
   if (!process.env.REDIS_URL) return null;
   try {
