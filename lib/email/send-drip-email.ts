@@ -196,6 +196,7 @@ export async function sendDripEmailDay7(email: string, userId: string): Promise<
   });
 }
 
+/** Day-14 drip: two-week upgrade nudge highlighting limit and premium-model reasons to switch to a paid plan. */
 export async function sendDripEmailDay14(email: string, userId: string): Promise<void> {
   const resend = new Resend(process.env.RESEND_API_KEY);
   await resend.emails.send({
