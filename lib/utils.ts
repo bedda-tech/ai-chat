@@ -76,6 +76,7 @@ export function getMostRecentUserMessage(messages: UIMessage[]) {
   return userMessages.at(-1);
 }
 
+/** Returns `documents[index].createdAt`, or the current date when the array is falsy or the index is out of range. */
 export function getDocumentTimestampByIndex(
   documents: Document[],
   index: number,
