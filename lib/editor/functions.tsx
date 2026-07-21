@@ -10,6 +10,7 @@ import { Response } from "@/components/elements/response";
 import { documentSchema } from "./config";
 import { createSuggestionWidget, type UISuggestion } from "./suggestions";
 
+/** Parses a markdown string into a ProseMirror document node using the shared document schema. */
 export const buildDocumentFromContent = (content: string) => {
   const parser = DOMParser.fromSchema(documentSchema);
   const stringFromMarkdown = renderToString(<Response>{content}</Response>);
