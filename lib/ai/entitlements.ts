@@ -17,26 +17,11 @@ export const entitlementsByUserType: Record<UserType, Entitlements> = {
       // Legacy/Default Models
       "chat-model",
       "chat-model-reasoning",
-      // Fast Google Models (cheap, good for demos)
-      "google-gemini-2.5-flash",
-      "google-gemini-2.5-flash-lite",
-      "google-gemini-2.0-flash-lite",
-      // OpenAI Nano (cheapest OpenAI model)
-      "openai-gpt-5-nano",
-      // Anthropic Haiku (fast, affordable Anthropic)
-      "anthropic-claude-haiku-4.5",
-      "anthropic-claude-3.5-haiku",
-      // xAI Grok 4 Fast (affordable Grok)
-      "xai-grok-4-fast-non-reasoning",
-      // Mistral Small (affordable)
-      "mistral-mistral-small-latest",
-      // DeepSeek (cheap, capable)
-      "deepseek-deepseek-v3",
-      "deepseek-deepseek-r1",
-      // Fast inference providers (Groq + Cerebras)
-      "groq-llama-4-scout-17b-16e-instruct",
-      "groq-llama-3.3-70b-versatile",
-      "cerebras-llama3.3-70b",
+      // Genuinely free provider APIs — no metered cost to Bedda
+      "google-gemini-2.5-flash",              // Google AI Studio: 1,500 req/day free
+      "groq-llama-4-scout-17b-16e-instruct",  // Groq: generous free tier
+      "groq-llama-3.3-70b-versatile",         // Groq: generous free tier
+      "deepseek-deepseek-r1",                 // DeepSeek: free API tier
     ],
   },
 
@@ -113,10 +98,10 @@ export const entitlementsByUserType: Record<UserType, Entitlements> = {
  * within each provider's free quota.
  */
 export const FREE_PROVIDER_MODEL_IDS: readonly string[] = [
-  "google-gemini-2.5-flash",                // Google AI Studio — 1,500 req/day free
-  "groq-llama-4-scout-17b-16e-instruct",    // Groq Llama 4 Scout — generous free tier
-  "groq-llama-3.3-70b-versatile",           // Groq Llama 3.3 — very generous free tier
-  "deepseek-deepseek-r1",                   // DeepSeek — free API tier
+  "google-gemini-2.5-flash", // Google AI Studio — 1,500 req/day free
+  "groq-llama-4-scout-17b-16e-instruct", // Groq Llama 4 Scout — generous free tier
+  "groq-llama-3.3-70b-versatile", // Groq Llama 3.3 — very generous free tier
+  "deepseek-deepseek-r1", // DeepSeek — free API tier
 ];
 
 /**

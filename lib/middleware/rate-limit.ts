@@ -96,9 +96,11 @@ export async function rateLimitMiddleware(
     };
   } catch (error) {
     console.error("Rate limiting error:", error);
-    // Fail open - allow request if rate limiting fails
+    // Fail CLOSED — deny request on rate-limit DB error to protect API spend
     return {
-      allowed: true,
+      allowed: false,
+      error: "Rate limiting unavailable",
+      message: "Service temporarily unavailable. Please try again shortly.",
     };
   }
 }
