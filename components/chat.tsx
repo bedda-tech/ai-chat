@@ -33,6 +33,7 @@ import { Artifact } from "./artifact";
 import { useDataStream } from "./data-stream-provider";
 import { Messages } from "./messages";
 import { MultimodalInput } from "./multimodal-input";
+import { ReferralBanner } from "./referral-banner";
 import { getChatHistoryPaginationKey } from "./sidebar-history";
 import { TeamTypingIndicator } from "./team-typing-indicator";
 import { toast } from "./toast";
@@ -72,8 +73,12 @@ export function Chat({
   const [messageUsageMap, setMessageUsageMap] = useState<
     Record<string, AppUsage>
   >(() => {
-    if (!initialLastContext) return {};
-    const lastAssistant = initialMessages.filter((m) => m.role === "assistant").at(-1);
+    if (!initialLastContext) {
+      return {};
+    }
+    const lastAssistant = initialMessages
+      .filter((m) => m.role === "assistant")
+      .at(-1);
     return lastAssistant ? { [lastAssistant.id]: initialLastContext } : {};
   });
   const messagesRef = useRef<ChatMessage[]>([]);
@@ -93,6 +98,15 @@ export function Chat({
 
   const { typingUsers, sendTyping } = useTeamRealtime(id, isTeamShared);
   const { track } = useAnalytics();
+
+  const { data: dailyUsage } = useSWR<{
+    used: number;
+    limit: number;
+    tier: string;
+    pct: number;
+  }>(!isReadonly ? "/api/usage/daily" : null, fetcher, {
+    refreshInterval: 60_000,
+  });
 
   useEffect(() => {
     currentModelIdRef.current = currentModelId;
@@ -144,7 +158,9 @@ export function Chat({
       }
       if ((dataPart.type as string) === "data-context-warnings") {
         const warnings = dataPart.data as unknown as string[];
-        warnings.forEach((w) => toast({ type: "error", description: w }));
+        warnings.forEach((w) => {
+          toast({ type: "error", description: w });
+        });
       }
     },
     onFinish: () => {
@@ -219,8 +235,9 @@ export function Chat({
       streamingModelRef.current = null;
       setMessages((prev) => {
         const last = prev.at(-1);
-        if (!last || last.role !== "assistant" || last.metadata?.modelId)
+        if (!last || last.role !== "assistant" || last.metadata?.modelId) {
           return prev;
+        }
         return [
           ...prev.slice(0, -1),
           {
@@ -282,8 +299,8 @@ export function Chat({
           chatId={id}
           isArtifactVisible={isArtifactVisible}
           isReadonly={isReadonly}
-          messageUsageMap={messageUsageMap}
           messages={messages}
+          messageUsageMap={messageUsageMap}
           onModelChange={setCurrentModelId}
           regenerate={regenerate}
           selectedModelId={currentModelId}
@@ -302,7 +319,32 @@ export function Chat({
           />
         )}
 
-        <div className="sticky bottom-0 z-1 mx-auto flex w-full max-w-4xl gap-2 border-t-0 bg-background px-2 pb-3 md:px-4 md:pb-4">
+        <div className="sticky bottom-0 z-1 w-full bg-background px-2 pb-3 md:px-4 md:pb-4">
+          {!isReadonly &&
+            dailyUsage &&
+            dailyUsage.tier === "free" &&
+            dailyUsage.pct >= 0.8 && (
+              <div className="mx-auto mb-2 flex max-w-4xl items-center justify-between gap-3 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm dark:border-amber-800 dark:bg-amber-950/30">
+                <span className="text-amber-800 dark:text-amber-200">
+                  {dailyUsage.used}/{dailyUsage.limit} daily messages used —
+                  upgrade to keep going
+                </span>
+                <Link
+                  className="shrink-0 rounded-md bg-primary px-3 py-1 font-medium text-primary-foreground text-xs hover:bg-primary/90"
+                  href="/upgrade?plan=plus"
+                  onClick={() =>
+                    track("upgrade_cta_clicked", {
+                      source: "near_limit_nudge",
+                      plan: "plus",
+                    })
+                  }
+                >
+                  Upgrade — 7-day free trial
+                </Link>
+              </div>
+            )}
+          {!isReadonly && messages.length >= 2 && <ReferralBanner />}
+          <div className="mx-auto flex w-full max-w-4xl gap-2 border-t-0">
           {!isReadonly && (
             <MultimodalInput
               attachments={attachments}
@@ -322,6 +364,7 @@ export function Chat({
               usage={usage}
             />
           )}
+          </div>
         </div>
       </div>
 

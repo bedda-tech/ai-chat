@@ -4,6 +4,7 @@
  */
 
 import type { LanguageModelMiddleware } from "ai";
+// biome-ignore lint/style/useNodejsImportProtocol: crypto polyfilled in browser; node: scheme breaks webpack client bundle
 import crypto from "crypto";
 import { createClient } from "redis";
 
@@ -69,7 +70,9 @@ export const loggingMiddleware: LanguageModelMiddleware = {
   wrapStream: async ({ doStream, model }) => {
     const start = Date.now();
     const modelId = model.modelId;
-    if (logEnabled()) console.log(`[AI] model=${modelId} stream=start`);
+    if (logEnabled()) {
+      console.log(`[AI] model=${modelId} stream=start`);
+    }
     try {
       const result = await doStream();
       if (logEnabled()) {
@@ -108,7 +111,9 @@ export const performanceMiddleware: LanguageModelMiddleware = {
       metrics.totalTokens +=
         (result.usage?.inputTokens?.total ?? 0) +
         (result.usage?.outputTokens?.total ?? 0);
-      if (metrics.latencySamples.length >= 200) metrics.latencySamples.shift();
+      if (metrics.latencySamples.length >= 200) {
+        metrics.latencySamples.shift();
+      }
       metrics.latencySamples.push(latency);
       return result;
     } catch (err) {
@@ -125,7 +130,9 @@ export const performanceMiddleware: LanguageModelMiddleware = {
       const result = await doStream();
       const latency = Date.now() - start;
       metrics.totalLatencyMs += latency;
-      if (metrics.latencySamples.length >= 200) metrics.latencySamples.shift();
+      if (metrics.latencySamples.length >= 200) {
+        metrics.latencySamples.shift();
+      }
       metrics.latencySamples.push(latency);
       return result;
     } catch (err) {
@@ -176,10 +183,18 @@ let _redis: RedisClient | null = null;
 let _redisConnecting = false;
 
 async function getRedis(): Promise<RedisClient | null> {
-  if (typeof window !== "undefined") return null; // server-only
-  if (!process.env.REDIS_URL) return null;
-  if (_redis?.isReady) return _redis;
-  if (_redisConnecting) return null;
+  if (typeof window !== "undefined") {
+    return null; // server-only
+  }
+  if (!process.env.REDIS_URL) {
+    return null;
+  }
+  if (_redis?.isReady) {
+    return _redis;
+  }
+  if (_redisConnecting) {
+    return null;
+  }
   try {
     _redisConnecting = true;
     const client = createClient({ url: process.env.REDIS_URL });
@@ -257,9 +272,13 @@ export const cachingMiddleware: LanguageModelMiddleware = {
   specificationVersion: "v3",
 
   wrapGenerate: async ({ doGenerate, params, model }) => {
-    if (!cacheEnabled()) return doGenerate();
+    if (!cacheEnabled()) {
+      return doGenerate();
+    }
     const redis = await getRedis().catch(() => null);
-    if (!redis) return doGenerate();
+    if (!redis) {
+      return doGenerate();
+    }
 
     const cacheKey = buildCacheKey(model.modelId, params.prompt);
     try {
@@ -284,9 +303,13 @@ export const cachingMiddleware: LanguageModelMiddleware = {
   },
 
   wrapStream: async ({ doStream, params, model }) => {
-    if (!cacheEnabled()) return doStream();
+    if (!cacheEnabled()) {
+      return doStream();
+    }
     const redis = await getRedis().catch(() => null);
-    if (!redis) return doStream();
+    if (!redis) {
+      return doStream();
+    }
 
     const cacheKey = buildCacheKey(model.modelId, params.prompt);
     try {
@@ -310,9 +333,11 @@ export async function getCacheStats(): Promise<{
   entries: Array<{ key: string; age: number }>;
 }> {
   const redis = await getRedis().catch(() => null);
-  if (!redis) return { size: 0, entries: [] };
+  if (!redis) {
+    return { size: 0, entries: [] };
+  }
   try {
-    const keys = await redis.keys(CACHE_PREFIX + "*");
+    const keys = await redis.keys(`${CACHE_PREFIX}*`);
     const ttl = cacheTTLSeconds();
     const entries = await Promise.all(
       keys.slice(0, 20).map(async (key) => {
@@ -332,10 +357,14 @@ export async function getCacheStats(): Promise<{
 /** Deletes all Redis-backed AI response cache entries (keys matching the cache prefix). */
 export async function clearCache(): Promise<void> {
   const redis = await getRedis().catch(() => null);
-  if (!redis) return;
+  if (!redis) {
+    return;
+  }
   try {
-    const keys = await redis.keys(CACHE_PREFIX + "*");
-    if (keys.length > 0) await redis.del(keys);
+    const keys = await redis.keys(`${CACHE_PREFIX}*`);
+    if (keys.length > 0) {
+      await redis.del(keys);
+    }
     console.log(`[cache] Cleared ${keys.length} cache entries`);
   } catch (err) {
     console.error("[cache] clearCache error:", err);

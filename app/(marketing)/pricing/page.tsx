@@ -1,6 +1,7 @@
 import { Check, X } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ReferralCard } from "@/components/referral-card";
 import { PricingSection } from "@/components/pricing-section";
 
 export const metadata: Metadata = {
@@ -277,8 +278,21 @@ export default function PricingPage() {
         </div>
       </div>
 
-      {/* Enterprise CTA */}
+      {/* Refer a Friend */}
       <div className="mx-auto mt-20 max-w-2xl rounded-lg border bg-muted/30 p-8 text-center">
+        <h2 className="mb-2 font-bold text-2xl">
+          Know someone who&apos;d love this?
+        </h2>
+        <p className="mb-6 text-muted-foreground">
+          Share your referral link and your friend gets a{" "}
+          <strong>14-day free trial</strong> — double the standard 7 days.
+          Active referrers get exclusive bonuses.
+        </p>
+        <ReferralCard />
+      </div>
+
+      {/* Enterprise CTA */}
+      <div className="mx-auto mt-10 max-w-2xl rounded-lg border bg-muted/30 p-8 text-center">
         <h2 className="mb-2 font-bold text-2xl">Need enterprise features?</h2>
         <p className="mb-6 text-muted-foreground">
           SSO, audit logging, custom model routing, SLA guarantees, and
