@@ -48,7 +48,7 @@ function ModelSwitchSeparator({ modelId }: { modelId: string }) {
     <div className="flex items-center gap-3 py-1">
       <div className="h-px flex-1 bg-border" />
       <div className="flex items-center gap-1.5 text-muted-foreground text-xs">
-        <span className={cn("size-2 rounded-full shrink-0", colorClass)} />
+        <span className={cn("size-2 shrink-0 rounded-full", colorClass)} />
         <span>Switched to {displayName}</span>
       </div>
       <div className="h-px flex-1 bg-border" />
@@ -137,6 +137,11 @@ function PureMessages({
               !!thisModelId &&
               !!prevAssistantModelId &&
               thisModelId !== prevAssistantModelId;
+            const isFirstInGroup =
+              index === 0 || messages[index - 1].role !== message.role;
+            const isLastInGroup =
+              index === messages.length - 1 ||
+              messages[index + 1].role !== message.role;
 
             return (
               <Fragment key={message.id}>
@@ -145,6 +150,8 @@ function PureMessages({
                 )}
                 <PreviewMessage
                   chatId={chatId}
+                  isFirstInGroup={isFirstInGroup}
+                  isLastInGroup={isLastInGroup}
                   isLoading={
                     status === "streaming" && messages.length - 1 === index
                   }
