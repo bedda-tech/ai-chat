@@ -25,6 +25,7 @@ import { useAutoResume } from "@/hooks/use-auto-resume";
 import { useChatVisibility } from "@/hooks/use-chat-visibility";
 import { useTeamRealtime } from "@/hooks/use-team-realtime";
 import type { Vote } from "@/lib/db/schema";
+import { pruneOldSessions, saveMessages } from "@/lib/chat/storage";
 import { ChatSDKError } from "@/lib/errors";
 import type { Attachment, ChatMessage } from "@/lib/types";
 import type { AppUsage } from "@/lib/usage";
@@ -251,6 +252,19 @@ export function Chat({
       });
     }
   }, [status, setMessages]);
+
+  // Persist messages to localStorage when a stream finishes so the session
+  // survives navigation and provides offline resilience.
+  useEffect(() => {
+    if (status === "ready" && messages.length > 0 && !isReadonly) {
+      saveMessages(id, messages);
+    }
+  }, [status, messages, id, isReadonly]);
+
+  // Prune expired/excess localStorage sessions on mount.
+  useEffect(() => {
+    pruneOldSessions();
+  }, []);
 
   const searchParams = useSearchParams();
   const query = searchParams.get("query");
