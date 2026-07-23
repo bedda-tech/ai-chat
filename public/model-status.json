@@ -1,0 +1,21 @@
+{
+  "version": "1",
+  "updated": "2026-07-23",
+  "statuses": {
+    "anthropic-claude-fable-5": {
+      "status": "removed",
+      "message": "Removed by Anthropic on July 17, 2026. Try Claude Sonnet 4.6 as a replacement.",
+      "replacementId": "anthropic-claude-sonnet-4-6",
+      "replacementName": "Claude Sonnet 4.6",
+      "removedAt": "2026-07-17"
+    }
+  },
+  "removedModels": [
+    {
+      "id": "anthropic-claude-fable-5",
+      "name": "Claude Fable 5",
+      "description": "Creative writing and storytelling model — no longer available",
+      "provider": "anthropic"
+    }
+  ]
+}

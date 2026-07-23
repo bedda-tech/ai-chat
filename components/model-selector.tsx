@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { useAvailableModels } from "@/hooks/use-available-models";
+import { useModelStatus } from "@/hooks/use-model-status";
 import {
   entitlementsByUserType,
   FREE_TIER_MODEL_IDS,
@@ -36,10 +37,10 @@ function useUserTier() {
   return data?.tier ?? "free";
 }
 
-interface OrgPolicy {
+type OrgPolicy = {
   allowedModelIds?: string[] | null;
   deniedModelIds?: string[] | null;
-}
+};
 
 function useOrgModelPolicy() {
   const { data } = useSWR<{ policy: OrgPolicy | null }>(
@@ -72,6 +73,7 @@ export function ModelSelector({
   // Fetch dynamic models from AI Gateway
   const { models: dynamicModels, isLoading, isFallback } = useAvailableModels();
   const orgPolicy = useOrgModelPolicy();
+  const { statuses: modelStatuses, removedModels } = useModelStatus();
 
   const userType = session.user.type;
   const isGuest = userType === "guest";
@@ -99,7 +101,7 @@ export function ModelSelector({
 
     // Guests see a restricted model list; regular users see everything
     if (isGuest) {
-      const { availableChatModelIds } = entitlementsByUserType["guest"];
+      const { availableChatModelIds } = entitlementsByUserType.guest;
       return allModels.filter((chatModel) =>
         availableChatModelIds.includes(chatModel.id)
       );
@@ -107,7 +109,9 @@ export function ModelSelector({
     // Remove duplicates (dynamic + legacy may overlap)
     const seen = new Set<string>();
     let deduped = allModels.filter((m) => {
-      if (seen.has(m.id)) return false;
+      if (seen.has(m.id)) {
+        return false;
+      }
       seen.add(m.id);
       return true;
     });
@@ -122,8 +126,37 @@ export function ModelSelector({
       deduped = deduped.filter((m) => allowedSet.has(m.id));
     }
 
+    // Apply model health statuses from the status feed
+    deduped = deduped.map((m) => {
+      const s = modelStatuses[m.id];
+      if (!s) return m;
+      const isRemoved = s.status === "removed" || s.status === "deprecated";
+      return {
+        ...m,
+        warning: s.message,
+        disabled: isRemoved ? true : m.disabled,
+      };
+    });
+
+    // Inject removed models not already in the list so users who had them
+    // selected can see the deprecation notice rather than a silent disappearance
+    const existingIds = new Set(deduped.map((m) => m.id));
+    for (const removed of removedModels) {
+      if (!existingIds.has(removed.id)) {
+        const s = modelStatuses[removed.id];
+        deduped.push({
+          id: removed.id,
+          name: removed.name,
+          description: removed.description,
+          warning: s?.message ?? "This model is no longer available.",
+          disabled: true,
+          tags: [],
+        });
+      }
+    }
+
     return deduped;
-  }, [dynamicModels, isGuest, orgPolicy]);
+  }, [dynamicModels, isGuest, orgPolicy, modelStatuses, removedModels]);
 
   const allAvailableTools = useMemo(() => {
     const toolsSet = new Set<ModelTool>();
@@ -341,7 +374,7 @@ export function ModelSelector({
                       )}
                       {tags?.includes("free") && !isPremiumModel && (
                         <Badge
-                          className="h-4 px-1 font-semibold text-[9px] uppercase tracking-wide bg-emerald-100 text-emerald-700 border-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-400 dark:border-emerald-800"
+                          className="h-4 border-emerald-200 bg-emerald-100 px-1 font-semibold text-[9px] text-emerald-700 uppercase tracking-wide dark:border-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400"
                           variant="outline"
                         >
                           Free
