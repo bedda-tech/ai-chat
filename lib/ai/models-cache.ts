@@ -6,7 +6,7 @@
 import { gateway } from "ai";
 import modelsData from "./models-data.json" with { type: "json" };
 
-interface AvailableModel {
+type AvailableModel = {
   id: string;
   name: string;
   description?: string | null;
@@ -16,14 +16,15 @@ interface AvailableModel {
     cachedInputTokens?: number;
     cacheCreationInputTokens?: number;
   };
-}
+};
 
-interface CachedModels {
-  models: AvailableModel[];
+// Cache enriched models directly to avoid re-running transformToEnrichedModels on every read
+type CachedModels = {
+  models: EnrichedModel[];
   timestamp: number;
-}
+};
 
-interface EnrichedModel {
+type EnrichedModel = {
   id: string;
   gatewayId: string;
   name: string;
@@ -50,48 +51,12 @@ interface EnrichedModel {
   disabled?: boolean;
   tags?: string[];
   warning?: string;
-}
+};
 
 let cache: CachedModels | null = null;
+// In-flight deduplication: concurrent cache-miss requests share one gateway call
+let inflight: Promise<EnrichedModel[]> | null = null;
 const CACHE_DURATION = 3_600_000; // 1 hour
-
-/**
- * Infer tool capabilities based on model ID
- */
-function inferToolCapabilities(modelId: string): string[] {
-  const tools: string[] = [];
-
-  // Most models support these tools
-  tools.push(
-    "weather",
-    "documents",
-    "suggestions",
-    "analysis",
-    "structured-data"
-  );
-
-  // Image generation models
-  if (
-    modelId.includes("dall-e") ||
-    modelId.includes("imagen") ||
-    modelId.includes("image") ||
-    modelId.includes("gemini-2.5-flash-image")
-  ) {
-    tools.push("images");
-  }
-
-  // Audio models
-  if (modelId.includes("whisper") || modelId.includes("tts")) {
-    tools.push("audio");
-  }
-
-  // Embedding models
-  if (modelId.includes("embedding")) {
-    tools.push("embeddings", "similarity");
-  }
-
-  return tools;
-}
 
 /**
  * Infer capabilities from model ID
@@ -171,7 +136,9 @@ function injectKrainModel(models: EnrichedModel[]): EnrichedModel[] {
   const krainStatic = (modelsData.models as EnrichedModel[]).find(
     (m) => m.id === "krain-gemma"
   );
-  if (!krainStatic) return models;
+  if (!krainStatic) {
+    return models;
+  }
 
   const krainEntry: EnrichedModel = {
     id: krainStatic.id,
@@ -192,45 +159,54 @@ function injectKrainModel(models: EnrichedModel[]): EnrichedModel[] {
 }
 
 /**
- * Get available models with caching
+ * Get available models with caching.
+ * Enriched models are stored in the cache so the transform is never re-run on a hit.
+ * Concurrent cache-miss requests share a single in-flight gateway call.
  */
 export async function getAvailableModels(
   forceRefresh = false
 ): Promise<EnrichedModel[]> {
   const now = Date.now();
 
-  // Return cached if still valid and not forcing refresh
+  // Fast path: return pre-enriched cache immediately
   if (!forceRefresh && cache && now - cache.timestamp < CACHE_DURATION) {
-    console.log("✅ Returning cached models from server-side cache");
-    return injectKrainModel(transformToEnrichedModels(cache.models));
+    return injectKrainModel(cache.models);
   }
 
-  try {
-    console.log("🔄 Fetching models from AI Gateway...");
-    const availableModels = await gateway.getAvailableModels();
-    const models = availableModels.models as unknown as AvailableModel[];
+  // Deduplicate concurrent misses: reuse the existing promise if one is in flight
+  if (!forceRefresh && inflight) {
+    const models = await inflight;
+    return injectKrainModel(models);
+  }
 
-    // Update cache
-    cache = {
-      models,
-      timestamp: now,
-    };
+  const fetchModels = async (): Promise<EnrichedModel[]> => {
+    try {
+      console.log("🔄 Fetching models from AI Gateway...");
+      const availableModels = await gateway.getAvailableModels();
+      const raw = availableModels.models as unknown as AvailableModel[];
+      const enriched = transformToEnrichedModels(raw);
 
-    console.log(`✅ Fetched ${models.length} models from AI Gateway`);
-    return injectKrainModel(transformToEnrichedModels(models));
-  } catch (error) {
-    console.error("❌ Failed to fetch dynamic models:", error);
+      cache = { models: enriched, timestamp: Date.now() };
+      console.log(`✅ Fetched ${raw.length} models from AI Gateway`);
+      return enriched;
+    } catch (error) {
+      console.error("❌ Failed to fetch dynamic models:", error);
 
-    // If cache exists but is stale, return it anyway
-    if (cache) {
-      console.warn("⚠️ Returning stale cached models");
-      return injectKrainModel(transformToEnrichedModels(cache.models));
+      if (cache) {
+        console.warn("⚠️ Returning stale cached models");
+        return cache.models;
+      }
+
+      console.warn("⚠️ Falling back to static models configuration");
+      return modelsData.models as EnrichedModel[];
+    } finally {
+      inflight = null;
     }
+  };
 
-    // Ultimate fallback to static JSON
-    console.warn("⚠️ Falling back to static models configuration");
-    return injectKrainModel(modelsData.models as EnrichedModel[]);
-  }
+  inflight = fetchModels();
+  const models = await inflight;
+  return injectKrainModel(models);
 }
 
 /**
@@ -287,6 +263,7 @@ function transformToEnrichedModels(
  */
 export function clearModelsCache() {
   cache = null;
+  inflight = null;
   console.log("🗑️ Model cache cleared");
 }
 
