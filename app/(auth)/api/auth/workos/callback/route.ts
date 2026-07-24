@@ -1,3 +1,4 @@
+import { timingSafeEqual } from "node:crypto";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { encode } from "next-auth/jwt";
@@ -11,12 +12,28 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const code = searchParams.get("code");
   const error = searchParams.get("error");
+  const state = searchParams.get("state");
 
   if (error) {
     redirect(`/login?sso_error=${encodeURIComponent(error)}`);
   }
   if (!code) {
     redirect("/login?sso_error=missing_code");
+  }
+
+  // Validate CSRF state param to prevent cross-site request forgery
+  const cookieStore = await cookies();
+  const expectedState = cookieStore.get("workos_sso_state")?.value;
+  cookieStore.delete("workos_sso_state");
+  if (!state || !expectedState) {
+    redirect("/login?sso_error=missing_state");
+  }
+  try {
+    if (!timingSafeEqual(Buffer.from(state), Buffer.from(expectedState))) {
+      redirect("/login?sso_error=invalid_state");
+    }
+  } catch {
+    redirect("/login?sso_error=invalid_state");
   }
 
   try {

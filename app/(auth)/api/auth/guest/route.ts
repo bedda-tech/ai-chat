@@ -15,8 +15,12 @@ const GUEST_IP_WINDOW_SECONDS = 3600; // 1 hour
 let _redis: ReturnType<typeof createClient> | null = null;
 
 async function getRedis(): Promise<ReturnType<typeof createClient> | null> {
-  if (!process.env.REDIS_URL) return null;
-  if (_redis?.isReady) return _redis;
+  if (!process.env.REDIS_URL) {
+    return null;
+  }
+  if (_redis?.isReady) {
+    return _redis;
+  }
   try {
     const client = createClient({ url: process.env.REDIS_URL });
     client.on("error", () => {});
@@ -28,9 +32,27 @@ async function getRedis(): Promise<ReturnType<typeof createClient> | null> {
   }
 }
 
+function safeRedirectPath(raw: string | null, requestUrl: string): string {
+  if (!raw) return "/";
+  try {
+    const parsed = new URL(raw);
+    const origin = new URL(requestUrl).origin;
+    // Only allow same-origin redirects
+    if (parsed.origin === origin) {
+      return parsed.pathname + parsed.search + parsed.hash;
+    }
+  } catch {
+    // `raw` is a relative path (no origin) — allow if it starts with a single slash
+    if (/^\/(?!\/)/.test(raw)) {
+      return raw;
+    }
+  }
+  return "/";
+}
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const redirectUrl = searchParams.get("redirectUrl") || "/";
+  const redirectUrl = safeRedirectPath(searchParams.get("redirectUrl"), request.url);
 
   const token = await getToken({
     req: request,
