@@ -25,11 +25,13 @@ import { fetchModels } from "tokenlens/fetch";
 import { getUsage } from "tokenlens/helpers";
 import { auth, type UserType } from "@/app/(auth)/auth";
 import type { VisibilityType } from "@/components/visibility-selector";
+import { recordCacheStats } from "@/lib/ai/cache-analytics";
 import { sanitizeMessagesForProvider } from "@/lib/ai/cross-provider-context";
 import { isModelAllowedForTier } from "@/lib/ai/entitlements";
 import { buildGatewayConfig, getThinkingBudget } from "@/lib/ai/gateway-config";
 import { getModelConfig, getModelContextWindow } from "@/lib/ai/model-config";
 import type { ChatModel } from "@/lib/ai/models";
+import { decryptValue } from "@/lib/ai/plugin-encrypt";
 import { dispatchPluginTool } from "@/lib/ai/plugin-tool-dispatcher";
 import { getCacheableSystemPrompt, type RequestHints } from "@/lib/ai/prompts";
 import { myProvider } from "@/lib/ai/providers";
@@ -55,7 +57,6 @@ import {
 import { transcribeAudioTool } from "@/lib/ai/tools/transcribe-audio";
 import { updateDocument } from "@/lib/ai/tools/update-document";
 import { webSearchTool } from "@/lib/ai/tools/web-search";
-import { recordCacheStats } from "@/lib/ai/cache-analytics";
 import { logAuditEvent } from "@/lib/audit";
 import { isProductionEnvironment } from "@/lib/constants";
 import {
@@ -75,7 +76,6 @@ import {
   searchKBChunks,
   updateChatLastContextById,
 } from "@/lib/db/queries";
-import { decryptValue } from "@/lib/ai/plugin-encrypt";
 import { getOrgModelPolicyForUser } from "@/lib/db/team-queries";
 import { ChatSDKError } from "@/lib/errors";
 import {
@@ -85,7 +85,11 @@ import {
 import { publishChatEvent } from "@/lib/realtime";
 import type { ChatMessage } from "@/lib/types";
 import type { AppUsage } from "@/lib/usage";
-import { getCurrentMonthUsage, recordUsage } from "@/lib/usage/tracking";
+import {
+  computeCostUSD,
+  getCurrentMonthUsage,
+  recordUsage,
+} from "@/lib/usage/tracking";
 import {
   convertToUIMessages,
   generateUUID,
@@ -526,9 +530,9 @@ export async function POST(request: Request) {
         const { messages: sanitizedModelMessages, warnings: contextWarnings } =
           sanitizeMessagesForProvider(rawModelMessages, gatewayModelId);
         if (contextWarnings.length > 0) {
-          contextWarnings.forEach((w) =>
-            console.warn("[chat] cross-provider context:", w)
-          );
+          contextWarnings.forEach((w) => {
+            console.warn("[chat] cross-provider context:", w);
+          });
           dataStream.write({
             type: "data-context-warnings" as any,
             data: contextWarnings,
@@ -536,7 +540,10 @@ export async function POST(request: Request) {
         }
 
         // Notify client which model is handling this turn (enables real-time model badge)
-        dataStream.write({ type: "data-active-model" as any, data: selectedChatModel });
+        dataStream.write({
+          type: "data-active-model" as any,
+          data: selectedChatModel,
+        });
 
         const requestStart = Date.now();
         const result = streamText({
@@ -589,7 +596,10 @@ export async function POST(request: Request) {
               // Extract provider metadata from response
               const providerMetadata =
                 response.headers?.["x-vercel-ai-provider-metadata"];
-              let gatewayMetadata: { cost?: number; routing?: Record<string, unknown> } | null = null;
+              let gatewayMetadata: {
+                cost?: number;
+                routing?: Record<string, unknown>;
+              } | null = null;
 
               if (providerMetadata) {
                 try {
@@ -637,9 +647,28 @@ export async function POST(request: Request) {
               }
 
               const summary = getUsage({ modelId, usage, providers });
+
+              // Prefer AI SDK v6's normalized cache field; fall back to Anthropic raw field
+              const cachedTokens =
+                usage.cachedInputTokens ??
+                usage.inputTokenDetails?.cacheReadTokens ??
+                0;
+              const cacheHit = cachedTokens > 0;
+
+              // If tokenlens doesn't have pricing for this model, use internal pricing
+              const costUSDFallback = summary.costUSD
+                ? undefined
+                : computeCostUSD(
+                    selectedChatModel,
+                    usage.inputTokens ?? 0,
+                    usage.outputTokens ?? 0,
+                    cachedTokens
+                  );
+
               finalMergedUsage = {
                 ...usage,
                 ...summary,
+                ...(costUSDFallback && { costUSD: costUSDFallback }),
                 modelId,
                 ...(gatewayMetadata?.cost && {
                   gatewayCost: gatewayMetadata.cost,
@@ -649,19 +678,13 @@ export async function POST(request: Request) {
 
               // Track usage in new analytics system
               try {
-                // Extract cache information from AI SDK usage object
-                // Anthropic models return cacheReadInputTokens, cacheCreationInputTokens
-                // OpenAI models have automatic caching (no explicit fields)
-                const cachedTokens = (usage as { cacheReadInputTokens?: number }).cacheReadInputTokens ?? 0;
-                const cacheHit = cachedTokens > 0;
-
                 await recordUsage({
                   userId: session.user.id,
                   modelId: selectedChatModel,
                   provider: selectedChatModel.split("-")[0] || "unknown",
                   sessionId: id,
-                  inputTokens: usage.inputTokens || 0,
-                  outputTokens: usage.outputTokens || 0,
+                  inputTokens: usage.inputTokens ?? 0,
+                  outputTokens: usage.outputTokens ?? 0,
                   cachedTokens,
                   latency,
                   cacheHit,
@@ -675,7 +698,8 @@ export async function POST(request: Request) {
                   modelId: selectedChatModel,
                   cacheHit,
                   cachedTokens,
-                  totalTokens: (usage.inputTokens || 0) + (usage.outputTokens || 0),
+                  totalTokens:
+                    (usage.inputTokens || 0) + (usage.outputTokens || 0),
                   costSavings: (cachedTokens / 1_000_000) * 2.7,
                 });
               } catch (trackingErr) {
@@ -684,7 +708,20 @@ export async function POST(request: Request) {
               }
             } catch (err) {
               console.warn("TokenLens enrichment failed", err);
-              finalMergedUsage = usage;
+              const errCachedTokens =
+                usage.cachedInputTokens ??
+                usage.inputTokenDetails?.cacheReadTokens ??
+                0;
+              const errCostUSD = computeCostUSD(
+                selectedChatModel,
+                usage.inputTokens ?? 0,
+                usage.outputTokens ?? 0,
+                errCachedTokens
+              );
+              finalMergedUsage = {
+                ...usage,
+                ...(errCostUSD && { costUSD: errCostUSD }),
+              } as AppUsage;
               dataStream.write({ type: "data-usage", data: finalMergedUsage });
 
               // Track failed request

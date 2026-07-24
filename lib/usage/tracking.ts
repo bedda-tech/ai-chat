@@ -104,7 +104,7 @@ function calculateCost(
   const outputCostPer1M = pricing?.output ?? 15.0;
   const cachedInputCostPer1M = pricing?.cachedInput ?? 0.3;
 
-  const normalInputTokens = inputTokens - cachedTokens;
+  const normalInputTokens = Math.max(0, inputTokens - cachedTokens);
   const inputCost = (normalInputTokens / 1_000_000) * inputCostPer1M;
   const cachedCost = (cachedTokens / 1_000_000) * cachedInputCostPer1M;
   const outputCost = (outputTokens / 1_000_000) * outputCostPer1M;
@@ -116,6 +116,35 @@ function calculateCost(
   const cachedSavings = normalCachedCost - cachedCost;
 
   return { cost, cachedSavings };
+}
+
+/**
+ * Compute per-category USD costs for a request, keyed by the bedda model ID.
+ * Returns undefined when no pricing is registered for the model.
+ */
+export function computeCostUSD(
+  modelId: string,
+  inputTokens: number,
+  outputTokens: number,
+  cachedTokens: number
+):
+  | {
+      inputUSD: number;
+      outputUSD: number;
+      cacheReadUSD: number;
+      totalUSD: number;
+    }
+  | undefined {
+  const pricing = modelPricingMap.get(modelId);
+  if (!pricing) return undefined;
+
+  const normalInputTokens = Math.max(0, inputTokens - cachedTokens);
+  const inputUSD = (normalInputTokens / 1_000_000) * pricing.input;
+  const cacheReadUSD = (cachedTokens / 1_000_000) * pricing.cachedInput;
+  const outputUSD = (outputTokens / 1_000_000) * pricing.output;
+  const totalUSD = inputUSD + cacheReadUSD + outputUSD;
+
+  return { inputUSD, outputUSD, cacheReadUSD, totalUSD };
 }
 
 /**
@@ -405,7 +434,9 @@ export async function getDailyUsage(userId: string): Promise<number> {
     )
     .limit(1);
 
-  if (result.length === 0) return 0;
+  if (result.length === 0) {
+    return 0;
+  }
   return Number.parseInt(result[0].currentCount, 10);
 }
 
