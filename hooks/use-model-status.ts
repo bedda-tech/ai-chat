@@ -26,10 +26,13 @@ type ModelStatusFeed = {
 
 const fetcher = (url: string) =>
   fetch(url).then((r) => {
-    if (!r.ok) throw new Error("status feed unavailable");
+    if (!r.ok) {
+      throw new Error("status feed unavailable");
+    }
     return r.json() as Promise<ModelStatusFeed>;
   });
 
+/** Fetches the static /model-status.json feed (1-hour SWR dedup) and returns per-model status flags and removed model list. */
 export function useModelStatus() {
   const { data } = useSWR<ModelStatusFeed>("/model-status.json", fetcher, {
     revalidateOnFocus: false,

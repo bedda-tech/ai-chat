@@ -9,7 +9,9 @@ type SessionEntry = { id: string; ts: number };
 type StoredChat = { ts: number; messages: ChatMessage[] };
 
 function isAvailable(): boolean {
-  if (typeof window === "undefined") return false;
+  if (typeof window === "undefined") {
+    return false;
+  }
   try {
     const k = "__bedda_ls_test__";
     localStorage.setItem(k, "1");
@@ -52,11 +54,16 @@ function updateIndex(chatId: string): void {
   setSessions(sessions);
 }
 
+/** Returns cached messages for a chat session, or null if missing or older than 7 days. */
 export function loadMessages(chatId: string): ChatMessage[] | null {
-  if (!isAvailable()) return null;
+  if (!isAvailable()) {
+    return null;
+  }
   try {
     const raw = localStorage.getItem(STORAGE_PREFIX + chatId);
-    if (!raw) return null;
+    if (!raw) {
+      return null;
+    }
     const stored = JSON.parse(raw) as StoredChat;
     if (Date.now() - stored.ts > MAX_AGE_MS) {
       removeChat(chatId);
@@ -68,9 +75,15 @@ export function loadMessages(chatId: string): ChatMessage[] | null {
   }
 }
 
+/** Persists messages to localStorage; evicts oldest sessions when the quota is exceeded or MAX_SESSIONS is reached. */
 export function saveMessages(chatId: string, messages: ChatMessage[]): void {
-  if (!isAvailable() || messages.length === 0) return;
-  const payload = JSON.stringify({ ts: Date.now(), messages } satisfies StoredChat);
+  if (!isAvailable() || messages.length === 0) {
+    return;
+  }
+  const payload = JSON.stringify({
+    ts: Date.now(),
+    messages,
+  } satisfies StoredChat);
   try {
     localStorage.setItem(STORAGE_PREFIX + chatId, payload);
     updateIndex(chatId);
@@ -87,8 +100,11 @@ export function saveMessages(chatId: string, messages: ChatMessage[]): void {
   }
 }
 
+/** Removes a chat's cached messages and its entry from the session index. */
 export function removeChat(chatId: string): void {
-  if (!isAvailable()) return;
+  if (!isAvailable()) {
+    return;
+  }
   try {
     localStorage.removeItem(STORAGE_PREFIX + chatId);
     setSessions(getSessions().filter((s) => s.id !== chatId));
@@ -97,8 +113,11 @@ export function removeChat(chatId: string): void {
   }
 }
 
+/** Evicts sessions older than 7 days and trims the index to MAX_SESSIONS, freeing localStorage space. */
 export function pruneOldSessions(): void {
-  if (!isAvailable()) return;
+  if (!isAvailable()) {
+    return;
+  }
   try {
     const now = Date.now();
     const kept: SessionEntry[] = [];
