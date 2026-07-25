@@ -5,6 +5,7 @@ import { ByokForm } from "@/components/byok-form";
 import { CustomInstructionsForm } from "@/components/custom-instructions-form";
 import { McpServersForm } from "@/components/mcp-servers-form";
 import { MemoryManagement } from "@/components/memory-management";
+import { ModelPreferencesForm } from "@/components/model-preferences-form";
 import { PluginToolsForm } from "@/components/plugin-tools-form";
 import { ReferralCard } from "@/components/referral-card";
 import { SubscriptionManagement } from "@/components/subscription-management";
@@ -78,6 +79,11 @@ export default async function SettingsPage() {
         <CustomInstructionsForm
           initialValue={prefs?.customInstructions ?? ""}
         />
+      </div>
+
+      <div className="mt-6 rounded-lg border p-6">
+        <h2 className="mb-4 font-semibold text-lg">Model Defaults</h2>
+        <ModelPreferencesForm />
       </div>
 
       <div className="mt-6 rounded-lg border p-6">

@@ -3,6 +3,7 @@
 import type { Session } from "next-auth";
 import { startTransition, useMemo, useOptimistic, useState } from "react";
 import useSWR from "swr";
+import { toast } from "sonner";
 import { saveChatModelAsCookie } from "@/app/(chat)/actions";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -51,8 +52,33 @@ function useOrgModelPolicy() {
   return data?.policy ?? null;
 }
 
+function useModelPreferences() {
+  const { data } = useSWR<{ modelPreferences: Record<string, string> }>(
+    "/api/user/preferences",
+    (url: string) => fetch(url).then((r) => r.json()),
+    { revalidateOnFocus: false, dedupingInterval: 30_000 }
+  );
+  return data?.modelPreferences ?? {};
+}
+
 import { cn } from "@/lib/utils";
 import { CheckCircleFillIcon, ChevronDownIcon } from "./icons";
+
+const MODEL_PREF_CATEGORIES = [
+  { id: "general", label: "General (new chat default)" },
+  { id: "coding", label: "Coding" },
+  { id: "writing", label: "Writing" },
+  { id: "analysis", label: "Analysis" },
+  { id: "casual", label: "Casual" },
+] as const;
+
+async function saveModelDefault(category: string, modelId: string) {
+  await fetch("/api/user/preferences", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ modelPreferences: { [category]: modelId } }),
+  });
+}
 
 export function ModelSelector({
   session,
@@ -80,6 +106,20 @@ export function ModelSelector({
   const userTier = useUserTier();
   const isPaidUser =
     userTier === "pro" || userTier === "premium" || userTier === "enterprise";
+
+  const modelPrefs = useModelPreferences();
+  // Build a reverse map: modelId → list of category labels it's set as default for
+  const modelDefaultLabels = useMemo(() => {
+    const map: Record<string, string[]> = {};
+    for (const [catId, modelId] of Object.entries(modelPrefs)) {
+      const cat = MODEL_PREF_CATEGORIES.find((c) => c.id === catId);
+      if (cat && modelId) {
+        if (!map[modelId]) map[modelId] = [];
+        map[modelId].push(cat.label.replace(" (new chat default)", ""));
+      }
+    }
+    return map;
+  }, [modelPrefs]);
 
   // Use dynamic models if available, fallback to static models
   const availableChatModels = useMemo(() => {
@@ -129,7 +169,9 @@ export function ModelSelector({
     // Apply model health statuses from the status feed
     deduped = deduped.map((m) => {
       const s = modelStatuses[m.id];
-      if (!s) return m;
+      if (!s) {
+        return m;
+      }
       const isRemoved = s.status === "removed" || s.status === "deprecated";
       return {
         ...m,
@@ -350,6 +392,23 @@ export function ModelSelector({
                           setOptimisticModelId(id);
                           saveChatModelAsCookie(id);
                         });
+
+                        if (!isGuest) {
+                          toast(`Using ${chatModel.name}`, {
+                            description:
+                              "Make this your default model for new chats?",
+                            action: {
+                              label: "Set as default",
+                              onClick: () =>
+                                saveModelDefault("general", id).then(() =>
+                                  toast.success(
+                                    `${chatModel.name} set as default. Manage per-category in Settings.`
+                                  )
+                                ),
+                            },
+                            duration: 5000,
+                          });
+                        }
                       }
                 }
               >
@@ -413,6 +472,11 @@ export function ModelSelector({
                     {idealUse && (
                       <div className="text-[10px] text-muted-foreground/70 italic">
                         Best for: {idealUse}
+                      </div>
+                    )}
+                    {modelDefaultLabels[id]?.length > 0 && (
+                      <div className="text-[10px] text-blue-600 dark:text-blue-400">
+                        ★ Default for: {modelDefaultLabels[id].join(", ")}
                       </div>
                     )}
                     {modelTools.length > 0 && (

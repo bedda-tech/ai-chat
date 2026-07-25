@@ -55,12 +55,12 @@ import {
   type User,
   type UserMemory,
   type UserPreferences,
+  type UserProviderKey,
   user,
   userMemory,
   userPreferences,
-  type UserProviderKey,
-  type VideoJob,
   userProviderKey,
+  type VideoJob,
   videoJob,
   vote,
 } from "./schema";
@@ -70,7 +70,6 @@ import { generateHashedPassword } from "./utils";
 // use the Drizzle adapter for Auth.js / NextAuth
 // https://authjs.dev/reference/adapter/drizzle
 
-// biome-ignore lint: Forbidden non-null assertion.
 const client = postgres(process.env.POSTGRES_URL!);
 const db = drizzle(client);
 
@@ -314,8 +313,12 @@ export async function getChatsByUserId({
 
     const buildWhere = (cursorCondition?: SQL<unknown>) => {
       const conditions = [eq(chat.userId, id)];
-      if (titleFilter) conditions.push(titleFilter);
-      if (cursorCondition) conditions.push(cursorCondition);
+      if (titleFilter) {
+        conditions.push(titleFilter);
+      }
+      if (cursorCondition) {
+        conditions.push(cursorCondition);
+      }
       return conditions.length === 1 ? conditions[0] : and(...conditions);
     };
 
@@ -767,7 +770,9 @@ export async function saveKBChunks({
   projectId?: string | null;
   chunks: Array<{ content: string; chunkIndex: number; embedding: number[] }>;
 }) {
-  if (chunks.length === 0) return;
+  if (chunks.length === 0) {
+    return;
+  }
   await db.insert(knowledgeBaseChunk).values(
     chunks.map((c) => ({
       documentId,
@@ -1033,7 +1038,9 @@ export async function getOrCreateOAuthUser(
       .select()
       .from(user)
       .where(eq(user.id, existingAccount.userId));
-    if (existingUser) return { user: existingUser, isNew: false };
+    if (existingUser) {
+      return { user: existingUser, isNew: false };
+    }
   }
 
   // Look up user by email (link existing email account)
@@ -1073,7 +1080,11 @@ export async function getUserPreferences(
 
 export async function upsertUserPreferences(
   userId: string,
-  data: { customInstructions?: string; memoryEnabled?: boolean }
+  data: {
+    customInstructions?: string;
+    memoryEnabled?: boolean;
+    modelPreferences?: Record<string, string>;
+  }
 ): Promise<UserPreferences> {
   const now = new Date();
   const [prefs] = await db
@@ -1084,6 +1095,9 @@ export async function upsertUserPreferences(
       ...(data.memoryEnabled !== undefined && {
         memoryEnabled: data.memoryEnabled,
       }),
+      ...(data.modelPreferences !== undefined && {
+        modelPreferences: data.modelPreferences,
+      }),
       updatedAt: now,
     })
     .onConflictDoUpdate({
@@ -1092,6 +1106,9 @@ export async function upsertUserPreferences(
         customInstructions: data.customInstructions ?? null,
         ...(data.memoryEnabled !== undefined && {
           memoryEnabled: data.memoryEnabled,
+        }),
+        ...(data.modelPreferences !== undefined && {
+          modelPreferences: data.modelPreferences,
         }),
         updatedAt: now,
       },
@@ -1399,7 +1416,9 @@ export async function validateApiKey(
     .where(and(eq(apiKey.keyHash, keyHash), sql`${apiKey.revokedAt} IS NULL`))
     .limit(1);
 
-  if (!row) return null;
+  if (!row) {
+    return null;
+  }
 
   // Update lastUsedAt in background (best-effort)
   db.update(apiKey)

@@ -4,6 +4,7 @@ import { Chat } from "@/components/chat";
 import { DataStreamHandler } from "@/components/data-stream-handler";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { generateUUID } from "@/lib/utils";
+import { getUserPreferences } from "@/lib/db/queries";
 import { auth } from "../(auth)/auth";
 
 export default async function Page(props: {
@@ -22,22 +23,19 @@ export default async function Page(props: {
   const cookieStore = await cookies();
   const modelIdFromCookie = cookieStore.get("chat-model");
 
-  if (!modelIdFromCookie) {
-    return (
-      <>
-        <Chat
-          autoResume={false}
-          id={id}
-          initialChatModel={DEFAULT_CHAT_MODEL}
-          initialMessages={[]}
-          initialVisibilityType="private"
-          isReadonly={false}
-          key={id}
-          projectId={projectId}
-        />
-        <DataStreamHandler />
-      </>
-    );
+  // Resolve initial model: cookie → DB general default → DEFAULT_CHAT_MODEL
+  let initialChatModel = modelIdFromCookie?.value ?? DEFAULT_CHAT_MODEL;
+
+  if (!modelIdFromCookie && session.user.type !== "guest") {
+    try {
+      const prefs = await getUserPreferences(session.user.id);
+      const generalDefault = prefs?.modelPreferences?.["general"];
+      if (generalDefault) {
+        initialChatModel = generalDefault;
+      }
+    } catch {
+      // Non-fatal: fall through to DEFAULT_CHAT_MODEL
+    }
   }
 
   return (
@@ -45,7 +43,7 @@ export default async function Page(props: {
       <Chat
         autoResume={false}
         id={id}
-        initialChatModel={modelIdFromCookie.value}
+        initialChatModel={initialChatModel}
         initialMessages={[]}
         initialVisibilityType="private"
         isReadonly={false}
