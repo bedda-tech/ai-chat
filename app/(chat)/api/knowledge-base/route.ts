@@ -23,8 +23,9 @@ const SUPPORTED_TYPES = [
   "text/markdown",
   "text/csv",
   "application/json",
+  "application/pdf",
 ];
-const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB (PDFs can be larger)
 
 /** GET /api/knowledge-base?projectId=X — list documents (project-scoped or account-wide) */
 export async function GET(request: Request) {
@@ -83,7 +84,7 @@ export async function POST(request: Request) {
 
   if (file.size > MAX_FILE_SIZE) {
     return NextResponse.json(
-      { error: "File too large. Maximum 10MB." },
+      { error: "File too large. Maximum 25MB." },
       { status: 400 }
     );
   }

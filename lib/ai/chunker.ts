@@ -81,9 +81,21 @@ export async function extractText(
       }
     }
 
+    case "application/pdf": {
+      const { PDFParse } = await import("pdf-parse");
+      const parser = new PDFParse({ data: new Uint8Array(buffer) });
+      const result = await parser.getText();
+      if (!result.text || result.text.trim().length === 0) {
+        throw new Error(
+          "Could not extract text from PDF. The file may be scanned or image-based."
+        );
+      }
+      return result.text;
+    }
+
     default:
       throw new Error(
-        `Unsupported file type for text extraction: ${mimeType}. Supported: text/plain, text/markdown, text/csv, application/json`
+        `Unsupported file type for text extraction: ${mimeType}. Supported: text/plain, text/markdown, text/csv, application/json, application/pdf`
       );
   }
 }
