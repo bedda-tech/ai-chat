@@ -1,7 +1,7 @@
 export type FeatureStatus = "planned" | "in-progress" | "completed";
 export type FeaturePriority = "critical" | "high" | "medium" | "low";
 
-export interface Feature {
+export type Feature = {
   id: string;
   title: string;
   description: string;
@@ -12,15 +12,15 @@ export interface Feature {
   roi?: string;
   documentLink?: string;
   keyFeatures?: string[];
-}
+};
 
-export interface RoadmapPhase {
+export type RoadmapPhase = {
   id: string;
   title: string;
   description: string;
   timeline: string;
   features: Feature[];
-}
+};
 
 export const roadmapData: RoadmapPhase[] = [
   {
@@ -31,7 +31,7 @@ export const roadmapData: RoadmapPhase[] = [
     features: [
       {
         id: "multi-model-access",
-        title: "36+ AI Models from 7 Providers",
+        title: "40+ AI Models from 9 Providers",
         description:
           "Access Claude, GPT, Gemini, Grok, DeepSeek, and more from a single interface with automatic model discovery",
         status: "completed",
@@ -39,9 +39,9 @@ export const roadmapData: RoadmapPhase[] = [
         effort: "Completed",
         impact: "Core product differentiator",
         keyFeatures: [
-          "Anthropic (Claude Opus, Sonnet, Haiku)",
+          "Anthropic (Claude Opus 4.8, Sonnet 4.6, Haiku)",
           "OpenAI (GPT-5, GPT-5 Codex)",
-          "Google (Gemini 2.5 Pro, Flash)",
+          "Google (Gemini 2.5 Pro, Flash, Flash Image)",
           "xAI (Grok 4, Grok 3)",
           "DeepSeek, Mistral, Groq, Cerebras, and more",
         ],
@@ -299,7 +299,7 @@ export const roadmapData: RoadmapPhase[] = [
     title: "Phase 3: Competitive Advantage",
     description:
       "Features that make Bedda the clear choice over any single AI provider",
-    timeline: "In Progress (Q2 2026)",
+    timeline: "Completed (Q2-Q3 2026)",
     features: [
       {
         id: "projects",
@@ -434,7 +434,7 @@ export const roadmapData: RoadmapPhase[] = [
     id: "phase-4",
     title: "Phase 4: Platform & Scale",
     description: "Team features, API access, and enterprise capabilities",
-    timeline: "Q3-Q4 2026",
+    timeline: "In Progress (Q3-Q4 2026)",
     features: [
       {
         id: "mobile-pwa",
@@ -471,9 +471,9 @@ export const roadmapData: RoadmapPhase[] = [
       },
       {
         id: "chat-platform-bots",
-        title: "Chat Platform Integrations (Slack, Discord, GitHub, Telegram)",
+        title: "Chat Platform Integrations (Slack, Discord, GitHub, Telegram, WhatsApp, Teams)",
         description:
-          "Native bots for Slack, Discord, GitHub, and Telegram — bring multi-model AI access to where teams already work",
+          "Native bots for Slack, Discord, GitHub, Telegram, WhatsApp, and Microsoft Teams — bring multi-model AI access to where teams already work",
         status: "completed",
         priority: "high",
         effort: "Completed",
@@ -485,6 +485,8 @@ export const roadmapData: RoadmapPhase[] = [
           "Discord bot via Interactions API (/bedda slash command)",
           "GitHub bot for PR review, issue triage, and comment responses",
           "Telegram bot for private chats and group @mentions",
+          "WhatsApp Cloud API bot",
+          "Microsoft Teams Outgoing Webhook bot",
           "Model aliases: claude, gpt, gemini, grok, mistral, deepseek, and more",
           "HMAC/Ed25519 signature verification on all webhook endpoints",
         ],
@@ -509,15 +511,15 @@ export const roadmapData: RoadmapPhase[] = [
         title: "Enterprise Features",
         description:
           "SSO, audit logging, compliance, and dedicated support for organizations",
-        status: "in-progress",
+        status: "completed",
         priority: "medium",
-        effort: "Partially shipped",
+        effort: "Completed",
         keyFeatures: [
-          "Audit logging for all key user actions -- shipped",
-          "Admin dashboard with metrics and audit log viewer -- shipped",
-          "SAML/SSO integration (planned)",
+          "Audit logging for all key user actions",
+          "Admin dashboard with per-model latency, token, and error metrics",
+          "SAML/SSO via WorkOS (per-domain, enterprise-tier only)",
+          "Org-level model allowlist/denylist + monthly cost cap per team",
           "Data residency controls (planned)",
-          "Custom model routing (planned)",
           "SLA guarantees (planned)",
           "Dedicated support (planned)",
         ],
@@ -527,16 +529,16 @@ export const roadmapData: RoadmapPhase[] = [
         title: "Plugin & Extension System",
         description:
           "User-defined webhook plugins and integrations that extend AI with custom tools",
-        status: "in-progress",
+        status: "completed",
         priority: "medium",
-        effort: "Partially shipped",
+        effort: "Completed",
         keyFeatures: [
-          "User-defined webhook plugin tools -- shipped",
-          "AES-256-GCM encrypted API key storage -- shipped",
-          "Plugin tool dispatch with 5s timeout -- shipped",
-          "Plugin marketplace (planned)",
+          "User-defined webhook plugin tools",
+          "AES-256-GCM encrypted API key storage",
+          "Plugin tool dispatch with 5s timeout",
+          "Plugin marketplace with 20 curated plugins",
           "Community-built extensions (planned)",
-          "Third-party integrations (Teams, Linear) (planned)",
+          "Third-party integrations (Linear) (planned)",
         ],
       },
     ],
@@ -545,8 +547,8 @@ export const roadmapData: RoadmapPhase[] = [
 
 export const roadmapStats = {
   totalFeatures: 30,
-  completedFeatures: 28,
-  inProgressFeatures: 2,
+  completedFeatures: 30,
+  inProgressFeatures: 0,
   plannedFeatures: 0,
   estimatedValue: "$500k+/month (at 100k users)",
   targetMargins: "50-55% gross profit",
@@ -554,7 +556,7 @@ export const roadmapStats = {
 
 export const expectedImpact = {
   competitiveAdvantages: {
-    multiModel: "36+ models from 9 providers under one subscription",
+    multiModel: "40+ models from 9 providers under one subscription",
     pricing: "40-60% cheaper than subscribing to individual providers",
     imageStudio: "Multi-model image gen (beats Claude which has none)",
     videoStudio: "Video gen at $12/mo (competitors charge $20-250/mo)",

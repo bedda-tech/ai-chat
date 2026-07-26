@@ -324,7 +324,7 @@ vercel --prod
 
 ---
 
-**Last Updated:** 2026-06-11
+**Last Updated:** 2026-07-26
 **Status:** Code 100% complete. Stripe live mode requires running scripts/deploy-production.sh with live credentials, then activating billing portal at dashboard.stripe.com/settings/billing/portal.
 
 ---

@@ -11,6 +11,37 @@ _No unreleased changes._
 
 ---
 
+## [2.1.0] — 2026-07-26
+
+### Models
+- `c54b955` feat(models): add Claude Sonnet 4.6 and Opus 4.8 to model catalog (now 40+ models)
+
+### Chat Experience
+- `8bab916` feat(chat): add localStorage persistence for chat history (offline resilience)
+- `cf817f8` feat(chat): add message grouping with tighter spacing and per-group timestamps
+- `40548d8` feat(model-selector): add model health indicators from static status feed
+- `7cf769e` feat(model-prefs): per-model preference persistence by use-case category
+
+### Usage & Cost Transparency
+- `f07bc27` feat(usage): show per-message cost for all models with internal pricing fallback
+- `852f4e1` feat(usage): add /api/usage/daily endpoint for chat UI rate-limit display
+
+### Knowledge Base
+- `153b0b6` feat(knowledge-base): add PDF support via pdf-parse
+
+### Growth & Retention
+- `cf817f8` feat(growth): surface referral card, wire Sentry DSN, add near-limit nudge
+- `6edb3db` feat: wire free-tier entitlements to proven free model APIs
+
+### Security
+- `04c4e8e` security: fix open redirect, timing-safe unsub token, and WorkOS CSRF
+- `05139f9` fix(security): close three cost-guard gaps for guest/free tier
+
+### Performance
+- `75a96de` perf(models-cache): cache enriched models and deduplicate concurrent misses
+
+---
+
 ## [2.0.0] — 2026-06-11
 
 ### Enterprise
