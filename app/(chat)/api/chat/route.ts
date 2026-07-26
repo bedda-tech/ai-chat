@@ -586,8 +586,15 @@ export async function POST(request: Request) {
               imageGenerationEnabled: isGemini25FlashImage,
             },
           },
-          onFinish: async ({ usage, response }) => {
+          onFinish: async ({ usage, response, steps }) => {
             const latency = Date.now() - requestStart;
+            const toolsUsed = [
+              ...new Set(
+                steps.flatMap(
+                  (step) => step.toolCalls?.map((tc) => tc.toolName) ?? []
+                )
+              ),
+            ];
             try {
               const providers = await getTokenlensCatalog();
               const modelId =
@@ -688,7 +695,7 @@ export async function POST(request: Request) {
                   cachedTokens,
                   latency,
                   cacheHit,
-                  toolsUsed: [],
+                  toolsUsed,
                   success: true,
                 });
 
