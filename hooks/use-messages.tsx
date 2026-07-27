@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import type { ChatMessage } from "@/lib/types";
 import { useScrollToBottom } from "./use-scroll-to-bottom";
 
+/** Combines scroll-to-bottom state with a `hasSentMessage` flag that activates once the chat status reaches "submitted". */
 export function useMessages({
   status,
 }: {
