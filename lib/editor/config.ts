@@ -22,6 +22,7 @@ export function headingRule(level: number) {
   );
 }
 
+/** Applies a ProseMirror transaction to the editor view and calls `onSaveContent` when the document changes, with debounce unless the transaction opts out. */
 export const handleTransaction = ({
   transaction,
   editorRef,
