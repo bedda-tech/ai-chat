@@ -7,9 +7,15 @@ let _publisher: RedisClient | null = null;
 let _publisherConnecting = false;
 
 async function getPublisher(): Promise<RedisClient | null> {
-  if (!process.env.REDIS_URL) return null;
-  if (_publisher?.isReady) return _publisher;
-  if (_publisherConnecting) return null;
+  if (!process.env.REDIS_URL) {
+    return null;
+  }
+  if (_publisher?.isReady) {
+    return _publisher;
+  }
+  if (_publisherConnecting) {
+    return null;
+  }
   try {
     _publisherConnecting = true;
     const client = createClient({ url: process.env.REDIS_URL });
@@ -37,7 +43,9 @@ export async function publishChatEvent(
   event: RealtimeEvent
 ): Promise<void> {
   const pub = await getPublisher();
-  if (!pub) return;
+  if (!pub) {
+    return;
+  }
   try {
     await pub.publish(`team:chat:${chatId}`, JSON.stringify(event));
   } catch (err) {
@@ -47,7 +55,9 @@ export async function publishChatEvent(
 
 /** Creates a dedicated Redis subscriber client for receiving pub/sub events; returns null if REDIS_URL is unset or connection fails. */
 export async function createSubscriber(): Promise<RedisClient | null> {
-  if (!process.env.REDIS_URL) return null;
+  if (!process.env.REDIS_URL) {
+    return null;
+  }
   try {
     const client = createClient({ url: process.env.REDIS_URL });
     client.on("error", (err) =>
@@ -68,13 +78,16 @@ export const TYPING_KEY = (chatId: string, userId: string) =>
 
 export const TYPING_TTL_SECONDS = 4;
 
+/** Records a user's typing indicator in Redis with a short TTL so it auto-expires when the user stops typing. */
 export async function setTyping(
   chatId: string,
   userId: string,
   userName: string
 ): Promise<void> {
   const pub = await getPublisher();
-  if (!pub) return;
+  if (!pub) {
+    return;
+  }
   try {
     await pub.set(TYPING_KEY(chatId, userId), userName, {
       EX: TYPING_TTL_SECONDS,
