@@ -655,6 +655,7 @@ export async function updateChatVisiblityById({
   }
 }
 
+/** Persists the merged server-enriched usage context for a chat, used to resume session state across requests. */
 export async function updateChatLastContextById({
   chatId,
   context,
