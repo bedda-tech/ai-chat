@@ -376,6 +376,9 @@ export async function clearCache(): Promise<void> {
 const REDACTED_RESPONSE =
   "I can't share my internal instructions or configuration. Is there something else I can help you with?";
 
+const JAILBREAK_BLOCKED_RESPONSE =
+  "I can't process that request. If you have a legitimate question, feel free to ask in a different way.";
+
 /**
  * Fragments that, if present in a model response, indicate system prompt leakage.
  * These are stable strings from prompts.ts that the model should never repeat verbatim.
@@ -397,6 +400,19 @@ const SYSTEM_PROMPT_FRAGMENTS = [
   "artifactsPrompt",
 ];
 
+// Prompt injection / jailbreak patterns — specific enough to avoid common false positives
+const JAILBREAK_PATTERNS: RegExp[] = [
+  /ignore\s+(all\s+)?previous\s+instructions?/i,
+  /ignore\s+your\s+(system\s+prompt|instructions?|guidelines?|constraints?)/i,
+  /disregard\s+(all\s+)?(previous\s+)?instructions?/i,
+  /bypass\s+(your\s+)?(safety\s+)?(filters?|restrictions?|guidelines?)/i,
+  /\bDAN\s+mode\b/i,
+  /act\s+as\s+(if\s+you\s+have\s+no|an?\s+AI\s+with\s+no)\s+restrictions?/i,
+  /pretend\s+(you\s+have\s+no|to\s+have\s+no)\s+restrictions?/i,
+  /you\s+are\s+now\s+DAN\b/i,
+  /override\s+(your\s+)?(system\s+prompt|instructions?|programming)/i,
+];
+
 function containsSystemPromptLeak(text: string): boolean {
   const lower = text.toLowerCase();
   return SYSTEM_PROMPT_FRAGMENTS.some((fragment) =>
@@ -404,16 +420,65 @@ function containsSystemPromptLeak(text: string): boolean {
   );
 }
 
+type PromptMessage = { role: string; content: unknown };
+
+function extractUserText(messages: PromptMessage[]): string {
+  const userMessages = messages.filter((m) => m.role === "user").slice(-3);
+  return userMessages
+    .map((m) => {
+      if (typeof m.content === "string") return m.content;
+      if (Array.isArray(m.content)) {
+        return (m.content as Array<{ type?: string; text?: string }>)
+          .filter((p) => p.type === "text")
+          .map((p) => p.text ?? "")
+          .join(" ");
+      }
+      return "";
+    })
+    .join(" ");
+}
+
+function containsJailbreakAttempt(messages: PromptMessage[]): boolean {
+  const text = extractUserText(messages);
+  return JAILBREAK_PATTERNS.some((pattern) => pattern.test(text));
+}
+
+function makeSyntheticGenResult(
+  text: string,
+): { content: Array<{ type: "text"; text: string }>; finishReason: string; usage: { inputTokens: { total: number }; outputTokens: { total: number } }; warnings: never[] } {
+  return {
+    content: [{ type: "text" as const, text }],
+    finishReason: "stop",
+    usage: {
+      inputTokens: { total: 0 },
+      outputTokens: { total: 0 },
+    },
+    warnings: [],
+  };
+}
+
 /**
- * Guardrails middleware — Phase 1.
- * Detects system prompt leakage in non-streaming (generate) responses and replaces
- * the output with a safe fallback message. Streaming responses pass through — buffering
- * full streams to intercept is a Phase 2 concern.
+ * Guardrails middleware — detects and blocks:
+ * 1. Prompt injection / jailbreak attempts in user input (wrapGenerate + wrapStream)
+ * 2. System prompt leakage in model output (wrapGenerate)
+ *
+ * Streaming responses pass through for output filtering — buffering full streams
+ * degrades perceived latency and is deferred to a future phase.
  */
 export const guardrailsMiddleware: LanguageModelMiddleware = {
   specificationVersion: "v3",
 
-  wrapGenerate: async ({ doGenerate, model }) => {
+  wrapGenerate: async ({ doGenerate, params, model }) => {
+    // Block prompt injection before calling the model
+    if (containsJailbreakAttempt(params.prompt as PromptMessage[])) {
+      console.warn(
+        `[guardrails] Jailbreak attempt blocked in generate (model: ${model.modelId})`
+      );
+      return makeSyntheticGenResult(JAILBREAK_BLOCKED_RESPONSE) as unknown as Awaited<
+        ReturnType<typeof doGenerate>
+      >;
+    }
+
     const result = await doGenerate();
 
     // In AI SDK v6, text content lives in result.content (array of parts)
@@ -437,7 +502,34 @@ export const guardrailsMiddleware: LanguageModelMiddleware = {
     return result;
   },
 
-  // Phase 2: accumulate stream chunks and intercept mid-stream.
-  // For now, pass through — buffering degrades perceived latency.
-  wrapStream: async ({ doStream }) => doStream(),
+  wrapStream: async ({ doStream, params, model }) => {
+    // Block prompt injection before opening the stream
+    if (containsJailbreakAttempt(params.prompt as PromptMessage[])) {
+      console.warn(
+        `[guardrails] Jailbreak attempt blocked in stream (model: ${model.modelId})`
+      );
+      const text = JAILBREAK_BLOCKED_RESPONSE;
+      const syntheticStream = new ReadableStream({
+        start(controller) {
+          controller.enqueue({ type: "stream-start", warnings: [] });
+          const id = "guardrails-blocked";
+          controller.enqueue({ type: "text-start", id });
+          controller.enqueue({ type: "text-delta", id, delta: text });
+          controller.enqueue({ type: "text-end", id });
+          controller.enqueue({
+            type: "finish",
+            finishReason: "stop",
+            usage: {
+              inputTokens: { total: 0 },
+              outputTokens: { total: 0 },
+            },
+          });
+          controller.close();
+        },
+      });
+      return { stream: syntheticStream } as Awaited<ReturnType<typeof doStream>>;
+    }
+
+    return doStream();
+  },
 };
