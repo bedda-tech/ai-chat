@@ -152,9 +152,9 @@ export default function TeamsPage() {
           </h1>
           <p className="mx-auto mb-8 max-w-2xl text-muted-foreground text-xl">
             Stop paying $30/user for ChatGPT Teams and getting one model. Bedda
-            gives your entire team Claude, GPT-5, Gemini, Grok and 36+ AI
-            models — with shared workspaces, admin controls, and bots in every
-            tool you use. From $12/user/mo.
+            gives your entire team Claude, GPT-5, Gemini, Grok and 36+ AI models
+            — with shared workspaces, admin controls, and bots in every tool you
+            use. From $12/user/mo.
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button asChild size="lg">
@@ -181,7 +181,9 @@ export default function TeamsPage() {
                 <div className="font-bold text-3xl text-primary">
                   {stat.value}
                 </div>
-                <div className="text-muted-foreground text-sm">{stat.label}</div>
+                <div className="text-muted-foreground text-sm">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </div>
@@ -202,10 +204,7 @@ export default function TeamsPage() {
           </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {teamFeatures.map((feature) => (
-              <div
-                className="rounded-lg border p-6"
-                key={feature.title}
-              >
+              <div className="rounded-lg border p-6" key={feature.title}>
                 <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
                   <feature.icon className="h-5 w-5 text-primary" />
                 </div>
@@ -312,17 +311,17 @@ export default function TeamsPage() {
           </div>
           <div className="mx-auto grid max-w-3xl gap-6 md:grid-cols-3">
             <div className="text-center">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold text-xl">
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground text-xl">
                 1
               </div>
               <h3 className="mb-2 font-semibold">Sign up for bedda</h3>
               <p className="text-muted-foreground text-sm">
-                Create your account and start your 7-day free trial. Choose
-                Plus ($12/mo), Pro ($25/mo), or Max ($50/mo).
+                Create your account and start your 7-day free trial. Choose Plus
+                ($12/mo), Pro ($25/mo), or Max ($50/mo).
               </p>
             </div>
             <div className="text-center">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold text-xl">
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground text-xl">
                 2
               </div>
               <h3 className="mb-2 font-semibold">Create a team workspace</h3>
@@ -332,7 +331,7 @@ export default function TeamsPage() {
               </p>
             </div>
             <div className="text-center">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold text-xl">
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground text-xl">
                 3
               </div>
               <h3 className="mb-2 font-semibold">Upload your docs & ship</h3>
@@ -366,7 +365,9 @@ export default function TeamsPage() {
                 ].map((item) => (
                   <li className="flex items-start gap-2" key={item}>
                     <Check className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
-                    <span className="text-muted-foreground text-sm">{item}</span>
+                    <span className="text-muted-foreground text-sm">
+                      {item}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -375,7 +376,9 @@ export default function TeamsPage() {
               <div className="rounded-lg border bg-background p-6">
                 <div className="mb-3 flex items-center gap-3">
                   <Zap className="h-5 w-5 text-yellow-500" />
-                  <span className="font-semibold">Productivity gains teams report</span>
+                  <span className="font-semibold">
+                    Productivity gains teams report
+                  </span>
                 </div>
                 <div className="space-y-3">
                   <div>
@@ -416,7 +419,9 @@ export default function TeamsPage() {
               <div className="rounded-lg border bg-background p-6">
                 <div className="mb-3 flex items-center gap-3">
                   <BarChart3 className="h-5 w-5 text-blue-500" />
-                  <span className="font-semibold">Cost comparison for a 10-person team</span>
+                  <span className="font-semibold">
+                    Cost comparison for a 10-person team
+                  </span>
                 </div>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">

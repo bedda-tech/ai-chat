@@ -19,10 +19,13 @@ async function requireEnterprise(userId: string): Promise<Response | null> {
 
 export async function GET() {
   const session = await auth();
-  if (!session?.user)
+  if (!session?.user) {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
+  }
   const err = await requireEnterprise(session.user.id);
-  if (err) return err;
+  if (err) {
+    return err;
+  }
 
   const configs = await getAllSsoConfigs();
   return Response.json({ configs });
@@ -30,10 +33,13 @@ export async function GET() {
 
 export async function POST(request: Request) {
   const session = await auth();
-  if (!session?.user)
+  if (!session?.user) {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
+  }
   const err = await requireEnterprise(session.user.id);
-  if (err) return err;
+  if (err) {
+    return err;
+  }
 
   const body = await request.json();
   const {
@@ -64,13 +70,18 @@ export async function POST(request: Request) {
 
 export async function DELETE(request: Request) {
   const session = await auth();
-  if (!session?.user)
+  if (!session?.user) {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
+  }
   const err = await requireEnterprise(session.user.id);
-  if (err) return err;
+  if (err) {
+    return err;
+  }
 
   const { id } = await request.json();
-  if (!id) return Response.json({ error: "id is required" }, { status: 400 });
+  if (!id) {
+    return Response.json({ error: "id is required" }, { status: 400 });
+  }
 
   await deleteSsoConfig(id);
   return Response.json({ success: true });

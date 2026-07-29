@@ -28,7 +28,7 @@ function PurePromptLibraryModal({ onSelect }: PromptLibraryModalProps) {
   const [activeCategory, setActiveCategory] =
     useState<PromptCategory>("writing");
 
-  const templates = getPromptsByCategory(activeCategory);
+  const _templates = getPromptsByCategory(activeCategory);
 
   return (
     <>

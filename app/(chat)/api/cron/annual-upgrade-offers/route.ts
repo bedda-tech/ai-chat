@@ -20,7 +20,9 @@ const PLAN_META: Record<
 };
 
 async function getRedis() {
-  if (!process.env.REDIS_URL) return null;
+  if (!process.env.REDIS_URL) {
+    return null;
+  }
   try {
     const client = createClient({ url: process.env.REDIS_URL });
     client.on("error", () => {});
@@ -115,7 +117,9 @@ export async function GET(req: NextRequest) {
     }
   }
 
-  if (redis?.isReady) await redis.disconnect().catch(() => {});
+  if (redis?.isReady) {
+    await redis.disconnect().catch(() => {});
+  }
   await client.end();
 
   return NextResponse.json({ sent, skipped, errors, total: eligible.length });

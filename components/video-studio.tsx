@@ -26,14 +26,14 @@ type JobStatus = "idle" | "submitting" | "processing" | "completed" | "failed";
 type Mode = "text" | "image";
 type Quality = "standard" | "pro";
 
-interface HistoryJob {
+type HistoryJob = {
   id: string;
   prompt: string;
   videoUrl: string | null;
   status: string;
   createdAt: string;
   mode: string;
-}
+};
 
 export function VideoStudio() {
   const [mode, setMode] = useState<Mode>("text");
@@ -67,7 +67,9 @@ export function VideoStudio() {
   const fetchHistory = useCallback(async () => {
     try {
       const res = await fetch("/api/studio/video/history");
-      if (!res.ok) return;
+      if (!res.ok) {
+        return;
+      }
       const data = await res.json();
       setHistory(data.jobs ?? []);
     } catch {
@@ -84,7 +86,9 @@ export function VideoStudio() {
       try {
         const jobId = jobIdRef.current;
         const params = new URLSearchParams({ id: requestId, appId });
-        if (jobId) params.set("jobId", jobId);
+        if (jobId) {
+          params.set("jobId", jobId);
+        }
         const res = await fetch(`/api/studio/video?${params.toString()}`);
         const data = await res.json();
 
@@ -135,15 +139,21 @@ export function VideoStudio() {
   const handleFileChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const file = e.target.files?.[0];
-      if (file) handleImageUpload(file);
+      if (file) {
+        handleImageUpload(file);
+      }
     },
     [handleImageUpload]
   );
 
   const handleGenerate = useCallback(async () => {
     const busy = jobStatus === "submitting" || jobStatus === "processing";
-    if (!prompt.trim() || busy) return;
-    if (mode === "image" && !imageUrl) return;
+    if (!prompt.trim() || busy) {
+      return;
+    }
+    if (mode === "image" && !imageUrl) {
+      return;
+    }
 
     setJobStatus("submitting");
     setError(null);
@@ -201,7 +211,9 @@ export function VideoStudio() {
   ]);
 
   const handleDownload = useCallback(() => {
-    if (!videoUrl) return;
+    if (!videoUrl) {
+      return;
+    }
     const a = document.createElement("a");
     a.href = videoUrl;
     a.download = `bedda-video-${Date.now()}.mp4`;
@@ -213,7 +225,9 @@ export function VideoStudio() {
     setMode(newMode);
     setImageUrl(null);
     setImageError(null);
-    if (fileInputRef.current) fileInputRef.current.value = "";
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
   }, []);
 
   const isGenerating = jobStatus === "submitting" || jobStatus === "processing";
@@ -326,8 +340,9 @@ export function VideoStudio() {
                       onClick={() => {
                         setImageUrl(null);
                         setImageError(null);
-                        if (fileInputRef.current)
+                        if (fileInputRef.current) {
                           fileInputRef.current.value = "";
+                        }
                       }}
                       size="sm"
                       variant="outline"

@@ -10,7 +10,9 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 async function getRedis() {
-  if (!process.env.REDIS_URL) return null;
+  if (!process.env.REDIS_URL) {
+    return null;
+  }
   try {
     const client = createClient({ url: process.env.REDIS_URL });
     client.on("error", () => {});
@@ -65,15 +67,9 @@ export async function GET(req: NextRequest) {
     .having(
       and(
         // Last activity was more than 14 days ago
-        lt(
-          sql<Date>`max(${schema.usageEvent.createdAt})`,
-          fourteenDaysAgo
-        ),
+        lt(sql<Date>`max(${schema.usageEvent.createdAt})`, fourteenDaysAgo),
         // But not more than 30 days ago (beyond that they're truly churned)
-        gt(
-          sql<Date>`max(${schema.usageEvent.createdAt})`,
-          thirtyDaysAgo
-        )
+        gt(sql<Date>`max(${schema.usageEvent.createdAt})`, thirtyDaysAgo)
       )
     );
 
@@ -99,7 +95,9 @@ export async function GET(req: NextRequest) {
       await sendReengagementEmail(u.email, u.userId);
       // 30-day TTL — one re-engagement email per month per user
       if (redis?.isReady) {
-        await redis.set(redisKey, "1", { EX: 30 * 24 * 60 * 60 }).catch(() => {});
+        await redis
+          .set(redisKey, "1", { EX: 30 * 24 * 60 * 60 })
+          .catch(() => {});
       }
       sent++;
     } catch {
@@ -107,7 +105,9 @@ export async function GET(req: NextRequest) {
     }
   }
 
-  if (redis?.isReady) await redis.disconnect().catch(() => {});
+  if (redis?.isReady) {
+    await redis.disconnect().catch(() => {});
+  }
   await client.end();
 
   return NextResponse.json({

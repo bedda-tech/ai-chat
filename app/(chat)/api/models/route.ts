@@ -57,7 +57,7 @@ export async function GET(request: Request) {
           },
         }
       );
-    } catch (fallbackError) {
+    } catch (_fallbackError) {
       // Complete failure
       return NextResponse.json(
         {

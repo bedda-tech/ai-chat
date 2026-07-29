@@ -7,33 +7,33 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-interface Team {
+type Team = {
   id: string;
   name: string;
   ownerId: string;
   role: string;
   createdAt: string;
-}
+};
 
-interface BillingInfo {
+type BillingInfo = {
   seatLimit: number;
   memberCount: number;
   hasSubscription: boolean;
   billingPortalUrl: string | null;
-}
+};
 
-interface TeamMember {
+type TeamMember = {
   userId: string;
   email: string;
   role: string;
   joinedAt: string;
-}
+};
 
-interface PendingInvite {
+type PendingInvite = {
   id: string;
   email: string;
   expiresAt: string;
-}
+};
 
 export function TeamManagement({ userId }: { userId: string }) {
   const [teams, setTeams] = useState<Team[]>([]);
@@ -77,7 +77,9 @@ export function TeamManagement({ userId }: { userId: string }) {
       setLoadingBilling(true);
       try {
         const r = await fetch(`/api/teams/${team.id}/billing`);
-        if (r.ok) setBilling(await r.json());
+        if (r.ok) {
+          setBilling(await r.json());
+        }
       } catch {
         // Billing info is optional
       } finally {
@@ -87,7 +89,9 @@ export function TeamManagement({ userId }: { userId: string }) {
   }
 
   async function upgradeBilling() {
-    if (!selectedTeam) return;
+    if (!selectedTeam) {
+      return;
+    }
     setUpgradingBilling(true);
     try {
       const r = await fetch(`/api/teams/${selectedTeam.id}/billing`, {
@@ -96,8 +100,12 @@ export function TeamManagement({ userId }: { userId: string }) {
         body: JSON.stringify({ quantity: members.length || 1 }),
       });
       const data = await r.json();
-      if (!r.ok) throw new Error(data.error ?? "Failed to start billing");
-      if (data.checkoutUrl) window.location.href = data.checkoutUrl;
+      if (!r.ok) {
+        throw new Error(data.error ?? "Failed to start billing");
+      }
+      if (data.checkoutUrl) {
+        window.location.href = data.checkoutUrl;
+      }
     } catch (err) {
       toast.error(
         err instanceof Error ? err.message : "Failed to start billing"
@@ -108,7 +116,9 @@ export function TeamManagement({ userId }: { userId: string }) {
   }
 
   async function createTeam() {
-    if (!newTeamName.trim()) return;
+    if (!newTeamName.trim()) {
+      return;
+    }
     setCreating(true);
     try {
       const r = await fetch("/api/teams", {
@@ -117,7 +127,9 @@ export function TeamManagement({ userId }: { userId: string }) {
         body: JSON.stringify({ name: newTeamName.trim() }),
       });
       const data = await r.json();
-      if (!r.ok) throw new Error(data.error ?? "Failed to create team");
+      if (!r.ok) {
+        throw new Error(data.error ?? "Failed to create team");
+      }
       setTeams((prev) => [...prev, { ...data.team, role: "admin" }]);
       setNewTeamName("");
       toast.success("Team created");
@@ -129,7 +141,9 @@ export function TeamManagement({ userId }: { userId: string }) {
   }
 
   async function inviteMember() {
-    if (!inviteEmail.trim() || !selectedTeam) return;
+    if (!inviteEmail.trim() || !selectedTeam) {
+      return;
+    }
     setInviting(true);
     try {
       const r = await fetch(`/api/teams/${selectedTeam.id}/members`, {
@@ -160,13 +174,17 @@ export function TeamManagement({ userId }: { userId: string }) {
   }
 
   async function removeMember(memberId: string) {
-    if (!selectedTeam) return;
+    if (!selectedTeam) {
+      return;
+    }
     try {
       const r = await fetch(
         `/api/teams/${selectedTeam.id}/members?userId=${memberId}`,
         { method: "DELETE" }
       );
-      if (!r.ok) throw new Error("Failed to remove member");
+      if (!r.ok) {
+        throw new Error("Failed to remove member");
+      }
       setMembers((prev) => prev.filter((m) => m.userId !== memberId));
       toast.success("Member removed");
     } catch {

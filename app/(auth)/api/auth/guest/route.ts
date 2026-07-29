@@ -33,7 +33,9 @@ async function getRedis(): Promise<ReturnType<typeof createClient> | null> {
 }
 
 function safeRedirectPath(raw: string | null, requestUrl: string): string {
-  if (!raw) return "/";
+  if (!raw) {
+    return "/";
+  }
   try {
     const parsed = new URL(raw);
     const origin = new URL(requestUrl).origin;
@@ -52,7 +54,10 @@ function safeRedirectPath(raw: string | null, requestUrl: string): string {
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const redirectUrl = safeRedirectPath(searchParams.get("redirectUrl"), request.url);
+  const redirectUrl = safeRedirectPath(
+    searchParams.get("redirectUrl"),
+    request.url
+  );
 
   const token = await getToken({
     req: request,

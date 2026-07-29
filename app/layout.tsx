@@ -101,7 +101,6 @@ export default function RootLayout({
     >
       <head>
         <script
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: "Required"
           dangerouslySetInnerHTML={{
             __html: THEME_COLOR_SCRIPT,
           }}
@@ -145,7 +144,6 @@ export default function RootLayout({
               ],
             }),
           }}
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
           type="application/ld+json"
         />
       </head>
@@ -176,7 +174,6 @@ export default function RootLayout({
                 `,
               }}
               id="ga-init"
-              // biome-ignore lint/security/noDangerouslySetInnerHtml: GA4 init requires inline script
               strategy="afterInteractive"
             />
           </>

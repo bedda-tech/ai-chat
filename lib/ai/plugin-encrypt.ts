@@ -5,14 +5,18 @@ const ALGO = "aes-256-gcm";
 
 function getKey(): Buffer | null {
   const hex = process.env[KEY_ENV];
-  if (!hex || hex.length < 64) return null;
+  if (!hex || hex.length < 64) {
+    return null;
+  }
   return Buffer.from(hex.slice(0, 64), "hex");
 }
 
 /** Encrypts `plaintext` with AES-256-GCM; returns plaintext unchanged if PLUGIN_TOOL_ENCRYPTION_KEY is not set. */
 export function encryptValue(plaintext: string): string {
   const key = getKey();
-  if (!key) return plaintext; // no-op if key not configured
+  if (!key) {
+    return plaintext; // no-op if key not configured
+  }
   const iv = randomBytes(12);
   const cipher = createCipheriv(ALGO, key, iv);
   const encrypted = Buffer.concat([
@@ -25,7 +29,9 @@ export function encryptValue(plaintext: string): string {
 
 export function decryptValue(ciphertext: string): string {
   const key = getKey();
-  if (!key) return ciphertext; // no-op if key not configured
+  if (!key) {
+    return ciphertext; // no-op if key not configured
+  }
   try {
     const buf = Buffer.from(ciphertext, "base64");
     const iv = buf.subarray(0, 12);

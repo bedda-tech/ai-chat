@@ -65,7 +65,9 @@ function PureVoiceRecorderButton({
     onError: handleError,
   });
 
-  if (!isSupported) return null;
+  if (!isSupported) {
+    return null;
+  }
 
   const isRecording = state === "recording";
   const isProcessing = state === "processing";

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import useSWR from "swr";
 import { toast } from "sonner";
+import useSWR from "swr";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import {
@@ -42,7 +42,9 @@ export function ModelPreferencesForm() {
     if (dynamicModels.length > 0) {
       const seen = new Set<string>();
       const merged = [...dynamicModels, ...chatModels].filter((m) => {
-        if (seen.has(m.id)) return false;
+        if (seen.has(m.id)) {
+          return false;
+        }
         seen.add(m.id);
         return true;
       });
@@ -68,7 +70,9 @@ export function ModelPreferencesForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ modelPreferences: prefs }),
       });
-      if (!res.ok) throw new Error("Failed to save");
+      if (!res.ok) {
+        throw new Error("Failed to save");
+      }
       await mutate();
       toast.success("Model preferences saved");
     } catch {
@@ -90,9 +94,8 @@ export function ModelPreferencesForm() {
     <div className="space-y-4">
       <div>
         <p className="text-muted-foreground text-xs">
-          Set a default model for each use-case. The{" "}
-          <strong>General</strong> default is used for new chats when no model
-          is pinned.
+          Set a default model for each use-case. The <strong>General</strong>{" "}
+          default is used for new chats when no model is pinned.
         </p>
       </div>
 
@@ -102,9 +105,7 @@ export function ModelPreferencesForm() {
             {cat.label}
           </Label>
           <Select
-            onValueChange={(v) =>
-              setPrefs((p) => ({ ...p, [cat.id]: v }))
-            }
+            onValueChange={(v) => setPrefs((p) => ({ ...p, [cat.id]: v }))}
             value={prefs[cat.id] ?? ""}
           >
             <SelectTrigger className="flex-1">

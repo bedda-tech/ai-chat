@@ -3,12 +3,12 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useSWRConfig } from "swr";
 
-export interface TypingUser {
+export type TypingUser = {
   userId: string;
   userName: string;
   /** timestamp when the typing event was received */
   since: number;
-}
+};
 
 const TYPING_DISPLAY_MS = 4000;
 
@@ -20,7 +20,9 @@ export function useTeamRealtime(chatId: string, enabled: boolean) {
 
   // Expire stale typing indicators
   useEffect(() => {
-    if (!enabled) return;
+    if (!enabled) {
+      return;
+    }
     const interval = setInterval(() => {
       const now = Date.now();
       setTypingUsers((prev) =>
@@ -31,7 +33,9 @@ export function useTeamRealtime(chatId: string, enabled: boolean) {
   }, [enabled]);
 
   const connect = useCallback(() => {
-    if (!enabled || typeof window === "undefined") return;
+    if (!enabled || typeof window === "undefined") {
+      return;
+    }
     if (esRef.current) {
       esRef.current.close();
       esRef.current = null;
@@ -51,10 +55,12 @@ export function useTeamRealtime(chatId: string, enabled: boolean) {
       if (payload.type === "new_message") {
         // Invalidate the chat messages SWR cache so they refetch
         mutate((key: unknown) => {
-          if (typeof key === "string")
+          if (typeof key === "string") {
             return key.includes(`/api/chat/${chatId}/messages`);
-          if (Array.isArray(key))
+          }
+          if (Array.isArray(key)) {
             return key.some((k) => typeof k === "string" && k.includes(chatId));
+          }
           return false;
         });
       } else if (
@@ -79,10 +85,14 @@ export function useTeamRealtime(chatId: string, enabled: boolean) {
   }, [chatId, enabled, mutate]);
 
   useEffect(() => {
-    if (!enabled) return;
+    if (!enabled) {
+      return;
+    }
     connect();
     return () => {
-      if (reconnectTimer.current) clearTimeout(reconnectTimer.current);
+      if (reconnectTimer.current) {
+        clearTimeout(reconnectTimer.current);
+      }
       if (esRef.current) {
         esRef.current.close();
         esRef.current = null;
@@ -91,7 +101,9 @@ export function useTeamRealtime(chatId: string, enabled: boolean) {
   }, [connect, enabled]);
 
   const sendTyping = useCallback(() => {
-    if (!enabled) return;
+    if (!enabled) {
+      return;
+    }
     // Fire-and-forget
     fetch(`/api/realtime/${chatId}`, { method: "POST" }).catch(() => {});
   }, [chatId, enabled]);

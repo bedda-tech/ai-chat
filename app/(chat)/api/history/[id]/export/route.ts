@@ -41,7 +41,9 @@ export async function GET(
       .map((p) => p.text as string)
       .join("\n");
 
-    if (!textContent.trim()) continue;
+    if (!textContent.trim()) {
+      continue;
+    }
 
     lines.push("---", "", `${label}:`, "", textContent, "");
   }

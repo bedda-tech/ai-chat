@@ -22,24 +22,31 @@ export function recordCacheStats(stats: CacheStats) {
   cacheStats.push(stats);
 
   // Log to console in development
-  if (process.env.NODE_ENV === 'development') {
-    console.log(`[Cache] ${stats.cacheHit ? 'HIT' : 'MISS'} - Saved $${stats.costSavings.toFixed(4)}`);
+  if (process.env.NODE_ENV === "development") {
+    console.log(
+      `[Cache] ${stats.cacheHit ? "HIT" : "MISS"} - Saved $${stats.costSavings.toFixed(4)}`
+    );
   }
 }
 
 /**
  * Get cache analytics for a time range
  */
-export function getCacheAnalytics(timeRange: '1h' | '24h' | '7d') {
+export function getCacheAnalytics(timeRange: "1h" | "24h" | "7d") {
   const now = Date.now();
-  const rangeMs = timeRange === '1h' ? 3600000 : timeRange === '24h' ? 86400000 : 604800000;
+  const rangeMs =
+    timeRange === "1h"
+      ? 3_600_000
+      : timeRange === "24h"
+        ? 86_400_000
+        : 604_800_000;
 
   const recentStats = cacheStats.filter(
-    s => now - s.timestamp.getTime() < rangeMs
+    (s) => now - s.timestamp.getTime() < rangeMs
   );
 
   const totalRequests = recentStats.length;
-  const cacheHits = recentStats.filter(s => s.cacheHit).length;
+  const cacheHits = recentStats.filter((s) => s.cacheHit).length;
   const hitRate = totalRequests > 0 ? (cacheHits / totalRequests) * 100 : 0;
 
   const totalSavings = recentStats.reduce((sum, s) => sum + s.costSavings, 0);

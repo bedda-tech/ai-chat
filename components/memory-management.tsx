@@ -8,12 +8,12 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 
-interface Memory {
+type Memory = {
   id: string;
   content: string;
   category: string;
   createdAt: string;
-}
+};
 
 const CATEGORY_COLORS: Record<string, string> = {
   preference: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
@@ -54,7 +54,9 @@ export function MemoryManagement() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ memoryEnabled: enabled }),
       });
-      if (!res.ok) throw new Error("Failed to save");
+      if (!res.ok) {
+        throw new Error("Failed to save");
+      }
       setMemoryEnabled(enabled);
       toast.success(enabled ? "Memory enabled" : "Memory disabled");
     } catch {
@@ -72,7 +74,9 @@ export function MemoryManagement() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id }),
       });
-      if (!res.ok) throw new Error("Failed to delete");
+      if (!res.ok) {
+        throw new Error("Failed to delete");
+      }
       setMemories((prev) => prev.filter((m) => m.id !== id));
       toast.success("Memory deleted");
     } catch {
@@ -83,7 +87,9 @@ export function MemoryManagement() {
   }
 
   async function clearAll() {
-    if (!window.confirm("Delete all memories? This cannot be undone.")) return;
+    if (!window.confirm("Delete all memories? This cannot be undone.")) {
+      return;
+    }
     setClearingAll(true);
     try {
       const res = await fetch("/api/memory", {
@@ -91,7 +97,9 @@ export function MemoryManagement() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ all: true }),
       });
-      if (!res.ok) throw new Error("Failed to clear");
+      if (!res.ok) {
+        throw new Error("Failed to clear");
+      }
       setMemories([]);
       toast.success("All memories cleared");
     } catch {

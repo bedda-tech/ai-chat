@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 
-interface NotionStatus {
+type NotionStatus = {
   connected: boolean;
   workspaceName?: string;
   connectedAt?: string;
-}
+};
 
 export default function NotionPage() {
   const [status, setStatus] = useState<NotionStatus | null>(null);

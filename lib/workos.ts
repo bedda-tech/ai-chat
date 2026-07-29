@@ -1,12 +1,12 @@
 const WORKOS_API_BASE = "https://api.workos.com";
 
-export interface WorkOSUser {
+export type WorkOSUser = {
   id: string;
   email: string;
   first_name: string | null;
   last_name: string | null;
   profile_picture_url: string | null;
-}
+};
 
 /** Builds the WorkOS SSO authorization URL for initiating an OAuth flow. */
 export function getWorkOSAuthorizationUrl({
@@ -25,9 +25,15 @@ export function getWorkOSAuthorizationUrl({
     redirect_uri: redirectUri,
     response_type: "code",
   });
-  if (organizationId) params.set("organization_id", organizationId);
-  if (connectionId) params.set("connection", connectionId);
-  if (state) params.set("state", state);
+  if (organizationId) {
+    params.set("organization_id", organizationId);
+  }
+  if (connectionId) {
+    params.set("connection", connectionId);
+  }
+  if (state) {
+    params.set("state", state);
+  }
   return `${WORKOS_API_BASE}/user_management/authorize?${params}`;
 }
 

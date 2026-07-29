@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-interface SsoConfig {
+type SsoConfig = {
   id: string;
   organizationName: string;
   emailDomain: string;
@@ -11,7 +11,7 @@ interface SsoConfig {
   workosConnectionId: string | null;
   idpMetadataUrl: string | null;
   createdAt: string;
-}
+};
 
 export default function EnterpriseSsoPage() {
   const [configs, setConfigs] = useState<SsoConfig[]>([]);
@@ -89,7 +89,9 @@ export default function EnterpriseSsoPage() {
     setConfigs((prev) => prev.filter((c) => c.id !== id));
   }
 
-  if (loading) return <div className="p-8 text-muted-foreground">Loading…</div>;
+  if (loading) {
+    return <div className="p-8 text-muted-foreground">Loading…</div>;
+  }
 
   if (forbidden) {
     return (

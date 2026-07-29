@@ -85,10 +85,10 @@ async function editInteractionResponse(
   }
 }
 
-interface DiscordOption {
+type DiscordOption = {
   name: string;
   value: string;
-}
+};
 
 export async function POST(req: Request) {
   if (!DISCORD_PUBLIC_KEY) {

@@ -34,13 +34,17 @@ function parseModelAndText(raw: string): { model: string; text: string } {
   if (bracketMatch) {
     const alias = bracketMatch[1].toLowerCase().trim();
     const model = MODEL_ALIASES[alias];
-    if (model) return { model, text: bracketMatch[2].trim() };
+    if (model) {
+      return { model, text: bracketMatch[2].trim() };
+    }
   }
   const flagMatch = raw.match(/^--model=(\S+)\s*([\s\S]*)$/i);
   if (flagMatch) {
     const alias = flagMatch[1].toLowerCase();
     const model = MODEL_ALIASES[alias];
-    if (model) return { model, text: flagMatch[2].trim() };
+    if (model) {
+      return { model, text: flagMatch[2].trim() };
+    }
   }
   return { model: DEFAULT_MODEL, text: raw };
 }
@@ -50,7 +54,9 @@ async function verifySignature(
   payload: string,
   sig: string
 ): Promise<boolean> {
-  if (!secret) return true;
+  if (!secret) {
+    return true;
+  }
   const expected = sig.startsWith("sha256=") ? sig.slice(7) : sig;
   const key = await crypto.subtle.importKey(
     "raw",
@@ -68,7 +74,9 @@ async function verifySignature(
 }
 
 async function sendMessage(to: string, text: string): Promise<void> {
-  if (!ACCESS_TOKEN || !PHONE_NUMBER_ID) return;
+  if (!ACCESS_TOKEN || !PHONE_NUMBER_ID) {
+    return;
+  }
   const res = await fetch(
     `https://graph.facebook.com/v18.0/${PHONE_NUMBER_ID}/messages`,
     {
@@ -107,20 +115,20 @@ export async function GET(req: Request) {
   return new Response("Verification failed", { status: 403 });
 }
 
-interface WhatsAppMessage {
+type WhatsAppMessage = {
   from: string;
   id: string;
   timestamp: string;
   type: string;
   text?: { body: string };
-}
+};
 
-interface WhatsAppValue {
+type WhatsAppValue = {
   messaging_product: string;
   messages?: WhatsAppMessage[];
-}
+};
 
-interface WhatsAppPayload {
+type WhatsAppPayload = {
   object: string;
   entry: Array<{
     changes: Array<{
@@ -128,7 +136,7 @@ interface WhatsAppPayload {
       field: string;
     }>;
   }>;
-}
+};
 
 export async function POST(req: Request) {
   if (!ACCESS_TOKEN || !PHONE_NUMBER_ID) {
@@ -154,9 +162,13 @@ export async function POST(req: Request) {
 
   for (const entry of payload.entry ?? []) {
     for (const change of entry.changes ?? []) {
-      if (change.field !== "messages") continue;
+      if (change.field !== "messages") {
+        continue;
+      }
       for (const message of change.value.messages ?? []) {
-        if (message.type !== "text" || !message.text?.body) continue;
+        if (message.type !== "text" || !message.text?.body) {
+          continue;
+        }
 
         const from = message.from;
         const rawText = message.text.body.trim();

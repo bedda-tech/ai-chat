@@ -32,7 +32,14 @@ export async function middleware(request: NextRequest) {
     pathname === "/blog" ||
     pathname.startsWith("/blog/") || // SEO blog — must be crawlable
     pathname.startsWith("/join/") || // Referral landing pages
-    ["/home", "/pricing", "/roadmap", "/privacy", "/terms", "/unsubscribed"].includes(pathname)
+    [
+      "/home",
+      "/pricing",
+      "/roadmap",
+      "/privacy",
+      "/terms",
+      "/unsubscribed",
+    ].includes(pathname)
   ) {
     return NextResponse.next();
   }

@@ -2,8 +2,8 @@
 
 import type { Session } from "next-auth";
 import { startTransition, useMemo, useOptimistic, useState } from "react";
-import useSWR from "swr";
 import { toast } from "sonner";
+import useSWR from "swr";
 import { saveChatModelAsCookie } from "@/app/(chat)/actions";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -114,7 +114,9 @@ export function ModelSelector({
     for (const [catId, modelId] of Object.entries(modelPrefs)) {
       const cat = MODEL_PREF_CATEGORIES.find((c) => c.id === catId);
       if (cat && modelId) {
-        if (!map[modelId]) map[modelId] = [];
+        if (!map[modelId]) {
+          map[modelId] = [];
+        }
         map[modelId].push(cat.label.replace(" (new chat default)", ""));
       }
     }

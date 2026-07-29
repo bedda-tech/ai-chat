@@ -50,11 +50,13 @@ function RegisterForm() {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.status]);
+  }, [state.status, plan, router, updateSession]);
 
   const handleSubmit = (formData: FormData) => {
     setEmail(formData.get("email") as string);
-    if (ref) formData.set("ref", ref);
+    if (ref) {
+      formData.set("ref", ref);
+    }
     formAction(formData);
   };
 

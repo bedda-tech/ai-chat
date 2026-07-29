@@ -1,6 +1,6 @@
+import crypto from "node:crypto";
 import { gateway } from "@ai-sdk/gateway";
 import { generateText } from "ai";
-import crypto from "crypto";
 import { after } from "next/server";
 
 const GITHUB_WEBHOOK_SECRET = process.env.GITHUB_WEBHOOK_SECRET ?? "";
@@ -37,13 +37,17 @@ function parseModelAndText(raw: string): { model: string; text: string } {
   if (bracketMatch) {
     const alias = bracketMatch[1].toLowerCase().trim();
     const model = MODEL_ALIASES[alias];
-    if (model) return { model, text: bracketMatch[2].trim() };
+    if (model) {
+      return { model, text: bracketMatch[2].trim() };
+    }
   }
   const flagMatch = raw.match(/^--model=(\S+)\s*([\s\S]*)$/i);
   if (flagMatch) {
     const alias = flagMatch[1].toLowerCase();
     const model = MODEL_ALIASES[alias];
-    if (model) return { model, text: flagMatch[2].trim() };
+    if (model) {
+      return { model, text: flagMatch[2].trim() };
+    }
   }
   return { model: GITHUB_DEFAULT_MODEL, text: raw };
 }
@@ -53,7 +57,9 @@ function verifyGitHubSignature(
   payload: string,
   sig: string
 ): boolean {
-  if (!secret || !sig.startsWith("sha256=")) return false;
+  if (!secret || !sig.startsWith("sha256=")) {
+    return false;
+  }
   const expected =
     "sha256=" +
     crypto.createHmac("sha256", secret).update(payload).digest("hex");
@@ -89,11 +95,13 @@ async function getPRDiff(
         },
       }
     );
-    if (!res.ok) return "";
+    if (!res.ok) {
+      return "";
+    }
     const diff = await res.text();
     // Truncate to stay within model context limits (~12k chars ≈ 3k tokens)
     return diff.length > 12_000
-      ? diff.slice(0, 12_000) + "\n... (diff truncated)"
+      ? `${diff.slice(0, 12_000)}\n... (diff truncated)`
       : diff;
   } catch {
     return "";
@@ -119,30 +127,30 @@ async function postComment(
   }
 }
 
-interface GitHubRepo {
+type GitHubRepo = {
   name: string;
   owner: { login: string };
-}
+};
 
-interface GitHubPR {
+type GitHubPR = {
   number: number;
   title: string;
   body?: string;
   head: { ref: string };
   base: { ref: string };
-}
+};
 
-interface GitHubIssue {
+type GitHubIssue = {
   number: number;
   title: string;
   body?: string;
-}
+};
 
-interface GitHubComment {
+type GitHubComment = {
   body?: string;
   user?: { login: string };
   id: number;
-}
+};
 
 export async function POST(req: Request) {
   if (!GITHUB_WEBHOOK_SECRET || !GITHUB_TOKEN) {
@@ -250,7 +258,9 @@ export async function POST(req: Request) {
 
     const issue = payload.issue as GitHubIssue;
     const question = commentBody.replace(/@bedda/gi, "").trim();
-    if (!question) return new Response("OK");
+    if (!question) {
+      return new Response("OK");
+    }
 
     const { model, text: userText } = parseModelAndText(question);
 
@@ -283,7 +293,9 @@ export async function POST(req: Request) {
 
     const pr = payload.pull_request as GitHubPR;
     const question = commentBody.replace(/@bedda/gi, "").trim();
-    if (!question) return new Response("OK");
+    if (!question) {
+      return new Response("OK");
+    }
 
     const { model, text: userText } = parseModelAndText(question);
 

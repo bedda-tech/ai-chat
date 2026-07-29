@@ -18,10 +18,10 @@ export const entitlementsByUserType: Record<UserType, Entitlements> = {
       "chat-model",
       "chat-model-reasoning",
       // Genuinely free provider APIs — no metered cost to Bedda
-      "google-gemini-2.5-flash",              // Google AI Studio: 1,500 req/day free
-      "groq-llama-4-scout-17b-16e-instruct",  // Groq: generous free tier
-      "groq-llama-3.3-70b-versatile",         // Groq: generous free tier
-      "deepseek-deepseek-r1",                 // DeepSeek: free API tier
+      "google-gemini-2.5-flash", // Google AI Studio: 1,500 req/day free
+      "groq-llama-4-scout-17b-16e-instruct", // Groq: generous free tier
+      "groq-llama-3.3-70b-versatile", // Groq: generous free tier
+      "deepseek-deepseek-r1", // DeepSeek: free API tier
     ],
   },
 

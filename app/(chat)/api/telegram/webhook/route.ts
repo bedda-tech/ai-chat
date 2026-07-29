@@ -33,13 +33,17 @@ function parseModelAndText(raw: string): { model: string; text: string } {
   if (bracketMatch) {
     const alias = bracketMatch[1].toLowerCase().trim();
     const model = MODEL_ALIASES[alias];
-    if (model) return { model, text: bracketMatch[2].trim() };
+    if (model) {
+      return { model, text: bracketMatch[2].trim() };
+    }
   }
   const flagMatch = raw.match(/^--model=(\S+)\s*([\s\S]*)$/i);
   if (flagMatch) {
     const alias = flagMatch[1].toLowerCase();
     const model = MODEL_ALIASES[alias];
-    if (model) return { model, text: flagMatch[2].trim() };
+    if (model) {
+      return { model, text: flagMatch[2].trim() };
+    }
   }
   return { model: DEFAULT_MODEL, text: raw };
 }
@@ -54,7 +58,9 @@ async function sendMessage(
     text,
     parse_mode: "Markdown",
   };
-  if (replyToMessageId) body.reply_to_message_id = replyToMessageId;
+  if (replyToMessageId) {
+    body.reply_to_message_id = replyToMessageId;
+  }
 
   const res = await fetch(
     `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,
@@ -73,24 +79,24 @@ async function sendMessage(
   }
 }
 
-interface TelegramEntity {
+type TelegramEntity = {
   type: string;
   offset: number;
   length: number;
-}
+};
 
-interface TelegramMessage {
+type TelegramMessage = {
   message_id: number;
   chat: { id: number; type: string };
   from?: { id: number; first_name?: string; username?: string };
   text?: string;
   entities?: TelegramEntity[];
-}
+};
 
-interface TelegramUpdate {
+type TelegramUpdate = {
   update_id: number;
   message?: TelegramMessage;
-}
+};
 
 export async function POST(req: Request) {
   if (!BOT_TOKEN) {
@@ -110,7 +116,9 @@ export async function POST(req: Request) {
 
   const update = (await req.json()) as TelegramUpdate;
   const message = update.message;
-  if (!message?.text) return new Response("OK");
+  if (!message?.text) {
+    return new Response("OK");
+  }
 
   const chatId = message.chat.id;
   const messageId = message.message_id;
@@ -125,7 +133,9 @@ export async function POST(req: Request) {
     const isBotCommand =
       rawText.startsWith("/bedda") ||
       message.entities?.some((e) => e.type === "bot_command");
-    if (!hasMention && !isBotCommand) return new Response("OK");
+    if (!hasMention && !isBotCommand) {
+      return new Response("OK");
+    }
 
     // Strip bot username mentions and the /bedda command prefix
     rawText = rawText

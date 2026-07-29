@@ -22,12 +22,16 @@ import { ImageEditor } from "./image-editor";
 import { SpreadsheetEditor } from "./sheet-editor";
 import { Editor } from "./text-editor";
 
-type DocumentToolResult = { id: string; title: string; kind: ArtifactKind };
-type DocumentToolArgs = { title?: string; kind?: ArtifactKind; isUpdate?: boolean };
+type DocumentResult = { id: string; title: string; kind: ArtifactKind };
+type DocumentToolArgs = {
+  title?: string;
+  kind?: ArtifactKind;
+  isUpdate?: boolean;
+};
 
 type DocumentPreviewProps = {
   isReadonly: boolean;
-  result?: DocumentToolResult;
+  result?: DocumentResult;
   args?: DocumentToolArgs;
 };
 
@@ -84,7 +88,11 @@ export function DocumentPreview({
   }
 
   if (isDocumentsFetching) {
-    return <LoadingSkeleton artifactKind={result?.kind ?? args?.kind ?? artifact.kind} />;
+    return (
+      <LoadingSkeleton
+        artifactKind={result?.kind ?? args?.kind ?? artifact.kind}
+      />
+    );
   }
 
   const document: Document | null = previewDocument
@@ -152,7 +160,7 @@ const PureHitboxLayer = ({
   setArtifact,
 }: {
   hitboxRef: React.RefObject<HTMLDivElement | null>;
-  result: DocumentToolResult | undefined;
+  result: DocumentResult | undefined;
   setArtifact: (
     updaterFn: UIArtifact | ((currentArtifact: UIArtifact) => UIArtifact)
   ) => void;

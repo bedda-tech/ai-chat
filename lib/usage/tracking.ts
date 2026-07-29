@@ -136,7 +136,9 @@ export function computeCostUSD(
     }
   | undefined {
   const pricing = modelPricingMap.get(modelId);
-  if (!pricing) return undefined;
+  if (!pricing) {
+    return;
+  }
 
   const normalInputTokens = Math.max(0, inputTokens - cachedTokens);
   const inputUSD = (normalInputTokens / 1_000_000) * pricing.input;

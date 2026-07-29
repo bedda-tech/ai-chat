@@ -13,7 +13,6 @@ import {
   user,
 } from "./schema";
 
-// biome-ignore lint: Forbidden non-null assertion.
 const client = postgres(process.env.POSTGRES_URL!);
 const db = drizzle(client);
 
@@ -241,7 +240,9 @@ export async function getOrgModelPolicyForUser(userId: string) {
     .where(eq(teamMember.userId, userId))
     .limit(1);
 
-  if (memberships.length === 0) return null;
+  if (memberships.length === 0) {
+    return null;
+  }
   return getOrgModelPolicy(memberships[0].teamId);
 }
 

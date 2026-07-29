@@ -29,6 +29,7 @@ import { recordCacheStats } from "@/lib/ai/cache-analytics";
 import { sanitizeMessagesForProvider } from "@/lib/ai/cross-provider-context";
 import { isModelAllowedForTier } from "@/lib/ai/entitlements";
 import { buildGatewayConfig, getThinkingBudget } from "@/lib/ai/gateway-config";
+import { guardrailsMiddleware } from "@/lib/ai/middleware";
 import { getModelConfig, getModelContextWindow } from "@/lib/ai/model-config";
 import type { ChatModel } from "@/lib/ai/models";
 import { decryptValue } from "@/lib/ai/plugin-encrypt";
@@ -549,7 +550,7 @@ export async function POST(request: Request) {
         const result = streamText({
           model: wrapLanguageModel({
             model: resolveLanguageModel(selectedChatModel),
-            middleware: ragMiddleware,
+            middleware: [guardrailsMiddleware, ragMiddleware],
           }),
           system: getCacheableSystemPrompt({
             selectedChatModel,

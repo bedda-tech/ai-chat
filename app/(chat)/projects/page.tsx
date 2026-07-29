@@ -8,14 +8,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
-interface Project {
+type Project = {
   id: string;
   name: string;
   description: string | null;
   instructions: string | null;
   createdAt: string;
   updatedAt: string;
-}
+};
 
 function ProjectCard({
   project,
@@ -182,7 +182,9 @@ export default function ProjectsPage() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
           });
-          if (!res.ok) throw new Error("Failed to update project");
+          if (!res.ok) {
+            throw new Error("Failed to update project");
+          }
           toast.success("Project updated");
         } else {
           const res = await fetch("/api/projects", {
@@ -190,7 +192,9 @@ export default function ProjectsPage() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
           });
-          if (!res.ok) throw new Error("Failed to create project");
+          if (!res.ok) {
+            throw new Error("Failed to create project");
+          }
           toast.success("Project created");
         }
         setShowForm(false);
@@ -209,11 +213,14 @@ export default function ProjectsPage() {
 
   const handleDelete = useCallback(
     async (id: string) => {
-      if (!confirm("Delete this project? Chats in it won't be deleted."))
+      if (!confirm("Delete this project? Chats in it won't be deleted.")) {
         return;
+      }
       try {
         const res = await fetch(`/api/projects?id=${id}`, { method: "DELETE" });
-        if (!res.ok) throw new Error("Failed to delete project");
+        if (!res.ok) {
+          throw new Error("Failed to delete project");
+        }
         toast.success("Project deleted");
         await fetchProjects();
       } catch {

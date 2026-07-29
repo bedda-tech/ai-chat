@@ -96,8 +96,9 @@ function DataTable({
     : rows;
 
   function toggleSort(key: string) {
-    if (sortKey === key) setSortDir((d) => (d === "asc" ? "desc" : "asc"));
-    else {
+    if (sortKey === key) {
+      setSortDir((d) => (d === "asc" ? "desc" : "asc"));
+    } else {
       setSortKey(key);
       setSortDir("asc");
     }

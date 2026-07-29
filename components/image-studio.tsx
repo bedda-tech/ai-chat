@@ -25,14 +25,14 @@ const ASPECT_RATIOS = [
   { value: "9:16", label: "Portrait (9:16)" },
 ] as const;
 
-interface GenerationResult {
+type GenerationResult = {
   modelKey: string;
   label: string;
   success: boolean;
   base64?: string;
   mediaType?: string;
   error?: string;
-}
+};
 
 export function ImageStudio() {
   const [selectedModels, setSelectedModels] = useState<string[]>(["dalle3"]);
@@ -50,7 +50,9 @@ export function ImageStudio() {
   }, []);
 
   const handleGenerate = useCallback(async () => {
-    if (!prompt.trim() || selectedModels.length === 0 || loading) return;
+    if (!prompt.trim() || selectedModels.length === 0 || loading) {
+      return;
+    }
     setLoading(true);
     setError(null);
     setResults([]);

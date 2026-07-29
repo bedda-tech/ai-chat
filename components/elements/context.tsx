@@ -100,8 +100,12 @@ function InfoRow({
 }
 
 function formatTokens(n: number): string {
-  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
-  if (n >= 1_000) return `${(n / 1_000).toFixed(1)}k`;
+  if (n >= 1_000_000) {
+    return `${(n / 1_000_000).toFixed(1)}M`;
+  }
+  if (n >= 1000) {
+    return `${(n / 1000).toFixed(1)}k`;
+  }
   return n.toString();
 }
 
@@ -120,7 +124,7 @@ export const Context = ({ className, usage, ...props }: ContextProps) => {
     rawCost !== null &&
     !Number.isNaN(Number.parseFloat(rawCost.toString()));
   const costText = hasCost
-    ? `$${Number.parseFloat(rawCost!.toString()).toFixed(4)}`
+    ? `$${Number.parseFloat(rawCost?.toString()).toFixed(4)}`
     : null;
 
   return (
@@ -129,7 +133,7 @@ export const Context = ({ className, usage, ...props }: ContextProps) => {
         <button
           className={cn(
             "inline-flex select-none items-center gap-1 rounded-md px-1 text-xs",
-            "cursor-pointer text-muted-foreground hover:text-foreground transition-colors",
+            "cursor-pointer text-muted-foreground transition-colors hover:text-foreground",
             className
           )}
           title="Token usage — click for breakdown"
@@ -140,9 +144,7 @@ export const Context = ({ className, usage, ...props }: ContextProps) => {
           {used > 0 && (
             <span className="font-mono">
               {formatTokens(used)}
-              {costText && (
-                <span className="ml-1 opacity-80">{costText}</span>
-              )}
+              {costText && <span className="ml-1 opacity-80">{costText}</span>}
             </span>
           )}
         </button>

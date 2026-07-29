@@ -150,7 +150,7 @@ export const getCacheableSystemPrompt = ({
   const isAnthropicModel =
     selectedChatModel.includes("anthropic") ||
     selectedChatModel.includes("claude");
-  const isOpenAIModel =
+  const _isOpenAIModel =
     selectedChatModel.includes("openai") || selectedChatModel.includes("gpt");
 
   // For Anthropic models, add cache control via providerOptions (AI SDK v6 API)

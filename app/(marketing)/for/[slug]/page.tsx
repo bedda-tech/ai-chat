@@ -34,9 +34,15 @@ const USE_CASES: Record<string, UseCase> = {
     bestModels: [
       { name: "GPT-5", reason: "Code generation and autocomplete" },
       { name: "Claude 4 Sonnet", reason: "Code review and refactoring" },
-      { name: "Gemini 2.5 Pro", reason: "Large codebase analysis (1M token context)" },
+      {
+        name: "Gemini 2.5 Pro",
+        reason: "Large codebase analysis (1M token context)",
+      },
       { name: "DeepSeek R1", reason: "Complex algorithmic reasoning" },
-      { name: "Phind / Groq Llama", reason: "Fast iteration and quick lookups" },
+      {
+        name: "Phind / Groq Llama",
+        reason: "Fast iteration and quick lookups",
+      },
     ],
     features: [
       {
@@ -136,7 +142,10 @@ const USE_CASES: Record<string, UseCase> = {
     bestModels: [
       { name: "Claude 4 Opus", reason: "Long-form prose, tone, and voice" },
       { name: "GPT-5", reason: "Structured articles and copywriting" },
-      { name: "Gemini 2.5 Pro", reason: "Research synthesis and fact-checking" },
+      {
+        name: "Gemini 2.5 Pro",
+        reason: "Research synthesis and fact-checking",
+      },
       { name: "Mistral Large", reason: "Fast first drafts" },
       { name: "DeepSeek R1", reason: "Analytical and argument-driven writing" },
     ],
@@ -222,7 +231,8 @@ const USE_CASES: Record<string, UseCase> = {
         a: "Yes — combine web search (for current data and competitor research) with the model of your choice. You can also paste briefs and outlines directly into the knowledge base for consistent context.",
       },
     ],
-    ctaHeadline: "The AI writing assistant that uses the best model for each job.",
+    ctaHeadline:
+      "The AI writing assistant that uses the best model for each job.",
   },
 
   students: {
@@ -240,7 +250,10 @@ const USE_CASES: Record<string, UseCase> = {
       { name: "GPT-5", reason: "Math, physics, and problem sets" },
       { name: "Gemini 2.5 Pro", reason: "Research synthesis and long PDFs" },
       { name: "DeepSeek R1", reason: "Step-by-step logical reasoning" },
-      { name: "Claude 3.5 Haiku", reason: "Quick explanations and definitions" },
+      {
+        name: "Claude 3.5 Haiku",
+        reason: "Quick explanations and definitions",
+      },
     ],
     features: [
       {
@@ -338,11 +351,23 @@ const USE_CASES: Record<string, UseCase> = {
       "Gemini 2.5 Pro for 1M-token literature reviews. Claude for synthesis and nuance. DeepSeek for logical analysis. All in one place — knowledge base included.",
     tagline: "Researchers who need AI that reads entire papers, not summaries",
     bestModels: [
-      { name: "Gemini 2.5 Pro", reason: "1M token context for full papers and datasets" },
-      { name: "Claude 4 Opus", reason: "Nuanced synthesis and argument analysis" },
-      { name: "DeepSeek R1", reason: "Logical reasoning and hypothesis testing" },
+      {
+        name: "Gemini 2.5 Pro",
+        reason: "1M token context for full papers and datasets",
+      },
+      {
+        name: "Claude 4 Opus",
+        reason: "Nuanced synthesis and argument analysis",
+      },
+      {
+        name: "DeepSeek R1",
+        reason: "Logical reasoning and hypothesis testing",
+      },
       { name: "GPT-5", reason: "Structured analysis and data interpretation" },
-      { name: "Gemini 2.5 Flash", reason: "Fast pass through large document sets" },
+      {
+        name: "Gemini 2.5 Flash",
+        reason: "Fast pass through large document sets",
+      },
     ],
     features: [
       {
@@ -442,7 +467,10 @@ const USE_CASES: Record<string, UseCase> = {
     bestModels: [
       { name: "Claude 4 Sonnet", reason: "Client communications and reports" },
       { name: "GPT-5", reason: "Data analysis and structured summaries" },
-      { name: "Gemini 2.5 Pro", reason: "Large document review and presentations" },
+      {
+        name: "Gemini 2.5 Pro",
+        reason: "Large document review and presentations",
+      },
       { name: "Mistral Large", reason: "Fast drafting and internal comms" },
       { name: "Grok 3", reason: "Real-time market and news analysis" },
     ],
@@ -534,7 +562,8 @@ const USE_CASES: Record<string, UseCase> = {
   marketing: {
     slug: "marketing",
     title: "AI for Marketers",
-    metaTitle: "Best AI for Marketing (2026) — 36+ Models for Campaigns, Copy & Strategy",
+    metaTitle:
+      "Best AI for Marketing (2026) — 36+ Models for Campaigns, Copy & Strategy",
     metaDescription:
       "Claude for brand voice, GPT-5 for copy, Gemini for research — get every AI marketing model for $12/mo. Web search for trend research, knowledge base for brand docs, team workspaces. 7-day free trial.",
     heroHeadline: "Every AI marketing model. One affordable subscription.",
@@ -542,11 +571,26 @@ const USE_CASES: Record<string, UseCase> = {
       "Claude for brand-consistent copy. GPT-5 for high-volume content. Gemini for competitive research. Mistral for fast first drafts. All 36+ models, built-in web search, and team workspaces — $12/mo.",
     tagline: "Marketing teams that use the right model for every campaign",
     bestModels: [
-      { name: "Claude 4 Opus", reason: "Brand voice, tone consistency, long-form campaigns" },
-      { name: "GPT-5", reason: "Ad copy, email sequences, high-volume content" },
-      { name: "Gemini 2.5 Pro", reason: "Competitive research and trend analysis" },
-      { name: "Mistral Large", reason: "Fast first drafts and content variations" },
-      { name: "Grok 3", reason: "Social media copy and real-time trend angles" },
+      {
+        name: "Claude 4 Opus",
+        reason: "Brand voice, tone consistency, long-form campaigns",
+      },
+      {
+        name: "GPT-5",
+        reason: "Ad copy, email sequences, high-volume content",
+      },
+      {
+        name: "Gemini 2.5 Pro",
+        reason: "Competitive research and trend analysis",
+      },
+      {
+        name: "Mistral Large",
+        reason: "Fast first drafts and content variations",
+      },
+      {
+        name: "Grok 3",
+        reason: "Social media copy and real-time trend angles",
+      },
     ],
     features: [
       {
@@ -636,7 +680,8 @@ const USE_CASES: Record<string, UseCase> = {
   finance: {
     slug: "finance",
     title: "AI for Finance Professionals",
-    metaTitle: "Best AI for Finance (2026) — Analysis, Modeling & Research at $12/mo",
+    metaTitle:
+      "Best AI for Finance (2026) — Analysis, Modeling & Research at $12/mo",
     metaDescription:
       "DeepSeek R1 for quantitative reasoning, GPT-5 for financial analysis, Claude for report writing — get every AI finance model for $12/mo. Code execution for Python modeling. 7-day free trial.",
     heroHeadline: "The AI assistant that handles numbers, not just words.",
@@ -644,10 +689,26 @@ const USE_CASES: Record<string, UseCase> = {
       "GPT-5 for financial analysis and modeling. DeepSeek R1 for quantitative reasoning. Claude 4 for clear, precise report writing. Gemini 2.5 Pro for processing massive documents. All in one place — $12/mo.",
     tagline: "Finance professionals who trust models that show their work",
     bestModels: [
-      { name: "GPT-5", reason: "Financial analysis, modeling guidance, and data interpretation" },
-      { name: "DeepSeek R1", reason: "Quantitative reasoning, math-heavy problems, and step-by-step derivations" },
-      { name: "Claude 4 Opus", reason: "Clear financial writing, board reports, and client-facing documents" },
-      { name: "Gemini 2.5 Pro", reason: "Processing lengthy 10-Ks, contracts, and multi-hundred-page reports" },
+      {
+        name: "GPT-5",
+        reason:
+          "Financial analysis, modeling guidance, and data interpretation",
+      },
+      {
+        name: "DeepSeek R1",
+        reason:
+          "Quantitative reasoning, math-heavy problems, and step-by-step derivations",
+      },
+      {
+        name: "Claude 4 Opus",
+        reason:
+          "Clear financial writing, board reports, and client-facing documents",
+      },
+      {
+        name: "Gemini 2.5 Pro",
+        reason:
+          "Processing lengthy 10-Ks, contracts, and multi-hundred-page reports",
+      },
       { name: "Groq Llama 3.3", reason: "Fast lookups and quick calculations" },
     ],
     features: [
@@ -738,19 +799,39 @@ const USE_CASES: Record<string, UseCase> = {
   legal: {
     slug: "legal",
     title: "AI for Legal Professionals",
-    metaTitle: "Best AI for Legal Work (2026) — Contract Review, Research & Drafting",
+    metaTitle:
+      "Best AI for Legal Work (2026) — Contract Review, Research & Drafting",
     metaDescription:
       "Claude 4 for careful legal reasoning, Gemini for long contracts, GPT-5 for drafting — get every AI legal model for $12/mo. Knowledge base for case law. 7-day free trial.",
-    heroHeadline: "Legal-grade AI reasoning. Frontier models. One subscription.",
+    heroHeadline:
+      "Legal-grade AI reasoning. Frontier models. One subscription.",
     heroSubtext:
       "Claude 4 for careful, precise legal reasoning. Gemini 2.5 Pro for reading 500-page contracts without truncation. GPT-5 for fast drafting. Knowledge base for your firm's precedents and playbooks — all for $12/mo.",
     tagline: "Legal professionals who demand precision, not just fluency",
     bestModels: [
-      { name: "Claude 4 Opus", reason: "Careful legal reasoning, precise contract analysis, privileged communication drafting" },
-      { name: "Gemini 2.5 Pro", reason: "1M token context — entire contracts, case files, and discovery documents" },
-      { name: "GPT-5", reason: "Fast clause drafting, brief writing, and document summarization" },
-      { name: "DeepSeek R1", reason: "Step-by-step logical analysis of complex statutory questions" },
-      { name: "Mistral Large", reason: "Quick cross-reference lookups during document review" },
+      {
+        name: "Claude 4 Opus",
+        reason:
+          "Careful legal reasoning, precise contract analysis, privileged communication drafting",
+      },
+      {
+        name: "Gemini 2.5 Pro",
+        reason:
+          "1M token context — entire contracts, case files, and discovery documents",
+      },
+      {
+        name: "GPT-5",
+        reason:
+          "Fast clause drafting, brief writing, and document summarization",
+      },
+      {
+        name: "DeepSeek R1",
+        reason: "Step-by-step logical analysis of complex statutory questions",
+      },
+      {
+        name: "Mistral Large",
+        reason: "Quick cross-reference lookups during document review",
+      },
     ],
     features: [
       {
@@ -840,19 +921,36 @@ const USE_CASES: Record<string, UseCase> = {
   educators: {
     slug: "educators",
     title: "AI for Educators",
-    metaTitle: "Best AI for Teachers & Educators (2026) — 36+ Models for $12/mo",
+    metaTitle:
+      "Best AI for Teachers & Educators (2026) — 36+ Models for $12/mo",
     metaDescription:
       "Claude for lesson plans, GPT-5 for rubrics, Gemini for curriculum research — get every AI education model for $12/mo. Knowledge base for course materials. 7-day free trial.",
-    heroHeadline: "Every AI model teachers actually need — for less than a textbook.",
+    heroHeadline:
+      "Every AI model teachers actually need — for less than a textbook.",
     heroSubtext:
       "Claude for writing lesson plans with the right tone. GPT-5 for generating rubrics, quizzes, and assessments. Gemini 2.5 Pro for synthesizing curriculum research. DeepSeek R1 for explaining complex concepts step-by-step. All 36+ models, one subscription, $12/mo.",
     tagline: "Educators who spend time teaching, not prompting",
     bestModels: [
-      { name: "Claude 4 Sonnet", reason: "Lesson plans, feedback, and student-facing writing" },
-      { name: "GPT-5", reason: "Quizzes, rubrics, and structured assessment creation" },
-      { name: "Gemini 2.5 Pro", reason: "Curriculum research and synthesizing long academic papers" },
-      { name: "DeepSeek R1", reason: "Step-by-step concept explanations and worked examples" },
-      { name: "Claude 3.5 Haiku", reason: "Fast differentiation — multiple reading levels in seconds" },
+      {
+        name: "Claude 4 Sonnet",
+        reason: "Lesson plans, feedback, and student-facing writing",
+      },
+      {
+        name: "GPT-5",
+        reason: "Quizzes, rubrics, and structured assessment creation",
+      },
+      {
+        name: "Gemini 2.5 Pro",
+        reason: "Curriculum research and synthesizing long academic papers",
+      },
+      {
+        name: "DeepSeek R1",
+        reason: "Step-by-step concept explanations and worked examples",
+      },
+      {
+        name: "Claude 3.5 Haiku",
+        reason: "Fast differentiation — multiple reading levels in seconds",
+      },
     ],
     features: [
       {
@@ -942,19 +1040,36 @@ const USE_CASES: Record<string, UseCase> = {
   "customer-support": {
     slug: "customer-support",
     title: "AI for Customer Support Teams",
-    metaTitle: "Best AI for Customer Support (2026) — 36+ Models, One Subscription",
+    metaTitle:
+      "Best AI for Customer Support (2026) — 36+ Models, One Subscription",
     metaDescription:
       "GPT-5 for fast responses, Claude for empathetic communication, Gemini for knowledge base synthesis — get every AI support model for $12/mo. 7-day free trial.",
-    heroHeadline: "Resolve tickets faster. Respond with more empathy. Handle more volume.",
+    heroHeadline:
+      "Resolve tickets faster. Respond with more empathy. Handle more volume.",
     heroSubtext:
       "GPT-5 for fast, accurate response drafts. Claude 4 for empathetic, nuanced customer communication. Gemini 2.5 Pro for synthesizing long knowledge bases. All 36+ models in one subscription — $12/mo.",
     tagline: "Support teams that close tickets, not just conversations",
     bestModels: [
-      { name: "GPT-5", reason: "Fast, accurate response drafts for high-ticket volume" },
-      { name: "Claude 4 Sonnet", reason: "Empathetic, nuanced customer communication" },
-      { name: "Gemini 2.5 Pro", reason: "Synthesizing long help center docs and policy docs" },
-      { name: "DeepSeek R1", reason: "Step-by-step technical troubleshooting explanations" },
-      { name: "Mistral Large", reason: "Fast FAQ responses and canned reply suggestions" },
+      {
+        name: "GPT-5",
+        reason: "Fast, accurate response drafts for high-ticket volume",
+      },
+      {
+        name: "Claude 4 Sonnet",
+        reason: "Empathetic, nuanced customer communication",
+      },
+      {
+        name: "Gemini 2.5 Pro",
+        reason: "Synthesizing long help center docs and policy docs",
+      },
+      {
+        name: "DeepSeek R1",
+        reason: "Step-by-step technical troubleshooting explanations",
+      },
+      {
+        name: "Mistral Large",
+        reason: "Fast FAQ responses and canned reply suggestions",
+      },
     ],
     features: [
       {
@@ -1050,13 +1165,26 @@ const USE_CASES: Record<string, UseCase> = {
     heroHeadline: "One subscription. Every AI model your startup needs.",
     heroSubtext:
       "GPT-5 for pitch decks and investor emails. Claude for fundraising narratives and legal docs. Gemini 2.5 Pro for market research synthesis. DeepSeek R1 for technical architecture decisions. All 36+ models — $12/mo instead of $60+.",
-    tagline: "Founders who move fast without burning their runway on AI subscriptions",
+    tagline:
+      "Founders who move fast without burning their runway on AI subscriptions",
     bestModels: [
       { name: "GPT-5", reason: "Pitch decks, sales emails, and product copy" },
-      { name: "Claude 4 Opus", reason: "Fundraising narratives, investor memos, and careful reasoning" },
-      { name: "Gemini 2.5 Pro", reason: "Market research synthesis and competitor analysis" },
-      { name: "DeepSeek R1", reason: "Technical architecture decisions and system design tradeoffs" },
-      { name: "Grok 4", reason: "Real-time market intelligence and trend research" },
+      {
+        name: "Claude 4 Opus",
+        reason: "Fundraising narratives, investor memos, and careful reasoning",
+      },
+      {
+        name: "Gemini 2.5 Pro",
+        reason: "Market research synthesis and competitor analysis",
+      },
+      {
+        name: "DeepSeek R1",
+        reason: "Technical architecture decisions and system design tradeoffs",
+      },
+      {
+        name: "Grok 4",
+        reason: "Real-time market intelligence and trend research",
+      },
     ],
     features: [
       {
@@ -1146,7 +1274,8 @@ const USE_CASES: Record<string, UseCase> = {
   "content-creators": {
     slug: "content-creators",
     title: "AI for Content Creators",
-    metaTitle: "Best AI for Content Creators (2026) — YouTube, Podcasts & Social Media",
+    metaTitle:
+      "Best AI for Content Creators (2026) — YouTube, Podcasts & Social Media",
     metaDescription:
       "Claude for scripts and storytelling, GPT-5 for SEO content and volume, Gemini for research — all 36+ AI models for content creators at $12/mo. 7-day free trial.",
     heroHeadline: "Every AI model content creators need. One subscription.",
@@ -1154,11 +1283,23 @@ const USE_CASES: Record<string, UseCase> = {
       "Claude for scripts, stories, and long-form content. GPT-5 for SEO articles, titles, and thumbnail ideas at scale. Gemini 2.5 Pro for research synthesis. Grok 4 for real-time trend analysis. All 36+ models — $12/mo.",
     tagline: "Creators who publish consistently without burning out",
     bestModels: [
-      { name: "Claude 4 Opus", reason: "Long-form scripts, storytelling, and authentic voice" },
-      { name: "GPT-5", reason: "SEO content, headline generation, and high-volume copy" },
-      { name: "Gemini 2.5 Pro", reason: "Research synthesis and fact-checking for deep-dive content" },
+      {
+        name: "Claude 4 Opus",
+        reason: "Long-form scripts, storytelling, and authentic voice",
+      },
+      {
+        name: "GPT-5",
+        reason: "SEO content, headline generation, and high-volume copy",
+      },
+      {
+        name: "Gemini 2.5 Pro",
+        reason: "Research synthesis and fact-checking for deep-dive content",
+      },
       { name: "Grok 4", reason: "Trending topics and real-time culture pulse" },
-      { name: "Mistral Large", reason: "Fast first drafts for rapid content iteration" },
+      {
+        name: "Mistral Large",
+        reason: "Fast first drafts for rapid content iteration",
+      },
     ],
     features: [
       {
@@ -1248,19 +1389,37 @@ const USE_CASES: Record<string, UseCase> = {
   healthcare: {
     slug: "healthcare",
     title: "AI for Healthcare Professionals",
-    metaTitle: "Best AI for Healthcare Professionals (2026) — Clinical Research, Docs & Patient Comms",
+    metaTitle:
+      "Best AI for Healthcare Professionals (2026) — Clinical Research, Docs & Patient Comms",
     metaDescription:
       "Claude for clinical documentation, GPT-5 for research synthesis, Gemini for literature review — 36+ AI models for medical professionals at $12/mo. 7-day free trial.",
-    heroHeadline: "The AI subscription for healthcare professionals who need accuracy",
+    heroHeadline:
+      "The AI subscription for healthcare professionals who need accuracy",
     heroSubtext:
       "Claude for clinical documentation and patient communication. GPT-5 for research and protocol writing. Gemini 2.5 Pro for literature synthesis across massive PDFs. All 36+ models — one subscription at $12/mo.",
-    tagline: "Clinicians and researchers who need the right model for high-stakes work",
+    tagline:
+      "Clinicians and researchers who need the right model for high-stakes work",
     bestModels: [
-      { name: "Claude 4 Opus", reason: "Clinical documentation, patient letters, and care summaries" },
-      { name: "GPT-5", reason: "Research writing, protocol drafts, and grant applications" },
-      { name: "Gemini 2.5 Pro", reason: "Medical literature synthesis with 1M token context" },
-      { name: "DeepSeek R1", reason: "Complex differential reasoning and stepwise analysis" },
-      { name: "Claude 3.5 Haiku", reason: "Fast patient FAQs and administrative communication" },
+      {
+        name: "Claude 4 Opus",
+        reason: "Clinical documentation, patient letters, and care summaries",
+      },
+      {
+        name: "GPT-5",
+        reason: "Research writing, protocol drafts, and grant applications",
+      },
+      {
+        name: "Gemini 2.5 Pro",
+        reason: "Medical literature synthesis with 1M token context",
+      },
+      {
+        name: "DeepSeek R1",
+        reason: "Complex differential reasoning and stepwise analysis",
+      },
+      {
+        name: "Claude 3.5 Haiku",
+        reason: "Fast patient FAQs and administrative communication",
+      },
     ],
     features: [
       {
@@ -1350,19 +1509,36 @@ const USE_CASES: Record<string, UseCase> = {
   "product-managers": {
     slug: "product-managers",
     title: "AI for Product Managers",
-    metaTitle: "Best AI for Product Managers (2026) — PRDs, Roadmaps & User Research",
+    metaTitle:
+      "Best AI for Product Managers (2026) — PRDs, Roadmaps & User Research",
     metaDescription:
       "Claude for PRDs and strategy docs, GPT-5 for frameworks and prioritization, Gemini for data synthesis — 36+ AI models for PMs at $12/mo. 7-day free trial.",
     heroHeadline: "Every AI model product managers need. One subscription.",
     heroSubtext:
       "Claude for PRDs, strategy memos, and stakeholder-ready writing. GPT-5 for frameworks, prioritization matrices, and structured thinking. Gemini 2.5 Pro for user research synthesis and competitive analysis. All 36+ models — $12/mo.",
-    tagline: "PMs who ship faster by using the right model for each deliverable",
+    tagline:
+      "PMs who ship faster by using the right model for each deliverable",
     bestModels: [
-      { name: "Claude 4 Opus", reason: "PRDs, strategy memos, and exec-level communication" },
-      { name: "GPT-5", reason: "Frameworks, prioritization, and structured analysis" },
-      { name: "Gemini 2.5 Pro", reason: "User research synthesis and large doc analysis" },
-      { name: "DeepSeek R1", reason: "Complex tradeoff reasoning and decision analysis" },
-      { name: "Grok 4", reason: "Market and competitor intelligence with real-time data" },
+      {
+        name: "Claude 4 Opus",
+        reason: "PRDs, strategy memos, and exec-level communication",
+      },
+      {
+        name: "GPT-5",
+        reason: "Frameworks, prioritization, and structured analysis",
+      },
+      {
+        name: "Gemini 2.5 Pro",
+        reason: "User research synthesis and large doc analysis",
+      },
+      {
+        name: "DeepSeek R1",
+        reason: "Complex tradeoff reasoning and decision analysis",
+      },
+      {
+        name: "Grok 4",
+        reason: "Market and competitor intelligence with real-time data",
+      },
     ],
     features: [
       {
@@ -1452,19 +1628,36 @@ const USE_CASES: Record<string, UseCase> = {
   "sales-teams": {
     slug: "sales-teams",
     title: "AI for Sales Teams",
-    metaTitle: "Best AI for Sales Teams (2026) — Outreach, Proposals & Deal Intelligence",
+    metaTitle:
+      "Best AI for Sales Teams (2026) — Outreach, Proposals & Deal Intelligence",
     metaDescription:
       "Claude for persuasive outreach and proposals, GPT-5 for high-volume personalization, Grok for prospect research — 36+ AI models for sales at $12/mo.",
     heroHeadline: "AI for every stage of the sales cycle",
     heroSubtext:
       "Claude for proposal narratives and executive-level outreach. GPT-5 for personalized sequences at scale. Grok 4 for real-time prospect and company intelligence. Gemini for account research and competitor battlecards. All 36+ models — $12/mo.",
-    tagline: "Sales reps and managers who close more by researching faster and writing better",
+    tagline:
+      "Sales reps and managers who close more by researching faster and writing better",
     bestModels: [
-      { name: "Claude 4 Opus", reason: "Proposals, exec outreach, and deal narratives" },
-      { name: "GPT-5", reason: "High-volume personalized email sequences at scale" },
-      { name: "Grok 4", reason: "Real-time company news and prospect intelligence" },
-      { name: "Gemini 2.5 Pro", reason: "Deep account research and industry synthesis" },
-      { name: "Mistral Large", reason: "Fast first drafts for high-volume prospecting" },
+      {
+        name: "Claude 4 Opus",
+        reason: "Proposals, exec outreach, and deal narratives",
+      },
+      {
+        name: "GPT-5",
+        reason: "High-volume personalized email sequences at scale",
+      },
+      {
+        name: "Grok 4",
+        reason: "Real-time company news and prospect intelligence",
+      },
+      {
+        name: "Gemini 2.5 Pro",
+        reason: "Deep account research and industry synthesis",
+      },
+      {
+        name: "Mistral Large",
+        reason: "Fast first drafts for high-volume prospecting",
+      },
     ],
     features: [
       {
@@ -1554,19 +1747,36 @@ const USE_CASES: Record<string, UseCase> = {
   "hr-teams": {
     slug: "hr-teams",
     title: "AI for HR & People Teams",
-    metaTitle: "Best AI for HR Teams (2026) — Job Descriptions, Policies & People Ops",
+    metaTitle:
+      "Best AI for HR Teams (2026) — Job Descriptions, Policies & People Ops",
     metaDescription:
       "Claude for job descriptions and HR policies, GPT-5 for performance reviews and structured templates, Gemini for org research — 36+ AI models for HR at $12/mo.",
     heroHeadline: "AI for every HR workflow — hiring, policies, and people ops",
     heroSubtext:
       "Claude for job descriptions, offer letters, and policy documents. GPT-5 for structured HR templates and performance reviews at scale. Gemini 2.5 Pro for org design research and benefits benchmarking. All 36+ models — $12/mo.",
-    tagline: "People teams who want better hiring materials and faster policy updates",
+    tagline:
+      "People teams who want better hiring materials and faster policy updates",
     bestModels: [
-      { name: "Claude 4 Opus", reason: "Job descriptions, offer letters, and HR policy documents" },
-      { name: "GPT-5", reason: "Performance review templates and structured HR frameworks" },
-      { name: "Gemini 2.5 Pro", reason: "Compensation research and benefits benchmarking" },
-      { name: "DeepSeek R1", reason: "Complex org structure analysis and design tradeoffs" },
-      { name: "Claude 3.5 Haiku", reason: "Fast FAQ drafts, email replies, and candidate comms" },
+      {
+        name: "Claude 4 Opus",
+        reason: "Job descriptions, offer letters, and HR policy documents",
+      },
+      {
+        name: "GPT-5",
+        reason: "Performance review templates and structured HR frameworks",
+      },
+      {
+        name: "Gemini 2.5 Pro",
+        reason: "Compensation research and benefits benchmarking",
+      },
+      {
+        name: "DeepSeek R1",
+        reason: "Complex org structure analysis and design tradeoffs",
+      },
+      {
+        name: "Claude 3.5 Haiku",
+        reason: "Fast FAQ drafts, email replies, and candidate comms",
+      },
     ],
     features: [
       {
@@ -1650,7 +1860,8 @@ const USE_CASES: Record<string, UseCase> = {
         a: "Yes. bedda Teams lets your entire people team share knowledge bases (your handbook, templates, processes), access all 36+ models, and collaborate in shared workspaces. Consistent output quality across your team, one monthly bill.",
       },
     ],
-    ctaHeadline: "Hire better. Write policies faster. Make your team more effective.",
+    ctaHeadline:
+      "Hire better. Write policies faster. Make your team more effective.",
   },
 
   designers: {
@@ -1662,13 +1873,29 @@ const USE_CASES: Record<string, UseCase> = {
     heroHeadline: "AI tools for every stage of the design process",
     heroSubtext:
       "Claude for UX copy, design briefs, and user personas. GPT-5 for synthesizing user research and writing design specs. Gemini 2.5 Pro for trend analysis and competitive audits. All 36+ models — $12/mo.",
-    tagline: "Designers who want to move faster from research to final deliverable",
+    tagline:
+      "Designers who want to move faster from research to final deliverable",
     bestModels: [
-      { name: "Claude 4 Opus", reason: "UX copy, microcopy, and design briefs that match your voice" },
-      { name: "GPT-5", reason: "User research synthesis and structured usability findings" },
-      { name: "Gemini 2.5 Pro", reason: "Trend analysis, competitor audits, and visual inspiration" },
-      { name: "Claude Sonnet 4.6", reason: "Rapid persona creation and user journey mapping" },
-      { name: "DeepSeek R1", reason: "Complex design system decisions and trade-off analysis" },
+      {
+        name: "Claude 4 Opus",
+        reason: "UX copy, microcopy, and design briefs that match your voice",
+      },
+      {
+        name: "GPT-5",
+        reason: "User research synthesis and structured usability findings",
+      },
+      {
+        name: "Gemini 2.5 Pro",
+        reason: "Trend analysis, competitor audits, and visual inspiration",
+      },
+      {
+        name: "Claude Sonnet 4.6",
+        reason: "Rapid persona creation and user journey mapping",
+      },
+      {
+        name: "DeepSeek R1",
+        reason: "Complex design system decisions and trade-off analysis",
+      },
     ],
     features: [
       {
@@ -1758,19 +1985,37 @@ const USE_CASES: Record<string, UseCase> = {
   journalists: {
     slug: "journalists",
     title: "AI for Journalists",
-    metaTitle: "Best AI for Journalists (2026) — Research, Writing & Fact-Checking",
+    metaTitle:
+      "Best AI for Journalists (2026) — Research, Writing & Fact-Checking",
     metaDescription:
       "Claude for article drafts and interview prep, GPT-5 for research synthesis, Gemini for trend analysis — 36+ AI models for journalists at $12/mo.",
     heroHeadline: "AI tools for every step of the journalism workflow",
     heroSubtext:
       "Claude for article drafts, interview questions, and headline writing. GPT-5 for synthesizing research and summarizing documents. Gemini 2.5 Pro for trend analysis and source research. All 36+ models — $12/mo.",
-    tagline: "Journalists and reporters who need to research faster and write more",
+    tagline:
+      "Journalists and reporters who need to research faster and write more",
     bestModels: [
-      { name: "Claude 4 Opus", reason: "Long-form article drafts, columns, and investigative narratives" },
-      { name: "GPT-5", reason: "Research synthesis and document summarization at scale" },
-      { name: "Gemini 2.5 Pro", reason: "Trend analysis, data interpretation, and source discovery" },
-      { name: "Claude Sonnet 4.6", reason: "Fast headline writing, ledes, and article outlines" },
-      { name: "DeepSeek R1", reason: "Complex document analysis and cross-reference checking" },
+      {
+        name: "Claude 4 Opus",
+        reason:
+          "Long-form article drafts, columns, and investigative narratives",
+      },
+      {
+        name: "GPT-5",
+        reason: "Research synthesis and document summarization at scale",
+      },
+      {
+        name: "Gemini 2.5 Pro",
+        reason: "Trend analysis, data interpretation, and source discovery",
+      },
+      {
+        name: "Claude Sonnet 4.6",
+        reason: "Fast headline writing, ledes, and article outlines",
+      },
+      {
+        name: "DeepSeek R1",
+        reason: "Complex document analysis and cross-reference checking",
+      },
     ],
     features: [
       {
@@ -1860,19 +2105,38 @@ const USE_CASES: Record<string, UseCase> = {
   engineers: {
     slug: "engineers",
     title: "AI for Engineers",
-    metaTitle: "Best AI for Engineers (2026) — Technical Documentation, Code & Analysis",
+    metaTitle:
+      "Best AI for Engineers (2026) — Technical Documentation, Code & Analysis",
     metaDescription:
       "Claude for technical writing and code review, GPT-5 for specs and documentation, DeepSeek R1 for complex analysis — 36+ AI models for engineers at $12/mo.",
     heroHeadline: "AI tools built for technical and engineering work",
     heroSubtext:
       "Claude for technical documentation and code review. GPT-5 for spec writing and structured analysis. DeepSeek R1 for complex reasoning and trade-off analysis. All 36+ models — $12/mo.",
-    tagline: "Engineers who want to move faster without sacrificing technical rigor",
+    tagline:
+      "Engineers who want to move faster without sacrificing technical rigor",
     bestModels: [
-      { name: "Claude 4 Opus", reason: "Technical documentation, architecture decisions, and code review" },
-      { name: "GPT-5", reason: "Engineering specs, RFCs, and structured technical analysis" },
-      { name: "DeepSeek R1", reason: "Complex mathematical reasoning and multi-constraint optimization" },
-      { name: "Claude Sonnet 4.6", reason: "Fast code generation, debugging, and unit test writing" },
-      { name: "Gemini 2.5 Pro", reason: "Large codebase analysis and cross-system documentation" },
+      {
+        name: "Claude 4 Opus",
+        reason:
+          "Technical documentation, architecture decisions, and code review",
+      },
+      {
+        name: "GPT-5",
+        reason: "Engineering specs, RFCs, and structured technical analysis",
+      },
+      {
+        name: "DeepSeek R1",
+        reason:
+          "Complex mathematical reasoning and multi-constraint optimization",
+      },
+      {
+        name: "Claude Sonnet 4.6",
+        reason: "Fast code generation, debugging, and unit test writing",
+      },
+      {
+        name: "Gemini 2.5 Pro",
+        reason: "Large codebase analysis and cross-system documentation",
+      },
     ],
     features: [
       {
@@ -1962,7 +2226,8 @@ const USE_CASES: Record<string, UseCase> = {
   consultants: {
     slug: "consultants",
     title: "AI for Consultants",
-    metaTitle: "Best AI for Consultants (2026) — Decks, Research & Client Deliverables",
+    metaTitle:
+      "Best AI for Consultants (2026) — Decks, Research & Client Deliverables",
     metaDescription:
       "Claude for client deliverables and frameworks, GPT-5 for market research synthesis, Gemini for industry analysis — 36+ AI models for consultants at $12/mo.",
     heroHeadline: "AI tools for every stage of the consulting engagement",
@@ -1970,11 +2235,27 @@ const USE_CASES: Record<string, UseCase> = {
       "Claude for client deliverables, frameworks, and executive summaries. GPT-5 for market research and interview synthesis. Gemini 2.5 Pro for industry analysis and benchmarking. All 36+ models — $12/mo.",
     tagline: "Consultants and advisors who want to deliver more in less time",
     bestModels: [
-      { name: "Claude 4 Opus", reason: "Executive-level deliverables, frameworks, and strategic narratives" },
-      { name: "GPT-5", reason: "Market research synthesis and structured analysis reports" },
-      { name: "Gemini 2.5 Pro", reason: "Industry benchmarking and competitive landscape analysis" },
-      { name: "DeepSeek R1", reason: "Complex financial modeling and multi-variable analysis" },
-      { name: "Claude Sonnet 4.6", reason: "Fast deck outlines, email drafts, and quick research" },
+      {
+        name: "Claude 4 Opus",
+        reason:
+          "Executive-level deliverables, frameworks, and strategic narratives",
+      },
+      {
+        name: "GPT-5",
+        reason: "Market research synthesis and structured analysis reports",
+      },
+      {
+        name: "Gemini 2.5 Pro",
+        reason: "Industry benchmarking and competitive landscape analysis",
+      },
+      {
+        name: "DeepSeek R1",
+        reason: "Complex financial modeling and multi-variable analysis",
+      },
+      {
+        name: "Claude Sonnet 4.6",
+        reason: "Fast deck outlines, email drafts, and quick research",
+      },
     ],
     features: [
       {
@@ -2075,7 +2356,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const data = USE_CASES[slug];
-  if (!data) return {};
+  if (!data) {
+    return {};
+  }
   return {
     title: data.metaTitle,
     description: data.metaDescription,
@@ -2093,54 +2376,64 @@ export async function generateMetadata({
 export default async function UseCasePage({ params }: { params: Params }) {
   const { slug } = await params;
   const data = USE_CASES[slug];
-  if (!data) notFound();
+  if (!data) {
+    notFound();
+  }
 
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-950">
       {/* Hero */}
-      <section className="px-4 py-20 text-center max-w-4xl mx-auto">
-        <p className="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-4 uppercase tracking-wider">
+      <section className="mx-auto max-w-4xl px-4 py-20 text-center">
+        <p className="mb-4 font-medium text-indigo-600 text-sm uppercase tracking-wider dark:text-indigo-400">
           {data.tagline}
         </p>
-        <h1 className="text-4xl md:text-5xl font-bold text-zinc-900 dark:text-zinc-50 mb-6 leading-tight">
+        <h1 className="mb-6 font-bold text-4xl text-zinc-900 leading-tight md:text-5xl dark:text-zinc-50">
           {data.heroHeadline}
         </h1>
-        <p className="text-xl text-zinc-600 dark:text-zinc-400 mb-10 max-w-2xl mx-auto">
+        <p className="mx-auto mb-10 max-w-2xl text-xl text-zinc-600 dark:text-zinc-400">
           {data.heroSubtext}
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button asChild size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white px-8">
+        <div className="flex flex-col justify-center gap-4 sm:flex-row">
+          <Button
+            asChild
+            className="bg-indigo-600 px-8 text-white hover:bg-indigo-700"
+            size="lg"
+          >
             <Link href="/register">
               Start free 7-day trial <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
-          <Button asChild variant="outline" size="lg">
+          <Button asChild size="lg" variant="outline">
             <Link href="/pricing">See pricing</Link>
           </Button>
         </div>
-        <p className="text-sm text-zinc-500 mt-4">No credit card required · Cancel anytime</p>
+        <p className="mt-4 text-sm text-zinc-500">
+          No credit card required · Cancel anytime
+        </p>
       </section>
 
       {/* Best models for this use case */}
-      <section className="bg-zinc-50 dark:bg-zinc-900 py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50 mb-2 text-center">
+      <section className="bg-zinc-50 px-4 py-16 dark:bg-zinc-900">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="mb-2 text-center font-bold text-2xl text-zinc-900 dark:text-zinc-50">
             Best models for {data.title.toLowerCase().replace("ai for ", "")}
           </h2>
-          <p className="text-zinc-500 text-center mb-8">
+          <p className="mb-8 text-center text-zinc-500">
             All included in your subscription. Switch any time.
           </p>
           <div className="grid gap-3">
             {data.bestModels.map((m) => (
               <div
+                className="flex items-center gap-4 rounded-lg border border-zinc-200 bg-white px-5 py-4 dark:border-zinc-700 dark:bg-zinc-800"
                 key={m.name}
-                className="flex items-center gap-4 bg-white dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700 px-5 py-4"
               >
-                <Check className="h-5 w-5 text-green-500 shrink-0" />
-                <span className="font-semibold text-zinc-900 dark:text-zinc-50 w-40 shrink-0">
+                <Check className="h-5 w-5 shrink-0 text-green-500" />
+                <span className="w-40 shrink-0 font-semibold text-zinc-900 dark:text-zinc-50">
                   {m.name}
                 </span>
-                <span className="text-zinc-600 dark:text-zinc-400 text-sm">{m.reason}</span>
+                <span className="text-sm text-zinc-600 dark:text-zinc-400">
+                  {m.reason}
+                </span>
               </div>
             ))}
           </div>
@@ -2148,19 +2441,23 @@ export default async function UseCasePage({ params }: { params: Params }) {
       </section>
 
       {/* Features */}
-      <section className="py-16 px-4">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50 mb-10 text-center">
+      <section className="px-4 py-16">
+        <div className="mx-auto max-w-5xl">
+          <h2 className="mb-10 text-center font-bold text-2xl text-zinc-900 dark:text-zinc-50">
             Everything you need in one place
           </h2>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid gap-6 md:grid-cols-2">
             {data.features.map((f) => (
               <div
+                className="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700"
                 key={f.title}
-                className="border border-zinc-200 dark:border-zinc-700 rounded-xl p-6"
               >
-                <h3 className="font-semibold text-zinc-900 dark:text-zinc-50 mb-2">{f.title}</h3>
-                <p className="text-zinc-600 dark:text-zinc-400 text-sm">{f.description}</p>
+                <h3 className="mb-2 font-semibold text-zinc-900 dark:text-zinc-50">
+                  {f.title}
+                </h3>
+                <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                  {f.description}
+                </p>
               </div>
             ))}
           </div>
@@ -2168,16 +2465,16 @@ export default async function UseCasePage({ params }: { params: Params }) {
       </section>
 
       {/* Use case examples */}
-      <section className="bg-zinc-50 dark:bg-zinc-900 py-16 px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50 mb-8">
+      <section className="bg-zinc-50 px-4 py-16 dark:bg-zinc-900">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="mb-8 font-bold text-2xl text-zinc-900 dark:text-zinc-50">
             What people actually ask
           </h2>
           <div className="grid gap-3">
             {data.useCaseExamples.map((example) => (
               <div
+                className="rounded-lg border border-zinc-200 bg-white px-5 py-3 text-left text-sm text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
                 key={example}
-                className="bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg px-5 py-3 text-zinc-700 dark:text-zinc-300 text-sm text-left"
               >
                 &ldquo;{example}&rdquo;
               </div>
@@ -2187,28 +2484,32 @@ export default async function UseCasePage({ params }: { params: Params }) {
       </section>
 
       {/* Testimonials */}
-      <section className="py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50 mb-10 text-center">
+      <section className="px-4 py-16">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="mb-10 text-center font-bold text-2xl text-zinc-900 dark:text-zinc-50">
             What users say
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-3">
             {data.testimonials.map((t) => (
               <div
+                className="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700"
                 key={t.author}
-                className="border border-zinc-200 dark:border-zinc-700 rounded-xl p-6"
               >
-                <div className="flex gap-1 mb-3">
-                  {[...Array(5)].map((_, i) => (
+                <div className="mb-3 flex gap-1">
+                  {[...new Array(5)].map((_, i) => (
                     <Star
-                      key={i}
                       className="h-4 w-4 fill-amber-400 text-amber-400"
+                      key={i}
                     />
                   ))}
                 </div>
-                <p className="text-zinc-700 dark:text-zinc-300 text-sm mb-4">&ldquo;{t.quote}&rdquo;</p>
-                <p className="font-semibold text-zinc-900 dark:text-zinc-50 text-sm">{t.author}</p>
-                <p className="text-zinc-500 text-xs">{t.role}</p>
+                <p className="mb-4 text-sm text-zinc-700 dark:text-zinc-300">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+                <p className="font-semibold text-sm text-zinc-900 dark:text-zinc-50">
+                  {t.author}
+                </p>
+                <p className="text-xs text-zinc-500">{t.role}</p>
               </div>
             ))}
           </div>
@@ -2216,16 +2517,20 @@ export default async function UseCasePage({ params }: { params: Params }) {
       </section>
 
       {/* FAQ */}
-      <section className="bg-zinc-50 dark:bg-zinc-900 py-16 px-4">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50 mb-8 text-center">
+      <section className="bg-zinc-50 px-4 py-16 dark:bg-zinc-900">
+        <div className="mx-auto max-w-2xl">
+          <h2 className="mb-8 text-center font-bold text-2xl text-zinc-900 dark:text-zinc-50">
             Frequently asked questions
           </h2>
           <div className="space-y-6">
             {data.faq.map((item) => (
               <div key={item.q}>
-                <h3 className="font-semibold text-zinc-900 dark:text-zinc-50 mb-2">{item.q}</h3>
-                <p className="text-zinc-600 dark:text-zinc-400 text-sm">{item.a}</p>
+                <h3 className="mb-2 font-semibold text-zinc-900 dark:text-zinc-50">
+                  {item.q}
+                </h3>
+                <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                  {item.a}
+                </p>
               </div>
             ))}
           </div>
@@ -2233,37 +2538,42 @@ export default async function UseCasePage({ params }: { params: Params }) {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-4 text-center">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50 mb-4">
+      <section className="px-4 py-20 text-center">
+        <div className="mx-auto max-w-2xl">
+          <h2 className="mb-4 font-bold text-3xl text-zinc-900 dark:text-zinc-50">
             {data.ctaHeadline}
           </h2>
-          <p className="text-zinc-600 dark:text-zinc-400 mb-8">
-            36+ AI models. One subscription. Start your 7-day free trial — no credit card required.
+          <p className="mb-8 text-zinc-600 dark:text-zinc-400">
+            36+ AI models. One subscription. Start your 7-day free trial — no
+            credit card required.
           </p>
-          <Button asChild size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white px-10">
+          <Button
+            asChild
+            className="bg-indigo-600 px-10 text-white hover:bg-indigo-700"
+            size="lg"
+          >
             <Link href="/register">
               Start free trial <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
-          <p className="text-sm text-zinc-500 mt-4">
+          <p className="mt-4 text-sm text-zinc-500">
             Plus $12/mo after trial · Cancel anytime
           </p>
         </div>
       </section>
 
       {/* Cross-links */}
-      <section className="border-t border-zinc-200 dark:border-zinc-800 py-12 px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="text-zinc-500 text-sm mb-4">More use cases</p>
+      <section className="border-zinc-200 border-t px-4 py-12 dark:border-zinc-800">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="mb-4 text-sm text-zinc-500">More use cases</p>
           <div className="flex flex-wrap justify-center gap-3">
             {Object.values(USE_CASES)
               .filter((uc) => uc.slug !== slug)
               .map((uc) => (
                 <Link
-                  key={uc.slug}
+                  className="text-indigo-600 text-sm hover:underline dark:text-indigo-400"
                   href={`/for/${uc.slug}`}
-                  className="text-sm text-indigo-600 dark:text-indigo-400 hover:underline"
+                  key={uc.slug}
                 >
                   {uc.title}
                 </Link>

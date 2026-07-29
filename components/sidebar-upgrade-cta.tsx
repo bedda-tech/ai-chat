@@ -175,7 +175,8 @@ export function SidebarUpgradeCTA() {
         <span className="font-semibold text-xs">7 days free</span>
       </div>
       <p className="mb-3 text-muted-foreground text-xs leading-relaxed">
-        Try Claude Opus, GPT-5, Gemini Pro, and 36+ models free for 7 days. Then just $12/mo.
+        Try Claude Opus, GPT-5, Gemini Pro, and 36+ models free for 7 days. Then
+        just $12/mo.
       </p>
       <Button asChild className="h-7 w-full text-xs" size="sm">
         <Link

@@ -132,7 +132,15 @@ export async function GET(req: NextRequest) {
   const realDay21 = day21Users.filter((u) => !guestPattern.test(u.email));
   const realDay30 = day30Users.filter((u) => !guestPattern.test(u.email));
 
-  const results = { day1: 0, day3: 0, day7: 0, day14: 0, day21: 0, day30: 0, errors: 0 };
+  const results = {
+    day1: 0,
+    day3: 0,
+    day7: 0,
+    day14: 0,
+    day21: 0,
+    day30: 0,
+    errors: 0,
+  };
 
   await Promise.all([
     ...realDay1.map(async (u) => {

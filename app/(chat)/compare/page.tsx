@@ -24,18 +24,18 @@ const DEFAULT_COLUMNS = ["anthropic-claude-sonnet-4.5", "openai-gpt-5"];
 
 const MAX_COLUMNS = 4;
 
-interface PendingSubmit {
+type PendingSubmit = {
   text: string;
   version: number;
-}
+};
 
-interface SavedSession {
+type SavedSession = {
   id: string;
   title: string | null;
   modelIds: string[];
   prompts: string[];
   createdAt: string;
-}
+};
 
 function BookmarkIcon({ size = 16 }: { size?: number }) {
   return (
@@ -89,14 +89,18 @@ export default function ComparePage() {
     fetch("/api/compare")
       .then((r) => (r.ok ? r.json() : null))
       .then((data) => {
-        if (data?.sessions) setSavedSessions(data.sessions);
+        if (data?.sessions) {
+          setSavedSessions(data.sessions);
+        }
       })
       .catch(() => {});
   }, []);
 
   const handleSubmit = useCallback(() => {
     const text = input.trim();
-    if (!text) return;
+    if (!text) {
+      return;
+    }
     promptHistory.current = [...promptHistory.current, text];
     setPendingSubmit((prev) => ({ text, version: prev.version + 1 }));
     setInput("");
@@ -125,7 +129,9 @@ export default function ComparePage() {
   }, []);
 
   const saveSession = useCallback(async () => {
-    if (promptHistory.current.length === 0) return;
+    if (promptHistory.current.length === 0) {
+      return;
+    }
     setSaving(true);
     try {
       const res = await fetch("/api/compare", {

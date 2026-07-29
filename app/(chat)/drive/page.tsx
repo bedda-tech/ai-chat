@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 
-interface DriveStatus {
+type DriveStatus = {
   connected: boolean;
   connectedAt?: string;
   scope?: string;
-}
+};
 
 export default function DrivePage() {
   const [status, setStatus] = useState<DriveStatus | null>(null);

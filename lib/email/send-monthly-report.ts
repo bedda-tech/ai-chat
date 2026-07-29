@@ -20,15 +20,25 @@ type MonthlyReportData = {
 };
 
 function formatNumber(n: number): string {
-  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
-  if (n >= 1_000) return `${(n / 1_000).toFixed(1)}K`;
+  if (n >= 1_000_000) {
+    return `${(n / 1_000_000).toFixed(1)}M`;
+  }
+  if (n >= 1000) {
+    return `${(n / 1000).toFixed(1)}K`;
+  }
   return String(n);
 }
 
 function tierLabel(tier: string): string {
-  if (tier === "pro") return "Plus";
-  if (tier === "premium") return "Pro";
-  if (tier === "enterprise") return "Max";
+  if (tier === "pro") {
+    return "Plus";
+  }
+  if (tier === "premium") {
+    return "Pro";
+  }
+  if (tier === "enterprise") {
+    return "Max";
+  }
   return "Free";
 }
 
@@ -50,8 +60,12 @@ export async function sendMonthlyUsageReportEmail(
     )
     .join("");
 
-  const upgradeSection = !isPaid
-    ? `<div style="background: #000; border-radius: 12px; padding: 24px; margin-bottom: 24px; text-align: center;">
+  const upgradeSection = isPaid
+    ? `<p style="color: #555; font-size: 14px; line-height: 1.6; margin-bottom: 24px;">
+        Thanks for being a Bedda ${plan} subscriber — we're grateful to have you.
+        Keep chatting and let us know if there's anything we can do better.
+      </p>`
+    : `<div style="background: #000; border-radius: 12px; padding: 24px; margin-bottom: 24px; text-align: center;">
         <p style="margin: 0 0 4px; font-size: 13px; color: #aaa;">Unlock all 36+ models, 300 msg/day</p>
         <p style="margin: 0 0 16px; font-size: 26px; font-weight: 700; color: #fff;">
           $12<span style="font-size: 14px; font-weight: 400; color: #aaa;">/month</span>
@@ -60,11 +74,7 @@ export async function sendMonthlyUsageReportEmail(
            style="display: inline-block; background: #fff; color: #000; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 14px;">
           Start 7-day free trial →
         </a>
-      </div>`
-    : `<p style="color: #555; font-size: 14px; line-height: 1.6; margin-bottom: 24px;">
-        Thanks for being a Bedda ${plan} subscriber — we're grateful to have you.
-        Keep chatting and let us know if there's anything we can do better.
-      </p>`;
+      </div>`;
 
   await resend.emails.send({
     from: FROM,

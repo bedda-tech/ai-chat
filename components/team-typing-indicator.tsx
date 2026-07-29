@@ -2,14 +2,16 @@
 
 import type { TypingUser } from "@/hooks/use-team-realtime";
 
-interface Props {
+type Props = {
   typingUsers: TypingUser[];
   currentUserId?: string;
-}
+};
 
 export function TeamTypingIndicator({ typingUsers, currentUserId }: Props) {
   const others = typingUsers.filter((u) => u.userId !== currentUserId);
-  if (others.length === 0) return null;
+  if (others.length === 0) {
+    return null;
+  }
 
   const names =
     others.length === 1

@@ -9,7 +9,8 @@ import {
 import { getUserTier } from "@/lib/usage/tracking";
 
 const UPGRADE_ERROR = {
-  error: "MCP tool integration requires a paid subscription. Upgrade at /upgrade.",
+  error:
+    "MCP tool integration requires a paid subscription. Upgrade at /upgrade.",
   upgrade: true,
 };
 

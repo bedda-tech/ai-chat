@@ -10,7 +10,9 @@ import type { VisibilityType } from "./visibility-selector";
 function handleExport(chatId: string) {
   fetch(`/api/history/${chatId}/export?format=markdown`)
     .then((res) => {
-      if (!res.ok) throw new Error("Export failed");
+      if (!res.ok) {
+        throw new Error("Export failed");
+      }
       return res.blob();
     })
     .then((blob) => {

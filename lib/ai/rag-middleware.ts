@@ -17,18 +17,24 @@ export const ragMiddleware: LanguageModelMiddleware = {
   specificationVersion: "v3",
 
   transformParams: async ({ params, type }) => {
-    if (!ragEnabled()) return params;
+    if (!ragEnabled()) {
+      return params;
+    }
 
     const beddaOpts = (params.providerOptions as Record<string, any>)?.bedda as
       | { userId?: string; projectId?: string | null }
       | undefined;
     const userId = beddaOpts?.userId;
-    if (!userId) return params;
+    if (!userId) {
+      return params;
+    }
     const projectId = beddaOpts?.projectId ?? null;
 
     // Zero overhead when no KB documents exist for this scope
     const hasKB = await hasKBDocuments(userId, projectId).catch(() => false);
-    if (!hasKB) return params;
+    if (!hasKB) {
+      return params;
+    }
 
     // Find the last user message and extract its text
     const prompt = params.prompt;
@@ -39,7 +45,9 @@ export const ragMiddleware: LanguageModelMiddleware = {
         break;
       }
     }
-    if (lastUserIdx === -1) return params;
+    if (lastUserIdx === -1) {
+      return params;
+    }
 
     const lastUserMsg = prompt[lastUserIdx];
     const content = lastUserMsg.content;
@@ -53,7 +61,9 @@ export const ragMiddleware: LanguageModelMiddleware = {
         .join(" ")
         .trim();
     }
-    if (!textContent || textContent.length < 3) return params;
+    if (!textContent || textContent.length < 3) {
+      return params;
+    }
 
     // Embed the query and search KB chunks
     let chunks: Array<{
@@ -80,7 +90,9 @@ export const ragMiddleware: LanguageModelMiddleware = {
     }
 
     // Only inject when we have meaningful signal (≥ 3 relevant chunks)
-    if (chunks.length < 3) return params;
+    if (chunks.length < 3) {
+      return params;
+    }
 
     const contextBlock =
       "\n\nRelevant context from your documents:\n" +

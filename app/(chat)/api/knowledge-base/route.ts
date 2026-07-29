@@ -14,8 +14,7 @@ import {
 import { getUserTier } from "@/lib/usage/tracking";
 
 const UPGRADE_ERROR = {
-  error:
-    "Knowledge Base requires a paid subscription. Upgrade at /upgrade.",
+  error: "Knowledge Base requires a paid subscription. Upgrade at /upgrade.",
   upgrade: true,
 };
 

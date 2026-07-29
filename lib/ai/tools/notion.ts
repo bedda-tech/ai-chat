@@ -38,7 +38,9 @@ type NotionSearchPage = {
 function blockToText(block: { type: string; [key: string]: unknown }): string {
   const type = block.type;
   const data = block[type] as NotionBlockData | undefined;
-  if (!data) return "";
+  if (!data) {
+    return "";
+  }
 
   const textContent = data.rich_text ? extractPlainText(data.rich_text) : "";
 
@@ -108,7 +110,9 @@ export const notionTool = (userId: string) =>
           filter: { value: "page", property: "object" },
           page_size: 10,
         };
-        if (query) body.query = query;
+        if (query) {
+          body.query = query;
+        }
 
         const res = await fetch(`${NOTION_API}/search`, {
           method: "POST",
@@ -187,7 +191,9 @@ export const notionTool = (userId: string) =>
 
       const MAX_CHARS = 20_000;
       const truncated = content.length > MAX_CHARS;
-      if (truncated) content = content.slice(0, MAX_CHARS);
+      if (truncated) {
+        content = content.slice(0, MAX_CHARS);
+      }
 
       return {
         success: true,

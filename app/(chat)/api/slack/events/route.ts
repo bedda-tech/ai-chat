@@ -1,6 +1,6 @@
+import crypto from "node:crypto";
 import { gateway } from "@ai-sdk/gateway";
 import { generateText } from "ai";
-import crypto from "crypto";
 import { after } from "next/server";
 import { getSlackWorkspaceByTeamId } from "@/lib/db/queries";
 
@@ -35,13 +35,17 @@ function parseModelAndText(raw: string): { model: string; text: string } {
   if (bracketMatch) {
     const alias = bracketMatch[1].toLowerCase().trim();
     const model = MODEL_ALIASES[alias];
-    if (model) return { model, text: bracketMatch[2].trim() };
+    if (model) {
+      return { model, text: bracketMatch[2].trim() };
+    }
   }
   const flagMatch = raw.match(/^--model=(\S+)\s*([\s\S]*)$/i);
   if (flagMatch) {
     const alias = flagMatch[1].toLowerCase();
     const model = MODEL_ALIASES[alias];
-    if (model) return { model, text: flagMatch[2].trim() };
+    if (model) {
+      return { model, text: flagMatch[2].trim() };
+    }
   }
   return { model: SLACK_DEFAULT_MODEL, text: raw };
 }
@@ -72,7 +76,9 @@ async function postToSlack(
   threadTs?: string
 ): Promise<void> {
   const body: Record<string, string> = { channel, text };
-  if (threadTs) body.thread_ts = threadTs;
+  if (threadTs) {
+    body.thread_ts = threadTs;
+  }
 
   const res = await fetch("https://slack.com/api/chat.postMessage", {
     method: "POST",
@@ -88,12 +94,12 @@ async function postToSlack(
   }
 }
 
-interface SlackMessage {
+type SlackMessage = {
   bot_id?: string;
   app_id?: string;
   subtype?: string;
   text?: string;
-}
+};
 
 // Fetch prior messages in a thread to give the model conversation context.
 // Returns all messages except the last one (the current event being handled).
@@ -111,7 +117,9 @@ async function fetchThreadHistory(
       ok: boolean;
       messages?: SlackMessage[];
     };
-    if (!data.ok || !data.messages || data.messages.length <= 1) return [];
+    if (!data.ok || !data.messages || data.messages.length <= 1) {
+      return [];
+    }
 
     return data.messages
       .slice(0, -1) // exclude the current message being handled
@@ -174,10 +182,14 @@ export async function POST(req: Request) {
 
   // Extract user text — strip @mentions (e.g. <@U12345>)
   const rawText = (event.text as string).replace(/<@[A-Z0-9]+>/g, "").trim();
-  if (!rawText) return new Response("OK");
+  if (!rawText) {
+    return new Response("OK");
+  }
 
   const { model, text: userText } = parseModelAndText(rawText);
-  if (!userText) return new Response("OK");
+  if (!userText) {
+    return new Response("OK");
+  }
 
   const channel = event.channel as string;
   const threadTs = ((event.thread_ts ?? event.ts) as string) || undefined;

@@ -24,7 +24,9 @@ export function ReferralBanner() {
     }
   }, []);
 
-  if (!visible || !data?.referralUrl) return null;
+  if (!visible || !data?.referralUrl) {
+    return null;
+  }
 
   const dismiss = () => {
     localStorage.setItem(DISMISSED_KEY, "1");
@@ -32,7 +34,9 @@ export function ReferralBanner() {
   };
 
   const copy = async () => {
-    if (!data.referralUrl) return;
+    if (!data.referralUrl) {
+      return;
+    }
     await navigator.clipboard.writeText(data.referralUrl);
     setCopied(true);
     toast({ type: "success", description: "Referral link copied!" });
@@ -42,8 +46,8 @@ export function ReferralBanner() {
   return (
     <div className="mx-auto mb-2 flex w-full max-w-4xl items-center gap-3 rounded-lg border border-border bg-muted/60 px-3 py-2 text-sm">
       <span className="min-w-0 flex-1 text-muted-foreground">
-        <span className="font-medium text-foreground">Know someone?</span>{" "}
-        Refer a friend — they get a{" "}
+        <span className="font-medium text-foreground">Know someone?</span> Refer
+        a friend — they get a{" "}
         <span className="font-medium">14-day free trial</span> (double the
         standard).
       </span>

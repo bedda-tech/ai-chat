@@ -21,7 +21,9 @@ function PostHogUserIdentifier() {
   const ph = usePostHog();
 
   useEffect(() => {
-    if (!ph || !session?.user?.email) return;
+    if (!ph || !session?.user?.email) {
+      return;
+    }
     const isGuest = guestRegex.test(session.user.email);
     if (isGuest) {
       ph.reset();

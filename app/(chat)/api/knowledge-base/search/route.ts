@@ -21,7 +21,8 @@ export async function POST(request: Request) {
   if (tier === "free") {
     return NextResponse.json(
       {
-        error: "Knowledge Base requires a paid subscription. Upgrade at /upgrade.",
+        error:
+          "Knowledge Base requires a paid subscription. Upgrade at /upgrade.",
         upgrade: true,
       },
       { status: 403 }
@@ -74,7 +75,11 @@ export async function POST(request: Request) {
   }
 
   // Hybrid vector + BM25 search
-  let results: Array<{ content: string; documentTitle: string; similarity: number }>;
+  let results: Array<{
+    content: string;
+    documentTitle: string;
+    similarity: number;
+  }>;
   try {
     results = await searchKBChunks({
       userId: session.user.id,
@@ -86,10 +91,7 @@ export async function POST(request: Request) {
     });
   } catch (err) {
     console.error("[kb/search] search error:", err);
-    return NextResponse.json(
-      { error: "Search failed" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Search failed" }, { status: 500 });
   }
 
   const responseTimeMs = Date.now() - startTime;
@@ -107,7 +109,7 @@ export async function POST(request: Request) {
     results: results.map((r) => ({
       content: r.content,
       source: r.documentTitle,
-      score: Math.round(r.similarity * 10000) / 10000,
+      score: Math.round(r.similarity * 10_000) / 10_000,
     })),
     count: results.length,
     responseTimeMs,

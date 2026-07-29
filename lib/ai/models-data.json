@@ -174,11 +174,7 @@
       "config": {
         "maxSteps": 5,
         "temperature": 0.7,
-        "idealFor": [
-          "efficient processing",
-          "everyday tasks",
-          "multimodal"
-        ]
+        "idealFor": ["efficient processing", "everyday tasks", "multimodal"]
       }
     },
     {
@@ -233,11 +229,7 @@
       "config": {
         "maxSteps": 8,
         "temperature": 0.7,
-        "idealFor": [
-          "complex tasks",
-          "advanced reasoning",
-          "multimodal"
-        ]
+        "idealFor": ["complex tasks", "advanced reasoning", "multimodal"]
       }
     },
     {
@@ -262,11 +254,7 @@
       "config": {
         "maxSteps": 4,
         "temperature": 0.7,
-        "idealFor": [
-          "ultra-fast responses",
-          "simple tasks",
-          "high throughput"
-        ]
+        "idealFor": ["ultra-fast responses", "simple tasks", "high throughput"]
       }
     },
     {
@@ -291,11 +279,7 @@
       "config": {
         "maxSteps": 6,
         "temperature": 0.7,
-        "idealFor": [
-          "fast responses",
-          "efficient processing",
-          "multimodal"
-        ]
+        "idealFor": ["fast responses", "efficient processing", "multimodal"]
       }
     },
     {
@@ -320,11 +304,7 @@
       "config": {
         "maxSteps": 7,
         "temperature": 0.7,
-        "idealFor": [
-          "advanced reasoning",
-          "complex tasks",
-          "multimodal"
-        ]
+        "idealFor": ["advanced reasoning", "complex tasks", "multimodal"]
       }
     },
     {
@@ -407,11 +387,7 @@
       "config": {
         "maxSteps": 6,
         "temperature": 0.7,
-        "idealFor": [
-          "fast responses",
-          "thinking capabilities",
-          "multimodal"
-        ]
+        "idealFor": ["fast responses", "thinking capabilities", "multimodal"]
       }
     },
     {
@@ -436,11 +412,7 @@
       "config": {
         "maxSteps": 5,
         "temperature": 0.7,
-        "idealFor": [
-          "fast responses",
-          "lightweight processing",
-          "multimodal"
-        ]
+        "idealFor": ["fast responses", "lightweight processing", "multimodal"]
       }
     },
     {
@@ -449,9 +421,7 @@
       "provider": "google",
       "name": "Gemini 2.5 Flash",
       "description": "Fast Gemini model with enhanced speed and Google Search grounding \u2014 available on the free plan",
-      "tags": [
-        "free"
-      ],
+      "tags": ["free"],
       "warning": "Free plan model \u2014 may be slower during peak hours",
       "contextWindow": 1000000,
       "pricing": {
@@ -469,11 +439,7 @@
       "config": {
         "maxSteps": 6,
         "temperature": 0.7,
-        "idealFor": [
-          "fast responses",
-          "Google Search grounding",
-          "multimodal"
-        ]
+        "idealFor": ["fast responses", "Google Search grounding", "multimodal"]
       }
     },
     {
@@ -498,11 +464,7 @@
       "config": {
         "maxSteps": 4,
         "temperature": 0.6,
-        "idealFor": [
-          "quick responses",
-          "simple tasks",
-          "high throughput"
-        ]
+        "idealFor": ["quick responses", "simple tasks", "high throughput"]
       }
     },
     {
@@ -586,11 +548,7 @@
       "config": {
         "maxSteps": 7,
         "temperature": 0.7,
-        "idealFor": [
-          "fast reasoning",
-          "chain-of-thought",
-          "analysis"
-        ]
+        "idealFor": ["fast reasoning", "chain-of-thought", "analysis"]
       }
     },
     {
@@ -615,11 +573,7 @@
       "config": {
         "maxSteps": 5,
         "temperature": 0.7,
-        "idealFor": [
-          "web search",
-          "browser integration",
-          "open source"
-        ]
+        "idealFor": ["web search", "browser integration", "open source"]
       }
     },
     {
@@ -644,11 +598,7 @@
       "config": {
         "maxSteps": 5,
         "temperature": 0.7,
-        "idealFor": [
-          "fast responses",
-          "conversational",
-          "general purpose"
-        ]
+        "idealFor": ["fast responses", "conversational", "general purpose"]
       }
     },
     {
@@ -673,11 +623,7 @@
       "config": {
         "maxSteps": 5,
         "temperature": 0.6,
-        "idealFor": [
-          "fast responses",
-          "everyday tasks",
-          "efficient processing"
-        ]
+        "idealFor": ["fast responses", "everyday tasks", "efficient processing"]
       }
     },
     {
@@ -702,11 +648,7 @@
       "config": {
         "maxSteps": 7,
         "temperature": 0.7,
-        "idealFor": [
-          "multimodal tasks",
-          "vision",
-          "structured outputs"
-        ]
+        "idealFor": ["multimodal tasks", "vision", "structured outputs"]
       }
     },
     {
@@ -731,11 +673,7 @@
       "config": {
         "maxSteps": 7,
         "temperature": 0.7,
-        "idealFor": [
-          "advanced reasoning",
-          "complex tasks",
-          "multimodal"
-        ]
+        "idealFor": ["advanced reasoning", "complex tasks", "multimodal"]
       }
     },
     {
@@ -760,12 +698,7 @@
       "config": {
         "maxSteps": 7,
         "temperature": 0.7,
-        "idealFor": [
-          "complex reasoning",
-          "STEM",
-          "coding",
-          "analysis"
-        ]
+        "idealFor": ["complex reasoning", "STEM", "coding", "analysis"]
       }
     },
     {
@@ -790,11 +723,7 @@
       "config": {
         "maxSteps": 6,
         "temperature": 0.3,
-        "idealFor": [
-          "code generation",
-          "programming",
-          "fast coding"
-        ]
+        "idealFor": ["code generation", "programming", "fast coding"]
       }
     },
     {
@@ -848,12 +777,7 @@
       "config": {
         "maxSteps": 7,
         "temperature": 0.7,
-        "idealFor": [
-          "complex reasoning",
-          "STEM",
-          "coding",
-          "analysis"
-        ]
+        "idealFor": ["complex reasoning", "STEM", "coding", "analysis"]
       }
     },
     {
@@ -907,11 +831,7 @@
       "config": {
         "maxSteps": 6,
         "temperature": 0.7,
-        "idealFor": [
-          "general purpose",
-          "Chinese language",
-          "multimodal"
-        ]
+        "idealFor": ["general purpose", "Chinese language", "multimodal"]
       }
     },
     {
@@ -936,11 +856,7 @@
       "config": {
         "maxSteps": 8,
         "temperature": 0.7,
-        "idealFor": [
-          "coding",
-          "instruction following",
-          "multilingual tasks"
-        ]
+        "idealFor": ["coding", "instruction following", "multilingual tasks"]
       }
     },
     {
@@ -965,11 +881,7 @@
       "config": {
         "maxSteps": 6,
         "temperature": 0.7,
-        "idealFor": [
-          "quick tasks",
-          "summarization",
-          "classification"
-        ]
+        "idealFor": ["quick tasks", "summarization", "classification"]
       }
     },
     {
@@ -978,9 +890,7 @@
       "provider": "deepseek",
       "name": "DeepSeek R1",
       "description": "DeepSeek's reasoning model \u2014 step-by-step thinking for math, science, and complex problems, available on the free plan",
-      "tags": [
-        "free"
-      ],
+      "tags": ["free"],
       "warning": "Free plan model \u2014 may be slower / subject to availability during peak hours",
       "contextWindow": 128000,
       "pricing": {
@@ -998,12 +908,7 @@
       "config": {
         "maxSteps": 1,
         "temperature": 0.6,
-        "idealFor": [
-          "math",
-          "science",
-          "logical reasoning",
-          "complex analysis"
-        ]
+        "idealFor": ["math", "science", "logical reasoning", "complex analysis"]
       }
     },
     {
@@ -1012,9 +917,7 @@
       "provider": "groq",
       "name": "Llama 3.3 70B (Groq)",
       "description": "Meta's Llama 3.3 70B served on Groq \u2014 ultra-fast inference at near-zero latency, available on the free plan",
-      "tags": [
-        "free"
-      ],
+      "tags": ["free"],
       "warning": "Free plan model \u2014 may be slower / subject to availability during peak hours",
       "contextWindow": 128000,
       "pricing": {
@@ -1032,11 +935,7 @@
       "config": {
         "maxSteps": 6,
         "temperature": 0.7,
-        "idealFor": [
-          "fast responses",
-          "general chat",
-          "coding assistance"
-        ]
+        "idealFor": ["fast responses", "general chat", "coding assistance"]
       }
     },
     {
@@ -1045,9 +944,7 @@
       "provider": "groq",
       "name": "Llama 4 Scout (Groq)",
       "description": "Meta's Llama 4 Scout served on Groq \u2014 next-generation multimodal model at ultra-fast inference speed, available on the free plan",
-      "tags": [
-        "free"
-      ],
+      "tags": ["free"],
       "warning": "Free plan model \u2014 may be slower / subject to availability during peak hours",
       "contextWindow": 131072,
       "pricing": {
@@ -1170,9 +1067,7 @@
       "provider": "krain",
       "name": "Bedda Local (KRAIN)",
       "description": "Privacy-forward local inference on Bedda's self-hosted KRAIN cluster \u2014 zero cloud data exposure, self-hosted Gemma",
-      "tags": [
-        "experimental"
-      ],
+      "tags": ["experimental"],
       "warning": "~20-40s response time, local inference",
       "contextWindow": 8192,
       "pricing": {

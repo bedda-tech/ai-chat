@@ -28,7 +28,9 @@ async function refreshToken(
       grant_type: "refresh_token",
     }),
   });
-  if (!res.ok) return null;
+  if (!res.ok) {
+    return null;
+  }
   const data = await res.json();
   await saveDriveConnection(userId, {
     accessToken: data.access_token,
@@ -43,9 +45,13 @@ async function refreshToken(
 
 async function getValidToken(userId: string): Promise<string | null> {
   const conn = await getDriveConnection(userId);
-  if (!conn) return null;
+  if (!conn) {
+    return null;
+  }
   if (conn.expiresAt && conn.expiresAt < Math.floor(Date.now() / 1000) + 60) {
-    if (!conn.refreshToken) return null;
+    if (!conn.refreshToken) {
+      return null;
+    }
     return refreshToken(userId, conn.refreshToken);
   }
   return conn.accessToken;

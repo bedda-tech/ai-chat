@@ -255,19 +255,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/compare/bedda-vs-pi`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${BASE_URL}/compare/bedda-vs-amazon-q`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-jenni-ai`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
@@ -285,24 +273,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/compare/bedda-vs-rytr`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-wordtune`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-anyword`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${BASE_URL}/compare/bedda-vs-lovable`,
       lastModified: now,
       changeFrequency: "monthly",
@@ -313,12 +283,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.85,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-deepl`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
     },
     {
       url: `${BASE_URL}/teams`,
@@ -987,12 +951,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/compare/bedda-vs-forefront`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${BASE_URL}/blog/best-ai-tools-2026`,
       lastModified: now,
       changeFrequency: "monthly",
@@ -1071,18 +1029,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/compare/bedda-vs-chatpdf`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-elicit`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${BASE_URL}/blog/best-ai-for-meeting-notes-2026`,
       lastModified: now,
       changeFrequency: "monthly",
@@ -1126,24 +1072,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/blog/ai-for-insurance-professionals-2026`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-apple-intelligence`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-cody`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-cohere`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
@@ -1209,12 +1137,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/compare/bedda-vs-consensus`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${BASE_URL}/compare/bedda-vs-coda-ai`,
       lastModified: now,
       changeFrequency: "monthly",
@@ -1257,12 +1179,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${BASE_URL}/compare/bedda-vs-together-ai`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${BASE_URL}/blog/best-ai-for-lawyers-2026`,
       lastModified: now,
       changeFrequency: "monthly",
@@ -1285,30 +1201,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.85,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-vertex-ai`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-azure-openai`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-aws-bedrock`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-glean`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
     },
     {
       url: `${BASE_URL}/blog/best-ai-email-assistant-2026`,
@@ -1366,12 +1258,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/compare/bedda-vs-kagi`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-atlassian-intelligence`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
@@ -1449,24 +1335,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
-      url: `${BASE_URL}/compare/bedda-vs-gpt4all`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-ai21`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-llama-api`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${BASE_URL}/blog/ai-for-medical-professionals-2026`,
       lastModified: now,
       changeFrequency: "monthly",
@@ -1489,18 +1357,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.85,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-textcortex`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-hyperwrite`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
     },
     {
       url: `${BASE_URL}/blog/ai-for-ux-designers-2026`,
@@ -1534,12 +1390,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/compare/bedda-vs-tome`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-cohere`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
@@ -1635,24 +1485,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/compare/bedda-vs-codeium`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-sourcegraph`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-hix-ai`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${BASE_URL}/blog/ai-for-compliance-teams-2026`,
       lastModified: now,
       changeFrequency: "monthly",
@@ -1672,36 +1504,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/blog/ai-for-learning-and-development-2026`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-qwen`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-ai-writer`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-sudowrite`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-type-ai`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-chatsonic`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
@@ -1815,24 +1617,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/compare/bedda-vs-fireworks-ai`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-lm-studio`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-aider`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${BASE_URL}/blog/best-ai-for-language-learning-2026`,
       lastModified: now,
       changeFrequency: "monthly",
@@ -1857,12 +1641,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/compare/bedda-vs-jan-ai`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${BASE_URL}/blog/best-ai-for-tax-professionals-2026`,
       lastModified: now,
       changeFrequency: "monthly",
@@ -1882,12 +1660,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/compare/bedda-vs-monica-ai`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-harpa-ai`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
@@ -1929,12 +1701,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/compare/bedda-vs-wordtune`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${BASE_URL}/compare/bedda-vs-copy-ai`,
       lastModified: now,
       changeFrequency: "monthly",
@@ -1959,37 +1725,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
-      url: `${BASE_URL}/compare/bedda-vs-ollama`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${BASE_URL}/compare/bedda-vs-google-ai-studio`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/compare/bedda-vs-openai-playground`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${BASE_URL}/compare/bedda-vs-le-chat`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-julius-ai`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-chatdoc`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
@@ -2043,24 +1785,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/compare/bedda-vs-raycast-ai`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-coderabbit`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-warp`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${BASE_URL}/compare/bedda-vs-deepseek`,
       lastModified: now,
       changeFrequency: "monthly",
@@ -2074,12 +1798,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/compare/bedda-vs-brave-leo`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/compare/bedda-vs-github-models`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
@@ -2131,7 +1849,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const seen = new Set<string>();
   return entries.filter((entry) => {
-    if (seen.has(entry.url)) return false;
+    if (seen.has(entry.url)) {
+      return false;
+    }
     seen.add(entry.url);
     return true;
   }) as MetadataRoute.Sitemap;

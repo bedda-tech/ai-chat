@@ -10,7 +10,10 @@ export function generateUnsubToken(userId: string): string {
 export function verifyUnsubToken(userId: string, token: string): boolean {
   const expected = generateUnsubToken(userId);
   try {
-    return timingSafeEqual(Buffer.from(expected, "hex"), Buffer.from(token, "hex"));
+    return timingSafeEqual(
+      Buffer.from(expected, "hex"),
+      Buffer.from(token, "hex")
+    );
   } catch {
     return false;
   }

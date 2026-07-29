@@ -1,7 +1,7 @@
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 import { sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import postgres from "postgres";
 import { auth } from "@/app/(auth)/auth";
 import { getCacheAnalytics } from "@/lib/ai/cache-analytics";
@@ -49,9 +49,16 @@ async function getFeatureAnalytics(): Promise<FeatureRow[]> {
     }>) {
       const name = row.tool_name;
       const tier = row.tier as "free" | "pro" | "premium" | "enterprise";
-      const count = parseInt(row.usage_count, 10);
+      const count = Number.parseInt(row.usage_count, 10);
       if (!byTool[name]) {
-        byTool[name] = { name, free: 0, pro: 0, premium: 0, enterprise: 0, total: 0 };
+        byTool[name] = {
+          name,
+          free: 0,
+          pro: 0,
+          premium: 0,
+          enterprise: 0,
+          total: 0,
+        };
       }
       const validTiers = ["free", "pro", "premium", "enterprise"] as const;
       if (validTiers.includes(tier)) {
@@ -193,35 +200,54 @@ export default async function AdminPage() {
       <div className="mt-10">
         <h2 className="mb-1 font-bold text-xl">Feature Usage (Last 30 Days)</h2>
         <p className="mb-4 text-muted-foreground text-sm">
-          Tool invocations per feature broken down by subscription tier.
-          Data populates as users trigger tool calls.
+          Tool invocations per feature broken down by subscription tier. Data
+          populates as users trigger tool calls.
         </p>
         {featureRows.length === 0 ? (
           <p className="text-muted-foreground text-sm">
-            No feature usage data yet. Tool calls will appear here once users start using premium features.
+            No feature usage data yet. Tool calls will appear here once users
+            start using premium features.
           </p>
         ) : (
           <div className="overflow-x-auto rounded-lg border">
             <table className="w-full text-sm">
               <thead className="bg-muted/50">
                 <tr>
-                  <th className="p-3 text-left font-semibold">Feature / Tool</th>
+                  <th className="p-3 text-left font-semibold">
+                    Feature / Tool
+                  </th>
                   <th className="p-3 text-right font-semibold">Total</th>
                   <th className="p-3 text-right font-semibold">Free</th>
                   <th className="p-3 text-right font-semibold">Plus (pro)</th>
-                  <th className="p-3 text-right font-semibold">Pro (premium)</th>
-                  <th className="p-3 text-right font-semibold">Max (enterprise)</th>
+                  <th className="p-3 text-right font-semibold">
+                    Pro (premium)
+                  </th>
+                  <th className="p-3 text-right font-semibold">
+                    Max (enterprise)
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {featureRows.map((row) => (
                   <tr className="border-t hover:bg-muted/30" key={row.name}>
                     <td className="p-3 font-mono text-xs">{row.name}</td>
-                    <td className="p-3 text-right font-semibold">{row.total.toLocaleString()}</td>
-                    <td className="p-3 text-right text-muted-foreground">{row.free > 0 ? row.free.toLocaleString() : "—"}</td>
-                    <td className="p-3 text-right">{row.pro > 0 ? row.pro.toLocaleString() : "—"}</td>
-                    <td className="p-3 text-right">{row.premium > 0 ? row.premium.toLocaleString() : "—"}</td>
-                    <td className="p-3 text-right">{row.enterprise > 0 ? row.enterprise.toLocaleString() : "—"}</td>
+                    <td className="p-3 text-right font-semibold">
+                      {row.total.toLocaleString()}
+                    </td>
+                    <td className="p-3 text-right text-muted-foreground">
+                      {row.free > 0 ? row.free.toLocaleString() : "—"}
+                    </td>
+                    <td className="p-3 text-right">
+                      {row.pro > 0 ? row.pro.toLocaleString() : "—"}
+                    </td>
+                    <td className="p-3 text-right">
+                      {row.premium > 0 ? row.premium.toLocaleString() : "—"}
+                    </td>
+                    <td className="p-3 text-right">
+                      {row.enterprise > 0
+                        ? row.enterprise.toLocaleString()
+                        : "—"}
+                    </td>
                   </tr>
                 ))}
               </tbody>

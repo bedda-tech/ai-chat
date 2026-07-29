@@ -5,15 +5,15 @@ export type MarketplaceCategory =
   | "Communication"
   | "Finance";
 
-export interface MarketplaceParam {
+export type MarketplaceParam = {
   name: string;
   label: string;
   placeholder: string;
   required: boolean;
   secret?: boolean;
-}
+};
 
-export interface MarketplacePlugin {
+export type MarketplacePlugin = {
   id: string;
   name: string;
   description: string;
@@ -25,7 +25,7 @@ export interface MarketplacePlugin {
   webhookToolDescription: string;
   params: MarketplaceParam[];
   parametersSchema: Record<string, unknown>;
-}
+};
 
 export const MARKETPLACE_PLUGINS: MarketplacePlugin[] = [
   // Productivity

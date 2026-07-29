@@ -24,8 +24,8 @@ import { useArtifactSelector } from "@/hooks/use-artifact";
 import { useAutoResume } from "@/hooks/use-auto-resume";
 import { useChatVisibility } from "@/hooks/use-chat-visibility";
 import { useTeamRealtime } from "@/hooks/use-team-realtime";
-import type { Vote } from "@/lib/db/schema";
 import { pruneOldSessions, saveMessages } from "@/lib/chat/storage";
+import type { Vote } from "@/lib/db/schema";
 import { ChatSDKError } from "@/lib/errors";
 import type { Attachment, ChatMessage } from "@/lib/types";
 import type { AppUsage } from "@/lib/usage";
@@ -105,7 +105,7 @@ export function Chat({
     limit: number;
     tier: string;
     pct: number;
-  }>(!isReadonly ? "/api/usage/daily" : null, fetcher, {
+  }>(isReadonly ? null : "/api/usage/daily", fetcher, {
     refreshInterval: 60_000,
   });
 
@@ -359,25 +359,25 @@ export function Chat({
             )}
           {!isReadonly && messages.length >= 2 && <ReferralBanner />}
           <div className="mx-auto flex w-full max-w-4xl gap-2 border-t-0">
-          {!isReadonly && (
-            <MultimodalInput
-              attachments={attachments}
-              chatId={id}
-              input={input}
-              messages={messages}
-              onModelChange={setCurrentModelId}
-              onTyping={isTeamShared ? sendTyping : undefined}
-              selectedModelId={currentModelId}
-              selectedVisibilityType={visibilityType}
-              sendMessage={sendMessage}
-              setAttachments={setAttachments}
-              setInput={setInput}
-              setMessages={setMessages}
-              status={status}
-              stop={stop}
-              usage={usage}
-            />
-          )}
+            {!isReadonly && (
+              <MultimodalInput
+                attachments={attachments}
+                chatId={id}
+                input={input}
+                messages={messages}
+                onModelChange={setCurrentModelId}
+                onTyping={isTeamShared ? sendTyping : undefined}
+                selectedModelId={currentModelId}
+                selectedVisibilityType={visibilityType}
+                sendMessage={sendMessage}
+                setAttachments={setAttachments}
+                setInput={setInput}
+                setMessages={setMessages}
+                status={status}
+                stop={stop}
+                usage={usage}
+              />
+            )}
           </div>
         </div>
       </div>

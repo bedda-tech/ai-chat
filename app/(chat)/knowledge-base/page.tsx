@@ -7,7 +7,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 
-interface KBDocument {
+type KBDocument = {
   id: string;
   title: string;
   fileName: string;
@@ -15,22 +15,22 @@ interface KBDocument {
   fileSize: number;
   chunkCount: number;
   createdAt: string;
-}
+};
 
-interface DriveFile {
+type DriveFile = {
   id: string;
   name: string;
   type: string;
   modified: string;
   size: number | null;
-}
+};
 
-interface NotionPage {
+type NotionPage = {
   id: string;
   title: string;
   lastEdited?: string;
   url?: string;
-}
+};
 
 const SUPPORTED_TYPES = [
   "text/plain",
@@ -44,8 +44,12 @@ const SUPPORTED_TYPES = [
 const MAX_FILE_SIZE_MB = 25;
 
 function formatBytes(bytes: number) {
-  if (bytes < 1024) return `${bytes} B`;
-  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+  if (bytes < 1024) {
+    return `${bytes} B`;
+  }
+  if (bytes < 1024 * 1024) {
+    return `${(bytes / 1024).toFixed(1)} KB`;
+  }
   return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 }
 
@@ -77,15 +81,21 @@ export default function KnowledgeBasePage() {
 
   // Fetch project name when scoped to a project
   useEffect(() => {
-    if (!projectId) return;
+    if (!projectId) {
+      return;
+    }
     fetch("/api/projects")
       .then((r) => (r.ok ? r.json() : null))
       .then((data) => {
-        if (!data) return;
+        if (!data) {
+          return;
+        }
         const p = (data.projects ?? []).find(
           (proj: { id: string; name: string }) => proj.id === projectId
         );
-        if (p) setProjectName(p.name);
+        if (p) {
+          setProjectName(p.name);
+        }
       })
       .catch(() => {});
   }, [projectId]);
@@ -132,7 +142,9 @@ export default function KnowledgeBasePage() {
       setUploading(true);
       const formData = new FormData();
       formData.append("file", file);
-      if (projectId) formData.append("projectId", projectId);
+      if (projectId) {
+        formData.append("projectId", projectId);
+      }
 
       try {
         const res = await fetch("/api/knowledge-base", {
@@ -160,7 +172,9 @@ export default function KnowledgeBasePage() {
   const handleFileChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const file = e.target.files?.[0];
-      if (file) uploadFile(file);
+      if (file) {
+        uploadFile(file);
+      }
       e.target.value = "";
     },
     [uploadFile]
@@ -171,13 +185,17 @@ export default function KnowledgeBasePage() {
       e.preventDefault();
       setDragOver(false);
       const file = e.dataTransfer.files?.[0];
-      if (file) uploadFile(file);
+      if (file) {
+        uploadFile(file);
+      }
     },
     [uploadFile]
   );
 
   const deleteDocument = useCallback(async (id: string, title: string) => {
-    if (!confirm(`Delete "${title}"? This cannot be undone.`)) return;
+    if (!confirm(`Delete "${title}"? This cannot be undone.`)) {
+      return;
+    }
     try {
       const res = await fetch(`/api/knowledge-base?id=${id}`, {
         method: "DELETE",
@@ -201,7 +219,9 @@ export default function KnowledgeBasePage() {
       const res = await fetch(
         `/api/knowledge-base/import/drive?q=${encodeURIComponent(q)}`
       );
-      if (!res.ok) throw new Error("API error");
+      if (!res.ok) {
+        throw new Error("API error");
+      }
       const data = await res.json();
       setDriveConnected(data.connected ?? false);
       setDriveFiles(data.files ?? []);
@@ -251,7 +271,9 @@ export default function KnowledgeBasePage() {
       const res = await fetch(
         `/api/knowledge-base/import/notion?q=${encodeURIComponent(q)}`
       );
-      if (!res.ok) throw new Error("API error");
+      if (!res.ok) {
+        throw new Error("API error");
+      }
       const data = await res.json();
       setNotionConnected(data.connected ?? false);
       setNotionPages(data.pages ?? []);
@@ -341,8 +363,8 @@ export default function KnowledgeBasePage() {
             : "Upload documents and chat with them. The AI will search your files when answering questions."}
         </p>
         <p className="mt-1 text-muted-foreground text-xs">
-          Supported: .pdf, .docx, .txt, .md, .csv, .json &nbsp;&middot;&nbsp; Max{" "}
-          {MAX_FILE_SIZE_MB}MB per file
+          Supported: .pdf, .docx, .txt, .md, .csv, .json &nbsp;&middot;&nbsp;
+          Max {MAX_FILE_SIZE_MB}MB per file
         </p>
       </div>
 
@@ -451,282 +473,293 @@ export default function KnowledgeBasePage() {
       )}
 
       {/* Cloud import buttons — hidden for free tier */}
-      {isPaidUser !== false && <>
-      {/* Cloud import buttons */}
-      <div className="mb-8 flex gap-2">
-        <Button
-          className="flex items-center gap-2"
-          onClick={() => togglePanel("drive")}
-          size="sm"
-          variant={openPanel === "drive" ? "secondary" : "outline"}
-        >
-          <svg
-            className="size-4"
-            viewBox="0 0 87.3 78"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M6.6 66.85l3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3L27.5 50H0c0 1.55.4 3.1 1.2 4.5z"
-              fill="#0066da"
-            />
-            <path
-              d="M43.65 25L29.9 0c-1.35.8-2.5 1.9-3.3 3.3L1.2 45.5c-.8 1.4-1.2 2.95-1.2 4.5h27.5z"
-              fill="#00ac47"
-            />
-            <path
-              d="M73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75L86.1 54.5c.8-1.4 1.2-2.95 1.2-4.5H59.8L73.55 76.8z"
-              fill="#ea4335"
-            />
-            <path d="M43.65 25L57.4 0H29.9l13.75 25z" fill="#00832d" />
-            <path
-              d="M59.8 50H87.3c0-1.55-.4-3.1-1.2-4.5L60.5 3.3c-.8-1.4-1.95-2.5-3.3-3.3L43.65 25l16.15 25z"
-              fill="#2684fc"
-            />
-            <path
-              d="M27.5 50L13.75 76.8c1.35.8 2.9 1.2 4.5 1.2H69.1c1.6 0 3.1-.45 4.45-1.2L59.8 50H27.5z"
-              fill="#ffba00"
-            />
-          </svg>
-          Import from Google Drive
-        </Button>
-        <Button
-          className="flex items-center gap-2"
-          onClick={() => togglePanel("notion")}
-          size="sm"
-          variant={openPanel === "notion" ? "secondary" : "outline"}
-        >
-          <svg
-            className="size-4"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.212-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.047.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.14c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z" />
-          </svg>
-          Import from Notion
-        </Button>
-      </div>
-
-      {/* Google Drive panel */}
-      {openPanel === "drive" && (
-        <div className="mb-8 rounded-xl border border-border bg-card p-4">
-          <h3 className="mb-3 font-semibold text-sm">Google Drive</h3>
-          {driveConnected === false ? (
-            <p className="text-muted-foreground text-sm">
-              Google Drive is not connected.{" "}
-              <a className="text-primary underline" href="/drive">
-                Connect your Drive
-              </a>{" "}
-              to import files.
-            </p>
-          ) : (
-            <>
-              <div className="mb-3 flex gap-2">
-                <input
-                  className="flex-1 rounded-md border border-border bg-background px-3 py-1.5 text-sm outline-none focus:ring-1 focus:ring-ring"
-                  onChange={(e) => setDriveQuery(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") loadDriveFiles(driveQuery);
-                  }}
-                  placeholder="Search files..."
-                  value={driveQuery}
+      {isPaidUser !== false && (
+        <>
+          {/* Cloud import buttons */}
+          <div className="mb-8 flex gap-2">
+            <Button
+              className="flex items-center gap-2"
+              onClick={() => togglePanel("drive")}
+              size="sm"
+              variant={openPanel === "drive" ? "secondary" : "outline"}
+            >
+              <svg
+                className="size-4"
+                viewBox="0 0 87.3 78"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.6 66.85l3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3L27.5 50H0c0 1.55.4 3.1 1.2 4.5z"
+                  fill="#0066da"
                 />
-                <Button
-                  disabled={driveLoading}
-                  onClick={() => loadDriveFiles(driveQuery)}
-                  size="sm"
-                  variant="outline"
-                >
+                <path
+                  d="M43.65 25L29.9 0c-1.35.8-2.5 1.9-3.3 3.3L1.2 45.5c-.8 1.4-1.2 2.95-1.2 4.5h27.5z"
+                  fill="#00ac47"
+                />
+                <path
+                  d="M73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75L86.1 54.5c.8-1.4 1.2-2.95 1.2-4.5H59.8L73.55 76.8z"
+                  fill="#ea4335"
+                />
+                <path d="M43.65 25L57.4 0H29.9l13.75 25z" fill="#00832d" />
+                <path
+                  d="M59.8 50H87.3c0-1.55-.4-3.1-1.2-4.5L60.5 3.3c-.8-1.4-1.95-2.5-3.3-3.3L43.65 25l16.15 25z"
+                  fill="#2684fc"
+                />
+                <path
+                  d="M27.5 50L13.75 76.8c1.35.8 2.9 1.2 4.5 1.2H69.1c1.6 0 3.1-.45 4.45-1.2L59.8 50H27.5z"
+                  fill="#ffba00"
+                />
+              </svg>
+              Import from Google Drive
+            </Button>
+            <Button
+              className="flex items-center gap-2"
+              onClick={() => togglePanel("notion")}
+              size="sm"
+              variant={openPanel === "notion" ? "secondary" : "outline"}
+            >
+              <svg
+                className="size-4"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.212-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.047.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.14c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z" />
+              </svg>
+              Import from Notion
+            </Button>
+          </div>
+
+          {/* Google Drive panel */}
+          {openPanel === "drive" && (
+            <div className="mb-8 rounded-xl border border-border bg-card p-4">
+              <h3 className="mb-3 font-semibold text-sm">Google Drive</h3>
+              {driveConnected === false ? (
+                <p className="text-muted-foreground text-sm">
+                  Google Drive is not connected.{" "}
+                  <a className="text-primary underline" href="/drive">
+                    Connect your Drive
+                  </a>{" "}
+                  to import files.
+                </p>
+              ) : (
+                <>
+                  <div className="mb-3 flex gap-2">
+                    <input
+                      className="flex-1 rounded-md border border-border bg-background px-3 py-1.5 text-sm outline-none focus:ring-1 focus:ring-ring"
+                      onChange={(e) => setDriveQuery(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          loadDriveFiles(driveQuery);
+                        }
+                      }}
+                      placeholder="Search files..."
+                      value={driveQuery}
+                    />
+                    <Button
+                      disabled={driveLoading}
+                      onClick={() => loadDriveFiles(driveQuery)}
+                      size="sm"
+                      variant="outline"
+                    >
+                      {driveLoading ? (
+                        <span className="size-3 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                      ) : (
+                        "Search"
+                      )}
+                    </Button>
+                  </div>
                   {driveLoading ? (
-                    <span className="size-3 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                    <div className="flex items-center gap-2 py-4 text-muted-foreground text-sm">
+                      <div className="size-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                      Loading files...
+                    </div>
+                  ) : driveFiles.length === 0 ? (
+                    <p className="py-4 text-center text-muted-foreground text-sm">
+                      No files found.
+                    </p>
                   ) : (
-                    "Search"
+                    <ul className="max-h-64 space-y-1.5 overflow-y-auto">
+                      {driveFiles.map((file) => (
+                        <li
+                          className="flex items-center justify-between gap-3 rounded-lg border border-border px-3 py-2"
+                          key={file.id}
+                        >
+                          <div className="min-w-0 flex-1">
+                            <p className="truncate font-medium text-sm">
+                              {file.name}
+                            </p>
+                            <p className="text-muted-foreground text-xs">
+                              {file.type}
+                              {file.size ? ` · ${formatBytes(file.size)}` : ""}
+                            </p>
+                          </div>
+                          <Button
+                            disabled={importingId === file.id}
+                            onClick={() => importDriveFile(file)}
+                            size="sm"
+                            variant="outline"
+                          >
+                            {importingId === file.id ? (
+                              <span className="size-3 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                            ) : (
+                              "Import"
+                            )}
+                          </Button>
+                        </li>
+                      ))}
+                    </ul>
                   )}
-                </Button>
-              </div>
-              {driveLoading ? (
-                <div className="flex items-center gap-2 py-4 text-muted-foreground text-sm">
-                  <div className="size-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
-                  Loading files...
-                </div>
-              ) : driveFiles.length === 0 ? (
-                <p className="py-4 text-center text-muted-foreground text-sm">
-                  No files found.
-                </p>
-              ) : (
-                <ul className="max-h-64 space-y-1.5 overflow-y-auto">
-                  {driveFiles.map((file) => (
-                    <li
-                      className="flex items-center justify-between gap-3 rounded-lg border border-border px-3 py-2"
-                      key={file.id}
-                    >
-                      <div className="min-w-0 flex-1">
-                        <p className="truncate font-medium text-sm">
-                          {file.name}
-                        </p>
-                        <p className="text-muted-foreground text-xs">
-                          {file.type}
-                          {file.size ? ` · ${formatBytes(file.size)}` : ""}
-                        </p>
-                      </div>
-                      <Button
-                        disabled={importingId === file.id}
-                        onClick={() => importDriveFile(file)}
-                        size="sm"
-                        variant="outline"
-                      >
-                        {importingId === file.id ? (
-                          <span className="size-3 animate-spin rounded-full border-2 border-current border-t-transparent" />
-                        ) : (
-                          "Import"
-                        )}
-                      </Button>
-                    </li>
-                  ))}
-                </ul>
+                </>
               )}
-            </>
+            </div>
           )}
-        </div>
-      )}
 
-      {/* Notion panel */}
-      {openPanel === "notion" && (
-        <div className="mb-8 rounded-xl border border-border bg-card p-4">
-          <h3 className="mb-3 font-semibold text-sm">Notion</h3>
-          {notionConnected === false ? (
-            <p className="text-muted-foreground text-sm">
-              Notion is not connected.{" "}
-              <a className="text-primary underline" href="/notion">
-                Connect your Notion workspace
-              </a>{" "}
-              to import pages.
-            </p>
-          ) : (
-            <>
-              <div className="mb-3 flex gap-2">
-                <input
-                  className="flex-1 rounded-md border border-border bg-background px-3 py-1.5 text-sm outline-none focus:ring-1 focus:ring-ring"
-                  onChange={(e) => setNotionQuery(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") loadNotionPages(notionQuery);
-                  }}
-                  placeholder="Search pages..."
-                  value={notionQuery}
-                />
-                <Button
-                  disabled={notionLoading}
-                  onClick={() => loadNotionPages(notionQuery)}
-                  size="sm"
-                  variant="outline"
-                >
-                  {notionLoading ? (
-                    <span className="size-3 animate-spin rounded-full border-2 border-current border-t-transparent" />
-                  ) : (
-                    "Search"
-                  )}
-                </Button>
-              </div>
-              {notionLoading ? (
-                <div className="flex items-center gap-2 py-4 text-muted-foreground text-sm">
-                  <div className="size-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
-                  Loading pages...
-                </div>
-              ) : notionPages.length === 0 ? (
-                <p className="py-4 text-center text-muted-foreground text-sm">
-                  No pages found.
+          {/* Notion panel */}
+          {openPanel === "notion" && (
+            <div className="mb-8 rounded-xl border border-border bg-card p-4">
+              <h3 className="mb-3 font-semibold text-sm">Notion</h3>
+              {notionConnected === false ? (
+                <p className="text-muted-foreground text-sm">
+                  Notion is not connected.{" "}
+                  <a className="text-primary underline" href="/notion">
+                    Connect your Notion workspace
+                  </a>{" "}
+                  to import pages.
                 </p>
               ) : (
-                <ul className="max-h-64 space-y-1.5 overflow-y-auto">
-                  {notionPages.map((page) => (
-                    <li
-                      className="flex items-center justify-between gap-3 rounded-lg border border-border px-3 py-2"
-                      key={page.id}
+                <>
+                  <div className="mb-3 flex gap-2">
+                    <input
+                      className="flex-1 rounded-md border border-border bg-background px-3 py-1.5 text-sm outline-none focus:ring-1 focus:ring-ring"
+                      onChange={(e) => setNotionQuery(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          loadNotionPages(notionQuery);
+                        }
+                      }}
+                      placeholder="Search pages..."
+                      value={notionQuery}
+                    />
+                    <Button
+                      disabled={notionLoading}
+                      onClick={() => loadNotionPages(notionQuery)}
+                      size="sm"
+                      variant="outline"
                     >
-                      <div className="min-w-0 flex-1">
-                        <p className="truncate font-medium text-sm">
-                          {page.title}
-                        </p>
-                        {page.lastEdited && (
-                          <p className="text-muted-foreground text-xs">
-                            Edited{" "}
-                            {formatDistanceToNow(new Date(page.lastEdited), {
-                              addSuffix: true,
-                            })}
-                          </p>
-                        )}
-                      </div>
-                      <Button
-                        disabled={importingId === page.id}
-                        onClick={() => importNotionPage(page)}
-                        size="sm"
-                        variant="outline"
-                      >
-                        {importingId === page.id ? (
-                          <span className="size-3 animate-spin rounded-full border-2 border-current border-t-transparent" />
-                        ) : (
-                          "Import"
-                        )}
-                      </Button>
-                    </li>
-                  ))}
-                </ul>
+                      {notionLoading ? (
+                        <span className="size-3 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                      ) : (
+                        "Search"
+                      )}
+                    </Button>
+                  </div>
+                  {notionLoading ? (
+                    <div className="flex items-center gap-2 py-4 text-muted-foreground text-sm">
+                      <div className="size-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                      Loading pages...
+                    </div>
+                  ) : notionPages.length === 0 ? (
+                    <p className="py-4 text-center text-muted-foreground text-sm">
+                      No pages found.
+                    </p>
+                  ) : (
+                    <ul className="max-h-64 space-y-1.5 overflow-y-auto">
+                      {notionPages.map((page) => (
+                        <li
+                          className="flex items-center justify-between gap-3 rounded-lg border border-border px-3 py-2"
+                          key={page.id}
+                        >
+                          <div className="min-w-0 flex-1">
+                            <p className="truncate font-medium text-sm">
+                              {page.title}
+                            </p>
+                            {page.lastEdited && (
+                              <p className="text-muted-foreground text-xs">
+                                Edited{" "}
+                                {formatDistanceToNow(
+                                  new Date(page.lastEdited),
+                                  {
+                                    addSuffix: true,
+                                  }
+                                )}
+                              </p>
+                            )}
+                          </div>
+                          <Button
+                            disabled={importingId === page.id}
+                            onClick={() => importNotionPage(page)}
+                            size="sm"
+                            variant="outline"
+                          >
+                            {importingId === page.id ? (
+                              <span className="size-3 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                            ) : (
+                              "Import"
+                            )}
+                          </Button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </>
               )}
-            </>
+            </div>
           )}
-        </div>
+        </>
       )}
-      </>}
 
       {/* Documents list — hidden for free tier */}
-      {isPaidUser !== false && <div>
-        <h2 className="mb-3 font-semibold text-muted-foreground text-sm uppercase tracking-wide">
-          {projectId ? "Project Documents" : "Your Documents"}
-        </h2>
+      {isPaidUser !== false && (
+        <div>
+          <h2 className="mb-3 font-semibold text-muted-foreground text-sm uppercase tracking-wide">
+            {projectId ? "Project Documents" : "Your Documents"}
+          </h2>
 
-        {loading ? (
-          <div className="flex items-center gap-2 py-6 text-muted-foreground text-sm">
-            <div className="size-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
-            Loading...
-          </div>
-        ) : documents.length === 0 ? (
-          <div className="py-8 text-center text-muted-foreground text-sm">
-            {projectId
-              ? "No documents in this project yet. Upload a file or import from Drive/Notion above."
-              : "No documents yet. Upload your first file above."}
-          </div>
-        ) : (
-          <ul className="space-y-2">
-            {documents.map((doc) => (
-              <li
-                className="flex items-center justify-between gap-3 rounded-lg border border-border bg-card px-4 py-3"
-                key={doc.id}
-              >
-                <div className="min-w-0 flex-1">
-                  <p className="truncate font-medium text-sm">{doc.title}</p>
-                  <p className="text-muted-foreground text-xs">
-                    {doc.fileName} &nbsp;&middot;&nbsp;{" "}
-                    {formatBytes(doc.fileSize)} &nbsp;&middot;&nbsp;{" "}
-                    {doc.chunkCount} chunk{doc.chunkCount !== 1 ? "s" : ""}
-                    &nbsp;&middot;&nbsp;{" "}
-                    {formatDistanceToNow(new Date(doc.createdAt), {
-                      addSuffix: true,
-                    })}
-                  </p>
-                </div>
-                <Button
-                  className="shrink-0 text-destructive hover:text-destructive"
-                  onClick={() => deleteDocument(doc.id, doc.title)}
-                  size="sm"
-                  variant="ghost"
+          {loading ? (
+            <div className="flex items-center gap-2 py-6 text-muted-foreground text-sm">
+              <div className="size-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+              Loading...
+            </div>
+          ) : documents.length === 0 ? (
+            <div className="py-8 text-center text-muted-foreground text-sm">
+              {projectId
+                ? "No documents in this project yet. Upload a file or import from Drive/Notion above."
+                : "No documents yet. Upload your first file above."}
+            </div>
+          ) : (
+            <ul className="space-y-2">
+              {documents.map((doc) => (
+                <li
+                  className="flex items-center justify-between gap-3 rounded-lg border border-border bg-card px-4 py-3"
+                  key={doc.id}
                 >
-                  Delete
-                </Button>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>}
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate font-medium text-sm">{doc.title}</p>
+                    <p className="text-muted-foreground text-xs">
+                      {doc.fileName} &nbsp;&middot;&nbsp;{" "}
+                      {formatBytes(doc.fileSize)} &nbsp;&middot;&nbsp;{" "}
+                      {doc.chunkCount} chunk{doc.chunkCount !== 1 ? "s" : ""}
+                      &nbsp;&middot;&nbsp;{" "}
+                      {formatDistanceToNow(new Date(doc.createdAt), {
+                        addSuffix: true,
+                      })}
+                    </p>
+                  </div>
+                  <Button
+                    className="shrink-0 text-destructive hover:text-destructive"
+                    onClick={() => deleteDocument(doc.id, doc.title)}
+                    size="sm"
+                    variant="ghost"
+                  >
+                    Delete
+                  </Button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
     </div>
   );
 }

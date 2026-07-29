@@ -48,9 +48,9 @@ function GitHubIcon() {
   );
 }
 
-interface SocialLoginButtonsProps {
+type SocialLoginButtonsProps = {
   callbackUrl?: string;
-}
+};
 
 export function SocialLoginButtons({
   callbackUrl = "/",

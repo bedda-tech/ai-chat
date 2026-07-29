@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -51,17 +51,23 @@ const PROVIDER_NAMES: Record<string, string> = {
 };
 
 function formatContext(tokens: number): string {
-  if (tokens >= 1_000_000) return `${(tokens / 1_000_000).toFixed(0)}M`;
-  if (tokens >= 1_000) return `${(tokens / 1_000).toFixed(0)}K`;
+  if (tokens >= 1_000_000) {
+    return `${(tokens / 1_000_000).toFixed(0)}M`;
+  }
+  if (tokens >= 1000) {
+    return `${(tokens / 1000).toFixed(0)}K`;
+  }
   return String(tokens);
 }
 
 function ProviderInitial({ provider }: { provider: string }) {
   const color = PROVIDER_COLORS[provider] ?? "bg-muted text-muted-foreground";
-  const initial = (PROVIDER_NAMES[provider] ?? provider).charAt(0).toUpperCase();
+  const initial = (PROVIDER_NAMES[provider] ?? provider)
+    .charAt(0)
+    .toUpperCase();
   return (
     <span
-      className={`inline-flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold ${color}`}
+      className={`inline-flex h-8 w-8 items-center justify-center rounded-full font-bold text-xs ${color}`}
     >
       {initial}
     </span>
@@ -77,7 +83,7 @@ function ModelCard({ model }: { model: ModelEntry }) {
   return (
     <div className="group flex flex-col rounded-lg border bg-card p-4 shadow-sm transition-shadow hover:shadow-md">
       <div className="mb-3 flex items-start justify-between gap-2">
-        <div className="flex items-center gap-2 min-w-0">
+        <div className="flex min-w-0 items-center gap-2">
           <ProviderInitial provider={model.provider} />
           <div className="min-w-0">
             <p className="truncate font-semibold text-sm">{model.name}</p>
@@ -97,16 +103,24 @@ function ModelCard({ model }: { model: ModelEntry }) {
 
       <div className="mb-3 flex flex-wrap gap-1">
         {model.capabilities.vision && (
-          <Badge className="text-xs" variant="secondary">Vision</Badge>
+          <Badge className="text-xs" variant="secondary">
+            Vision
+          </Badge>
         )}
         {model.capabilities.reasoning && (
-          <Badge className="text-xs" variant="secondary">Reasoning</Badge>
+          <Badge className="text-xs" variant="secondary">
+            Reasoning
+          </Badge>
         )}
         {model.capabilities.toolCalling && (
-          <Badge className="text-xs" variant="secondary">Tools</Badge>
+          <Badge className="text-xs" variant="secondary">
+            Tools
+          </Badge>
         )}
         {model.capabilities.imageGeneration && (
-          <Badge className="text-xs" variant="secondary">Image Gen</Badge>
+          <Badge className="text-xs" variant="secondary">
+            Image Gen
+          </Badge>
         )}
       </div>
 
@@ -127,7 +141,12 @@ function ModelCard({ model }: { model: ModelEntry }) {
         <span className="text-muted-foreground text-xs">
           {formatContext(model.contextWindow)} ctx
         </span>
-        <Button asChild className="h-7 px-3 text-xs" size="sm" variant="outline">
+        <Button
+          asChild
+          className="h-7 px-3 text-xs"
+          size="sm"
+          variant="outline"
+        >
           <Link href={`/register?model=${model.id}`}>Try free →</Link>
         </Button>
       </div>
@@ -157,16 +176,35 @@ export function ModelsExplorer({ models }: Props) {
   const filtered = useMemo(() => {
     const q = search.toLowerCase();
     return models.filter((m) => {
-      if (q && !m.name.toLowerCase().includes(q) && !m.description.toLowerCase().includes(q) && !m.provider.toLowerCase().includes(q)) {
+      if (
+        q &&
+        !m.name.toLowerCase().includes(q) &&
+        !m.description.toLowerCase().includes(q) &&
+        !m.provider.toLowerCase().includes(q)
+      ) {
         return false;
       }
-      if (provider !== ALL_PROVIDERS && m.provider !== provider) return false;
-      if (tier === "free" && !m.isFree) return false;
-      if (tier === "paid" && m.isFree) return false;
-      if (capability === "vision" && !m.capabilities.vision) return false;
-      if (capability === "reasoning" && !m.capabilities.reasoning) return false;
-      if (capability === "tools" && !m.capabilities.toolCalling) return false;
-      if (capability === "image" && !m.capabilities.imageGeneration) return false;
+      if (provider !== ALL_PROVIDERS && m.provider !== provider) {
+        return false;
+      }
+      if (tier === "free" && !m.isFree) {
+        return false;
+      }
+      if (tier === "paid" && m.isFree) {
+        return false;
+      }
+      if (capability === "vision" && !m.capabilities.vision) {
+        return false;
+      }
+      if (capability === "reasoning" && !m.capabilities.reasoning) {
+        return false;
+      }
+      if (capability === "tools" && !m.capabilities.toolCalling) {
+        return false;
+      }
+      if (capability === "image" && !m.capabilities.imageGeneration) {
+        return false;
+      }
       return true;
     });
   }, [models, search, provider, capability, tier]);
@@ -178,8 +216,8 @@ export function ModelsExplorer({ models }: Props) {
           36+ AI Models, One Subscription
         </h1>
         <p className="text-lg text-muted-foreground">
-          Claude, GPT-5, Gemini, Grok, DeepSeek and more — all accessible from
-          a single chat interface starting at $12/mo.
+          Claude, GPT-5, Gemini, Grok, DeepSeek and more — all accessible from a
+          single chat interface starting at $12/mo.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
           <Button asChild>
@@ -235,7 +273,10 @@ export function ModelsExplorer({ models }: Props) {
           <option value="image">Image generation</option>
         </select>
 
-        {(search || provider !== ALL_PROVIDERS || tier !== ALL_TIERS || capability !== ALL_CAPS) && (
+        {(search ||
+          provider !== ALL_PROVIDERS ||
+          tier !== ALL_TIERS ||
+          capability !== ALL_CAPS) && (
           <button
             className="text-muted-foreground text-sm underline underline-offset-2 hover:text-foreground"
             onClick={() => {

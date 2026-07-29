@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
-import { TIER_DISPLAY_NAMES } from "@/lib/plans";
 import {
   Card,
   CardContent,
@@ -11,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { TIER_DISPLAY_NAMES } from "@/lib/plans";
 
 type SubscriptionStatus = {
   tier: "free" | "pro" | "premium" | "enterprise";

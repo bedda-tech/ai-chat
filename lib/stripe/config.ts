@@ -101,12 +101,21 @@ export function mapStripePriceToTier(priceId: string): DbTier {
   if (
     priceId === STRIPE_PLANS.PLUS.id ||
     priceId === STRIPE_PLANS.PLUS.annualId
-  )
+  ) {
     return "pro";
-  if (priceId === STRIPE_PLANS.PRO.id || priceId === STRIPE_PLANS.PRO.annualId)
+  }
+  if (
+    priceId === STRIPE_PLANS.PRO.id ||
+    priceId === STRIPE_PLANS.PRO.annualId
+  ) {
     return "premium";
-  if (priceId === STRIPE_PLANS.MAX.id || priceId === STRIPE_PLANS.MAX.annualId)
+  }
+  if (
+    priceId === STRIPE_PLANS.MAX.id ||
+    priceId === STRIPE_PLANS.MAX.annualId
+  ) {
     return "enterprise";
+  }
   return "free";
 }
 
@@ -120,16 +129,25 @@ export function mapPlanToStripePrice(
   billingPeriod: BillingPeriod = "monthly"
 ): string | null {
   if (billingPeriod === "annual") {
-    if (plan === "plus")
+    if (plan === "plus") {
       return STRIPE_PLANS.PLUS.annualId || STRIPE_PLANS.PLUS.id || null;
-    if (plan === "pro")
+    }
+    if (plan === "pro") {
       return STRIPE_PLANS.PRO.annualId || STRIPE_PLANS.PRO.id || null;
-    if (plan === "max")
+    }
+    if (plan === "max") {
       return STRIPE_PLANS.MAX.annualId || STRIPE_PLANS.MAX.id || null;
+    }
   }
-  if (plan === "plus") return STRIPE_PLANS.PLUS.id || null;
-  if (plan === "pro") return STRIPE_PLANS.PRO.id || null;
-  if (plan === "max") return STRIPE_PLANS.MAX.id || null;
+  if (plan === "plus") {
+    return STRIPE_PLANS.PLUS.id || null;
+  }
+  if (plan === "pro") {
+    return STRIPE_PLANS.PRO.id || null;
+  }
+  if (plan === "max") {
+    return STRIPE_PLANS.MAX.id || null;
+  }
   return null;
 }
 
@@ -139,8 +157,14 @@ export function mapPlanToStripePrice(
 export function mapTierToStripePrice(
   tier: DbTier | "enterprise"
 ): string | null {
-  if (tier === "pro") return STRIPE_PLANS.PLUS.id || null;
-  if (tier === "premium") return STRIPE_PLANS.PRO.id || null;
-  if (tier === "enterprise") return STRIPE_PLANS.MAX.id || null;
+  if (tier === "pro") {
+    return STRIPE_PLANS.PLUS.id || null;
+  }
+  if (tier === "premium") {
+    return STRIPE_PLANS.PRO.id || null;
+  }
+  if (tier === "enterprise") {
+    return STRIPE_PLANS.MAX.id || null;
+  }
   return null;
 }

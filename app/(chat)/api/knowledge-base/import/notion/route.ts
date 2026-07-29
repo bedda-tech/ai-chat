@@ -32,7 +32,9 @@ function blockToText(block: { type: string; [key: string]: unknown }): string {
     checked?: boolean;
     language?: string;
   };
-  if (!data) return "";
+  if (!data) {
+    return "";
+  }
 
   const textContent = data.rich_text ? extractPlainText(data.rich_text) : "";
 
@@ -84,7 +86,9 @@ export async function GET(request: Request) {
     filter: { value: "page", property: "object" },
     page_size: 20,
   };
-  if (q) body.query = q;
+  if (q) {
+    body.query = q;
+  }
 
   const res = await fetch(`${NOTION_API}/search`, {
     method: "POST",
@@ -187,12 +191,16 @@ export async function POST(request: Request) {
 
   do {
     const params = new URLSearchParams({ page_size: "100" });
-    if (cursor) params.set("start_cursor", cursor);
+    if (cursor) {
+      params.set("start_cursor", cursor);
+    }
     const blocksRes = await fetch(
       `${NOTION_API}/blocks/${pageId}/children?${params}`,
       { headers }
     );
-    if (!blocksRes.ok) break;
+    if (!blocksRes.ok) {
+      break;
+    }
     const blocksData = await blocksRes.json();
     allBlocks = allBlocks.concat(blocksData.results ?? []);
     cursor = blocksData.has_more ? blocksData.next_cursor : undefined;

@@ -1,14 +1,16 @@
 import { sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
-import postgres from "postgres";
 import { NextResponse } from "next/server";
+import postgres from "postgres";
 import { auth } from "@/app/(auth)/auth";
 
 const client = postgres(process.env.POSTGRES_URL!);
 const db = drizzle(client);
 
 function isAdmin(email: string | null | undefined): boolean {
-  if (!email) return false;
+  if (!email) {
+    return false;
+  }
   const adminEmails = (process.env.ADMIN_EMAILS ?? "")
     .split(",")
     .map((e) => e.trim().toLowerCase())
@@ -57,7 +59,13 @@ export async function GET() {
   // Aggregate into { toolName -> { free, pro, premium, enterprise, total } }
   const byTool: Record<
     string,
-    { free: number; pro: number; premium: number; enterprise: number; total: number }
+    {
+      free: number;
+      pro: number;
+      premium: number;
+      enterprise: number;
+      total: number;
+    }
   > = {};
 
   for (const row of rows as unknown as Array<{
@@ -67,7 +75,7 @@ export async function GET() {
   }>) {
     const name = row.tool_name;
     const tier = row.tier as "free" | "pro" | "premium" | "enterprise";
-    const count = parseInt(row.usage_count, 10);
+    const count = Number.parseInt(row.usage_count, 10);
     if (!byTool[name]) {
       byTool[name] = { free: 0, pro: 0, premium: 0, enterprise: 0, total: 0 };
     }
@@ -88,7 +96,7 @@ export async function GET() {
     FROM "UsageEvent"
     WHERE "createdAt" >= NOW() - INTERVAL '30 days'
   `);
-  const totalRequests = parseInt(
+  const totalRequests = Number.parseInt(
     (totalResult[0] as { total: string }).total,
     10
   );

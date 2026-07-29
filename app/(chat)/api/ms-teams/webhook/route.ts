@@ -35,7 +35,9 @@ async function verifyHmac(
 ): Promise<boolean> {
   try {
     const hmacMatch = authHeader.match(/^HMAC\s+(.+)$/i);
-    if (!hmacMatch) return false;
+    if (!hmacMatch) {
+      return false;
+    }
     const receivedSig = hmacMatch[1].trim();
 
     const keyBytes = Buffer.from(token, "base64");
@@ -63,23 +65,27 @@ function parseModelAndText(raw: string): { model: string; text: string } {
   if (bracketMatch) {
     const alias = bracketMatch[1].toLowerCase().trim();
     const model = MODEL_ALIASES[alias];
-    if (model) return { model, text: bracketMatch[2].trim() };
+    if (model) {
+      return { model, text: bracketMatch[2].trim() };
+    }
   }
   const flagMatch = raw.match(/^--model=(\S+)\s*([\s\S]*)$/i);
   if (flagMatch) {
     const alias = flagMatch[1].toLowerCase();
     const model = MODEL_ALIASES[alias];
-    if (model) return { model, text: flagMatch[2].trim() };
+    if (model) {
+      return { model, text: flagMatch[2].trim() };
+    }
   }
   return { model: TEAMS_DEFAULT_MODEL, text: raw };
 }
 
-interface TeamsActivity {
+type TeamsActivity = {
   type: string;
   text?: string;
   textFormat?: string;
   from?: { id: string; name?: string };
-}
+};
 
 export async function POST(req: Request) {
   if (!TEAMS_SECURITY_TOKEN) {

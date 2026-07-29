@@ -508,10 +508,6 @@ const COMPARISONS: Record<string, ComparisonData> = {
     ],
   },
 
-
-
-
-
   "bedda-vs-mistral": {
     slug: "bedda-vs-mistral",
     competitor: "Mistral Le Chat Pro",
@@ -585,9 +581,6 @@ const COMPARISONS: Record<string, ComparisonData> = {
     ],
   },
 
-
-
-
   "bedda-vs-t3chat": {
     slug: "bedda-vs-t3chat",
     competitor: "T3 Chat",
@@ -619,7 +612,11 @@ const COMPARISONS: Record<string, ComparisonData> = {
       { feature: "Claude 4 Sonnet", bedda: true, competitor: true },
       { feature: "Claude 4 Opus", bedda: true, competitor: false },
       { feature: "GPT-5 / GPT-4o", bedda: true, competitor: true },
-      { feature: "Gemini 2.5 Pro (1M context)", bedda: true, competitor: false },
+      {
+        feature: "Gemini 2.5 Pro (1M context)",
+        bedda: true,
+        competitor: false,
+      },
       { feature: "Grok 4", bedda: true, competitor: false },
       { feature: "DeepSeek R1", bedda: true, competitor: false },
       { feature: "Mistral Large", bedda: true, competitor: false },
@@ -662,7 +659,8 @@ const COMPARISONS: Record<string, ComparisonData> = {
     competitorPrice: "Free",
     beddaPrice: "$12/mo",
     title: "bedda.ai vs Meta AI",
-    metaTitle: "bedda.ai vs Meta AI (2026) — Why Paid Beats Free for Serious Work",
+    metaTitle:
+      "bedda.ai vs Meta AI (2026) — Why Paid Beats Free for Serious Work",
     metaDescription:
       "Meta AI is free but limited to Llama models. bedda.ai gives you Claude 4, GPT-5, Gemini 2.5 Pro, Grok 4 and 36+ frontier models with code execution, RAG, and team workspaces — $12/mo.",
     ogTitle: "bedda.ai vs Meta AI — Claude + GPT-5 + Gemini vs Llama Only",
@@ -691,14 +689,22 @@ const COMPARISONS: Record<string, ComparisonData> = {
       { feature: "DeepSeek R1", bedda: true, competitor: false },
       { feature: "Code execution sandbox", bedda: true, competitor: false },
       { feature: "Web search", bedda: true, competitor: true },
-      { feature: "Image generation", bedda: true, competitor: "Basic (Imagine)" },
+      {
+        feature: "Image generation",
+        bedda: true,
+        competitor: "Basic (Imagine)",
+      },
       { feature: "Video generation", bedda: true, competitor: false },
       { feature: "Knowledge base (RAG)", bedda: true, competitor: false },
       { feature: "Cross-conversation memory", bedda: true, competitor: false },
       { feature: "Model comparison arena", bedda: true, competitor: false },
       { feature: "Team workspaces", bedda: true, competitor: false },
       { feature: "OpenAI-compatible API", bedda: true, competitor: false },
-      { feature: "Available in WhatsApp/Instagram", bedda: false, competitor: true },
+      {
+        feature: "Available in WhatsApp/Instagram",
+        bedda: false,
+        competitor: true,
+      },
       { feature: "Total AI models", bedda: "36+", competitor: "1 (Llama)" },
     ],
     faq: [
@@ -721,8 +727,6 @@ const COMPARISONS: Record<string, ComparisonData> = {
     ],
   },
 
-
-
   "bedda-vs-chatgpt-team": {
     slug: "bedda-vs-chatgpt-team",
     competitor: "ChatGPT Team",
@@ -730,10 +734,12 @@ const COMPARISONS: Record<string, ComparisonData> = {
     competitorPrice: "$25–$30/user/mo",
     beddaPrice: "$12/mo",
     title: "bedda.ai vs ChatGPT Team",
-    metaTitle: "bedda.ai vs ChatGPT Team (2026) — Full AI Suite vs OpenAI Team Plan",
+    metaTitle:
+      "bedda.ai vs ChatGPT Team (2026) — Full AI Suite vs OpenAI Team Plan",
     metaDescription:
       "Compare bedda.ai and ChatGPT Team. ChatGPT Team gives you GPT-5 for $25–$30/user/mo. bedda.ai gives you GPT-5, Claude Opus, Gemini and 33 more models plus team features — for $12/mo.",
-    ogTitle: "bedda.ai vs ChatGPT Team — 36+ Models for $12 vs OpenAI Only for $25–$30/user",
+    ogTitle:
+      "bedda.ai vs ChatGPT Team — 36+ Models for $12 vs OpenAI Only for $25–$30/user",
     ogDescription:
       "ChatGPT Team costs $25–$30/user/month and locks you into OpenAI. bedda.ai Teams gives your whole team Claude Opus 4.8, GPT-5, Gemini 2.5 Pro, and 33 more models — with a shared knowledge base and team workspaces — for a fraction of the cost.",
     heroHeadline: "Team AI with every model — not just ChatGPT",
@@ -749,18 +755,42 @@ const COMPARISONS: Record<string, ComparisonData> = {
       "Team usage analytics and role-based model access controls",
     ],
     rows: [
-      { feature: "Monthly price per user", bedda: "$12/mo", competitor: "$25–$30/user" },
+      {
+        feature: "Monthly price per user",
+        bedda: "$12/mo",
+        competitor: "$25–$30/user",
+      },
       { feature: "GPT-5 access", bedda: true, competitor: true },
-      { feature: "Claude Opus 4.8 / Gemini 2.5 Pro / Grok 4", bedda: true, competitor: false },
-      { feature: "Total AI models", bedda: "36+", competitor: "OpenAI models only" },
-      { feature: "Shared team knowledge base (RAG)", bedda: true, competitor: false },
+      {
+        feature: "Claude Opus 4.8 / Gemini 2.5 Pro / Grok 4",
+        bedda: true,
+        competitor: false,
+      },
+      {
+        feature: "Total AI models",
+        bedda: "36+",
+        competitor: "OpenAI models only",
+      },
+      {
+        feature: "Shared team knowledge base (RAG)",
+        bedda: true,
+        competitor: false,
+      },
       { feature: "Team chat sharing", bedda: true, competitor: true },
-      { feature: "Admin controls & usage analytics", bedda: true, competitor: true },
+      {
+        feature: "Admin controls & usage analytics",
+        bedda: true,
+        competitor: true,
+      },
       { feature: "Model comparison arena", bedda: true, competitor: false },
       { feature: "Image generation (DALL-E 3)", bedda: true, competitor: true },
       { feature: "Web search", bedda: true, competitor: true },
       { feature: "OpenAI-compatible API", bedda: true, competitor: true },
-      { feature: "Custom GPTs / system prompts", bedda: true, competitor: true },
+      {
+        feature: "Custom GPTs / system prompts",
+        bedda: true,
+        competitor: true,
+      },
     ],
     faq: [
       {
@@ -789,13 +819,16 @@ const COMPARISONS: Record<string, ComparisonData> = {
     competitorPrice: "$9-39/mo",
     beddaPrice: "$12/mo",
     title: "bedda.ai vs TypingMind",
-    metaTitle: "bedda.ai vs TypingMind (2026) — Multi-Model AI Platform vs ChatGPT UI Wrapper",
+    metaTitle:
+      "bedda.ai vs TypingMind (2026) — Multi-Model AI Platform vs ChatGPT UI Wrapper",
     metaDescription:
       "Compare bedda.ai and TypingMind. bedda.ai is a $12/mo multi-model AI subscription with 36+ models, billing included. TypingMind ($9-39/mo) is a ChatGPT interface that requires your own OpenAI API key on top of the subscription fee.",
-    ogTitle: "bedda.ai vs TypingMind — $12/mo All-Inclusive vs $9-39/mo + Your Own API Key",
+    ogTitle:
+      "bedda.ai vs TypingMind — $12/mo All-Inclusive vs $9-39/mo + Your Own API Key",
     ogDescription:
       "TypingMind is a polished ChatGPT interface — but you need to supply your own OpenAI API key, so you pay TypingMind PLUS your OpenAI usage costs. bedda.ai includes 36+ models in the $12/mo subscription with no API keys needed.",
-    heroHeadline: "All-inclusive multi-model subscription vs a UI wrapper that requires your own API key",
+    heroHeadline:
+      "All-inclusive multi-model subscription vs a UI wrapper that requires your own API key",
     heroSubtext:
       "TypingMind is a well-designed ChatGPT and Claude interface — great UI, personas, chat organization, and prompt templates. But it&apos;s a bring-your-own-API-key product, which means you pay the TypingMind subscription fee AND your OpenAI or Anthropic API usage costs separately. bedda.ai includes 36+ models in the $12/mo price — no API keys, no per-token billing, no surprise invoices.",
     verdict:
@@ -808,10 +841,18 @@ const COMPARISONS: Record<string, ComparisonData> = {
       "Total cost is lower for heavy users vs TypingMind + API bill",
     ],
     rows: [
-      { feature: "Monthly price", bedda: "$12/mo all-in", competitor: "$9-39/mo + API costs" },
+      {
+        feature: "Monthly price",
+        bedda: "$12/mo all-in",
+        competitor: "$9-39/mo + API costs",
+      },
       { feature: "API key required", bedda: false, competitor: true },
       { feature: "36+ AI models included", bedda: true, competitor: false },
-      { feature: "GPT-5 / Claude / Gemini access", bedda: true, competitor: "BYOK only" },
+      {
+        feature: "GPT-5 / Claude / Gemini access",
+        bedda: true,
+        competitor: "BYOK only",
+      },
       { feature: "Grok 4 / Groq / Cerebras", bedda: true, competitor: false },
       { feature: "Image generation", bedda: true, competitor: false },
       { feature: "Video generation", bedda: true, competitor: false },
@@ -819,7 +860,11 @@ const COMPARISONS: Record<string, ComparisonData> = {
       { feature: "Team workspaces", bedda: true, competitor: true },
       { feature: "Prompt library", bedda: true, competitor: true },
       { feature: "Persona / character mode", bedda: false, competitor: true },
-      { feature: "Platform bots (Slack, Discord)", bedda: true, competitor: false },
+      {
+        feature: "Platform bots (Slack, Discord)",
+        bedda: true,
+        competitor: false,
+      },
     ],
     faq: [
       {
@@ -847,13 +892,15 @@ const COMPARISONS: Record<string, ComparisonData> = {
     competitorPrice: "$14.99/mo",
     beddaPrice: "$12/mo",
     title: "bedda.ai vs Le Chat",
-    metaTitle: "bedda.ai vs Le Chat by Mistral (2026) — 36+ Models vs Mistral-Only",
+    metaTitle:
+      "bedda.ai vs Le Chat by Mistral (2026) — 36+ Models vs Mistral-Only",
     metaDescription:
       "Compare bedda.ai and Le Chat Pro. Le Chat is Mistral's consumer product at $14.99/mo — Mistral models only. bedda.ai gives you Mistral PLUS GPT-5, Claude, Gemini, and 36+ models for $12/mo.",
     ogTitle: "bedda.ai vs Le Chat — 36+ Models for $12 vs Mistral-Only for $15",
     ogDescription:
       "Le Chat Pro costs $14.99/mo and locks you into Mistral models only. bedda.ai is $12/mo with Mistral Large, Mistral Small, PLUS GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, Grok 4, and 32+ more.",
-    heroHeadline: "36+ frontier models for $12/mo vs Mistral-only subscription for $14.99/mo",
+    heroHeadline:
+      "36+ frontier models for $12/mo vs Mistral-only subscription for $14.99/mo",
     heroSubtext:
       "Le Chat Pro is Mistral AI's official consumer product — a polished interface for Mistral Large, Mistral Small, and Pixtral models. At $14.99/mo, it's a solid option if you only need Mistral models. bedda.ai is $12/mo and gives you Mistral Large and Mistral Small alongside GPT-5, Claude Opus 4.8, Gemini 2.5 Pro, Grok 4, DeepSeek R1, and 30+ other frontier models.",
     verdict:
@@ -907,7 +954,8 @@ const COMPARISONS: Record<string, ComparisonData> = {
     competitorPrice: "$9–$25/mo",
     beddaPrice: "$12/mo",
     title: "bedda.ai vs Magai",
-    metaTitle: "bedda.ai vs Magai (2026) — More Models, Better Tools, Same Price Range",
+    metaTitle:
+      "bedda.ai vs Magai (2026) — More Models, Better Tools, Same Price Range",
     metaDescription:
       "Compare bedda.ai and Magai — both offer multi-model AI chat. bedda adds code execution, video generation, team workspaces, and a knowledge base at $12/mo. 7-day free trial.",
     ogTitle: "bedda.ai vs Magai — Flat-Rate Multi-Model AI Compared",
@@ -930,7 +978,11 @@ const COMPARISONS: Record<string, ComparisonData> = {
       { feature: "Monthly price", bedda: "$12/mo", competitor: "$9–$25/mo" },
       { feature: "Claude 4 (Opus, Sonnet)", bedda: true, competitor: true },
       { feature: "GPT-5 / GPT-4o", bedda: true, competitor: true },
-      { feature: "Gemini 2.5 Pro (1M context)", bedda: true, competitor: "Limited" },
+      {
+        feature: "Gemini 2.5 Pro (1M context)",
+        bedda: true,
+        competitor: "Limited",
+      },
       { feature: "Grok 4", bedda: true, competitor: false },
       { feature: "o3 reasoning model", bedda: true, competitor: false },
       { feature: "DeepSeek R1", bedda: true, competitor: false },
@@ -943,7 +995,11 @@ const COMPARISONS: Record<string, ComparisonData> = {
       { feature: "Cross-conversation memory", bedda: true, competitor: true },
       { feature: "Model comparison arena", bedda: true, competitor: false },
       { feature: "Team workspaces", bedda: true, competitor: false },
-      { feature: "Platform bots (Slack, Discord, etc.)", bedda: true, competitor: false },
+      {
+        feature: "Platform bots (Slack, Discord, etc.)",
+        bedda: true,
+        competitor: false,
+      },
       { feature: "OpenAI-compatible API", bedda: true, competitor: false },
       { feature: "Total AI models", bedda: "36+", competitor: "~20" },
     ],
@@ -974,7 +1030,8 @@ const COMPARISONS: Record<string, ComparisonData> = {
     competitorPrice: "Free",
     beddaPrice: "$12/mo",
     title: "bedda.ai vs DeepSeek",
-    metaTitle: "bedda.ai vs DeepSeek (2026) — Multi-Model Platform vs Single Model Chat",
+    metaTitle:
+      "bedda.ai vs DeepSeek (2026) — Multi-Model Platform vs Single Model Chat",
     metaDescription:
       "DeepSeek Chat is free but limited to one model. bedda.ai is $12/mo for 36+ frontier models including GPT-5, Claude Opus, Gemini 2.5 Pro, Grok 4, and DeepSeek itself.",
     ogTitle: "bedda.ai vs DeepSeek — One Model vs 36+ Frontier Models",
@@ -1008,7 +1065,11 @@ const COMPARISONS: Record<string, ComparisonData> = {
       { feature: "Team workspaces", bedda: true, competitor: false },
       { feature: "File uploads and analysis", bedda: true, competitor: true },
       { feature: "API access", bedda: true, competitor: "Via DeepSeek API" },
-      { feature: "Total AI models", bedda: "36+", competitor: "2 (DeepSeek only)" },
+      {
+        feature: "Total AI models",
+        bedda: "36+",
+        competitor: "2 (DeepSeek only)",
+      },
     ],
     faq: [
       {
@@ -1029,8 +1090,6 @@ const COMPARISONS: Record<string, ComparisonData> = {
       },
     ],
   },
-
-
 };
 
 export function generateStaticParams() {
@@ -1044,7 +1103,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const data = COMPARISONS[slug];
-  if (!data) return {};
+  if (!data) {
+    return {};
+  }
   return {
     title: data.metaTitle,
     description: data.metaDescription,
@@ -1076,7 +1137,9 @@ export default async function ComparePage({
 }) {
   const { slug } = await params;
   const data = COMPARISONS[slug];
-  if (!data) notFound();
+  if (!data) {
+    notFound();
+  }
 
   return (
     <div className="container py-12 md:py-24">

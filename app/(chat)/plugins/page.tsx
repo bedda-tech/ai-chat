@@ -59,10 +59,14 @@ function InstallDrawer({
   const [paramValues, setParamValues] = useState<Record<string, string>>({});
   const [saving, setSaving] = useState(false);
 
-  if (!plugin) return null;
+  if (!plugin) {
+    return null;
+  }
 
   async function handleInstall() {
-    if (!plugin) return;
+    if (!plugin) {
+      return;
+    }
     for (const p of plugin.params) {
       if (p.required && !paramValues[p.name]?.trim()) {
         toast.error(`${p.label} is required`);

@@ -24,17 +24,23 @@ export function ShareToTeamButton({ chatId }: { chatId: string }) {
     async function load() {
       try {
         const res = await fetch("/api/teams");
-        if (!res.ok) return;
+        if (!res.ok) {
+          return;
+        }
         const data = await res.json();
         const userTeams: Team[] = data.teams ?? [];
-        if (cancelled) return;
+        if (cancelled) {
+          return;
+        }
         setTeams(userTeams);
 
         const shared = new Set<string>();
         await Promise.all(
           userTeams.map(async (t) => {
             const r = await fetch(`/api/teams/${t.id}/chats`);
-            if (!r.ok) return;
+            if (!r.ok) {
+              return;
+            }
             const d = await r.json();
             if (
               (d.chats ?? []).some(
@@ -45,9 +51,13 @@ export function ShareToTeamButton({ chatId }: { chatId: string }) {
             }
           })
         );
-        if (!cancelled) setSharedTeamIds(shared);
+        if (!cancelled) {
+          setSharedTeamIds(shared);
+        }
       } finally {
-        if (!cancelled) setLoading(false);
+        if (!cancelled) {
+          setLoading(false);
+        }
       }
     }
 
@@ -68,14 +78,19 @@ export function ShareToTeamButton({ chatId }: { chatId: string }) {
     if (res.ok) {
       setSharedTeamIds((prev) => {
         const next = new Set(prev);
-        if (isShared) next.delete(teamId);
-        else next.add(teamId);
+        if (isShared) {
+          next.delete(teamId);
+        } else {
+          next.add(teamId);
+        }
         return next;
       });
     }
   }
 
-  if (loading || teams.length === 0) return null;
+  if (loading || teams.length === 0) {
+    return null;
+  }
 
   return (
     <DropdownMenu>

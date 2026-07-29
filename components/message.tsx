@@ -51,18 +51,30 @@ export function getProviderColor(modelId: string): string {
 }
 
 function formatRelativeTime(dateStr: string | undefined): string | null {
-  if (!dateStr) return null;
+  if (!dateStr) {
+    return null;
+  }
   const date = new Date(dateStr);
-  if (Number.isNaN(date.getTime())) return null;
+  if (Number.isNaN(date.getTime())) {
+    return null;
+  }
   const diff = Date.now() - date.getTime();
   const seconds = Math.floor(diff / 1000);
-  if (seconds < 60) return "just now";
+  if (seconds < 60) {
+    return "just now";
+  }
   const minutes = Math.floor(seconds / 60);
-  if (minutes < 60) return `${minutes}m ago`;
+  if (minutes < 60) {
+    return `${minutes}m ago`;
+  }
   const hours = Math.floor(minutes / 60);
-  if (hours < 24) return `${hours}h ago`;
+  if (hours < 24) {
+    return `${hours}h ago`;
+  }
   const days = Math.floor(hours / 24);
-  if (days === 1) return "yesterday";
+  if (days === 1) {
+    return "yesterday";
+  }
   return date.toLocaleDateString(undefined, { month: "short", day: "numeric" });
 }
 

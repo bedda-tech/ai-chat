@@ -70,7 +70,7 @@ async function createPlan(
 async function main() {
   console.log("Setting up Stripe products for Bedda Chat...");
   console.log(
-    `Using ${key!.startsWith("sk_live") ? "LIVE" : "TEST"} Stripe key`
+    `Using ${key?.startsWith("sk_live") ? "LIVE" : "TEST"} Stripe key`
   );
 
   try {

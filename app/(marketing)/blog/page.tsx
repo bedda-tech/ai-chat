@@ -1,6 +1,6 @@
+import { ArrowRight, Calendar, Clock } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Calendar, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
@@ -164,7 +164,8 @@ const posts = [
   },
   {
     slug: "best-ai-subscription-2026",
-    title: "Best AI Subscription in 2026: ChatGPT Plus vs Claude Pro vs All-in-One",
+    title:
+      "Best AI Subscription in 2026: ChatGPT Plus vs Claude Pro vs All-in-One",
     description:
       "Comparing the top AI subscriptions in 2026 — ChatGPT Plus ($20/mo), Claude Pro ($20/mo), Gemini Advanced ($19.99/mo), and multi-model alternatives. Which gives you the best value?",
     date: "June 2026",
@@ -236,7 +237,8 @@ const posts = [
   },
   {
     slug: "chatgpt-vs-claude-vs-gemini",
-    title: "ChatGPT vs Claude vs Gemini: The Ultimate 3-Way AI Comparison (2026)",
+    title:
+      "ChatGPT vs Claude vs Gemini: The Ultimate 3-Way AI Comparison (2026)",
     description:
       "A definitive comparison of ChatGPT (GPT-5), Claude Opus 4.8, and Gemini 2.5 Pro — benchmarks, pricing, strengths, and which AI wins for each task in 2026.",
     date: "June 2026",
@@ -245,7 +247,8 @@ const posts = [
   },
   {
     slug: "best-ai-image-generator-2026",
-    title: "Best AI Image Generators in 2026: DALL-E 3, Imagen 3, Flux, and More",
+    title:
+      "Best AI Image Generators in 2026: DALL-E 3, Imagen 3, Flux, and More",
     description:
       "Comparing the top AI image generation tools in 2026 — DALL-E 3, Google Imagen 3, Flux 1.1 Pro, and Midjourney. What each excels at and where to access them.",
     date: "June 2026",
@@ -299,7 +302,8 @@ const posts = [
   },
   {
     slug: "ai-for-social-media",
-    title: "How to Use AI for Social Media in 2026: Content, Strategy & Posting",
+    title:
+      "How to Use AI for Social Media in 2026: Content, Strategy & Posting",
     description:
       "A practical guide to using AI for social media in 2026 — writing posts, planning content, generating captions, and choosing the right AI model for each platform.",
     date: "June 2026",
@@ -317,7 +321,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-students-2026",
-    title: "Best AI for Students in 2026: Study Smarter, Write Better, Research Faster",
+    title:
+      "Best AI for Students in 2026: Study Smarter, Write Better, Research Faster",
     description:
       "The best AI tools for students in 2026 — for essay writing, research, exam prep, summarizing papers, and coding. Ranked by use case with pricing.",
     date: "June 2026",
@@ -362,7 +367,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-healthcare",
-    title: "Best AI for Healthcare Professionals in 2026: Doctors, Nurses & Researchers",
+    title:
+      "Best AI for Healthcare Professionals in 2026: Doctors, Nurses & Researchers",
     description:
       "Which AI models should healthcare professionals use in 2026? A guide to using Claude, GPT-5, and Gemini for clinical notes, research, patient education, and medical writing.",
     date: "June 2026",
@@ -371,7 +377,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-teachers-2026",
-    title: "Best AI for Teachers in 2026: Lesson Plans, Rubrics & Student Feedback",
+    title:
+      "Best AI for Teachers in 2026: Lesson Plans, Rubrics & Student Feedback",
     description:
       "How educators are using AI in 2026 — generating lesson plans in minutes, creating differentiated materials, writing rubrics, and giving better student feedback faster.",
     date: "June 2026",
@@ -380,7 +387,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-startups-2026",
-    title: "Best AI Tools for Startups in 2026: Cut Costs Without Cutting Corners",
+    title:
+      "Best AI Tools for Startups in 2026: Cut Costs Without Cutting Corners",
     description:
       "Most startups pay $60+/mo for ChatGPT Plus AND Claude Pro. There's a smarter way. The best AI tools for founders — pitches, code, research, and legal — for less.",
     date: "June 2026",
@@ -389,7 +397,8 @@ const posts = [
   },
   {
     slug: "ai-for-content-creators",
-    title: "Best AI for Content Creators in 2026: YouTube, Newsletters & Social Media",
+    title:
+      "Best AI for Content Creators in 2026: YouTube, Newsletters & Social Media",
     description:
       "How top creators are using AI in 2026 — scripting YouTube videos, writing newsletters, repurposing content across platforms, and finding trending topics before they peak.",
     date: "June 2026",
@@ -416,7 +425,8 @@ const posts = [
   },
   {
     slug: "microsoft-copilot-vs-chatgpt",
-    title: "Microsoft Copilot vs ChatGPT in 2026: Which AI Is Worth Paying For?",
+    title:
+      "Microsoft Copilot vs ChatGPT in 2026: Which AI Is Worth Paying For?",
     description:
       "Microsoft Copilot ($30/mo with M365) vs ChatGPT Plus ($20/mo) — a full comparison of features, models, pricing, and real-world usefulness in 2026.",
     date: "June 2026",
@@ -452,7 +462,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-customer-service",
-    title: "Best AI for Customer Service in 2026: Tools, Models & Real Workflows",
+    title:
+      "Best AI for Customer Service in 2026: Tools, Models & Real Workflows",
     description:
       "From live chat support to ticket summarization and tone coaching — here's how to use AI models to cut handle time, boost CSAT, and scale your support team.",
     date: "June 2026",
@@ -461,7 +472,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-designers-2026",
-    title: "Best AI Tools for Designers in 2026: UI, Branding & Creative Workflows",
+    title:
+      "Best AI Tools for Designers in 2026: UI, Branding & Creative Workflows",
     description:
       "From generating design briefs to creating image assets and writing UX copy — here's how UI/UX designers, brand designers, and creative directors are using AI in 2026.",
     date: "June 2026",
@@ -488,7 +500,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-consultants-2026",
-    title: "Best AI for Consultants in 2026: Research, Proposals & Client Decks",
+    title:
+      "Best AI for Consultants in 2026: Research, Proposals & Client Decks",
     description:
       "How management and business consultants are using AI in 2026 — research synthesis, proposal writing, slide decks, and analysis. Which AI models to use for each task, and how to cut your AI subscription spend.",
     date: "June 2026",
@@ -497,7 +510,8 @@ const posts = [
   },
   {
     slug: "ai-for-video-creators",
-    title: "AI for Video Creators in 2026: YouTube, TikTok & Short-Form Content",
+    title:
+      "AI for Video Creators in 2026: YouTube, TikTok & Short-Form Content",
     description:
       "How video creators are using AI to script, research, and grow their channels — without burning out. Which models to use for each part of the production workflow.",
     date: "June 2026",
@@ -533,7 +547,8 @@ const posts = [
   },
   {
     slug: "ai-for-e-commerce-2026",
-    title: "AI for E-Commerce in 2026: Product Descriptions, Ads & Customer Service",
+    title:
+      "AI for E-Commerce in 2026: Product Descriptions, Ads & Customer Service",
     description:
       "How online stores use AI in 2026 — writing product descriptions at scale, generating ad copy, handling customer service, and personalizing the shopping experience. Which models work best.",
     date: "June 2026",
@@ -542,7 +557,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-small-business-2026",
-    title: "Best AI Tools for Small Business in 2026: A Practical Owner's Guide",
+    title:
+      "Best AI Tools for Small Business in 2026: A Practical Owner's Guide",
     description:
       "The AI tools small business owners actually use in 2026 — from writing and customer communication to research and operations. Which models to use for each task, and how to keep costs low.",
     date: "June 2026",
@@ -569,7 +585,8 @@ const posts = [
   },
   {
     slug: "is-deepseek-safe-to-use-2026",
-    title: "Is DeepSeek Safe to Use? Privacy, Security, and Data Concerns (2026)",
+    title:
+      "Is DeepSeek Safe to Use? Privacy, Security, and Data Concerns (2026)",
     description:
       "DeepSeek stores data in China, raising privacy concerns for many users. Here's what the risks actually are, who should be cautious, and how to use AI safely regardless of which model you choose.",
     date: "June 2026",
@@ -578,7 +595,8 @@ const posts = [
   },
   {
     slug: "openai-o4-mini-review",
-    title: "OpenAI o4-mini Review: Fast Reasoning at a Fraction of the Cost (2026)",
+    title:
+      "OpenAI o4-mini Review: Fast Reasoning at a Fraction of the Cost (2026)",
     description:
       "OpenAI o4-mini brings frontier reasoning to an affordable price point. Here's how it compares to o4, o3-mini, and Claude's reasoning models — and when it's the right choice.",
     date: "June 2026",
@@ -623,7 +641,8 @@ const posts = [
   },
   {
     slug: "best-ai-coding-assistant-2026",
-    title: "Best AI Coding Assistants in 2026: GitHub Copilot vs Cursor vs More",
+    title:
+      "Best AI Coding Assistants in 2026: GitHub Copilot vs Cursor vs More",
     description:
       "Compare the best AI coding assistants in 2026 — GitHub Copilot, Cursor, Windsurf, Replit AI, and more. Which one is worth paying for?",
     date: "June 2026",
@@ -749,7 +768,8 @@ const posts = [
   },
   {
     slug: "ai-pair-programming-guide-2026",
-    title: "AI Pair Programming in 2026: Best Models and Workflows for Developers",
+    title:
+      "AI Pair Programming in 2026: Best Models and Workflows for Developers",
     description:
       "How to use Claude, GPT-5, and Gemini as AI pair programmers in 2026 — including prompt templates, model strengths by language, and workflows for debugging, code review, and architecture decisions.",
     date: "June 2026",
@@ -758,7 +778,8 @@ const posts = [
   },
   {
     slug: "ai-for-insurance-professionals-2026",
-    title: "AI for Insurance Professionals in 2026: Underwriting, Claims, and Client Outreach",
+    title:
+      "AI for Insurance Professionals in 2026: Underwriting, Claims, and Client Outreach",
     description:
       "How insurance agents, underwriters, adjusters, and brokers use AI in 2026 — from policy writing and claims analysis to client communications and compliance documentation.",
     date: "June 2026",
@@ -767,7 +788,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-personal-finance-2026",
-    title: "Best AI for Personal Finance in 2026: Budgeting, Investing, and Planning",
+    title:
+      "Best AI for Personal Finance in 2026: Budgeting, Investing, and Planning",
     description:
       "How to use AI models to manage personal finances in 2026 — from building budgets and analyzing investment options to planning for retirement and understanding tax implications.",
     date: "June 2026",
@@ -803,7 +825,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-pharma-2026",
-    title: "Best AI for Pharma and Biotech in 2026: Research, Writing, and Compliance",
+    title:
+      "Best AI for Pharma and Biotech in 2026: Research, Writing, and Compliance",
     description:
       "How pharmaceutical researchers, regulatory writers, and biotech professionals use AI in 2026 — from literature reviews and protocol drafts to regulatory submissions and medical writing.",
     date: "June 2026",
@@ -839,7 +862,8 @@ const posts = [
   },
   {
     slug: "ai-for-medical-professionals-2026",
-    title: "AI for Medical Professionals in 2026: Doctors, Nurses, and Clinical Staff",
+    title:
+      "AI for Medical Professionals in 2026: Doctors, Nurses, and Clinical Staff",
     description:
       "How physicians, nurses, PA/NPs, and clinical administrators use AI in 2026 — from clinical documentation and patient education to research literature reviews and medical writing.",
     date: "July 2026",
@@ -848,7 +872,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-event-planners-2026",
-    title: "Best AI for Event Planners in 2026: Plan, Promote, and Execute Faster",
+    title:
+      "Best AI for Event Planners in 2026: Plan, Promote, and Execute Faster",
     description:
       "How corporate event managers, wedding planners, conference organizers, and freelance event professionals use AI in 2026 to plan events, write proposals, manage vendors, and promote their work.",
     date: "July 2026",
@@ -857,7 +882,8 @@ const posts = [
   },
   {
     slug: "ai-for-public-relations-2026",
-    title: "AI for Public Relations in 2026: PR Professionals' Guide to Faster, Smarter Work",
+    title:
+      "AI for Public Relations in 2026: PR Professionals' Guide to Faster, Smarter Work",
     description:
       "How PR professionals, communications directors, and agency teams use AI in 2026 to write press releases, pitch media, manage crises, and produce content at scale.",
     date: "July 2026",
@@ -893,7 +919,8 @@ const posts = [
   },
   {
     slug: "how-to-use-chatgpt-2026",
-    title: "How to Use ChatGPT in 2026: Complete Guide (And Why Power Users Switch)",
+    title:
+      "How to Use ChatGPT in 2026: Complete Guide (And Why Power Users Switch)",
     description:
       "Everything you need to know about using ChatGPT in 2026 — GPT-5, ChatGPT Plus, ChatGPT o3, best use cases, tips, and why many power users now prefer multi-model platforms like bedda.ai.",
     date: "July 2026",
@@ -911,7 +938,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-financial-advisors-2026",
-    title: "Best AI for Financial Advisors in 2026: Research, Client Comms, and Planning",
+    title:
+      "Best AI for Financial Advisors in 2026: Research, Client Comms, and Planning",
     description:
       "How independent financial advisors, wealth managers, and financial planners use AI in 2026 for client communication, financial plan writing, market research, compliance documentation, and business development.",
     date: "July 2026",
@@ -938,7 +966,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-engineering-teams-2026",
-    title: "Best AI for Engineering Teams in 2026: Code Review, Docs, and Architecture",
+    title:
+      "Best AI for Engineering Teams in 2026: Code Review, Docs, and Architecture",
     description:
       "How software engineering teams use AI in 2026 for code review, technical documentation, architecture decisions, debugging, and developer productivity. Model recommendations by task.",
     date: "July 2026",
@@ -956,7 +985,8 @@ const posts = [
   },
   {
     slug: "ai-for-creative-writing-2026",
-    title: "AI for Creative Writing in 2026: Fiction, Screenwriting, and Storytelling",
+    title:
+      "AI for Creative Writing in 2026: Fiction, Screenwriting, and Storytelling",
     description:
       "How novelists, screenwriters, poets, and game writers use AI in 2026. Best models for different creative writing tasks, prompting strategies, and how to keep your voice while using AI as a collaborator.",
     date: "July 2026",
@@ -965,7 +995,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-investment-research-2026",
-    title: "Best AI for Investment Research in 2026: Equity Analysis and Financial Modeling",
+    title:
+      "Best AI for Investment Research in 2026: Equity Analysis and Financial Modeling",
     description:
       "How equity analysts, portfolio managers, and individual investors use AI in 2026 for company research, earnings analysis, financial modeling, and investment thesis development.",
     date: "July 2026",
@@ -974,7 +1005,8 @@ const posts = [
   },
   {
     slug: "ai-for-compliance-teams-2026",
-    title: "AI for Compliance Teams in 2026: Regulatory Risk, Policy Review, and Audit Support",
+    title:
+      "AI for Compliance Teams in 2026: Regulatory Risk, Policy Review, and Audit Support",
     description:
       "How compliance officers, GRC teams, and legal risk professionals use AI in 2026 to accelerate policy review, regulatory mapping, audit prep, and risk documentation.",
     date: "July 2026",
@@ -983,7 +1015,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-customer-success-2026",
-    title: "Best AI for Customer Success Teams in 2026: Retention, Onboarding, and QBRs",
+    title:
+      "Best AI for Customer Success Teams in 2026: Retention, Onboarding, and QBRs",
     description:
       "How customer success managers and teams use AI in 2026 to improve onboarding, draft QBR decks, identify churn risk, and scale personalized communication.",
     date: "July 2026",
@@ -992,7 +1025,8 @@ const posts = [
   },
   {
     slug: "how-to-write-better-ai-prompts-2026",
-    title: "How to Write Better AI Prompts in 2026: Prompt Engineering That Actually Works",
+    title:
+      "How to Write Better AI Prompts in 2026: Prompt Engineering That Actually Works",
     description:
       "A practical guide to writing better prompts for Claude, GPT-5, and Gemini. Techniques that improve output quality, reduce hallucinations, and get consistent results.",
     date: "July 2026",
@@ -1001,7 +1035,8 @@ const posts = [
   },
   {
     slug: "ai-for-learning-and-development-2026",
-    title: "AI for Learning and Development in 2026: Training, Coaching, and Skill Building",
+    title:
+      "AI for Learning and Development in 2026: Training, Coaching, and Skill Building",
     description:
       "How L&D professionals, instructional designers, and training teams use AI to build courses, create assessments, personalize learning paths, and scale employee development.",
     date: "July 2026",
@@ -1010,7 +1045,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-technical-writers-2026",
-    title: "Best AI Tools for Technical Writers in 2026: Docs, APIs, and Developer Content",
+    title:
+      "Best AI Tools for Technical Writers in 2026: Docs, APIs, and Developer Content",
     description:
       "How technical writers use Claude Opus 4.8, GPT-5, and other frontier models to write API docs, developer guides, release notes, and structured technical content faster without sacrificing accuracy.",
     date: "July 2026",
@@ -1028,7 +1064,8 @@ const posts = [
   },
   {
     slug: "ai-for-nonprofit-fundraising-2026",
-    title: "AI for Nonprofit Fundraising in 2026: Grant Writing, Donor Outreach, and Impact Reporting",
+    title:
+      "AI for Nonprofit Fundraising in 2026: Grant Writing, Donor Outreach, and Impact Reporting",
     description:
       "How nonprofits and development teams use AI to write grant proposals, personalize donor communications, create annual reports, and scale fundraising without additional headcount.",
     date: "July 2026",
@@ -1046,7 +1083,8 @@ const posts = [
   },
   {
     slug: "ai-for-aerospace-and-defense-2026",
-    title: "AI for Aerospace and Defense in 2026: Engineering, Documentation, and Analysis",
+    title:
+      "AI for Aerospace and Defense in 2026: Engineering, Documentation, and Analysis",
     description:
       "How aerospace engineers, defense contractors, and program managers use AI for technical writing, systems engineering, regulatory compliance, failure analysis, and project documentation in 2026.",
     date: "July 2026",
@@ -1055,7 +1093,8 @@ const posts = [
   },
   {
     slug: "ai-for-biotech-and-life-sciences-2026",
-    title: "AI for Biotech and Life Sciences in 2026: Research, Regulatory, and Development",
+    title:
+      "AI for Biotech and Life Sciences in 2026: Research, Regulatory, and Development",
     description:
       "How biotech researchers, regulatory affairs teams, and biopharma professionals use AI for literature review, regulatory writing, protocol development, and scientific communication in 2026.",
     date: "July 2026",
@@ -1073,7 +1112,8 @@ const posts = [
   },
   {
     slug: "ai-for-clinical-research-2026",
-    title: "AI for Clinical Research in 2026: Protocol Writing, Literature Review, and Regulatory Submissions",
+    title:
+      "AI for Clinical Research in 2026: Protocol Writing, Literature Review, and Regulatory Submissions",
     description:
       "How clinical research professionals, CROs, and biotech teams use AI for protocol writing, IRB documentation, literature synthesis, and regulatory submission preparation in 2026.",
     date: "July 2026",
@@ -1082,7 +1122,8 @@ const posts = [
   },
   {
     slug: "ai-for-devops-engineers-2026",
-    title: "AI for DevOps Engineers in 2026: IaC, CI/CD, Incident Response, and Runbooks",
+    title:
+      "AI for DevOps Engineers in 2026: IaC, CI/CD, Incident Response, and Runbooks",
     description:
       "How DevOps and platform engineers use AI to write infrastructure code, debug CI/CD pipelines, automate runbooks, and accelerate incident response in 2026.",
     date: "July 2026",
@@ -1127,7 +1168,8 @@ const posts = [
   },
   {
     slug: "ai-for-mental-health-professionals-2026",
-    title: "AI for Mental Health Professionals in 2026: Documentation, Research, and Practice Management",
+    title:
+      "AI for Mental Health Professionals in 2026: Documentation, Research, and Practice Management",
     description:
       "How therapists, psychologists, psychiatrists, and counselors use AI in 2026 for clinical note-taking, treatment planning, psychoeducation materials, insurance documentation, and professional development.",
     date: "July 2026",
@@ -1136,7 +1178,8 @@ const posts = [
   },
   {
     slug: "ai-for-procurement-teams-2026",
-    title: "AI for Procurement Teams in 2026: Sourcing, Contracts, and Spend Analysis",
+    title:
+      "AI for Procurement Teams in 2026: Sourcing, Contracts, and Spend Analysis",
     description:
       "How procurement and sourcing teams use AI in 2026 to accelerate vendor evaluation, draft RFPs and contracts, analyze spend data, and reduce the time-to-contract on key purchases.",
     date: "July 2026",
@@ -1190,7 +1233,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-book-writing-2026",
-    title: "Best AI for Book Writing in 2026: Sudowrite, Jasper, Claude vs GPT-5",
+    title:
+      "Best AI for Book Writing in 2026: Sudowrite, Jasper, Claude vs GPT-5",
     description:
       "Comparing the best AI tools for writing books, novels, and long-form content in 2026 — Sudowrite, Jasper, NovelAI, and using Claude 4 or GPT-5 directly.",
     date: "June 2026",
@@ -1199,7 +1243,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-coaches-2026",
-    title: "Best AI for Coaches in 2026: Executive Coaching, Life Coaching, and Business Coaching",
+    title:
+      "Best AI for Coaches in 2026: Executive Coaching, Life Coaching, and Business Coaching",
     description:
       "How executive coaches, life coaches, and business coaches use AI for session preparation, client communication, content creation, and coaching frameworks in 2026.",
     date: "July 2026",
@@ -1226,7 +1271,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-environmental-sustainability-2026",
-    title: "Best AI for Environmental Sustainability in 2026: ESG, Carbon, and Green Strategy",
+    title:
+      "Best AI for Environmental Sustainability in 2026: ESG, Carbon, and Green Strategy",
     description:
       "How sustainability professionals, ESG analysts, and corporate environmental teams use AI for ESG reporting, carbon accounting, regulatory compliance, and sustainability communications in 2026.",
     date: "July 2026",
@@ -1235,7 +1281,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-finance-professionals",
-    title: "Best AI for Finance Professionals in 2026: Analysts, CFOs & Traders",
+    title:
+      "Best AI for Finance Professionals in 2026: Analysts, CFOs & Traders",
     description:
       "How finance professionals are using AI for financial analysis, modeling, reporting, and market research in 2026 — and which AI models perform best for each task.",
     date: "June 2026",
@@ -1253,7 +1300,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-marketing-agencies-2026",
-    title: "Best AI for Marketing Agencies in 2026: Scale Creative Work, Cut Research Time",
+    title:
+      "Best AI for Marketing Agencies in 2026: Scale Creative Work, Cut Research Time",
     description:
       "How marketing agencies use AI for campaign ideation, copy at scale, client reporting, SEO content, and competitive analysis in 2026.",
     date: "July 2026",
@@ -1262,7 +1310,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-meeting-notes-2026",
-    title: "Best AI for Meeting Notes in 2026: Otter, Fireflies, Notion vs Bedda",
+    title:
+      "Best AI for Meeting Notes in 2026: Otter, Fireflies, Notion vs Bedda",
     description:
       "The complete guide to AI meeting note tools in 2026. Compare Otter AI, Fireflies, Fathom, Notion AI, and how a frontier AI subscription handles meeting notes for less.",
     date: "June 2026",
@@ -1289,7 +1338,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-seo-content-2026",
-    title: "Best AI for SEO Content in 2026: Frase, SurferSEO, Jasper vs Frontier AI",
+    title:
+      "Best AI for SEO Content in 2026: Frase, SurferSEO, Jasper vs Frontier AI",
     description:
       "Compare the best AI SEO content tools in 2026. Frase, SurferSEO, Jasper, and MarketMuse vs using Claude 4 and GPT-5 directly for content that ranks.",
     date: "June 2026",
@@ -1316,7 +1366,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-translation-2026",
-    title: "Best AI Translation Tools in 2026: DeepL vs Google vs ChatGPT vs Claude",
+    title:
+      "Best AI Translation Tools in 2026: DeepL vs Google vs ChatGPT vs Claude",
     description:
       "A practical comparison of the top AI translation tools in 2026 — DeepL, Google Translate, ChatGPT, Claude, and Gemini — with honest verdicts on accuracy, nuance, and cost.",
     date: "June 2026",
@@ -1334,7 +1385,8 @@ const posts = [
   },
   {
     slug: "best-ai-pdf-tool-2026",
-    title: "Best AI PDF Tools in 2026: Summarize, Analyze, and Extract Anything",
+    title:
+      "Best AI PDF Tools in 2026: Summarize, Analyze, and Extract Anything",
     description:
       "The top AI tools for working with PDFs in 2026 — summarizing long documents, extracting data, answering questions about reports, and comparing multiple files.",
     date: "June 2026",
@@ -1352,7 +1404,8 @@ const posts = [
   },
   {
     slug: "chatgpt-enterprise-alternatives",
-    title: "ChatGPT Enterprise Alternatives in 2026: Save 70% Without Losing Features",
+    title:
+      "ChatGPT Enterprise Alternatives in 2026: Save 70% Without Losing Features",
     description:
       "ChatGPT Enterprise starts at $30+/user/month. We compare the best alternatives — including multi-model platforms that offer more AI models for a fraction of the price.",
     date: "June 2026",
@@ -1406,7 +1459,8 @@ const posts = [
   },
   {
     slug: "ai-for-journalists-2026",
-    title: "AI for Journalists in 2026: Best Tools for Research, Writing, and Reporting",
+    title:
+      "AI for Journalists in 2026: Best Tools for Research, Writing, and Reporting",
     description:
       "How journalists and newsrooms are using AI in 2026 — for research automation, interview transcription, fact-checking, story summarization, and publishing workflows.",
     date: "July 2026",
@@ -1424,7 +1478,8 @@ const posts = [
   },
   {
     slug: "ai-for-nurses-2026",
-    title: "AI for Nurses in 2026: Clinical Documentation, Research, and Patient Care",
+    title:
+      "AI for Nurses in 2026: Clinical Documentation, Research, and Patient Care",
     description:
       "How nurses and nursing students are using AI in 2026 — for clinical documentation, shift notes, care plan development, patient education materials, and medical research.",
     date: "July 2026",
@@ -1433,7 +1488,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-screenwriters-2026",
-    title: "Best AI for Screenwriters in 2026: Script Development, Story Structure, and Dialogue",
+    title:
+      "Best AI for Screenwriters in 2026: Script Development, Story Structure, and Dialogue",
     description:
       "The best AI models for screenwriters in 2026 — for story development, beat sheets, character arcs, dialogue polish, pitch documents, and coverage responses.",
     date: "July 2026",
@@ -1442,7 +1498,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-language-learning-2026",
-    title: "Best AI for Language Learning in 2026: Practice, Grammar, and Fluency",
+    title:
+      "Best AI for Language Learning in 2026: Practice, Grammar, and Fluency",
     description:
       "How to use AI for language learning in 2026 — practice conversations with native-level feedback, get clear grammar explanations, build vocabulary faster, and accelerate fluency in any language.",
     date: "July 2026",
@@ -1451,7 +1508,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-tutors-2026",
-    title: "Best AI for Tutors in 2026: Lesson Plans, Explanations, and Practice Materials",
+    title:
+      "Best AI for Tutors in 2026: Lesson Plans, Explanations, and Practice Materials",
     description:
       "How private tutors and instructors use AI in 2026 — to build customized lesson plans, generate practice problems, explain difficult concepts multiple ways, and scale their teaching capacity.",
     date: "July 2026",
@@ -1469,7 +1527,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-tax-professionals-2026",
-    title: "Best AI for Tax Professionals in 2026: CPAs, Tax Preparers, and Accountants",
+    title:
+      "Best AI for Tax Professionals in 2026: CPAs, Tax Preparers, and Accountants",
     description:
       "The best AI tools for tax professionals in 2026 — how CPAs, enrolled agents, and tax preparers use AI for client communication, research, documentation, and navigating complex tax situations efficiently.",
     date: "July 2026",
@@ -1478,7 +1537,8 @@ const posts = [
   },
   {
     slug: "ai-for-insurance-agents-2026",
-    title: "AI for Insurance Agents and Brokers in 2026: Proposals, Emails, and Client Communication",
+    title:
+      "AI for Insurance Agents and Brokers in 2026: Proposals, Emails, and Client Communication",
     description:
       "How insurance agents and brokers use AI in 2026 for proposal summaries, client onboarding emails, coverage explanations, renewal communications, and cross-sell scripts. Best AI models for insurance professionals.",
     date: "July 2026",
@@ -1487,7 +1547,8 @@ const posts = [
   },
   {
     slug: "best-ai-for-real-estate-agents-2026",
-    title: "Best AI for Real Estate Agents in 2026: Listings, Emails, and Market Reports",
+    title:
+      "Best AI for Real Estate Agents in 2026: Listings, Emails, and Market Reports",
     description:
       "How real estate agents and brokers use AI in 2026 for listing descriptions, buyer and seller emails, offer letters, market analysis reports, and social media content. Which AI models work best for real estate.",
     date: "July 2026",
@@ -1496,7 +1557,8 @@ const posts = [
   },
   {
     slug: "ai-for-supply-chain-managers-2026",
-    title: "AI for Supply Chain Managers in 2026: Procurement, Reports, and Vendor Communication",
+    title:
+      "AI for Supply Chain Managers in 2026: Procurement, Reports, and Vendor Communication",
     description:
       "How supply chain managers and operations leaders use AI in 2026 for RFQ drafting, supplier communication, inventory analysis summaries, risk assessment documentation, and S&OP reporting.",
     date: "July 2026",
@@ -1505,7 +1567,8 @@ const posts = [
   },
   {
     slug: "ai-for-graphic-designers-2026",
-    title: "AI for Graphic Designers in 2026: Creative Briefs, Client Decks, and Copy",
+    title:
+      "AI for Graphic Designers in 2026: Creative Briefs, Client Decks, and Copy",
     description:
       "How graphic designers and visual communicators use AI in 2026 for creative brief writing, client presentation decks, project proposals, social media copy, and client emails. The best AI models for design professionals.",
     date: "July 2026",
@@ -1571,7 +1634,8 @@ const posts = [
   },
   {
     slug: "ai-for-hr-professionals-2026",
-    title: "AI for HR Professionals in 2026: Job Descriptions, Reviews, and Policy Docs",
+    title:
+      "AI for HR Professionals in 2026: Job Descriptions, Reviews, and Policy Docs",
     description:
       "How HR teams use AI in 2026 to write better job descriptions, streamline performance reviews, draft employee communications, and maintain compliant HR documentation.",
     date: "July 2026",
@@ -1580,7 +1644,8 @@ const posts = [
   },
   {
     slug: "ai-for-data-analysts-2026",
-    title: "AI for Data Analysts in 2026: SQL, Reports, and Insight Communication",
+    title:
+      "AI for Data Analysts in 2026: SQL, Reports, and Insight Communication",
     description:
       "How data analysts use AI in 2026 for SQL query writing, data interpretation, report drafting, dashboard documentation, and communicating insights to non-technical stakeholders.",
     date: "July 2026",
@@ -1607,7 +1672,8 @@ const posts = [
   },
   {
     slug: "ai-for-sports-analytics-2026",
-    title: "AI for Sports Analytics in 2026: Performance Data, Scouting, and Fan Engagement",
+    title:
+      "AI for Sports Analytics in 2026: Performance Data, Scouting, and Fan Engagement",
     description:
       "How sports analysts, coaches, and teams use AI to process performance data, generate scouting reports, build predictive models, and create engaging fan content.",
     date: "July 2026",
@@ -1652,7 +1718,8 @@ const posts = [
   },
   {
     slug: "ai-for-security-engineers-2026",
-    title: "AI for Security Engineers in 2026: AppSec, Threat Modeling, and Incident Response",
+    title:
+      "AI for Security Engineers in 2026: AppSec, Threat Modeling, and Incident Response",
     description:
       "How application security engineers and SecOps teams use AI for code review, threat modeling, vulnerability research, and incident response in 2026.",
     date: "July 2026",
@@ -1661,7 +1728,8 @@ const posts = [
   },
   {
     slug: "ai-for-machine-learning-engineers-2026",
-    title: "AI for Machine Learning Engineers in 2026: Models, Tools, and Workflows",
+    title:
+      "AI for Machine Learning Engineers in 2026: Models, Tools, and Workflows",
     description:
       "How ML engineers and data scientists use AI assistants for model development, experiment tracking, feature engineering, and production ML systems in 2026.",
     date: "July 2026",
@@ -1670,7 +1738,8 @@ const posts = [
   },
   {
     slug: "ai-for-content-marketing-2026",
-    title: "AI for Content Marketing in 2026: Strategy, Creation, and Distribution",
+    title:
+      "AI for Content Marketing in 2026: Strategy, Creation, and Distribution",
     description:
       "How content marketers use AI to build editorial calendars, write SEO content, repurpose assets across channels, and measure content performance in 2026.",
     date: "July 2026",
@@ -1688,7 +1757,8 @@ const posts = [
   },
   {
     slug: "ai-for-executive-productivity-2026",
-    title: "AI for Executives and C-Suite Leaders in 2026: Decision-Making at Scale",
+    title:
+      "AI for Executives and C-Suite Leaders in 2026: Decision-Making at Scale",
     description:
       "How CEOs, CTOs, and other executives use AI to synthesize information faster, prepare for board meetings, communicate strategically, and lead more effectively.",
     date: "July 2026",
@@ -1713,13 +1783,13 @@ export default function BlogPage() {
       </div>
 
       <div className="mb-8 flex flex-wrap gap-2">
-        <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+        <span className="rounded-full bg-primary/10 px-3 py-1 font-medium text-primary text-xs">
           All Posts
         </span>
         {categories.map((cat) => (
           <span
+            className="rounded-full border px-3 py-1 text-muted-foreground text-xs"
             key={cat}
-            className="rounded-full border px-3 py-1 text-xs text-muted-foreground"
           >
             {cat}
           </span>
@@ -1729,12 +1799,12 @@ export default function BlogPage() {
       <div className="space-y-6">
         {posts.map((post) => (
           <Link
-            key={post.slug}
-            href={`/blog/${post.slug}`}
             className="group block rounded-xl border bg-card p-6 transition-colors hover:border-primary/50 hover:bg-muted/30"
+            href={`/blog/${post.slug}`}
+            key={post.slug}
           >
             <div className="mb-3 flex flex-wrap items-center gap-3 text-muted-foreground text-sm">
-              <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+              <span className="rounded-full bg-primary/10 px-3 py-1 font-medium text-primary text-xs">
                 {post.category}
               </span>
               <span className="flex items-center gap-1">
@@ -1750,7 +1820,7 @@ export default function BlogPage() {
               {post.title}
             </h2>
             <p className="mb-4 text-muted-foreground">{post.description}</p>
-            <span className="flex items-center gap-1 text-sm font-medium text-primary">
+            <span className="flex items-center gap-1 font-medium text-primary text-sm">
               Read article
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </span>
@@ -1759,9 +1829,7 @@ export default function BlogPage() {
       </div>
 
       <div className="mt-16 rounded-xl border bg-muted/30 p-8 text-center">
-        <h2 className="mb-2 font-semibold text-2xl">
-          Try all 36 models free
-        </h2>
+        <h2 className="mb-2 font-semibold text-2xl">Try all 36 models free</h2>
         <p className="mb-6 text-muted-foreground">
           Every model covered in this blog — GPT-5, Claude Opus 4.8, Gemini 2.5
           Pro, Grok 4, DeepSeek R1, and 31 more — available in one subscription.

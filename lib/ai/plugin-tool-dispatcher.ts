@@ -40,6 +40,8 @@ export async function dispatchPluginTool(
     if (err instanceof Error && err.name === "AbortError") {
       return { error: "Webhook timed out after 5 seconds" };
     }
-    return { error: `Webhook error: ${err instanceof Error ? err.message : "unknown"}` };
+    return {
+      error: `Webhook error: ${err instanceof Error ? err.message : "unknown"}`,
+    };
   }
 }

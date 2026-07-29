@@ -6,9 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
-interface CustomInstructionsFormProps {
+type CustomInstructionsFormProps = {
   initialValue: string;
-}
+};
 
 export function CustomInstructionsForm({
   initialValue,
@@ -24,7 +24,9 @@ export function CustomInstructionsForm({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ customInstructions: value }),
       });
-      if (!res.ok) throw new Error("Failed to save");
+      if (!res.ok) {
+        throw new Error("Failed to save");
+      }
       toast.success("Custom instructions saved");
     } catch {
       toast.error("Failed to save custom instructions");

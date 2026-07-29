@@ -27,7 +27,9 @@ export function ByokForm() {
   }, []);
 
   async function handleSave() {
-    if (!key.trim()) return;
+    if (!key.trim()) {
+      return;
+    }
     setSaving(true);
     try {
       const res = await fetch("/api/byok", {
@@ -80,13 +82,14 @@ export function ByokForm() {
       {configured && keyPrefix && (
         <div className="flex items-center justify-between rounded-md border bg-muted/40 px-3 py-2 text-sm">
           <span className="font-mono">
-            {keyPrefix}{"•".repeat(24)}
+            {keyPrefix}
+            {"•".repeat(24)}
           </span>
           <Button
-            variant="ghost"
-            size="sm"
-            onClick={handleRemove}
             disabled={saving}
+            onClick={handleRemove}
+            size="sm"
+            variant="ghost"
           >
             <Trash2 className="size-4" />
             <span className="sr-only">Remove key</span>
@@ -101,18 +104,18 @@ export function ByokForm() {
         <div className="flex gap-2">
           <div className="relative flex-1">
             <Input
-              id="byok-key"
-              type={visible ? "text" : "password"}
-              placeholder="sk-..."
-              value={key}
-              onChange={(e) => setKey(e.target.value)}
               className="pr-10 font-mono text-sm"
+              id="byok-key"
+              onChange={(e) => setKey(e.target.value)}
+              placeholder="sk-..."
+              type={visible ? "text" : "password"}
+              value={key}
             />
             <button
-              type="button"
-              className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+              className="-translate-y-1/2 absolute top-1/2 right-2 text-muted-foreground hover:text-foreground"
               onClick={() => setVisible((v) => !v)}
               tabIndex={-1}
+              type="button"
             >
               {visible ? (
                 <EyeOff className="size-4" />
@@ -122,8 +125,8 @@ export function ByokForm() {
             </button>
           </div>
           <Button
-            onClick={handleSave}
             disabled={!key.trim() || saving}
+            onClick={handleSave}
             size="sm"
           >
             <Save className="mr-1 size-4" />

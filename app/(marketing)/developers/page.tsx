@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "API Documentation — OpenAI-Compatible API | bedda.ai",
@@ -296,8 +296,8 @@ export default function DevelopersPage() {
               },
             ].map((row) => (
               <div
-                key={row.metric}
                 className="rounded-lg border bg-card p-4 text-center"
+                key={row.metric}
               >
                 <p className="mb-2 text-muted-foreground text-sm">
                   {row.metric}
@@ -383,17 +383,16 @@ export default function DevelopersPage() {
           </p>
           <div className="rounded-lg bg-zinc-900 p-4 dark:bg-zinc-950">
             <pre className="text-sm text-zinc-100">
-              <code>Authorization: Bearer bda_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code>
+              <code>
+                Authorization: Bearer bda_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+              </code>
             </pre>
           </div>
           <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-4 dark:border-amber-800 dark:bg-amber-950/20">
             <p className="text-amber-800 text-sm dark:text-amber-200">
               <strong>API keys require a Plus plan or higher.</strong> Generate
               your key at{" "}
-              <Link
-                className="underline hover:no-underline"
-                href="/settings"
-              >
+              <Link className="underline hover:no-underline" href="/settings">
                 Settings → API Keys
               </Link>
               . Free trial users can create keys during their 7-day trial.
@@ -447,9 +446,7 @@ export default function DevelopersPage() {
             <table className="w-full text-sm">
               <thead className="bg-muted/50">
                 <tr>
-                  <th className="px-4 py-3 text-left font-medium">
-                    Parameter
-                  </th>
+                  <th className="px-4 py-3 text-left font-medium">Parameter</th>
                   <th className="px-4 py-3 text-left font-medium">Type</th>
                   <th className="px-4 py-3 text-left font-medium">Required</th>
                   <th className="px-4 py-3 text-left font-medium">
@@ -491,7 +488,7 @@ export default function DevelopersPage() {
                   },
                 ].map((row) => (
                   <tr key={row.param}>
-                    <td className="px-4 py-3 font-mono font-medium text-xs">
+                    <td className="px-4 py-3 font-medium font-mono text-xs">
                       {row.param}
                     </td>
                     <td className="px-4 py-3 text-muted-foreground">
@@ -526,8 +523,8 @@ export default function DevelopersPage() {
             <code className="rounded bg-muted px-1 py-0.5 text-sm">
               "stream": true
             </code>{" "}
-            to receive Server-Sent Events (SSE) in OpenAI format. Works with
-            any OpenAI-compatible streaming client.
+            to receive Server-Sent Events (SSE) in OpenAI format. Works with any
+            OpenAI-compatible streaming client.
           </p>
           <div className="rounded-lg bg-zinc-900 p-4 dark:bg-zinc-950">
             <pre className="overflow-x-auto text-sm text-zinc-100">
@@ -541,9 +538,7 @@ export default function DevelopersPage() {
           <h2 className="mb-4 font-bold text-2xl">Available Models</h2>
           <p className="mb-6 text-muted-foreground">
             Use the model ID directly, or any OpenAI-compatible alias (
-            <code className="rounded bg-muted px-1 py-0.5 text-sm">
-              gpt-4o
-            </code>
+            <code className="rounded bg-muted px-1 py-0.5 text-sm">gpt-4o</code>
             ,{" "}
             <code className="rounded bg-muted px-1 py-0.5 text-sm">
               claude-3-5-sonnet-20241022
@@ -558,14 +553,12 @@ export default function DevelopersPage() {
                   <th className="px-4 py-3 text-left font-medium">Name</th>
                   <th className="px-4 py-3 text-left font-medium">Provider</th>
                   <th className="px-4 py-3 text-left font-medium">Context</th>
-                  <th className="px-4 py-3 text-left font-medium">
-                    Min. Tier
-                  </th>
+                  <th className="px-4 py-3 text-left font-medium">Min. Tier</th>
                 </tr>
               </thead>
               <tbody className="divide-y">
                 {MODELS.map((m) => (
-                  <tr key={m.id} className="hover:bg-muted/30">
+                  <tr className="hover:bg-muted/30" key={m.id}>
                     <td className="px-4 py-2.5 font-mono text-xs">{m.id}</td>
                     <td className="px-4 py-2.5 font-medium text-sm">
                       {m.label}
@@ -578,9 +571,13 @@ export default function DevelopersPage() {
                     </td>
                     <td className="px-4 py-2.5">
                       <span
-                        className={`rounded px-2 py-0.5 text-xs font-medium capitalize ${TIER_COLORS[m.tier]}`}
+                        className={`rounded px-2 py-0.5 font-medium text-xs capitalize ${TIER_COLORS[m.tier]}`}
                       >
-                        {m.tier === "free" ? "Free+" : m.tier === "plus" ? "Plus+" : "Pro+"}
+                        {m.tier === "free"
+                          ? "Free+"
+                          : m.tier === "plus"
+                            ? "Plus+"
+                            : "Pro+"}
                       </span>
                     </td>
                   </tr>
@@ -611,9 +608,7 @@ export default function DevelopersPage() {
                   <th className="px-4 py-3 text-left font-medium">
                     OpenAI alias
                   </th>
-                  <th className="px-4 py-3 text-left font-medium">
-                    Routes to
-                  </th>
+                  <th className="px-4 py-3 text-left font-medium">Routes to</th>
                 </tr>
               </thead>
               <tbody className="divide-y">
@@ -825,7 +820,7 @@ export default function DevelopersPage() {
                 a: "Sign in → Settings → API Keys tab. You can create up to 5 keys, label them by project, and revoke them individually. API key creation requires Plus plan or higher.",
               },
             ].map((item) => (
-              <div key={item.q} className="rounded-lg border p-5">
+              <div className="rounded-lg border p-5" key={item.q}>
                 <h3 className="mb-2 font-semibold">{item.q}</h3>
                 <p className="text-muted-foreground text-sm">{item.a}</p>
               </div>
@@ -838,7 +833,7 @@ export default function DevelopersPage() {
           <h2 className="mb-3 font-bold text-3xl">
             Ready to integrate? Start free.
           </h2>
-          <p className="mb-6 text-primary-foreground/80 text-lg">
+          <p className="mb-6 text-lg text-primary-foreground/80">
             7-day free trial. No credit card required.
             <br />
             API access, 36+ models, flat-rate $12/mo after trial.
@@ -853,9 +848,9 @@ export default function DevelopersPage() {
             </Button>
             <Button
               asChild
+              className="border-white/30 text-white hover:bg-white/10"
               size="lg"
               variant="outline"
-              className="border-white/30 text-white hover:bg-white/10"
             >
               <Link href="/pricing">Compare Plans</Link>
             </Button>

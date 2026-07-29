@@ -471,7 +471,8 @@ export const roadmapData: RoadmapPhase[] = [
       },
       {
         id: "chat-platform-bots",
-        title: "Chat Platform Integrations (Slack, Discord, GitHub, Telegram, WhatsApp, Teams)",
+        title:
+          "Chat Platform Integrations (Slack, Discord, GitHub, Telegram, WhatsApp, Teams)",
         description:
           "Native bots for Slack, Discord, GitHub, Telegram, WhatsApp, and Microsoft Teams — bring multi-model AI access to where teams already work",
         status: "completed",

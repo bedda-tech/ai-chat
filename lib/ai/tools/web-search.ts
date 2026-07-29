@@ -1,13 +1,13 @@
 import { tool } from "ai";
 import { z } from "zod";
 
-interface SearchResult {
+type SearchResult = {
   title: string;
   url: string;
   snippet: string;
-}
+};
 
-interface DuckDuckGoResponse {
+type DuckDuckGoResponse = {
   Abstract: string;
   AbstractURL: string;
   AbstractSource: string;
@@ -20,7 +20,7 @@ interface DuckDuckGoResponse {
     Topics?: Array<{ Text: string; FirstURL: string }>;
   }>;
   Results: Array<{ Text: string; FirstURL: string }>;
-}
+};
 
 async function searchDuckDuckGo(query: string): Promise<SearchResult[]> {
   const url = `https://api.duckduckgo.com/?q=${encodeURIComponent(query)}&format=json&no_html=1&skip_disambig=1`;
@@ -28,7 +28,9 @@ async function searchDuckDuckGo(query: string): Promise<SearchResult[]> {
     headers: { "User-Agent": "bedda-chat/1.0" },
   });
 
-  if (!response.ok) throw new Error(`DuckDuckGo API error: ${response.status}`);
+  if (!response.ok) {
+    throw new Error(`DuckDuckGo API error: ${response.status}`);
+  }
 
   const data: DuckDuckGoResponse = await response.json();
   const results: SearchResult[] = [];
@@ -79,8 +81,9 @@ async function searchBrave(
     },
   });
 
-  if (!response.ok)
+  if (!response.ok) {
     throw new Error(`Brave Search API error: ${response.status}`);
+  }
 
   const data = await response.json();
   return (data.web?.results || []).map(

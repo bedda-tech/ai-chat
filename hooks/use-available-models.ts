@@ -5,7 +5,7 @@
 
 import useSWR from "swr";
 
-interface Model {
+type Model = {
   id: string;
   gatewayId: string;
   name: string;
@@ -32,16 +32,16 @@ interface Model {
   disabled?: boolean;
   tags?: string[];
   warning?: string;
-}
+};
 
-interface ModelsResponse {
+type ModelsResponse = {
   models: Model[];
   lastUpdated: string;
   cached: boolean;
   cacheAge?: number;
   fallback?: boolean;
   error?: string;
-}
+};
 
 const fetcher = async (url: string): Promise<ModelsResponse> => {
   const response = await fetch(url);

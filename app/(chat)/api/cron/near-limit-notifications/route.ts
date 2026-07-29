@@ -13,7 +13,9 @@ const FREE_TIER_LIMIT = 500;
 const NOTIFY_THRESHOLD = Math.floor(FREE_TIER_LIMIT * 0.8); // 400
 
 async function getRedis() {
-  if (!process.env.REDIS_URL) return null;
+  if (!process.env.REDIS_URL) {
+    return null;
+  }
   try {
     const client = createClient({ url: process.env.REDIS_URL });
     client.on("error", () => {});
@@ -90,7 +92,7 @@ export async function GET(req: NextRequest) {
     }
 
     try {
-      const used = parseInt(u.messageCount, 10);
+      const used = Number.parseInt(u.messageCount, 10);
       await sendNearLimitEmail(u.email, u.userId, used, FREE_TIER_LIMIT);
       await redis.set(redisKey, "1", { EX: 35 * 24 * 60 * 60 }).catch(() => {});
       sent++;
@@ -99,7 +101,9 @@ export async function GET(req: NextRequest) {
     }
   }
 
-  if (redis?.isReady) await redis.disconnect().catch(() => {});
+  if (redis?.isReady) {
+    await redis.disconnect().catch(() => {});
+  }
   await client.end();
 
   return NextResponse.json({ sent, skipped, errors, total: realUsers.length });

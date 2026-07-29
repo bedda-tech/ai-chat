@@ -427,7 +427,9 @@ export function applyOrgModelPolicy(
     deniedModelIds?: string[] | null;
   } | null
 ): string[] {
-  if (!policy) return modelIds;
+  if (!policy) {
+    return modelIds;
+  }
 
   let filtered = modelIds;
 

@@ -3,7 +3,9 @@ import { auth } from "@/app/(auth)/auth";
 import { clearModelsCache } from "@/lib/ai/models-cache";
 
 function isAdmin(email: string | null | undefined): boolean {
-  if (!email) return false;
+  if (!email) {
+    return false;
+  }
   const adminEmails = (process.env.ADMIN_EMAILS ?? "")
     .split(",")
     .map((e) => e.trim().toLowerCase())
@@ -23,5 +25,8 @@ export async function POST() {
 
   clearModelsCache();
 
-  return NextResponse.json({ success: true, message: "Model cache cleared successfully" });
+  return NextResponse.json({
+    success: true,
+    message: "Model cache cleared successfully",
+  });
 }

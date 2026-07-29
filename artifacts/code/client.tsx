@@ -198,7 +198,13 @@ export const codeArtifact = new Artifact<"code", Metadata>({
               ...metadata.outputs.filter((output) => output.id !== runId),
               {
                 id: runId,
-                contents: [{ type: "text", value: error instanceof Error ? error.message : String(error) }],
+                contents: [
+                  {
+                    type: "text",
+                    value:
+                      error instanceof Error ? error.message : String(error),
+                  },
+                ],
                 status: "failed",
               },
             ],

@@ -57,7 +57,7 @@ export const generateImageTool = () =>
         ),
     }),
     execute: async ({ prompt, model = "dalle3", size = "square", style }) => {
-      const meta = MODEL_META[model] ?? MODEL_META["dalle3"];
+      const meta = MODEL_META[model] ?? MODEL_META.dalle3;
       const sizeConfig = SIZE_MAP[size];
 
       try {

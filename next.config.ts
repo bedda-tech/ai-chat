@@ -28,7 +28,9 @@ const nextConfig: NextConfig = {
   },
   async rewrites() {
     const umamiHost = process.env.NEXT_PUBLIC_UMAMI_HOST;
-    if (!umamiHost) return [];
+    if (!umamiHost) {
+      return [];
+    }
     return [
       { source: "/a/script.js", destination: `${umamiHost}/script.js` },
       { source: "/a/api/send", destination: `${umamiHost}/api/send` },

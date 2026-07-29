@@ -17,7 +17,9 @@ function MermaidRenderer({ content, status }: MermaidContent) {
   const idRef = useRef(`mermaid-${Math.random().toString(36).slice(2)}`);
 
   useEffect(() => {
-    if (!content || status === "streaming") return;
+    if (!content || status === "streaming") {
+      return;
+    }
 
     let cancelled = false;
 
@@ -88,7 +90,6 @@ function MermaidRenderer({ content, status }: MermaidContent) {
     <div
       className="flex min-h-48 items-center justify-center overflow-auto p-8"
       dangerouslySetInnerHTML={{ __html: svg }}
-      // biome-ignore lint/security/noDangerouslySetInnerHtml: mermaid output is sanitized SVG
       ref={containerRef}
     />
   );

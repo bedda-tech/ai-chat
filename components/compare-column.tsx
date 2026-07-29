@@ -21,22 +21,22 @@ import {
 } from "@/lib/utils";
 import { ChevronDownIcon } from "./icons";
 
-interface PendingSubmit {
+type PendingSubmit = {
   text: string;
   version: number;
-}
+};
 
-interface ColumnModel {
+type ColumnModel = {
   id: string;
   name: string;
   provider: string;
-}
+};
 
-interface CompareColumnProps {
+type CompareColumnProps = {
   initialModelId: string;
   models: ColumnModel[];
   pendingSubmit: PendingSubmit;
-}
+};
 
 export function CompareColumn({
   initialModelId,
@@ -94,7 +94,7 @@ export function CompareColumn({
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [messages, status]);
+  }, []);
 
   const currentModel = models.find((m) => m.id === modelId);
 

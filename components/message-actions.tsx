@@ -22,7 +22,9 @@ function useTTS(text: string | undefined) {
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
 
   const speak = useCallback(() => {
-    if (!text) return;
+    if (!text) {
+      return;
+    }
 
     if (typeof window === "undefined" || !window.speechSynthesis) {
       toast.error("Text-to-speech is not supported in your browser.");

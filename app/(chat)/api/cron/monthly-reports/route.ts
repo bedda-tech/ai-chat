@@ -2,9 +2,9 @@ import { and, desc, eq, gte, lt, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
 import { type NextRequest, NextResponse } from "next/server";
 import postgres from "postgres";
+import modelsData from "@/lib/ai/models-data.json" with { type: "json" };
 import * as schema from "@/lib/db/schema";
 import { sendMonthlyUsageReportEmail } from "@/lib/email/send-monthly-report";
-import modelsData from "@/lib/ai/models-data.json";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -63,16 +63,23 @@ export async function GET(req: NextRequest) {
       eq(schema.userUsage.userId, schema.userTier.userId)
     )
     .where(
-      and(eq(schema.userUsage.month, start), eq(schema.user.emailUnsubscribed, false))
+      and(
+        eq(schema.userUsage.month, start),
+        eq(schema.user.emailUnsubscribed, false)
+      )
     );
 
   let sent = 0;
   const errors: string[] = [];
 
   for (const row of usageRows) {
-    if (!row.email) continue;
-    const messageCount = parseInt(row.messageCount, 10);
-    if (messageCount === 0) continue;
+    if (!row.email) {
+      continue;
+    }
+    const messageCount = Number.parseInt(row.messageCount, 10);
+    if (messageCount === 0) {
+      continue;
+    }
 
     // Top 3 models by number of requests this month
     const topModels = await db
@@ -99,8 +106,9 @@ export async function GET(req: NextRequest) {
         month: label,
         messageCount,
         totalTokens:
-          parseInt(row.inputTokens, 10) + parseInt(row.outputTokens, 10),
-        totalCostUsd: parseFloat(row.totalCost ?? "0"),
+          Number.parseInt(row.inputTokens, 10) +
+          Number.parseInt(row.outputTokens, 10),
+        totalCostUsd: Number.parseFloat(row.totalCost ?? "0"),
         topModels: topModels.map((m) => ({
           modelId: m.modelId,
           displayName: MODEL_NAMES[m.modelId] ?? m.modelId,

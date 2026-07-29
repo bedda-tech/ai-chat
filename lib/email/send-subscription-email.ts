@@ -169,7 +169,7 @@ export async function sendTrialExpiredEmail(
 ): Promise<void> {
   const resend = new Resend(process.env.RESEND_API_KEY);
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://www.bedda.tech";
-  const features = PLAN_FEATURES[planName] ?? PLAN_FEATURES["Plus"] ?? [];
+  const features = PLAN_FEATURES[planName] ?? PLAN_FEATURES.Plus ?? [];
   const monthlyPrice =
     planName === "Pro" ? "25" : planName === "Max" ? "50" : "12";
 
@@ -279,7 +279,7 @@ export async function sendCancellationEmail(
 ): Promise<void> {
   const resend = new Resend(process.env.RESEND_API_KEY);
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://www.bedda.tech";
-  const features = PLAN_FEATURES[planName] ?? PLAN_FEATURES["Plus"] ?? [];
+  const features = PLAN_FEATURES[planName] ?? PLAN_FEATURES.Plus ?? [];
   const monthlyPrice =
     planName === "Pro" ? "25" : planName === "Max" ? "50" : "12";
 
@@ -349,7 +349,7 @@ export async function sendAnnualUpgradeEmail(
   const annualMonthlyFmt = (annualCents / 100 / 12).toFixed(2);
   const annualFmt = (annualCents / 100).toFixed(0);
   const savedPerYear = ((monthlyCents * 12 - annualCents) / 100).toFixed(0);
-  const planLower = planName.toLowerCase();
+  const _planLower = planName.toLowerCase();
 
   await resend.emails.send({
     from: process.env.RESEND_FROM_EMAIL ?? "Bedda <onboarding@resend.dev>",

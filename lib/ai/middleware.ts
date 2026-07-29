@@ -426,7 +426,9 @@ function extractUserText(messages: PromptMessage[]): string {
   const userMessages = messages.filter((m) => m.role === "user").slice(-3);
   return userMessages
     .map((m) => {
-      if (typeof m.content === "string") return m.content;
+      if (typeof m.content === "string") {
+        return m.content;
+      }
       if (Array.isArray(m.content)) {
         return (m.content as Array<{ type?: string; text?: string }>)
           .filter((p) => p.type === "text")
@@ -443,9 +445,12 @@ function containsJailbreakAttempt(messages: PromptMessage[]): boolean {
   return JAILBREAK_PATTERNS.some((pattern) => pattern.test(text));
 }
 
-function makeSyntheticGenResult(
-  text: string,
-): { content: Array<{ type: "text"; text: string }>; finishReason: string; usage: { inputTokens: { total: number }; outputTokens: { total: number } }; warnings: never[] } {
+function makeSyntheticGenResult(text: string): {
+  content: Array<{ type: "text"; text: string }>;
+  finishReason: string;
+  usage: { inputTokens: { total: number }; outputTokens: { total: number } };
+  warnings: never[];
+} {
   return {
     content: [{ type: "text" as const, text }],
     finishReason: "stop",
@@ -474,9 +479,9 @@ export const guardrailsMiddleware: LanguageModelMiddleware = {
       console.warn(
         `[guardrails] Jailbreak attempt blocked in generate (model: ${model.modelId})`
       );
-      return makeSyntheticGenResult(JAILBREAK_BLOCKED_RESPONSE) as unknown as Awaited<
-        ReturnType<typeof doGenerate>
-      >;
+      return makeSyntheticGenResult(
+        JAILBREAK_BLOCKED_RESPONSE
+      ) as unknown as Awaited<ReturnType<typeof doGenerate>>;
     }
 
     const result = await doGenerate();
@@ -527,7 +532,9 @@ export const guardrailsMiddleware: LanguageModelMiddleware = {
           controller.close();
         },
       });
-      return { stream: syntheticStream } as Awaited<ReturnType<typeof doStream>>;
+      return { stream: syntheticStream } as Awaited<
+        ReturnType<typeof doStream>
+      >;
     }
 
     return doStream();

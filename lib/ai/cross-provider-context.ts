@@ -1,10 +1,10 @@
 import type { AssistantModelMessage, ModelMessage, UserModelMessage } from "ai";
 import { getModelConfig } from "./model-config";
 
-export interface SanitizeResult {
+export type SanitizeResult = {
   messages: ModelMessage[];
   warnings: string[];
-}
+};
 
 function isAnthropicModel(modelId: string): boolean {
   return (

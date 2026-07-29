@@ -1,8 +1,8 @@
 import { Check, X } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ReferralCard } from "@/components/referral-card";
 import { PricingSection } from "@/components/pricing-section";
+import { ReferralCard } from "@/components/referral-card";
 
 export const metadata: Metadata = {
   title: "Pricing — bedda.ai | All AI Models, One Subscription",
@@ -156,6 +156,11 @@ export default function PricingPage() {
           $20/mo. That&apos;s $60/mo for three services. Bedda Plus gives you
           all of them for $12/mo.
         </p>
+        <p className="mt-4 text-lg text-muted-foreground">
+          Plus, we automatically discover and add new models from AI Gateway —
+          so you always have access to the latest capabilities without waiting
+          for updates.
+        </p>
       </div>
 
       {/* Comparison Table */}
@@ -214,6 +219,11 @@ export default function PricingPage() {
               all major AI providers at API rates. Combined with prompt caching
               (50-90% cost reduction) and smart routing, we can offer all models
               at a fraction of individual subscription costs.
+            </p>
+            <p className="mt-2 text-muted-foreground">
+              Plus, our dynamic model discovery system automatically adds new
+              models as they become available, so you always get access to the
+              latest capabilities without paying extra for upgrades.
             </p>
           </div>
           <div>

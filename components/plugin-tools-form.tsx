@@ -25,7 +25,7 @@ export function PluginToolsForm() {
 
   useEffect(() => {
     fetchTools();
-  }, []);
+  }, [fetchTools]);
 
   async function fetchTools() {
     try {
@@ -113,7 +113,9 @@ export function PluginToolsForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ enabled: !pt.enabled }),
       });
-      if (!res.ok) throw new Error("Failed to update");
+      if (!res.ok) {
+        throw new Error("Failed to update");
+      }
     } catch {
       setTools(prev);
       toast.error("Failed to update plugin tool");
@@ -127,7 +129,9 @@ export function PluginToolsForm() {
       const res = await fetch(`/api/plugin-tools?id=${id}`, {
         method: "DELETE",
       });
-      if (!res.ok) throw new Error("Failed to delete");
+      if (!res.ok) {
+        throw new Error("Failed to delete");
+      }
       toast.success("Plugin tool removed");
     } catch {
       setTools(prev);

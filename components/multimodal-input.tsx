@@ -4,7 +4,6 @@ import type { UseChatHelpers } from "@ai-sdk/react";
 import type { UIMessage } from "ai";
 import equal from "fast-deep-equal";
 import { nanoid } from "nanoid";
-import useSWR from "swr";
 import {
   type ChangeEvent,
   type Dispatch,
@@ -18,6 +17,7 @@ import {
   useState,
 } from "react";
 import { toast } from "sonner";
+import useSWR from "swr";
 import { useLocalStorage, useWindowSize } from "usehooks-ts";
 import { saveChatModelAsCookie } from "@/app/(chat)/actions";
 import { useArtifact } from "@/hooks/use-artifact";
@@ -720,16 +720,24 @@ function PureModelSelectorCompact({
     "/api/subscription/status",
     async (url: string) => {
       const r = await fetch(url);
-      if (!r.ok) return null;
+      if (!r.ok) {
+        return null;
+      }
       return r.json() as Promise<{ tier: string }>;
     },
-    { revalidateOnFocus: false, dedupingInterval: 300_000, shouldRetryOnError: false }
+    {
+      revalidateOnFocus: false,
+      dedupingInterval: 300_000,
+      shouldRetryOnError: false,
+    }
   );
   const userTier = subData?.tier ?? "free";
   const isFreeTier = userTier === "free";
 
   const allModels = useMemo(() => {
-    if (dynamicModels.length === 0) return chatModels;
+    if (dynamicModels.length === 0) {
+      return chatModels;
+    }
     const merged = [
       ...dynamicModels.map((m) => ({
         id: m.id,
@@ -743,7 +751,9 @@ function PureModelSelectorCompact({
     ];
     const seen = new Set<string>();
     return merged.filter((m) => {
-      if (seen.has(m.id)) return false;
+      if (seen.has(m.id)) {
+        return false;
+      }
       seen.add(m.id);
       return true;
     });
@@ -894,8 +904,7 @@ function PureModelSelectorCompact({
                   const modelWarning = model.warning;
                   const isAccessRestricted = isFreeTier && isPremium;
                   const isBlocked = isModelDisabled || isAccessRestricted;
-                  const isActive =
-                    model.id === optimisticModelId && !isBlocked;
+                  const isActive = model.id === optimisticModelId && !isBlocked;
 
                   return (
                     <button
@@ -919,7 +928,7 @@ function PureModelSelectorCompact({
                           </span>
                           {isExperimental && (
                             <Badge
-                              className="h-4 shrink-0 border-amber-400 px-1 font-semibold text-[9px] uppercase tracking-wide text-amber-600 dark:text-amber-400"
+                              className="h-4 shrink-0 border-amber-400 px-1 font-semibold text-[9px] text-amber-600 uppercase tracking-wide dark:text-amber-400"
                               variant="outline"
                             >
                               experimental

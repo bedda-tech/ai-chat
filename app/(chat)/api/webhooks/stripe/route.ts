@@ -128,7 +128,9 @@ async function handleTeamSubscriptionChange(
   subscription: Stripe.Subscription
 ): Promise<void> {
   const teamId = subscription.metadata.teamId;
-  if (!teamId) return;
+  if (!teamId) {
+    return;
+  }
 
   const firstItem = subscription.items.data[0];
   const seatLimit = firstItem?.quantity ?? 5;
@@ -349,10 +351,14 @@ async function handleTrialWillEnd(
   subscription: Stripe.Subscription
 ): Promise<void> {
   const userId = subscription.metadata.userId;
-  if (!userId) return;
+  if (!userId) {
+    return;
+  }
 
   const trialEnd = subscription.trial_end;
-  if (!trialEnd) return;
+  if (!trialEnd) {
+    return;
+  }
 
   const trialEndDate = new Date(trialEnd * 1000);
   const msLeft = trialEndDate.getTime() - Date.now();
@@ -364,7 +370,9 @@ async function handleTrialWillEnd(
     .where(eq(user.id, userId))
     .limit(1);
   const email = users[0]?.email;
-  if (!email || email.startsWith("guest-")) return;
+  if (!email || email.startsWith("guest-")) {
+    return;
+  }
 
   const tier = await getSubscriptionTier(subscription);
   const planName = TIER_DISPLAY_NAMES[tier as DbTier] ?? tier;
@@ -382,7 +390,9 @@ async function handleCheckoutExpired(
   session: Stripe.Checkout.Session
 ): Promise<void> {
   const userId = session.metadata?.userId;
-  if (!userId) return;
+  if (!userId) {
+    return;
+  }
 
   const users = await db
     .select()
@@ -390,7 +400,9 @@ async function handleCheckoutExpired(
     .where(eq(user.id, userId))
     .limit(1);
   const email = users[0]?.email;
-  if (!email || email.startsWith("guest-")) return;
+  if (!email || email.startsWith("guest-")) {
+    return;
+  }
 
   void sendCheckoutAbandonedEmail(email).catch((err) =>
     console.error("Failed to send checkout abandoned email:", err)
@@ -405,7 +417,9 @@ async function handlePaymentFailed(invoice: Stripe.Invoice): Promise<void> {
 
   // Look up user via Stripe customer ID stored in userTier
   const customerId = invoice.customer as string | null;
-  if (!customerId) return;
+  if (!customerId) {
+    return;
+  }
 
   const tierRecords = await db
     .select()
@@ -414,7 +428,9 @@ async function handlePaymentFailed(invoice: Stripe.Invoice): Promise<void> {
     .limit(1);
   const userId = tierRecords[0]?.userId;
   const tier = tierRecords[0]?.tier;
-  if (!userId || !tier || tier === "free") return;
+  if (!userId || !tier || tier === "free") {
+    return;
+  }
 
   const users = await db
     .select()
@@ -422,7 +438,9 @@ async function handlePaymentFailed(invoice: Stripe.Invoice): Promise<void> {
     .where(eq(user.id, userId))
     .limit(1);
   const email = users[0]?.email;
-  if (!email || email.startsWith("guest-")) return;
+  if (!email || email.startsWith("guest-")) {
+    return;
+  }
 
   const planName = TIER_DISPLAY_NAMES[tier as DbTier] ?? tier;
   const invoiceUrl =

@@ -59,7 +59,12 @@ export async function PUT(req: Request) {
   const encryptedKey = encryptValue(trimmed);
   const keyPrefix = trimmed.slice(0, 8);
 
-  await upsertUserProviderKey(session.user.id, provider, encryptedKey, keyPrefix);
+  await upsertUserProviderKey(
+    session.user.id,
+    provider,
+    encryptedKey,
+    keyPrefix
+  );
   return Response.json({ configured: true, keyPrefix });
 }
 

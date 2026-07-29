@@ -43,9 +43,15 @@ type ChartConfig = {
 };
 
 function formatValue(value: number, unit?: string): string {
-  if (unit === "$") return `$${value.toLocaleString()}`;
-  if (unit === "%") return `${value}%`;
-  if (unit) return `${value}${unit}`;
+  if (unit === "$") {
+    return `$${value.toLocaleString()}`;
+  }
+  if (unit === "%") {
+    return `${value}%`;
+  }
+  if (unit) {
+    return `${value}${unit}`;
+  }
   return value.toLocaleString();
 }
 
@@ -60,7 +66,9 @@ function CustomTooltip({
   label?: string;
   unit?: string;
 }) {
-  if (!active || !payload?.length) return null;
+  if (!active || !payload?.length) {
+    return null;
+  }
 
   return (
     <div className="rounded-lg border bg-background px-3 py-2 text-sm shadow-lg">
@@ -92,7 +100,9 @@ function PieTooltip({
   }>;
   unit?: string;
 }) {
-  if (!active || !payload?.length) return null;
+  if (!active || !payload?.length) {
+    return null;
+  }
   const entry = payload[0];
   return (
     <div className="rounded-lg border bg-background px-3 py-2 text-sm shadow-lg">

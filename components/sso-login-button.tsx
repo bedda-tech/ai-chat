@@ -9,7 +9,9 @@ export function SsoLoginButton() {
 
   function handleContinue(e: React.FormEvent) {
     e.preventDefault();
-    if (!email) return;
+    if (!email) {
+      return;
+    }
     setLoading(true);
     window.location.href = `/api/auth/sso?email=${encodeURIComponent(email)}`;
   }

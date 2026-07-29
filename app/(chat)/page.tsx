@@ -3,8 +3,8 @@ import { redirect } from "next/navigation";
 import { Chat } from "@/components/chat";
 import { DataStreamHandler } from "@/components/data-stream-handler";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
-import { generateUUID } from "@/lib/utils";
 import { getUserPreferences } from "@/lib/db/queries";
+import { generateUUID } from "@/lib/utils";
 import { auth } from "../(auth)/auth";
 
 export default async function Page(props: {
@@ -29,7 +29,7 @@ export default async function Page(props: {
   if (!modelIdFromCookie && session.user.type !== "guest") {
     try {
       const prefs = await getUserPreferences(session.user.id);
-      const generalDefault = prefs?.modelPreferences?.["general"];
+      const generalDefault = prefs?.modelPreferences?.general;
       if (generalDefault) {
         initialChatModel = generalDefault;
       }

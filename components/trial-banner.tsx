@@ -25,7 +25,9 @@ export function TrialBanner() {
       .catch(() => {});
   }, []);
 
-  if (!status?.isTrial || dismissed) return null;
+  if (!status?.isTrial || dismissed) {
+    return null;
+  }
 
   const days = status.trialDaysLeft ?? 0;
   const urgency =

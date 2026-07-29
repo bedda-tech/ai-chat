@@ -13,7 +13,9 @@ const CHUNK_OVERLAP = 200; // characters
 export function chunkText(text: string): string[] {
   // Normalize whitespace
   const normalized = text.replace(/\r\n/g, "\n").replace(/\r/g, "\n").trim();
-  if (normalized.length === 0) return [];
+  if (normalized.length === 0) {
+    return [];
+  }
 
   // Split into paragraphs first
   const paragraphs = normalized.split(/\n{2,}/);
@@ -22,7 +24,9 @@ export function chunkText(text: string): string[] {
 
   for (const para of paragraphs) {
     const trimmedPara = para.trim();
-    if (!trimmedPara) continue;
+    if (!trimmedPara) {
+      continue;
+    }
 
     if (currentChunk.length + trimmedPara.length + 2 <= CHUNK_SIZE) {
       currentChunk = currentChunk
@@ -32,7 +36,7 @@ export function chunkText(text: string): string[] {
       chunks.push(currentChunk);
       // Create overlap by keeping the tail of the current chunk
       const overlapStart = Math.max(0, currentChunk.length - CHUNK_OVERLAP);
-      currentChunk = currentChunk.slice(overlapStart) + "\n\n" + trimmedPara;
+      currentChunk = `${currentChunk.slice(overlapStart)}\n\n${trimmedPara}`;
     } else {
       // Paragraph itself is too large — split by sentence
       const sentences = trimmedPara.split(/(?<=[.!?])\s+/);
@@ -42,7 +46,9 @@ export function chunkText(text: string): string[] {
             ? `${currentChunk} ${sentence}`
             : sentence;
         } else {
-          if (currentChunk) chunks.push(currentChunk);
+          if (currentChunk) {
+            chunks.push(currentChunk);
+          }
           currentChunk = sentence.slice(0, CHUNK_SIZE);
         }
       }
@@ -96,7 +102,9 @@ export async function extractText(
     case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
     case "application/msword": {
       const mammoth = await import("mammoth");
-      const result = await mammoth.extractRawText({ buffer: Buffer.from(buffer) });
+      const result = await mammoth.extractRawText({
+        buffer: Buffer.from(buffer),
+      });
       if (!result.value || result.value.trim().length === 0) {
         throw new Error("Could not extract text from Word document.");
       }

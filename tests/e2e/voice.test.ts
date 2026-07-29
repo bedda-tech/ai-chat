@@ -24,7 +24,9 @@ test.describe("Voice Input (Whisper)", () => {
           }
           stop() {
             this.state = "inactive";
-            if (this.onstop) this.onstop();
+            if (this.onstop) {
+              this.onstop();
+            }
           }
         }
         (window as any).MediaRecorder = FakeMediaRecorder;
@@ -68,7 +70,9 @@ test.describe("Voice Input (Whisper)", () => {
               data: new Blob(["audio"], { type: "audio/webm" }),
             });
           }
-          if (capturedStop) capturedStop();
+          if (capturedStop) {
+            capturedStop();
+          }
         }
       }
       (window as any).MediaRecorder = FakeMediaRecorder;
@@ -125,7 +129,9 @@ test.describe("Voice Input (Whisper)", () => {
               data: new Blob(["audio"], { type: "audio/webm" }),
             });
           }
-          if (this.onstop) this.onstop();
+          if (this.onstop) {
+            this.onstop();
+          }
         }
       }
       (window as any).MediaRecorder = FakeMediaRecorder;

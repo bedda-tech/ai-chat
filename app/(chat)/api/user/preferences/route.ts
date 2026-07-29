@@ -1,6 +1,6 @@
 import { auth } from "@/app/(auth)/auth";
-import { getUserPreferences, upsertUserPreferences } from "@/lib/db/queries";
 import { MODEL_PREFERENCE_CATEGORIES } from "@/lib/ai/model-preferences";
+import { getUserPreferences, upsertUserPreferences } from "@/lib/db/queries";
 
 export async function GET() {
   const session = await auth();

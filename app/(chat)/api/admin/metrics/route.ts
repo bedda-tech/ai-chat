@@ -9,7 +9,9 @@ import { auth } from "@/app/(auth)/auth";
 import { getModelMetrics, resetMetrics } from "@/lib/ai/middleware";
 
 function isAdmin(email: string | null | undefined): boolean {
-  if (!email) return false;
+  if (!email) {
+    return false;
+  }
   const adminEmails = (process.env.ADMIN_EMAILS ?? "")
     .split(",")
     .map((e) => e.trim().toLowerCase())

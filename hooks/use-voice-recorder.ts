@@ -4,11 +4,11 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 export type RecorderState = "idle" | "recording" | "processing";
 
-interface UseVoiceRecorderOptions {
+type UseVoiceRecorderOptions = {
   maxDurationMs?: number;
   onBlob: (blob: Blob) => void | Promise<void>;
   onError?: (error: Error) => void;
-}
+};
 
 export function useVoiceRecorder({
   maxDurationMs = 60_000,
@@ -22,7 +22,9 @@ export function useVoiceRecorder({
   const streamRef = useRef<MediaStream | null>(null);
 
   const stopStream = useCallback(() => {
-    streamRef.current?.getTracks().forEach((t) => t.stop());
+    streamRef.current?.getTracks().forEach((t) => {
+      t.stop();
+    });
     streamRef.current = null;
   }, []);
 
@@ -38,7 +40,9 @@ export function useVoiceRecorder({
   }, []);
 
   const startRecording = useCallback(async () => {
-    if (state !== "idle") return;
+    if (state !== "idle") {
+      return;
+    }
 
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -53,7 +57,9 @@ export function useVoiceRecorder({
       chunksRef.current = [];
 
       recorder.ondataavailable = (e) => {
-        if (e.data.size > 0) chunksRef.current.push(e.data);
+        if (e.data.size > 0) {
+          chunksRef.current.push(e.data);
+        }
       };
 
       recorder.onstop = async () => {
@@ -94,7 +100,9 @@ export function useVoiceRecorder({
 
   useEffect(
     () => () => {
-      if (autoStopTimerRef.current) clearTimeout(autoStopTimerRef.current);
+      if (autoStopTimerRef.current) {
+        clearTimeout(autoStopTimerRef.current);
+      }
       mediaRecorderRef.current?.stop();
       stopStream();
     },

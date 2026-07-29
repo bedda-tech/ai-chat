@@ -16,7 +16,9 @@ export function ReferralCard() {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
-    if (!data?.referralUrl) return;
+    if (!data?.referralUrl) {
+      return;
+    }
     await navigator.clipboard.writeText(data.referralUrl);
     setCopied(true);
     toast({ type: "success", description: "Referral link copied!" });

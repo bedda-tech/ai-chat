@@ -96,7 +96,7 @@ export async function GET(
 
 // ── POST /api/realtime/[chatId]  ── typing indicator ──────────────────────
 export async function POST(
-  request: Request,
+  _request: Request,
   { params }: { params: Promise<{ chatId: string }> }
 ) {
   const session = await auth();

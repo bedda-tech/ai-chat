@@ -32,13 +32,19 @@ self.addEventListener("fetch", (event) => {
   const { request } = event;
 
   // Ignore non-GET requests
-  if (request.method !== "GET") return;
+  if (request.method !== "GET") {
+    return;
+  }
 
   // Ignore cross-origin requests
-  if (!request.url.startsWith(self.location.origin)) return;
+  if (!request.url.startsWith(self.location.origin)) {
+    return;
+  }
 
   // Ignore chrome-extension and other non-http(s) requests
-  if (!request.url.startsWith("http")) return;
+  if (!request.url.startsWith("http")) {
+    return;
+  }
 
   const url = new URL(request.url);
 
@@ -48,7 +54,9 @@ self.addEventListener("fetch", (event) => {
       fetch(request)
         .then((response) => {
           // Don't cache non-ok responses
-          if (!response.ok) return response;
+          if (!response.ok) {
+            return response;
+          }
           const cloned = response.clone();
           caches
             .open(CACHE_NAME)
@@ -70,9 +78,13 @@ self.addEventListener("fetch", (event) => {
   ) {
     event.respondWith(
       caches.match(request).then((cached) => {
-        if (cached) return cached;
+        if (cached) {
+          return cached;
+        }
         return fetch(request).then((response) => {
-          if (!response.ok) return response;
+          if (!response.ok) {
+            return response;
+          }
           const cloned = response.clone();
           caches
             .open(CACHE_NAME)

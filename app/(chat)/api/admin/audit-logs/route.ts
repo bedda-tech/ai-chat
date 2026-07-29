@@ -9,7 +9,9 @@ const client = postgres(process.env.POSTGRES_URL!);
 const db = drizzle(client);
 
 function isAdmin(email: string | null | undefined): boolean {
-  if (!email) return false;
+  if (!email) {
+    return false;
+  }
   const adminEmails = (process.env.ADMIN_EMAILS ?? "")
     .split(",")
     .map((e) => e.trim().toLowerCase())
@@ -52,11 +54,18 @@ export async function GET(request: Request) {
   const toFilter = searchParams.get("to");
 
   const conditions = [];
-  if (actionFilter) conditions.push(eq(auditLog.action, actionFilter));
-  if (userIdFilter) conditions.push(eq(auditLog.userId, userIdFilter));
-  if (fromFilter)
+  if (actionFilter) {
+    conditions.push(eq(auditLog.action, actionFilter));
+  }
+  if (userIdFilter) {
+    conditions.push(eq(auditLog.userId, userIdFilter));
+  }
+  if (fromFilter) {
     conditions.push(gte(auditLog.createdAt, new Date(fromFilter)));
-  if (toFilter) conditions.push(lte(auditLog.createdAt, new Date(toFilter)));
+  }
+  if (toFilter) {
+    conditions.push(lte(auditLog.createdAt, new Date(toFilter)));
+  }
 
   const rows = await db
     .select()

@@ -192,7 +192,11 @@ test("handles full cross-provider switch: Anthropic→OpenAI with reasoning and 
     "no turns dropped — gpt-5 is vision-capable"
   );
   const asst = messages[1] as AssistantModelMessage;
-  assert.equal((asst.content as Array<{ type: string }>).length, 1, "reasoning stripped from assistant");
+  assert.equal(
+    (asst.content as Array<{ type: string }>).length,
+    1,
+    "reasoning stripped from assistant"
+  );
   assert.equal((asst.content as Array<{ type: string }>)[0].type, "text");
   // image survives for GPT-5 (vision model)
   const user2 = messages[2] as UserModelMessage;

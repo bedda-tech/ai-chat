@@ -19,7 +19,9 @@ async function refreshToken(
       grant_type: "refresh_token",
     }),
   });
-  if (!res.ok) return null;
+  if (!res.ok) {
+    return null;
+  }
   const data = await res.json();
   await saveDriveConnection(userId, {
     accessToken: data.access_token,
@@ -34,10 +36,14 @@ async function refreshToken(
 
 async function getValidToken(userId: string): Promise<string | null> {
   const conn = await getDriveConnection(userId);
-  if (!conn) return null;
+  if (!conn) {
+    return null;
+  }
   // Refresh if expired (60s buffer)
   if (conn.expiresAt && conn.expiresAt < Math.floor(Date.now() / 1000) + 60) {
-    if (!conn.refreshToken) return null;
+    if (!conn.refreshToken) {
+      return null;
+    }
     return refreshToken(userId, conn.refreshToken);
   }
   return conn.accessToken;
@@ -136,7 +142,9 @@ export const googleDriveTool = (userId: string) =>
         });
         if (searchRes.ok) {
           const { files } = await searchRes.json();
-          if (files?.length > 0) targetId = files[0].id;
+          if (files?.length > 0) {
+            targetId = files[0].id;
+          }
         }
       }
 
@@ -189,7 +197,9 @@ export const googleDriveTool = (userId: string) =>
 
       const MAX_CHARS = 20_000;
       const truncated = content.length > MAX_CHARS;
-      if (truncated) content = content.slice(0, MAX_CHARS);
+      if (truncated) {
+        content = content.slice(0, MAX_CHARS);
+      }
 
       return {
         success: true,

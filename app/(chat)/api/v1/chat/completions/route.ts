@@ -29,7 +29,9 @@ type OpenAIMessage = {
 };
 
 function extractBearerToken(authorization: string | null): string | null {
-  if (!authorization?.startsWith("Bearer ")) return null;
+  if (!authorization?.startsWith("Bearer ")) {
+    return null;
+  }
   return authorization.slice(7).trim();
 }
 

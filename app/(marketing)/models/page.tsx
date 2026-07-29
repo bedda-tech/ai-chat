@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import modelsData from "@/lib/ai/models-data.json" with { type: "json" };
-import { FREE_TIER_MODEL_IDS } from "@/lib/ai/entitlements";
 import { ModelsExplorer } from "@/components/models-explorer";
+import { FREE_TIER_MODEL_IDS } from "@/lib/ai/entitlements";
+import modelsData from "@/lib/ai/models-data.json" with { type: "json" };
 
 export const metadata: Metadata = {
   title: "AI Models — bedda.ai | 36+ Models, One Subscription",

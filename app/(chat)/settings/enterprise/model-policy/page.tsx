@@ -4,11 +4,11 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import modelsData from "@/lib/ai/models-data.json" with { type: "json" };
 
-interface ModelInfo {
+type ModelInfo = {
   id: string;
   name: string;
   provider: string;
-}
+};
 
 const ALL_MODELS: ModelInfo[] = (
   modelsData as { models: ModelInfo[] }
@@ -18,11 +18,11 @@ const ALL_MODELS: ModelInfo[] = (
   provider: m.provider,
 }));
 
-interface OrgPolicy {
+type OrgPolicy = {
   allowedModelIds: string[] | null;
   deniedModelIds: string[] | null;
   monthlyCostCapUsdCents: number;
-}
+};
 
 export default function ModelPolicyPage() {
   const [loading, setLoading] = useState(true);
@@ -48,7 +48,9 @@ export default function ModelPolicyPage() {
         return r.json();
       })
       .then((data) => {
-        if (!data) return;
+        if (!data) {
+          return;
+        }
         setIsAdmin(data.isAdmin);
         setTeamId(data.teamId);
         const p: OrgPolicy | null = data.policy;
@@ -80,13 +82,18 @@ export default function ModelPolicyPage() {
     setter: (s: Set<string>) => void
   ) {
     const next = new Set(set);
-    if (next.has(id)) next.delete(id);
-    else next.add(id);
+    if (next.has(id)) {
+      next.delete(id);
+    } else {
+      next.add(id);
+    }
     setter(next);
   }
 
   async function handleSave() {
-    if (!teamId) return;
+    if (!teamId) {
+      return;
+    }
     setSaving(true);
     setError("");
     setSaved(false);
@@ -103,8 +110,9 @@ export default function ModelPolicyPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      if (r.ok) setSaved(true);
-      else {
+      if (r.ok) {
+        setSaved(true);
+      } else {
         const d = await r.json();
         setError(d.error ?? "Save failed");
       }
@@ -114,8 +122,9 @@ export default function ModelPolicyPage() {
     setSaving(false);
   }
 
-  if (loading)
+  if (loading) {
     return <div className="p-8 text-muted-foreground text-sm">Loading…</div>;
+  }
 
   if (forbidden || !isAdmin) {
     return (
@@ -141,7 +150,10 @@ export default function ModelPolicyPage() {
 
   const byProvider = ALL_MODELS.reduce<Record<string, ModelInfo[]>>(
     (acc, m) => {
-      (acc[m.provider] = acc[m.provider] ?? []).push(m);
+      if (!acc[m.provider]) {
+        acc[m.provider] = [];
+      }
+      acc[m.provider].push(m);
       return acc;
     },
     {}

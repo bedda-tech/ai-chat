@@ -59,8 +59,16 @@ export const {
     }),
     Credentials({
       credentials: {},
-      async authorize({ email, password }: { email?: string; password?: string }) {
-        if (!email || !password) return null;
+      async authorize({
+        email,
+        password,
+      }: {
+        email?: string;
+        password?: string;
+      }) {
+        if (!email || !password) {
+          return null;
+        }
         const users = await getUser(email);
 
         if (users.length === 0) {
@@ -102,7 +110,9 @@ export const {
           oauthAccount.provider === "github")
       ) {
         const email = authUser.email ?? profile?.email;
-        if (!email) return false;
+        if (!email) {
+          return false;
+        }
 
         const providerAccountId =
           oauthAccount.providerAccountId ?? String(profile?.sub ?? profile?.id);

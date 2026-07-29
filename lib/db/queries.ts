@@ -47,8 +47,10 @@ import {
   passwordResetToken,
   pluginTool,
   project,
+  type SearchQuery,
   type SlackWorkspace,
   type Suggestion,
+  searchQuery,
   slackWorkspace,
   stream,
   suggestion,
@@ -63,8 +65,6 @@ import {
   type VideoJob,
   videoJob,
   vote,
-  searchQuery,
-  type SearchQuery,
 } from "./schema";
 import { generateHashedPassword } from "./utils";
 

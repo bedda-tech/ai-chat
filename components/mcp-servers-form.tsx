@@ -19,7 +19,7 @@ export function McpServersForm() {
 
   useEffect(() => {
     fetchServers();
-  }, []);
+  }, [fetchServers]);
 
   async function fetchServers() {
     try {
@@ -82,7 +82,9 @@ export function McpServersForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ enabled: !server.enabled }),
       });
-      if (!res.ok) throw new Error("Failed to update");
+      if (!res.ok) {
+        throw new Error("Failed to update");
+      }
     } catch {
       setServers(prev);
       toast.error("Failed to update server");
@@ -96,7 +98,9 @@ export function McpServersForm() {
       const res = await fetch(`/api/mcp-servers?id=${id}`, {
         method: "DELETE",
       });
-      if (!res.ok) throw new Error("Failed to delete");
+      if (!res.ok) {
+        throw new Error("Failed to delete");
+      }
       toast.success("MCP server removed");
     } catch {
       setServers(prev);

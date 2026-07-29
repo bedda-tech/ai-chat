@@ -6,20 +6,22 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-interface ApiKeyRecord {
+type ApiKeyRecord = {
   id: string;
   name: string;
   keyPrefix: string;
   lastUsedAt: string | null;
   createdAt: string;
-}
+};
 
 interface NewKeyResult extends ApiKeyRecord {
   key: string;
 }
 
 function formatDate(iso: string | null) {
-  if (!iso) return "Never";
+  if (!iso) {
+    return "Never";
+  }
   return new Date(iso).toLocaleDateString();
 }
 
@@ -87,7 +89,9 @@ export function ApiKeysManagement() {
   }, []);
 
   async function createKey() {
-    if (!newName.trim()) return;
+    if (!newName.trim()) {
+      return;
+    }
     setCreating(true);
     try {
       const res = await fetch("/api/api-keys", {
@@ -95,7 +99,9 @@ export function ApiKeysManagement() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: newName.trim() }),
       });
-      if (!res.ok) throw new Error("Failed to create");
+      if (!res.ok) {
+        throw new Error("Failed to create");
+      }
       const data: NewKeyResult = await res.json();
       setKeys((prev) => [data, ...prev]);
       setNewKey(data);
@@ -111,8 +117,9 @@ export function ApiKeysManagement() {
   async function revokeKey(id: string) {
     if (
       !window.confirm("Revoke this API key? It will stop working immediately.")
-    )
+    ) {
       return;
+    }
     setRevoking(id);
     try {
       const res = await fetch("/api/api-keys", {
@@ -120,7 +127,9 @@ export function ApiKeysManagement() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id }),
       });
-      if (!res.ok) throw new Error("Failed to revoke");
+      if (!res.ok) {
+        throw new Error("Failed to revoke");
+      }
       setKeys((prev) => prev.filter((k) => k.id !== id));
       toast.success("API key revoked");
     } catch {
