@@ -9,6 +9,7 @@ import {
   deleteKBDocument,
   listKBDocuments,
   saveKBChunks,
+  updateKBDocumentStatus,
 } from "@/lib/db/queries";
 import { getUserTier } from "@/lib/usage/tracking";
 
@@ -95,32 +96,52 @@ export async function POST(request: Request) {
   // Optional project scope — associate this doc with a project if provided
   const projectId = (formData.get("projectId") as string | null) ?? null;
 
+  // 1. Extract text before creating DB record (validate content first)
+  let text: string;
+  const buffer = await file.arrayBuffer();
   try {
-    // 1. Extract text from the file
-    const buffer = await file.arrayBuffer();
-    const text = await extractText(buffer, file.type);
+    text = await extractText(buffer, file.type);
+  } catch (error) {
+    return NextResponse.json(
+      {
+        error:
+          error instanceof Error
+            ? error.message
+            : "Failed to extract text from file",
+      },
+      { status: 400 }
+    );
+  }
 
-    if (text.trim().length < 20) {
-      return NextResponse.json(
-        { error: "File appears to be empty or too short to process." },
-        { status: 400 }
-      );
-    }
+  if (text.trim().length < 20) {
+    return NextResponse.json(
+      { error: "File appears to be empty or too short to process." },
+      { status: 400 }
+    );
+  }
 
-    // 2. Create document record
-    const title = file.name.replace(/\.[^.]+$/, ""); // strip extension
-    const doc = await createKBDocument({
-      userId: session.user.id,
-      projectId,
-      title,
-      fileName: file.name,
-      fileType: file.type,
-      fileSize: file.size,
-    });
+  // 2. Create document record with status="processing"
+  const title = file.name.replace(/\.[^.]+$/, ""); // strip extension
+  const doc = await createKBDocument({
+    userId: session.user.id,
+    projectId,
+    title,
+    fileName: file.name,
+    fileType: file.type,
+    fileSize: file.size,
+    status: "processing",
+  });
 
+  try {
     // 3. Chunk the text
     const textChunks = chunkText(text);
     if (textChunks.length === 0) {
+      await updateKBDocumentStatus({
+        id: doc.id,
+        userId: session.user.id,
+        status: "error",
+        errorMessage: "Could not extract any text from the file.",
+      });
       return NextResponse.json(
         { error: "Could not extract any text from the file." },
         { status: 400 }
@@ -131,6 +152,9 @@ export async function POST(request: Request) {
       `[kb] chunking "${file.name}": ${text.length} chars → ${textChunks.length} chunks` +
         (projectId ? ` (project: ${projectId})` : " (account-wide)")
     );
+
+    // Estimate token count (~4 chars per token)
+    const estimatedTokens = Math.ceil(text.length / 4);
 
     // 4. Generate embeddings in batches of 100
     const BATCH_SIZE = 100;
@@ -156,6 +180,15 @@ export async function POST(request: Request) {
       })),
     });
 
+    // 6. Mark document as ready with final metadata
+    await updateKBDocumentStatus({
+      id: doc.id,
+      userId: session.user.id,
+      status: "ready",
+      chunkCount: textChunks.length,
+      tokenCount: estimatedTokens,
+    });
+
     return NextResponse.json({
       success: true,
       document: {
@@ -163,18 +196,22 @@ export async function POST(request: Request) {
         title: doc.title,
         fileName: doc.fileName,
         chunkCount: textChunks.length,
+        tokenCount: estimatedTokens,
         projectId,
       },
     });
   } catch (error) {
+    const message =
+      error instanceof Error ? error.message : "Failed to process document";
     console.error("Knowledge base upload error:", error);
-    return NextResponse.json(
-      {
-        error:
-          error instanceof Error ? error.message : "Failed to process document",
-      },
-      { status: 500 }
-    );
+    // Mark document as failed so it doesn't appear as processing indefinitely
+    await updateKBDocumentStatus({
+      id: doc.id,
+      userId: session.user.id,
+      status: "error",
+      errorMessage: message,
+    }).catch(() => {}); // best-effort cleanup
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
 

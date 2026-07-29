@@ -738,6 +738,7 @@ export async function createKBDocument({
   fileName,
   fileType,
   fileSize,
+  status = "processing",
 }: {
   userId: string;
   projectId?: string | null;
@@ -745,6 +746,7 @@ export async function createKBDocument({
   fileName: string;
   fileType: string;
   fileSize: number;
+  status?: string;
 }): Promise<KnowledgeBaseDocument> {
   const [doc] = await db
     .insert(knowledgeBaseDocument)
@@ -755,9 +757,42 @@ export async function createKBDocument({
       fileName,
       fileType,
       fileSize,
+      status,
     })
     .returning();
   return doc;
+}
+
+export async function updateKBDocumentStatus({
+  id,
+  userId,
+  status,
+  chunkCount,
+  tokenCount,
+  errorMessage,
+}: {
+  id: string;
+  userId: string;
+  status: "processing" | "ready" | "error";
+  chunkCount?: number;
+  tokenCount?: number;
+  errorMessage?: string | null;
+}) {
+  await db
+    .update(knowledgeBaseDocument)
+    .set({
+      status,
+      ...(chunkCount !== undefined && { chunkCount }),
+      ...(tokenCount !== undefined && { tokenCount }),
+      ...(errorMessage !== undefined && { errorMessage }),
+      updatedAt: new Date(),
+    })
+    .where(
+      and(
+        eq(knowledgeBaseDocument.id, id),
+        eq(knowledgeBaseDocument.userId, userId)
+      )
+    );
 }
 
 export async function saveKBChunks({
@@ -784,10 +819,6 @@ export async function saveKBChunks({
       embedding: c.embedding,
     }))
   );
-  await db
-    .update(knowledgeBaseDocument)
-    .set({ chunkCount: chunks.length })
-    .where(eq(knowledgeBaseDocument.id, documentId));
 }
 
 export async function listKBDocuments(
