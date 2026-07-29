@@ -1,5 +1,6 @@
 import type { InferSelectModel } from "drizzle-orm";
 import {
+  bigint,
   boolean,
   foreignKey,
   integer,
@@ -391,6 +392,28 @@ export const userPreferences = pgTable("UserPreferences", {
 
 export type UserPreferences = InferSelectModel<typeof userPreferences>;
 
+// RAG: Named knowledge base / document collection
+export const documentCollection = pgTable("DocumentCollection", {
+  id: uuid("id").primaryKey().notNull().defaultRandom(),
+  userId: uuid("userId")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  name: varchar("name", { length: 255 }).notNull(),
+  description: text("description"),
+  chunkSize: integer("chunkSize").notNull().default(1000),
+  chunkOverlap: integer("chunkOverlap").notNull().default(200),
+  embeddingModel: varchar("embeddingModel", { length: 100 })
+    .notNull()
+    .default("text-embedding-3-small"),
+  documentCount: integer("documentCount").notNull().default(0),
+  chunkCount: integer("chunkCount").notNull().default(0),
+  totalTokens: bigint("totalTokens", { mode: "number" }).notNull().default(0),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+  updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+});
+
+export type DocumentCollection = InferSelectModel<typeof documentCollection>;
+
 // Knowledge Base: uploaded documents for RAG
 export const knowledgeBaseDocument = pgTable("KnowledgeBaseDocument", {
   id: uuid("id").primaryKey().notNull().defaultRandom(),
@@ -400,12 +423,22 @@ export const knowledgeBaseDocument = pgTable("KnowledgeBaseDocument", {
   projectId: uuid("projectId").references(() => project.id, {
     onDelete: "cascade",
   }),
+  collectionId: uuid("collectionId").references(() => documentCollection.id, {
+    onDelete: "set null",
+  }),
   title: text("title").notNull(),
   fileName: varchar("fileName", { length: 255 }).notNull(),
   fileType: varchar("fileType", { length: 100 }).notNull(),
   fileSize: integer("fileSize").notNull(),
   chunkCount: integer("chunkCount").notNull().default(0),
+  status: varchar("status", { length: 50 }).notNull().default("ready"),
+  content: text("content"),
+  summary: text("summary"),
+  fileUrl: text("fileUrl"),
+  tokenCount: integer("tokenCount"),
+  errorMessage: text("errorMessage"),
   createdAt: timestamp("createdAt").notNull().defaultNow(),
+  updatedAt: timestamp("updatedAt").notNull().defaultNow(),
 });
 
 export type KnowledgeBaseDocument = InferSelectModel<
@@ -427,10 +460,32 @@ export const knowledgeBaseChunk = pgTable("KnowledgeBaseChunk", {
   content: text("content").notNull(),
   chunkIndex: integer("chunkIndex").notNull(),
   embedding: vector("embedding", { dimensions: 1536 }).notNull(),
+  metadata: jsonb("metadata").$type<Record<string, unknown>>(),
+  tokenCount: integer("tokenCount"),
   createdAt: timestamp("createdAt").notNull().defaultNow(),
 });
 
 export type KnowledgeBaseChunk = InferSelectModel<typeof knowledgeBaseChunk>;
+
+// RAG: Search query analytics
+export const searchQuery = pgTable("SearchQuery", {
+  id: uuid("id").primaryKey().notNull().defaultRandom(),
+  userId: uuid("userId")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  collectionId: uuid("collectionId").references(() => documentCollection.id, {
+    onDelete: "set null",
+  }),
+  documentId: uuid("documentId").references(() => knowledgeBaseDocument.id, {
+    onDelete: "set null",
+  }),
+  query: text("query").notNull(),
+  resultsCount: integer("resultsCount"),
+  responseTimeMs: integer("responseTimeMs"),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+});
+
+export type SearchQuery = InferSelectModel<typeof searchQuery>;
 
 // MCP (Model Context Protocol) server configurations per user
 export const mcpServer = pgTable("McpServer", {
