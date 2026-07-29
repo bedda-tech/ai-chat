@@ -63,6 +63,8 @@ import {
   type VideoJob,
   videoJob,
   vote,
+  searchQuery,
+  type SearchQuery,
 } from "./schema";
 import { generateHashedPassword } from "./utils";
 
@@ -1714,4 +1716,50 @@ export async function deleteUserProviderKey(
         eq(userProviderKey.provider, provider)
       )
     );
+}
+
+// ── Search Analytics ───────────────────────────────────────────────
+
+export async function saveSearchQuery({
+  userId,
+  query,
+  resultsCount,
+  responseTimeMs,
+  documentId,
+  collectionId,
+}: {
+  userId: string;
+  query: string;
+  resultsCount: number;
+  responseTimeMs: number;
+  documentId?: string | null;
+  collectionId?: string | null;
+}): Promise<SearchQuery> {
+  const [row] = await db
+    .insert(searchQuery)
+    .values({
+      userId,
+      query,
+      resultsCount,
+      responseTimeMs,
+      documentId: documentId ?? null,
+      collectionId: collectionId ?? null,
+    })
+    .returning();
+  return row;
+}
+
+export async function getSearchAnalytics({
+  userId,
+  limit = 50,
+}: {
+  userId: string;
+  limit?: number;
+}): Promise<SearchQuery[]> {
+  return db
+    .select()
+    .from(searchQuery)
+    .where(eq(searchQuery.userId, userId))
+    .orderBy(desc(searchQuery.createdAt))
+    .limit(limit);
 }

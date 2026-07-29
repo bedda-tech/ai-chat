@@ -2,7 +2,7 @@ import { createCohere } from "@ai-sdk/cohere";
 import { openai } from "@ai-sdk/openai";
 import { embed, rerank, tool } from "ai";
 import { z } from "zod";
-import { searchKBChunks } from "@/lib/db/queries";
+import { saveSearchQuery, searchKBChunks } from "@/lib/db/queries";
 
 /**
  * RAG tool: searches the user's uploaded knowledge base documents
@@ -30,6 +30,7 @@ export const queryKnowledgeBaseTool = (
         .describe("Number of relevant passages to retrieve (default: 5)"),
     }),
     execute: async ({ query, limit = 5 }) => {
+      const startMs = Date.now();
       try {
         // Embed the query using the same model used during ingestion
         const { embedding } = await embed({
@@ -53,7 +54,7 @@ export const queryKnowledgeBaseTool = (
         if (cohereApiKey && candidates.length > 0) {
           try {
             const cohereClient = createCohere({ apiKey: cohereApiKey });
-            const startMs = Date.now();
+            const rerankStart = Date.now();
             const { ranking } = await rerank({
               model: cohereClient.reranking("rerank-v3.5"),
               query,
@@ -61,7 +62,7 @@ export const queryKnowledgeBaseTool = (
               topN: limit,
             });
             console.log(
-              `[kb] rerank: ${candidates.length} → ${ranking.length} results in ${Date.now() - startMs}ms`
+              `[kb] rerank: ${candidates.length} → ${ranking.length} results in ${Date.now() - rerankStart}ms`
             );
             chunks = ranking.map((item) => candidates[item.originalIndex]);
           } catch (rerankError) {
@@ -72,6 +73,14 @@ export const queryKnowledgeBaseTool = (
             chunks = candidates.slice(0, limit);
           }
         }
+
+        // Record analytics — fire-and-forget
+        saveSearchQuery({
+          userId,
+          query,
+          resultsCount: chunks.length,
+          responseTimeMs: Date.now() - startMs,
+        }).catch((err) => console.warn("[kb] analytics save failed:", err));
 
         if (chunks.length === 0) {
           return {
