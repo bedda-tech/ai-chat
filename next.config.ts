@@ -2,14 +2,15 @@ import { withSentryConfig } from "@sentry/nextjs";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  serverExternalPackages: ["redis", "pdf-parse"],
+  serverExternalPackages: ["redis", "pdf-parse", "mammoth"],
   webpack(config, { isServer }) {
     if (!isServer) {
-      // redis and pdf-parse use Node.js builtins; replace with empty modules in client bundle
+      // redis, pdf-parse, and mammoth use Node.js builtins; replace with empty modules in client bundle
       config.resolve.alias = {
         ...(config.resolve.alias as object),
         redis: false,
         "pdf-parse": false,
+        mammoth: false,
       };
     }
     return config;

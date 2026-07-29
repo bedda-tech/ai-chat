@@ -24,6 +24,8 @@ const SUPPORTED_TYPES = [
   "text/csv",
   "application/json",
   "application/pdf",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "application/msword",
 ];
 const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB (PDFs can be larger)
 
@@ -76,7 +78,8 @@ export async function POST(request: Request) {
   if (!SUPPORTED_TYPES.includes(file.type)) {
     return NextResponse.json(
       {
-        error: `Unsupported file type. Supported: ${SUPPORTED_TYPES.join(", ")}`,
+        error:
+          "Unsupported file type. Supported formats: PDF, Word (.docx), TXT, Markdown, CSV, JSON.",
       },
       { status: 400 }
     );

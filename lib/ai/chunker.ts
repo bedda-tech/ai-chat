@@ -93,9 +93,19 @@ export async function extractText(
       return result.text;
     }
 
+    case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+    case "application/msword": {
+      const mammoth = await import("mammoth");
+      const result = await mammoth.extractRawText({ buffer: Buffer.from(buffer) });
+      if (!result.value || result.value.trim().length === 0) {
+        throw new Error("Could not extract text from Word document.");
+      }
+      return result.value;
+    }
+
     default:
       throw new Error(
-        `Unsupported file type for text extraction: ${mimeType}. Supported: text/plain, text/markdown, text/csv, application/json, application/pdf`
+        `Unsupported file type for text extraction: ${mimeType}. Supported: text/plain, text/markdown, text/csv, application/json, application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document`
       );
   }
 }

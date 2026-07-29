@@ -38,6 +38,8 @@ const SUPPORTED_TYPES = [
   "text/csv",
   "application/json",
   "application/pdf",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "application/msword",
 ];
 const MAX_FILE_SIZE_MB = 25;
 
@@ -118,7 +120,7 @@ export default function KnowledgeBasePage() {
     async (file: File) => {
       if (!SUPPORTED_TYPES.includes(file.type)) {
         toast.error(
-          `Unsupported file type: ${file.type || "unknown"}. Use .pdf, .txt, .md, .csv, or .json`
+          `Unsupported file type: ${file.type || "unknown"}. Use .pdf, .docx, .txt, .md, .csv, or .json`
         );
         return;
       }
@@ -339,7 +341,7 @@ export default function KnowledgeBasePage() {
             : "Upload documents and chat with them. The AI will search your files when answering questions."}
         </p>
         <p className="mt-1 text-muted-foreground text-xs">
-          Supported: .pdf, .txt, .md, .csv, .json &nbsp;&middot;&nbsp; Max{" "}
+          Supported: .pdf, .docx, .txt, .md, .csv, .json &nbsp;&middot;&nbsp; Max{" "}
           {MAX_FILE_SIZE_MB}MB per file
         </p>
       </div>
@@ -431,14 +433,15 @@ export default function KnowledgeBasePage() {
                   Drop a file here, or click to upload
                 </span>
                 <span className="text-muted-foreground text-xs">
-                  .pdf &nbsp;&middot;&nbsp; .txt &nbsp;&middot;&nbsp; .md
-                  &nbsp;&middot;&nbsp; .csv &nbsp;&middot;&nbsp; .json
+                  .pdf &nbsp;&middot;&nbsp; .docx &nbsp;&middot;&nbsp; .txt
+                  &nbsp;&middot;&nbsp; .md &nbsp;&middot;&nbsp; .csv
+                  &nbsp;&middot;&nbsp; .json
                 </span>
               </>
             )}
           </div>
           <input
-            accept=".txt,.md,.csv,.json,.pdf,text/plain,text/markdown,text/csv,application/json,application/pdf"
+            accept=".txt,.md,.csv,.json,.pdf,.docx,.doc,text/plain,text/markdown,text/csv,application/json,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword"
             className="hidden"
             onChange={handleFileChange}
             ref={fileInputRef}
