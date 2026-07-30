@@ -1,7 +1,13 @@
 "use client";
 
 import type { Session } from "next-auth";
-import { startTransition, useMemo, useOptimistic, useState } from "react";
+import {
+  startTransition,
+  useEffect,
+  useMemo,
+  useOptimistic,
+  useState,
+} from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { saveChatModelAsCookie } from "@/app/(chat)/actions";
@@ -95,6 +101,12 @@ export function ModelSelector({
   const [selectedToolFilters, setSelectedToolFilters] = useState<
     Set<ModelTool>
   >(new Set());
+  const [krainExplainerDismissed, setKrainExplainerDismissed] = useState(false);
+  useEffect(() => {
+    setKrainExplainerDismissed(
+      localStorage.getItem("bedda_krain_explainer_dismissed") === "1"
+    );
+  }, []);
 
   // Fetch dynamic models from AI Gateway
   const { models: dynamicModels, isLoading, isFallback } = useAvailableModels();
@@ -257,6 +269,13 @@ export function ModelSelector({
       }
       return newFilters;
     });
+  };
+
+  const dismissKrainExplainer = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    localStorage.setItem("bedda_krain_explainer_dismissed", "1");
+    setKrainExplainerDismissed(true);
   };
 
   return (
@@ -476,6 +495,24 @@ export function ModelSelector({
                         Best for: {idealUse}
                       </div>
                     )}
+                    {id === "krain-gemma" &&
+                      !isEnvDisabled &&
+                      !krainExplainerDismissed && (
+                        <div className="relative mt-1 rounded-md border border-blue-200 bg-blue-50 p-2 pr-5 text-[10px] text-blue-700 dark:border-blue-800 dark:bg-blue-950/50 dark:text-blue-300">
+                          <button
+                            aria-label="Dismiss"
+                            className="absolute top-1 right-1.5 text-blue-400 leading-none hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-300"
+                            onClick={dismissKrainExplainer}
+                            type="button"
+                          >
+                            ×
+                          </button>
+                          <span className="font-semibold">Why Local AI?</span>{" "}
+                          Runs on your own hardware — zero cloud tokens and your
+                          data never leaves the local node. Instant, private,
+                          and free from usage caps.
+                        </div>
+                      )}
                     {modelDefaultLabels[id]?.length > 0 && (
                       <div className="text-[10px] text-blue-600 dark:text-blue-400">
                         ★ Default for: {modelDefaultLabels[id].join(", ")}
