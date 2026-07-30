@@ -29,8 +29,10 @@ import {
   type Chat,
   chat,
   type DBMessage,
+  type DocumentCollection,
   type DriveConnection,
   document,
+  documentCollection,
   driveConnection,
   type KnowledgeBaseDocument,
   knowledgeBaseChunk,
@@ -1762,4 +1764,80 @@ export async function getSearchAnalytics({
     .where(eq(searchQuery.userId, userId))
     .orderBy(desc(searchQuery.createdAt))
     .limit(limit);
+}
+
+// ─── Document Collections ─────────────────────────────────────────────────────
+
+export async function listCollections(
+  userId: string
+): Promise<(DocumentCollection & { documentCount: number })[]> {
+  const rows = await db
+    .select({
+      id: documentCollection.id,
+      userId: documentCollection.userId,
+      name: documentCollection.name,
+      description: documentCollection.description,
+      chunkSize: documentCollection.chunkSize,
+      chunkOverlap: documentCollection.chunkOverlap,
+      embeddingModel: documentCollection.embeddingModel,
+      documentCount: documentCollection.documentCount,
+      chunkCount: documentCollection.chunkCount,
+      totalTokens: documentCollection.totalTokens,
+      createdAt: documentCollection.createdAt,
+      updatedAt: documentCollection.updatedAt,
+    })
+    .from(documentCollection)
+    .where(eq(documentCollection.userId, userId))
+    .orderBy(desc(documentCollection.createdAt));
+  return rows.map((r) => ({ ...r, documentCount: r.documentCount ?? 0 }));
+}
+
+export async function createCollection({
+  userId,
+  name,
+  description,
+}: {
+  userId: string;
+  name: string;
+  description?: string;
+}): Promise<DocumentCollection> {
+  const [row] = await db
+    .insert(documentCollection)
+    .values({ userId, name, description: description ?? null })
+    .returning();
+  return row;
+}
+
+export async function deleteCollection({
+  id,
+  userId,
+}: {
+  id: string;
+  userId: string;
+}) {
+  return db
+    .delete(documentCollection)
+    .where(
+      and(eq(documentCollection.id, id), eq(documentCollection.userId, userId))
+    );
+}
+
+export async function assignDocumentToCollection({
+  documentId,
+  userId,
+  collectionId,
+}: {
+  documentId: string;
+  userId: string;
+  collectionId: string | null;
+}) {
+  return db
+    .update(knowledgeBaseDocument)
+    .set({ collectionId: collectionId ?? null, updatedAt: new Date() })
+    .where(
+      and(
+        eq(knowledgeBaseDocument.id, documentId),
+        eq(knowledgeBaseDocument.userId, userId)
+      )
+    );
 }

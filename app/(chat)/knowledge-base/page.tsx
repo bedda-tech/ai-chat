@@ -14,6 +14,17 @@ type KBDocument = {
   fileType: string;
   fileSize: number;
   chunkCount: number;
+  status: string;
+  errorMessage?: string | null;
+  collectionId?: string | null;
+  createdAt: string;
+};
+
+type KBCollection = {
+  id: string;
+  name: string;
+  description?: string | null;
+  documentCount: number;
   createdAt: string;
 };
 
@@ -62,10 +73,20 @@ export default function KnowledgeBasePage() {
 
   const [isPaidUser, setIsPaidUser] = useState<boolean | null>(null);
   const [documents, setDocuments] = useState<KBDocument[]>([]);
+  const [collections, setCollections] = useState<KBCollection[]>([]);
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
   const [dragOver, setDragOver] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Collection state
+  const [showCollectionForm, setShowCollectionForm] = useState(false);
+  const [newCollectionName, setNewCollectionName] = useState("");
+  const [newCollectionDesc, setNewCollectionDesc] = useState("");
+  const [creatingCollection, setCreatingCollection] = useState(false);
+  const [activeCollectionId, setActiveCollectionId] = useState<string | null>(
+    null
+  );
 
   // Cloud import state
   const [openPanel, setOpenPanel] = useState<CloudPanel>(null);
@@ -105,15 +126,22 @@ export default function KnowledgeBasePage() {
       const url = projectId
         ? `/api/knowledge-base?projectId=${encodeURIComponent(projectId)}`
         : "/api/knowledge-base";
-      const res = await fetch(url);
-      if (res.status === 403) {
+      const [docsRes, colsRes] = await Promise.all([
+        fetch(url),
+        fetch("/api/knowledge-base/collections"),
+      ]);
+      if (docsRes.status === 403) {
         setIsPaidUser(false);
         return;
       }
-      if (res.ok) {
+      if (docsRes.ok) {
         setIsPaidUser(true);
-        const data = await res.json();
+        const data = await docsRes.json();
         setDocuments(data.documents ?? []);
+      }
+      if (colsRes.ok) {
+        const colData = await colsRes.json();
+        setCollections(colData.collections ?? []);
       }
     } catch {
       toast.error("Failed to load documents");
@@ -337,6 +365,90 @@ export default function KnowledgeBasePage() {
       loadNotionPages,
     ]
   );
+
+  const createCollectionHandler = useCallback(async () => {
+    if (!newCollectionName.trim()) {
+      return;
+    }
+    setCreatingCollection(true);
+    try {
+      const res = await fetch("/api/knowledge-base/collections", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: newCollectionName.trim(),
+          description: newCollectionDesc.trim() || undefined,
+        }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setCollections((prev) => [data.collection, ...prev]);
+        setNewCollectionName("");
+        setNewCollectionDesc("");
+        setShowCollectionForm(false);
+        toast.success(`Collection "${data.collection.name}" created`);
+      } else {
+        toast.error(data.error ?? "Failed to create collection");
+      }
+    } catch {
+      toast.error("Failed to create collection");
+    } finally {
+      setCreatingCollection(false);
+    }
+  }, [newCollectionName, newCollectionDesc]);
+
+  const deleteCollectionHandler = useCallback(
+    async (id: string, name: string) => {
+      if (
+        !confirm(`Delete collection "${name}"? Documents will be unassigned.`)
+      ) {
+        return;
+      }
+      try {
+        const res = await fetch(`/api/knowledge-base/collections?id=${id}`, {
+          method: "DELETE",
+        });
+        if (res.ok) {
+          setCollections((prev) => prev.filter((c) => c.id !== id));
+          if (activeCollectionId === id) {
+            setActiveCollectionId(null);
+          }
+          toast.success(`Collection "${name}" deleted`);
+        } else {
+          toast.error("Delete failed");
+        }
+      } catch {
+        toast.error("Delete failed");
+      }
+    },
+    [activeCollectionId]
+  );
+
+  const assignToCollection = useCallback(
+    async (documentId: string, collectionId: string | null) => {
+      try {
+        const res = await fetch("/api/knowledge-base/collections", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ documentId, collectionId }),
+        });
+        if (res.ok) {
+          setDocuments((prev) =>
+            prev.map((d) => (d.id === documentId ? { ...d, collectionId } : d))
+          );
+        } else {
+          toast.error("Failed to assign collection");
+        }
+      } catch {
+        toast.error("Failed to assign collection");
+      }
+    },
+    []
+  );
+
+  const filteredDocuments = activeCollectionId
+    ? documents.filter((d) => d.collectionId === activeCollectionId)
+    : documents;
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-10">
@@ -709,11 +821,117 @@ export default function KnowledgeBasePage() {
         </>
       )}
 
+      {/* Collections — hidden for free tier and project-scoped views */}
+      {isPaidUser !== false && !projectId && (
+        <div className="mb-8">
+          <div className="mb-3 flex items-center justify-between">
+            <h2 className="font-semibold text-muted-foreground text-sm uppercase tracking-wide">
+              Collections
+            </h2>
+            <Button
+              onClick={() => setShowCollectionForm((v) => !v)}
+              size="sm"
+              variant="outline"
+            >
+              {showCollectionForm ? "Cancel" : "+ New Collection"}
+            </Button>
+          </div>
+
+          {showCollectionForm && (
+            <div className="mb-4 rounded-xl border border-border bg-card p-4">
+              <input
+                className="mb-2 w-full rounded-md border border-border bg-background px-3 py-1.5 text-sm outline-none focus:ring-1 focus:ring-ring"
+                onChange={(e) => setNewCollectionName(e.target.value)}
+                placeholder="Collection name"
+                value={newCollectionName}
+              />
+              <input
+                className="mb-3 w-full rounded-md border border-border bg-background px-3 py-1.5 text-sm outline-none focus:ring-1 focus:ring-ring"
+                onChange={(e) => setNewCollectionDesc(e.target.value)}
+                placeholder="Description (optional)"
+                value={newCollectionDesc}
+              />
+              <Button
+                disabled={!newCollectionName.trim() || creatingCollection}
+                onClick={createCollectionHandler}
+                size="sm"
+              >
+                {creatingCollection ? "Creating…" : "Create Collection"}
+              </Button>
+            </div>
+          )}
+
+          {collections.length === 0 ? (
+            <p className="py-3 text-center text-muted-foreground text-sm">
+              No collections yet. Create one to organise your documents.
+            </p>
+          ) : (
+            <div className="flex flex-wrap gap-2">
+              <button
+                className={`rounded-full border px-3 py-1 text-xs transition-colors ${
+                  activeCollectionId === null
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-border text-muted-foreground hover:border-primary/50"
+                }`}
+                onClick={() => setActiveCollectionId(null)}
+                type="button"
+              >
+                All ({documents.length})
+              </button>
+              {collections.map((col) => (
+                <div className="flex items-center gap-1" key={col.id}>
+                  <button
+                    className={`rounded-full border px-3 py-1 text-xs transition-colors ${
+                      activeCollectionId === col.id
+                        ? "border-primary bg-primary text-primary-foreground"
+                        : "border-border text-muted-foreground hover:border-primary/50"
+                    }`}
+                    onClick={() =>
+                      setActiveCollectionId(
+                        activeCollectionId === col.id ? null : col.id
+                      )
+                    }
+                    type="button"
+                  >
+                    {col.name} (
+                    {documents.filter((d) => d.collectionId === col.id).length})
+                  </button>
+                  <button
+                    aria-label={`Delete collection ${col.name}`}
+                    className="rounded-full p-0.5 text-muted-foreground/60 hover:text-destructive"
+                    onClick={() => deleteCollectionHandler(col.id, col.name)}
+                    type="button"
+                  >
+                    <svg
+                      className="size-3"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M6 18 18 6M6 6l12 12"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
       {/* Documents list — hidden for free tier */}
       {isPaidUser !== false && (
         <div>
           <h2 className="mb-3 font-semibold text-muted-foreground text-sm uppercase tracking-wide">
-            {projectId ? "Project Documents" : "Your Documents"}
+            {projectId
+              ? "Project Documents"
+              : activeCollectionId
+                ? `${collections.find((c) => c.id === activeCollectionId)?.name ?? "Collection"} Documents`
+                : "Your Documents"}
           </h2>
 
           {loading ? (
@@ -721,21 +939,41 @@ export default function KnowledgeBasePage() {
               <div className="size-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
               Loading...
             </div>
-          ) : documents.length === 0 ? (
+          ) : filteredDocuments.length === 0 ? (
             <div className="py-8 text-center text-muted-foreground text-sm">
               {projectId
                 ? "No documents in this project yet. Upload a file or import from Drive/Notion above."
-                : "No documents yet. Upload your first file above."}
+                : activeCollectionId
+                  ? "No documents in this collection yet."
+                  : "No documents yet. Upload your first file above."}
             </div>
           ) : (
             <ul className="space-y-2">
-              {documents.map((doc) => (
+              {filteredDocuments.map((doc) => (
                 <li
-                  className="flex items-center justify-between gap-3 rounded-lg border border-border bg-card px-4 py-3"
+                  className="flex items-start justify-between gap-3 rounded-lg border border-border bg-card px-4 py-3"
                   key={doc.id}
                 >
                   <div className="min-w-0 flex-1">
-                    <p className="truncate font-medium text-sm">{doc.title}</p>
+                    <div className="mb-0.5 flex items-center gap-2">
+                      {doc.status === "processing" && (
+                        <span className="inline-flex items-center gap-1 rounded-full bg-blue-100 px-2 py-0.5 text-blue-700 text-xs dark:bg-blue-900/30 dark:text-blue-300">
+                          <span className="size-2 animate-spin rounded-full border border-current border-t-transparent" />
+                          Processing
+                        </span>
+                      )}
+                      {doc.status === "error" && (
+                        <span
+                          className="inline-flex items-center gap-1 rounded-full bg-red-100 px-2 py-0.5 text-red-700 text-xs dark:bg-red-900/30 dark:text-red-300"
+                          title={doc.errorMessage ?? "Processing error"}
+                        >
+                          ✕ Error
+                        </span>
+                      )}
+                      <p className="truncate font-medium text-sm">
+                        {doc.title}
+                      </p>
+                    </div>
                     <p className="text-muted-foreground text-xs">
                       {doc.fileName} &nbsp;&middot;&nbsp;{" "}
                       {formatBytes(doc.fileSize)} &nbsp;&middot;&nbsp;{" "}
@@ -745,6 +983,25 @@ export default function KnowledgeBasePage() {
                         addSuffix: true,
                       })}
                     </p>
+                    {!projectId && collections.length > 0 && (
+                      <div className="mt-1.5">
+                        <select
+                          aria-label="Assign to collection"
+                          className="rounded border border-border bg-background px-2 py-0.5 text-muted-foreground text-xs outline-none focus:ring-1 focus:ring-ring"
+                          onChange={(e) =>
+                            assignToCollection(doc.id, e.target.value || null)
+                          }
+                          value={doc.collectionId ?? ""}
+                        >
+                          <option value="">No collection</option>
+                          {collections.map((col) => (
+                            <option key={col.id} value={col.id}>
+                              {col.name}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    )}
                   </div>
                   <Button
                     className="shrink-0 text-destructive hover:text-destructive"
