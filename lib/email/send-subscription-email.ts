@@ -225,6 +225,7 @@ export async function sendTrialExpiredEmail(
   });
 }
 
+/** Sends a re-engagement email to a user who started checkout but did not complete their subscription. */
 export async function sendCheckoutAbandonedEmail(email: string): Promise<void> {
   const resend = new Resend(process.env.RESEND_API_KEY);
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://www.bedda.tech";
