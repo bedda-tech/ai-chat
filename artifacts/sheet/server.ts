@@ -1,5 +1,4 @@
-import { streamObject } from "ai";
-import { z } from "zod";
+import { smoothStream, streamText } from "ai";
 import { sheetPrompt, updateDocumentPrompt } from "@/lib/ai/prompts";
 import { myProvider } from "@/lib/ai/providers";
 import { createDocumentHandler } from "@/lib/artifacts/server";
@@ -9,31 +8,22 @@ export const sheetDocumentHandler = createDocumentHandler<"sheet">({
   onCreateDocument: async ({ title, dataStream }) => {
     let draftContent = "";
 
-    const { fullStream } = streamObject({
+    const { fullStream } = streamText({
       model: myProvider.languageModel("artifact-model"),
-      system: sheetPrompt,
+      system: `${sheetPrompt}\n\nOutput ONLY the raw CSV data with no additional explanation or formatting.`,
+      experimental_transform: smoothStream({ chunking: "word" }),
       prompt: title,
-      schema: z.object({
-        csv: z.string().describe("CSV data"),
-      }),
     });
 
     for await (const delta of fullStream) {
-      const { type } = delta;
+      if (delta.type === "text-delta") {
+        draftContent += delta.text;
 
-      if (type === "object") {
-        const { object } = delta;
-        const { csv } = object;
-
-        if (csv) {
-          dataStream.write({
-            type: "data-sheetDelta",
-            data: csv,
-            transient: true,
-          });
-
-          draftContent = csv;
-        }
+        dataStream.write({
+          type: "data-sheetDelta",
+          data: draftContent,
+          transient: true,
+        });
       }
     }
 
@@ -48,31 +38,22 @@ export const sheetDocumentHandler = createDocumentHandler<"sheet">({
   onUpdateDocument: async ({ document, description, dataStream }) => {
     let draftContent = "";
 
-    const { fullStream } = streamObject({
+    const { fullStream } = streamText({
       model: myProvider.languageModel("artifact-model"),
-      system: updateDocumentPrompt(document.content, "sheet"),
+      system: `${updateDocumentPrompt(document.content, "sheet")}\n\nOutput ONLY the raw CSV data with no additional explanation or formatting.`,
+      experimental_transform: smoothStream({ chunking: "word" }),
       prompt: description,
-      schema: z.object({
-        csv: z.string(),
-      }),
     });
 
     for await (const delta of fullStream) {
-      const { type } = delta;
+      if (delta.type === "text-delta") {
+        draftContent += delta.text;
 
-      if (type === "object") {
-        const { object } = delta;
-        const { csv } = object;
-
-        if (csv) {
-          dataStream.write({
-            type: "data-sheetDelta",
-            data: csv,
-            transient: true,
-          });
-
-          draftContent = csv;
-        }
+        dataStream.write({
+          type: "data-sheetDelta",
+          data: draftContent,
+          transient: true,
+        });
       }
     }
 
