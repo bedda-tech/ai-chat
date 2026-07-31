@@ -155,9 +155,9 @@ export default function HomePage() {
             7 days free. Then $12/mo. Cancel anytime.{" "}
             <Link
               className="underline underline-offset-4 transition-colors hover:text-foreground"
-              href="/api/auth/guest?redirectUrl=/"
+              href="/try"
             >
-              Or try without an account →
+              Or try 3 models without an account →
             </Link>
           </p>
         </div>
