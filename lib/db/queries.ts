@@ -89,6 +89,11 @@ export async function getUser(email: string): Promise<User[]> {
   }
 }
 
+/**
+ * Creates a user with a freshly generated 8-char referral code (truncated UUID,
+ * not checked for collisions). If `referredByCode` doesn't match an existing
+ * user's referral code, it is silently dropped rather than rejected.
+ */
 export async function createUser(
   email: string,
   password: string,
