@@ -22,7 +22,13 @@ async function getRedis(): Promise<ReturnType<typeof createClient> | null> {
     return _redis;
   }
   try {
-    const client = createClient({ url: process.env.REDIS_URL });
+    const client = createClient({
+      url: process.env.REDIS_URL,
+      // Without these, a dead/unreachable Redis host (e.g. DNS failure) makes
+      // node-redis retry connect() forever with backoff, hanging this route's
+      // response indefinitely instead of failing fast into the catch below.
+      socket: { connectTimeout: 1500, reconnectStrategy: false },
+    });
     client.on("error", () => {});
     await client.connect();
     _redis = client;
