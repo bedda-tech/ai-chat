@@ -13,6 +13,10 @@ const GUEST_IP_LIMIT = 5;
 const GUEST_IP_WINDOW_SECONDS = 3600; // 1 hour
 
 let _redis: ReturnType<typeof createClient> | null = null;
+// Logged at most once per warm instance so a dead Redis host doesn't spam
+// logs on every guest request, while still surfacing that IP-throttling
+// (the abuse guard on this route) has silently gone dark.
+let _loggedConnectFailure = false;
 
 async function getRedis(): Promise<ReturnType<typeof createClient> | null> {
   if (!process.env.REDIS_URL) {
@@ -33,7 +37,14 @@ async function getRedis(): Promise<ReturnType<typeof createClient> | null> {
     await client.connect();
     _redis = client;
     return _redis;
-  } catch {
+  } catch (err) {
+    if (!_loggedConnectFailure) {
+      _loggedConnectFailure = true;
+      console.error(
+        "[guest] Redis connect failed — guest IP-throttle is disabled, every IP gets unlimited guest signups until REDIS_URL is fixed:",
+        err
+      );
+    }
     return null;
   }
 }
