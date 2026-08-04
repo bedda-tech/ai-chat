@@ -1,10 +1,18 @@
 /**
- * Unit tests for pruneUIMessages.
+ * Unit tests for lib/utils.ts pure helpers.
  * Run with: npx tsx lib/utils.test.ts
  */
 import assert from "node:assert/strict";
-import { pruneUIMessages } from "./utils";
+import {
+  getDocumentTimestampByIndex,
+  getMostRecentUserMessage,
+  getTextFromMessage,
+  getTrailingMessageId,
+  pruneUIMessages,
+  sanitizeText,
+} from "./utils";
 import type { ChatMessage } from "./types";
+import type { Document } from "@/lib/db/schema";
 
 let passed = 0;
 let failed = 0;
@@ -78,6 +86,110 @@ test("always keeps at least the last message even when it alone exceeds budget",
     result.map((m) => m.id),
     ["2"],
   );
+});
+
+console.log("sanitizeText");
+
+test("strips the <has_function_call> marker", () => {
+  assert.equal(
+    sanitizeText("hello <has_function_call> world"),
+    "hello  world",
+  );
+});
+
+test("returns text unchanged when the marker is absent", () => {
+  assert.equal(sanitizeText("plain text"), "plain text");
+});
+
+console.log("getMostRecentUserMessage");
+
+test("returns the last user message, ignoring trailing assistant messages", () => {
+  const messages = [
+    { id: "1", role: "user" },
+    { id: "2", role: "assistant" },
+    { id: "3", role: "user" },
+    { id: "4", role: "assistant" },
+    // biome-ignore lint/suspicious/noExplicitAny: minimal fixture, full UIMessage shape not needed
+  ] as any[];
+  const result = getMostRecentUserMessage(messages);
+  assert.equal(result?.id, "3");
+});
+
+test("returns undefined when there are no user messages", () => {
+  // biome-ignore lint/suspicious/noExplicitAny: minimal fixture, full UIMessage shape not needed
+  const messages = [{ id: "1", role: "assistant" }] as any[];
+  assert.equal(getMostRecentUserMessage(messages), undefined);
+});
+
+console.log("getTrailingMessageId");
+
+test("returns the id of the last message", () => {
+  const messages = [
+    { id: "a", role: "assistant" },
+    { id: "b", role: "assistant" },
+  ];
+  assert.equal(getTrailingMessageId({ messages }), "b");
+});
+
+test("returns null for an empty message list", () => {
+  assert.equal(getTrailingMessageId({ messages: [] }), null);
+});
+
+console.log("getTextFromMessage");
+
+test("joins only the text parts, skipping non-text parts", () => {
+  const message = {
+    id: "1",
+    role: "assistant",
+    parts: [
+      { type: "text", text: "Hello, " },
+      { type: "tool-call", toolName: "get_weather" },
+      { type: "text", text: "world!" },
+    ],
+    metadata: {},
+    // biome-ignore lint/suspicious/noExplicitAny: minimal fixture, full ChatMessage shape not needed
+  } as any as ChatMessage;
+  assert.equal(getTextFromMessage(message), "Hello, world!");
+});
+
+test("returns an empty string when there are no text parts", () => {
+  const message = {
+    id: "1",
+    role: "assistant",
+    parts: [{ type: "tool-call", toolName: "get_weather" }],
+    metadata: {},
+    // biome-ignore lint/suspicious/noExplicitAny: minimal fixture, full ChatMessage shape not needed
+  } as any as ChatMessage;
+  assert.equal(getTextFromMessage(message), "");
+});
+
+console.log("getDocumentTimestampByIndex");
+
+function makeDocument(createdAt: Date): Document {
+  // biome-ignore lint/suspicious/noExplicitAny: minimal fixture, full Document shape not needed
+  return { createdAt } as any as Document;
+}
+
+test("returns the document's createdAt when the index is in range", () => {
+  const target = new Date("2026-01-01T00:00:00Z");
+  const documents = [makeDocument(new Date("2025-01-01T00:00:00Z")), makeDocument(target)];
+  assert.equal(getDocumentTimestampByIndex(documents, 1), target);
+});
+
+test("returns the current date when documents is falsy", () => {
+  const before = Date.now();
+  // biome-ignore lint/suspicious/noExplicitAny: exercising the falsy-input branch on purpose
+  const result = getDocumentTimestampByIndex(undefined as any, 0);
+  assert.ok(result instanceof Date);
+  assert.ok(result.getTime() >= before);
+});
+
+test("returns the current date when the index is past the end of the array", () => {
+  const documents = [makeDocument(new Date("2025-01-01T00:00:00Z"))];
+  const before = Date.now();
+  const result = getDocumentTimestampByIndex(documents, 5);
+  assert.ok(result instanceof Date);
+  assert.ok(result.getTime() >= before);
 });
 
 console.log(`\n${passed} passed, ${failed} failed`);
