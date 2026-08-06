@@ -58,6 +58,51 @@ let cache: CachedModels | null = null;
 let inflight: Promise<EnrichedModel[]> | null = null;
 const CACHE_DURATION = 3_600_000; // 1 hour
 
+// Live reachability cache for the KRAIN local-inference endpoint. Short TTL so the
+// model picker recovers automatically once the GB10 node comes back up (model-lockout
+// shape, not a permanent disable) without hammering the endpoint on every request.
+let krainHealth: { healthy: boolean; timestamp: number } | null = null;
+const KRAIN_HEALTH_CACHE_DURATION = 30_000; // 30s
+const KRAIN_HEALTH_TIMEOUT = 3000; // 3s
+
+/**
+ * Live "is it actually up" check for KRAIN_BASE_URL, replacing the old static
+ * env-var-only check. Hits the OpenAI-compatible /models endpoint with a short
+ * timeout; failures (network error, timeout, non-2xx) mark the model unhealthy.
+ * Exported so request-time dispatch (chat route) can gate krain-gemma before
+ * streaming starts, not just the model picker.
+ */
+export async function checkKrainHealth(): Promise<boolean> {
+  const baseUrl = process.env.KRAIN_BASE_URL;
+  if (!baseUrl) {
+    return false;
+  }
+
+  const now = Date.now();
+  if (
+    krainHealth &&
+    now - krainHealth.timestamp < KRAIN_HEALTH_CACHE_DURATION
+  ) {
+    return krainHealth.healthy;
+  }
+
+  let healthy: boolean;
+  try {
+    const response = await fetch(`${baseUrl}/models`, {
+      headers: process.env.KRAIN_API_KEY
+        ? { Authorization: `Bearer ${process.env.KRAIN_API_KEY}` }
+        : {},
+      signal: AbortSignal.timeout(KRAIN_HEALTH_TIMEOUT),
+    });
+    healthy = response.ok;
+  } catch {
+    healthy = false;
+  }
+
+  krainHealth = { healthy, timestamp: now };
+  return healthy;
+}
+
 /**
  * Infer capabilities from model ID
  */
@@ -129,16 +174,22 @@ function inferConfig(modelId: string): EnrichedModel["config"] {
 }
 
 /**
- * Inject krain-gemma into the model list with environment-aware disabled state.
- * Evaluated at request time so KRAIN_BASE_URL changes take effect within one cache cycle.
+ * Inject krain-gemma into the model list with a live-reachability-aware disabled state.
+ * Evaluated at request time (health check itself cached for KRAIN_HEALTH_CACHE_DURATION)
+ * so the model locks out within ~30s of the endpoint going down and unlocks automatically
+ * once it responds again.
  */
-function injectKrainModel(models: EnrichedModel[]): EnrichedModel[] {
+async function injectKrainModel(
+  models: EnrichedModel[]
+): Promise<EnrichedModel[]> {
   const krainStatic = (modelsData.models as EnrichedModel[]).find(
     (m) => m.id === "krain-gemma"
   );
   if (!krainStatic) {
     return models;
   }
+
+  const healthy = await checkKrainHealth();
 
   const krainEntry: EnrichedModel = {
     id: krainStatic.id,
@@ -150,7 +201,7 @@ function injectKrainModel(models: EnrichedModel[]): EnrichedModel[] {
     pricing: krainStatic.pricing,
     capabilities: krainStatic.capabilities,
     config: krainStatic.config,
-    disabled: !process.env.KRAIN_BASE_URL,
+    disabled: !healthy,
     tags: krainStatic.tags ?? [],
     warning: krainStatic.warning,
   };
@@ -170,13 +221,13 @@ export async function getAvailableModels(
 
   // Fast path: return pre-enriched cache immediately
   if (!forceRefresh && cache && now - cache.timestamp < CACHE_DURATION) {
-    return injectKrainModel(cache.models);
+    return await injectKrainModel(cache.models);
   }
 
   // Deduplicate concurrent misses: reuse the existing promise if one is in flight
   if (!forceRefresh && inflight) {
     const models = await inflight;
-    return injectKrainModel(models);
+    return await injectKrainModel(models);
   }
 
   const fetchModels = async (): Promise<EnrichedModel[]> => {
@@ -206,7 +257,7 @@ export async function getAvailableModels(
 
   inflight = fetchModels();
   const models = await inflight;
-  return injectKrainModel(models);
+  return await injectKrainModel(models);
 }
 
 /**

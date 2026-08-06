@@ -32,6 +32,7 @@ import { buildGatewayConfig, getThinkingBudget } from "@/lib/ai/gateway-config";
 import { guardrailsMiddleware } from "@/lib/ai/middleware";
 import { getModelConfig, getModelContextWindow } from "@/lib/ai/model-config";
 import type { ChatModel } from "@/lib/ai/models";
+import { checkKrainHealth } from "@/lib/ai/models-cache";
 import { decryptValue } from "@/lib/ai/plugin-encrypt";
 import { dispatchPluginTool } from "@/lib/ai/plugin-tool-dispatcher";
 import { getCacheableSystemPrompt, type RequestHints } from "@/lib/ai/prompts";
@@ -201,6 +202,21 @@ export async function POST(request: Request) {
           upgradeUrl: "/upgrade?plan=plus",
         },
         { status: 403 }
+      );
+    }
+
+    // krain-gemma bypasses the AI Gateway entirely (self-hosted GB10 endpoint), so it
+    // inherits none of the gateway's own resilience. Gate it here with a live reachability
+    // check so a cold/down local node returns a clean error before streaming starts,
+    // instead of failing mid-response.
+    if (selectedChatModel === "krain-gemma" && !(await checkKrainHealth())) {
+      return Response.json(
+        {
+          code: "unavailable:model",
+          cause:
+            "Bedda Local (KRAIN) is temporarily unreachable. Please pick another model and try again.",
+        },
+        { status: 503 }
       );
     }
 
