@@ -99,6 +99,7 @@ export function getTrailingMessageId({
   return trailingMessage.id;
 }
 
+/** Strips the literal `<has_function_call>` marker that some models leak into streamed text output. */
 export function sanitizeText(text: string) {
   return text.replace('<has_function_call>', '');
 }
