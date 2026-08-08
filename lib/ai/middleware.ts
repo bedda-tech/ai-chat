@@ -328,6 +328,7 @@ export const cachingMiddleware: LanguageModelMiddleware = {
   },
 };
 
+/** Returns the true total cache size but only fetches per-key TTL detail for the first 20 keys, so `entries.length` can be smaller than `size`. */
 export async function getCacheStats(): Promise<{
   size: number;
   entries: Array<{ key: string; age: number }>;
