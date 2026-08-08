@@ -27,6 +27,7 @@ export function encryptValue(plaintext: string): string {
   return Buffer.concat([iv, tag, encrypted]).toString("base64");
 }
 
+/** Decrypts a value produced by `encryptValue`; returns `""` (not a throw) on any failure, e.g. wrong/rotated key or corrupt ciphertext. */
 export function decryptValue(ciphertext: string): string {
   const key = getKey();
   if (!key) {
