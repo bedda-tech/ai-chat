@@ -98,6 +98,11 @@ type TelegramUpdate = {
   message?: TelegramMessage;
 };
 
+/**
+ * Telegram webhook handler. The X-Telegram-Bot-Api-Secret-Token check only runs
+ * when TELEGRAM_WEBHOOK_SECRET is set — if that env var is unconfigured, requests
+ * are processed without any authentication.
+ */
 export async function POST(req: Request) {
   if (!BOT_TOKEN) {
     return new Response(
