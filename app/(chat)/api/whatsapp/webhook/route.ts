@@ -138,6 +138,11 @@ type WhatsAppPayload = {
   }>;
 };
 
+/**
+ * Note: `verifySignature` returns `true` unconditionally when `WHATSAPP_APP_SECRET`
+ * is unset, so the `X-Hub-Signature-256` check below is silently skipped — this
+ * endpoint accepts unauthenticated requests whenever that env var is not configured.
+ */
 export async function POST(req: Request) {
   if (!ACCESS_TOKEN || !PHONE_NUMBER_ID) {
     return new Response("WhatsApp not configured", { status: 503 });
