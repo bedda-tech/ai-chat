@@ -13,6 +13,12 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+/**
+ * SWR-style fetcher. On a non-OK response, assumes the body is JSON shaped
+ * like `{ code, cause }` (the ChatSDKError contract) and throws accordingly —
+ * unlike `fetchWithErrorHandlers` below, it does not handle non-JSON error
+ * bodies or offline detection.
+ */
 export const fetcher = async (url: string) => {
   const response = await fetch(url);
 
