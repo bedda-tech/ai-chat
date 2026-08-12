@@ -148,6 +148,139 @@
       "when": 1762650400000,
       "tag": "0020_user_memory",
       "breakpoints": true
+    },
+    {
+      "idx": 21,
+      "version": "7",
+      "when": 1762736800000,
+      "tag": "0020_rag_collections",
+      "breakpoints": true
+    },
+    {
+      "idx": 22,
+      "version": "7",
+      "when": 1762823200000,
+      "tag": "0021_api_keys",
+      "breakpoints": true
+    },
+    {
+      "idx": 23,
+      "version": "7",
+      "when": 1762909600000,
+      "tag": "0022_teams",
+      "breakpoints": true
+    },
+    {
+      "idx": 24,
+      "version": "7",
+      "when": 1762996000000,
+      "tag": "0023_team_chats",
+      "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "7",
+      "when": 1763082400000,
+      "tag": "0024_team_billing",
+      "breakpoints": true
+    },
+    {
+      "idx": 26,
+      "version": "7",
+      "when": 1763168800000,
+      "tag": "0025_video_jobs",
+      "breakpoints": true
+    },
+    {
+      "idx": 27,
+      "version": "7",
+      "when": 1763255200000,
+      "tag": "0026_compare_sessions",
+      "breakpoints": true
+    },
+    {
+      "idx": 28,
+      "version": "7",
+      "when": 1763341600000,
+      "tag": "0027_slack_workspaces",
+      "breakpoints": true
+    },
+    {
+      "idx": 29,
+      "version": "7",
+      "when": 1763428000000,
+      "tag": "0028_user_onboarding",
+      "breakpoints": true
+    },
+    {
+      "idx": 30,
+      "version": "7",
+      "when": 1763514400000,
+      "tag": "0029_audit_logs",
+      "breakpoints": true
+    },
+    {
+      "idx": 31,
+      "version": "7",
+      "when": 1763600800000,
+      "tag": "0030_plugin_tools",
+      "breakpoints": true
+    },
+    {
+      "idx": 32,
+      "version": "7",
+      "when": 1763687200000,
+      "tag": "0031_kb_project_scope",
+      "breakpoints": true
+    },
+    {
+      "idx": 33,
+      "version": "7",
+      "when": 1763773600000,
+      "tag": "0032_org_sso_config",
+      "breakpoints": true
+    },
+    {
+      "idx": 34,
+      "version": "7",
+      "when": 1763860000000,
+      "tag": "0033_org_model_policy",
+      "breakpoints": true
+    },
+    {
+      "idx": 35,
+      "version": "7",
+      "when": 1763946400000,
+      "tag": "0034_email_unsubscribe",
+      "breakpoints": true
+    },
+    {
+      "idx": 36,
+      "version": "7",
+      "when": 1764032800000,
+      "tag": "0034_referrals",
+      "breakpoints": true
+    },
+    {
+      "idx": 37,
+      "version": "7",
+      "when": 1764119200000,
+      "tag": "0035_memory_toggle",
+      "breakpoints": true
+    },
+    {
+      "idx": 38,
+      "version": "7",
+      "when": 1764205600000,
+      "tag": "0036_user_provider_keys",
+      "breakpoints": true
+    },
+    {
+      "idx": 39,
+      "version": "7",
+      "when": 1764292000000,
+      "tag": "0037_model_preferences",
+      "breakpoints": true
     }
   ]
 }
