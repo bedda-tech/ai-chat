@@ -48,8 +48,8 @@ const productionProvider = customProvider({
       model: gateway.languageModel("xai/grok-3-mini"),
       middleware: extractReasoningMiddleware({ tagName: "think" }),
     }),
-    "title-model": gateway.languageModel("xai/grok-2-1212"),
-    "artifact-model": gateway.languageModel("xai/grok-2-1212"),
+    "title-model": gateway.languageModel("xai/grok-4-fast-non-reasoning"),
+    "artifact-model": gateway.languageModel("xai/grok-4-fast-non-reasoning"),
 
     // KRAIN protocol source (hidden — see note above). Routable id only.
     "krain-gemma": krain(process.env.KRAIN_MODEL ?? "gemma-2-9b-it"),
