@@ -56,6 +56,7 @@ const productionProvider = customProvider({
   },
 });
 
+/** AI provider instance with optional middleware stack; uses mocked models in test environments, production providers with guardrails/logging/caching in prod. */
 export const myProvider = isTestEnvironment
   ? (() => {
       const {
