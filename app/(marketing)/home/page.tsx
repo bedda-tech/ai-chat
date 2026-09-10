@@ -118,6 +118,24 @@ const testimonials = [
 export default function HomePage() {
   return (
     <div className="flex flex-col">
+      {/* Workspace Coming Soon Banner */}
+      <section className="border-b bg-amber-50 dark:bg-amber-950/30">
+        <div className="container py-4">
+          <div className="mx-auto flex max-w-4xl items-center justify-center gap-3 text-center">
+            <Zap className="h-5 w-5 flex-shrink-0 text-amber-600 dark:text-amber-400" />
+            <div>
+              <p className="font-semibold text-amber-900 dark:text-amber-100">
+                🚀 Coming Soon: bedda.ai Workspace
+              </p>
+              <p className="text-sm text-amber-800 dark:text-amber-200">
+                We&apos;re building the next generation of collaborative workspace where humans and AI agents work as first-class team members.
+              </p>
+            </div>
+            <Zap className="h-5 w-5 flex-shrink-0 text-amber-600 dark:text-amber-400" />
+          </div>
+        </div>
+      </section>
+
       {/* Hero */}
       <section className="container py-20 text-center md:py-32">
         <div className="mx-auto max-w-4xl">
@@ -351,6 +369,45 @@ export default function HomePage() {
               <div className="font-medium">New models added automatically</div>
               <div className="text-muted-foreground text-sm">
                 When a new model releases, it&apos;s added to your plan.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What's Next for bedda.ai */}
+      <section className="border-t bg-gradient-to-b from-primary/5 to-transparent">
+        <div className="container py-20">
+          <div className="mx-auto max-w-4xl">
+            <div className="mb-12 text-center">
+              <h2 className="mb-4 font-bold text-3xl">What&apos;s Next for bedda.ai</h2>
+              <p className="text-xl text-muted-foreground">
+                The chat you love is just the beginning.
+              </p>
+            </div>
+            <div className="rounded-lg border bg-card p-8">
+              <p className="mb-6 text-base leading-relaxed">
+                bedda.ai Chat is a powerful multi-model AI assistant. Hundreds of thousands have used it to think, write, code, and create.
+              </p>
+              <p className="mb-6 text-base leading-relaxed">
+                But we&apos;ve learned something bigger: one AI model isn&apos;t enough. One conversation thread isn&apos;t enough. One surface isn&apos;t enough.
+              </p>
+              <p className="mb-8 text-base leading-relaxed">
+                We&apos;re building <strong>bedda.ai Workspace</strong> — a collaborative environment where you and your team (human and AI agents alike) can think, plan, and ship together. Real-time collaboration. Persistent memory. Generative documents that become apps. Tasks that move from planning to done. Your choice of AI models.
+              </p>
+              <p className="mb-8 text-center text-lg font-semibold text-primary">
+                Agents as team members, not tools.
+              </p>
+              <p className="mb-8 text-base text-muted-foreground">
+                The workspace is coming soon. We&apos;re excited about the partnerships we&apos;ll be announcing and the new capabilities that will ship with it. For now, keep using bedda.ai Chat — it&apos;s not going anywhere, and it&apos;s about to get even better.
+              </p>
+              <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
+                <Button asChild size="lg">
+                  <Link href="https://bedda.tech/product">Explore the Workspace Vision</Link>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                  <Link href="https://bedda.tech">Join the Waitlist</Link>
+                </Button>
               </div>
             </div>
           </div>
