@@ -164,20 +164,6 @@ const MODELS: {
     context: "1M",
   },
   {
-    id: "xai-grok-4",
-    label: "Grok 4",
-    provider: "xAI",
-    tier: "plus",
-    context: "128K",
-  },
-  {
-    id: "xai-grok-4-fast-non-reasoning",
-    label: "Grok 4 Fast",
-    provider: "xAI",
-    tier: "free",
-    context: "128K",
-  },
-  {
     id: "deepseek-deepseek-r1",
     label: "DeepSeek R1",
     provider: "DeepSeek",
@@ -637,7 +623,6 @@ export default function DevelopersPage() {
                     alias: "gemini-1.5-flash",
                     routes: "google-gemini-2.5-flash",
                   },
-                  { alias: "grok-2", routes: "xai-grok-2-1212" },
                 ].map((row) => (
                   <tr key={row.alias}>
                     <td className="px-4 py-2.5 font-mono text-xs">

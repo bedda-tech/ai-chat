@@ -20,7 +20,6 @@ const MODEL_ALIASES: Record<string, string> = {
   "claude-3-5-haiku-20241022": "anthropic-claude-haiku-4.5",
   "gemini-1.5-pro": "google-gemini-2.5-pro-preview",
   "gemini-1.5-flash": "google-gemini-2.5-flash",
-  "grok-2": "xai-grok-2-1212",
 };
 
 type OpenAIMessage = {

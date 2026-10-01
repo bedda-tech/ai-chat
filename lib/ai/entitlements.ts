@@ -31,16 +31,6 @@ export const entitlementsByUserType: Record<UserType, Entitlements> = {
   regular: {
     maxMessagesPerDay: 100,
     availableChatModelIds: [
-      // xAI Grok Models
-      "xai-grok-4",
-      "xai-grok-3",
-      "xai-grok-3-fast",
-      "xai-grok-3-mini",
-      "xai-grok-3-mini-fast",
-      "xai-grok-2-1212",
-      "xai-grok-2-vision-1212",
-      "xai-grok-beta",
-      "xai-grok-vision-beta",
       // Vercel Models
       "vercel-v0-1.0-md",
       // OpenAI Models
@@ -115,8 +105,6 @@ export const FREE_TIER_MODEL_IDS: readonly string[] = [
   // Legacy/Default Models
   "chat-model",
   "chat-model-reasoning",
-  // xAI Grok (fast non-reasoning variant, affordable)
-  "xai-grok-4-fast-non-reasoning",
   // Anthropic Haiku (cheapest Anthropic tier)
   "anthropic-claude-3-haiku",
   "anthropic-claude-3.5-haiku",
@@ -133,19 +121,10 @@ export const FREE_TIER_MODEL_IDS: readonly string[] = [
   "google-gemini-2.5-flash",
   "google-gemini-2.5-flash-lite",
   // DeepSeek (cheap)
-  "deepseek-deepseek-v3",
   "deepseek-deepseek-v3.1",
   "deepseek-deepseek-r1",
-  // Groq (fast inference, very cheap)
-  "groq-llama-4-scout-17b-16e-instruct",
-  "groq-llama-3.3-70b-versatile",
-  // Cerebras (fast inference, very cheap)
-  "cerebras-llama3.3-70b",
-  // Mistral Small (affordable)
-  "mistral-mistral-small-latest",
-  // Moonshot / ZAI
+  // ZAI
   "zai-glm-4.6",
-  "moonshotai-kimi-k2-turbo",
 ];
 
 /**

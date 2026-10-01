@@ -42,7 +42,7 @@ export const analyzeDataTool = () =>
         const startTime = Date.now();
 
         const { object } = await generateObject({
-          model: myProvider.languageModel("xai-grok-4"),
+          model: myProvider.languageModel("anthropic-claude-opus-5-5"),
           schema,
           prompt: `Analyze the following ${analysisType} of this data:
 
