@@ -1,11 +1,303 @@
 {
   "models": [
     {
+      "id": "anthropic-claude-opus-5-5",
+      "gatewayId": "anthropic/claude-opus-5.5",
+      "provider": "anthropic",
+      "name": "Claude Opus 5.5",
+      "description": "Anthropic's flagship model with best-in-class reasoning and coding \u2014 latest and greatest for complex tasks",
+      "contextWindow": 200000,
+      "pricing": {
+        "input": 4.0,
+        "output": 20.0,
+        "cachedInput": 0.4,
+        "cachedOutput": 5.0
+      },
+      "capabilities": {
+        "vision": true,
+        "toolCalling": true,
+        "reasoning": true,
+        "imageGeneration": false
+      },
+      "config": {
+        "maxSteps": 10,
+        "temperature": 0.7,
+        "idealFor": [
+          "complex research",
+          "advanced coding",
+          "reasoning",
+          "agentic tasks"
+        ]
+      }
+    },
+    {
+      "id": "anthropic-claude-sonnet-5-5",
+      "gatewayId": "anthropic/claude-sonnet-5.5",
+      "provider": "anthropic",
+      "name": "Claude Sonnet 5.5",
+      "description": "Anthropic's balanced flagship \u2014 best intelligence-to-speed ratio, latest version",
+      "contextWindow": 200000,
+      "pricing": {
+        "input": 2.0,
+        "output": 10.0,
+        "cachedInput": 0.2,
+        "cachedOutput": 2.5
+      },
+      "capabilities": {
+        "vision": true,
+        "toolCalling": true,
+        "reasoning": true,
+        "imageGeneration": false
+      },
+      "config": {
+        "maxSteps": 8,
+        "temperature": 0.7,
+        "idealFor": [
+          "complex reasoning",
+          "coding",
+          "analysis",
+          "writing"
+        ]
+      }
+    },
+    {
+      "id": "anthropic-claude-fable-5-1",
+      "gatewayId": "anthropic/claude-fable-5.1",
+      "provider": "anthropic",
+      "name": "Claude Fable 5.1",
+      "description": "Anthropic's ultra-fast model for quick responses and high throughput",
+      "contextWindow": 200000,
+      "pricing": {
+        "input": 0.01,
+        "output": 0.05,
+        "cachedInput": 0.001,
+        "cachedOutput": 0.0125
+      },
+      "capabilities": {
+        "vision": true,
+        "toolCalling": true,
+        "reasoning": false,
+        "imageGeneration": false
+      },
+      "config": {
+        "maxSteps": 6,
+        "temperature": 0.6,
+        "idealFor": [
+          "fast responses",
+          "high throughput",
+          "efficient processing"
+        ]
+      }
+    },
+    {
+      "id": "openai-gpt-5-5",
+      "gatewayId": "openai/gpt-5.5",
+      "provider": "openai",
+      "name": "GPT-5.5",
+      "description": "OpenAI's latest flagship model with superior reasoning and capabilities",
+      "contextWindow": 400000,
+      "pricing": {
+        "input": 2.0,
+        "output": 16.0,
+        "cachedInput": 0.5,
+        "cachedOutput": null
+      },
+      "capabilities": {
+        "vision": true,
+        "toolCalling": true,
+        "reasoning": true,
+        "imageGeneration": false
+      },
+      "config": {
+        "maxSteps": 8,
+        "temperature": 0.7,
+        "idealFor": [
+          "advanced reasoning",
+          "complex tasks",
+          "multimodal"
+        ]
+      }
+    },
+    {
+      "id": "openai-gpt-5-5-pro",
+      "gatewayId": "openai/gpt-5.5-pro",
+      "provider": "openai",
+      "name": "GPT-5.5 Pro",
+      "description": "OpenAI's pro version with extended thinking and advanced reasoning",
+      "contextWindow": 400000,
+      "pricing": {
+        "input": 3.0,
+        "output": 24.0,
+        "cachedInput": 0.75,
+        "cachedOutput": null
+      },
+      "capabilities": {
+        "vision": true,
+        "toolCalling": true,
+        "reasoning": true,
+        "imageGeneration": false
+      },
+      "config": {
+        "maxSteps": 8,
+        "temperature": 1.0,
+        "idealFor": [
+          "extended thinking",
+          "hard problems",
+          "advanced reasoning"
+        ]
+      }
+    },
+    {
+      "id": "openai-gpt-5-6-sol",
+      "gatewayId": "openai/gpt-5.6-sol",
+      "provider": "openai",
+      "name": "GPT-5.6 Sol",
+      "description": "OpenAI's next-generation model with enhanced capabilities",
+      "contextWindow": 400000,
+      "pricing": {
+        "input": 3.0,
+        "output": 24.0,
+        "cachedInput": 0.75,
+        "cachedOutput": null
+      },
+      "capabilities": {
+        "vision": true,
+        "toolCalling": true,
+        "reasoning": true,
+        "imageGeneration": false
+      },
+      "config": {
+        "maxSteps": 8,
+        "temperature": 0.7,
+        "idealFor": [
+          "advanced reasoning",
+          "complex tasks",
+          "scientific problems"
+        ]
+      }
+    },
+    {
+      "id": "openai-gpt-5-6-terra",
+      "gatewayId": "openai/gpt-5.6-terra",
+      "provider": "openai",
+      "name": "GPT-5.6 Terra",
+      "description": "OpenAI's advanced reasoning model focused on deep analysis",
+      "contextWindow": 400000,
+      "pricing": {
+        "input": 3.0,
+        "output": 24.0,
+        "cachedInput": 0.75,
+        "cachedOutput": null
+      },
+      "capabilities": {
+        "vision": true,
+        "toolCalling": true,
+        "reasoning": true,
+        "imageGeneration": false
+      },
+      "config": {
+        "maxSteps": 8,
+        "temperature": 0.7,
+        "idealFor": [
+          "deep analysis",
+          "research",
+          "complex reasoning"
+        ]
+      }
+    },
+    {
+      "id": "openai-gpt-5-6-luna",
+      "gatewayId": "openai/gpt-5.6-luna",
+      "provider": "openai",
+      "name": "GPT-5.6 Luna",
+      "description": "OpenAI's creative and adaptive reasoning model",
+      "contextWindow": 400000,
+      "pricing": {
+        "input": 3.0,
+        "output": 24.0,
+        "cachedInput": 0.75,
+        "cachedOutput": null
+      },
+      "capabilities": {
+        "vision": true,
+        "toolCalling": true,
+        "reasoning": true,
+        "imageGeneration": false
+      },
+      "config": {
+        "maxSteps": 8,
+        "temperature": 0.7,
+        "idealFor": [
+          "creative tasks",
+          "complex reasoning",
+          "novel problems"
+        ]
+      }
+    },
+    {
+      "id": "google-gemini-3-8-flash",
+      "gatewayId": "google/gemini-3.8-flash",
+      "provider": "google",
+      "name": "Gemini 3.8 Flash",
+      "description": "Google's latest fast multimodal model with superior speed and capability",
+      "contextWindow": 1000000,
+      "pricing": {
+        "input": 0.5,
+        "output": 2.0,
+        "cachedInput": null,
+        "cachedOutput": null
+      },
+      "capabilities": {
+        "vision": true,
+        "toolCalling": true,
+        "reasoning": false,
+        "imageGeneration": false
+      },
+      "config": {
+        "maxSteps": 6,
+        "temperature": 0.7,
+        "idealFor": [
+          "fast responses",
+          "multimodal tasks",
+          "real-time processing"
+        ]
+      }
+    },
+    {
+      "id": "google-gemini-3-1-pro-preview",
+      "gatewayId": "google/gemini-3.1-pro-preview",
+      "provider": "google",
+      "name": "Gemini 3.1 Pro",
+      "description": "Google's advanced pro model with reasoning and extended thinking",
+      "contextWindow": 1000000,
+      "pricing": {
+        "input": 2.0,
+        "output": 12.0,
+        "cachedInput": null,
+        "cachedOutput": null
+      },
+      "capabilities": {
+        "vision": true,
+        "toolCalling": true,
+        "reasoning": true,
+        "imageGeneration": false
+      },
+      "config": {
+        "maxSteps": 7,
+        "temperature": 0.7,
+        "idealFor": [
+          "advanced reasoning",
+          "complex tasks",
+          "multimodal"
+        ]
+      }
+    },
+    {
       "id": "anthropic-claude-opus-4-8",
-      "gatewayId": "anthropic/claude-opus-4-8",
+      "gatewayId": "anthropic/claude-opus-4.8",
       "provider": "anthropic",
       "name": "Claude Opus 4.8",
-      "description": "Anthropic's most capable model \u2014 top-tier intelligence for the most complex tasks, deep research, and agentic workflows",
+      "description": "Anthropic's capable model \u2014 strong intelligence for complex tasks and research",
       "contextWindow": 200000,
       "pricing": {
         "input": 15.0,
@@ -25,18 +317,16 @@
         "idealFor": [
           "complex research",
           "advanced coding",
-          "nuanced analysis",
-          "long-form writing",
-          "agentic tasks"
+          "nuanced analysis"
         ]
       }
     },
     {
       "id": "anthropic-claude-sonnet-4-6",
-      "gatewayId": "anthropic/claude-sonnet-4-6",
+      "gatewayId": "anthropic/claude-sonnet-4.6",
       "provider": "anthropic",
       "name": "Claude Sonnet 4.6",
-      "description": "Anthropic's best balance of intelligence and speed \u2014 exceptional reasoning, coding, and analysis",
+      "description": "Anthropic's balanced model \u2014 strong reasoning and speed",
       "contextWindow": 200000,
       "pricing": {
         "input": 3.0,
@@ -54,11 +344,9 @@
         "maxSteps": 8,
         "temperature": 0.7,
         "idealFor": [
-          "complex reasoning",
+          "reasoning",
           "coding",
-          "analysis",
-          "research",
-          "writing"
+          "analysis"
         ]
       }
     },
@@ -175,36 +463,6 @@
         "maxSteps": 5,
         "temperature": 0.7,
         "idealFor": ["efficient processing", "everyday tasks", "multimodal"]
-      }
-    },
-    {
-      "id": "anthropic-claude-3.7-sonnet",
-      "gatewayId": "anthropic/claude-3.7-sonnet",
-      "provider": "anthropic",
-      "name": "Claude 3.7 Sonnet",
-      "description": "Powerful model with extended thinking capabilities",
-      "contextWindow": 200000,
-      "pricing": {
-        "input": 3.0,
-        "output": 15.0,
-        "cachedInput": 0.3,
-        "cachedOutput": 3.75
-      },
-      "capabilities": {
-        "vision": true,
-        "toolCalling": true,
-        "reasoning": true,
-        "imageGeneration": false
-      },
-      "config": {
-        "maxSteps": 8,
-        "temperature": 0.7,
-        "idealFor": [
-          "complex reasoning",
-          "extended thinking",
-          "analysis",
-          "research"
-        ]
       }
     },
     {
@@ -366,56 +624,6 @@
       }
     },
     {
-      "id": "google-gemini-2.0-flash",
-      "gatewayId": "google/gemini-2.0-flash",
-      "provider": "google",
-      "name": "Gemini 2.0 Flash",
-      "description": "Fast multimodal model with thinking capabilities",
-      "contextWindow": 1000000,
-      "pricing": {
-        "input": 0.1,
-        "output": 0.4,
-        "cachedInput": null,
-        "cachedOutput": null
-      },
-      "capabilities": {
-        "vision": true,
-        "toolCalling": true,
-        "reasoning": true,
-        "imageGeneration": false
-      },
-      "config": {
-        "maxSteps": 6,
-        "temperature": 0.7,
-        "idealFor": ["fast responses", "thinking capabilities", "multimodal"]
-      }
-    },
-    {
-      "id": "google-gemini-2.0-flash-lite",
-      "gatewayId": "google/gemini-2.0-flash-lite",
-      "provider": "google",
-      "name": "Gemini 2.0 Flash Lite",
-      "description": "Lightweight and fast Gemini 2.0 variant",
-      "contextWindow": 1000000,
-      "pricing": {
-        "input": 0.07,
-        "output": 0.3,
-        "cachedInput": null,
-        "cachedOutput": null
-      },
-      "capabilities": {
-        "vision": true,
-        "toolCalling": true,
-        "reasoning": false,
-        "imageGeneration": false
-      },
-      "config": {
-        "maxSteps": 5,
-        "temperature": 0.7,
-        "idealFor": ["fast responses", "lightweight processing", "multimodal"]
-      }
-    },
-    {
       "id": "google-gemini-2.5-flash",
       "gatewayId": "google/gemini-2.5-flash",
       "provider": "google",
@@ -440,90 +648,6 @@
         "maxSteps": 6,
         "temperature": 0.7,
         "idealFor": ["fast responses", "Google Search grounding", "multimodal"]
-      }
-    },
-    {
-      "id": "anthropic-claude-3-haiku",
-      "gatewayId": "anthropic/claude-3-haiku",
-      "provider": "anthropic",
-      "name": "Claude 3 Haiku",
-      "description": "Fastest Claude 3 model for high-throughput tasks",
-      "contextWindow": 200000,
-      "pricing": {
-        "input": 0.25,
-        "output": 1.25,
-        "cachedInput": 0.03,
-        "cachedOutput": 0.3
-      },
-      "capabilities": {
-        "vision": false,
-        "toolCalling": true,
-        "reasoning": false,
-        "imageGeneration": false
-      },
-      "config": {
-        "maxSteps": 4,
-        "temperature": 0.6,
-        "idealFor": ["quick responses", "simple tasks", "high throughput"]
-      }
-    },
-    {
-      "id": "openai-gpt-4o",
-      "gatewayId": "openai/gpt-4o",
-      "provider": "openai",
-      "name": "GPT-4o",
-      "description": "Multimodal model with vision, tools, and structured outputs",
-      "contextWindow": 128000,
-      "pricing": {
-        "input": 2.5,
-        "output": 10.0,
-        "cachedInput": 1.25,
-        "cachedOutput": null
-      },
-      "capabilities": {
-        "vision": true,
-        "toolCalling": true,
-        "reasoning": false,
-        "imageGeneration": false
-      },
-      "config": {
-        "maxSteps": 7,
-        "temperature": 0.7,
-        "idealFor": [
-          "multimodal tasks",
-          "vision",
-          "structured outputs",
-          "function calling"
-        ]
-      }
-    },
-    {
-      "id": "openai-gpt-4o-mini",
-      "gatewayId": "openai/gpt-4o-mini",
-      "provider": "openai",
-      "name": "GPT-4o Mini",
-      "description": "Fast, affordable multimodal model for everyday tasks",
-      "contextWindow": 128000,
-      "pricing": {
-        "input": 0.15,
-        "output": 0.6,
-        "cachedInput": 0.07,
-        "cachedOutput": null
-      },
-      "capabilities": {
-        "vision": true,
-        "toolCalling": true,
-        "reasoning": false,
-        "imageGeneration": false
-      },
-      "config": {
-        "maxSteps": 5,
-        "temperature": 0.7,
-        "idealFor": [
-          "fast responses",
-          "affordable processing",
-          "everyday tasks"
-        ]
       }
     },
     {
@@ -599,31 +723,6 @@
         "maxSteps": 5,
         "temperature": 0.7,
         "idealFor": ["fast responses", "conversational", "general purpose"]
-      }
-    },
-    {
-      "id": "anthropic-claude-3.5-haiku",
-      "gatewayId": "anthropic/claude-3.5-haiku",
-      "provider": "anthropic",
-      "name": "Claude 3.5 Haiku",
-      "description": "Balanced speed and intelligence for everyday tasks",
-      "contextWindow": 200000,
-      "pricing": {
-        "input": 0.8,
-        "output": 4.0,
-        "cachedInput": 0.08,
-        "cachedOutput": 1.0
-      },
-      "capabilities": {
-        "vision": true,
-        "toolCalling": true,
-        "reasoning": false,
-        "imageGeneration": false
-      },
-      "config": {
-        "maxSteps": 5,
-        "temperature": 0.6,
-        "idealFor": ["fast responses", "everyday tasks", "efficient processing"]
       }
     },
     {
