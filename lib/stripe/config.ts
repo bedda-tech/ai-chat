@@ -74,7 +74,10 @@ export const STRIPE_PLANS = {
     messagesPerMonth: 999_999_999,
   },
   MAX: {
-    id: process.env.STRIPE_MAX_PRICE_ID,
+    // Prod's Stripe catalog predates the Plus/Pro/Max rename: the $50/mo price lives in
+    // STRIPE_PREMIUM_PRICE_ID ("Bedda Chat Premium"). Without this fallback a customer who
+    // upgraded to it was mapped to "free" (first paying customer, 2026-10-01).
+    id: process.env.STRIPE_MAX_PRICE_ID ?? process.env.STRIPE_PREMIUM_PRICE_ID,
     annualId: process.env.STRIPE_MAX_ANNUAL_PRICE_ID,
     name: "max",
     displayName: "Max",

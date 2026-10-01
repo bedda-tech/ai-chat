@@ -1,3 +1,4 @@
+import * as Sentry from "@sentry/nextjs";
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
 import { headers } from "next/headers";
@@ -205,7 +206,7 @@ async function handleSubscriptionChange(
   }
 
   // Get the tier from the subscription
-  const tier = await getSubscriptionTier(subscription);
+  let tier = await getSubscriptionTier(subscription);
 
   console.log(`Updating user ${userId} to tier: ${tier}`);
 
@@ -225,6 +226,18 @@ async function handleSubscriptionChange(
     .where(eq(userTier.userId, userId))
     .limit(1);
   const fromTier = existing[0]?.tier ?? "free";
+
+  // An unrecognised price maps to "free". Never let that silently strand a paying
+  // customer: if the subscription is live, keep the tier they already had and shout.
+  const isLive = ["active", "trialing", "past_due"].includes(subscription.status);
+  if (tier === "free" && isLive) {
+    const priceId = subscription.items.data[0]?.price.id;
+    console.error(
+      `[stripe] UNMAPPED PRICE ${priceId} on live subscription ${subscription.id} (user ${userId}); keeping tier "${fromTier}". Add the price to lib/stripe/config.ts.`
+    );
+    Sentry.captureMessage(`Stripe price ${priceId} not mapped to a tier`, "error");
+    tier = fromTier;
+  }
 
   if (existing.length > 0) {
     await db

@@ -16,6 +16,7 @@ process.env.STRIPE_PRO_PRICE_ID = "price_pro_monthly";
 delete process.env.STRIPE_PRO_ANNUAL_PRICE_ID; // exercises annual->monthly fallback
 delete process.env.STRIPE_MAX_PRICE_ID; // exercises entirely-unconfigured -> null
 delete process.env.STRIPE_MAX_ANNUAL_PRICE_ID;
+delete process.env.STRIPE_PREMIUM_PRICE_ID; // legacy fallback for MAX.id must stay unset here
 
 let passed = 0;
 let failed = 0;
