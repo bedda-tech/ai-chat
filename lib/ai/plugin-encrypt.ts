@@ -11,6 +11,11 @@ function getKey(): Buffer | null {
   return Buffer.from(hex.slice(0, 64), "hex");
 }
 
+/** True when PLUGIN_TOOL_ENCRYPTION_KEY is set, so `encryptValue` will actually encrypt. */
+export function isEncryptionConfigured(): boolean {
+  return getKey() !== null;
+}
+
 /** Encrypts `plaintext` with AES-256-GCM; returns plaintext unchanged if PLUGIN_TOOL_ENCRYPTION_KEY is not set. */
 export function encryptValue(plaintext: string): string {
   const key = getKey();

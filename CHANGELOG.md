@@ -7,7 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-_No unreleased changes._
+### Testnet KRAIN credits (stage 2)
+- Signed-in users can link an app.krain.ai API key in Settings. The key is encrypted at rest and never logged.
+- Messages on the four zero-cost guest models (Gemini 2.5 Flash, Groq Llama 4 Scout and 3.3 70B, DeepSeek R1) are paid for with one testnet KRAIN credit each. A paid message does not count against the daily or monthly message allowance.
+- If the credit is refused or unavailable, the message uses the normal allowance and never unlimited use. A toast explains a refusal (out of credits, daily cap, or the global ceiling).
+- Global ceiling of 1,000 credit-paid messages per UTC day, set with `KRAIN_CREDIT_DAILY_CEILING`. Paid models are not credit-eligible.
+- Testnet KRAIN has no monetary value and is not the TGE token. Balances will not carry over unless we say so.
 
 ---
 

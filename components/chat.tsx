@@ -27,6 +27,11 @@ import { useTeamRealtime } from "@/hooks/use-team-realtime";
 import { pruneOldSessions, saveMessages } from "@/lib/chat/storage";
 import type { Vote } from "@/lib/db/schema";
 import { ChatSDKError } from "@/lib/errors";
+import {
+  KRAIN_NOTICE_HEADER,
+  KRAIN_NOTICE_TEXT,
+  type KrainNotice,
+} from "@/lib/krain/spend-rules";
 import type { Attachment, ChatMessage } from "@/lib/types";
 import type { AppUsage } from "@/lib/usage";
 import { fetcher, fetchWithErrorHandlers, generateUUID } from "@/lib/utils";
@@ -39,6 +44,21 @@ import { getChatHistoryPaginationKey } from "./sidebar-history";
 import { TeamTypingIndicator } from "./team-typing-indicator";
 import { toast } from "./toast";
 import type { VisibilityType } from "./visibility-selector";
+
+/** Shows a toast when a message fell back from testnet KRAIN credits to the normal allowance. */
+async function fetchChatWithKrainNotice(
+  input: RequestInfo | URL,
+  init?: RequestInit
+) {
+  const response = await fetchWithErrorHandlers(input, init);
+  const notice = response.headers.get(
+    KRAIN_NOTICE_HEADER
+  ) as KrainNotice | null;
+  if (notice && notice in KRAIN_NOTICE_TEXT) {
+    toast({ type: "error", description: KRAIN_NOTICE_TEXT[notice] });
+  }
+  return response;
+}
 
 export function Chat({
   id,
@@ -128,7 +148,7 @@ export function Chat({
     generateId: generateUUID,
     transport: new DefaultChatTransport({
       api: "/api/chat",
-      fetch: fetchWithErrorHandlers,
+      fetch: fetchChatWithKrainNotice,
       prepareSendMessagesRequest(request) {
         return {
           body: {

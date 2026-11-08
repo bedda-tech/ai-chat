@@ -80,6 +80,8 @@ import {
 } from "@/lib/db/queries";
 import { getOrgModelPolicyForUser } from "@/lib/db/team-queries";
 import { ChatSDKError } from "@/lib/errors";
+import { trySpendKrainCredit } from "@/lib/krain/credits";
+import { KRAIN_NOTICE_HEADER, type KrainNotice } from "@/lib/krain/spend-rules";
 import {
   createRateLimitResponse,
   rateLimitMiddleware,
@@ -175,11 +177,26 @@ export async function POST(request: Request) {
       return new ChatSDKError("unauthorized:chat").toResponse();
     }
 
-    // Check rate limits (new tier-based system)
-    const rateLimitResult = await rateLimitMiddleware(session.user.id);
+    // Check rate limits (new tier-based system). A message paid for with testnet
+    // KRAIN credits skips the daily and monthly allowances; any other outcome falls back to them.
+    let krainNotice: KrainNotice | undefined;
+    const rateLimitResult = await rateLimitMiddleware(session.user.id, {
+      tryCreditDebit: async () => {
+        const spend = await trySpendKrainCredit({
+          userId: session.user.id,
+          modelId: selectedChatModel,
+          messageId: message.id,
+        });
+        krainNotice = spend.notice;
+        return spend.paid;
+      },
+    });
     if (!rateLimitResult.allowed) {
       return createRateLimitResponse(rateLimitResult);
     }
+    const krainHeaders = krainNotice
+      ? { [KRAIN_NOTICE_HEADER]: krainNotice }
+      : undefined;
 
     // Fetch user preferences and memories in parallel with model access check
     const userPrefsPromise = getUserPreferences(session.user.id);
@@ -817,12 +834,15 @@ export async function POST(request: Request) {
       return new Response(
         await streamContext.resumableStream(streamId, () =>
           stream.pipeThrough(new JsonToSseTransformStream())
-        )
+        ),
+        { headers: krainHeaders }
       );
     }
 
     // Fallback to regular streaming if resumable streams are not available
-    return new Response(stream.pipeThrough(new JsonToSseTransformStream()));
+    return new Response(stream.pipeThrough(new JsonToSseTransformStream()), {
+      headers: krainHeaders,
+    });
   } catch (error) {
     const vercelId = request.headers.get("x-vercel-id");
 

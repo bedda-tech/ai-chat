@@ -19,12 +19,21 @@ export type RateLimitResult = {
   upgradeUrl?: string;
 };
 
+export type RateLimitOptions = {
+  /**
+   * Called once the per-minute limit passes. Resolves true when the message was paid
+   * for with testnet credits: the daily and monthly allowances are then skipped.
+   */
+  tryCreditDebit?: () => Promise<boolean>;
+};
+
 /**
  * Rate limiting middleware for chat requests
  * Checks per-minute, daily, and monthly limits
  */
 export async function rateLimitMiddleware(
-  userId: string
+  userId: string,
+  options: RateLimitOptions = {}
 ): Promise<RateLimitResult> {
   try {
     // Get user's tier
@@ -48,8 +57,13 @@ export async function rateLimitMiddleware(
       };
     }
 
-    // Check daily limit
-    const dailyLimit = await checkRateLimit(userId, "messages_per_day", tier);
+    // Debit only after the per-minute check, so a rejected message is not charged
+    const creditPaid = (await options.tryCreditDebit?.()) === true;
+
+    // Check daily limit (credit-paid messages sit outside the daily allowance)
+    const dailyLimit = creditPaid
+      ? { allowed: true }
+      : await checkRateLimit(userId, "messages_per_day", tier);
 
     if (!dailyLimit.allowed) {
       const retryAfterHours = dailyLimit.retryAfter
@@ -67,7 +81,7 @@ export async function rateLimitMiddleware(
     }
 
     // Check monthly limit
-    const monthlyAllowed = await checkTierLimit(userId, tier);
+    const monthlyAllowed = creditPaid || (await checkTierLimit(userId, tier));
 
     if (!monthlyAllowed) {
       return {
@@ -87,7 +101,7 @@ export async function rateLimitMiddleware(
     // Increment rate limit counters
     await Promise.all([
       incrementRateLimit(userId, "messages_per_minute"),
-      incrementRateLimit(userId, "messages_per_day"),
+      ...(creditPaid ? [] : [incrementRateLimit(userId, "messages_per_day")]),
     ]);
 
     return {
