@@ -3,6 +3,13 @@ import { auth } from "@/app/(auth)/auth";
 import { getUser } from "@/lib/db/queries";
 import { createCheckoutSession } from "@/lib/stripe";
 import {
+  ACCOUNT_REQUIRED_RESPONSE,
+  consumeCheckoutAttempt,
+  getClientIp,
+  isEligibleForCheckout,
+  verifyTurnstile,
+} from "@/lib/stripe/checkout-guard";
+import {
   type BillingPeriod,
   mapPlanToStripePrice,
   type PlanName,
@@ -20,10 +27,15 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
+    if (!isEligibleForCheckout(session.user)) {
+      return NextResponse.json(ACCOUNT_REQUIRED_RESPONSE, { status: 403 });
+    }
+
     const body = await req.json();
-    const { plan, billingPeriod } = body as {
+    const { plan, billingPeriod, turnstileToken } = body as {
       plan?: string;
       billingPeriod?: string;
+      turnstileToken?: string;
     };
 
     if (!plan || !VALID_PLANS.includes(plan as PlanName)) {
@@ -46,6 +58,32 @@ export async function POST(req: Request) {
           error: `Price ID not configured for plan: ${plan}. Set STRIPE_${plan.toUpperCase()}_PRICE_ID.`,
         },
         { status: 500 }
+      );
+    }
+
+    const ip = getClientIp(req);
+
+    if (!(await verifyTurnstile(turnstileToken, ip))) {
+      return NextResponse.json(
+        {
+          error: "Bot verification failed. Please try again.",
+          code: "bot_check_failed",
+        },
+        { status: 403 }
+      );
+    }
+
+    const [userAllowed, ipAllowed] = await Promise.all([
+      consumeCheckoutAttempt(`user:${session.user.id}`),
+      consumeCheckoutAttempt(`ip:${ip}`),
+    ]);
+    if (!userAllowed || !ipAllowed) {
+      return NextResponse.json(
+        {
+          error: "Too many checkout attempts. Please try again later.",
+          code: "rate_limited",
+        },
+        { status: 429 }
       );
     }
 

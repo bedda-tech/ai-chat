@@ -6,6 +6,10 @@ import { auth } from "@/app/(auth)/auth";
 import { userTier } from "@/lib/db/schema";
 import { getSubscriptionTier, stripe, updateSubscription } from "@/lib/stripe";
 import {
+  ACCOUNT_REQUIRED_RESPONSE,
+  isEligibleForCheckout,
+} from "@/lib/stripe/checkout-guard";
+import {
   type BillingPeriod,
   mapPlanToStripePrice,
   type PlanName,
@@ -32,6 +36,10 @@ export async function POST(req: Request) {
 
     if (!session?.user?.email) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    if (!isEligibleForCheckout(session.user)) {
+      return NextResponse.json(ACCOUNT_REQUIRED_RESPONSE, { status: 403 });
     }
 
     const body = await req.json();

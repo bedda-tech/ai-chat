@@ -44,6 +44,10 @@ export async function createCheckoutSession({
     customer: customerId,
     mode: "subscription",
     payment_method_types: ["card"],
+    // Require 3D Secure on every card payment (card-testing mitigation).
+    payment_method_options: {
+      card: { request_three_d_secure: "any" },
+    },
     allow_promotion_codes: true,
     // Don't require a card upfront when the session includes a free trial —
     // this matches the "no credit card required" copy on the pricing page.
