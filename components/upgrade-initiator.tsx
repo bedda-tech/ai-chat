@@ -35,6 +35,12 @@ export function UpgradeInitiator({
           body: JSON.stringify({ plan, billingPeriod }),
         });
 
+        // Guest sessions cannot check out; send them to create an account.
+        if (res.status === 403) {
+          window.location.href = "/register";
+          return;
+        }
+
         const data = await res.json();
 
         if (!res.ok) {

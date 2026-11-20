@@ -71,6 +71,38 @@ async function main() {
     assert.equal(tier, "free");
   });
 
+  console.log("createCheckoutSession");
+
+  await test("requests 3D Secure on every card payment", async () => {
+    const { stripe } = await import("./config");
+    const { createCheckoutSession } = await import("./subscriptions");
+    // Stub the two Stripe calls createCheckoutSession makes.
+    const loose = stripe as unknown as {
+      customers: { list: unknown };
+      checkout: { sessions: { create: unknown } };
+    };
+    let captured: Record<string, unknown> | undefined;
+    loose.customers.list = async () => ({ data: [{ id: "cus_test" }] });
+    loose.checkout.sessions.create = async (
+      params: Record<string, unknown>
+    ) => {
+      captured = params;
+      return { url: "https://checkout.stripe.test" };
+    };
+
+    await createCheckoutSession({
+      userId: "u1",
+      userEmail: "alice@example.com",
+      priceId: "price_plus_monthly",
+      successUrl: "https://x.test/success",
+      cancelUrl: "https://x.test/canceled",
+    });
+
+    assert.deepEqual(captured?.payment_method_options, {
+      card: { request_three_d_secure: "any" },
+    });
+  });
+
   console.log(`\n${passed} passed, ${failed} failed`);
   if (failed > 0) {
     process.exit(1);
