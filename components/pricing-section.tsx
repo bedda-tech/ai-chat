@@ -1,9 +1,7 @@
 "use client";
 
 import { Check, Crown, Rocket, Zap } from "lucide-react";
-import Link from "next/link";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -149,9 +147,6 @@ export function PricingSection() {
             billing === "annual" && tier.annualPerMonth
               ? tier.annualPerMonth
               : tier.monthlyPrice;
-          const href = tier.planKey
-            ? `${tier.href}${billing === "annual" ? "&billing=annual" : ""}`
-            : tier.href;
 
           return (
             <Card
@@ -200,13 +195,6 @@ export function PricingSection() {
                 </ul>
               </CardContent>
               <CardFooter className="flex flex-col gap-2">
-                <Button
-                  asChild
-                  className="w-full"
-                  variant={tier.highlighted ? "default" : "outline"}
-                >
-                  <Link href={href}>{tier.cta}</Link>
-                </Button>
                 {"trialNote" in tier &&
                   tier.trialNote &&
                   billing === "monthly" && (
