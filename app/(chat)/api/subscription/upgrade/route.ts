@@ -5,6 +5,7 @@ import postgres from "postgres";
 import { auth } from "@/app/(auth)/auth";
 import { userTier } from "@/lib/db/schema";
 import { getSubscriptionTier, stripe, updateSubscription } from "@/lib/stripe";
+import { isRegisteredSession } from "@/lib/stripe/checkout-guard";
 import {
   type BillingPeriod,
   mapPlanToStripePrice,
@@ -32,6 +33,13 @@ export async function POST(req: Request) {
 
     if (!session?.user?.email) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    if (!isRegisteredSession(session)) {
+      return NextResponse.json(
+        { error: "Create an account to subscribe." },
+        { status: 403 }
+      );
     }
 
     const body = await req.json();

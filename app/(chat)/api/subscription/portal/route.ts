@@ -5,6 +5,7 @@ import postgres from "postgres";
 import { auth } from "@/app/(auth)/auth";
 import { userTier } from "@/lib/db/schema";
 import { createBillingPortalSession } from "@/lib/stripe";
+import { isRegisteredSession } from "@/lib/stripe/checkout-guard";
 
 const connectionString = process.env.POSTGRES_URL!;
 const client = postgres(connectionString);
@@ -16,6 +17,13 @@ export async function POST(_req: Request) {
 
     if (!session?.user) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    if (!isRegisteredSession(session)) {
+      return NextResponse.json(
+        { error: "Create an account to manage billing." },
+        { status: 403 }
+      );
     }
 
     // Get customer ID from database

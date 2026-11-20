@@ -3,6 +3,11 @@ import { auth } from "@/app/(auth)/auth";
 import { getUser } from "@/lib/db/queries";
 import { createCheckoutSession } from "@/lib/stripe";
 import {
+  consumeCheckoutAttempt,
+  getClientIp,
+  isRegisteredSession,
+} from "@/lib/stripe/checkout-guard";
+import {
   type BillingPeriod,
   mapPlanToStripePrice,
   type PlanName,
@@ -18,6 +23,27 @@ export async function POST(req: Request) {
 
     if (!session?.user?.email) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    if (!isRegisteredSession(session)) {
+      return NextResponse.json(
+        { error: "Create an account to subscribe." },
+        { status: 403 }
+      );
+    }
+
+    const attempt = await consumeCheckoutAttempt(
+      session.user.id,
+      getClientIp(req)
+    );
+    if (!attempt.allowed) {
+      return NextResponse.json(
+        { error: "Too many checkout attempts. Please try again later." },
+        {
+          status: 429,
+          headers: { "Retry-After": String(attempt.retryAfter ?? 3600) },
+        }
+      );
     }
 
     const body = await req.json();
