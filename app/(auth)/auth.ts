@@ -10,6 +10,8 @@ import {
   createGuestUser,
   getOrCreateOAuthUser,
   getUser,
+  isEmailVerified,
+  markEmailVerified,
 } from "@/lib/db/queries";
 import { sendWelcomeEmail } from "@/lib/email/send-welcome-email";
 import { authConfig } from "./auth.config";
@@ -21,6 +23,7 @@ declare module "next-auth" {
     user: {
       id: string;
       type: UserType;
+      emailConfirmed: boolean;
     } & DefaultSession["user"];
   }
 
@@ -29,6 +32,7 @@ declare module "next-auth" {
     id?: string;
     email?: string | null;
     type: UserType;
+    emailConfirmed?: boolean;
   }
 }
 
@@ -36,6 +40,7 @@ declare module "next-auth/jwt" {
   interface JWT extends DefaultJWT {
     id: string;
     type: UserType;
+    emailConfirmed?: boolean;
   }
 }
 
@@ -89,7 +94,11 @@ export const {
           return null;
         }
 
-        return { ...user, type: "regular" };
+        return {
+          ...user,
+          type: "regular",
+          emailConfirmed: !!user.emailVerifiedAt,
+        };
       },
     }),
     Credentials({
@@ -134,6 +143,11 @@ export const {
           // Attach our DB user id and type to the authUser object for the jwt callback
           authUser.id = dbUser.id;
           authUser.type = "regular";
+          // The OAuth provider has confirmed this address, so mark it verified.
+          if (!dbUser.emailVerifiedAt) {
+            await markEmailVerified(dbUser.id);
+          }
+          authUser.emailConfirmed = true;
           // Fire welcome email for truly new users (don't block sign-in on failure)
           if (isNew && email) {
             sendWelcomeEmail(email as string).catch(() => {});
@@ -152,10 +166,16 @@ export const {
       }
       return true;
     },
-    jwt({ token, user }) {
+    async jwt({ token, user }) {
       if (user) {
         token.id = user.id as string;
         token.type = user.type;
+        token.emailConfirmed = user.emailConfirmed === true;
+      } else if (token.type === "regular" && !token.emailConfirmed) {
+        // Pick up a confirmation completed after sign-in (the link opens in another tab).
+        token.emailConfirmed = await isEmailVerified(token.id).catch(
+          () => false
+        );
       }
 
       return token;
@@ -164,6 +184,7 @@ export const {
       if (session.user) {
         session.user.id = token.id;
         session.user.type = token.type;
+        session.user.emailConfirmed = token.emailConfirmed === true;
       }
 
       return session;

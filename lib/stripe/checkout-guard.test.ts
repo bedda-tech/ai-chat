@@ -28,21 +28,84 @@ async function test(name: string, fn: () => void | Promise<void>) {
 }
 
 async function main() {
-  const { getClientIp, isEligibleForCheckout, verifyTurnstile } = await import(
-    "./checkout-guard"
-  );
+  const {
+    checkoutDenialResponse,
+    getClientIp,
+    isEligibleForCheckout,
+    verifyTurnstile,
+  } = await import("./checkout-guard");
 
   console.log("isEligibleForCheckout");
 
-  await test("allows a signed-in regular account", () => {
+  await test("allows a signed-in regular account with a verified email", () => {
     assert.equal(
       isEligibleForCheckout({
         id: "u1",
         email: "alice@example.com",
         type: "regular",
+        emailConfirmed: true,
       }),
       true
     );
+  });
+
+  await test("rejects a regular account whose email is not verified", () => {
+    assert.equal(
+      isEligibleForCheckout({
+        id: "u5",
+        email: "bob@example.com",
+        type: "regular",
+        emailConfirmed: false,
+      }),
+      false
+    );
+    assert.equal(
+      isEligibleForCheckout({
+        id: "u6",
+        email: "bob@example.com",
+        type: "regular",
+      }),
+      false
+    );
+  });
+
+  console.log("checkoutDenialResponse");
+
+  await test("returns null when checkout may proceed", () => {
+    assert.equal(
+      checkoutDenialResponse({
+        id: "u1",
+        email: "alice@example.com",
+        type: "regular",
+        emailConfirmed: true,
+      }),
+      null
+    );
+  });
+
+  await test("asks an unverified account to confirm its email", () => {
+    assert.equal(
+      checkoutDenialResponse({
+        id: "u5",
+        email: "bob@example.com",
+        type: "regular",
+        emailConfirmed: false,
+      })?.code,
+      "email_verification_required"
+    );
+  });
+
+  await test("asks a guest session to create an account", () => {
+    assert.equal(
+      checkoutDenialResponse({
+        id: "u2",
+        email: "guest-123@example.com",
+        type: "guest",
+        emailConfirmed: true,
+      })?.code,
+      "account_required"
+    );
+    assert.equal(checkoutDenialResponse(undefined)?.code, "account_required");
   });
 
   await test("rejects a guest session by type", () => {

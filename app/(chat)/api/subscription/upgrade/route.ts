@@ -5,10 +5,7 @@ import postgres from "postgres";
 import { auth } from "@/app/(auth)/auth";
 import { userTier } from "@/lib/db/schema";
 import { getSubscriptionTier, stripe, updateSubscription } from "@/lib/stripe";
-import {
-  ACCOUNT_REQUIRED_RESPONSE,
-  isEligibleForCheckout,
-} from "@/lib/stripe/checkout-guard";
+import { checkoutDenialResponse } from "@/lib/stripe/checkout-guard";
 import {
   type BillingPeriod,
   mapPlanToStripePrice,
@@ -38,8 +35,9 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    if (!isEligibleForCheckout(session.user)) {
-      return NextResponse.json(ACCOUNT_REQUIRED_RESPONSE, { status: 403 });
+    const denial = checkoutDenialResponse(session.user);
+    if (denial) {
+      return NextResponse.json(denial, { status: 403 });
     }
 
     const body = await req.json();

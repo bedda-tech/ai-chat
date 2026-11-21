@@ -11,20 +11,28 @@ const TURNSTILE_VERIFY_URL =
 type RedisClient = ReturnType<typeof createClient>;
 
 export type CheckoutSessionUser =
-  | { id?: string; email?: string | null; type?: string }
+  | {
+      id?: string;
+      email?: string | null;
+      type?: string;
+      emailConfirmed?: boolean | null;
+    }
   | null
   | undefined;
 
 /**
- * True only for a signed-in, non-guest account. Guest sessions (type "guest"
- * or a `guest-<n>` email) cannot start checkout, upgrade or the billing portal.
+ * True only for a signed-in, non-guest account whose email address has been
+ * confirmed. Guest sessions (type "guest" or a `guest-<n>` email) cannot start
+ * checkout, upgrade or the billing portal, and neither can accounts that have
+ * not yet clicked the verification link.
  */
 export function isEligibleForCheckout(user: CheckoutSessionUser): boolean {
   return (
     !!user?.id &&
     !!user.email &&
     user.type === "regular" &&
-    !guestRegex.test(user.email)
+    !guestRegex.test(user.email) &&
+    user.emailConfirmed === true
   );
 }
 
@@ -33,6 +41,36 @@ export const ACCOUNT_REQUIRED_RESPONSE = {
     "A signed-in account is required to manage billing. Create an account to subscribe.",
   code: "account_required",
 } as const;
+
+export const EMAIL_VERIFICATION_REQUIRED_RESPONSE = {
+  error:
+    "Confirm your email address before subscribing. Check your inbox for the confirmation link.",
+  code: "email_verification_required",
+} as const;
+
+/**
+ * The 403 body to return for a billing request, or null when it may proceed.
+ * A signed-in account that has not confirmed its email gets its own code so
+ * the client can tell the user what to do.
+ */
+export function checkoutDenialResponse(
+  user: CheckoutSessionUser
+):
+  | typeof ACCOUNT_REQUIRED_RESPONSE
+  | typeof EMAIL_VERIFICATION_REQUIRED_RESPONSE
+  | null {
+  if (isEligibleForCheckout(user)) {
+    return null;
+  }
+  const signedInRegular =
+    !!user?.id &&
+    !!user.email &&
+    user.type === "regular" &&
+    !guestRegex.test(user.email);
+  return signedInRegular
+    ? EMAIL_VERIFICATION_REQUIRED_RESPONSE
+    : ACCOUNT_REQUIRED_RESPONSE;
+}
 
 /** Client IP from the proxy headers set by Vercel; "unknown" when absent. */
 export function getClientIp(req: Request): string {

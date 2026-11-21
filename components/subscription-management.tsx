@@ -85,22 +85,9 @@ export function SubscriptionManagement({
         // Reload to reflect updated tier
         window.location.reload();
       } else {
-        // Free user: redirect to Stripe Checkout to create a new subscription
-        const response = await fetch("/api/subscription/checkout", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ plan: planKey }),
-        });
-
-        if (!response.ok) {
-          const data = await response.json();
-          throw new Error(data.error || "Failed to create checkout session");
-        }
-
-        const { url } = await response.json();
-        if (url) {
-          window.location.href = url;
-        }
+        // Free user: the checkout page runs the bot challenge before it creates
+        // the Stripe Checkout session, so send them there rather than calling the API.
+        window.location.href = `/upgrade?plan=${planKey}`;
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unknown error");

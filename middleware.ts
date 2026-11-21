@@ -28,6 +28,7 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith("/api/whatsapp") ||
     pathname.startsWith("/api/cron/") ||
     pathname.startsWith("/api/unsubscribe") ||
+    pathname.startsWith("/api/verify-email") || // Self-authenticating HMAC link from the confirmation email
     pathname.startsWith("/compare/") || // SEO comparison pages — must be crawlable
     pathname === "/blog" ||
     pathname.startsWith("/blog/") || // SEO blog — must be crawlable
