@@ -89,6 +89,23 @@ export async function getUser(email: string): Promise<User[]> {
   }
 }
 
+/** Marks the user's email address as verified. Idempotent. */
+export async function markEmailVerified(userId: string) {
+  await db
+    .update(user)
+    .set({ emailVerifiedAt: new Date() })
+    .where(and(eq(user.id, userId), isNull(user.emailVerifiedAt)));
+}
+
+/** True once the user has confirmed their email address. */
+export async function isEmailVerified(userId: string): Promise<boolean> {
+  const [row] = await db
+    .select({ emailVerifiedAt: user.emailVerifiedAt })
+    .from(user)
+    .where(eq(user.id, userId));
+  return !!row?.emailVerifiedAt;
+}
+
 /**
  * Creates a user with a freshly generated 8-char referral code (truncated UUID,
  * not checked for collisions). If `referredByCode` doesn't match an existing
@@ -1093,9 +1110,10 @@ export async function getOrCreateOAuthUser(
     userId = existingUsers[0].id;
   } else {
     // Create a new user (no password — OAuth only)
+    // The OAuth provider has already verified this address.
     const [newUser] = await db
       .insert(user)
-      .values({ email, password: null })
+      .values({ email, password: null, emailVerifiedAt: new Date() })
       .returning();
     userId = newUser.id;
     isNew = true;

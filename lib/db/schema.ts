@@ -25,6 +25,7 @@ export const user = pgTable("User", {
   referralCode: varchar("referralCode", { length: 16 }).unique(),
   referredBy: varchar("referredBy", { length: 16 }),
   emailUnsubscribed: boolean("emailUnsubscribed").default(false).notNull(),
+  emailVerifiedAt: timestamp("emailVerifiedAt"),
 });
 
 export type User = InferSelectModel<typeof user>;
