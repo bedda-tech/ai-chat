@@ -191,9 +191,9 @@ export default function TermsPage() {
             If you have any questions about these Terms, please contact us at{" "}
             <Link
               className="font-medium underline underline-offset-4"
-              href="mailto:hello@bedda.ai"
+              href="mailto:matt@bedda.tech"
             >
-              hello@bedda.ai
+              matt@bedda.tech
             </Link>
             .
           </p>
