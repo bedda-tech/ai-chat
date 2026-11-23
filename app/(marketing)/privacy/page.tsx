@@ -138,9 +138,9 @@ export default function PrivacyPage() {
             To exercise these rights, contact us at{" "}
             <Link
               className="font-medium underline underline-offset-4"
-              href="mailto:hello@bedda.ai"
+              href="mailto:matt@bedda.tech"
             >
-              hello@bedda.ai
+              matt@bedda.tech
             </Link>
             .
           </p>
@@ -173,9 +173,9 @@ export default function PrivacyPage() {
             us at{" "}
             <Link
               className="font-medium underline underline-offset-4"
-              href="mailto:hello@bedda.ai"
+              href="mailto:matt@bedda.tech"
             >
-              hello@bedda.ai
+              matt@bedda.tech
             </Link>
             .
           </p>
