@@ -1,4 +1,5 @@
-import { tool } from "ai";
+import { generateText, tool } from "ai";
+import { gateway } from "@ai-sdk/gateway";
 import { z } from "zod";
 
 type SearchResult = {
@@ -95,6 +96,36 @@ async function searchBrave(
   );
 }
 
+/**
+ * Real web search through the Vercel AI Gateway (Perplexity Sonar), so no
+ * separate search account is needed. Returns cited source links.
+ */
+async function searchGatewaySonar(query: string): Promise<SearchResult[]> {
+  const { text, sources } = await generateText({
+    model: gateway.languageModel("perplexity/sonar"),
+    prompt: query,
+    abortSignal: AbortSignal.timeout(25_000),
+  });
+  const snippet = text.trim().slice(0, 600);
+  const seen = new Set<string>();
+  const results: SearchResult[] = [];
+  for (const s of sources ?? []) {
+    if (s.sourceType !== "url" || seen.has(s.url)) {
+      continue;
+    }
+    seen.add(s.url);
+    results.push({
+      title: s.title || new URL(s.url).hostname,
+      url: s.url,
+      snippet: results.length === 0 ? snippet : "",
+    });
+  }
+  if (results.length === 0 && snippet) {
+    results.push({ title: "Summary", url: "", snippet });
+  }
+  return results;
+}
+
 export const webSearchTool = tool({
   description:
     "Search the web for current information, news, facts, or any topic. Use this when the user asks about recent events, real-time data, or anything that may have changed after your training cutoff.",
@@ -111,10 +142,17 @@ export const webSearchTool = tool({
       let results: SearchResult[];
       const braveKey = process.env.BRAVE_SEARCH_API_KEY;
 
+      let source = "Brave Search";
       if (braveKey) {
         results = await searchBrave(query, braveKey);
       } else {
-        results = await searchDuckDuckGo(query);
+        try {
+          results = await searchGatewaySonar(query);
+          source = "Perplexity Sonar";
+        } catch {
+          results = await searchDuckDuckGo(query);
+          source = "DuckDuckGo";
+        }
       }
 
       if (results.length === 0) {
@@ -132,7 +170,7 @@ export const webSearchTool = tool({
         data: {
           query,
           results,
-          source: braveKey ? "Brave Search" : "DuckDuckGo",
+          source,
         },
       };
     } catch (err) {

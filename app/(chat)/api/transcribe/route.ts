@@ -1,5 +1,5 @@
-import { openai } from "@ai-sdk/openai";
-import { experimental_transcribe as transcribe } from "ai";
+import { gateway } from "@ai-sdk/gateway";
+import { generateText } from "ai";
 import { NextResponse } from "next/server";
 import { auth } from "@/app/(auth)/auth";
 import {
@@ -48,12 +48,28 @@ export async function POST(request: Request) {
     const buffer = await audioFile.arrayBuffer();
     const audio = new Uint8Array(buffer);
 
-    const { text } = await transcribe({
-      model: openai.transcription("whisper-1"),
-      audio,
+    // Routed through the AI Gateway (audio-capable model); no separate OpenAI key.
+    const { text } = await generateText({
+      model: gateway.languageModel("google/gemini-2.5-flash"),
+      messages: [
+        {
+          role: "user",
+          content: [
+            {
+              type: "text",
+              text: "Transcribe this audio verbatim. Output only the spoken words, with no commentary. If there is no speech, output nothing.",
+            },
+            {
+              type: "file",
+              data: audio,
+              mediaType: audioFile.type?.split(";")[0] || "audio/webm",
+            },
+          ],
+        },
+      ],
     });
 
-    return NextResponse.json({ text });
+    return NextResponse.json({ text: text.trim() });
   } catch (err) {
     console.error("Transcription error:", err);
     return NextResponse.json(
