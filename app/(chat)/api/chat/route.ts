@@ -1,6 +1,7 @@
 import { createMCPClient } from "@ai-sdk/mcp";
 import { createOpenAI, openai } from "@ai-sdk/openai";
 import * as Sentry from "@sentry/nextjs";
+import { captureServerEvent } from "@/lib/analytics/server-capture";
 import { geolocation } from "@vercel/functions";
 import {
   convertToModelMessages,
@@ -725,6 +726,15 @@ export async function POST(request: Request) {
                   totalTokens:
                     (usage.inputTokens || 0) + (usage.outputTokens || 0),
                   costSavings: (cachedTokens / 1_000_000) * 2.7,
+                });
+
+                void captureServerEvent(session.user.id, "chat_completion_cost", {
+                  model: selectedChatModel,
+                  input_tokens: usage.inputTokens ?? 0,
+                  output_tokens: usage.outputTokens ?? 0,
+                  cached_tokens: cachedTokens,
+                  cost_usd: finalMergedUsage?.costUSD?.totalUSD ?? null,
+                  user_type: session.user.type,
                 });
               } catch (trackingErr) {
                 console.error("Failed to record usage:", trackingErr);
