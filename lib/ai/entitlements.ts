@@ -12,7 +12,7 @@ export const entitlementsByUserType: Record<UserType, Entitlements> = {
    * For users without an account
    */
   guest: {
-    maxMessagesPerDay: 20,
+    maxMessagesPerDay: 10,
     availableChatModelIds: [
       // Legacy/Default Models
       "chat-model",
@@ -29,7 +29,7 @@ export const entitlementsByUserType: Record<UserType, Entitlements> = {
    * For users with an account
    */
   regular: {
-    maxMessagesPerDay: 100,
+    maxMessagesPerDay: 50,
     availableChatModelIds: [
       // Vercel Models
       "vercel-v0-1.0-md",

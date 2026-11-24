@@ -1,5 +1,6 @@
 "use client";
 
+import { TEAM_FEATURES_ENABLED } from "@/lib/features";
 import Link from "next/link";
 import { useCallback, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -104,12 +105,14 @@ export function ImageStudio() {
               side-by-side
             </p>
           </div>
-          <Link
-            className="text-muted-foreground text-xs transition-colors hover:text-foreground"
-            href="/studio/video"
-          >
-            Video Studio →
-          </Link>
+          {TEAM_FEATURES_ENABLED && (
+            <Link
+              className="text-muted-foreground text-xs transition-colors hover:text-foreground"
+              href="/studio/video"
+            >
+              Video Studio →
+            </Link>
+          )}
         </div>
       </div>
 

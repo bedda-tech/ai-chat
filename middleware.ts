@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { getToken } from "next-auth/jwt";
+import { isHiddenPath, TEAM_FEATURES_ENABLED } from "./lib/features";
 import { guestRegex, isDevelopmentEnvironment } from "./lib/constants";
 
 export async function middleware(request: NextRequest) {
@@ -11,6 +12,11 @@ export async function middleware(request: NextRequest) {
    */
   if (pathname.startsWith("/ping")) {
     return new Response("pong", { status: 200 });
+  }
+
+  // Launch scope: team/bot/SSO/video surfaces are hidden (feature-flagged)
+  if (!TEAM_FEATURES_ENABLED && isHiddenPath(pathname)) {
+    return new Response("Not found", { status: 404 });
   }
 
   // Routes that bypass auth entirely (webhooks, API keys, public marketing/legal content)

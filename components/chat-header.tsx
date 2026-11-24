@@ -2,6 +2,7 @@
 
 import { Download } from "lucide-react";
 import { memo } from "react";
+import { TEAM_FEATURES_ENABLED } from "@/lib/features";
 import { ShareToTeamButton } from "@/components/share-to-team-button";
 import { SidebarToggle } from "@/components/sidebar-toggle";
 import { Button } from "@/components/ui/button";
@@ -38,7 +39,7 @@ function PureChatHeader({
   return (
     <div className="absolute top-2 left-2 z-50 flex items-center gap-2 md:top-2 md:left-2">
       <SidebarToggle />
-      {!isReadonly && <ShareToTeamButton chatId={chatId} />}
+      {TEAM_FEATURES_ENABLED && !isReadonly && <ShareToTeamButton chatId={chatId} />}
       {!isReadonly && (
         <Button
           className="size-8"

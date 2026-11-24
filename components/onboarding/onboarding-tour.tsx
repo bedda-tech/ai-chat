@@ -67,16 +67,6 @@ export function OnboardingTour() {
             },
           },
           {
-            element: '[data-tour="video-studio-link"]',
-            popover: {
-              title: "Video Studio",
-              description:
-                "Generate AI videos from text prompts or images using Kling AI.",
-              side: "right",
-              align: "start",
-            },
-          },
-          {
             element: '[data-tour="sidebar-user"]',
             popover: {
               title: "Settings & Memory",

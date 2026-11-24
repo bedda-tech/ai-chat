@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { User } from "next-auth";
+import { TEAM_FEATURES_ENABLED } from "@/lib/features";
 import { RocketIcon } from "@/components/icons";
 import { SidebarHistory } from "@/components/sidebar-history";
 import { SidebarUpgradeCTA } from "@/components/sidebar-upgrade-cta";
@@ -231,6 +232,7 @@ export function AppSidebar({
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
+                {TEAM_FEATURES_ENABLED && (
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild>
                     <Link
@@ -258,6 +260,7 @@ export function AppSidebar({
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
+                )}
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild>
                     <Link
