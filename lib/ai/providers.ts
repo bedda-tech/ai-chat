@@ -43,13 +43,17 @@ const productionProvider = customProvider({
     ),
 
     // Legacy/Default Models (keeping for backward compatibility)
-    "chat-model": gateway.languageModel("xai/grok-2-vision-1212"),
+    // The AI Gateway no longer lists any xai/* model (checked 2026-11-25: 517 models, none
+    // under xai/), so every call through these four aliases failed with
+    // GatewayModelNotFoundError. "title-model" runs on the first message of every new chat,
+    // which turned that into a 503 for the whole request.
+    "chat-model": gateway.languageModel("google/gemini-2.5-flash"),
     "chat-model-reasoning": wrapLanguageModel({
-      model: gateway.languageModel("xai/grok-3-mini"),
+      model: gateway.languageModel("google/gemini-2.5-flash"),
       middleware: extractReasoningMiddleware({ tagName: "think" }),
     }),
-    "title-model": gateway.languageModel("xai/grok-4.1-fast-non-reasoning"),
-    "artifact-model": gateway.languageModel("xai/grok-4.1-fast-non-reasoning"),
+    "title-model": gateway.languageModel("google/gemini-2.5-flash-lite"),
+    "artifact-model": gateway.languageModel("google/gemini-2.5-flash"),
 
     // KRAIN protocol source (hidden — see note above). Routable id only.
     "krain-gemma": krain(process.env.KRAIN_MODEL ?? "gemma-2-9b-it"),
