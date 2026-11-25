@@ -17,7 +17,7 @@ export async function GET() {
     );
   }
 
-  const redirectUri = `${process.env.NEXTAUTH_URL}/api/notion/callback`;
+  const redirectUri = `${process.env.NEXT_PUBLIC_APP_URL}/api/notion/callback`;
   const state = Buffer.from(session.user.id).toString("base64");
 
   const params = new URLSearchParams({

@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
   const session = await auth();
   if (!session?.user?.id) {
     return NextResponse.redirect(
-      `${process.env.NEXTAUTH_URL}/notion?error=unauthorized`
+      `${process.env.NEXT_PUBLIC_APP_URL}/notion?error=unauthorized`
     );
   }
 
@@ -19,24 +19,24 @@ export async function GET(request: NextRequest) {
 
   if (error) {
     return NextResponse.redirect(
-      `${process.env.NEXTAUTH_URL}/notion?error=${error}`
+      `${process.env.NEXT_PUBLIC_APP_URL}/notion?error=${error}`
     );
   }
 
   if (!code) {
     return NextResponse.redirect(
-      `${process.env.NEXTAUTH_URL}/notion?error=no_code`
+      `${process.env.NEXT_PUBLIC_APP_URL}/notion?error=no_code`
     );
   }
 
   const expectedState = Buffer.from(session.user.id).toString("base64");
   if (state !== expectedState) {
     return NextResponse.redirect(
-      `${process.env.NEXTAUTH_URL}/notion?error=invalid_state`
+      `${process.env.NEXT_PUBLIC_APP_URL}/notion?error=invalid_state`
     );
   }
 
-  const redirectUri = `${process.env.NEXTAUTH_URL}/api/notion/callback`;
+  const redirectUri = `${process.env.NEXT_PUBLIC_APP_URL}/api/notion/callback`;
 
   const credentials = Buffer.from(
     `${process.env.NOTION_CLIENT_ID}:${process.env.NOTION_CLIENT_SECRET}`
@@ -57,7 +57,7 @@ export async function GET(request: NextRequest) {
 
   if (!tokenRes.ok) {
     return NextResponse.redirect(
-      `${process.env.NEXTAUTH_URL}/notion?error=token_exchange_failed`
+      `${process.env.NEXT_PUBLIC_APP_URL}/notion?error=token_exchange_failed`
     );
   }
 
@@ -71,6 +71,6 @@ export async function GET(request: NextRequest) {
   });
 
   return NextResponse.redirect(
-    `${process.env.NEXTAUTH_URL}/notion?connected=true`
+    `${process.env.NEXT_PUBLIC_APP_URL}/notion?connected=true`
   );
 }

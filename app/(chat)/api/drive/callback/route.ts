@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
   const session = await auth();
   if (!session?.user?.id) {
     return NextResponse.redirect(
-      `${process.env.NEXTAUTH_URL}/drive?error=unauthorized`
+      `${process.env.NEXT_PUBLIC_APP_URL}/drive?error=unauthorized`
     );
   }
 
@@ -19,13 +19,13 @@ export async function GET(request: NextRequest) {
 
   if (error) {
     return NextResponse.redirect(
-      `${process.env.NEXTAUTH_URL}/drive?error=${error}`
+      `${process.env.NEXT_PUBLIC_APP_URL}/drive?error=${error}`
     );
   }
 
   if (!code) {
     return NextResponse.redirect(
-      `${process.env.NEXTAUTH_URL}/drive?error=no_code`
+      `${process.env.NEXT_PUBLIC_APP_URL}/drive?error=no_code`
     );
   }
 
@@ -33,11 +33,11 @@ export async function GET(request: NextRequest) {
   const expectedState = Buffer.from(session.user.id).toString("base64");
   if (state !== expectedState) {
     return NextResponse.redirect(
-      `${process.env.NEXTAUTH_URL}/drive?error=invalid_state`
+      `${process.env.NEXT_PUBLIC_APP_URL}/drive?error=invalid_state`
     );
   }
 
-  const redirectUri = `${process.env.NEXTAUTH_URL}/api/drive/callback`;
+  const redirectUri = `${process.env.NEXT_PUBLIC_APP_URL}/api/drive/callback`;
 
   const tokenRes = await fetch(GOOGLE_TOKEN_URL, {
     method: "POST",
@@ -53,7 +53,7 @@ export async function GET(request: NextRequest) {
 
   if (!tokenRes.ok) {
     return NextResponse.redirect(
-      `${process.env.NEXTAUTH_URL}/drive?error=token_exchange_failed`
+      `${process.env.NEXT_PUBLIC_APP_URL}/drive?error=token_exchange_failed`
     );
   }
 
@@ -69,6 +69,6 @@ export async function GET(request: NextRequest) {
   });
 
   return NextResponse.redirect(
-    `${process.env.NEXTAUTH_URL}/drive?connected=true`
+    `${process.env.NEXT_PUBLIC_APP_URL}/drive?connected=true`
   );
 }
