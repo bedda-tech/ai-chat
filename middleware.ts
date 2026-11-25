@@ -32,6 +32,8 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith("/compare/") || // SEO comparison pages — must be crawlable
     pathname === "/blog" ||
     pathname.startsWith("/blog/") || // SEO blog — must be crawlable
+    pathname.startsWith("/p/") || // Published public pages (read-only, noindex)
+    pathname.startsWith("/api/publish/report") || // Public abuse report
     pathname.startsWith("/join/") || // Referral landing pages
     [
       "/home",

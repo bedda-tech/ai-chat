@@ -781,3 +781,37 @@ export const organizationModelPolicy = pgTable("OrganizationModelPolicy", {
 export type OrganizationModelPolicy = InferSelectModel<
   typeof organizationModelPolicy
 >;
+
+/**
+ * A public, read-only snapshot of a chat artifact served at /p/<slug>.
+ * Content is copied at publish time so later edits never leak out unintentionally.
+ */
+export const publishedPage = pgTable("PublishedPage", {
+  id: uuid("id").primaryKey().notNull().defaultRandom(),
+  slug: varchar("slug", { length: 24 }).notNull().unique(),
+  userId: uuid("userId")
+    .notNull()
+    .references(() => user.id),
+  documentId: uuid("documentId").notNull(),
+  title: text("title").notNull(),
+  kind: varchar("kind", { length: 20 }).notNull(),
+  content: text("content").notNull(),
+  // Pages stay noindex until an admin marks them reviewed-clean.
+  reviewedClean: boolean("reviewedClean").notNull().default(false),
+  // Set when unpublished by the owner or auto-hidden after reports.
+  unpublishedAt: timestamp("unpublishedAt"),
+  hiddenByReports: boolean("hiddenByReports").notNull().default(false),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+  updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+});
+
+export type PublishedPage = InferSelectModel<typeof publishedPage>;
+
+export const publishedPageReport = pgTable("PublishedPageReport", {
+  id: uuid("id").primaryKey().notNull().defaultRandom(),
+  pageId: uuid("pageId")
+    .notNull()
+    .references(() => publishedPage.id),
+  reason: text("reason").notNull(),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+});
