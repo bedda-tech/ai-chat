@@ -288,6 +288,13 @@
       "when": 1795305600000,
       "tag": "0038_email_verification",
       "breakpoints": true
+    },
+    {
+      "idx": 41,
+      "version": "7",
+      "when": 1795392000000,
+      "tag": "0039_scheduled_tasks",
+      "breakpoints": true
     }
   ]
 }

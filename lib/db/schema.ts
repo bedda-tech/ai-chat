@@ -781,3 +781,25 @@ export const organizationModelPolicy = pgTable("OrganizationModelPolicy", {
 export type OrganizationModelPolicy = InferSelectModel<
   typeof organizationModelPolicy
 >;
+
+// Scheduled tasks: "every Monday at 9, do X". Run by /api/cron/scheduled-tasks.
+export const scheduledTask = pgTable("ScheduledTask", {
+  id: uuid("id").primaryKey().notNull().defaultRandom(),
+  userId: uuid("userId")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  prompt: text("prompt").notNull(),
+  modelId: varchar("modelId", { length: 255 }),
+  // -1 = every day, 0-6 = Sunday-Saturday
+  dayOfWeek: integer("dayOfWeek").notNull().default(1),
+  hour: integer("hour").notNull().default(9),
+  timezone: varchar("timezone", { length: 64 }).notNull().default("UTC"),
+  enabled: boolean("enabled").notNull().default(true),
+  nextRunAt: timestamp("nextRunAt").notNull(),
+  lastRunAt: timestamp("lastRunAt"),
+  lastChatId: uuid("lastChatId"),
+  lastError: text("lastError"),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+});
+
+export type ScheduledTask = InferSelectModel<typeof scheduledTask>;

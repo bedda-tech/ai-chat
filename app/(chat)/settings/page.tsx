@@ -8,6 +8,7 @@ import { MemoryManagement } from "@/components/memory-management";
 import { ModelPreferencesForm } from "@/components/model-preferences-form";
 import { PluginToolsForm } from "@/components/plugin-tools-form";
 import { ReferralCard } from "@/components/referral-card";
+import { ScheduledTasksForm } from "@/components/scheduled-tasks-form";
 import { SubscriptionManagement } from "@/components/subscription-management";
 import { TeamManagement } from "@/components/team-management";
 import { UsageDisplay } from "@/components/usage-display";
@@ -89,6 +90,11 @@ export default async function SettingsPage() {
       <div className="mt-6 rounded-lg border p-6">
         <h2 className="mb-4 font-semibold text-lg">Memory</h2>
         <MemoryManagement />
+      </div>
+
+      <div className="mt-6 rounded-lg border p-6" id="schedules">
+        <h2 className="mb-4 font-semibold text-lg">Scheduled Tasks</h2>
+        <ScheduledTasksForm />
       </div>
 
       <div className="mt-6 rounded-lg border p-6">
