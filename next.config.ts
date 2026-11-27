@@ -26,6 +26,18 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // The address said on camera in the BeddaTech vlog. Temporary (307) so it can be repointed,
+  // e.g. to the app stores on launch day. Runs before middleware, so no guest session is created.
+  async redirects() {
+    return [
+      {
+        source: "/vlog",
+        destination:
+          "/register?utm_source=vlog&utm_medium=video&utm_campaign=ep01",
+        permanent: false,
+      },
+    ];
+  },
   async rewrites() {
     const umamiHost = process.env.NEXT_PUBLIC_UMAMI_HOST;
     if (!umamiHost) {
