@@ -15,6 +15,13 @@ import {
 
 type BillingPeriod = "monthly" | "annual";
 
+// Paid checkout is closed until a payment processor is live again (Stripe closed the account on
+// 20 Nov 2026). While closed, paid plans send people to the free sign-up with one honest line
+// instead of a checkout that cannot take a card. Reopen: NEXT_PUBLIC_PAID_CHECKOUT_OPEN=true.
+const paidCheckoutOpen = process.env.NEXT_PUBLIC_PAID_CHECKOUT_OPEN === "true";
+const checkoutClosedNote =
+  "Paid plans open soon. Start free today and upgrade when they do.";
+
 const tiers = [
   {
     name: "Free",
@@ -149,9 +156,14 @@ export function PricingSection() {
             billing === "annual" && tier.annualPerMonth
               ? tier.annualPerMonth
               : tier.monthlyPrice;
-          const href = tier.planKey
-            ? `${tier.href}${billing === "annual" ? "&billing=annual" : ""}`
-            : tier.href;
+          const isPaid = tier.planKey !== null;
+          const checkoutClosed = isPaid && !paidCheckoutOpen;
+          let href = tier.href;
+          if (checkoutClosed) {
+            href = "/register";
+          } else if (isPaid) {
+            href = `${tier.href}${billing === "annual" ? "&billing=annual" : ""}`;
+          }
 
           return (
             <Card
@@ -205,9 +217,17 @@ export function PricingSection() {
                   className="w-full"
                   variant={tier.highlighted ? "default" : "outline"}
                 >
-                  <Link href={href}>{tier.cta}</Link>
+                  <Link href={href}>
+                    {checkoutClosed ? "Start free" : tier.cta}
+                  </Link>
                 </Button>
-                {"trialNote" in tier &&
+                {checkoutClosed && (
+                  <p className="text-center text-muted-foreground text-xs">
+                    {checkoutClosedNote}
+                  </p>
+                )}
+                {!checkoutClosed &&
+                  "trialNote" in tier &&
                   tier.trialNote &&
                   billing === "monthly" && (
                     <p className="text-center text-muted-foreground text-xs">
