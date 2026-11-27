@@ -77,6 +77,7 @@ import {
   saveMessages,
   searchKBChunks,
   updateChatLastContextById,
+  updateChatTitleById,
 } from "@/lib/db/queries";
 import { getOrgModelPolicyForUser } from "@/lib/db/team-queries";
 import { ChatSDKError } from "@/lib/errors";
@@ -323,16 +324,30 @@ export async function POST(request: Request) {
         return new ChatSDKError("forbidden:chat").toResponse();
       }
     } else {
-      const title = await generateTitleFromUserMessage({
-        message,
-      });
+      // Save with a placeholder title and generate the real one after the response starts,
+      // so the title LLM call is not on the time-to-first-token path.
+      const placeholderTitle =
+        message.parts
+          .map((p: { type: string; text?: string }) =>
+            p.type === "text" ? (p.text ?? "") : ""
+          )
+          .join(" ")
+          .replace(/\s+/g, " ")
+          .trim()
+          .slice(0, 80) || "New chat";
 
       await saveChat({
         id,
         userId: session.user.id,
-        title,
+        title: placeholderTitle,
         visibility: selectedVisibilityType,
         projectId: requestProjectId,
+      });
+      after(async () => {
+        const title = await generateTitleFromUserMessage({ message });
+        if (title && title !== placeholderTitle) {
+          await updateChatTitleById({ chatId: id, title });
+        }
       });
       void logAuditEvent(session.user.id, "chat.created", {
         chatId: id,
