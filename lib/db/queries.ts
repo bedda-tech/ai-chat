@@ -268,6 +268,21 @@ export async function saveChat({
   }
 }
 
+/** Replace a chat's title (used to swap in the generated title after the reply has started). */
+export async function updateChatTitleById({
+  chatId,
+  title,
+}: {
+  chatId: string;
+  title: string;
+}) {
+  try {
+    return await db.update(chat).set({ title }).where(eq(chat.id, chatId));
+  } catch (error) {
+    console.error("Failed to update chat title", error);
+  }
+}
+
 export async function deleteChatById({ id }: { id: string }) {
   try {
     await db.delete(vote).where(eq(vote.chatId, id));
